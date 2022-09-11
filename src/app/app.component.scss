@@ -1,0 +1,63 @@
+
+.app {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.app-content {
+  align-items: center;
+  background-color: #282c34;
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  min-height: 91vh;
+  position: relative;
+  top: 60px;
+
+  &h1 {
+    font-size: 2.0em;
+  }
+}
+
+.prometheus-header {
+  background: #355f7d;
+  border-bottom: 1px solid lightblue;
+  color: white;
+  font-size: calc(10px + 2vmin);
+  height: 60px;
+  justify-content: center;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+
+  &__settings {
+    position: absolute;
+    right: 20px;
+    text-align: center;
+    top: 19px;
+
+    &Icon {
+      display: inline-block;
+      width: 22px;
+    }
+  }
+
+  &__title {
+    font-family: 'Anton', sans-serif;
+    font-size: 38px;
+    margin-top: 20px;
+    @media screen and (min-width: 768px) {
+      font-size: 46px;
+    }
+  }
+
+  &__logo {
+    left: 5px;
+    position: absolute;
+    top: 5px;
+    width: 45px;
+  }
+
+
+
+}

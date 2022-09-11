@@ -1,0 +1,31 @@
+<div class="container searchContainer">
+  <div class="row">
+
+    <div class="col-2 {{ isSearchFieldActive ? 'searchContainer__inputFieldBack' : 'searchContainer--inactive' }}">
+      <img
+        class="searchContainer__inputFieldBack--icon"
+        src="assets/images/back-arrow.png"
+        (click)="isSearchFieldActive = false"
+      />
+    </div>
+    <div class="col-8">
+      <input
+        #searchPattern
+        tabIndex="-1"
+        type="text"
+        class="searchContainer {{isSearchFieldActive ? 'searchContainer__inputField' : 'searchContainer--inactive'}}"
+        [formControl]="searchPatternControl"
+      />
+    </div>
+
+    <div class="col-2">
+    <!--<div class="search search{{isSearchFieldActive ? '--active' : ''}}">-->
+      <img
+        class="search--icon"
+        src="assets/images/search-icon.png"
+        (click)="isSearchFieldActive = true"
+      />
+    </div>
+
+  </div>
+</div>
