@@ -18,7 +18,7 @@ export abstract class ApiBase {
         let end = endpoint;
         if (!!pathReplacements && Object.keys(pathReplacements).length > 0) {
             Object.keys(pathReplacements).forEach(key => {
-                const value = pathReplacements[key] || 'MISSING_ARG';
+                const value = pathReplacements[key] || '';
                 end = end.replace(new RegExp(`{${key}}`, 'g'), value);
             });
         }

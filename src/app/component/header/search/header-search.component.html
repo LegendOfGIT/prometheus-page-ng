@@ -19,12 +19,15 @@
     </div>
 
     <div class="col-2">
-    <!--<div class="search search{{isSearchFieldActive ? '--active' : ''}}">-->
       <img
         class="search--icon"
         src="assets/images/search-icon.png"
         (click)="isSearchFieldActive = true"
       />
+      <img
+        src="assets/images/wishlist-selected.svg"
+        [routerLink]="['/wishlist']"
+      >
     </div>
 
   </div>

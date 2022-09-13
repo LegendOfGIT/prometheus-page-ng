@@ -1,0 +1,17 @@
+<div *ngIf="items" class="informationItemsContainer">
+
+  <div *ngFor="let item of items">
+
+    <div *ngIf="item && item.titleImage" class="informationItem">
+      <div class="informationItem__imageContainer">
+      <img
+        class="informationItem__image"
+        alt="{{item.title}}"
+        src="{{item.titleImage}}"
+        loading="lazy"
+      />
+    </div>
+
+  </div>
+
+</div>

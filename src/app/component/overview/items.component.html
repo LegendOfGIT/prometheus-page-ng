@@ -4,14 +4,18 @@
 
     <div *ngIf="item && item.titleImage" class="informationItem">
       <div class="informationItem__imageContainer">
-      <img
-        class="informationItem__image"
-        alt="{{item.title}}"
-        src="{{item.titleImage}}"
-        loading="lazy"
-      />
+        <img
+          class="informationItem__image"
+          alt="{{item.title}}"
+          src="{{item.titleImage}}"
+          loading="lazy"
+        />
+      </div>
+      <div class="informationItem__contentContainer">
+        <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
+        <div class="item__title">{{item.title}}</div>
+      </div>
     </div>
-
   </div>
 
 </div>

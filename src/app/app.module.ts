@@ -5,14 +5,20 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { AddToWishlistComponent } from './component/wishlist/add-to-wishlist.component';
 import { ItemsComponent } from './component/overview/items.component';
 import { HeaderSearchComponent } from './component/header/search/header-search.component';
+import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+
+    AddToWishlistComponent,
     HeaderSearchComponent,
-    ItemsComponent
+    ItemsComponent,
+    WishlistItemsComponent
   ],
   imports: [
     BrowserModule,
