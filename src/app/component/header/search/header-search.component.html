@@ -1,14 +1,14 @@
 <div class="container searchContainer">
   <div class="row">
 
-    <div class="col-2 {{ isSearchFieldActive ? 'searchContainer__inputFieldBack' : 'searchContainer--inactive' }}">
+    <div class="col-3 col-md-2 {{ isSearchFieldActive ? 'searchContainer__inputFieldBack' : 'searchContainer--inactive' }}">
       <img
         class="searchContainer__inputFieldBack--icon"
         src="assets/images/back-arrow.png"
         (click)="isSearchFieldActive = false"
       />
     </div>
-    <div class="col-8">
+    <div class="col-6 col-md-8">
       <input
         #searchPattern
         tabIndex="-1"
@@ -18,7 +18,7 @@
       />
     </div>
 
-    <div class="col-2 search__iconWrapper">
+    <div class="col-3 col-md-2 search__iconWrapper">
       <img
         class="header--icon"
         src="assets/images/search-icon.png"
