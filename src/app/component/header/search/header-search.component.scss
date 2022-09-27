@@ -1,9 +1,15 @@
 
 .header {
-    &--icon {
-      height: 70%;
+    &__iconWrapper {
+      height: 1.2em;
       position: relative;
-      top: 25%;
+      top: 10%;
+      width: 1.2em;
+    }
+
+    &--icon {
+      height: 100%;
+      width: 100%;
     }
 }
 
@@ -75,8 +81,9 @@
     }
 
     &Back {
+      display: inline-flex;
       height: 8vh;
-      text-align: end;
+      justify-content: end;
 
       &--icon {
         height: 70%;
