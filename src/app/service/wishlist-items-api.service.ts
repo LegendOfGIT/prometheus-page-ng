@@ -36,6 +36,11 @@ export class WishlistItemsApiService extends ApiBase {
         return;
       }
 
+      this.http.put(
+        this.get(endpoints.saveWishlistItem),
+        { itemId: item.itemId }
+      ).subscribe();
+
       this._items.push(item);
     }
 
@@ -44,12 +49,16 @@ export class WishlistItemsApiService extends ApiBase {
         return;
       }
 
+      this.http.delete(
+        this.get(endpoints.deleteWishlistItem, { itemId: item.itemId }),
+      ).subscribe();
+
       this._items = this._items.filter(wishlistItem => item.itemId !== wishlistItem?.itemId);
     }
 
     getItems(searchPattern: string): Observable<Array<Item | null>> {
 
-        const url = this.get(endpoints.wishlistItems, { searchPattern, userId: 'abc-123' });
+        const url = this.get(endpoints.getWishlistItems, { searchPattern, userId: 'abc-123' });
 
         return this.http
            .get<ItemsResponseDto>(url)

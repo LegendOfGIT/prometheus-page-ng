@@ -10,9 +10,9 @@
           src="{{item.titleImage}}"
           loading="lazy"
         />
+        <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
       </div>
       <div class="informationItem__contentContainer">
-        <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
         <div class="item__title">{{item.title}}</div>
       </div>
     </div>
