@@ -2,12 +2,14 @@
 .header {
     &__iconWrapper {
       height: 1.2em;
+      padding-right: 1.5em;
       position: relative;
       top: 10%;
       width: 1.2em;
     }
 
     &--icon {
+      color: #0dcaf0;
       height: 100%;
       width: 100%;
     }

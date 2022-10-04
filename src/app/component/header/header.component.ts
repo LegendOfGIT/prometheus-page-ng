@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
-  selector: 'header-search',
-  templateUrl: './header-search.component.html',
-  styleUrls: ['./header-search.component.scss']
+  selector: 'header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
 })
-export class HeaderSearchComponent {
+export class HeaderComponent {
 
   public isSearchFieldActive: boolean = false;
   public searchPatternControl: FormControl = new FormControl();

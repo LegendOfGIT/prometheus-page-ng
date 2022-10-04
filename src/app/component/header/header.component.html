@@ -3,11 +3,10 @@
 
     <div class="col-3 col-md-2 {{ isSearchFieldActive ? 'searchContainer__inputFieldBack' : 'searchContainer--inactive' }}">
       <div class="header__iconWrapper">
-        <img
-          class="header--icon"
-          src="assets/images/back-arrow.png"
+        <i
+          class="bi bi-arrow-left header--icon"
           (click)="isSearchFieldActive = false"
-        />
+        ></i>
       </div>
     </div>
     <div class="col-6 col-md-8">
@@ -22,20 +21,23 @@
 
     <div class="col-3 col-md-2 search__iconWrapper">
       <div class="header__iconWrapper">
-        <img
-          class="header--icon"
-          src="assets/images/search-icon.png"
+        <i
+          class="bi bi-search header--icon"
           (click)="isSearchFieldActive = true"
-        />
+        ></i>
       </div>
       <div class="header__iconWrapper">
-        <img
-          class="header--icon"
-          src="assets/images/wishlist-selected.svg"
+        <i
+          class="bi bi-heart header--icon"
           [routerLink]="['/wishlist']"
-        >
+        ></i>
+      </div>
+      <div class="header__iconWrapper">
+        <i
+          class="bi bi-person header--icon"
+          [routerLink]="['/profile']"
+        ></i>
       </div>
     </div>
-
   </div>
 </div>

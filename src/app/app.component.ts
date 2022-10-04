@@ -22,7 +22,6 @@ export class AppComponent implements OnInit  {
   }
 
   ngOnInit(): void {
-      console.log(this.wishlistItemsService.items);
     if (this.wishlistItemsService.items?.length) {
       return;
     }

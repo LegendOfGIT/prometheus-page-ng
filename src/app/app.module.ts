@@ -3,12 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { SocialLoginModule } from '@abacritt/angularx-social-login';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AddToWishlistComponent } from './component/wishlist/add-to-wishlist.component';
 import { ItemsComponent } from './component/overview/items.component';
-import { HeaderSearchComponent } from './component/header/search/header-search.component';
+import { HeaderComponent } from './component/header/header.component';
+import { ProfileComponent } from './component/profile/profile.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 
 @NgModule({
@@ -16,8 +20,9 @@ import { WishlistItemsComponent } from './component/wishlist/wishlist-items.comp
     AppComponent,
 
     AddToWishlistComponent,
-    HeaderSearchComponent,
+    HeaderComponent,
     ItemsComponent,
+    ProfileComponent,
     WishlistItemsComponent
   ],
   imports: [
@@ -25,9 +30,28 @@ import { WishlistItemsComponent } from './component/wishlist/wishlist-items.comp
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '408077216324-u368r57tn13rdju7832l1nj7fs7c4mdf.apps.googleusercontent.com'
+            )
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

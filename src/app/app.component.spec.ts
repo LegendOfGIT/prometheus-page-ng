@@ -1,6 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
+import { WishlistItemsApiService } from './service/wishlist-items-api.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -11,6 +13,10 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [
+        { provide: 'API_BASE', useValue: 'http://base.de' },
+        { provide: WishlistItemsApiService, useValue: {} }
+      ]
     }).compileComponents();
   });
 
