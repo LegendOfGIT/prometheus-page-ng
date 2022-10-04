@@ -24,12 +24,14 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
+    expect(fixture).toMatchSnapshot();
   });
 
   it(`should have as title 'prometheus-page'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('prometheus-page');
+    expect(fixture).toMatchSnapshot();
   });
 
 });
