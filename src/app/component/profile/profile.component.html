@@ -1,3 +1,19 @@
-<div (click)="loginWithGoogle()">
-  <asl-google-signin-button #googleBtnRef></asl-google-signin-button>
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10 profile__content">
+      <div *ngIf="!activeUser; else loggedIn">
+        <button>Google &nbsp;<asl-google-signin-button #googleBtnRef></asl-google-signin-button></button>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
 </div>
+
+<ng-template #loggedIn>
+  <div>
+    <h4>Hi {{activeUser?.firstName}}</h4>
+
+    <button (click)="logoutUser()">logout</button>
+  </div>
+</ng-template>

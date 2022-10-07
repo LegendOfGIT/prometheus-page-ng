@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'profile',
@@ -15,7 +17,8 @@ export class ProfileComponent{
   private destroy = new Subject<boolean>();
 
   constructor(private router: Router,
-              private socialAuthService: SocialAuthService) {
+              private socialAuthService: SocialAuthService,
+              private userService: UserService) {
   }
 
   loginWithGoogle(): void {
@@ -23,13 +26,14 @@ export class ProfileComponent{
       .then(() => {
         this.router.navigate(['']);
       });
+  }
 
-    this.socialAuthService.authState
-      .pipe(takeUntil(this.destroy))
-      .subscribe((user) => {
-        console.log(user);
-      });
+  logoutUser(): void {
+    this.userService.logout();
+  }
 
+  get activeUser() {
+    return this.userService.activeUser;
   }
 
 }

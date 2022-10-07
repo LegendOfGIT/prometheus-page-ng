@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 
+import { UserService } from 'src/app/service/user.service';
+
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
@@ -15,7 +17,8 @@ export class HeaderComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
     this.activatePageReloadOnEveryRouteNavigation();
     this.subscribeSearchPatternChanges();
@@ -33,6 +36,10 @@ export class HeaderComponent {
       .subscribe(() => {
         this.router.navigate([''], { queryParams: { search: this.searchPatternControl.value } });
       });
+  }
+
+  get isLoggedIn(): boolean {
+    return this.userService.isLoggedIn;
   }
 
 }

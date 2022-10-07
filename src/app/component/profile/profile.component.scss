@@ -1,0 +1,23 @@
+button {
+  align-items: center;
+  background-color: #355f7d;
+  border: 1px solid #0dcaf0;
+  color: #0dcaf0;
+  display: flex;
+  padding: 0.5em;
+}
+
+button:hover {
+  background-color: #0dcaf0;
+  border: 1px solid #355f7d;
+  color: #355f7d;
+}
+
+.profile {
+  &__content {
+    background-color: #355f7d;
+    margin-top: 3em;
+    padding: 1em;
+
+  }
+}

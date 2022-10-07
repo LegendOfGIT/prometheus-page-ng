@@ -47,7 +47,6 @@ import { WishlistItemsComponent } from './component/wishlist/wishlist-items.comp
           }
         ],
         onError: (err) => {
-          console.error(err);
         }
       } as SocialAuthServiceConfig
     }
