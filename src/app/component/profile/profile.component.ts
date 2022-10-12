@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 import { UserService } from 'src/app/service/user.service';
+import { TranslationService } from 'src/app/service/translation.service';
 
 @Component({
   selector: 'profile',
@@ -18,7 +19,8 @@ export class ProfileComponent{
 
   constructor(private router: Router,
               private socialAuthService: SocialAuthService,
-              private userService: UserService) {
+              private userService: UserService,
+              private translationService: TranslationService) {
   }
 
   loginWithGoogle(): void {
@@ -32,8 +34,16 @@ export class ProfileComponent{
     this.userService.logout();
   }
 
+  switchLanguage(locale: string): void {
+     this.translationService.activeLocale = locale;
+  }
+
   get activeUser() {
     return this.userService.activeUser;
+  }
+
+  get i18n(): any {
+    return this.translationService.getTranslations();
   }
 
 }

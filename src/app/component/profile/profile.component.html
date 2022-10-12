@@ -14,6 +14,9 @@
   <div>
     <h4>Hi {{activeUser?.firstName}}</h4>
 
-    <button (click)="logoutUser()">logout</button>
+    <button (click)="switchLanguage('de_DE')">{{i18n.languageDeDe}}</button>
+    <button (click)="switchLanguage('en_US')">{{i18n.languageEnUs}}</button>
+
+    <button (click)="logoutUser()">{{i18n.profileLogout}}</button>
   </div>
 </ng-template>
