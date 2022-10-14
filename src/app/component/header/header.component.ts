@@ -15,6 +15,8 @@ export class HeaderComponent {
   public isSearchFieldActive: boolean = false;
   public searchPatternControl: FormControl = new FormControl();
 
+  public lastLoggedInFlag: boolean;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -22,6 +24,7 @@ export class HeaderComponent {
   ) {
     this.activatePageReloadOnEveryRouteNavigation();
     this.subscribeSearchPatternChanges();
+    this.lastLoggedInFlag = this.userService.isLoggedIn;
   }
 
   private activatePageReloadOnEveryRouteNavigation() {
@@ -36,6 +39,16 @@ export class HeaderComponent {
       .subscribe(() => {
         this.router.navigate([''], { queryParams: { search: this.searchPatternControl.value } });
       });
+  }
+
+  get hasJustLoggedIn(): boolean {
+    if (this.lastLoggedInFlag != this.userService.isLoggedIn) {
+      this.lastLoggedInFlag = this.userService.isLoggedIn;
+      return true;
+    }
+
+    this.lastLoggedInFlag = this.userService.isLoggedIn;
+    return false;
   }
 
   get isLoggedIn(): boolean {
