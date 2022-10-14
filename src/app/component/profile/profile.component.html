@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-10 profile__content">
-      <div *ngIf="!activeUser; else loggedIn">
+
+      <button (click)="switchLanguage('de_DE')">{{i18n.languageDeDe}}</button>
+      <button (click)="switchLanguage('en_US')">{{i18n.languageEnUs}}</button>
+
+      <div *ngIf="!isLoggedIn; else loggedIn">
         <asl-google-signin-button type="standard" size="large" #googleBtnRef>Google</asl-google-signin-button>
       </div>
     </div>
@@ -13,9 +17,6 @@
 <ng-template #loggedIn>
   <div>
     <h4>Hi {{activeUser?.firstName}}</h4>
-
-    <button (click)="switchLanguage('de_DE')">{{i18n.languageDeDe}}</button>
-    <button (click)="switchLanguage('en_US')">{{i18n.languageEnUs}}</button>
 
     <button (click)="logoutUser()">{{i18n.profileLogout}}</button>
   </div>

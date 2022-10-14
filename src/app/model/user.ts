@@ -3,6 +3,7 @@ export class User {
     emailAddress: string = '';
     firstName: string = '';
     lastName: string = '';
+    localeForDisplay: string = 'en_US';
 
     public setId(id: string) : User {
       this.id = id;

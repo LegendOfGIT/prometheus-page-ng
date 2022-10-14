@@ -42,7 +42,11 @@ export class UserService {
       return JSON.parse(storageValue);
     }
 
-    private storeUserWithId(storageId: string, user: User): void {
+    private storeUserWithId(storageId: string, user: User | null): void {
+      if (null == user) {
+        return;
+      }
+
       localStorage.setItem(storageId, JSON.stringify(user));
     }
 
@@ -62,7 +66,11 @@ export class UserService {
 
       this._anonymousUser = new User().setId(uuidV4());
       this.storeUserWithId(UserService.STORAGE_ID_ANONYMOUS_USER, this._anonymousUser);
+    }
 
+    private storeAllUsers(): void {
+      this.storeUserWithId(UserService.STORAGE_ID_ANONYMOUS_USER, this._anonymousUser);
+      this.storeUserWithId(UserService.STORAGE_ID_ACTIVE_USER, this._activeUser);
     }
 
     public logout(): void {
@@ -70,7 +78,16 @@ export class UserService {
       this.removeUserFromStorageById(UserService.STORAGE_ID_ACTIVE_USER);
     }
 
+    public setDisplayLocaleOfActiveUser(locale: string): void {
+      this.activeUser!.localeForDisplay = locale;
+      this.storeAllUsers();
+    }
+
     get activeUser(): User | null {
+      if (null == this._activeUser) {
+        return this._anonymousUser;
+      }
+
       return this._activeUser;
     }
 

@@ -4,6 +4,8 @@ import { I18nInterface } from 'src/app/i18n/i18n.interface';
 import { I18nDeDe } from 'src/app/i18n/i18n.de_DE';
 import { I18nEnUs } from 'src/app/i18n/i18n.en_US';
 
+import { UserService } from './user.service';
+
 @Injectable({
     providedIn: 'root'
 })
@@ -14,19 +16,11 @@ export class TranslationService  {
     'de_DE': new I18nDeDe()
   };
 
-  public _activeLocale;
-
-  constructor() {
-    this._activeLocale = localStorage.getItem('activeLocale') || 'en_US';
-  }
-
-  set activeLocale(activeLocale: string) {
-    this._activeLocale = activeLocale;
-    localStorage.setItem('activeLocale', activeLocale);
+  constructor(private userService: UserService) {
   }
 
   public getTranslations(): any {
-    const i18Key = this._activeLocale as keyof typeof this.localeMapping;
+    const i18Key = this.userService.activeUser?.localeForDisplay as keyof typeof this.localeMapping;
     return this.localeMapping[i18Key].getTranslations();
   }
 }

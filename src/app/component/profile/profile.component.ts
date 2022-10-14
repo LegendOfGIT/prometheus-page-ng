@@ -35,7 +35,11 @@ export class ProfileComponent{
   }
 
   switchLanguage(locale: string): void {
-     this.translationService.activeLocale = locale;
+     this.userService.setDisplayLocaleOfActiveUser(locale);
+  }
+
+  get isLoggedIn() {
+    return this.userService.isLoggedIn;
   }
 
   get activeUser() {
