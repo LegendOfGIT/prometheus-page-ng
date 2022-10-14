@@ -3,7 +3,7 @@
     <div class="col-1"></div>
     <div class="col-10 profile__content">
       <div *ngIf="!activeUser; else loggedIn">
-        <button>Google &nbsp;<asl-google-signin-button #googleBtnRef></asl-google-signin-button></button>
+        <asl-google-signin-button type="standard" size="large" #googleBtnRef>Google</asl-google-signin-button>
       </div>
     </div>
     <div class="col-1"></div>
