@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { AddToWishlistComponent } from './component/wishlist/add-to-wishlist.component';
 import { ItemsComponent } from './component/overview/items.component';
 import { HeaderComponent } from './component/header/header.component';
+import { NavigationComponent } from './component/navigation/navigation.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 
@@ -22,6 +23,7 @@ import { WishlistItemsComponent } from './component/wishlist/wishlist-items.comp
     AddToWishlistComponent,
     HeaderComponent,
     ItemsComponent,
+    NavigationComponent,
     ProfileComponent,
     WishlistItemsComponent
   ],
