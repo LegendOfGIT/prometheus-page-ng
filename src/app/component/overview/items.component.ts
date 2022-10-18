@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Item } from 'src/app/model/item';
 import { ItemsApiService } from 'src/app/service/items-api.service';
+import { NavigationService } from 'src/app/service/navigation.service';
 
 @Component({
   selector: 'app-items',
@@ -18,8 +19,17 @@ export class ItemsComponent implements OnInit {
 
     constructor(
       private route: ActivatedRoute,
-      private itemsService: ItemsApiService
+      private itemsService: ItemsApiService,
+      private navigationService: NavigationService
     ) {
+
+      route.paramMap.subscribe((params) => {
+        this.navigationService.setActiveNavigationLevelIds([
+          params.get('navigationIdLevelA') || '',
+          params.get('navigationIdLevelB') || '',
+          params.get('navigationIdLevelC') || ''
+        ]);
+      });
 
     }
 
