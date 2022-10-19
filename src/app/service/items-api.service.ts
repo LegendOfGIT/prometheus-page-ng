@@ -20,9 +20,9 @@ export class ItemsApiService extends ApiBase {
         super(apiBase);
     }
 
-    getItems(searchPattern: string) {
+    getItems(navigationId: string, searchPattern: string) {
 
-        const url = this.get(endpoints.items, { searchPattern });
+        const url = this.get(endpoints.items, { navigationId, searchPattern });
 
         return this.http
            .get<ItemsResponseDto>(url)

@@ -8,6 +8,7 @@ import { Item } from '../model/item';
 import { ItemDto } from '../model/dto/item-dto';
 import { ItemsResponseDto } from '../model/dto/items-response-dto';
 import { ApiBase } from './api-base';
+import { UserService } from './user.service';
 
 @Injectable({
     providedIn: 'root'
@@ -31,38 +32,38 @@ export class WishlistItemsApiService extends ApiBase {
       this._items = items;
     }
 
-    private addItemToWishlist(item: Item): void {
+    private addItemToWishlist(userId: string, item: Item): void {
       if (!this._items) {
         return;
       }
 
       this.http.put(
         this.get(endpoints.saveWishlistItem),
-        { itemId: item.itemId }
+        { itemId: item.itemId, userId }
       ).subscribe();
 
       this._items.push(item);
     }
 
-    private removeItemFromWishlist(item: Item): void {
+    private removeItemFromWishlist(userId: string, item: Item): void {
       if (!this._items) {
         return;
       }
 
       this.http.delete(
-        this.get(endpoints.deleteWishlistItem, { itemId: item.itemId }),
+        this.get(endpoints.deleteWishlistItem, { itemId: item.itemId, userId }),
       ).subscribe();
 
       this._items = this._items.filter(wishlistItem => item.itemId !== wishlistItem?.itemId);
     }
 
-    getItems(searchPattern: string): Observable<Array<Item | null>> {
+    getItems(userId: string): Observable<Array<Item | null>> {
 
-        const url = this.get(endpoints.getWishlistItems, { searchPattern, userId: 'abc-123' });
+        const url = this.get(endpoints.getWishlistItems, { userId });
 
         return this.http
-           .get<ItemsResponseDto>(url)
-           .pipe(map(dto => dto.items?.map(item => Item.fromModel(item))));
+           .get<ItemDto[]>(url)
+           .pipe(map(items => items.map((item: ItemDto) => Item.fromModel(item))));
 
     }
 
@@ -74,17 +75,17 @@ export class WishlistItemsApiService extends ApiBase {
       return this._items.filter(item => itemId == item?.itemId).length > 0;
     }
 
-    toggleWishlistItem(item: Item | undefined): void {
+    toggleWishlistItem(userId: string, item: Item | undefined): void {
       if (!item) {
         return;
       }
 
       if (!this.isItemOnWishlist(item.itemId)) {
-        this.addItemToWishlist(item);
+        this.addItemToWishlist(userId, item);
         return;
       }
 
-      this.removeItemFromWishlist(item);
+      this.removeItemFromWishlist(userId, item);
     }
 
 }

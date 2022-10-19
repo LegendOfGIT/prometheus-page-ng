@@ -28,7 +28,7 @@
       </div>
       <div class="header__iconWrapper">
         <i
-          class="bi bi-heart header--icon"
+          class="bi bi-heart{{userHasAtLeastOneWishlistItem ? '-fill' : ''}} header--icon"
           [routerLink]="['/wishlist']"
         ></i>
       </div>

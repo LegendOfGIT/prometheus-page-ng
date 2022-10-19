@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { v4 as uuidV4 } from 'uuid';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
 
 import { User } from 'src/app/model/user';
 
@@ -13,10 +16,12 @@ export class UserService {
     private static STORAGE_ID_ACTIVE_USER: string = 'active_user';
     private static STORAGE_ID_ANONYMOUS_USER: string = 'anonymous_user';
 
+    private destroyedService$ = new Subject();
     private _anonymousUser: User | null = null;
     private _activeUser: User | null = null;
 
-    constructor(private socialAuthService: SocialAuthService) {
+    constructor(private socialAuthService: SocialAuthService,
+                private wishlistItemsService: WishlistItemsApiService) {
       this.initializeAnonymousUser();
       this.initializeActiveUser();
 
@@ -29,8 +34,17 @@ export class UserService {
             .setLastName(user.lastName);
 
           this.storeUserWithId(UserService.STORAGE_ID_ACTIVE_USER, this._activeUser);
+          this.updateWishlist(this._activeUser.id || '');
         });
 
+    }
+
+    private updateWishlist(userId: string): void {
+      this.wishlistItemsService.getItems(userId)
+        .pipe(takeUntil(this.destroyedService$))
+        .subscribe((items) => {
+          this.wishlistItemsService.items = items || [];
+        });
     }
 
     private getUserFromStorageById(storageId: string): User | null {
@@ -76,6 +90,7 @@ export class UserService {
     public logout(): void {
       this._activeUser = null;
       this.removeUserFromStorageById(UserService.STORAGE_ID_ACTIVE_USER);
+      this.updateWishlist(this._anonymousUser?.id || '');
     }
 
     public setDisplayLocaleOfActiveUser(locale: string): void {

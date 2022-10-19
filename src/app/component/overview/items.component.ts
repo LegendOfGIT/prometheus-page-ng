@@ -35,7 +35,13 @@ export class ItemsComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.itemsService.getItems(this.route.snapshot?.queryParamMap?.get('search') as string)
+        const activeNavigationId =
+          this.navigationService.activeNavigationItem && this.navigationService.activeNavigationItem.fromId
+            ? this.navigationService.activeNavigationItem.toId
+            : '';
+        const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
+
+        this.itemsService.getItems(activeNavigationId, searchPattern)
             .pipe(takeUntil(this.destroyedService$))
             .subscribe(
                 items => {

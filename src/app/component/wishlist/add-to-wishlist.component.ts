@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { Item } from '../../model/item';
+import { UserService } from '../../service/user.service';
 import { WishlistItemsApiService } from '../../service/wishlist-items-api.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class AddToWishlistComponent {
   @Input() item: Item | undefined = undefined;
 
   constructor(
-    private wishlistItemsService: WishlistItemsApiService
+    private wishlistItemsService: WishlistItemsApiService,
+    private userService: UserService
   ) {
   }
 
@@ -22,7 +24,7 @@ export class AddToWishlistComponent {
   }
 
   toggleItem(): void {
-    this.wishlistItemsService.toggleWishlistItem(this.item);
+    this.wishlistItemsService.toggleWishlistItem(this.userService.activeUser?.id || '', this.item);
   }
 
 }

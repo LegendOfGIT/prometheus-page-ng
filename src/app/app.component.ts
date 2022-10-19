@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
+import { UserService } from './service/user.service';
 import { WishlistItemsApiService } from './service/wishlist-items-api.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit  {
   title = 'prometheus-page';
 
   constructor(
+    private userService: UserService,
     private wishlistItemsService: WishlistItemsApiService
   ) {
 
@@ -26,9 +28,9 @@ export class AppComponent implements OnInit  {
       return;
     }
 
-    this.wishlistItemsService.getItems('')
+    this.wishlistItemsService.getItems(this.userService.activeUser?.id || '')
       .pipe(takeUntil(this.destroyedService$))
-      .subscribe((items) => { this.wishlistItemsService.items = items; });
+      .subscribe((items) => { this.wishlistItemsService.items = items || []; });
   }
 
 

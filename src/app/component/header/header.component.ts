@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 
 import { UserService } from 'src/app/service/user.service';
+import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
 
 @Component({
   selector: 'header',
@@ -20,7 +21,8 @@ export class HeaderComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private wishlistService: WishlistItemsApiService
   ) {
     this.activatePageReloadOnEveryRouteNavigation();
     this.subscribeSearchPatternChanges();
@@ -53,6 +55,10 @@ export class HeaderComponent {
 
   get isLoggedIn(): boolean {
     return this.userService.isLoggedIn;
+  }
+
+  get userHasAtLeastOneWishlistItem(): boolean {
+    return this.wishlistService.items?.length > 0;
   }
 
 }
