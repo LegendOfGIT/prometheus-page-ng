@@ -8,12 +8,14 @@
 
         <div *ngIf="item && item.titleImage" class="informationItem">
           <div class="informationItem__imageContainer">
-            <img
-              class="informationItem__image"
-              alt="{{item.title}}"
-              src="{{item.titleImage}}"
-              loading="lazy"
-            />
+            <a href="{{getFirstLinkFromItem(item)}}" target="{{item.itemId}}">
+              <img
+                class="informationItem__image"
+                alt="{{item.title}}"
+                src="{{item.titleImage}}"
+                loading="lazy"
+              />
+            </a>
             <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
           </div>
           <div class="informationItem__contentContainer">

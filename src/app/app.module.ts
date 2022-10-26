@@ -15,6 +15,7 @@ import { HeaderComponent } from './component/header/header.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
+import { TranslationPipe } from './pipes/translation.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { WishlistItemsComponent } from './component/wishlist/wishlist-items.comp
     ItemsComponent,
     NavigationComponent,
     ProfileComponent,
-    WishlistItemsComponent
+    WishlistItemsComponent,
+
+    TranslationPipe
   ],
   imports: [
     BrowserModule,

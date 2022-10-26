@@ -39,7 +39,7 @@ export class HeaderComponent {
         debounceTime(500)
       )
       .subscribe(() => {
-        this.router.navigate([''], { queryParams: { search: this.searchPatternControl.value } });
+        this.router.navigate([], { queryParams: { search: this.searchPatternControl.value } });
       });
   }
 

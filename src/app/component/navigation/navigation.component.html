@@ -1,16 +1,16 @@
 
 <ng-template #navigateToAll>
   <div *ngIf="!isActiveNavigationItemRootItem">
-    <a [routerLink]="['']">ALL</a>
+    <a [routerLink]="['']">{{ 'NAVIGATION_ALL' | translate}}</a>
   </div>
 </ng-template>
 
 <div *ngIf="previousNavigationItem; else navigateToAll">
-  <a [routerLink]="[''].concat(getNonEmptyPathPartsOfNavigationItem(previousNavigationItem))">{{previousNavigationItem.toId}}</a>
+  <a [routerLink]="[''].concat(getNonEmptyPathPartsOfNavigationItem(previousNavigationItem))">{{'NAVIGATION_' + previousNavigationItem.toId | translate}}</a>
 </div>
 
-<div>{{activeNavigationItemLabel}}</div>
+<div>{{'NAVIGATION_' + activeNavigationItemLabel | translate}}</div>
 
 <div *ngFor="let item of nextNavigationItems">
-  <a [routerLink]="[''].concat(getNonEmptyPathPartsOfNavigationItem(item))">{{item.toId}}</a>
+  <a [routerLink]="[''].concat(getNonEmptyPathPartsOfNavigationItem(item))">{{'NAVIGATION_' + item.toId | translate}}</a>
 </div>

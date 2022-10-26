@@ -51,5 +51,12 @@ export class ItemsComponent implements OnInit {
 
     }
 
+    public getFirstLinkFromItem(item: Item) {
+      if (!item?.correspondingInformationItems?.length) {
+        return '';
+      }
+
+      return item.correspondingInformationItems[0].link;
+    }
 
 }

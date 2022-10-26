@@ -3,8 +3,8 @@
     <div class="col-1"></div>
     <div class="col-10 profile__content">
 
-      <button (click)="switchLanguage('de_DE')">{{i18n.languageDeDe}}</button>
-      <button (click)="switchLanguage('en_US')">{{i18n.languageEnUs}}</button>
+      <button (click)="switchLanguage('de_DE')">{{ 'languageDeDe' | translate }}</button>
+      <button (click)="switchLanguage('en_US')">{{ 'languageEnUs' | translate }}</button>
 
       <div *ngIf="!isLoggedIn; else loggedIn">
         <asl-google-signin-button type="standard" size="large" #googleBtnRef>Google</asl-google-signin-button>
