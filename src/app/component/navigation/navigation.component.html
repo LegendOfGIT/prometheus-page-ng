@@ -1,16 +1,25 @@
+<div class="container navigation__wrapper">
+  <div class="{{!isActiveNavigationItemRootItem ? 'navigation__back' : ''}}">
+    <ng-template #navigateToAll>
+      <div *ngIf="!isActiveNavigationItemRootItem">
+        <a [routerLink]="['']">{{ 'NAVIGATION_ALL' | translate}} <<</a>
+      </div>
+    </ng-template>
 
-<ng-template #navigateToAll>
-  <div *ngIf="!isActiveNavigationItemRootItem">
-    <a [routerLink]="['']">{{ 'NAVIGATION_ALL' | translate}}</a>
+    <div *ngIf="previousNavigationItem; else navigateToAll">
+      <a [routerLink]="[''].concat(getNonEmptyPathPartsOfNavigationItem(previousNavigationItem))">
+        {{'NAVIGATION_' + previousNavigationItem.toId | translate}} <<
+      </a>
+    </div>
   </div>
-</ng-template>
 
-<div *ngIf="previousNavigationItem; else navigateToAll">
-  <a [routerLink]="[''].concat(getNonEmptyPathPartsOfNavigationItem(previousNavigationItem))">{{'NAVIGATION_' + previousNavigationItem.toId | translate}}</a>
-</div>
-
-<div>{{'NAVIGATION_' + activeNavigationItemLabel | translate}}</div>
-
-<div *ngFor="let item of nextNavigationItems">
-  <a [routerLink]="[''].concat(getNonEmptyPathPartsOfNavigationItem(item))">{{'NAVIGATION_' + item.toId | translate}}</a>
+  <div class="navigation__nextLevel">
+    <label for="nextLevelButton"><span>{{'NAVIGATION_' + activeNavigationItemLabel | translate}}</span></label>
+    <input type="checkbox" id="nextLevelButton">
+    <ul class="navigation__nextLevelSelection">
+      <li *ngFor="let item of nextNavigationItems">
+        <a [routerLink]="[''].concat(getNonEmptyPathPartsOfNavigationItem(item))">{{'NAVIGATION_' + item.toId | translate}}</a>
+      </li>
+    </ul>
+  </div>
 </div>

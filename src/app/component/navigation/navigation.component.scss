@@ -1,0 +1,96 @@
+#nextLevelButton {
+
+  height: 0px;
+  opacity: 0;
+  position: absolute;
+
+  &:checked + .navigation__nextLevelSelection {
+    height: unset;
+  }
+}
+
+.navigation {
+
+  &__back {
+
+    background : #355f7d;
+    color : white;
+    cursor : pointer;
+    display: block;
+    font-size : 1.2em;
+    font-variant : small-caps;
+    margin-right: 1em;
+    padding : 0.8em;
+
+    a {
+      text-decoration : none;
+      color : #fff;
+    }
+  }
+
+  &__nextLevel {
+    width: 20em;
+
+    label {
+      width: 100%;
+    }
+
+    li {
+      background: #FFF;
+      list-style:none;
+      padding-bottom: 0.3em;
+
+      &:first-child {
+        padding-top: 0.3em;
+      }
+
+      &:hover {
+        background: #282c34;
+
+        a {
+          color: #FFF;
+        }
+      }
+
+      a {
+        text-decoration : none;
+        color : #2d2f31;
+      }
+
+    }
+
+    span {
+      padding : 0.8em;
+      background : #355f7d;
+      color : white;
+      font-size : 1.2em;
+      font-variant : small-caps;
+      cursor : pointer;
+      display: block;
+    }
+
+    span::after {
+      float: right;
+      right: 10%;
+      content: "+";
+    }
+  }
+
+  &__nextLevelSelection {
+    clear:both;
+    height:0px;
+    overflow: hidden;
+    padding-left: 0;
+    position: absolute;
+    text-align: center;
+    transition: height .4s ease;
+    width: 20em;
+    z-index: 1;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 1em;
+  }
+}
