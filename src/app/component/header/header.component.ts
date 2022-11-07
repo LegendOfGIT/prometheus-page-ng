@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 
 import { UserService } from 'src/app/service/user.service';
+import { SearchProfilesApiService } from 'src/app/service/search-profiles-api.service';
 import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
+import { SearchProfile } from 'src/app/model/search-profile';
 
 @Component({
   selector: 'header',
@@ -22,6 +24,7 @@ export class HeaderComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
+    private searchProfilesApiService: SearchProfilesApiService,
     private wishlistService: WishlistItemsApiService
   ) {
     this.activatePageReloadOnEveryRouteNavigation();
@@ -59,6 +62,10 @@ export class HeaderComponent {
 
   get userHasAtLeastOneWishlistItem(): boolean {
     return this.wishlistService.items?.length > 0;
+  }
+
+  get searchProfilesOfActiveUser(): Array<SearchProfile | null> {
+    return this.searchProfilesApiService.items;
   }
 
 }

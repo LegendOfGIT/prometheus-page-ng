@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { map } from 'rxjs/operators';
+
 import { endpoints } from '../../environments/endpoints';
 import { Item } from '../model/item';
 import { ItemDto } from '../model/dto/item-dto';
@@ -57,7 +57,7 @@ export class WishlistItemsApiService extends ApiBase {
       this._items = this._items.filter(wishlistItem => item.itemId !== wishlistItem?.itemId);
     }
 
-    getItems(userId: string): Observable<Array<Item | null>> {
+    public getItems(userId: string): Observable<Array<Item | null>> {
 
         const url = this.get(endpoints.getWishlistItems, { userId });
 

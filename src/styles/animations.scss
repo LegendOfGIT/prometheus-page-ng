@@ -1,0 +1,18 @@
+.pulse {
+  animation: pulse 0.2s 2 ease-in-out alternate;
+}
+@keyframes pulse {
+  from { transform: scale(1.0); }
+  to { transform: scale(1.2); }
+}
+
+.hithere {
+  animation: hithere 0.5s ease;
+}
+
+@keyframes hithere {
+  from, to { transform: scale(1, 1); }
+  25% { transform: scale(0.9, 1.1); }
+  50% { transform: scale(1.1, 0.9); }
+  75% { transform: scale(0.95, 1.05); }
+}

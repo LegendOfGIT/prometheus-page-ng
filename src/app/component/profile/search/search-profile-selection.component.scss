@@ -1,0 +1,42 @@
+@import "src/styles/animations";
+@import "src/styles/controls";
+
+.profileSelectionContainer {
+  background: #2d3e5e;
+
+  &__itemWrapper {
+    border: 1px solid lightblue;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    padding: 1em;
+    text-align: center;
+    height: 8em;
+    transition: background-color 200ms linear;
+    width: 8em;
+
+    &--selected {
+      background: #0dcaf0;
+      color: #000;
+    }
+
+  }
+
+  &__subCategoryContainer {
+    #border: 1px solid lightblue;
+    padding: 1em;
+    text-align: center;
+
+    h3 {
+      padding-bottom: 0.5em;
+    }
+
+  }
+
+  &__subCategoryWrapper {
+    display: inline-flex;
+    flex-flow: wrap;
+    justify-content: center;
+  }
+}

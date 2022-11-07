@@ -26,6 +26,7 @@
           (click)="isSearchFieldActive = true"
         ></i>
       </div>
+
       <div class="header__iconWrapper">
         <i
           class="bi bi-heart{{userHasAtLeastOneWishlistItem ? '-fill' : ''}} header--icon"
@@ -37,6 +38,18 @@
           class="bi bi-person{{isLoggedIn ? '-fill' : ''}} header--icon"
           [routerLink]="['/profile']"
         ></i>
+      </div>
+      <div class="header__iconWrapper">
+        <div
+          class="header__search--icon"
+          [routerLink]="['/search-profile']"
+        ></div>
+
+        <div
+          *ngFor="let searchProfile of searchProfilesOfActiveUser"
+          class="header__search--icon"
+          [routerLink]="['/search-profile']"
+        ></div>
       </div>
     </div>
   </div>
