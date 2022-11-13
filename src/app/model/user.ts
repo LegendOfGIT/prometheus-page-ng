@@ -1,5 +1,6 @@
 export class User {
     id: string = '';
+    activeSearchProfile: string = '';
     emailAddress: string = '';
     firstName: string = '';
     lastName: string = '';

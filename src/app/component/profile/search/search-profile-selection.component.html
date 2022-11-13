@@ -1,31 +1,35 @@
-<div class="container profileSelectionContainer">
-  <div *ngFor="let subCategoryId of subCategoryIds" class="profileSelectionContainer__subCategoryContainer">
-    <h3>{{ subCategoryId | translate }}</h3>
+<div
+  *ngIf="!selectedSearchProfile"
+  class="searchProfile searchProfile--no-selection"
+  (click)="selectionOpened = !selectionOpened"
+></div>
 
-    <div class="profileSelectionContainer__subCategoryWrapper">
-      <div
-        *ngFor="let searchProfileItemId of searchProfileItemsOfSubCategory(subCategoryId)"
-        (click)="toggleProfileItemSelectionById(searchProfileItemId)"
-        class="profileSelectionContainer__itemWrapper {{isProfileItemSelected(searchProfileItemId) ? 'profileSelectionContainer__itemWrapper--selected' : ''}}"
-      >
-        <div>
-          <img
-            src="assets/images/search-profile/{{ searchProfileItemId.toLowerCase() }}.png"
-          />
-        </div>
-        <div>
-          {{ searchProfileItemId | translate }}
-        </div>
-      </div>
-    </div>
+<div
+  *ngIf="selectedSearchProfile"
+  class="searchProfile searchProfile__item--header"
+  [style.background-color]="selectedSearchProfile.avatarBackgroundColor"
+  (click)="selectionOpened = !selectionOpened"
+>
+</div>
+
+
+<div class="searchProfile__selectionDropDown {{selectionOpened ? 'searchProfile__selectionDropDown--open' : ''}}">
+  <div
+    *ngFor="let searchProfile of searchProfilesOfActiveUser"
+    class="searchProfile searchProfile__item"
+    [style.background-color]="searchProfile?.avatarBackgroundColor"
+    (click)="pickSearchProfile(searchProfile?.id)"
+  >
   </div>
-
-  <div class="row profileSelectionContainer__subCategoryContainer">
-    <div class="col-3"></div>
-    <div class="col-6">
-      Profile-Name:
-      <input type="text" [formControl]="profileNameControl"/>
-    </div>
-    <div class="col-3"><button (click)="saveProfile()">create profile</button></div>
+  <div
+    class="searchProfile searchProfile__item searchProfile--no-selection"
+    (click)="pickSearchProfile('')"
+  ></div>
+  <div
+    class="searchProfile searchProfile__item searchProfile--no-selection"
+    [routerLink]="['/search-profile']"
+    (click)="selectionOpened = !selectionOpened"
+  >
+    <div class="bi bi-pencil searchProfile__item--text"></div>
   </div>
 </div>

@@ -98,6 +98,11 @@ export class UserService {
       this.storeAllUsers();
     }
 
+    public setActiveSearchProfile(profileId: string) {
+      this.activeUser!.activeSearchProfile = profileId;
+      this.storeAllUsers();
+    }
+
     get activeUser(): User | null {
       if (null == this._activeUser) {
         return this._anonymousUser;

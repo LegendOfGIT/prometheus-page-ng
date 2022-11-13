@@ -40,16 +40,7 @@
         ></i>
       </div>
       <div class="header__iconWrapper">
-        <div
-          class="header__search--icon"
-          [routerLink]="['/search-profile']"
-        ></div>
-
-        <div
-          *ngFor="let searchProfile of searchProfilesOfActiveUser"
-          class="header__search--icon"
-          [routerLink]="['/search-profile']"
-        ></div>
+        <search-profile-selection></search-profile-selection>
       </div>
     </div>
   </div>

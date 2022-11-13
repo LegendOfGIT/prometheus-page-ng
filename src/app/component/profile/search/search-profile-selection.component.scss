@@ -1,42 +1,60 @@
-@import "src/styles/animations";
-@import "src/styles/controls";
+#searchProfile__selection--button {
+  height: 0px;
+  opacity: 0;
+  position: absolute;
+}
 
-.profileSelectionContainer {
-  background: #2d3e5e;
+.searchProfile {
+  border: 2px solid #0dcaf0;
+  border-radius: 50%;
+  bottom: 0;
+  position: absolute;
+  height: 1em;
+  width: 1em;
 
-  &__itemWrapper {
-    border: 1px solid lightblue;
-    border-radius: 50%;
+  &__item {
     cursor: pointer;
-    margin-bottom: 1em;
-    margin-right: 1em;
-    padding: 1em;
-    text-align: center;
-    height: 8em;
-    transition: background-color 200ms linear;
-    width: 8em;
+    position: relative;
 
-    &--selected {
-      background: #0dcaf0;
-      color: #000;
+    &:not(:last-child) {
+      margin-right: 0.2em;
     }
 
-  }
-
-  &__subCategoryContainer {
-    #border: 1px solid lightblue;
-    padding: 1em;
-    text-align: center;
-
-    h3 {
-      padding-bottom: 0.5em;
+    &:hover {
+      border-color: lightblue;
     }
 
+    &--header {
+      position: absolute;
+    }
+
+    &--text {
+      color: #0dcaf0;
+      font-size: 0.6em;
+    }
   }
 
-  &__subCategoryWrapper {
-    display: inline-flex;
-    flex-flow: wrap;
-    justify-content: center;
+  &__selectionDropDown {
+      background: #355f7d;
+      clear:both;
+      display: inline-flex;
+      height:0px;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+      text-align: center;
+      top: 1.5em;
+      transition: height .4s ease;
+      z-index: 1;
+
+      &--open {
+        border: 1px solid #0dcaf0;
+        height: unset;
+        padding: 0.2em;
+      }
+  }
+
+  &--no-selection {
+    border: 2px dashed #0dcaf0;
   }
 }

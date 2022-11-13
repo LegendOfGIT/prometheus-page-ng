@@ -1,0 +1,74 @@
+@import "src/styles/animations";
+@import "src/styles/controls";
+
+.profileSelectionContainer {
+  background: #2d3e5e;
+
+  &__item {
+    border: 2px solid #0dcaf0;
+    border-radius: 50%;
+    bottom: 0;
+    cursor: pointer;
+    margin: 0.5em;
+    height: 8em;
+    width: 8em;
+
+    &:hover {
+      border-color: lightblue;
+    }
+
+    &--new {
+      border: 0;
+      color: #0dcaf0;
+      font-size: 6.5em;
+      height: unset;
+      margin: unset;
+      margin-left: 0.1em;
+      width: unset;
+
+      &:hover {
+        color: lightblue;
+      }
+    }
+  }
+
+  &__itemWrapper {
+    border: 1px solid lightblue;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-bottom: 1em;
+    margin-right: 1em;
+    padding: 1em;
+    text-align: center;
+    height: 8em;
+    transition: background-color 200ms linear;
+    width: 8em;
+
+    &--selected {
+      background: #0dcaf0;
+      color: #000;
+    }
+
+  }
+
+  &__selectionContainer {
+    display: inline-flex;
+  }
+
+  &__subCategoryContainer {
+    #border: 1px solid lightblue;
+    padding: 1em;
+    text-align: center;
+
+    h3 {
+      padding-bottom: 0.5em;
+    }
+
+  }
+
+  &__subCategoryWrapper {
+    display: inline-flex;
+    flex-flow: wrap;
+    justify-content: center;
+  }
+}

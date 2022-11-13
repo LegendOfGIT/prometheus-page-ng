@@ -13,6 +13,7 @@ import { AddToWishlistComponent } from './component/wishlist/add-to-wishlist.com
 import { ItemsComponent } from './component/overview/items.component';
 import { HeaderComponent } from './component/header/header.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
+import { SearchProfilesComponent } from './component/profile/search/search-profiles.component';
 import { SearchProfileSelectionComponent } from './component/profile/search/search-profile-selection.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
@@ -27,7 +28,7 @@ import { TranslationPipe } from './pipes/translation.pipe';
     ItemsComponent,
     NavigationComponent,
     ProfileComponent,
-    SearchProfileSelectionComponent,
+    SearchProfilesComponent, SearchProfileSelectionComponent,
     WishlistItemsComponent,
 
     TranslationPipe
