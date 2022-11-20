@@ -14,10 +14,12 @@ import { SearchProfile } from 'src/app/model/search-profile';
 })
 export class SearchProfilesComponent {
 
-  private selectedProfileItemIds : Array<string> = [];
+  private selectedProfileItemIds : Array<string> | undefined = undefined;
   public profileNameControl: FormControl = new FormControl();
+  public profileAvatarColorControl: FormControl = new FormControl();
   public step: typeof Step = Step;
   public activeStep: Step = Step.SELECTION;
+  public selectedProfileId : string | undefined = undefined;
 
   constructor(private searchProfilesService: SearchProfilesApiService,
               private userService: UserService) {
@@ -59,6 +61,8 @@ export class SearchProfilesComponent {
   }
 
   public toggleProfileItemSelectionById(profileItemId: string): void {
+    this.selectedProfileItemIds = this.selectedProfileItemIds || [];
+
     const selectionIndex = this.selectedProfileItemIds.indexOf(profileItemId);
 
     if (-1 !== selectionIndex) {
@@ -71,16 +75,51 @@ export class SearchProfilesComponent {
   }
 
   public isProfileItemSelected(profileItemId: string): boolean {
-    return -1 !== this.selectedProfileItemIds.indexOf(profileItemId);
+    return -1 !== (this.selectedProfileItemIds || []).indexOf(profileItemId);
+  }
+
+  private refreshProfilesAndReturnToDashboard(): void {
+    this.searchProfilesService.getItems(this.userService.activeUser?.id || '').subscribe((items) => {
+      this.searchProfilesService.items = items;
+      this.activeStep = Step.SELECTION;
+      delete this.selectedProfileId;
+    });
   }
 
   public saveProfile(): void {
     this.searchProfilesService.saveSearchProfileForCurrentUser(
       this.userService.activeUser?.id || '',
       new SearchProfile()
-        .setId('' + this.getHashFromString(this.selectedProfileItemIds.join()))
-        .setAvatarBackgroundColor(this.profileNameControl.value)
-        .setProfileItemIds(this.selectedProfileItemIds));
+        .setId('' + this.getHashFromString((this.selectedProfileItemIds || []).join()))
+        .setAvatarBackgroundColor(this.profileAvatarColorControl.value)
+        .setName(this.profileNameControl.value)
+        .setProfileItemIds(this.selectedProfileItemIds || [])
+    )
+    .subscribe(() => this.refreshProfilesAndReturnToDashboard());;
+  }
+
+  public editSearchProfile(searchProfile: SearchProfile | null): void {
+    this.selectedProfileId = searchProfile?.id;
+    this.selectedProfileItemIds = searchProfile?.profileItemIds || [];
+    this.profileAvatarColorControl.setValue(searchProfile?.avatarBackgroundColor);
+    this.profileNameControl.setValue(searchProfile?.name);
+    this.activeStep = Step.CREATE_EDIT_PROFILE;
+  }
+
+  public removeSelectedProfile(): void {
+      this.searchProfilesService.removeSearchProfileForCurrentUser(
+            this.userService.activeUser?.id || '',
+            this.selectedProfileId || ''
+      ).subscribe(() => this.refreshProfilesAndReturnToDashboard());
+  }
+
+  public newSearchProfile(): void {
+    this.profileAvatarColorControl.setValue('');
+    this.profileNameControl.setValue('');
+    delete this.selectedProfileId;
+    delete this.selectedProfileItemIds;
+
+    this.activeStep = Step.CREATE_EDIT_PROFILE
   }
 
   get searchProfilesOfActiveUser(): Array<SearchProfile | null> {

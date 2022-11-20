@@ -4,6 +4,7 @@ import { BaseModel } from './factory/factory-base';
 export class SearchProfile extends BaseModel {
     id: string = '';
     avatarBackgroundColor: string = '';
+    name: string = '';
     profileItemIds: Array<string> = [];
 
     public setId(id: string): SearchProfile {
@@ -13,6 +14,11 @@ export class SearchProfile extends BaseModel {
 
     public setAvatarBackgroundColor(avatarBackgroundColor: string): SearchProfile {
       this.avatarBackgroundColor = avatarBackgroundColor;
+      return this;
+    }
+
+    public setName(name: string): SearchProfile {
+      this.name = name;
       return this;
     }
 

@@ -1,48 +1,61 @@
-<div class="container profileSelectionContainer">
-
-  <div *ngIf="step.SELECTION == activeStep" class="profileSelectionContainer__selectionContainer">
-    <div
-      *ngFor="let searchProfile of searchProfilesOfActiveUser"
-      class="profileSelectionContainer profileSelectionContainer__item"
-      [style.background-color]="searchProfile?.avatarBackgroundColor"
-    >
-    </div>
-    <div
-      class="profileSelectionContainer profileSelectionContainer__item profileSelectionContainer__item--new bi bi-plus-circle-dotted"
-      (click)="activeStep = step.CREATE_EDIT_PROFILE"
-    >
-    </div>
-  </div>
-
-  <div *ngIf="step.CREATE_EDIT_PROFILE == activeStep">
-    <div *ngFor="let subCategoryId of subCategoryIds" class="profileSelectionContainer__subCategoryContainer">
-      <h3>{{ subCategoryId | translate }}</h3>
-
-      <div class="profileSelectionContainer__subCategoryWrapper">
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10 profileSelectionContainer profileSelectionContainer__content">
+      <div *ngIf="step.SELECTION == activeStep" class="profileSelectionContainer__selectionContainer">
         <div
-          *ngFor="let searchProfileItemId of searchProfileItemsOfSubCategory(subCategoryId)"
-          (click)="toggleProfileItemSelectionById(searchProfileItemId)"
-          class="profileSelectionContainer__itemWrapper {{isProfileItemSelected(searchProfileItemId) ? 'profileSelectionContainer__itemWrapper--selected' : ''}}"
+          *ngFor="let searchProfile of searchProfilesOfActiveUser"
+          class="profileSelectionContainer profileSelectionContainer__itemWrapper"
+          [style.background-color]="searchProfile?.avatarBackgroundColor"
+          (click)="editSearchProfile(searchProfile)"
         >
-          <div>
-            <img
-              src="assets/images/search-profile/{{ searchProfileItemId.toLowerCase() }}.png"
-            />
-          </div>
-          <div>
-            {{ searchProfileItemId | translate }}
-          </div>
+        </div>
+
+        <div
+          class="profileSelectionContainer profileSelectionContainer__item profileSelectionContainer__item--new bi bi-plus-circle-dotted"
+          (click)="newSearchProfile()"
+        >
         </div>
       </div>
-    </div>
 
-    <div class="row profileSelectionContainer__subCategoryContainer">
-      <div class="col-3"></div>
-      <div class="col-6">
-        Profile-Name:
-        <input type="text" [formControl]="profileNameControl"/>
+      <div *ngIf="step.CREATE_EDIT_PROFILE == activeStep">
+        <button *ngIf="selectedProfileId" (click)="removeSelectedProfile()">delete profile</button>
+
+        <div *ngFor="let subCategoryId of subCategoryIds" class="profileSelectionContainer__subCategoryContainer">
+          <h3>{{ subCategoryId | translate }}</h3>
+
+          <div class="profileSelectionContainer__subCategoryWrapper">
+            <div
+              *ngFor="let searchProfileItemId of searchProfileItemsOfSubCategory(subCategoryId)"
+              (click)="toggleProfileItemSelectionById(searchProfileItemId)"
+              class="profileSelectionContainer__itemWrapper {{isProfileItemSelected(searchProfileItemId) ? 'profileSelectionContainer__itemWrapper--selected' : ''}}"
+            >
+              <div>
+                <img
+                  src="assets/images/search-profile/{{ searchProfileItemId.toLowerCase() }}.png"
+                />
+              </div>
+              <div>
+                {{ searchProfileItemId | translate }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row profileSelectionContainer__subCategoryContainer">
+          <div class="col-3"></div>
+          <div class="col-6">
+            Avatar-Farbe:
+            <input type="text" [formControl]="profileAvatarColorControl"/>
+
+            Profile-Name:
+            <input type="text" [formControl]="profileNameControl"/>
+          </div>
+          <div class="col-3"><button (click)="saveProfile()">create profile</button></div>
+        </div>
       </div>
-      <div class="col-3"><button (click)="saveProfile()">create profile</button></div>
+
     </div>
+    <div class="col-1"></div>
   </div>
 </div>

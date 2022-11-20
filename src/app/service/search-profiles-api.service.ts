@@ -38,11 +38,16 @@ export class SearchProfilesApiService extends ApiBase {
        .pipe(map(items => items.map((item: SearchProfileDto) => SearchProfile.fromModel(item))));
   }
 
-  public saveSearchProfileForCurrentUser(userId: string, searchProfile: SearchProfile): void {
-      this.http.put(
+  public saveSearchProfileForCurrentUser(userId: string, searchProfile: SearchProfile) {
+      return this.http.put(
         this.get(endpoints.saveSearchProfile),
         { userId, searchProfile }
-      ).subscribe();
+      );
   }
 
+  public removeSearchProfileForCurrentUser(userId: string, searchProfileId: string) {
+      return this.http.delete(
+        this.get(endpoints.removeSearchProfile, { userId, searchProfileId })
+      );
+  }
 }
