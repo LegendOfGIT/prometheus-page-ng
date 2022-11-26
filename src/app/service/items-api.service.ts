@@ -7,6 +7,7 @@ import { Item } from '../model/item';
 import { ItemDto } from '../model/dto/item-dto';
 import { ItemsResponseDto } from '../model/dto/items-response-dto';
 import { ApiBase } from './api-base';
+import { UserService } from './user.service';
 
 @Injectable({
     providedIn: 'root'
@@ -15,14 +16,21 @@ export class ItemsApiService extends ApiBase {
 
     constructor(
       @Inject('API_BASE') apiBase: string,
-      private http: HttpClient
+      private http: HttpClient,
+      private userService: UserService
     ) {
         super(apiBase);
     }
 
     getItems(navigationId: string, searchPattern: string) {
 
-        const url = this.get(endpoints.items, { navigationId, searchPattern });
+        const url = this.get(
+          endpoints.items,
+          {
+            navigationId,
+            searchPattern,
+            searchProfileId: this.userService.activeUser?.activeSearchProfile || ''
+          });
 
         return this.http
            .get<ItemsResponseDto>(url)

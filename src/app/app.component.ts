@@ -4,6 +4,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { UserService } from './service/user.service';
 import { SearchProfilesApiService } from './service/search-profiles-api.service';
+import { TrackingService } from './service/tracking.service';
 import { WishlistItemsApiService } from './service/wishlist-items-api.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class AppComponent implements OnInit  {
   constructor(
     private userService: UserService,
     private searchProfilesApiService: SearchProfilesApiService,
-    private wishlistItemsService: WishlistItemsApiService
+    private wishlistItemsService: WishlistItemsApiService,
+    trackingService: TrackingService
   ) {
 
   }

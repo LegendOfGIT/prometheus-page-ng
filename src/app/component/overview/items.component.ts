@@ -6,6 +6,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Item } from 'src/app/model/item';
 import { ItemsApiService } from 'src/app/service/items-api.service';
 import { NavigationService } from 'src/app/service/navigation.service';
+import { TrackingService } from 'src/app/service/tracking.service';
+import { TrackingActivityItem } from 'src/app/model/tracking-activity-item';
+import { TrackingInterestLevel } from 'src/app/model/tracking-interest-level';
 
 @Component({
   selector: 'app-items',
@@ -20,7 +23,8 @@ export class ItemsComponent implements OnInit {
     constructor(
       private route: ActivatedRoute,
       private itemsService: ItemsApiService,
-      private navigationService: NavigationService
+      private navigationService: NavigationService,
+      private trackingService: TrackingService
     ) {
 
       route.paramMap.subscribe((params) => {
@@ -57,6 +61,14 @@ export class ItemsComponent implements OnInit {
       }
 
       return item.correspondingInformationItems[0].link;
+    }
+
+    public pickedInformation(item: Item): void {
+      this.trackingService.addActivity(
+        TrackingActivityItem.create()
+          .setInformationItemId(item.itemId)
+          .setInterestLevel(TrackingInterestLevel.VERY_HIGH)
+          .setTrackingId('overview.item.clicked'));
     }
 
 }

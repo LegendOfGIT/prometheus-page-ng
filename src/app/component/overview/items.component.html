@@ -8,7 +8,7 @@
 
         <div *ngIf="item && item.titleImage" class="informationItem">
           <div class="informationItem__imageContainer">
-            <a href="{{getFirstLinkFromItem(item)}}" target="{{item.itemId}}">
+            <a href="{{getFirstLinkFromItem(item)}}" target="{{item.itemId}}" (click)="pickedInformation(item)">
               <img
                 class="informationItem__image"
                 alt="{{item.title}}"
