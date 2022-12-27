@@ -18,9 +18,9 @@ export class TrackingService extends ApiBase {
       { level: TrackingInterestLevel.LOW, scoring: -0.5 },
       { level: TrackingInterestLevel.SLIGHTLY_LOW, scoring: -0.25 },
       { level: TrackingInterestLevel.AVERAGE, scoring: 0 },
-      { level: TrackingInterestLevel.SLIGHTLY_HIGH, scoring: 0.25 },
-      { level: TrackingInterestLevel.HIGH, scoring: 0.5 },
-      { level: TrackingInterestLevel.VERY_HIGH, scoring: 1.0 }
+      { level: TrackingInterestLevel.SLIGHTLY_HIGH, scoring: 0.10 },
+      { level: TrackingInterestLevel.HIGH, scoring: 0.20 },
+      { level: TrackingInterestLevel.VERY_HIGH, scoring: 0.40 }
     ];
 
     constructor(@Inject('API_BASE') apiBase: string,
@@ -45,7 +45,7 @@ export class TrackingService extends ApiBase {
               {
                 itemId: trackedActivity.getInformationItemId(),
                 searchProfileId: userService.activeUser?.activeSearchProfile,
-                scoring: scorings[0].scoring
+                interest: scorings[0].scoring
               }
             ).subscribe();
           }
