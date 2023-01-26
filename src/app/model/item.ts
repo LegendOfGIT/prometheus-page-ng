@@ -8,7 +8,7 @@ export class Item extends BaseModel {
     title: string = '';
     titleImage: string = '';
 
-    correspondingInformationItems: Array<CorrespondingItem> = [];
+    providers: Array<CorrespondingItem> = [];
 
     static override fromModel(data: ItemDto): Item | null {
 

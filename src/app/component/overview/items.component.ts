@@ -56,11 +56,11 @@ export class ItemsComponent implements OnInit {
     }
 
     public getFirstLinkFromItem(item: Item) {
-      if (!item?.correspondingInformationItems?.length) {
+      if (!item?.providers?.length) {
         return '';
       }
 
-      return item.correspondingInformationItems[0].link;
+      return item.providers[0].link;
     }
 
     public pickedInformation(item: Item): void {

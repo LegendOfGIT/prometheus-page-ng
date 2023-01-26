@@ -5,5 +5,5 @@ export interface ItemDto {
     title: string;
     titleImage: string;
 
-    correspondingInformationItems: Array<CorrespondingItemDto>;
+    providers: Array<CorrespondingItemDto>;
 }
