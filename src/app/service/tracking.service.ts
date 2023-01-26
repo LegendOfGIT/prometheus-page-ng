@@ -45,7 +45,7 @@ export class TrackingService extends ApiBase {
               {
                 itemId: trackedActivity.getInformationItemId(),
                 searchProfileId: userService.activeUser?.activeSearchProfile,
-                interest: scorings[0].scoring
+                scoring: scorings[0].scoring
               }
             ).subscribe();
           }
