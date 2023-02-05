@@ -7,7 +7,7 @@ export class Navigation {
 
     new NavigationItem('ALL', 'FASHION', ['fashion', '', '']),
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['women', '', '']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELERY', ['jewelry', '', '']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELRY', ['jewelry', '', '']),
 
     new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', '']),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_GAMES', ['multimedia', 'games', '']),
