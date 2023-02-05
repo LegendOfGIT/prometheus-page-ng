@@ -4,6 +4,11 @@ export class Navigation {
 
   public static ITEMS: NavigationItem[] = [
     new NavigationItem('', 'ALL', ['', '', '']),
+
+    new NavigationItem('ALL', 'FASHION', ['fashion', '', '']),
+    new NavigationItem('FASHION', 'FASHION_WOMEN', ['women', '', '']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELERY', ['jewelry', '', '']),
+
     new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', '']),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_GAMES', ['multimedia', 'games', '']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_NINTENDO_SWITCH', ['multimedia', 'games', 'nintendo-switch']),
@@ -12,6 +17,7 @@ export class Navigation {
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_PLAYSTATION_3', ['multimedia', 'games', 'playstation-3']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_XBOX_ONE', ['multimedia', 'games', 'xbox-one']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_XBOX_360', ['multimedia', 'games', 'xbox-360']),
+
     new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['electronics-and-computers', '', '']),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
