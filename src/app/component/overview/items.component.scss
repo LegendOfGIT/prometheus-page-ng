@@ -1,57 +1,19 @@
 .informationItem {
-  border-bottom: solid 1px #071436;
-  display: inline-block;
-  max-width: 15em;
-  min-width: 15em;
-  min-height: 20em;
-  padding-bottom: 28px;
-  padding-top: 28px;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  vertical-align: top;
-
-  @media screen and (min-width: 1024px) {
-    border-bottom: unset;
-    border-left: unset;
-    min-width: 255px;
-  }
-
-  @media screen and (min-width: 1366px) {
-    min-width: 340px;
-  }
-
-  @media screen and (min-width: 1920px) {
-    min-width: 474px;
-  }
-
-  &:nth-child(even) {
-    border-left: solid 1px #071436;
-
-    @media screen and (min-width: 1024px) {
-      border-left: unset;
-    }
-  }
-
-  &:nth-child(3n+1) {
-    @media screen and (min-width: 823px) {
-      border-left: unset;
-    }
-  }
+  padding: 1em;
+  text-align: -webkit-center;
+  width: 20em;
 
   &__contentContainer {
-    margin-top: 10px;
+    margin-top: 2em;
   }
 
   &__image {
-    border-radius: 10px;
-    max-width: 10em;
+    width: 13em;
   }
 
   &__imageContainer {
-    display: inline-flex;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    position:relative;
+    width: 13em;
 
     &:hover {
       transform: scale(1.1);
@@ -68,6 +30,7 @@
 
     &__content {
       display: flex;
+      padding-top: 2em;
     }
   }
 }

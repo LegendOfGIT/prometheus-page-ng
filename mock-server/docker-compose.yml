@@ -2,7 +2,7 @@ services:
   mockServer:
     image: mockserver/mockserver
     ports:
-      - 8080:1080
+      - 3002:1080
     environment:
       MOCKSERVER_INITIALIZATION_JSON_PATH: /config/initializerJson.json
     volumes:
