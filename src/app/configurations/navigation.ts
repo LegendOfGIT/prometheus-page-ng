@@ -6,10 +6,10 @@ export class Navigation {
     new NavigationItem('', 'ALL', ['', '', '']),
 
     new NavigationItem('ALL', 'FASHION', ['fashion', '', '']),
-    new NavigationItem('FASHION', 'FASHION_WOMEN', ['women', '', '']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELRY', ['jewelry', '', '']),
-    new NavigationItem('FASHION', 'FASHION_MEN', ['men', '', '']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEWELRY', ['jewelry', '', '']),
+    new NavigationItem('FASHION', 'FASHION_WOMEN', ['fashion', 'women', '']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELRY', ['fashion', 'women', 'jewelry']),
+    new NavigationItem('FASHION', 'FASHION_MEN', ['fashion', 'men', '']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEWELRY', ['fashion', 'men', 'jewelry']),
 
     new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', '']),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_GAMES', ['multimedia', 'games', '']),
