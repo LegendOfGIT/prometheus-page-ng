@@ -12,7 +12,7 @@
 			.item {
 				border: 1px solid green;	
 				padding: 1em;
-				text-align: center;
+				text-align: -webkit-center;
 				width: 20em;
 			}
 			
@@ -25,13 +25,31 @@
 				border: 1px solid orange;
 				width: 13em;
 			}
+			
+			.item__imageContainer {
+				border: 1px solid black; 
+				position:relative; 
+				width: 13em;
+			}
+			.item__imageContainer:hover {
+				transform: scale(1.1);
+				transition: transform 0.5s;
+			}
+			
 		
 			.sideColumn {
 				border: 1px solid lightgray;
 			}
 			
 			.wishlist__icon {
-				position: relative;
+			  background: #fff;
+			  border: 1px solid #4AA7EB;
+			  border-radius: 50%;
+			  cursor: pointer;
+			  padding: 10px;			
+			  position: absolute;
+			  top: -1em;
+			  right: -1em;
 			}
 		</style>
 	</head>
@@ -41,10 +59,11 @@
 				<div class="col-0 col-lg-1 sideColumn"></div>
 				<div class="col-12 col-lg-10 content">
 					<div class="item">
-					  <img class="item__image" src="https://i.otto.de/i/otto/626e14d5-70ea-5d37-bb0c-0161dd1b23f5?h=520&w=551&sm=clamp" alt="your-image-description" class="image">
-					  
-					  <div class="wishlist__icon">
-						<i class="fa fa-sharp fa-solid fa-heart"></i>
+					  <div class="item__imageContainer">
+						<img class="item__image" src="https://i.otto.de/i/otto/626e14d5-70ea-5d37-bb0c-0161dd1b23f5?h=520&w=551&sm=clamp" alt="your-image-description" class="image"/>
+						<div class="wishlist__icon">
+						  <i class="fa fa-sharp fa-solid fa-heart"></i>
+						</div>
 					  </div>
 					  
 					  <div class="item__description">
