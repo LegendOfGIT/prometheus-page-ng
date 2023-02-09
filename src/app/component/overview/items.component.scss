@@ -4,7 +4,7 @@
   width: 20em;
 
   @media screen and (min-width: 576px) {
-    width: 13em;
+    width: 15em;
   }
 
   @media screen and (min-width: 1140px) {
@@ -22,7 +22,7 @@
 
   &__imageContainer {
     position:relative;
-    width: 12em;
+    width: 10em;
 
     @media screen and (min-width: 576px) {
       width: 9em;

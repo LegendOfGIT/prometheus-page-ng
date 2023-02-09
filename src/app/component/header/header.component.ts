@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 
 import { UserService } from 'src/app/service/user.service';
@@ -23,6 +23,7 @@ export class HeaderComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     private userService: UserService,
     private searchProfilesApiService: SearchProfilesApiService,
     private wishlistService: WishlistItemsApiService
@@ -30,6 +31,10 @@ export class HeaderComponent {
     this.activatePageReloadOnEveryRouteNavigation();
     this.subscribeSearchPatternChanges();
     this.lastLoggedInFlag = this.userService.isLoggedIn;
+
+    const searchPattern = new URL(window.location.href).searchParams.get('search');
+    this.isSearchFieldActive = undefined !== searchPattern;
+    this.searchPatternControl.setValue(searchPattern || '');
   }
 
   private activatePageReloadOnEveryRouteNavigation() {
