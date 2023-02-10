@@ -33,7 +33,7 @@ export class HeaderComponent {
     this.lastLoggedInFlag = this.userService.isLoggedIn;
 
     const searchPattern = new URL(window.location.href).searchParams.get('search');
-    this.isSearchFieldActive = undefined !== searchPattern;
+    this.isSearchFieldActive = undefined !== searchPattern && searchPattern !== '';
     this.searchPatternControl.setValue(searchPattern);
   }
 
