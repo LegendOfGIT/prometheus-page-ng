@@ -56,11 +56,7 @@ export class ItemsComponent implements OnInit {
     }
 
     public getFirstLinkFromItem(item: Item) {
-      if (!item?.providers?.length) {
-        return '';
-      }
-
-      return item.providers[0].link;
+      return item.getLinkOfLowestPriceItem();
     }
 
     public pickedInformation(item: Item): void {
