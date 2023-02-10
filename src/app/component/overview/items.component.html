@@ -20,7 +20,7 @@
           </div>
           <div class="informationItem__contentContainer">
             <div class="informationItem__title">{{item.title}}</div>
-            <div class="informationItem__price">{{item.renderLowestPrice()}}</div>
+            <div *ngIf="item.renderLowestPrice()" class="informationItem__price">{{item.renderLowestPrice()}}</div>
           </div>
         </div>
       </div>
