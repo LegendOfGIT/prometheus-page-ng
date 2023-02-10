@@ -34,7 +34,7 @@ export class HeaderComponent {
 
     const searchPattern = new URL(window.location.href).searchParams.get('search');
     this.isSearchFieldActive = undefined !== searchPattern;
-    this.searchPatternControl.setValue(searchPattern || '');
+    this.searchPatternControl.setValue(searchPattern);
   }
 
   private activatePageReloadOnEveryRouteNavigation() {
