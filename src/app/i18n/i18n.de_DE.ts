@@ -3,6 +3,7 @@ import { I18nInterface } from './i18n.interface';
 export class I18nDeDe implements I18nInterface {
   public getTranslations(): any {
     return {
+      iAmSearchingFor: 'Ich suche ...',
       languageDeDe: 'deutsch',
       languageEnUs: 'englisch (US)',
       NAVIGATION_ALL: 'Alles',
