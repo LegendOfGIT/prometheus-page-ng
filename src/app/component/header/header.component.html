@@ -1,20 +1,20 @@
 <div class="container searchContainer">
   <div class="row">
 
-    <div class="col-3 col-md-2 {{ isSearchFieldActive ? 'searchContainer__inputFieldBack' : 'searchContainer--inactive' }}">
-      <div class="header__iconWrapper">
+    <div class="col-3 col-md-2 searchContainer__back">
+      <div class="header__iconWrapper {{ isSearchFieldActive ? 'searchContainer__inputFieldBack' : 'searchContainer__inputFieldBack--inactive' }}">
         <i
           class="bi bi-arrow-left header--icon"
           (click)="isSearchFieldActive = false"
         ></i>
       </div>
     </div>
-    <div class="col-6 col-md-8">
+    <div class="col-5 col-md-7">
       <input
         #searchPattern
         tabIndex="-1"
         type="text"
-        class="searchContainer {{isSearchFieldActive ? 'searchContainer__inputField' : 'searchContainer--inactive'}}"
+        class="searchContainer {{isSearchFieldActive ? 'searchContainer__inputField' : 'searchContainer__inputField--inactive'}}"
         [formControl]="searchPatternControl"
       />
     </div>

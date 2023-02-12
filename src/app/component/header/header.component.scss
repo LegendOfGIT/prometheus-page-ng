@@ -55,7 +55,7 @@
     color: #FFF;
     height: inherit;
     min-height: 30px;
-    padding: 8px;
+    padding: 0.2em;
     position: relative;
     transition: all .2s ease;
     outline: none;
@@ -64,10 +64,6 @@
       border-color: #fff;
       transition: all .2s ease;
     }
-  }
-
-  &--inactive {
-    display: none;
   }
 
   &__icon {
@@ -97,6 +93,10 @@
       color: #FFF;
     }
 
+    &--inactive {
+      display: none;
+    }
+
     &Back {
       display: inline-flex;
       height: 8vh;
@@ -107,7 +107,16 @@
         position: relative;
         top: 25%;
       }
+
+      &--inactive {
+        display: none;
+      }
     }
+  }
+
+  &__back {
+    display: flex;
+    justify-content: end
   }
 
   &__button {
