@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
@@ -17,6 +17,10 @@ export class HeaderComponent {
 
   public isSearchFieldActive: boolean = false;
   public searchPatternControl: FormControl = new FormControl();
+
+  @ViewChild('searchPattern')
+  private searchPatternElement: ElementRef | undefined = undefined;
+
 
   public lastLoggedInFlag: boolean;
 
@@ -49,6 +53,13 @@ export class HeaderComponent {
       .subscribe(() => {
         this.router.navigate([], { queryParams: { search: this.searchPatternControl.value } });
       });
+  }
+
+  public activateSearch() : void {
+    this.isSearchFieldActive = true;
+    setTimeout(() => {
+      this.searchPatternElement?.nativeElement.focus();
+    }, 50);
   }
 
   get hasJustLoggedIn(): boolean {
