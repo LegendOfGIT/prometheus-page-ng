@@ -59,7 +59,7 @@ export class HeaderComponent {
     this.isSearchFieldActive = true;
     setTimeout(() => {
       this.searchPatternElement?.nativeElement.focus();
-    }, 50);
+    }, 150);
   }
 
   get hasJustLoggedIn(): boolean {
