@@ -18,6 +18,7 @@ import { TrackingInterestLevel } from 'src/app/model/tracking-interest-level';
 export class ItemsComponent implements OnInit {
 
     private destroyedService$ = new Subject();
+    public selectedItemId: String = '';
     public items: Array<Item | null> = [];
 
     constructor(

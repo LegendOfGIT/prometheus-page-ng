@@ -9,6 +9,13 @@
       width: 1.2em;
     }
 
+    &__logo {
+      left: 0.5em;
+      position: absolute;
+      top: 0.2em;
+      width: 2em
+    }
+
     &__search {
       &--icon {
         border-radius: 50%;

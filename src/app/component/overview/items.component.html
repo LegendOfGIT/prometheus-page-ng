@@ -16,7 +16,7 @@
                 loading="lazy"
               />
             </a>
-            <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
+            <app-add-to-wishlist *ngIf="item.itemId === selectedItemId" [item]="item"></app-add-to-wishlist>
           </div>
           <div class="informationItem__contentContainer">
             <div class="informationItem__title">{{item.title}}</div>
