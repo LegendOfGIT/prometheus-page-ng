@@ -18,7 +18,8 @@
 }
 
 .prometheus-header {
-  background: #355f7d;
+  backdrop-filter: blur(3px);
+  background: rgba(59, 95, 125, .75);
   border-bottom: 1px solid lightblue;
   color: white;
   font-size: calc(10px + 2vmin);
