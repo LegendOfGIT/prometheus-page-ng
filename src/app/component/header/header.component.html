@@ -1,4 +1,74 @@
-<div class="container searchContainer">
+<div class="header">
+  <div class="container">
+    <div class="row header__content">
+      <div class="col-4 col-sm-2">
+        <div class="headerbar__content">
+          <div class="header__iconWrapper">
+            <i class="bi bi-list header__icon"></i>
+          </div>
+          <div>
+            <a href="/">
+              <img src="assets/images/pLogo.png" class="header__logo"/>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 col-sm-8">
+        <div class="firstSearchbar">
+          <div class="col-11">
+            <input
+              #searchPattern
+              autofocus
+              tabIndex="0"
+              type="text"
+              class="searchbar__input"
+              placeholder="{{'iAmSearchingFor'|translate}}"
+              [formControl]="searchPatternControl"
+            />
+          </div>
+          <div class="col-1">
+            <div class="header__iconWrapper">
+              <i class="bi bi-search header__icon"></i>
+            </div>
+        </div>
+      </div>
+      </div>
+      <div class="col-4 col-sm-2" style="text-align: right;">
+        <div style="display:inline-flex; color:lightblue; padding-top: 0.20em;">
+          <div class="header__iconWrapper">
+            <i
+              class="bi bi-heart{{userHasAtLeastOneWishlistItem ? '-fill' : ''}} header__icon"
+              [routerLink]="['/wishlist']"
+            ></i>
+          </div>
+          <div class="header__iconWrapper">
+            <i
+              class="bi bi-person{{isLoggedIn ? '-fill' : ''}} header__icon"
+              [routerLink]="['/profile']"
+            ></i>
+          </div>
+          <div class="header__iconWrapper">
+            <search-profile-selection></search-profile-selection>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="secondSearchbar">
+    <div class="col-12 headerbar__content">
+      <div class="col-1">
+      </div>
+      <div class="col-9">
+        <input type="text" class="searchbar__input"/>
+      </div>
+      <div class="col-2 header__icon header__iconWrapper">
+        <i class="bi bi-search"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="display: none;">
   <div class="row">
 
     <div class="col-3 col-md-2 searchContainer__back">

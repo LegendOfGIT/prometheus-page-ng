@@ -1,144 +1,69 @@
 @import "src/styles/animations";
 
+.firstSearchbar {
+  display: inline-flex;
+  width: 100%;
+
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
+}
+
 .header {
-    &__iconWrapper {
-      height: 1.2em;
-      padding-right: 1.5em;
-      position: relative;
-      top: 10%;
-      width: 1.2em;
-    }
+  backdrop-filter: blur(3px);
+  background: rgba(59, 95, 125, .75);
+  border-bottom: 1px solid lightblue;
+  padding: 0.5em;
+  position: fixed;
+  width: 100%;
+  z-index: 2;
 
-    &__logo {
-      left: 0.5em;
-      position: absolute;
-      top: 0.2em;
-      width: 2em
-    }
-
-    &__search {
-      &--icon {
-        border-radius: 50%;
-        border: 2px dashed #0dcaf0;
-        bottom: 0;
-        position: absolute;
-        height: 1em;
-        width: 1em;
-      }
-    }
-
-    &--icon {
-      color: #0dcaf0;
-      height: 100%;
-      width: 100%;
-    }
-}
-
-.headerSearch {
-}
-
-.search {
-    display: inline-block;
-    position: absolute;
-    right: 110px;
-    margin-left: 5px;
-    top: 17px;
-    width: 27px;
-
-    &__iconWrapper {
-      display: inline-flex;
-      height: 8vh;
-    }
-
-    &--active {
-      right: 15px;
-    }
-}
-
-.searchContainer {
-  height: 8vh;
-
-  input {
-    color: #FFF;
-    height: inherit;
-    min-height: 30px;
-    padding: 0.2em;
-    position: relative;
-    transition: all .2s ease;
-    outline: none;
-
-    &:focus {
-      border-color: #fff;
-      transition: all .2s ease;
-    }
+  &__content {
+    padding-top: 0.20em;
   }
 
   &__icon {
-    width: 100%;
+    color: #0dcaf0;
+    cursor: pointer;
+    font-size: 1.5em;
+
+    &Wrapper {
+      padding-left: 0.5em;
+      padding-top: 0.20em;
+    }
   }
 
-  &__inputField {
+  &__logo {
+    width: 2em;
+  }
+}
+
+.headerbar {
+  &__content {
+    display: inline-flex;
+  }
+}
+
+.searchbar {
+  &__input {
     background-color: unset;
-    border: 0;
-    border-bottom: 2px solid #4AA7EB;
-    display: block;
-    top: -0.5vh;
+    border: 2px solid lightblue;
+    border-radius: 2em;
+    color: #FFF;
+    outline: 0;
+    padding-left: 1.2em;
     width: 100%;
-
-    &:focus {
-
-      border: 0;
-      border-bottom: 2px solid #FFF;
-      caret-color: #FFF;
-      left: -2%;
-      outline: none;
-      width: 103%;
-
-    }
 
     &::placeholder {
       color: #FFF;
     }
-
-    &--inactive {
-      display: none;
-    }
-
-    &Back {
-      display: inline-flex;
-      height: 8vh;
-      justify-content: flex-end;
-
-      &--icon {
-        height: 70%;
-        position: relative;
-        top: 25%;
-      }
-
-      &--inactive {
-        display: none;
-      }
-    }
   }
+}
 
-  &__back {
-    display: flex;
-    justify-content: flex-end;
-  }
+.secondSearchbar {
+  padding-top: 0.5em;
 
-  &__button {
+  @media screen and (min-width: 576px) {
     display: none;
-
-    margin-left: 5px;
-    text-transform: uppercase;
-    width: 100px;
-
-    &:active {
-      background: #fff;
-      border-color: #fff;
-      color: #282c34;
-      font-weight: bold;
-    }
   }
-
 }
