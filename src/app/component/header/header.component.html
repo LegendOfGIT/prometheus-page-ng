@@ -34,7 +34,7 @@
       </div>
       </div>
       <div class="col-4 col-sm-2" style="text-align: right;">
-        <div style="display:inline-flex; color:lightblue; padding-top: 0.20em;">
+        <div class="headerbar__content">
           <div class="header__iconWrapper">
             <i
               class="bi bi-heart{{userHasAtLeastOneWishlistItem ? '-fill' : ''}} header__icon"
@@ -63,59 +63,6 @@
       </div>
       <div class="col-2 header__icon header__iconWrapper">
         <i class="bi bi-search"></i>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container" style="display: none;">
-  <div class="row">
-
-    <div class="col-3 col-md-2 searchContainer__back">
-      <a href="/">
-        <img src="assets/images/pLogo.png" class="header__logo" style=""/>
-      </a>
-      <div class="header__iconWrapper {{ isSearchFieldActive ? 'searchContainer__inputFieldBack' : 'searchContainer__inputFieldBack--inactive' }}">
-        <i
-          class="bi bi-arrow-left header--icon"
-          (click)="isSearchFieldActive = false"
-        ></i>
-      </div>
-    </div>
-    <div class="col-5 col-md-7">
-      <input
-        #searchPattern
-        autofocus
-        tabIndex="0"
-        type="text"
-        class="searchContainer {{isSearchFieldActive ? 'searchContainer__inputField' : 'searchContainer__inputField--inactive'}}"
-        placeholder="{{'iAmSearchingFor'|translate}}"
-        [formControl]="searchPatternControl"
-      />
-    </div>
-
-    <div class="col-3 col-md-2 search__iconWrapper">
-      <div class="header__iconWrapper">
-        <i
-          class="bi bi-search header--icon"
-          (click)="activateSearch()"
-        ></i>
-      </div>
-
-      <div class="header__iconWrapper">
-        <i
-          class="bi bi-heart{{userHasAtLeastOneWishlistItem ? '-fill' : ''}} header--icon"
-          [routerLink]="['/wishlist']"
-        ></i>
-      </div>
-      <div class="header__iconWrapper {{hasJustLoggedIn ? 'hithere' : ''}}">
-        <i
-          class="bi bi-person{{isLoggedIn ? '-fill' : ''}} header--icon"
-          [routerLink]="['/profile']"
-        ></i>
-      </div>
-      <div class="header__iconWrapper">
-        <search-profile-selection></search-profile-selection>
       </div>
     </div>
   </div>

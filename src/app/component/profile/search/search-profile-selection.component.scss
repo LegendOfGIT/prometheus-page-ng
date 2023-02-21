@@ -6,7 +6,9 @@
 .searchProfile {
   border: 2px solid #0dcaf0;
   border-radius: 50%;
+  cursor: pointer;
   height: 1.5em;
+  margin-top: 0.20em;
   width: 1.5em;
 
   &__item {
