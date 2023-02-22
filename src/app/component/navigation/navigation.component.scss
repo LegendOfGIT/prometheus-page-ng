@@ -1,3 +1,5 @@
+@import 'src/app/variables';
+
 #nextLevelButton {
 
   height: 0;
@@ -13,7 +15,7 @@
 
   &__back {
 
-    background : #355f7d;
+    background: $container-background-color;
     color : white;
     cursor : pointer;
     display: block;
@@ -61,7 +63,7 @@
 
     span {
       padding : 0.8em;
-      background : #355f7d;
+      background: $container-background-color;
       color : white;
       font-size : 1.2em;
       font-variant : small-caps;

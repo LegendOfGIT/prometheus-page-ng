@@ -6,8 +6,10 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { SearchProfilesComponent } from './component/profile/search/search-profiles.component';
 import { SearchProfileSelectionComponent } from './component/profile/search/search-profile-selection.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
+import { ImprintComponent } from './component/legal/imprint.component';
 
 const routes: Routes = [
+    { path: 'imprint', component: ImprintComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'search-profile', component: SearchProfilesComponent },
     { path: 'wishlist', component: WishlistItemsComponent },

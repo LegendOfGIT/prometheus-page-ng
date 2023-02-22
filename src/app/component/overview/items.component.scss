@@ -1,3 +1,5 @@
+@import 'src/app/variables';
+
 .informationItem {
   background-color: rgba(7, 80, 97, .25);
   border-radius: 0.5em;
@@ -44,7 +46,7 @@
   }
 
   &__price {
-    background-color: #355f7d;
+    background-color: $container-background-color;
     border-radius: 15px;
     margin: 1em;
     padding: 0.3em;

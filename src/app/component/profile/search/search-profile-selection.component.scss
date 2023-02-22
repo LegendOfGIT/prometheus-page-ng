@@ -1,3 +1,5 @@
+@import 'src/app/variables';
+
 #searchProfile__selection--button {
   height: 0;
   opacity: 0;
@@ -34,7 +36,7 @@
   }
 
   &__selectionDropDown {
-      background: #355f7d;
+      background: $container-background-color;
       clear:both;
       display: inline-flex;
       height:0;

@@ -12,11 +12,13 @@ import { AppComponent } from './app.component';
 import { AddToWishlistComponent } from './component/wishlist/add-to-wishlist.component';
 import { ItemsComponent } from './component/overview/items.component';
 import { HeaderComponent } from './component/header/header.component';
+import { FooterComponent } from './component/footer/footer.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
 import { SearchProfilesComponent } from './component/profile/search/search-profiles.component';
 import { SearchProfileSelectionComponent } from './component/profile/search/search-profile-selection.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
+import { ImprintComponent } from './component/legal/imprint.component';
 import { TranslationPipe } from './pipes/translation.pipe';
 
 @NgModule({
@@ -24,7 +26,8 @@ import { TranslationPipe } from './pipes/translation.pipe';
     AppComponent,
 
     AddToWishlistComponent,
-    HeaderComponent,
+    HeaderComponent, FooterComponent,
+    ImprintComponent,
     ItemsComponent,
     NavigationComponent,
     ProfileComponent,

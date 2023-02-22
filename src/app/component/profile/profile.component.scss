@@ -1,8 +1,9 @@
 @import 'src/styles/controls';
+@import 'src/app/variables';
 
 .profile {
   &__content {
-    background-color: #355f7d;
+    background-color: $container-background-color;
     margin-top: 3em;
     padding: 1em;
   }

@@ -1,6 +1,8 @@
+@import 'src/app/variables';
+
 button {
   align-items: center;
-  background-color: #355f7d;
+  background-color: $container-background-color;
   border: 1px solid #0dcaf0;
   color: #0dcaf0;
   display: flex;
@@ -10,8 +12,8 @@ button {
 
 button:hover {
   background-color: #0dcaf0;
-  border: 1px solid #355f7d;
-  color: #355f7d;
+  border: 1px solid $container-background-color;
+  color: $container-background-color;
   transition: background-color 200ms linear;
 }
 

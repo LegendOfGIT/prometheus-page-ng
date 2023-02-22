@@ -1,0 +1,22 @@
+@import 'src/app/variables';
+
+.footer {
+  backdrop-filter: blur(3px);
+  background: $container-background-color-as-rgba;
+  border-top: 1px solid lightblue;
+  color: white;
+  height: 5vh;
+  padding-top: 0.3em;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+
+  a {
+    color: white;
+  }
+
+  @media screen and (min-width: 576px) {
+    text-align: right;
+  }
+}
