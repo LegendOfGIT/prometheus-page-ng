@@ -47,12 +47,16 @@
 .searchbar {
   &__input {
     background-color: unset;
-    border: 2px solid lightblue;
+    border: 2px solid #0dcaf0;
     border-radius: 2em;
     color: #FFF;
     outline: 0;
     padding-left: 1.2em;
     width: 100%;
+
+    &:focus {
+      border: 2px solid lightblue;
+    }
 
     &::placeholder {
       color: #FFF;

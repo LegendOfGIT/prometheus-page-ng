@@ -28,7 +28,7 @@
           </div>
           <div class="col-1">
             <div class="header__iconWrapper">
-              <i class="bi bi-search header__icon"></i>
+              <i class="bi bi-search header__icon" (click)="searchNow()"></i>
             </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
           </div>
           <div class="header__iconWrapper">
             <i
-              class="bi bi-person{{isLoggedIn ? '-fill' : ''}} header__icon"
+              [ngClass]="['bi', 'header__icon', 'bi-person' + (isLoggedIn ? '-fill' : ''), hasJustLoggedIn ? 'hithere' : '']"
               [routerLink]="['/profile']"
             ></i>
           </div>
@@ -59,10 +59,18 @@
       <div class="col-1">
       </div>
       <div class="col-9">
-        <input type="text" class="searchbar__input"/>
+        <input
+          #secondBarSearchPattern
+          autofocus
+          tabIndex="0"
+          type="text"
+          class="searchbar__input"
+          placeholder="{{'iAmSearchingFor'|translate}}"
+          [formControl]="secondBarSearchPatternControl"
+        />
       </div>
       <div class="col-2 header__icon header__iconWrapper">
-        <i class="bi bi-search"></i>
+        <i class="bi bi-search" (click)="searchNow()"></i>
       </div>
     </div>
   </div>

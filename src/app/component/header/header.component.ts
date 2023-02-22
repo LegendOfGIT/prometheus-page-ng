@@ -17,10 +17,12 @@ export class HeaderComponent {
 
   public isSearchFieldActive: boolean = false;
   public searchPatternControl: FormControl = new FormControl();
+  public secondBarSearchPatternControl: FormControl = new FormControl();
 
   @ViewChild('searchPattern')
   private searchPatternElement: ElementRef | undefined = undefined;
-
+  @ViewChild('secondBarSearchPattern')
+  private secondBarSearchPatternElement: ElementRef | undefined = undefined;
 
   public lastLoggedInFlag: boolean;
 
@@ -39,6 +41,7 @@ export class HeaderComponent {
     const searchPattern = new URL(window.location.href).searchParams.get('search');
     this.isSearchFieldActive = undefined !== searchPattern && searchPattern !== null;
     this.searchPatternControl.setValue(searchPattern);
+    this.secondBarSearchPatternControl.setValue(searchPattern);
   }
 
   private activatePageReloadOnEveryRouteNavigation() {
@@ -47,19 +50,27 @@ export class HeaderComponent {
 
   private subscribeSearchPatternChanges(): void {
     this.searchPatternControl.valueChanges
-      .pipe(
-        debounceTime(500)
-      )
-      .subscribe(() => {
-        this.router.navigate([], { queryParams: { search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value } });
+      .subscribe((val) => {
+        this.secondBarSearchPatternControl.setValue(val, {onlySelf: true, emitEvent: false});
       });
+    this.secondBarSearchPatternControl.valueChanges
+      .subscribe((val) => {
+        this.searchPatternControl.setValue(val, {onlySelf: true, emitEvent: false});
+      });
+
+    this.searchPatternControl.valueChanges
+      .pipe(debounceTime(10000))
+      .subscribe(() => this.searchNow());
+
+    this.secondBarSearchPatternControl.valueChanges
+      .pipe(debounceTime(10000))
+      .subscribe(() => this.searchNow());
+
   }
 
-  public activateSearch() : void {
-    this.isSearchFieldActive = true;
-    setTimeout(() => {
-      this.searchPatternElement?.nativeElement.focus();
-    }, 150);
+  public searchNow(): void {
+    this.router.navigate([], { queryParams: { search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value } });
+    console.log('brzee');
   }
 
   get hasJustLoggedIn(): boolean {
