@@ -3,9 +3,10 @@
 .footer {
   backdrop-filter: blur(3px);
   background: $container-background-color-as-rgba;
+  bottom: 0;
   border-top: 1px solid lightblue;
   color: white;
-  height: 10vh;
+  height: 2.3em;
   padding-top: 0.3em;
   position: fixed;
   text-align: center;
