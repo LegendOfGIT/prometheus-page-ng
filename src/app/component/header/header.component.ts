@@ -70,7 +70,6 @@ export class HeaderComponent {
 
   public searchNow(): void {
     this.router.navigate([], { queryParams: { search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value } });
-    console.log('brzee');
   }
 
   get hasJustLoggedIn(): boolean {
