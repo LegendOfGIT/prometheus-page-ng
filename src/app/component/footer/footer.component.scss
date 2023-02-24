@@ -5,7 +5,7 @@
   background: $container-background-color-as-rgba;
   bottom: 0;
   border-top: 1px solid lightblue;
-  color: white;
+  font-size: 0.85em;
   height: 2.3em;
   padding-top: 0.3em;
   position: fixed;
@@ -13,8 +13,13 @@
   width: 100%;
   z-index: 2;
 
-  a {
-    color: white;
+  &__link {
+    color: #0dcaf0;
+
+    &--active {
+      color: lightblue;
+      font-weight: bold;
+    }
   }
 
   @media screen and (min-width: 576px) {

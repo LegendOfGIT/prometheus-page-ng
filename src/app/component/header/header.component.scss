@@ -28,6 +28,11 @@
     cursor: pointer;
     font-size: 1.35em;
 
+    &--active {
+      color: lightblue;
+      font-weight: bold;
+    }
+
     &Wrapper {
       height: 1.5em;
       padding-left: 0.5em;
@@ -36,6 +41,31 @@
 
   &__logo {
     width: 2em;
+  }
+
+  &__menu {
+    background-color: $container-background-color;
+    border: 1px solid lightblue;
+    border-radius: 0.5em;
+    position: absolute;
+    text-align: center;
+    top: 2.5em;
+    width: 20em;
+
+    a {
+      text-decoration: none;
+    }
+
+    &Item {
+      border-radius: 0.5em;
+      cursor: pointer;
+      color: #0dcaf0;
+
+      &:hover {
+        background-color: #282c34;
+        color: lightblue;
+      }
+    }
   }
 }
 

@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {Subject} from 'rxjs';
 
-import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+import {GoogleLoginProvider, SocialAuthService} from '@abacritt/angularx-social-login';
 
-import { UserService } from 'src/app/service/user.service';
-import { TranslationService } from 'src/app/service/translation.service';
+import {UserService} from 'src/app/service/user.service';
+import {TranslationService} from 'src/app/service/translation.service';
+import {Module, NavigationService} from "../../service/navigation.service";
 
 @Component({
   selector: 'profile',
@@ -20,7 +20,10 @@ export class ProfileComponent{
   constructor(private router: Router,
               private socialAuthService: SocialAuthService,
               private userService: UserService,
-              private translationService: TranslationService) {
+              private translationService: TranslationService,
+              navigationService: NavigationService)
+  {
+    navigationService.activeModule = Module.PROFILE;
   }
 
   loginWithGoogle(): void {

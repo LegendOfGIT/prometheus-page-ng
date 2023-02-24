@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+import {ActivatedRoute} from '@angular/router';
 
-import { Item } from 'src/app/model/item';
-import { ItemsApiService } from 'src/app/service/items-api.service';
-import { NavigationService } from 'src/app/service/navigation.service';
-import { TrackingService } from 'src/app/service/tracking.service';
-import { TrackingActivityItem } from 'src/app/model/tracking-activity-item';
-import { TrackingInterestLevel } from 'src/app/model/tracking-interest-level';
+import {Item} from 'src/app/model/item';
+import {ItemsApiService} from 'src/app/service/items-api.service';
+import {Module, NavigationService} from 'src/app/service/navigation.service';
+import {TrackingService} from 'src/app/service/tracking.service';
+import {TrackingActivityItem} from 'src/app/model/tracking-activity-item';
+import {TrackingInterestLevel} from 'src/app/model/tracking-interest-level';
 
 @Component({
   selector: 'app-items',
@@ -29,6 +29,8 @@ export class ItemsComponent implements OnInit {
     ) {
 
       route.paramMap.subscribe((params) => {
+        this.navigationService.activeModule = Module.ITEMS;
+
         this.navigationService.setActiveNavigationLevelIds([
           params.get('navigationIdLevelA') || '',
           params.get('navigationIdLevelB') || '',

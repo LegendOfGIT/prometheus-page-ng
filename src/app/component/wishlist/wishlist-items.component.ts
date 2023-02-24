@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import {Component} from '@angular/core';
 
-import { Item } from 'src/app/model/item';
-import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
+import {Item} from 'src/app/model/item';
+import {WishlistItemsApiService} from 'src/app/service/wishlist-items-api.service';
+import {Module, NavigationService} from 'src/app/service/navigation.service';
 
 @Component({
   selector: 'app-wishlist-items',
@@ -14,8 +12,10 @@ import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.serv
 export class WishlistItemsComponent{
 
     constructor(
-      private itemsService: WishlistItemsApiService
+      private itemsService: WishlistItemsApiService,
+      navigationService: NavigationService
     ) {
+      navigationService.activeModule = Module.WISHLIST;
     }
 
     get items(): Array<Item | null> {

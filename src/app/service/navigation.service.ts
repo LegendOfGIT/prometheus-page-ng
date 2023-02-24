@@ -8,6 +8,8 @@ import { NavigationItem } from 'src/app/model/navigation-item';
 })
 export class NavigationService {
 
+  private _activeModule: Module = Module.HOME;
+
   private activeNavigationLevelIds: Array<string> = [];
 
   public setActiveNavigationLevelIds(activeNavigationLevelIds: Array<string>): void {
@@ -48,4 +50,21 @@ export class NavigationService {
                  .filter((item: NavigationItem) => activeItem.toId == item.fromId);
   }
 
+  get activeModule(): Module {
+    return this._activeModule;
+  }
+
+  set activeModule(activeModule: Module) {
+    this._activeModule = activeModule;
+  }
+
+}
+
+export enum Module {
+  HOME,
+  IMPRINT,
+  ITEMS,
+  PROFILE,
+  SEARCH_PROFILES,
+  WISHLIST
 }

@@ -4,8 +4,19 @@
       <div class="col-4 col-sm-2">
         <div class="headerbar__content">
           <div class="header__iconWrapper">
-            <i class="bi bi-list header__icon"></i>
+            <i class="bi bi-list header__icon" (click)="isCategoryMenuOpen = !isCategoryMenuOpen"></i>
           </div>
+          <div *ngIf="isCategoryMenuOpen" class="header__menu">
+            <div
+              *ngFor="let item of categoryItems"
+              class="header__menuItem"
+              [routerLink]="[''].concat(item.pathParts[0])"
+              (click)="isCategoryMenuOpen = !isCategoryMenuOpen"
+            >
+              {{'NAVIGATION_' + item.toId | translate}}
+            </div>
+          </div>
+
           <div>
             <a href="/">
               <img src="assets/images/pLogo.png" class="header__logo"/>
@@ -37,17 +48,17 @@
         <div class="headerbar__content">
           <div class="header__iconWrapper">
             <i
-              class="bi bi-heart{{userHasAtLeastOneWishlistItem ? '-fill' : ''}} header__icon"
+              class="bi bi-heart{{userHasAtLeastOneWishlistItem ? '-fill' : ''}} header__icon {{isModuleActive(Module.WISHLIST) ? 'header__icon--active' : ''}}"
               [routerLink]="['/wishlist']"
             ></i>
           </div>
           <div class="header__iconWrapper">
             <i
-              [ngClass]="['bi', 'header__icon', 'bi-person' + (isLoggedIn ? '-fill' : ''), hasJustLoggedIn ? 'hithere' : '']"
+              [ngClass]="['bi', 'header__icon', 'bi-person' + (isLoggedIn ? '-fill' : ''), hasJustLoggedIn ? 'hithere' : '', isModuleActive(Module.PROFILE) ? 'header__icon--active' : '']"
               [routerLink]="['/profile']"
             ></i>
           </div>
-          <div class="header__iconWrapper">
+          <div *ngif="false" class="header__iconWrapper">
             <search-profile-selection></search-profile-selection>
           </div>
         </div>

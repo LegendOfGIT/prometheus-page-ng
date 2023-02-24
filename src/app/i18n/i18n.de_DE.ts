@@ -6,7 +6,7 @@ export class I18nDeDe implements I18nInterface {
       iAmSearchingFor: 'Ich suche ...',
       languageDeDe: 'deutsch',
       languageEnUs: 'englisch (US)',
-      NAVIGATION_ALL: 'Alles',
+      NAVIGATION_ALL: 'Alle Produkte',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS: 'Elektronik & Computer',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES: 'Elektro Großgeräte',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_FRIDGES_AND_FREEZERS: 'Kühlschränke & Gefriergeräte',

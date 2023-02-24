@@ -7,6 +7,9 @@ import { UserService } from 'src/app/service/user.service';
 import { SearchProfilesApiService } from 'src/app/service/search-profiles-api.service';
 import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
 import { SearchProfile } from 'src/app/model/search-profile';
+import { Module, NavigationService } from 'src/app/service/navigation.service';
+import {NavigationItem} from "../../model/navigation-item";
+import {Navigation} from "../../configurations/navigation";
 
 @Component({
   selector: 'header',
@@ -15,9 +18,13 @@ import { SearchProfile } from 'src/app/model/search-profile';
 })
 export class HeaderComponent {
 
-  public isSearchFieldActive: boolean = false;
+  public isCategoryMenuOpen: boolean = false;
+  public navigationItems: NavigationItem[] = Navigation.ITEMS;
+
   public searchPatternControl: FormControl = new FormControl();
   public secondBarSearchPatternControl: FormControl = new FormControl();
+
+  public Module: typeof Module = Module;
 
   @ViewChild('searchPattern')
   private searchPatternElement: ElementRef | undefined = undefined;
@@ -31,15 +38,14 @@ export class HeaderComponent {
     private router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
+    private navigationService: NavigationService,
     private searchProfilesApiService: SearchProfilesApiService,
     private wishlistService: WishlistItemsApiService
   ) {
     this.activatePageReloadOnEveryRouteNavigation();
     this.subscribeSearchPatternChanges();
     this.lastLoggedInFlag = this.userService.isLoggedIn;
-
     const searchPattern = new URL(window.location.href).searchParams.get('search');
-    this.isSearchFieldActive = undefined !== searchPattern && searchPattern !== null;
     this.searchPatternControl.setValue(searchPattern);
     this.secondBarSearchPatternControl.setValue(searchPattern);
   }
@@ -92,6 +98,14 @@ export class HeaderComponent {
 
   get searchProfilesOfActiveUser(): Array<SearchProfile | null> {
     return this.searchProfilesApiService.items;
+  }
+
+  public isModuleActive(module: Module): boolean {
+    return module === this.navigationService.activeModule;
+  }
+
+  get categoryItems(): NavigationItem[] {
+    return this.navigationItems.filter(item => !item.fromId || item.fromId === 'ALL');
   }
 
 }
