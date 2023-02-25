@@ -14,10 +14,10 @@
   z-index: 2;
 
   &__link {
-    color: #0dcaf0;
+    color: $content-color;
 
     &--active {
-      color: lightblue;
+      color: $content-color--active;
       font-weight: bold;
     }
   }

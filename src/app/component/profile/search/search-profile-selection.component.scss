@@ -6,7 +6,7 @@
 }
 
 .searchProfile {
-  border: 2px solid #0dcaf0;
+  border: 2px solid $content-color;
   border-radius: 50%;
   cursor: pointer;
   height: 1.5em;
@@ -22,7 +22,7 @@
     }
 
     &:hover {
-      border-color: lightblue;
+      border-color: $content-color--active;
     }
 
     &--header {
@@ -30,7 +30,7 @@
     }
 
     &--text {
-      color: #0dcaf0;
+      color: $content-color;
       font-size: 0.6em;
     }
   }
@@ -49,13 +49,13 @@
       z-index: 1;
 
       &--open {
-        border: 1px solid #0dcaf0;
+        border: 1px solid $content-color;
         height: unset;
         padding: 0.2em;
       }
   }
 
   &--no-selection {
-    border: 2px dotted #0dcaf0;
+    border: 2px dotted $content-color;
   }
 }

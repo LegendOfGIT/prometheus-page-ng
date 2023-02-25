@@ -10,7 +10,7 @@
   }
 
   &__item {
-    border: 2px solid #0dcaf0;
+    border: 2px solid $content-color;
     border-radius: 50%;
     bottom: 0;
     cursor: pointer;
@@ -20,7 +20,7 @@
 
     &--new {
       border: 0;
-      color: #0dcaf0;
+      color: $content-color;
       font-size: 6.5em;
       height: unset;
       margin: unset;
@@ -28,13 +28,13 @@
       width: unset;
 
       &:hover {
-        color: lightblue;
+        color: $content-color--active;
       }
     }
   }
 
   &__itemWrapper {
-    border: 2px solid #0dcaf0;
+    border: 2px solid $content-color;
     border-radius: 50%;
     cursor: pointer;
     margin-bottom: 1em;
@@ -46,11 +46,11 @@
     width: 8em;
 
     &:hover {
-      border-color: lightblue;
+      border-color: $content-color--active;
     }
 
     &--selected {
-      background: #0dcaf0;
+      background: $content-color;
       color: #000;
     }
 

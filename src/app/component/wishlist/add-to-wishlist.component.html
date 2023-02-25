@@ -1,4 +1,5 @@
 <a
+  *ngIf="item?.itemId"
   class="item__wishlist {{ isItemOnWishlist ? 'item__wishlist--active' : ''}}"
   (click)="toggleItem()"
 >

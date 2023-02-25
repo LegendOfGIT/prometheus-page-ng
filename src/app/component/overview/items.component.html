@@ -5,7 +5,7 @@
     <div class="col-10 informationItems__container">
       <div *ngFor="let item of items">
 
-        <div *ngIf="item && item.titleImage" class="informationItem">
+        <div *ngIf="item" [ngClass]="['informationItem', item?.itemId ? '' : 'informationItem--loading']">
           <div class="informationItem__imageContainer">
             <a href="{{getFirstLinkFromItem(item)}}" target="{{item.itemId}}" (click)="pickedInformation(item)">
               <img

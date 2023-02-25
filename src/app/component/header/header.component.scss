@@ -1,4 +1,4 @@
-@import "src/styles/animations";
+@import 'src/styles/animations';
 @import 'src/app/variables';
 
 .firstSearchbar {
@@ -13,7 +13,8 @@
 .header {
   backdrop-filter: blur(3px);
   background: $container-background-color-as-rgba;
-  border-bottom: 1px solid lightblue;
+  border-bottom: 1px solid $content-color--active;
+  color: $content-color;
   padding: 0.5em;
   position: fixed;
   width: 100%;
@@ -24,12 +25,12 @@
   }
 
   &__icon {
-    color: #0dcaf0;
+    color: $content-color;
     cursor: pointer;
     font-size: 1.35em;
 
     &--active {
-      color: lightblue;
+      color: $content-color--active;
       font-weight: bold;
     }
 
@@ -45,7 +46,7 @@
 
   &__menu {
     background-color: $container-background-color;
-    border: 1px solid lightblue;
+    border: 1px solid $content-color--active;
     border-radius: 0.5em;
     position: absolute;
     text-align: center;
@@ -59,11 +60,11 @@
     &Item {
       border-radius: 0.5em;
       cursor: pointer;
-      color: #0dcaf0;
+      color: $content-color;
 
       &:hover {
-        background-color: #282c34;
-        color: lightblue;
+        background-color: $content-color;
+        color: $content-color--active;
       }
     }
   }
@@ -78,7 +79,7 @@
 .searchbar {
   &__input {
     background-color: unset;
-    border: 2px solid #0dcaf0;
+    border: 2px solid $content-color;
     border-radius: 2em;
     color: #FFF;
     outline: 0;
@@ -86,7 +87,7 @@
     width: 100%;
 
     &:focus {
-      border: 2px solid lightblue;
+      border: 2px solid $content-color--active;
     }
 
     &::placeholder {
