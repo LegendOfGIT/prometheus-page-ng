@@ -108,4 +108,8 @@ export class HeaderComponent {
     return this.navigationItems.filter(item => !item.fromId || item.fromId === 'ALL');
   }
 
+  get activeNavigationItem(): NavigationItem | undefined {
+    return this.navigationService.activeNavigationItem;
+  }
+
 }

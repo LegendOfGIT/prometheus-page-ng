@@ -62,9 +62,11 @@
       cursor: pointer;
       color: $content-color;
 
+
+      &--active,
       &:hover {
-        background-color: $content-color;
-        color: $content-color--active;
+        background-color: $content-color--active;
+        color: $container-background-color;
       }
     }
   }

@@ -9,7 +9,7 @@
           <div *ngIf="isCategoryMenuOpen" class="header__menu">
             <div
               *ngFor="let item of categoryItems"
-              class="header__menuItem"
+              [ngClass]="['header__menuItem', activeNavigationItem === item ? 'header__menuItem--active' : '']"
               [routerLink]="[''].concat(item.pathParts[0])"
               (click)="isCategoryMenuOpen = !isCategoryMenuOpen"
             >
