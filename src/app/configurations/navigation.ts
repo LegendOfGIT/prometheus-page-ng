@@ -30,7 +30,12 @@ export class Navigation {
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_FRIDGES_AND_FREEZERS',
       ['electronics-and-computers', 'large-appliances', 'fridges-and-freezers']
-    )
+    ),
+
+    new NavigationItem('ALL', 'MUSIC', ['music', '', '']),
+    new NavigationItem('MUSIC', 'MUSIC_CD', ['music', 'cd', '']),
+    new NavigationItem('MUSIC_CD', 'MUSIC_CD_GERMANFOLK', ['music', 'cd', 'german-folk-music']),
+
   ];
 
 }
