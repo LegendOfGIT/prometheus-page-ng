@@ -1,0 +1,57 @@
+version: "3.9"
+services:
+  web:
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    volumes:
+      - "/var/www/prometheus/prometheus-page-ng/dist/prometheus-page:/usr/share/nginx/html"
+      - "/var/www/prometheus/prometheus-page-ng/nginx/default.conf:/etc/nginx/conf.d/default.conf"
+      - "./certbot/www:/var/www/certbot/:ro"
+
+  warehouse:
+    image: node
+    container_name: warehouse
+    hostname: warehouse
+    command: npm run start
+    ports:
+      - "3002:3002"
+    working_dir: /app
+    volumes:
+      - "/var/www/prometheus/information-warehouse:/app"
+
+  warehouse-database:
+    image: mongo
+    container_name: warehouse-database
+    hostname: warehouse-database
+    ports:
+      - "27017:27017"
+    volumes:
+      - "warehouse-database:/data/db"
+
+  satellite-controller:
+    image: node
+    container_name: satellite-controller
+    hostname: satellite-controller
+    command: npm run start
+    ports:
+      - "3001:3001"
+    working_dir: /app
+    volumes:
+      - "/var/www/prometheus/satellite-controller:/app"
+
+  satellite:
+    image: node
+    container_name: satellite
+    hostname: satellite
+    command: npm run start
+    ports:
+      - "3000:3000"
+    working_dir: /app
+    volumes:
+      - "/var/www/prometheus/information-satellite:/app"
+
+volumes:
+  warehouse-database:
