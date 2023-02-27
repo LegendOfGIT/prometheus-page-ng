@@ -10,6 +10,13 @@ services:
       - "/var/www/prometheus/prometheus-page-ng/dist/prometheus-page:/usr/share/nginx/html"
       - "/var/www/prometheus/prometheus-page-ng/nginx/default.conf:/etc/nginx/conf.d/default.conf"
       - "./certbot/www:/var/www/certbot/:ro"
+      - "./certbot/conf/:/etc/nginx/ssl/:ro"
+
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
 
   warehouse:
     image: node
