@@ -13,9 +13,8 @@
 .header {
   backdrop-filter: blur(3px);
   background: $container-background-color-as-rgba;
-  border-bottom: 1px solid $content-color--active;
   color: $content-color;
-  padding: 0.5em;
+  padding: 0.5em 0.5em 0.7em 0.5em;
   position: fixed;
   width: 100%;
   z-index: 2;
@@ -38,6 +37,13 @@
       height: 1.5em;
       padding-left: 0.5em;
     }
+  }
+
+  &__icons {
+    display:inline-flex;
+    position: absolute;
+    right: 1.5em;
+    top: 0.60em;
   }
 
   &__logo {
@@ -70,6 +76,17 @@
       }
     }
   }
+
+  &__menuIcon {
+    font-size:1.5em;
+    left: 1.5em;
+    position:absolute;
+    top: 0.60em;
+  }
+
+  &__title {
+    text-align: center;
+  }
 }
 
 .headerbar {
@@ -96,12 +113,25 @@
       color: #FFF;
     }
   }
+
+  &__inputBox {
+    cursor: pointer;
+    font-size:1.2em;
+    position: absolute;
+    right: 1.3em;
+  }
+
+  &__inputButton {
+    background-color: lightblue;
+    border: 1px solid lightblue;
+    border-radius: 50%;
+    color: #2d3e5e;
+    padding: 0.20em;
+  }
 }
 
 .secondSearchbar {
-  padding-top: 0.5em;
-
-  @media screen and (min-width: 576px) {
-    display: none;
-  }
+  display:inline-flex;
+  padding-left: 0.8em;
+  padding-right: 1em;
 }

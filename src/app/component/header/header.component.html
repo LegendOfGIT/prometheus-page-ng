@@ -1,51 +1,26 @@
 <div class="header">
   <div class="container">
     <div class="row header__content">
-      <div class="col-4 col-sm-2">
-        <div class="headerbar__content">
-          <div class="header__iconWrapper">
-            <i class="bi bi-list header__icon" (click)="isCategoryMenuOpen = !isCategoryMenuOpen"></i>
+      <div class="col-12 header__title">
+        <div class="header__menuIcon">
+          <i class="bi bi-list" (click)="isCategoryMenuOpen = !isCategoryMenuOpen"></i>
+        </div>
+        <div *ngIf="isCategoryMenuOpen" class="header__menu">
+          <div
+            *ngFor="let item of categoryItems"
+            [ngClass]="['header__menuItem', activeNavigationItem === item ? 'header__menuItem--active' : '']"
+            [routerLink]="[''].concat(item.pathParts[0])"
+            (click)="isCategoryMenuOpen = !isCategoryMenuOpen"
+          >
+            {{'NAVIGATION_' + item.toId | translate}}
           </div>
-          <div *ngIf="isCategoryMenuOpen" class="header__menu">
-            <div
-              *ngFor="let item of categoryItems"
-              [ngClass]="['header__menuItem', activeNavigationItem === item ? 'header__menuItem--active' : '']"
-              [routerLink]="[''].concat(item.pathParts[0])"
-              (click)="isCategoryMenuOpen = !isCategoryMenuOpen"
-            >
-              {{'NAVIGATION_' + item.toId | translate}}
-            </div>
-          </div>
+        </div>
 
-          <div>
-            <a href="/">
-              <img src="assets/images/pLogo.png" class="header__logo"/>
-            </a>
-          </div>
+        <div style="font-size: 1.3em;" [routerLink]="['/']">
+          <span style="color:#0dcaf0; font-weight: bold;">W</span><span style="color: lightblue;">e</span> <span style="color:#0dcaf0; font-weight: bold;">W</span><span style="color: lightblue;">anna</span>&nbsp;<span style="color: goldenrod;">shop!</span>
         </div>
-      </div>
-      <div class="col-4 col-sm-8">
-        <div class="firstSearchbar">
-          <div class="col-11">
-            <input
-              #searchPattern
-              autofocus
-              tabIndex="0"
-              type="text"
-              class="searchbar__input"
-              placeholder="{{'iAmSearchingFor'|translate}}"
-              [formControl]="searchPatternControl"
-            />
-          </div>
-          <div class="col-1">
-            <div class="header__iconWrapper">
-              <i class="bi bi-search header__icon" (click)="searchNow()"></i>
-            </div>
-        </div>
-      </div>
-      </div>
-      <div class="col-4 col-sm-2" style="text-align: right;">
-        <div class="headerbar__content">
+
+        <div class="header__icons">
           <div class="header__iconWrapper">
             <i
               class="bi bi-heart{{userHasAtLeastOneWishlistItem ? '-fill' : ''}} header__icon {{isModuleActive(Module.WISHLIST) ? 'header__icon--active' : ''}}"
@@ -58,29 +33,23 @@
               [routerLink]="['/profile']"
             ></i>
           </div>
-          <div *ngif="false" class="header__iconWrapper">
-            <search-profile-selection></search-profile-selection>
-          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="secondSearchbar">
-    <div class="col-12 headerbar__content">
-      <div class="col-1">
-      </div>
-      <div class="col-9">
-        <input
-          #secondBarSearchPattern
-          autofocus
-          tabIndex="0"
-          type="text"
-          class="searchbar__input"
-          placeholder="{{'iAmSearchingFor'|translate}}"
-          [formControl]="secondBarSearchPatternControl"
-        />
-      </div>
-      <div class="col-2 header__icon header__iconWrapper">
+  <div class="col-12 secondSearchbar">
+    <input
+      #secondBarSearchPattern
+      autofocus
+      tabIndex="0"
+      type="text"
+      class="searchbar__input"
+      placeholder="{{'iAmSearchingFor'|translate}}"
+      [formControl]="secondBarSearchPatternControl"
+    />
+
+    <div class="searchbar__inputBox">
+      <div class="searchbar__inputButton">
         <i class="bi bi-search" (click)="searchNow()"></i>
       </div>
     </div>
