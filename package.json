@@ -26,7 +26,6 @@
     "@angular/router": "^14.0.0",
     "@types/uuid": "^8.3.4",
     "bootstrap": "^5.2.1",
-    "bootstrap-icons": "^1.8.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "uuid": "^9.0.0",
