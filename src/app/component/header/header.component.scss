@@ -102,6 +102,7 @@
     border: 2px solid $content-color;
     border-radius: 2em;
     color: #FFF;
+    height: 1.8em;
     outline: 0;
     padding-left: 1.2em;
     width: 100%;
@@ -117,10 +118,10 @@
 
   &__inputBox {
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.2em;
     line-height: 1px;
     position: absolute;
-    right: 1.2em;
+    right: 1.3em;
   }
 
   &__inputButton {
