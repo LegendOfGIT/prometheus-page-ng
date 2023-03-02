@@ -20,7 +20,7 @@
           <span style="cursor: pointer;">
             <span style="color:#0dcaf0; font-weight: bold;">W</span><span style="color: lightblue;">e</span>
             <span style="color:#0dcaf0; font-weight: bold;">W</span><span style="color: lightblue;">anna</span>
-            <span style="color: goldenrod;"> {{'NAVIGATION_SLOGAN_' + activeNavigationItem?.toId | translate}}!</span>
+            <span style="color: goldenrod;"> {{'NAVIGATION_SLOGAN_' + (activeNavigationItem?.toId || 'ALL') | translate}}!</span>
           </span>
         </div>
 
