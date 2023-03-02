@@ -7,6 +7,7 @@ import { SearchProfilesComponent } from './component/profile/search/search-profi
 import { SearchProfileSelectionComponent } from './component/profile/search/search-profile-selection.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 import { ImprintComponent } from './component/legal/imprint.component';
+import { StartPageComponent } from './component/landing-pages/start-page.component';
 
 const routes: Routes = [
     { path: 'imprint', component: ImprintComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
     { path: ':navigationIdLevelA', component: ItemsComponent },
     { path: ':navigationIdLevelA/:navigationIdLevelB', component: ItemsComponent },
     { path: ':navigationIdLevelA/:navigationIdLevelB/:navigationIdLevelC', component: ItemsComponent },
-    { path: '', component: ItemsComponent }
+    { path: '', component: StartPageComponent }
 ];
 
 @NgModule({

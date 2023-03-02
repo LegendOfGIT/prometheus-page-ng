@@ -20,12 +20,13 @@ export class ItemsApiService extends ApiBase {
         super(apiBase);
     }
 
-    getItems(navigationId: string, searchPattern: string) {
+    getItems(navigationId: string, searchPattern: string, numberOfResults: number | undefined = undefined) {
 
         const url = this.get(
           endpoints.items,
           {
             navigationId,
+            numberOfResults: numberOfResults ? `${numberOfResults}` : '',
             searchPattern,
             searchProfileId: this.userService.activeUser?.activeSearchProfile || ''
           });

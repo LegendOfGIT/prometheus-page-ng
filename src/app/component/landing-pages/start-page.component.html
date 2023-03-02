@@ -1,0 +1,26 @@
+<div>
+  <div class="container startPage__content">
+    <div class="col-12">
+      <div *ngFor="let item of getItemsOfCategory('MULTIMEDIA')">
+
+        <div *ngIf="item" [ngClass]="['informationItem', item?.itemId ? '' : 'informationItem--loading']">
+          <div class="informationItem__imageContainer">
+            <a href="{{getFirstLinkFromItem(item)}}" target="{{item.itemId}}">
+              <img
+                class="informationItem__image"
+                alt="{{item.title}}"
+                src="{{item.titleImage}}"
+                loading="lazy"
+              />
+            </a>
+            <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
+          </div>
+          <div class="informationItem__contentContainer">
+            <div [ngClass]="['informationItem__price', item.renderLowestPrice() ? '' : 'informationItem__price--hidden']">{{item.renderLowestPrice() || '&nbsp;'}}</div>
+            <div class="informationItem__title">{{item.title}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

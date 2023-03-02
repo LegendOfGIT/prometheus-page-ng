@@ -20,6 +20,7 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 import { ImprintComponent } from './component/legal/imprint.component';
 import { TranslationPipe } from './pipes/translation.pipe';
+import { StartPageComponent } from './component/landing-pages/start-page.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TranslationPipe } from './pipes/translation.pipe';
     NavigationComponent,
     ProfileComponent,
     SearchProfilesComponent, SearchProfileSelectionComponent,
+    StartPageComponent,
     WishlistItemsComponent,
 
     TranslationPipe

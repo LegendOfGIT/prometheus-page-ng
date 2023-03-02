@@ -1,6 +1,6 @@
 
 export const endpoints = {
-    items: '/information-items?navigationId={navigationId}&searchProfileId={searchProfileId}&searchPattern={searchPattern}',
+    items: '/information-items?navigationId={navigationId}&searchProfileId={searchProfileId}&searchPattern={searchPattern}&numberOfResults={numberOfResults}',
     scoreItem: '/information-item/scoring',
     deleteWishlistItem: '/wishlist-item?userId={userId}&itemId={itemId}',
     getWishlistItems: '/wishlist-items?userId={userId}&searchPattern={searchPattern}',
