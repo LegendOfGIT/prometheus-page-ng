@@ -12,7 +12,7 @@ export class FooterComponent {
   public constructor(private navigationService: NavigationService){
   }
 
-  @HostListener('document:wheel', ['$event'])
+  @HostListener('document:mousewheel', ['$event'])
   onScroll(e: WheelEvent): void {
     this.wasLastScrollDirectionUp = (e?.deltaY || 0) > 0;
   }
