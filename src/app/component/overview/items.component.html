@@ -18,7 +18,7 @@
             <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
           </div>
           <div class="informationItem__contentContainer">
-            <div *ngIf="item.renderLowestPrice()" class="informationItem__price">{{item.renderLowestPrice()}}</div>
+            <div [ngClass]="['informationItem__price', item.renderLowestPrice() ? '' : 'informationItem__price--hidden']">{{item.renderLowestPrice() || '&nbsp;'}}</div>
             <div class="informationItem__title">{{item.title}}</div>
           </div>
         </div>
