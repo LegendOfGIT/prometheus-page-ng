@@ -1,4 +1,4 @@
-<div class="footer">
+<div *ngIf="showFooter" class="footer">
   <div class="container">
     <div class="row">
       <a [routerLink]="['/imprint']" class="footer__link{{isImprintActive ? '--active' : ''}}">Impressum</a>

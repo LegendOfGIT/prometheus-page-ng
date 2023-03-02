@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Module, NavigationService } from "../../service/navigation.service";
+import { Component, HostListener } from '@angular/core';
+import { Module, NavigationService } from '../../service/navigation.service';
 
 @Component({
   selector: 'footer',
@@ -7,10 +7,21 @@ import { Module, NavigationService } from "../../service/navigation.service";
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  public constructor(private navigationService: NavigationService) {
+  private wasLastScrollDirectionUp: boolean = false;
+
+  public constructor(private navigationService: NavigationService){
+  }
+
+  @HostListener('document:wheel', ['$event'])
+  onScroll(e: WheelEvent): void {
+    this.wasLastScrollDirectionUp = (e?.deltaY || 0) > 0;
   }
 
   get isImprintActive(): boolean {
     return Module.IMPRINT === this.navigationService.activeModule;
+  }
+
+  get showFooter(): boolean {
+    return !this.wasLastScrollDirectionUp;
   }
 }

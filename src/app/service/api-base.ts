@@ -1,5 +1,5 @@
-import { Observable, Subject } from 'rxjs';
-import { shareReplay, takeUntil } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 
 export type ReplacementType = { [key: string]: string };

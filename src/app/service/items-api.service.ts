@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { endpoints } from '../../environments/endpoints';
 import { Item } from '../model/item';
-import { ItemDto } from '../model/dto/item-dto';
 import { ItemsResponseDto } from '../model/dto/items-response-dto';
 import { ApiBase } from './api-base';
 import { UserService } from './user.service';
