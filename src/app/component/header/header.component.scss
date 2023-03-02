@@ -40,10 +40,10 @@
   }
 
   &__icons {
-    display:inline-flex;
+    display: inline-flex;
     position: absolute;
     right: 1.6em;
-    top: 1em;
+    top: 0.8em;
   }
 
   &__logo {
@@ -82,7 +82,7 @@
     font-size:1.5em;
     left: 1em;
     position: absolute;
-    top: 0.4em;
+    top: 0.3em;
   }
 
   &__title {
@@ -117,7 +117,7 @@
 
   &__inputBox {
     cursor: pointer;
-    font-size: 0.9em;
+    font-size: 1.2em;
     position: absolute;
     right: 1.7em;
   }
