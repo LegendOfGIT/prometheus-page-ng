@@ -1,4 +1,5 @@
 import { I18nInterface } from './i18n.interface';
+import {NavigationItem} from "../model/navigation-item";
 
 export class I18nDeDe implements I18nInterface {
   public getTranslations(): any {
@@ -15,6 +16,11 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_FASHION_MEN_JEWELRY: 'Schmuck',
       NAVIGATION_FASHION_WOMEN: 'Damen',
       NAVIGATION_FASHION_WOMEN_JEWELRY: 'Schmuck',
+      NAVIGATION_KIDS: 'Kinder',
+      NAVIGATION_KIDS_PARTY: 'Party',
+      NAVIGATION_KIDS_PARTY_TABLEWARE: 'Tischgeschirr / Dekoration',
+      NAVIGATION_KIDS_SCHOOL: 'Schule',
+      NAVIGATION_KIDS_SCHOOL_SATCHEL: 'Schulranzen',
       NAVIGATION_MULTIMEDIA: 'Multimedia',
       NAVIGATION_MULTIMEDIA_GAMES: 'Games',
       NAVIGATION_MULTIMEDIA_GAMES_NINTENDO_SWITCH: 'Switch games',
@@ -30,6 +36,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_SLOGAN_ALL: 'shop',
       NAVIGATION_SLOGAN_ELECTRONICS_AND_COMPUTERS: 'be up to date',
       NAVIGATION_SLOGAN_FASHION: 'dress up',
+      NAVIGATION_SLOGAN_KIDS: 'be family',
       NAVIGATION_SLOGAN_MULTIMEDIA: 'be entertained',
       NAVIGATION_SLOGAN_MUSIC: 'listen',
       SEARCH_PROFILE_CATEGORY_CHARACTERISTICS: 'Eigenschaften',

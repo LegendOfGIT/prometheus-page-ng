@@ -18,8 +18,8 @@
 
         <div class="header__logo" [routerLink]="['/']">
           <span style="cursor: pointer;">
-            <span style="color:#0dcaf0; font-weight: bold;">W</span><span style="color: lightblue;">e</span>
-            <span style="color:#0dcaf0; font-weight: bold;">W</span><span style="color: lightblue;">anna</span>
+            <span class="header__titleCapitalLetter">W</span><span style="color: lightblue;">e</span>
+            <span class="header__titleCapitalLetter">W</span><span style="color: lightblue;">anna</span>
             <span style="color: goldenrod;"> {{'NAVIGATION_SLOGAN_' + (activeNavigationItem?.toId || 'ALL') | translate}}!</span>
           </span>
         </div>
@@ -27,7 +27,7 @@
         <div class="header__icons">
           <div class="header__iconWrapper">
             <i
-              class="fa fa-heart{{userHasAtLeastOneWishlistItem ? '-fill' : ''}} header__icon {{isModuleActive(Module.WISHLIST) ? 'header__icon--active' : ''}}"
+              class="fa fa-heart{{userHasAtLeastOneWishlistItem ? '' : ''}} header__icon {{isModuleActive(Module.WISHLIST) ? 'header__icon--active' : ''}}"
               [routerLink]="['/wishlist']"
             ></i>
           </div>
