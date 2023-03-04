@@ -1,21 +1,35 @@
+@import "src/styles/controls";
 @import 'src/app/variables';
+
+.category {
+  &__actions {
+    padding-bottom: 1em;
+    text-align: center;
+    text-align: -webkit-center;
+    width: 100%;
+  }
+}
 
 .informationItem {
   background-color: rgba(7, 80, 97, .25);
   border-radius: 0.5em;
   font-size: 0.85em;
-  padding: 2em;
+  padding: 1.5em 0.5em 1.5em 0.5em;
   margin: 0.5em;
   text-align: center;
   text-align: -webkit-center;
-  width: 20em;
+  width: 11em;
 
   @media screen and (min-width: 576px) {
     width: 15em;
   }
 
-  @media screen and (min-width: 1140px) {
-    width: 16em;
+  @media screen and (min-width: 768px) {
+    width: 20em;
+  }
+
+  @media screen and (min-width: 1400px) {
+    width: 25em;
   }
 
   &__contentContainer {
@@ -25,6 +39,14 @@
   &__image {
     max-height: 14em;
     max-width: 100%;
+
+    @media screen and (min-width: 768px) {
+      max-height: 20em;
+    }
+
+    @media screen and (min-width: 1400px) {
+      max-height: 25em;
+    }
   }
 
   &__imageContainer {
@@ -36,8 +58,12 @@
       width: 9em;
     }
 
-    @media screen and (min-width: 1140px) {
+    @media screen and (min-width: 768px) {
       width: 12em;
+    }
+
+    @media screen and (min-width: 1400px) {
+      width: 16em;
     }
 
     &:hover {
@@ -79,7 +105,7 @@
   }
 }
 
-.startPage {
+.informationItems {
   &__container {
     display: inline-flex;
     flex-wrap: wrap;
@@ -89,5 +115,18 @@
   &__content {
     display: flex;
     padding-top: 4.5em;
+  }
+}
+
+.startPage {
+  &__container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__content {
+    padding-top: 4.5em;
+    text-align: center;
   }
 }

@@ -4,7 +4,6 @@ import {takeUntil} from "rxjs/operators";
 import {ActivatedRoute} from "@angular/router";
 import {ItemsApiService} from "../../service/items-api.service";
 import {Module, NavigationService} from "../../service/navigation.service";
-import {TrackingService} from "../../service/tracking.service";
 import {Subject} from "rxjs";
 
 @Component({
@@ -16,6 +15,10 @@ export class StartPageComponent {
   private destroyedService$ = new Subject();
 
   private categoryItems: any = {
+      FASHION: [
+        new Item(), new Item(), new Item(),
+        new Item(), new Item(), new Item()
+      ],
       MULTIMEDIA: [
         new Item(), new Item(), new Item(),
         new Item(), new Item(), new Item()
@@ -48,6 +51,12 @@ export class StartPageComponent {
           this.categoryItems['MULTIMEDIA'] = items;
         });
 
+    this.itemsService.getItems('FASHION', '', 6)
+      .pipe(takeUntil(this.destroyedService$))
+      .subscribe(
+        items => {
+          this.categoryItems['FASHION'] = items;
+        });
   }
 
   public getItemsOfCategory(categoryId: string): Item[] {
