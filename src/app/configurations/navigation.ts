@@ -11,6 +11,12 @@ export class Navigation {
     new NavigationItem('FASHION', 'FASHION_MEN', ['fashion', 'men', '']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEWELRY', ['fashion', 'men', 'jewelry']),
 
+    new NavigationItem('ALL', 'KIDS', ['kids', '', '']),
+    new NavigationItem('KIDS', 'KIDS_PARTY', ['kids', 'party', '']),
+    new NavigationItem('KIDS_PARTY', 'KIDS_PARTY_TABLEWARE', ['kids', 'party', 'tableware']),
+    new NavigationItem('KIDS', 'KIDS_SCHOOL', ['kids', 'school', '']),
+    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SATCHEL', ['kids', 'school', 'satchel']),
+
     new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', '']),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_GAMES', ['multimedia', 'games', '']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_NINTENDO_SWITCH', ['multimedia', 'games', 'nintendo-switch']),
