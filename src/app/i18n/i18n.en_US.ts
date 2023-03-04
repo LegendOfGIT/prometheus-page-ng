@@ -35,7 +35,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_SLOGAN_ALL: 'shop',
       NAVIGATION_SLOGAN_ELECTRONICS_AND_COMPUTERS: 'be up to date',
       NAVIGATION_SLOGAN_FASHION: 'dress up',
-      NAVIGATION_SLOGAN_KIDS: 'the next generation',
+      NAVIGATION_SLOGAN_KIDS: 'be family',
       NAVIGATION_SLOGAN_MULTIMEDIA: 'be entertained',
       NAVIGATION_SLOGAN_MUSIC: 'listen',
       SEARCH_PROFILE_CATEGORY_CHARACTERISTICS: 'Characteristics',
