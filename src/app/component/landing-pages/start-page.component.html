@@ -1,5 +1,8 @@
 <div>
   <div class="container startPage__content">
-    <category-teaser *ngFor="let categoryId of allRootCategoryIds" [categoryId]="categoryId"></category-teaser>
+    <category-teaser
+      *ngFor="let item of allRootRootItems"
+      [navigationItem]="item"
+    ></category-teaser>
   </div>
 </div>

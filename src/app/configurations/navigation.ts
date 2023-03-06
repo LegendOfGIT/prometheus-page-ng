@@ -44,10 +44,9 @@ export class Navigation {
 
   ];
 
-  public static getAllRootCategoryIds(): Array<string> {
+  public static getAllRootItems(): Array<NavigationItem> {
     return this.ITEMS
-      .filter(item => 'ALL' === item.fromId)
-      .map(item => item.toId);
+      .filter(item => 'ALL' === item.fromId);
   }
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Module, NavigationService } from '../../service/navigation.service';
 import { Navigation } from '../../configurations/navigation';
+import {NavigationItem} from "../../model/navigation-item";
 
 @Component({
   selector: 'start-page',
@@ -19,7 +20,7 @@ export class StartPageComponent {
     });
   }
 
-  get allRootCategoryIds(): Array<string> {
-    return Navigation.getAllRootCategoryIds();
+  get allRootRootItems(): Array<NavigationItem> {
+    return Navigation.getAllRootItems();
   }
 }

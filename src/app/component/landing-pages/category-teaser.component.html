@@ -1,7 +1,7 @@
 <div class="category__title">
   <span class="header__titleCapitalLetter">W</span><span class="header__title">e</span>
   <span class="header__titleCapitalLetter">W</span><span class="header__title">anna</span>
-  <span class="header__titleSlogan"> {{'NAVIGATION_SLOGAN_' + categoryId | translate}}!</span>
+  <span class="header__titleSlogan"> {{('NAVIGATION_SLOGAN_' + navigationItem?.toId) | translate}}!</span>
 </div>
 <div class="col-12 informationItems__container">
   <div *ngFor="let item of getItemsOfCategory()">
@@ -26,5 +26,9 @@
   </div>
 </div>
 <div class="category__actions">
-  <button [routerLink]="[categoryId.toLowerCase()]">{{'SHOW_MORE_PREFIX' | translate }} "{{ 'NAVIGATION_' + categoryId | translate }}" {{'SHOW_MORE_SUFFIX' | translate }}</button>
+  <button
+    [routerLink]="[(navigationItem?.pathParts || [])[0]]">{{'SHOW_MORE_PREFIX' | translate }}"
+  >
+    {{ ('NAVIGATION_' + navigationItem?.toId) | translate }}" {{'SHOW_MORE_SUFFIX' | translate }}
+  </button>
 </div>
