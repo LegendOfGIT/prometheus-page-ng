@@ -41,7 +41,16 @@ export class CategoryTeaserComponent {
     return this.categoryItems;
   }
 
-  public getFirstLinkFromItem(item: Item) {
-    return item.getLinkOfLowestPriceItem();
+  private getHyphenatedString(value: string) {
+    return (value || '').substring(0, 100)
+      .replace(",", "")
+      .replace(/[^\w\s]/gi, '')
+      .replace(/[\(\)]/g, '')
+      .replace(/\s+/g, '-')
+      .toLowerCase();
+  }
+
+  public getSeoFriendlySingleProductViewUrl(item: Item) {
+    return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
   }
 }

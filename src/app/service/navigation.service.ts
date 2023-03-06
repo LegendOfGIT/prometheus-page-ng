@@ -66,5 +66,6 @@ export enum Module {
   ITEMS,
   PROFILE,
   SEARCH_PROFILES,
-  WISHLIST
+  WISHLIST,
+  SINGLE_PRODUCT_VIEW
 }

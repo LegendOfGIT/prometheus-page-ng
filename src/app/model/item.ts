@@ -4,6 +4,7 @@ import { CorrespondingItem } from './corresponding-item';
 
 export class Item extends BaseModel {
 
+    id: string = '';
     itemId: string = '';
     title: string = '';
     titleImage: string = '';
@@ -13,6 +14,7 @@ export class Item extends BaseModel {
     static override fromModel(data: ItemDto): Item | null {
         const item = this.bindFrom<ItemDto, Item>(Item, data);
         if (item) {
+          item.id = (data as any)._id;
           item.titleImage = (data as any)['title-image'];
           item.providers = (data.providers || []).map(provider => CorrespondingItem.fromModel(provider));
         }

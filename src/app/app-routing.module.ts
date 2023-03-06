@@ -8,12 +8,14 @@ import { SearchProfileSelectionComponent } from './component/profile/search/sear
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 import { ImprintComponent } from './component/legal/imprint.component';
 import { StartPageComponent } from './component/landing-pages/start-page.component';
+import { SingleProductViewComponent } from './component/product-view/single-product-view.component';
 
 const routes: Routes = [
     { path: 'imprint', component: ImprintComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'search-profile', component: SearchProfilesComponent },
     { path: 'wishlist', component: WishlistItemsComponent },
+    { path: 'p/:itemId/:seoFriendlyProductTitle', component: SingleProductViewComponent },
     { path: ':navigationIdLevelA', component: ItemsComponent },
     { path: ':navigationIdLevelA/:navigationIdLevelB', component: ItemsComponent },
     { path: ':navigationIdLevelA/:navigationIdLevelB/:navigationIdLevelC', component: ItemsComponent },

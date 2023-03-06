@@ -38,6 +38,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_SLOGAN_KIDS: 'be family',
       NAVIGATION_SLOGAN_MULTIMEDIA: 'be entertained',
       NAVIGATION_SLOGAN_MUSIC: 'listen',
+      PRICE_FROM: 'from',
       SEARCH_PROFILE_CATEGORY_CHARACTERISTICS: 'Characteristics',
       SEARCH_PROFILE_CATEGORY_GENDER_AND_AGE: 'Gender and age',
       SEARCH_PROFILE_CHARACTERISTICS_ACTIVE: 'Active',

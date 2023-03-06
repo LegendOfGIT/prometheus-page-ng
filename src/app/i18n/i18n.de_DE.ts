@@ -39,6 +39,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_SLOGAN_KIDS: 'be family',
       NAVIGATION_SLOGAN_MULTIMEDIA: 'be entertained',
       NAVIGATION_SLOGAN_MUSIC: 'listen',
+      PRICE_FROM: 'ab',
       SEARCH_PROFILE_CATEGORY_CHARACTERISTICS: 'Eigenschaften',
       SEARCH_PROFILE_CATEGORY_GENDER_AND_AGE: 'Alter und Geschlecht',
       SEARCH_PROFILE_CHARACTERISTICS_ACTIVE: 'Aktiv',

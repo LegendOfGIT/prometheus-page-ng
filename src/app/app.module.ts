@@ -22,6 +22,7 @@ import { ImprintComponent } from './component/legal/imprint.component';
 import { TranslationPipe } from './pipes/translation.pipe';
 import { StartPageComponent } from './component/landing-pages/start-page.component';
 import { CategoryTeaserComponent } from './component/landing-pages/category-teaser.component';
+import { SingleProductViewComponent } from './component/product-view/single-product-view.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CategoryTeaserComponent } from './component/landing-pages/category-teas
     NavigationComponent,
     ProfileComponent,
     SearchProfilesComponent, SearchProfileSelectionComponent,
+    SingleProductViewComponent,
     StartPageComponent,
     WishlistItemsComponent,
 
