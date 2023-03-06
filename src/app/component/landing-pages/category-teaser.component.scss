@@ -1,0 +1,155 @@
+@import "src/styles/controls";
+@import 'src/app/variables';
+
+.category {
+  &__actions {
+    padding: 1em 1em 8em 1em;
+    text-align: center;
+    text-align: -webkit-center;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 1.3em;
+    padding-bottom: 1em;
+    text-align: center;
+    text-align: -webkit-center;
+    width: 100%;
+  }
+}
+
+.header {
+  &__title {
+    color: $content-color--active;
+  }
+
+  &__titleCapitalLetter {
+    color: $content-color;
+  }
+
+  &__titleSlogan {
+    color: goldenrod;
+  }
+}
+
+.informationItem {
+  font-size: 0.85em;
+  padding: 1.5em 0.5em 1.5em 0.5em;
+  margin: 0.5em;
+  text-align: center;
+  text-align: -webkit-center;
+  width: 11em;
+
+  @media screen and (min-width: 576px) {
+    width: 15em;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 20em;
+  }
+
+  @media screen and (min-width: 1400px) {
+    width: 20em;
+  }
+
+  &__contentContainer {
+    margin-top: 2em;
+  }
+
+  &__image {
+    border-radius: 0.5em;
+    max-height: 14em;
+    max-width: 100%;
+
+    @media screen and (min-width: 768px) {
+      max-height: 20em;
+    }
+  }
+
+  &__imageContainer {
+    min-height: 14em;
+    position: relative;
+    width: 10em;
+
+    @media screen and (min-width: 576px) {
+      min-height: 15em;
+      width: 9em;
+    }
+
+    @media screen and (min-width: 768px) {
+      min-height: 19em;
+      width: 12em;
+    }
+
+    @media screen and (min-width: 1400px) {
+      min-height: 21em;
+      width: 14em;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.5s;
+    }
+  }
+
+  &__price {
+    background-color: $container-background-color;
+    border-radius: 15px;
+    margin: 1em;
+    padding: 0.3em;
+
+    &--hidden {
+      background: none;
+    }
+  }
+
+  &__title {
+    display: -webkit-box;
+    line-clamp: 4;
+    min-height: 6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  &--loading {
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: linear-gradient(to right, rgba(7, 80, 97, .25) 8%, rgba(7, 100, 97, .25) 50%, rgba(7, 80, 97, .25) 92%);
+    background-size: 800px 104px;
+    position: relative;
+  }
+}
+
+.informationItems {
+  &__container {
+    background-color: rgba(7, 80, 97, .25);
+    border-radius: 0.5em;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 1em;
+  }
+
+  &__content {
+    display: flex;
+    padding-top: 4.5em;
+  }
+}
+
+.startPage {
+  &__container {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__content {
+    padding-top: 4.5em;
+    text-align: center;
+  }
+}

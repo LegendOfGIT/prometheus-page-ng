@@ -53,6 +53,8 @@ export class I18nDeDe implements I18nInterface {
       SEARCH_PROFILE_GENDER_AGE_ADULT_MAN: 'Mann',
       SEARCH_PROFILE_GENDER_AGE_ELDER_WOMAN: 'Seniorin',
       SEARCH_PROFILE_GENDER_AGE_ELDER_MAN: 'Senior',
+      SHOW_MORE_PREFIX: 'Zeige mehr aus',
+      SHOW_MORE_SUFFIX: 'an',
       profileLogout: 'ausloggen'
     }
   }

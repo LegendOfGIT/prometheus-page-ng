@@ -21,12 +21,14 @@ import { WishlistItemsComponent } from './component/wishlist/wishlist-items.comp
 import { ImprintComponent } from './component/legal/imprint.component';
 import { TranslationPipe } from './pipes/translation.pipe';
 import { StartPageComponent } from './component/landing-pages/start-page.component';
+import { CategoryTeaserComponent } from './component/landing-pages/category-teaser.component';
 
 @NgModule({
   declarations: [
     AppComponent,
 
     AddToWishlistComponent,
+    CategoryTeaserComponent,
     HeaderComponent, FooterComponent,
     ImprintComponent,
     ItemsComponent,

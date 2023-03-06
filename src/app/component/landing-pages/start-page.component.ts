@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import {Item} from "../../model/item";
-import {takeUntil} from "rxjs/operators";
-import {ActivatedRoute} from "@angular/router";
-import {ItemsApiService} from "../../service/items-api.service";
-import {Module, NavigationService} from "../../service/navigation.service";
-import {Subject} from "rxjs";
+import { ActivatedRoute } from '@angular/router';
+import { Module, NavigationService } from '../../service/navigation.service';
+import { Navigation } from '../../configurations/navigation';
 
 @Component({
   selector: 'start-page',
@@ -12,58 +9,17 @@ import {Subject} from "rxjs";
   styleUrls: ['./start-page.component.scss']
 })
 export class StartPageComponent {
-  private destroyedService$ = new Subject();
-
-  private categoryItems: any = {
-      FASHION: [
-        new Item(), new Item(), new Item(),
-        new Item(), new Item(), new Item()
-      ],
-      MULTIMEDIA: [
-        new Item(), new Item(), new Item(),
-        new Item(), new Item(), new Item()
-      ]
-  };
 
   constructor(
     private route: ActivatedRoute,
-    private itemsService: ItemsApiService,
-    private navigationService: NavigationService
-  ) {
+    private navigationService: NavigationService) {
 
     route.paramMap.subscribe((params) => {
-      this.navigationService.activeModule = Module.ITEMS;
+      this.navigationService.activeModule = Module.HOME;
     });
-
   }
 
-  ngOnInit(): void {
-
-    const activeNavigationId =
-      this.navigationService.activeNavigationItem && this.navigationService.activeNavigationItem.fromId
-        ? this.navigationService.activeNavigationItem.toId
-        : '';
-
-    this.itemsService.getItems('MULTIMEDIA', '', 6)
-      .pipe(takeUntil(this.destroyedService$))
-      .subscribe(
-        items => {
-          this.categoryItems['MULTIMEDIA'] = items;
-        });
-
-    this.itemsService.getItems('FASHION', '', 6)
-      .pipe(takeUntil(this.destroyedService$))
-      .subscribe(
-        items => {
-          this.categoryItems['FASHION'] = items;
-        });
-  }
-
-  public getItemsOfCategory(categoryId: string): Item[] {
-    return this.categoryItems[categoryId];
-  }
-
-  public getFirstLinkFromItem(item: Item) {
-    return item.getLinkOfLowestPriceItem();
+  get allRootCategoryIds(): Array<string> {
+    return Navigation.getAllRootCategoryIds();
   }
 }

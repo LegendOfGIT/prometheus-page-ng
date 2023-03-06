@@ -52,6 +52,8 @@ export class I18nEnUs implements I18nInterface {
       SEARCH_PROFILE_GENDER_AGE_ADULT_MAN: 'Man',
       SEARCH_PROFILE_GENDER_AGE_ELDER_WOMAN: 'Elder woman',
       SEARCH_PROFILE_GENDER_AGE_ELDER_MAN: 'Elder man',
+      SHOW_MORE_PREFIX: 'Show more of',
+      SHOW_MORE_SUFFIX: '...',
       profileLogout: "logout"
     }
   }
