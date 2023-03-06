@@ -27,8 +27,7 @@
 </div>
 <div class="category__actions">
   <button
-    [routerLink]="[(navigationItem?.pathParts || [])[0]]">{{'SHOW_MORE_PREFIX' | translate }}"
-  >
-    {{ ('NAVIGATION_' + navigationItem?.toId) | translate }}" {{'SHOW_MORE_SUFFIX' | translate }}
+    [routerLink]="[(navigationItem?.pathParts || [])[0]]">
+    {{'SHOW_MORE_PREFIX' | translate }} "{{ ('NAVIGATION_' + navigationItem?.toId) | translate }}" {{'SHOW_MORE_SUFFIX' | translate }}
   </button>
 </div>
