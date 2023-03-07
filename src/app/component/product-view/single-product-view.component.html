@@ -1,11 +1,17 @@
 <div class="container singleProductView__content">
   <div class="row">
-    <div class="col-6">
-      <img class="mainStage__mainImage" src="{{item?.titleImage}}"/>
+    <div class="col-12 col-md-6">
+      <div>
+        <img class="mainStage__mainImage" src="{{item?.titleImage}}"/>
+      </div>
     </div>
-    <div class="col-6 mainStage__productInformation">
-      <h3>{{item?.title}}</h3>
-      {{item?.description}}
+    <div class="col-12 col-md-6">
+      <div class="mainStage__productInformation">
+        <h3>{{item?.title}}</h3>
+        <p class="mainStage__productDescription">
+          {{item?.description}}
+        </p>
+      </div>
     </div>
   </div>
 </div>
