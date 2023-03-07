@@ -19,9 +19,14 @@
         <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
       </div>
       <div class="informationItem__contentContainer">
-        <div [ngClass]="['informationItem__price', item.renderLowestPrice() ? '' : 'informationItem__price--hidden']">
-          {{ 'PRICE_FROM' | translate }} {{item.renderLowestPrice() || '&nbsp;'}}
+        <div *ngIf="item.renderLowestPrice(); else noPrice" [ngClass]="['informationItem__price']">
+          {{ 'PRICE_FROM' | translate }} {{item.renderLowestPrice() || ''}}
         </div>
+        <ng-template #noPrice>
+          <div [ngClass]="['informationItem__price', 'informationItem__price--hidden']">
+            &nbsp;
+          </div>
+        </ng-template>
         <div class="informationItem__title">{{item.title}}</div>
       </div>
     </div>

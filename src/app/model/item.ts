@@ -6,6 +6,7 @@ export class Item extends BaseModel {
 
     id: string = '';
     itemId: string = '';
+    description: string = '';
     title: string = '';
     titleImage: string = '';
 
