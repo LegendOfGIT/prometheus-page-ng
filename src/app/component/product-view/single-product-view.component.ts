@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Module, NavigationService } from '../../service/navigation.service';
 import { ItemsApiService } from '../../service/items-api.service';
-import {Item} from "../../model/item";
-import {CorrespondingItem} from "../../model/corresponding-item";
+import { Item } from '../../model/item';
+import { CorrespondingItem } from '../../model/corresponding-item';
+import {NavigationItem} from "../../model/navigation-item";
+import {Navigation} from "../../configurations/navigation";
 
 @Component({
   selector: 'single-product-view',
@@ -75,4 +77,12 @@ export class SingleProductViewComponent {
       .filter(item => 0 === (item?.priceCurrent || 0));
   }
 
+  get navigationItemToCategory(): NavigationItem | undefined {
+    const pathTokens = (this.item?.navigationPath || []);
+    if (!pathTokens.length) {
+      return;
+    }
+
+    return Navigation.getNavigationItemByToId(pathTokens[0]);
+  }
 }

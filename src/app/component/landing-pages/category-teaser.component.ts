@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Item } from '../../model/item';
 import { takeUntil } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
@@ -11,7 +11,7 @@ import { NavigationItem } from '../../model/navigation-item';
   templateUrl: './category-teaser.component.html',
   styleUrls: ['./category-teaser.component.scss']
 })
-export class CategoryTeaserComponent {
+export class CategoryTeaserComponent implements OnInit {
   @Input()
   public navigationItem: NavigationItem | undefined = undefined;
 
@@ -29,11 +29,23 @@ export class CategoryTeaserComponent {
   }
 
   ngOnInit(): void {
-    this.itemsService.getItems(this.navigationItem?.toId || '', '', 6)
+    const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
+
+    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 6)
       .pipe(takeUntil(this.destroyedService$))
       .subscribe(
         items => {
-          this.categoryItems = items;
+          if (items?.length) {
+            this.categoryItems = items;
+            return;
+          }
+
+          this.itemsService.getItems(this.navigationItem?.toId || '', '', 6)
+            .pipe(takeUntil(this.destroyedService$))
+            .subscribe(
+              items => {
+                this.categoryItems = items;
+              });
         });
   }
 

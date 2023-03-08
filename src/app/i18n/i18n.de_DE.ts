@@ -1,5 +1,4 @@
 import { I18nInterface } from './i18n.interface';
-import {NavigationItem} from "../model/navigation-item";
 
 export class I18nDeDe implements I18nInterface {
   public getTranslations(): any {
@@ -7,6 +6,7 @@ export class I18nDeDe implements I18nInterface {
       iAmSearchingFor: 'Ich suche ...',
       languageDeDe: 'deutsch',
       languageEnUs: 'englisch (US)',
+      BACK_TO: 'Zurück zu',
       MORE_OFFERS: 'Weitere Angebote',
       NAVIGATION_ALL: 'Alle Produkte',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS: 'Elektronik & Computer',

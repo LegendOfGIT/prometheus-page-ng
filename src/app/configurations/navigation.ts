@@ -49,4 +49,8 @@ export class Navigation {
       .filter(item => 'ALL' === item.fromId);
   }
 
+  public static getNavigationItemByToId(toId: string): NavigationItem | undefined {
+    const items = this.ITEMS.filter(item => toId === item.toId);
+    return items && items.length ? items[0] : undefined;
+  }
 }

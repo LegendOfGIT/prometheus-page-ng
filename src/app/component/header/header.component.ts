@@ -1,13 +1,13 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { debounceTime } from 'rxjs/operators';
+import {FormBuilder, FormControl} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {debounceTime} from 'rxjs/operators';
 
-import { UserService } from 'src/app/service/user.service';
-import { SearchProfilesApiService } from 'src/app/service/search-profiles-api.service';
-import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
-import { SearchProfile } from 'src/app/model/search-profile';
-import { Module, NavigationService } from 'src/app/service/navigation.service';
+import {UserService} from 'src/app/service/user.service';
+import {SearchProfilesApiService} from 'src/app/service/search-profiles-api.service';
+import {WishlistItemsApiService} from 'src/app/service/wishlist-items-api.service';
+import {SearchProfile} from 'src/app/model/search-profile';
+import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {NavigationItem} from "../../model/navigation-item";
 import {Navigation} from "../../configurations/navigation";
 
@@ -110,6 +110,10 @@ export class HeaderComponent {
 
   get activeNavigationItem(): NavigationItem | undefined {
     return this.navigationService.activeNavigationItem;
+  }
+
+  get showSearchBar(): boolean {
+    return -1 !== [Module.ITEMS, Module.HOME].indexOf(this.navigationService.activeModule);
   }
 
 }

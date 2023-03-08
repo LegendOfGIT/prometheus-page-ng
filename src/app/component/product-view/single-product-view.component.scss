@@ -1,5 +1,29 @@
 @import 'src/app/variables';
 
+.button {
+  background-color: $container-background-color;
+  border-radius: 0.5em;
+  cursor: pointer;
+  max-width: 18em;
+  padding: 0.5em 1em 0.5em 1em;
+
+  a {
+    color: $content-color;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $content-color--active;
+  }
+}
+
+.content {
+  &--center {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .mainStage {
   display: flex;
 
@@ -59,6 +83,10 @@
 }
 
 .singleProductView {
+  &__backToOverview {
+    margin-bottom: 2em;
+  }
+
   &__content {
     padding-top: 4.5em;
     text-align: center;

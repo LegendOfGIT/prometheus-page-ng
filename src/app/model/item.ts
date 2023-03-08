@@ -9,6 +9,7 @@ export class Item extends BaseModel {
     description: string = '';
     title: string = '';
     titleImage: string = '';
+    navigationPath: Array<string> = [];
 
     providers: Array<CorrespondingItem | null> = [];
 

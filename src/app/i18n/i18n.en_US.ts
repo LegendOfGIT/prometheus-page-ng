@@ -6,6 +6,7 @@ export class I18nEnUs implements I18nInterface {
       iAmSearchingFor: 'I am looking for ...',
       languageDeDe: 'german',
       languageEnUs: 'english (US)',
+      BACK_TO: 'back to',
       MORE_OFFERS: 'more offers',
       NAVIGATION_ALL: 'all products',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS: 'electronics & computers',
