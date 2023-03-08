@@ -6,11 +6,44 @@
       </div>
     </div>
     <div class="col-12 col-md-6">
-      <div class="mainStage__productInformation">
+      <div class="productInformation">
         <h3>{{item?.title}}</h3>
         <p class="mainStage__productDescription">
           {{item?.description}}
         </p>
+
+        <div>
+          <div class="productInformation__header">
+            <h4>{{areThereMorePrices ? 'Top-Angebot' : 'Angebot'}}</h4>
+          </div>
+
+          <div class="productInformation__offers">
+            <a href="{{itemWithLowestPrice?.link}}" target="_blank">
+              <div class="productInformation__offer">
+                {{getShopNameFromUrl(itemWithLowestPrice?.link)}}: {{itemWithLowestPrice?.priceCurrent}} EUR
+              </div>
+            </a>
+          </div>
+
+          <div class="productInformation__header">
+            <h5>Weitere Angebote</h5>
+          </div>
+          <div class="productInformation__offers">
+            <a *ngFor="let offer of moreExpensiveOfferItems" href="{{offer?.link}}" target="_blank">
+              <div class="productInformation__offer">
+                {{getShopNameFromUrl(offer?.link)}}: {{offer?.priceCurrent}} EUR
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="productInformation productInformation__header">
+        &nbsp;
       </div>
     </div>
   </div>

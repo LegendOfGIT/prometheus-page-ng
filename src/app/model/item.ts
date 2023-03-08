@@ -23,13 +23,13 @@ export class Item extends BaseModel {
         return item;
     }
 
-    private getProviderItemWithLowestPrice(): CorrespondingItem | null {
+    public getProviderItemWithLowestPrice(): CorrespondingItem | null {
       if (!this.providers || !this.providers.length) {
         return null;
       }
 
       this.providers.sort((a, b) =>
-        (a as any)['current-price'] - (b as any)['current-price']);
+        (a?.priceCurrent || 0) - (b?.priceCurrent || 0));
 
       return this.providers[0];
     }

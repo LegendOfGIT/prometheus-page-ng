@@ -1,11 +1,10 @@
-import {ItemDto} from "./dto/item-dto";
 import {BaseModel} from "./factory/factory-base";
 import {CorrespondingItemDto} from "./dto/corresponding-item-dto";
 
 export class CorrespondingItem extends BaseModel {
-    link: string = '';
-    priceCurrent: number = 0;
-    priceInitial: number = 0;
+    public link: string = '';
+    public priceCurrent: number = 0;
+    public priceInitial: number = 0;
 
     static override fromModel(data: CorrespondingItemDto): CorrespondingItem {
 

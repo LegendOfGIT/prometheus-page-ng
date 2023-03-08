@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Module, NavigationService } from '../../service/navigation.service';
 import { ItemsApiService } from '../../service/items-api.service';
 import {Item} from "../../model/item";
+import {CorrespondingItem} from "../../model/corresponding-item";
 
 @Component({
   selector: 'single-product-view',
@@ -34,6 +35,32 @@ export class SingleProductViewComponent {
       this.item = items[0];
     });
 
+  }
+
+  public getShopNameFromUrl(url: string | undefined) {
+    const match = (url || '').match(/\/\/(www.)?(.*?)\//);
+    return match && match.length > 2 ? match[2] : '';
+  }
+
+  get itemWithLowestPrice(): CorrespondingItem | null {
+    if (!this.item) {
+      return null;
+    }
+
+    return this.item.getProviderItemWithLowestPrice();
+  }
+
+  get areThereMorePrices(): boolean {
+    return (this.item?.providers || []).length > 1;
+  }
+
+  get moreExpensiveOfferItems(): Array<CorrespondingItem | null> {
+    if (!this.areThereMorePrices) {
+      return [];
+    }
+
+    return (this.item?.providers || [])
+      .filter(providerItem => providerItem !== this.item?.getProviderItemWithLowestPrice());
   }
 
 }

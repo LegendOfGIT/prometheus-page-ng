@@ -1,23 +1,15 @@
+@import 'src/app/variables';
+
 .mainStage {
   display: flex;
 
   &__productDescription {
     display: -webkit-box;
-    line-clamp: 12;
+    line-clamp: 8;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 12;
-  }
-
-  &__productInformation {
-    max-width: 30em;
-    padding: 3em;
-    text-align: left;
-
-    @media screen and (min-width: 768px) {
-      padding: unset;
-    }
+    -webkit-line-clamp: 8;
   }
 
   &__mainImage {
@@ -25,6 +17,42 @@
 
     @media screen and (min-width: 1400px) {
       max-height: 30em;
+    }
+  }
+}
+
+.productInformation {
+  max-width: 30em;
+  padding: 3em 1em 0 1em;
+  text-align: left;
+
+  @media screen and (min-width: 768px) {
+    padding: unset;
+  }
+
+  &__header {
+    padding-top: 1em;
+    text-align: left;
+  }
+
+  &__offer {
+    background-color: $container-background-color;
+    border-radius: 0.5em;
+    margin-bottom: 0.5em;
+    max-width: 18em;
+    padding: 0.5em;
+    color: $content-color;
+
+    &:hover {
+      color: $content-color--active;
+    }
+  }
+
+  &__offers {
+    text-align: center;
+
+    a {
+      text-decoration: none;
     }
   }
 }
