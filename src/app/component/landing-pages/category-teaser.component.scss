@@ -4,8 +4,8 @@
 .category {
   &__actions {
     padding: 1em 1em 6em 1em;
-    text-align: center;
-    text-align: -webkit-center;
+    display: flex;
+    justify-content: center;
     width: 100%;
   }
 

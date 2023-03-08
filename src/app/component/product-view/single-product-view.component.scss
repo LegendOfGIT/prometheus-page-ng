@@ -6,6 +6,7 @@
   cursor: pointer;
   max-width: 18em;
   padding: 0.5em 1em 0.5em 1em;
+  text-align: center;
 
   a {
     color: $content-color;
@@ -39,9 +40,11 @@
 
   &__mainImage {
     max-height: 20em;
+    max-width: 20em;
 
     @media screen and (min-width: 1400px) {
       max-height: 30em;
+      max-width: 30em;
     }
   }
 }
@@ -53,6 +56,10 @@
 
   @media screen and (min-width: 768px) {
     padding: unset;
+  }
+
+  &--last {
+    padding-bottom: 3em;
   }
 
   &__header {
@@ -78,6 +85,12 @@
 
     a {
       text-decoration: none;
+    }
+  }
+
+  &__share {
+    @media screen and (min-width: 768px) {
+      display: none;
     }
   }
 }

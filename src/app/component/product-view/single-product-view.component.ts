@@ -85,4 +85,8 @@ export class SingleProductViewComponent {
 
     return Navigation.getNavigationItemByToId(pathTokens[0]);
   }
+
+  get currentUriEncodedUri(): string {
+    return encodeURIComponent(window.location.href);
+  }
 }
