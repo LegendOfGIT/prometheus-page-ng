@@ -6,6 +6,7 @@ export class I18nEnUs implements I18nInterface {
       iAmSearchingFor: 'I am looking for ...',
       languageDeDe: 'german',
       languageEnUs: 'english (US)',
+      MORE_OFFERS: 'more offers',
       NAVIGATION_ALL: 'all products',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS: 'electronics & computers',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES: 'large appliances',
@@ -38,6 +39,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_SLOGAN_KIDS: 'be family',
       NAVIGATION_SLOGAN_MULTIMEDIA: 'be entertained',
       NAVIGATION_SLOGAN_MUSIC: 'listen',
+      OFFER: 'offer',
       PRICE_FROM: 'from',
       SEARCH_PROFILE_CATEGORY_CHARACTERISTICS: 'Characteristics',
       SEARCH_PROFILE_CATEGORY_GENDER_AND_AGE: 'Gender and age',
@@ -55,6 +57,7 @@ export class I18nEnUs implements I18nInterface {
       SEARCH_PROFILE_GENDER_AGE_ELDER_MAN: 'Elder man',
       SHOW_MORE_PREFIX: 'Show more of',
       SHOW_MORE_SUFFIX: '...',
+      TOP_OFFER: 'best offer',
       profileLogout: "logout"
     }
   }

@@ -74,4 +74,20 @@ export class ItemsComponent implements OnInit {
           .setTrackingId('overview.item.clicked'));
     }
 
+  private getHyphenatedString(value: string) {
+    return (value || '').substring(0, 100)
+      .replace(",", "")
+      .replace(/[^\w\s]/gi, '')
+      .replace(/[\(\)]/g, '')
+      .replace(/\s+/g, '-')
+      .toLowerCase();
+  }
+
+  public getSeoFriendlySingleProductViewUrl(item: Item | null): string {
+    if (!item) {
+      return '';
+    }
+
+    return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
+  }
 }

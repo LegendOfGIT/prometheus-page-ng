@@ -7,6 +7,7 @@ export class I18nDeDe implements I18nInterface {
       iAmSearchingFor: 'Ich suche ...',
       languageDeDe: 'deutsch',
       languageEnUs: 'englisch (US)',
+      MORE_OFFERS: 'Weitere Angebote',
       NAVIGATION_ALL: 'Alle Produkte',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS: 'Elektronik & Computer',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES: 'Elektro Großgeräte',
@@ -39,6 +40,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_SLOGAN_KIDS: 'be family',
       NAVIGATION_SLOGAN_MULTIMEDIA: 'be entertained',
       NAVIGATION_SLOGAN_MUSIC: 'listen',
+      OFFER: 'Angebot',
       PRICE_FROM: 'ab',
       SEARCH_PROFILE_CATEGORY_CHARACTERISTICS: 'Eigenschaften',
       SEARCH_PROFILE_CATEGORY_GENDER_AND_AGE: 'Alter und Geschlecht',
@@ -56,6 +58,7 @@ export class I18nDeDe implements I18nInterface {
       SEARCH_PROFILE_GENDER_AGE_ELDER_MAN: 'Senior',
       SHOW_MORE_PREFIX: 'Zeige mehr aus',
       SHOW_MORE_SUFFIX: 'an',
+      TOP_OFFER: 'Top-Angebot',
       profileLogout: 'ausloggen'
     }
   }

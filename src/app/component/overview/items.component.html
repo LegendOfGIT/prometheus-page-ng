@@ -7,7 +7,7 @@
 
         <div *ngIf="item" [ngClass]="['informationItem', item?.itemId ? '' : 'informationItem--loading']">
           <div class="informationItem__imageContainer">
-            <a href="{{getFirstLinkFromItem(item)}}" target="{{item.itemId}}" (click)="pickedInformation(item)">
+            <a href="{{getSeoFriendlySingleProductViewUrl(item)}}" (click)="pickedInformation(item)">
               <img
                 class="informationItem__image"
                 alt="{{item.title}}"
@@ -17,10 +17,19 @@
             </a>
             <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
           </div>
-          <div class="informationItem__contentContainer">
-            <div [ngClass]="['informationItem__price', item.renderLowestPrice() ? '' : 'informationItem__price--hidden']">{{item.renderLowestPrice() || '&nbsp;'}}</div>
-            <div class="informationItem__title">{{item.title}}</div>
-          </div>
+          <a href="{{getSeoFriendlySingleProductViewUrl(item)}}" (click)="pickedInformation(item)">
+            <div class="informationItem__contentContainer">
+              <div *ngIf="item.renderLowestPrice(); else noPrice" [ngClass]="['informationItem__price']">
+                {{ 'PRICE_FROM' | translate }} {{item.renderLowestPrice() || ''}}
+              </div>
+              <ng-template #noPrice>
+                <div [ngClass]="['informationItem__price', 'informationItem__price--hidden']">
+                  &nbsp;
+                </div>
+              </ng-template>
+              <div class="informationItem__title">{{item.title}}</div>
+            </div>
+          </a>
         </div>
       </div>
     </div>

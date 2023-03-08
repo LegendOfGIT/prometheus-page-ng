@@ -10,6 +10,10 @@
   text-align: -webkit-center;
   width: 20em;
 
+  a {
+    text-decoration: none;
+  }
+
   @media screen and (min-width: 576px) {
     width: 15em;
   }
@@ -19,6 +23,7 @@
   }
 
   &__contentContainer {
+    color: #fff;
     margin-top: 2em;
   }
 

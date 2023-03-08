@@ -28,6 +28,10 @@ export class Item extends BaseModel {
         return null;
       }
 
+      if (1 === this.providers.length) {
+        return this.providers[0];
+      }
+
       const providers = this.providers
         .filter(item => (item?.priceCurrent || 0) > 0)
         .sort((a, b) => (a?.priceCurrent || 0) - (b?.priceCurrent || 0));

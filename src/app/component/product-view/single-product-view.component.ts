@@ -60,7 +60,19 @@ export class SingleProductViewComponent {
     }
 
     return (this.item?.providers || [])
-      .filter(providerItem => providerItem !== this.item?.getProviderItemWithLowestPrice());
+      .filter(providerItem => providerItem !== this.item?.getProviderItemWithLowestPrice())
+      .filter(item => (item?.priceCurrent || 0) > 0)
+      .sort((a, b) => (a?.priceCurrent || 0) - (b?.priceCurrent || 0));
+  }
+
+  get offerItemsWithoutPrice(): Array<CorrespondingItem | null> {
+    if (!this.areThereMorePrices) {
+      return [];
+    }
+
+    return (this.item?.providers || [])
+      .filter(providerItem => providerItem !== this.item?.getProviderItemWithLowestPrice())
+      .filter(item => 0 === (item?.priceCurrent || 0));
   }
 
 }

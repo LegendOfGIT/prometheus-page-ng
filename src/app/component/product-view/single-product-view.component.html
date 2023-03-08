@@ -7,14 +7,14 @@
     </div>
     <div class="col-12 col-md-6">
       <div class="productInformation">
-        <h3>{{item?.title}}</h3>
+        <h4>{{item?.title}}</h4>
         <p class="mainStage__productDescription">
           {{item?.description}}
         </p>
 
         <div>
           <div class="productInformation__header">
-            <h4>{{areThereMorePrices ? 'Top-Angebot' : 'Angebot'}}</h4>
+            <h4>{{( areThereMorePrices ? 'TOP_OFFER' : 'OFFER') | translate }}</h4>
           </div>
 
           <div class="productInformation__offers">
@@ -27,10 +27,15 @@
 
           <div *ngIf="areThereMorePrices">
             <div class="productInformation__header">
-              <h5>Weitere Angebote</h5>
+              <h5>{{ 'MORE_OFFERS' | translate }}</h5>
             </div>
             <div class="productInformation__offers">
               <a *ngFor="let offer of moreExpensiveOfferItems" href="{{offer?.link}}" target="_blank">
+                <div class="productInformation__offer">
+                  {{getShopNameFromUrl(offer?.link)}}<span *ngIf="offer?.renderPrice()">: {{offer?.renderPrice()}}</span>
+                </div>
+              </a>
+              <a *ngFor="let offer of offerItemsWithoutPrice" href="{{offer?.link}}" target="_blank">
                 <div class="productInformation__offer">
                   {{getShopNameFromUrl(offer?.link)}}<span *ngIf="offer?.renderPrice()">: {{offer?.renderPrice()}}</span>
                 </div>
