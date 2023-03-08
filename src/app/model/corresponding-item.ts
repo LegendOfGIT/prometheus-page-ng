@@ -1,5 +1,5 @@
-import {BaseModel} from "./factory/factory-base";
-import {CorrespondingItemDto} from "./dto/corresponding-item-dto";
+import { BaseModel } from './factory/factory-base';
+import { CorrespondingItemDto } from './dto/corresponding-item-dto';
 
 export class CorrespondingItem extends BaseModel {
     public link: string = '';
@@ -16,4 +16,8 @@ export class CorrespondingItem extends BaseModel {
 
       return item;
     }
+
+  public renderPrice(): string | undefined {
+    return this.priceCurrent ? `${this.priceCurrent.toLocaleString('de-DE', {minimumFractionDigits: 2})} EUR` : undefined;
+  }
 }

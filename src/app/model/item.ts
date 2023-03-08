@@ -28,10 +28,11 @@ export class Item extends BaseModel {
         return null;
       }
 
-      this.providers.sort((a, b) =>
-        (a?.priceCurrent || 0) - (b?.priceCurrent || 0));
+      const providers = this.providers
+        .filter(item => (item?.priceCurrent || 0) > 0)
+        .sort((a, b) => (a?.priceCurrent || 0) - (b?.priceCurrent || 0));
 
-      return this.providers[0];
+      return providers[0];
     }
 
     public getLinkOfLowestPriceItem(): string {

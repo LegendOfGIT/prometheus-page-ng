@@ -20,20 +20,22 @@
           <div class="productInformation__offers">
             <a href="{{itemWithLowestPrice?.link}}" target="_blank">
               <div class="productInformation__offer">
-                {{getShopNameFromUrl(itemWithLowestPrice?.link)}}: {{itemWithLowestPrice?.priceCurrent}} EUR
+                {{getShopNameFromUrl(itemWithLowestPrice?.link)}}<span *ngIf="itemWithLowestPrice?.renderPrice()">: {{itemWithLowestPrice?.renderPrice()}}</span>
               </div>
             </a>
           </div>
 
-          <div class="productInformation__header">
-            <h5>Weitere Angebote</h5>
-          </div>
-          <div class="productInformation__offers">
-            <a *ngFor="let offer of moreExpensiveOfferItems" href="{{offer?.link}}" target="_blank">
-              <div class="productInformation__offer">
-                {{getShopNameFromUrl(offer?.link)}}: {{offer?.priceCurrent}} EUR
-              </div>
-            </a>
+          <div *ngIf="areThereMorePrices">
+            <div class="productInformation__header">
+              <h5>Weitere Angebote</h5>
+            </div>
+            <div class="productInformation__offers">
+              <a *ngFor="let offer of moreExpensiveOfferItems" href="{{offer?.link}}" target="_blank">
+                <div class="productInformation__offer">
+                  {{getShopNameFromUrl(offer?.link)}}<span *ngIf="offer?.renderPrice()">: {{offer?.renderPrice()}}</span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>

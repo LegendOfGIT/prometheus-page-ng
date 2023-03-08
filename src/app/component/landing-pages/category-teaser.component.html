@@ -18,17 +18,19 @@
         </a>
         <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
       </div>
-      <div class="informationItem__contentContainer">
-        <div *ngIf="item.renderLowestPrice(); else noPrice" [ngClass]="['informationItem__price']">
-          {{ 'PRICE_FROM' | translate }} {{item.renderLowestPrice() || ''}}
-        </div>
-        <ng-template #noPrice>
-          <div [ngClass]="['informationItem__price', 'informationItem__price--hidden']">
-            &nbsp;
+      <a href="{{getSeoFriendlySingleProductViewUrl(item)}}">
+        <div class="informationItem__contentContainer">
+          <div *ngIf="item.renderLowestPrice(); else noPrice" [ngClass]="['informationItem__price']">
+            {{ 'PRICE_FROM' | translate }} {{item.renderLowestPrice() || ''}}
           </div>
-        </ng-template>
-        <div class="informationItem__title">{{item.title}}</div>
-      </div>
+          <ng-template #noPrice>
+            <div [ngClass]="['informationItem__price', 'informationItem__price--hidden']">
+              &nbsp;
+            </div>
+          </ng-template>
+          <div class="informationItem__title">{{item.title}}</div>
+        </div>
+      </a>
     </div>
   </div>
 </div>

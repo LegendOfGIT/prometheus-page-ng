@@ -50,7 +50,11 @@ export class CategoryTeaserComponent {
       .toLowerCase();
   }
 
-  public getSeoFriendlySingleProductViewUrl(item: Item) {
+  public getSeoFriendlySingleProductViewUrl(item: Item | null): string {
+    if (!item) {
+      return '';
+    }
+
     return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
   }
 }
