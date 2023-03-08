@@ -23,6 +23,7 @@ import { TranslationPipe } from './pipes/translation.pipe';
 import { StartPageComponent } from './component/landing-pages/start-page.component';
 import { CategoryTeaserComponent } from './component/landing-pages/category-teaser.component';
 import { SingleProductViewComponent } from './component/product-view/single-product-view.component';
+import { UrlEncodePipe } from './pipes/web.pipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SingleProductViewComponent } from './component/product-view/single-prod
     StartPageComponent,
     WishlistItemsComponent,
 
-    TranslationPipe
+    TranslationPipe,
+    UrlEncodePipe
   ],
   imports: [
     BrowserModule,
