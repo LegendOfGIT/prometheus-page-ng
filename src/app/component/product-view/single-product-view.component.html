@@ -69,6 +69,15 @@
   <div class="row">
     <div class="col-12">
       <div class="productInformation productInformation--last productInformation__header">
+        <div *ngIf="item?.getItemDetails()?.length">
+          <div class="productInformation__header">
+            <h4>{{'PRODUCT_DETAILS' | translate}}</h4>
+          </div>
+          <div *ngFor="let detail of item?.getItemDetails()">
+            <div class="productDetails__label">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</div>
+            <div>{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate }}</div>
+          </div>
+        </div>
         &nbsp;
       </div>
     </div>

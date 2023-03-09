@@ -1,6 +1,8 @@
 import { ItemDto } from './dto/item-dto';
 import { BaseModel } from './factory/factory-base';
 import { CorrespondingItem } from './corresponding-item';
+import {ItemDetails} from "./item-details";
+import {unwrapConstructorDependencies} from "@angular/compiler-cli/src/ngtsc/annotations/common";
 
 export class Item extends BaseModel {
 
@@ -10,6 +12,14 @@ export class Item extends BaseModel {
     title: string = '';
     titleImage: string = '';
     navigationPath: Array<string> = [];
+
+    amountOfMedia: number = 0;
+    amountOfSongs: number = 0;
+    interpret: string = '';
+    genre: string = '';
+    minimumAge: number = 0;
+    subgenre: string = '';
+
 
     providers: Array<CorrespondingItem | null> = [];
 
@@ -50,6 +60,17 @@ export class Item extends BaseModel {
 
       const lowestPrice = item?.priceCurrent;
       return lowestPrice ? `${lowestPrice.toLocaleString('de-DE', {minimumFractionDigits: 2})} EUR` : '';
+    }
+
+    public getItemDetails(): Array<ItemDetails> {
+      return [
+        new ItemDetails('GENRE', this.genre),
+        new ItemDetails('SUBGENRE', this.subgenre),
+        new ItemDetails('MINIMUM_AGE', this.minimumAge),
+        new ItemDetails('INTERPRET', this.interpret),
+        new ItemDetails('AMOUNT_OF_MEDIA', this.amountOfMedia),
+        new ItemDetails('AMOUNT_OF_SONGS', this.amountOfSongs),
+      ].filter(detail => detail.value);
     }
 
 }

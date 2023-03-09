@@ -49,6 +49,14 @@
   }
 }
 
+.productDetails {
+  &__label {
+    font-weight: bold;
+    padding-bottom: 0.2em;
+    padding-top: 1em;
+  }
+}
+
 .productInformation {
   max-width: 30em;
   padding: 3em 1em 0 1em;
