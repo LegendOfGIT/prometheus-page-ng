@@ -61,9 +61,11 @@
     <div class="col-12">
       <div class="productInformation">
         <h5>{{'SHARE' | translate}}</h5>
-        <div class="button">
-          <a [href]="safeWhatsAppUri">{{'SHARE_ON_WHATSAPP' | translate}}</a>
-        </div>
+        <a [href]="safeWhatsAppUri" class="button__wrapper">
+          <div class="button">
+            {{'SHARE_ON_WHATSAPP' | translate}}
+          </div>
+        </a>
       </div>
     </div>
   </div>
