@@ -46,9 +46,9 @@ export class SingleProductViewComponent {
 
     this.safeWhatsAppUri = this.getSanitizedUri([
       'whatsapp://send?text=',
-      this.translation.getTranslations()['SHARE_FOUND_AT_WE_WANNA'],
-      ' - ',
-      window.location.href
+      encodeURIComponent(this.translation.getTranslations()['SHARE_FOUND_AT_WE_WANNA']),
+      encodeURIComponent(' - '),
+      encodeURIComponent(window.location.href)
     ]);
   }
 
@@ -58,7 +58,7 @@ export class SingleProductViewComponent {
   }
 
   public getSanitizedUri(uriTokens: Array<string>): SafeHtml {
-    return this.sanitizer.bypassSecurityTrustUrl(encodeURIComponent(uriTokens.join('')));
+    return this.sanitizer.bypassSecurityTrustUrl(uriTokens.join(''));
   }
 
   get itemWithLowestPrice(): CorrespondingItem | null {
