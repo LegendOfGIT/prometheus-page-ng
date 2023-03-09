@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+
 import { Module, NavigationService } from '../../service/navigation.service';
 import { ItemsApiService } from '../../service/items-api.service';
 import { Item } from '../../model/item';
 import { CorrespondingItem } from '../../model/corresponding-item';
-import {NavigationItem} from "../../model/navigation-item";
-import {Navigation} from "../../configurations/navigation";
+import { NavigationItem } from '../../model/navigation-item';
+import { Navigation } from '../../configurations/navigation';
+import { TranslationService } from '../../service/translation.service';
 
 @Component({
   selector: 'single-product-view',
@@ -18,10 +21,14 @@ export class SingleProductViewComponent {
 
   public item: Item | null = null;
 
+  public safeWhatsAppUri: SafeHtml;
+
   constructor(
+    private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
     private itemsService: ItemsApiService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private translation: TranslationService
   ) {
 
     route.paramMap.subscribe((params) => {
@@ -37,11 +44,21 @@ export class SingleProductViewComponent {
       this.item = items[0];
     });
 
+    this.safeWhatsAppUri = this.getSanitizedUri([
+      'whatsapp://send?text=',
+      this.translation.getTranslations()['SHARE_FOUND_AT_WE_WANNA'],
+      ' - ',
+      window.location.href
+    ]);
   }
 
   public getShopNameFromUrl(url: string | undefined) {
     const match = (url || '').match(/\/\/(www.)?(.*?)\//);
     return match && match.length > 2 ? match[2] : '';
+  }
+
+  public getSanitizedUri(uriTokens: Array<string>): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustUrl(encodeURIComponent(uriTokens.join('')));
   }
 
   get itemWithLowestPrice(): CorrespondingItem | null {
@@ -84,9 +101,5 @@ export class SingleProductViewComponent {
     }
 
     return Navigation.getNavigationItemByToId(pathTokens[0]);
-  }
-
-  get currentUriEncodedUri(): string {
-    return encodeURIComponent(window.location.href);
   }
 }

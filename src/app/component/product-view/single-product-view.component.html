@@ -61,7 +61,7 @@
       <div class="productInformation">
         <h5>{{'SHARE' | translate}}</h5>
         <div class="button">
-          <a href="whatsapp://send?text={{'SHARE_FOUND_AT_WE_WANNA' | translate | urlEncode}}{{': ' | urlEncode}}{{currentUriEncodedUri}}">{{'SHARE_ON_WHATSAPP' | translate}}</a>
+          <a [href]="safeWhatsAppUri">{{'SHARE_ON_WHATSAPP' | translate}}</a>
         </div>
       </div>
     </div>
