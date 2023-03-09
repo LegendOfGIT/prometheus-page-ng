@@ -2,13 +2,14 @@
 
   <div class="row">
     <div class="col-12 content--center">
-      <div *ngIf="navigationItemToCategory?.toId" class="button singleProductView__backToOverview">
-        <a href="/{{(navigationItemToCategory?.pathParts || [''])[0]}}" target="_self">
-          {{ 'BACK_TO' | translate }} "{{ 'NAVIGATION_' + navigationItemToCategory?.toId | translate }}"
-        </a>
-      </div>
+      <a href="/{{(navigationItemToCategory?.pathParts || [''])[0]}}" target="_self" class="button__wrapper">
+        <div *ngIf="navigationItemToCategory?.toId" class="button singleProductView__backToOverview">
+            {{ 'BACK_TO' | translate }} "{{ 'NAVIGATION_' + navigationItemToCategory?.toId | translate }}"
+        </div>
+      </a>
     </div>
   </div>
+
   <div class="row">
     <div class="col-12 col-md-6">
       <div>
@@ -28,11 +29,11 @@
           </div>
 
           <div class="productInformation__offers">
-            <div class="button">
-              <a href="{{itemWithLowestPrice?.link}}" target="_blank">
-                  {{getShopNameFromUrl(itemWithLowestPrice?.link)}}<span *ngIf="itemWithLowestPrice?.renderPrice()">: {{itemWithLowestPrice?.renderPrice()}}</span>
-              </a>
-            </div>
+            <a href="{{itemWithLowestPrice?.link}}" target="_blank" class="button__wrapper">
+              <div class="button">
+                {{getShopNameFromUrl(itemWithLowestPrice?.link)}}<span *ngIf="itemWithLowestPrice?.renderPrice()">: {{itemWithLowestPrice?.renderPrice()}}</span>
+              </div>
+            </a>
           </div>
 
           <div *ngIf="areThereMorePrices">
@@ -40,16 +41,16 @@
               <h5>{{ 'MORE_OFFERS' | translate }}</h5>
             </div>
             <div class="productInformation__offers">
-              <div *ngFor="let offer of moreExpensiveOfferItems" class="button">
-                <a href="{{offer?.link}}" target="_blank">
-                    {{getShopNameFromUrl(offer?.link)}}<span *ngIf="offer?.renderPrice()">: {{offer?.renderPrice()}}</span>
-                </a>
-              </div>
-              <div *ngFor="let offer of offerItemsWithoutPrice" class="button">
-                <a href="{{offer?.link}}" target="_blank">
-                    {{getShopNameFromUrl(offer?.link)}}<span *ngIf="offer?.renderPrice()">: {{offer?.renderPrice()}}</span>
-                </a>
-              </div>
+              <a *ngFor="let offer of moreExpensiveOfferItems" href="{{offer?.link}}" target="_blank" class="button__wrapper">
+                <div class="button">
+                  {{getShopNameFromUrl(offer?.link)}}<span *ngIf="offer?.renderPrice()">: {{offer?.renderPrice()}}</span>
+                </div>
+              </a>
+              <a *ngFor="let offer of offerItemsWithoutPrice" href="{{offer?.link}}" target="_blank" class="button__wrapper">
+                <div class="button">
+                      {{getShopNameFromUrl(offer?.link)}}<span *ngIf="offer?.renderPrice()">: {{offer?.renderPrice()}}</span>
+                </div>
+              </a>
             </div>
           </div>
         </div>

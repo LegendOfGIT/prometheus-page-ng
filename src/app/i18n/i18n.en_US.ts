@@ -7,6 +7,7 @@ export class I18nEnUs implements I18nInterface {
       languageDeDe: 'german',
       languageEnUs: 'english (US)',
       BACK_TO: 'Back to',
+      CATEGORIES: 'Categories',
       MORE_OFFERS: 'More offers',
       NAVIGATION_ALL: 'all products',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS: 'electronics & computers',

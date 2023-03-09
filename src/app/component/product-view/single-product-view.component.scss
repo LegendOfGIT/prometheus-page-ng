@@ -8,13 +8,13 @@
   padding: 0.5em 1em 0.5em 1em;
   text-align: center;
 
-  a {
+  &__wrapper {
     color: $content-color;
     text-decoration: none;
-  }
 
-  a:hover {
-    color: $content-color--active;
+    &:hover {
+      color: $content-color--active;
+    }
   }
 }
 

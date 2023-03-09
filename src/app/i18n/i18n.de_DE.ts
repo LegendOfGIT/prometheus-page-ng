@@ -7,6 +7,7 @@ export class I18nDeDe implements I18nInterface {
       languageDeDe: 'deutsch',
       languageEnUs: 'englisch (US)',
       BACK_TO: 'Zurück zu',
+      CATEGORIES: 'Kategorien',
       MORE_OFFERS: 'Weitere Angebote',
       NAVIGATION_ALL: 'Alle Produkte',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS: 'Elektronik & Computer',

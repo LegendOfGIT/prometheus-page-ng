@@ -64,11 +64,23 @@
       text-decoration: none;
     }
 
+    &Close {
+      color: $content-color;
+      cursor: pointer;
+      padding: 0.5em;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
     &Item {
       border-radius: 0.5em;
       cursor: pointer;
       color: $content-color;
 
+      &:focus-visible {
+        outline: none;
+      }
 
       &--active,
       &:hover {
@@ -76,6 +88,11 @@
         color: $container-background-color;
       }
     }
+  }
+
+  &__menuHeader {
+    color: $content-color;
+    font-weight: bold;
   }
 
   &__menuIcon {

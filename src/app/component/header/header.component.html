@@ -3,17 +3,7 @@
     <div class="row header__content">
       <div class="col-12 header__title">
         <div class="header__menuIcon">
-          <i class="fa fa-regular fa-bars" (click)="isCategoryMenuOpen = !isCategoryMenuOpen"></i>
-        </div>
-        <div *ngIf="isCategoryMenuOpen" class="header__menu">
-          <div
-            *ngFor="let item of categoryItems"
-            [ngClass]="['header__menuItem', activeNavigationItem === item ? 'header__menuItem--active' : '']"
-            [routerLink]="[''].concat(item.pathParts[0])"
-            (click)="isCategoryMenuOpen = !isCategoryMenuOpen"
-          >
-            {{'NAVIGATION_' + item.toId | translate}}
-          </div>
+          <i class="fa fa-regular fa-bars" (click)="categorySelection.showModal()"></i>
         </div>
 
         <div class="header__logo" [routerLink]="['/']">
@@ -61,3 +51,20 @@
     </div>
   </div>
 </div>
+
+<dialog #categorySelection class="header__menu">
+  <div class="header__menuClose" (click)="categorySelection.close()">
+    <i class="fa fa-times-circle"></i>
+  </div>
+  <div class="header__menuHeader">
+    <h4>{{'CATEGORIES' | translate }}</h4>
+  </div>
+  <div
+    *ngFor="let item of categoryItems"
+    [ngClass]="['header__menuItem', activeNavigationItem === item ? 'header__menuItem--active' : '']"
+    [routerLink]="[''].concat(item.pathParts[0])"
+    (click)="categorySelection.close()"
+  >
+    {{'NAVIGATION_' + item.toId | translate}}
+  </div>
+</dialog>

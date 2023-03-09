@@ -17,6 +17,10 @@ export class NavigationService {
   }
 
   get activeNavigationItem(): NavigationItem | undefined {
+    if(![Module.HOME, Module.ITEMS].indexOf(this._activeModule)) {
+      return;
+    }
+
     const activeItems = Navigation.ITEMS
       .filter((item: NavigationItem) => JSON.stringify(item.pathParts) == JSON.stringify(this.activeNavigationLevelIds));
 
