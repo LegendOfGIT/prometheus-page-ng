@@ -72,6 +72,9 @@
   }
 
   &__imageContainer {
+    border-radius: 0.5em;
+    display: flex;
+    justify-content: center;
     min-height: 14em;
     position: relative;
     width: 10em;
