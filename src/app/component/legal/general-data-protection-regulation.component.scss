@@ -1,0 +1,22 @@
+@import 'src/app/variables';
+@import 'src/styles/controls';
+
+.gdpr {
+  background: $container-background-color;
+  color: $content-color;
+
+  &__actions {
+    display: flex;
+    justify-content: end;
+
+    button {
+      justify-content: center;
+      margin: 0.5em;
+      width: 9em;
+    }
+  }
+
+  &__explanation {
+    padding-bottom: 1em;
+  }
+}

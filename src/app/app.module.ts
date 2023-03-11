@@ -24,6 +24,7 @@ import { StartPageComponent } from './component/landing-pages/start-page.compone
 import { CategoryTeaserComponent } from './component/landing-pages/category-teaser.component';
 import { SingleProductViewComponent } from './component/product-view/single-product-view.component';
 import { UrlEncodePipe } from './pipes/web.pipe';
+import { GeneralDataProtectionRegulationComponent } from './component/legal/general-data-protection-regulation.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { UrlEncodePipe } from './pipes/web.pipe';
 
     AddToWishlistComponent,
     CategoryTeaserComponent,
+    GeneralDataProtectionRegulationComponent,
     HeaderComponent, FooterComponent,
     ImprintComponent,
     ItemsComponent,
