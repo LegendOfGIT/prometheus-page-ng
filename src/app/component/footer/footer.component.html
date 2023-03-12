@@ -1,7 +1,10 @@
 <div *ngIf="showFooter" class="footer">
   <div class="container">
     <div class="row">
-      <a [routerLink]="['/imprint']" class="footer__link{{isImprintActive ? '--active' : ''}}">Impressum</a>
+      <div class="footer__links">
+        <a (click)="showGdprDialog()" class="footer__link">Privatsphäre Einstellungen</a>
+        <a [routerLink]="['/imprint']" class="footer__link{{isImprintActive ? '--active' : ''}}">Impressum</a>
+      </div>
     </div>
   </div>
 </div>

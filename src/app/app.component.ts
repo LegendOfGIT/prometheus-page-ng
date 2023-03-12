@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -7,7 +7,8 @@ import { SearchProfilesApiService } from './service/search-profiles-api.service'
 import { TrackingService } from './service/tracking.service';
 import { WishlistItemsApiService } from './service/wishlist-items-api.service';
 import { GdprService } from './service/gdpr.service';
-import {GdprDecision} from "./model/gdpr-settings";
+import { GdprDecision } from "./model/gdpr-settings";
+import {ConsentService} from "./service/consent-service";
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
     private searchProfilesApiService: SearchProfilesApiService,
     private wishlistItemsService: WishlistItemsApiService,
     private gdprService: GdprService,
+    private consentService: ConsentService,
     trackingService: TrackingService
   ) {
 
@@ -34,6 +36,10 @@ export class AppComponent implements AfterViewInit, OnInit  {
   ngOnInit(): void {
     this.initialiseSearchProfiles();
     this.initialiseWishlist();
+
+    setInterval(
+      () => this.consentService.deleteInformationStoredWithoutConsent(),
+      3000);
   }
 
   ngAfterViewInit() {

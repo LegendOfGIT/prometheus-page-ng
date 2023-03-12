@@ -15,11 +15,18 @@
 
   &__link {
     color: $content-color;
+    cursor: pointer;
+    padding-left: 1em;
 
     &--active {
       color: $content-color--active;
       font-weight: bold;
     }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: end;
   }
 
   @media screen and (min-width: 576px) {
