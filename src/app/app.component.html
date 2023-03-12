@@ -1,7 +1,7 @@
 <div class="app">
   <header></header>
   <div class="app-content">
-    <dialog #gdprDialog id="gdprDialog" class="gdpr__dialog" (click)="gdprDialog.close()">
+    <dialog #gdprDialog id="gdprDialog" class="gdpr__dialog">
       <general-data-protection-regulation [gdprDialog]="gdprDialog"></general-data-protection-regulation>
     </dialog>
     <input #gdpr (click)="gdprDialog.showModal();" style="display: none;" />
