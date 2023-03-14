@@ -46,6 +46,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_MUSIC_CD: 'cd',
       NAVIGATION_MUSIC_CD_GERMANFOLK: 'german folk music',
       NAVIGATION_SLOGAN_ALL: 'shop',
+      NAVIGATION_SLOGAN_BEAUTY_CARE: 'be beautiful',
       NAVIGATION_SLOGAN_ELECTRONICS_AND_COMPUTERS: 'be up to date',
       NAVIGATION_SLOGAN_FASHION: 'dress up',
       NAVIGATION_SLOGAN_KIDS: 'be family',
