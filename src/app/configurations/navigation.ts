@@ -8,8 +8,10 @@ export class Navigation {
     new NavigationItem('ALL', 'FASHION', ['fashion', '', '']),
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['fashion', 'women', '']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELRY', ['fashion', 'women', 'jewelry']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_PANTS', ['fashion', 'women', 'pants']),
     new NavigationItem('FASHION', 'FASHION_MEN', ['fashion', 'men', '']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEWELRY', ['fashion', 'men', 'jewelry']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_PANTS', ['fashion', 'men', 'pants']),
 
     new NavigationItem('ALL', 'KIDS', ['kids', '', '']),
     new NavigationItem('KIDS', 'KIDS_PARTY', ['kids', 'party', '']),
