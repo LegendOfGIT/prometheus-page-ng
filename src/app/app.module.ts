@@ -25,6 +25,7 @@ import { CategoryTeaserComponent } from './component/landing-pages/category-teas
 import { SingleProductViewComponent } from './component/product-view/single-product-view.component';
 import { UrlEncodePipe } from './pipes/web.pipe';
 import { GeneralDataProtectionRegulationComponent } from './component/legal/general-data-protection-regulation.component';
+import { DataProtectionComponent } from './component/legal/data-protection.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { GeneralDataProtectionRegulationComponent } from './component/legal/gene
     CategoryTeaserComponent,
     GeneralDataProtectionRegulationComponent,
     HeaderComponent, FooterComponent,
+    DataProtectionComponent,
     ImprintComponent,
     ItemsComponent,
     NavigationComponent,

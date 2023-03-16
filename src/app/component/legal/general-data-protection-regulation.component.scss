@@ -18,5 +18,10 @@
 
   &__explanation {
     padding-bottom: 1em;
+
+    a {
+      color: $content-color;
+      outline: 0;
+    }
   }
 }

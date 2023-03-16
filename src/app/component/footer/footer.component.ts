@@ -24,6 +24,10 @@ export class FooterComponent {
     return Module.IMPRINT === this.navigationService.activeModule;
   }
 
+  get isDataProtectionActive(): boolean {
+    return Module.DATA_PROTECTION === this.navigationService.activeModule;
+  }
+
   get showFooter(): boolean {
     return !this.wasLastScrollDirectionUp;
   }

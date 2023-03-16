@@ -66,6 +66,7 @@ export class NavigationService {
 
 export enum Module {
   HOME,
+  DATA_PROTECTION,
   IMPRINT,
   ITEMS,
   PROFILE,

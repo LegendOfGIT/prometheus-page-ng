@@ -9,8 +9,10 @@ import { WishlistItemsComponent } from './component/wishlist/wishlist-items.comp
 import { ImprintComponent } from './component/legal/imprint.component';
 import { StartPageComponent } from './component/landing-pages/start-page.component';
 import { SingleProductViewComponent } from './component/product-view/single-product-view.component';
+import { DataProtectionComponent } from './component/legal/data-protection.component';
 
 const routes: Routes = [
+    { path: 'data-protection', component: DataProtectionComponent },
     { path: 'imprint', component: ImprintComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'search-profile', component: SearchProfilesComponent },
