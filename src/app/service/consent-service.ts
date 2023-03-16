@@ -30,9 +30,6 @@ export class ConsentService {
 
       this.cookieService.delete(cookieName);
     });
-
-
-    console.log(patternsOfCookiesToDelete);
   }
 
   private deleteAllLocalStorageItemsWithoutConsent(): void {

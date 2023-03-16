@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer, Meta, SafeHtml, Title} from '@angular/platform-browser';
 
 import { Module, NavigationService } from '../../service/navigation.service';
 import { ItemsApiService } from '../../service/items-api.service';
@@ -28,7 +28,10 @@ export class SingleProductViewComponent {
     private route: ActivatedRoute,
     private itemsService: ItemsApiService,
     private navigationService: NavigationService,
-    private translation: TranslationService
+    private translation: TranslationService,
+    translationService: TranslationService,
+    titleService: Title,
+    metaService: Meta
   ) {
 
     route.paramMap.subscribe((params) => {
@@ -42,11 +45,18 @@ export class SingleProductViewComponent {
       }
 
       this.item = items[0];
+
+      titleService.setTitle(
+        translationService.getTranslations().SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE
+          .replace('{product-name}', this.item?.title.substring(0, 50)));
+
+      metaService.addTag({ name: 'description', content: this.item?.description || '' });
+
     });
 
     this.safeWhatsAppUri = this.getSanitizedUri([
       'whatsapp://send?text=',
-      encodeURIComponent(this.translation.getTranslations()['SHARE_FOUND_AT_WE_WANNA']),
+      encodeURIComponent(this.translation.getTranslations().SHARE_FOUND_AT_WE_WANNA),
       encodeURIComponent(' - '),
       encodeURIComponent(window.location.href)
     ]);

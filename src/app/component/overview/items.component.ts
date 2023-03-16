@@ -9,6 +9,9 @@ import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {TrackingService} from 'src/app/service/tracking.service';
 import {TrackingActivityItem} from 'src/app/model/tracking-activity-item';
 import {TrackingInterestLevel} from 'src/app/model/tracking-interest-level';
+import {TranslationService} from "../../service/translation.service";
+import {Title} from "@angular/platform-browser";
+import {Navigation} from "../../configurations/navigation";
 
 @Component({
   selector: 'app-items',
@@ -29,7 +32,9 @@ export class ItemsComponent implements OnInit {
       private route: ActivatedRoute,
       private itemsService: ItemsApiService,
       private navigationService: NavigationService,
-      private trackingService: TrackingService
+      private trackingService: TrackingService,
+      translationService: TranslationService,
+      titleService: Title
     ) {
 
       route.paramMap.subscribe((params) => {
@@ -42,6 +47,10 @@ export class ItemsComponent implements OnInit {
         ]);
       });
 
+      const translations = translationService.getTranslations();
+      titleService.setTitle(
+        translations.SEO_CATEGORY_PAGE_TITLE.replace('{category}',
+          translations['NAVIGATION_' + this.navigationService.activeNavigationItem?.toId]));
     }
 
     ngOnInit(): void {
