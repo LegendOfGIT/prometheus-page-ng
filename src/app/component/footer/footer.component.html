@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="footer__links">
-        <a [routerLink]="['/imprint']" class="footer__link footer__link{{isImprintActive ? '--active' : ''}}">Impressum</a>
-        <a (click)="showGdprDialog()" class="footer__link">Privatsphäre Einstellungen</a>
-        <a [routerLink]="['/data-protection']" class="footer__link footer__link{{isDataProtectionActive ? '--active' : ''}}">Datenschutzerklärung</a>
+        <a [routerLink]="['/imprint']" class="footer__link footer__link{{isImprintActive ? '--active' : ''}}">{{'IMPRINT' | translate}}</a>
+        <a (click)="showGdprDialog()" class="footer__link">{{'PRIVATSPHERE_OPTIONS' | translate}}</a>
+        <a [routerLink]="['/data-protection']" class="footer__link footer__link{{isDataProtectionActive ? '--active' : ''}}">{{'DATA_PROTECTION' | translate}}</a>
       </div>
     </div>
   </div>
