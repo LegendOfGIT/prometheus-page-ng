@@ -49,6 +49,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_MULTIMEDIA_GAMES_XBOX_ONE: 'XBOX One games',
       NAVIGATION_MUSIC: 'music',
       NAVIGATION_MUSIC_CD: 'cd',
+      NAVIGATION_MUSIC_CD_ALTERNATIVE: 'alternative',
       NAVIGATION_MUSIC_CD_GERMANFOLK: 'german folk music',
       NAVIGATION_MUSIC_CD_POP: 'pop',
       NAVIGATION_MUSIC_CD_ROCK: 'rock',

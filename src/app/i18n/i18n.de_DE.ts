@@ -49,6 +49,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_MULTIMEDIA_GAMES_XBOX_ONE: 'XBOX One Games',
       NAVIGATION_MUSIC: 'Musik',
       NAVIGATION_MUSIC_CD: 'CDs',
+      NAVIGATION_MUSIC_CD_ALTERNATIVE: 'Alternative',
       NAVIGATION_MUSIC_CD_GERMANFOLK: 'Volksmusik',
       NAVIGATION_MUSIC_CD_POP: 'Pop',
       NAVIGATION_MUSIC_CD_ROCK: 'Rock',
