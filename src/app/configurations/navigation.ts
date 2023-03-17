@@ -47,14 +47,18 @@ export class Navigation {
       ['electronics-and-computers', 'large-appliances', 'fridges-and-freezers']
     ),
 
-    new NavigationItem('ALL', 'MUSIC', ['music', '', ''], 5),
+    new NavigationItem('ALL', 'LIGHTING', ['lighting', '', ''], 5),
+    new NavigationItem('LIGHTING', 'LIGHTING_INNERLIGHTING', ['lighting', 'inner-lighting', '']),
+    new NavigationItem('LIGHTING_INNERLIGHTING', 'LIGHTING_INNERLIGHTING_CEILING', ['lighting', 'inner-lighting', 'ceiling']),
+
+    new NavigationItem('ALL', 'MUSIC', ['music', '', ''], 6),
     new NavigationItem('MUSIC', 'MUSIC_CD', ['music', 'cd', '']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_ALTERNATIVE', ['music', 'cd', 'alternative']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_GERMANFOLK', ['music', 'cd', 'german-folk-music']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_POP', ['music', 'cd', 'pop']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_ROCK', ['music', 'cd', 'rock']),
 
-    new NavigationItem('ALL', 'BEAUTY_CARE', ['beauty-and-care', '', ''], 6),
+    new NavigationItem('ALL', 'BEAUTY_CARE', ['beauty-and-care', '', ''], 7),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SKIN_CARE', ['beauty-and-care', 'skin-care', '']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_FACE_CARE', ['beauty-and-care', 'skin-care', 'face-care']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_KIDS', ['beauty-and-care', 'skin-care', 'kids']),
