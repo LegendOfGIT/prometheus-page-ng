@@ -1,12 +1,11 @@
 <div *ngIf="items">
 
   <div class="container informationItems__content">
-    <div class="col-1"></div>
-    <div class="col-10 informationItems__container">
+    <div class="col-12 informationItems__container">
       <div *ngFor="let item of items">
 
         <div *ngIf="item" [ngClass]="['informationItem', item?.itemId ? '' : 'informationItem--loading']">
-          <div class="informationItem__imageContainer">
+          <div [ngClass]="['informationItem__imageContainer', item?.itemId ? '' : 'informationItem__imageContainer--loading']">
             <a href="{{getSeoFriendlySingleProductViewUrl(item)}}" (click)="pickedInformation(item)">
               <img
                 class="informationItem__image"
@@ -33,6 +32,5 @@
         </div>
       </div>
     </div>
-    <div class="col-1"> </div>
   </div>
 </div>

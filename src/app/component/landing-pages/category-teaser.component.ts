@@ -19,7 +19,8 @@ export class CategoryTeaserComponent implements OnInit {
 
   private categoryItems: Array<Item | null> = [
     new Item(), new Item(), new Item(),
-    new Item(), new Item(), new Item()
+    new Item(), new Item(), new Item(),
+    new Item(), new Item()
   ];
 
   constructor(
@@ -31,7 +32,7 @@ export class CategoryTeaserComponent implements OnInit {
   ngOnInit(): void {
     const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
 
-    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 6)
+    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 8)
       .pipe(takeUntil(this.destroyedService$))
       .subscribe(
         items => {
@@ -40,7 +41,7 @@ export class CategoryTeaserComponent implements OnInit {
             return;
           }
 
-          this.itemsService.getItems(this.navigationItem?.toId || '', '', 6)
+          this.itemsService.getItems(this.navigationItem?.toId || '', '', 8)
             .pipe(takeUntil(this.destroyedService$))
             .subscribe(
               items => {
