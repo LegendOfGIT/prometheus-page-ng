@@ -26,7 +26,7 @@ export class StartPageComponent {
 
     const { SEO_PAGE_KEYWORDS, SEO_PAGE_TITLE } = translationService.getTranslations();
     titleService.setTitle(SEO_PAGE_TITLE);
-    metaService.addTag({ name: 'keywords', content: SEO_PAGE_KEYWORDS })
+    metaService.updateTag({ name: 'keywords', content: SEO_PAGE_KEYWORDS })
   }
 
   get allRootRootItems(): Array<NavigationItem> {

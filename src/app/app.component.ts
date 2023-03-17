@@ -7,8 +7,8 @@ import { SearchProfilesApiService } from './service/search-profiles-api.service'
 import { TrackingService } from './service/tracking.service';
 import { WishlistItemsApiService } from './service/wishlist-items-api.service';
 import { GdprService } from './service/gdpr.service';
-import { GdprDecision } from "./model/gdpr-settings";
-import {ConsentService} from "./service/consent-service";
+import { GdprDecision } from './model/gdpr-settings';
+import { ConsentService } from './service/consent-service';
 
 @Component({
   selector: 'app-root',
