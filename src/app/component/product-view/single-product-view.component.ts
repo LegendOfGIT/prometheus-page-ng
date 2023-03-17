@@ -51,7 +51,7 @@ export class SingleProductViewComponent {
           .replace('{product-name}', this.item?.title.substring(0, 50)));
 
       metaService.addTag({ name: 'description', content: this.item?.description || '' });
-
+      metaService.addTag({ name: 'canonical', content: window.location.href });
     });
 
     this.safeWhatsAppUri = this.getSanitizedUri([
