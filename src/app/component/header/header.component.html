@@ -10,7 +10,7 @@
           <span style="cursor: pointer;">
             <span class="header__titleCapitalLetter">W</span><span style="color: lightblue;">e</span>
             <span class="header__titleCapitalLetter">W</span><span style="color: lightblue;">anna</span>
-            <span style="color: goldenrod;"> {{'NAVIGATION_SLOGAN_' + (activeNavigationItem?.toId || 'ALL') | translate}}!</span>
+            <span style="color: goldenrod;"> {{'NAVIGATION_SLOGAN_' + (activeNavigationItem?.hasSlogan ? activeNavigationItem?.toId || 'ALL' : 'ALL') | translate}}!</span>
           </span>
         </div>
 
