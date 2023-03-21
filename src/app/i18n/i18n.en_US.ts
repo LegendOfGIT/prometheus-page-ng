@@ -17,6 +17,8 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_BEAUTY_CARE_SKIN_CARE_FACE_CARE: 'face-care',
       NAVIGATION_BEAUTY_CARE_SKIN_CARE_KIDS: 'kids skin-care',
       NAVIGATION_COSMETICS: 'cosmetics',
+      NAVIGATION_COSMETICS_MAKEUP: 'makeup',
+      NAVIGATION_COSMETICS_MAKEUP_EYES: 'eyes',
       NAVIGATION_COSMETICS_WOMEN: 'women',
       NAVIGATION_COSMETICS_WOMEN_FRAGRANCES: 'fragrances',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS: 'electronics & computers',
