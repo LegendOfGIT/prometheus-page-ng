@@ -15,8 +15,12 @@ export class Item extends BaseModel {
 
     amountOfMedia: number = 0;
     amountOfSongs: number = 0;
+    fabric: string = '';
+    fabricPattern: string = '';
+    fit: string = '';
     interpret: string = '';
     genre: string = '';
+    material: string = '';
     minimumAge: number = 0;
     subgenre: string = '';
     seoDescription: string = '';
@@ -72,6 +76,10 @@ export class Item extends BaseModel {
         new ItemDetails('INTERPRET', this.interpret),
         new ItemDetails('AMOUNT_OF_MEDIA', this.amountOfMedia),
         new ItemDetails('AMOUNT_OF_SONGS', this.amountOfSongs),
+        new ItemDetails('FIT', this.fit),
+        new ItemDetails('MATERIAL', this.material),
+        new ItemDetails('FABRIC', this.fabric),
+        new ItemDetails('FABRIC_PATTERN', this.fabricPattern),
       ].filter(detail => detail.value);
     }
 
