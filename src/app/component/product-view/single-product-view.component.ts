@@ -50,7 +50,9 @@ export class SingleProductViewComponent {
         translationService.getTranslations().SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE
           .replace('{product-name}', this.item?.title.substring(0, 50)));
 
-      metaService.addTag({ name: 'description', content: this.item?.description || '' });
+      metaService.updateTag({ name: 'description', content: this.item?.seoDescription || '' });
+      metaService.updateTag({ name: 'keywords', content: this.item?.seoKeywords || '' });
+
       metaService.addTag({ name: 'canonical', content: window.location.href });
     });
 

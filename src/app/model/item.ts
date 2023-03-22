@@ -19,6 +19,8 @@ export class Item extends BaseModel {
     genre: string = '';
     minimumAge: number = 0;
     subgenre: string = '';
+    seoDescription: string = '';
+    seoKeywords: string = '';
 
 
     providers: Array<CorrespondingItem | null> = [];
