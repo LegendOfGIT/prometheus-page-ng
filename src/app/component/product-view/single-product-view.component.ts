@@ -52,6 +52,10 @@ export class SingleProductViewComponent {
 
       metaService.updateTag({ name: 'description', content: this.item?.seoDescription || '' });
       metaService.updateTag({ name: 'keywords', content: this.item?.seoKeywords || '' });
+      metaService.updateTag({ name: 'og:title', content: this.item?.title || '' });
+      metaService.updateTag({ name: 'og:image', content: this.item?.titleImage || '' });
+      metaService.updateTag({ name: 'og:type', content: 'product' });
+
 
       metaService.addTag({ name: 'canonical', content: window.location.href });
     });
