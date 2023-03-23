@@ -13,7 +13,23 @@
   <div class="row">
     <div class="col-12 col-md-6">
       <div>
-        <img class="mainStage__mainImage" src="{{item?.titleImage}}"/>
+        <section class="carousel" aria-label="Gallery">
+          <ol class="carousel__viewport">
+            <li
+              *ngFor="let imageBigUrl of (item?.imagesBig || []).concat([item?.titleImage || '']); let i=index"
+              id="carousel__slide{{(i+1)}}"
+                tabindex="0"
+                class="carousel__slide"
+            >
+              <img src="{{imageBigUrl}}" class="mainStage__mainImage"/>
+
+              <div class="carousel__snapper">
+              </div>
+            </li>
+          </ol>
+
+        </section>
+
       </div>
     </div>
     <div class="col-12 col-md-6">

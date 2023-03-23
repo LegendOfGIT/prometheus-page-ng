@@ -26,13 +26,14 @@ export class Item extends BaseModel {
     seoDescription: string = '';
     seoKeywords: string = '';
 
-
+    imagesBig: Array<string> = [];
     providers: Array<CorrespondingItem | null> = [];
 
     static override fromModel(data: ItemDto): Item | null {
         const item = this.bindFrom<ItemDto, Item>(Item, data);
         if (item) {
           item.id = (data as any)._id;
+          item.imagesBig = (data as any)['images-big'];
           item.titleImage = (data as any)['title-image'];
           item.providers = (data.providers || []).map(provider => CorrespondingItem.fromModel(provider));
         }
