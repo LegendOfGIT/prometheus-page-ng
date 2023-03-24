@@ -1,15 +1,6 @@
 @import 'src/styles/animations';
 @import 'src/app/variables';
 
-.firstSearchbar {
-  display: inline-flex;
-  width: 100%;
-
-  @media screen and (max-width: 576px) {
-    display: none;
-  }
-}
-
 .header {
   backdrop-filter: blur(3px);
   background: $container-background-color-as-rgba;
@@ -31,6 +22,14 @@
     &--active {
       color: $content-color--active;
       font-weight: bold;
+    }
+
+    &--activeEmpty {
+      color: rgba(173, 216, 230, 0.50);
+    }
+
+    &--empty {
+      color: rgba(13, 202, 240, 0.50);
     }
 
     &Wrapper {
