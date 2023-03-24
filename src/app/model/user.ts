@@ -4,7 +4,7 @@ export class User {
     emailAddress: string = '';
     firstName: string = '';
     lastName: string = '';
-    localeForDisplay: string = 'en_US';
+    localeForDisplay: string = 'de_DE';
 
     public setId(id: string) : User {
       this.id = id;
