@@ -65,7 +65,7 @@ export class Navigation {
 
     new NavigationItem('ALL', 'HOME', ['home', '', ''], 9).setHasSlogan(true),
     new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['home', 'acccessoires', '']),
-    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['home', 'acccessoires', 'carpets']),
+    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['home', 'accessoires', 'carpets']),
 
     new NavigationItem('ALL', 'COSMETICS', ['cosmetics', '', ''], 8).setHasSlogan(true),
     new NavigationItem('COSMETICS', 'COSMETICS_HAIR', ['cosmetics', 'hair', '']),
