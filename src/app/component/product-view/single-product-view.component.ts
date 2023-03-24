@@ -55,8 +55,6 @@ export class SingleProductViewComponent {
       metaService.updateTag({ name: 'og:title', content: this.item?.title || '' });
       metaService.updateTag({ name: 'og:image', content: this.item?.titleImage || '' });
       metaService.updateTag({ name: 'og:type', content: 'product' });
-
-
       metaService.addTag({ name: 'canonical', content: window.location.href });
     });
 
@@ -117,5 +115,9 @@ export class SingleProductViewComponent {
     }
 
     return Navigation.getNavigationItemByToId(pathTokens[0]);
+  }
+
+  get activeNavigationItem(): NavigationItem | undefined {
+    return Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
   }
 }

@@ -23,13 +23,15 @@ export class ItemsApiService extends ApiBase {
 
     getItems(navigationId: string,
              searchPattern: string,
-             numberOfResults: number | undefined = undefined): Observable<Array<Item | null>> {
+             numberOfResults: number | undefined = undefined,
+             randomItems: boolean | undefined = false): Observable<Array<Item | null>> {
 
         const url = this.get(
           endpoints.items,
           {
             navigationId,
             numberOfResults: numberOfResults ? `${numberOfResults}` : '',
+            randomItems : randomItems ? 'true': 'false',
             searchPattern,
             searchProfileId: this.userService.activeUser?.activeSearchProfile || ''
           });

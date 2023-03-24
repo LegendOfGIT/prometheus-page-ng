@@ -15,6 +15,12 @@ export class CategoryTeaserComponent implements OnInit {
   @Input()
   public navigationItem: NavigationItem | undefined = undefined;
 
+  @Input()
+  public showHeader = true;
+
+  @Input()
+  public randomItems = false;
+
   private destroyedService$ = new Subject();
 
   private categoryItems: Array<Item | null> = [
@@ -32,7 +38,7 @@ export class CategoryTeaserComponent implements OnInit {
   ngOnInit(): void {
     const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
 
-    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 8)
+    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 8, this.randomItems)
       .pipe(takeUntil(this.destroyedService$))
       .subscribe(
         items => {
@@ -69,5 +75,9 @@ export class CategoryTeaserComponent implements OnInit {
     }
 
     return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
+  }
+
+  get moreLink(): string {
+    return '/' + [(this.navigationItem?.pathParts || []).filter(p => p).join('/')];
   }
 }

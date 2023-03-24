@@ -50,10 +50,31 @@
 }
 
 .productDetails {
+  display: flex;
+  justify-content: center;
+  min-width: 70%;
+
+  &__content {
+    padding: 0.5em;
+
+    &:nth-child(odd) {
+      background-color: $container-background-color;
+      color: $content-color--active;
+    }
+
+    &:nth-child(even) {
+      background-color: $content-color--active;
+      color: $container-background-color;
+    }
+  }
+
   &__label {
     font-weight: bold;
     padding-bottom: 0.2em;
-    padding-top: 1em;
+  }
+
+  &__wrapper {
+    width: 100%;
   }
 }
 
