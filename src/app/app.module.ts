@@ -49,7 +49,7 @@ import { DataProtectionComponent } from './component/legal/data-protection.compo
     UrlEncodePipe
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
