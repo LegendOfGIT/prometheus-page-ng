@@ -34,7 +34,7 @@ export class SingleProductViewComponent {
     translationService: TranslationService,
     titleService: Title,
     metaService: Meta,
-    Inject(DOCUMENT) doc
+    @Inject(DOCUMENT) doc
   ) {
 
     route.paramMap.subscribe((params) => {
