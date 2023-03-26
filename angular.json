@@ -118,7 +118,8 @@
           "configurations": {
             "development": {
               "browserTarget": "prometheus-page:build:development",
-              "serverTarget": "prometheus-page:server:development"
+              "serverTarget": "prometheus-page:server:development",
+              "proxyConfig": "proxy.conf.json"
             },
             "production": {
               "browserTarget": "prometheus-page:build:production",

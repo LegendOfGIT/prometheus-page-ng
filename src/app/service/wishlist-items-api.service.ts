@@ -1,14 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { endpoints } from '../../environments/endpoints';
 import { Item } from '../model/item';
 import { ItemDto } from '../model/dto/item-dto';
-import { ItemsResponseDto } from '../model/dto/items-response-dto';
 import { ApiBase } from './api-base';
-import { UserService } from './user.service';
+import { ApplicationConfiguration } from '../configurations/app';
 
 @Injectable({
     providedIn: 'root'
@@ -18,10 +17,9 @@ export class WishlistItemsApiService extends ApiBase {
     private _items: Array<Item | null> = [];
 
     constructor(
-      @Inject('API_BASE') apiBase: string,
       private http: HttpClient
     ) {
-        super(apiBase);
+        super(ApplicationConfiguration.API_BASE);
     }
 
     get items(): Array<Item | null> {

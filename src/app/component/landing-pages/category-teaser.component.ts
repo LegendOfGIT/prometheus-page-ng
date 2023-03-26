@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { Item } from '../../model/item';
 import { takeUntil } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { ItemsApiService } from '../../service/items-api.service';
 import { Subject } from 'rxjs';
 import { NavigationItem } from '../../model/navigation-item';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'category-teaser',
@@ -31,11 +32,16 @@ export class CategoryTeaserComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private itemsService: ItemsApiService
+    private itemsService: ItemsApiService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
   }
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
 
     this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 8, this.randomItems)

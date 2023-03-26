@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -9,6 +9,7 @@ import { WishlistItemsApiService } from './service/wishlist-items-api.service';
 import { GdprService } from './service/gdpr.service';
 import { GdprDecision } from './model/gdpr-settings';
 import { ConsentService } from './service/consent-service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
     private wishlistItemsService: WishlistItemsApiService,
     private gdprService: GdprService,
     private consentService: ConsentService,
+    @Inject(PLATFORM_ID) private platformId: Object,
     trackingService: TrackingService
   ) {
 
@@ -36,6 +38,10 @@ export class AppComponent implements AfterViewInit, OnInit  {
   ngOnInit(): void {
     this.initialiseSearchProfiles();
     this.initialiseWishlist();
+
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
 
     setInterval(
       () => this.consentService.deleteInformationStoredWithoutConsent(),

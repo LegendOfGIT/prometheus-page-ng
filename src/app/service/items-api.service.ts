@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { endpoints } from '../../environments/endpoints';
 import { Item } from '../model/item';
 import { ItemsResponseDto } from '../model/dto/items-response-dto';
 import { ApiBase } from './api-base';
 import { UserService } from './user.service';
-import {Observable} from "rxjs";
+import { Observable } from 'rxjs';
+import { ApplicationConfiguration } from '../configurations/app';
 
 @Injectable({
     providedIn: 'root'
@@ -14,11 +15,10 @@ import {Observable} from "rxjs";
 export class ItemsApiService extends ApiBase {
 
     constructor(
-      @Inject('API_BASE') apiBase: string,
       private http: HttpClient,
       private userService: UserService
     ) {
-        super(apiBase);
+        super(ApplicationConfiguration.API_BASE);
     }
 
     getItems(navigationId: string,

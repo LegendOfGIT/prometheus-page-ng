@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {GdprDecision, GdprSettings} from '../model/gdpr-settings';
-import {ConsentScope} from "../model/consent-item";
+import {ConsentScope} from '../model/consent-item';
+import {StorageService} from './storage.service';
 
 @Injectable({
     providedIn: 'root'
@@ -8,15 +9,12 @@ import {ConsentScope} from "../model/consent-item";
 export class GdprService {
 
     private static STORAGE_ID_GDPR_SETTINGS: string = 'gdpr_settings';
-    private _settings: GdprSettings | null = null;
+
+    constructor(private storageService: StorageService) {
+    }
 
     public getSettings(): GdprSettings | null {
-      const storageValue = localStorage.getItem(GdprService.STORAGE_ID_GDPR_SETTINGS);
-      if (!storageValue) {
-        return new GdprSettings();
-      }
-
-      return JSON.parse(storageValue);
+      return this.storageService.getFromStorageById(GdprService.STORAGE_ID_GDPR_SETTINGS);
     }
 
     public storeSettings(settings: GdprSettings | undefined): void {
@@ -24,7 +22,7 @@ export class GdprService {
         return;
       }
 
-      localStorage.setItem(GdprService.STORAGE_ID_GDPR_SETTINGS, JSON.stringify(settings));
+      this.storageService.storeWithId(GdprService.STORAGE_ID_GDPR_SETTINGS, settings);
     }
 
     public getConsentScopesWithConsent(): Array<ConsentScope> {
