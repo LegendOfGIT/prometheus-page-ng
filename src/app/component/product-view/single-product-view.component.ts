@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {DomSanitizer, Meta, SafeHtml, Title} from '@angular/platform-browser';
+import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+
 
 import { Module, NavigationService } from '../../service/navigation.service';
 import { ItemsApiService } from '../../service/items-api.service';
@@ -31,7 +33,8 @@ export class SingleProductViewComponent {
     private translation: TranslationService,
     translationService: TranslationService,
     titleService: Title,
-    metaService: Meta
+    metaService: Meta,
+    Inject(DOCUMENT) doc
   ) {
 
     route.paramMap.subscribe((params) => {
@@ -55,7 +58,11 @@ export class SingleProductViewComponent {
       metaService.updateTag({ name: 'og:title', content: this.item?.title || '' });
       metaService.updateTag({ name: 'og:image', content: this.item?.titleImage || '' });
       metaService.updateTag({ name: 'og:type', content: 'product' });
-      metaService.addTag({ name: 'canonical', content: window.location.href });
+      
+      const link: HTMLLinkElement = doc.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      doc.head.appendChild(link);
+      link.setAttribute('href', doc.URL);
     });
 
     this.safeWhatsAppUri = this.getSanitizedUri([
