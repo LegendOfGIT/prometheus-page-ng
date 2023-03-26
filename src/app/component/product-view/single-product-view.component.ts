@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
