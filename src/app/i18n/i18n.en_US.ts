@@ -50,6 +50,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_KIDS_SCHOOL: 'school',
       NAVIGATION_KIDS_SCHOOL_SATCHEL: 'satchels',
       NAVIGATION_KIDS_TOYS: 'toys',
+      NAVIGATION_KIDS_TOYS_BABIES: 'babies',
       NAVIGATION_KIDS_TOYS_ELECTRICVEHICLES: 'electric vehicles',
       NAVIGATION_KIDS_TOYS_SCOOTERS: 'scooters',
       NAVIGATION_LIGHTING: 'lighting',

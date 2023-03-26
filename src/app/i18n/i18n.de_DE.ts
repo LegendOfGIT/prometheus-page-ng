@@ -50,6 +50,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_KIDS_SCHOOL: 'Schule',
       NAVIGATION_KIDS_SCHOOL_SATCHEL: 'Schulranzen',
       NAVIGATION_KIDS_TOYS: 'Spielzeug',
+      NAVIGATION_KIDS_TOYS_BABIES: 'Babys',
       NAVIGATION_KIDS_TOYS_ELECTRICVEHICLES: 'Elektro-Fahrzeuge',
       NAVIGATION_KIDS_TOYS_SCOOTERS: 'Roller',
       NAVIGATION_LIGHTING: 'Beleuchtung',
