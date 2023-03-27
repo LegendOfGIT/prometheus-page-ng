@@ -19,6 +19,8 @@ import { TranslationService } from '../../service/translation.service';
 })
 export class SingleProductViewComponent {
 
+  private sliderInitiated = false;
+
   public itemId: string = '';
 
   public item: Item | null = null;
@@ -34,7 +36,7 @@ export class SingleProductViewComponent {
     translationService: TranslationService,
     titleService: Title,
     metaService: Meta,
-    @Inject(DOCUMENT) doc: Document
+    @Inject(DOCUMENT) private doc: Document
   ) {
 
     route.paramMap.subscribe((params) => {
@@ -49,6 +51,10 @@ export class SingleProductViewComponent {
 
       this.item = items[0];
 
+      const script: HTMLScriptElement = this.doc.createElement('script');
+      script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ "autoplay": true, "autoplaySpeed": 7000, "arrows": false}); });';
+      this.doc.body.appendChild(script);
+
       titleService.setTitle(
         translationService.getTranslations().SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE
           .replace('{product-name}', this.item?.title.substring(0, 50)));
@@ -58,7 +64,7 @@ export class SingleProductViewComponent {
       metaService.updateTag({ name: 'og:title', content: this.item?.title || '' });
       metaService.updateTag({ name: 'og:image', content: this.item?.titleImage || '' });
       metaService.updateTag({ name: 'og:type', content: 'product' });
-      
+
       const link: HTMLLinkElement = doc.createElement('link');
       link.setAttribute('rel', 'canonical');
       doc.head.appendChild(link);
@@ -72,6 +78,7 @@ export class SingleProductViewComponent {
       encodeURIComponent(window.location.href)
     ]);
   }
+
 
   public getShopNameFromUrl(url: string | undefined) {
     const match = (url || '').match(/\/\/(www.)?(.*?)\//);
