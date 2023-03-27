@@ -86,19 +86,26 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
-      <div class="productInformation productInformation--last productInformation__header">
+    <div class="col-12 productDetails">
+      <div class="productInformation productInformation--last productInformation__header productDetails__wrapper">
         <div *ngIf="item?.getItemDetails()?.length">
           <div class="productInformation__header">
             <h4>{{'PRODUCT_DETAILS' | translate}}</h4>
           </div>
-          <div *ngFor="let detail of item?.getItemDetails()">
+          <div *ngFor="let detail of item?.getItemDetails()" class="productDetails__content">
             <div class="productDetails__label">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</div>
             <div>{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate }}</div>
           </div>
         </div>
         &nbsp;
       </div>
+    </div>
+  </div>
+
+  <div *ngIf="activeNavigationItem" class="row">
+    <div class="col-12">
+      <h4>{{'FURTHER_PRODUCTS_OF_CATEGORY' | translate}}</h4>
+      <category-teaser [navigationItem]="activeNavigationItem" [showHeader]="false" [randomItems]="true"></category-teaser>
     </div>
   </div>
 </div>

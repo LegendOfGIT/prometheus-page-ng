@@ -17,13 +17,13 @@
         <div class="header__icons">
           <div class="header__iconWrapper">
             <i
-              class="fa fa-heart{{userHasAtLeastOneWishlistItem ? '' : ''}} header__icon {{isModuleActive(Module.WISHLIST) ? 'header__icon--active' : ''}}"
+              class="fa fa-heart {{userHasAtLeastOneWishlistItem ? '' : isModuleActive(Module.WISHLIST) ? 'header__icon--activeEmpty' : 'header__icon--empty'}} header__icon {{isModuleActive(Module.WISHLIST) ? 'header__icon--active' : ''}}"
               [routerLink]="['/wishlist']"
             ></i>
           </div>
           <div class="header__iconWrapper">
             <i
-              [ngClass]="['fa', 'header__icon', 'fa-user', (isLoggedIn ? 'fa-solid' : 'fa-regular'), hasJustLoggedIn ? 'hithere' : '', isModuleActive(Module.PROFILE) ? 'header__icon--active' : '']"
+              [ngClass]="['fa', 'header__icon', 'fa-user', (isLoggedIn ? '' : isModuleActive(Module.PROFILE) ? 'header__icon--activeEmpty' : 'header__icon--empty'), hasJustLoggedIn ? 'hithere' : '', isModuleActive(Module.PROFILE) ? 'header__icon--active' : '']"
               [routerLink]="['/profile']"
             ></i>
           </div>

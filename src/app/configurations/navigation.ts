@@ -25,6 +25,10 @@ export class Navigation {
     new NavigationItem('KIDS_PARTY', 'KIDS_PARTY_TABLEWARE', ['kids', 'party', 'tableware']),
     new NavigationItem('KIDS', 'KIDS_SCHOOL', ['kids', 'school', '']).setHasSlogan(true),
     new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SATCHEL', ['kids', 'school', 'satchel']),
+    new NavigationItem('KIDS', 'KIDS_TOYS', ['kids', 'toys', '']).setHasSlogan(true),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_BABIES', ['kids', 'toys', 'babies']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_ELECTRICVEHICLES', ['kids', 'toys', 'electric-vehicles']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_SCOOTERS', ['kids', 'toys', 'scooters']),
 
     new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', ''], 3).setHasSlogan(true),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_GAMES', ['multimedia', 'games', '']).setHasSlogan(true),
@@ -63,12 +67,17 @@ export class Navigation {
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_FACE_CARE', ['beauty-and-care', 'skin-care', 'face-care']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_KIDS', ['beauty-and-care', 'skin-care', 'kids']),
 
+    new NavigationItem('ALL', 'HOME', ['home', '', ''], 9).setHasSlogan(true),
+    new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['home', 'acccessoires', '']),
+    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['home', 'accessoires', 'carpets']),
+
     new NavigationItem('ALL', 'COSMETICS', ['cosmetics', '', ''], 8).setHasSlogan(true),
+    new NavigationItem('COSMETICS', 'COSMETICS_HAIR', ['cosmetics', 'hair', '']),
+    new NavigationItem('COSMETICS_HAIR', 'COSMETICS_HAIR_STYLING', ['cosmetics', 'hair', 'styling']),
     new NavigationItem('COSMETICS', 'COSMETICS_MAKEUP', ['cosmetics', 'makeup', '']),
     new NavigationItem('COSMETICS_MAKEUP', 'COSMETICS_MAKEUP_EYES', ['cosmetics', 'makeup', 'eyes']),
     new NavigationItem('COSMETICS', 'COSMETICS_WOMEN', ['cosmetics', 'women', '']),
     new NavigationItem('COSMETICS_WOMEN', 'COSMETICS_WOMEN_FRAGRANCES', ['cosmetics', 'women', 'fragrances'])
-
   ];
 
   public static getAllRootItems(): Array<NavigationItem> {

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {DomSanitizer, Meta, SafeHtml, Title} from '@angular/platform-browser';
+import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+
 
 import { Module, NavigationService } from '../../service/navigation.service';
 import { ItemsApiService } from '../../service/items-api.service';
@@ -31,7 +33,8 @@ export class SingleProductViewComponent {
     private translation: TranslationService,
     translationService: TranslationService,
     titleService: Title,
-    metaService: Meta
+    metaService: Meta,
+    @Inject(DOCUMENT) doc: Document
   ) {
 
     route.paramMap.subscribe((params) => {
@@ -50,10 +53,16 @@ export class SingleProductViewComponent {
         translationService.getTranslations().SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE
           .replace('{product-name}', this.item?.title.substring(0, 50)));
 
-      metaService.updateTag({ name: 'description', content: this.item?.seoDescription || '' });
-      metaService.updateTag({ name: 'keywords', content: this.item?.seoKeywords || '' });
-
-      metaService.addTag({ name: 'canonical', content: window.location.href });
+      metaService.updateTag({ name: 'description', content: this.item?.seoDescription || (this.item?.description || '') });
+      metaService.updateTag({ name: 'keywords', content: this.item?.seoKeywords || (this.item?.title || '') });
+      metaService.updateTag({ name: 'og:title', content: this.item?.title || '' });
+      metaService.updateTag({ name: 'og:image', content: this.item?.titleImage || '' });
+      metaService.updateTag({ name: 'og:type', content: 'product' });
+      
+      const link: HTMLLinkElement = doc.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      doc.head.appendChild(link);
+      link.setAttribute('href', doc.URL);
     });
 
     this.safeWhatsAppUri = this.getSanitizedUri([
@@ -113,5 +122,9 @@ export class SingleProductViewComponent {
     }
 
     return Navigation.getNavigationItemByToId(pathTokens[0]);
+  }
+
+  get activeNavigationItem(): NavigationItem | undefined {
+    return Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
   }
 }
