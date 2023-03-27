@@ -4,3 +4,5 @@ Disallow: /boaform
 Disallow: /server-info
 Disallow: /shell
 
+User-agent: zgrab
+Disallow: /
