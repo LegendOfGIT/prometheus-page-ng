@@ -5,7 +5,7 @@ import { ItemsApiService } from '../../service/items-api.service';
 import { Subject } from 'rxjs';
 import { NavigationItem } from '../../model/navigation-item';
 import { isPlatformServer } from '@angular/common';
-import { makeStateKey, TransferState } from "@angular/platform-browser";
+import {makeStateKey, StateKey, TransferState} from "@angular/platform-browser";
 
 @Component({
   selector: 'category-teaser',
@@ -38,9 +38,13 @@ export class CategoryTeaserComponent implements OnInit {
   ) {
   }
 
+  private getItemsKey(): string {
+    return 'productItems-' + this.navigationItem?.toId;
+  }
+
   private initialiseItems(): void {
-    if (this.transferState.hasKey(makeStateKey('productItems'))) {
-      this.categoryItems = this.transferState.get(makeStateKey('productItems'), []);
+    if (this.transferState.hasKey(makeStateKey(this.getItemsKey()))) {
+      this.categoryItems = this.transferState.get(makeStateKey(this.getItemsKey()), []);
       return;
     }
 
@@ -53,7 +57,7 @@ export class CategoryTeaserComponent implements OnInit {
 
       this.categoryItems = items;
       if (isPlatformServer(this.platformId)) {
-        this.transferState.set<Array<Item | null>>(makeStateKey('productItems'), this.categoryItems);
+        this.transferState.set<Array<Item | null>>(makeStateKey(this.getItemsKey()), this.categoryItems);
       }
     });
   }
