@@ -12,6 +12,17 @@ services:
       - "./certbot/www:/var/www/certbot/:ro"
       - "./certbot/conf/:/etc/nginx/ssl/:ro"
 
+  wewanna:
+    image: node
+    container_name: wewanna
+    hostname: wewanna
+    command: "npm run start:dev"
+    ports:
+      - "4000:4200"
+    working_dir: /app
+    volumes:
+      - "/var/www/prometheus/prometheus-page-ng:/app"
+
   certbot:
     image: certbot/certbot:latest
     volumes:
