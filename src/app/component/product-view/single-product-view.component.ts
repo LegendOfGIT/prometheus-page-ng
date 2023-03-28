@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {DomSanitizer, Meta, SafeHtml, Title} from '@angular/platform-browser';
+import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+
 
 import { Module, NavigationService } from '../../service/navigation.service';
 import { ItemsApiService } from '../../service/items-api.service';
@@ -17,6 +19,8 @@ import { TranslationService } from '../../service/translation.service';
 })
 export class SingleProductViewComponent {
 
+  private sliderInitiated = false;
+
   public itemId: string = '';
 
   public item: Item | null = null;
@@ -31,7 +35,8 @@ export class SingleProductViewComponent {
     private translation: TranslationService,
     translationService: TranslationService,
     titleService: Title,
-    metaService: Meta
+    metaService: Meta,
+    @Inject(DOCUMENT) private doc: Document
   ) {
 
     route.paramMap.subscribe((params) => {
@@ -46,6 +51,10 @@ export class SingleProductViewComponent {
 
       this.item = items[0];
 
+      const script: HTMLScriptElement = this.doc.createElement('script');
+      script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ "autoplay": true, "autoplaySpeed": 7000, "arrows": false}); });';
+      this.doc.body.appendChild(script);
+
       titleService.setTitle(
         translationService.getTranslations().SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE
           .replace('{product-name}', this.item?.title.substring(0, 50)));
@@ -55,7 +64,11 @@ export class SingleProductViewComponent {
       metaService.updateTag({ name: 'og:title', content: this.item?.title || '' });
       metaService.updateTag({ name: 'og:image', content: this.item?.titleImage || '' });
       metaService.updateTag({ name: 'og:type', content: 'product' });
-      metaService.addTag({ name: 'canonical', content: window.location.href });
+
+      const link: HTMLLinkElement = doc.createElement('link');
+      link.setAttribute('rel', 'canonical');
+      doc.head.appendChild(link);
+      link.setAttribute('href', doc.URL);
     });
 
     this.safeWhatsAppUri = this.getSanitizedUri([
@@ -65,6 +78,7 @@ export class SingleProductViewComponent {
       encodeURIComponent(window.location.href)
     ]);
   }
+
 
   public getShopNameFromUrl(url: string | undefined) {
     const match = (url || '').match(/\/\/(www.)?(.*?)\//);
