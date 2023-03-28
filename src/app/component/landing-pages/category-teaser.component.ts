@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { NavigationItem } from '../../model/navigation-item';
 import { isPlatformServer } from '@angular/common';
 import {makeStateKey, StateKey, TransferState} from "@angular/platform-browser";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'category-teaser',
@@ -50,15 +51,25 @@ export class CategoryTeaserComponent implements OnInit {
 
     const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
     this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 8, this.randomItems).subscribe(items => {
-      if (!items?.length) {
-        this.categoryItems = [];
+      if (items?.length) {
+        this.categoryItems = items;
+        if (isPlatformServer(this.platformId)) {
+          this.transferState.set<Array<Item | null>>(makeStateKey(this.getItemsKey()), this.categoryItems);
+        }
         return;
       }
 
-      this.categoryItems = items;
-      if (isPlatformServer(this.platformId)) {
-        this.transferState.set<Array<Item | null>>(makeStateKey(this.getItemsKey()), this.categoryItems);
-      }
+      this.itemsService.getItems(this.navigationItem?.toId || '', '', 8)
+        .pipe(takeUntil(this.destroyedService$))
+        .subscribe(
+          items => {
+            this.categoryItems = items;
+            if (isPlatformServer(this.platformId)) {
+              this.transferState.set<Array<Item | null>>(makeStateKey(this.getItemsKey()), this.categoryItems);
+            }
+          });
+
+
     });
   }
   ngOnInit(): void {
