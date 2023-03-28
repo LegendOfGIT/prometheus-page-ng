@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { I18nInterface } from 'src/app/i18n/i18n.interface';
 import { I18nDeDe } from 'src/app/i18n/i18n.de_DE';
 import { I18nEnUs } from 'src/app/i18n/i18n.en_US';
 
@@ -20,7 +19,14 @@ export class TranslationService  {
   }
 
   public getTranslations(): any {
-    const i18Key = this.userService.activeUser?.localeForDisplay as keyof typeof this.localeMapping;
+    const i18Key = this.userService.activeUser
+      ? this.userService.activeUser?.localeForDisplay as keyof typeof this.localeMapping
+      : 'de_DE';
+
+    if (!this.localeMapping[i18Key]) {
+      return {};
+    }
+
     return this.localeMapping[i18Key].getTranslations();
   }
 }

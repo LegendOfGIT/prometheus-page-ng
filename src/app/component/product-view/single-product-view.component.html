@@ -35,7 +35,7 @@
           <div class="productInformation__offers">
             <a href="{{itemWithLowestPrice?.link}}" target="_blank" class="button__wrapper">
               <div class="button">
-                {{getShopNameFromUrl(itemWithLowestPrice?.link)}}<span *ngIf="itemWithLowestPrice?.renderPrice()">: {{itemWithLowestPrice?.renderPrice()}}</span>
+                {{getShopNameFromUrl(itemWithLowestPrice?.link)}}<span *ngIf="renderPrice(itemWithLowestPrice)">: {{renderPrice(itemWithLowestPrice)}}</span>
               </div>
             </a>
           </div>
@@ -47,12 +47,12 @@
             <div class="productInformation__offers">
               <a *ngFor="let offer of moreExpensiveOfferItems" href="{{offer?.link}}" target="_blank" class="button__wrapper">
                 <div class="button">
-                  {{getShopNameFromUrl(offer?.link)}}<span *ngIf="offer?.renderPrice()">: {{offer?.renderPrice()}}</span>
+                  {{getShopNameFromUrl(offer?.link)}}<span *ngIf="renderPrice(offer)">: {{renderPrice(offer)}}</span>
                 </div>
               </a>
               <a *ngFor="let offer of offerItemsWithoutPrice" href="{{offer?.link}}" target="_blank" class="button__wrapper">
                 <div class="button">
-                      {{getShopNameFromUrl(offer?.link)}}<span *ngIf="offer?.renderPrice()">: {{offer?.renderPrice()}}</span>
+                      {{getShopNameFromUrl(offer?.link)}}<span *ngIf="renderPrice(offer)">: {{renderPrice(offer)}}</span>
                 </div>
               </a>
             </div>
@@ -76,11 +76,11 @@
   <div class="row">
     <div class="col-12 productDetails">
       <div class="productInformation productInformation--last productInformation__header productDetails__wrapper">
-        <div *ngIf="item?.getItemDetails()?.length">
+        <div *ngIf="getItemDetails(item)?.length">
           <div class="productInformation__header">
             <h4>{{'PRODUCT_DETAILS' | translate}}</h4>
           </div>
-          <div *ngFor="let detail of item?.getItemDetails()" class="productDetails__content">
+          <div *ngFor="let detail of getItemDetails(item)" class="productDetails__content">
             <div class="productDetails__label">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</div>
             <div>{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate }}</div>
           </div>

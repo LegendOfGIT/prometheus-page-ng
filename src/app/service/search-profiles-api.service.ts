@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 import { ApiBase } from './api-base';
 import { SearchProfile } from '../model/search-profile';
 import { SearchProfileDto } from '../model/dto/search-profile-dto';
 import { endpoints } from 'src/environments/endpoints';
 import {ApplicationConfiguration} from '../configurations/app';
+import {isPlatformServer} from "@angular/common";
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +18,8 @@ export class SearchProfilesApiService extends ApiBase {
   private _items: Array<SearchProfile | null> = [];
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
       super(ApplicationConfiguration.API_BASE);
   }
@@ -31,6 +33,10 @@ export class SearchProfilesApiService extends ApiBase {
   }
 
   public getItems(userId: string): Observable<Array<SearchProfile | null>> {
+    if (isPlatformServer(this.platformId)) {
+      return of([]);
+    }
+
     const url = this.get(endpoints.getSearchProfileItems, { userId });
 
     return this.http

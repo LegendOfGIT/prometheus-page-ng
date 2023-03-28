@@ -1,11 +1,11 @@
 import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { Item } from '../../model/item';
-import { takeUntil } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { ItemsApiService } from '../../service/items-api.service';
 import { Subject } from 'rxjs';
 import { NavigationItem } from '../../model/navigation-item';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformServer } from '@angular/common';
+import { makeStateKey, TransferState } from "@angular/platform-browser";
 
 @Component({
   selector: 'category-teaser',
@@ -33,33 +33,32 @@ export class CategoryTeaserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private itemsService: ItemsApiService,
+    private transferState: TransferState,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
   }
 
-  ngOnInit(): void {
-    if (!isPlatformBrowser(this.platformId)) {
+  private initialiseItems(): void {
+    if (this.transferState.hasKey(makeStateKey('productItems'))) {
+      this.categoryItems = this.transferState.get(makeStateKey('productItems'), []);
       return;
     }
 
     const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
+    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 8, this.randomItems).subscribe(items => {
+      if (!items?.length) {
+        this.categoryItems = [];
+        return;
+      }
 
-    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 8, this.randomItems)
-      .pipe(takeUntil(this.destroyedService$))
-      .subscribe(
-        items => {
-          if (items?.length) {
-            this.categoryItems = items;
-            return;
-          }
-
-          this.itemsService.getItems(this.navigationItem?.toId || '', '', 8)
-            .pipe(takeUntil(this.destroyedService$))
-            .subscribe(
-              items => {
-                this.categoryItems = items;
-              });
-        });
+      this.categoryItems = items;
+      if (isPlatformServer(this.platformId)) {
+        this.transferState.set<Array<Item | null>>(makeStateKey('productItems'), this.categoryItems);
+      }
+    });
+  }
+  ngOnInit(): void {
+    this.initialiseItems();
   }
 
   public getItemsOfCategory(): (Item | null)[] {
@@ -81,6 +80,10 @@ export class CategoryTeaserComponent implements OnInit {
     }
 
     return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
+  }
+
+  public renderLowestPrice(item: Item): string {
+    return Item.renderLowestPrice(item);
   }
 
   get moreLink(): string {

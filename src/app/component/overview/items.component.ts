@@ -71,10 +71,6 @@ export class ItemsComponent implements OnInit {
 
     }
 
-    public getFirstLinkFromItem(item: Item) {
-      return item.getLinkOfLowestPriceItem();
-    }
-
     public pickedInformation(item: Item): void {
       this.trackingService.addActivity(
         TrackingActivityItem.create()
@@ -98,5 +94,9 @@ export class ItemsComponent implements OnInit {
     }
 
     return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
+  }
+
+  public renderLowestPrice(item: Item): string {
+      return Item.renderLowestPrice(item);
   }
 }

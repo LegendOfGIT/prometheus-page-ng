@@ -20,8 +20,8 @@
       </div>
       <a href="{{getSeoFriendlySingleProductViewUrl(item)}}">
         <div class="informationItem__contentContainer">
-          <div *ngIf="item.renderLowestPrice(); else noPrice" [ngClass]="['informationItem__price']">
-            {{ 'PRICE_FROM' | translate }} {{item.renderLowestPrice() || ''}}
+          <div *ngIf="renderLowestPrice(item); else noPrice" [ngClass]="['informationItem__price']">
+            {{ 'PRICE_FROM' | translate }} {{renderLowestPrice(item) || ''}}
           </div>
           <ng-template #noPrice>
             <div [ngClass]="['informationItem__price', 'informationItem__price--hidden']">

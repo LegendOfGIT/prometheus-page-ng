@@ -1,8 +1,7 @@
 import { ItemDto } from './dto/item-dto';
 import { BaseModel } from './factory/factory-base';
 import { CorrespondingItem } from './corresponding-item';
-import {ItemDetails} from "./item-details";
-import {unwrapConstructorDependencies} from "@angular/compiler-cli/src/ngtsc/annotations/common";
+import { ItemDetails } from './item-details';
 
 export class Item extends BaseModel {
 
@@ -41,16 +40,16 @@ export class Item extends BaseModel {
         return item;
     }
 
-    public getProviderItemWithLowestPrice(): CorrespondingItem | null {
-      if (!this.providers || !this.providers.length) {
+    public static getProviderItemWithLowestPrice(item: Item | null): CorrespondingItem | null {
+      if (!item?.providers || !item.providers.length) {
         return null;
       }
 
-      if (1 === this.providers.length) {
-        return this.providers[0];
+      if (1 === item.providers.length) {
+        return item.providers[0];
       }
 
-      const providers = this.providers
+      const providers = item.providers
         .filter(item => (item?.priceCurrent || 0) > 0)
         .sort((a, b) => (a?.priceCurrent || 0) - (b?.priceCurrent || 0));
 
@@ -58,29 +57,33 @@ export class Item extends BaseModel {
     }
 
     public getLinkOfLowestPriceItem(): string {
-      const item = this.getProviderItemWithLowestPrice();
+      const item = Item.getProviderItemWithLowestPrice(this);
       return item?.link || '';
     }
 
-    public renderLowestPrice(): string {
-      const item = this.getProviderItemWithLowestPrice();
+    public static renderLowestPrice(item: Item | null): string {
+      const itemWithLowestPrice = Item.getProviderItemWithLowestPrice(item);
 
-      const lowestPrice = item?.priceCurrent;
+      const lowestPrice = itemWithLowestPrice?.priceCurrent;
       return lowestPrice ? `${lowestPrice.toLocaleString('de-DE', {minimumFractionDigits: 2})} EUR` : '';
     }
 
-    public getItemDetails(): Array<ItemDetails> {
+    public static getItemDetails(item: Item | null): Array<ItemDetails> {
+      if (!item) {
+        return [];
+      }
+
       return [
-        new ItemDetails('GENRE', this.genre),
-        new ItemDetails('SUBGENRE', this.subgenre),
-        new ItemDetails('MINIMUM_AGE', this.minimumAge),
-        new ItemDetails('INTERPRET', this.interpret),
-        new ItemDetails('AMOUNT_OF_MEDIA', this.amountOfMedia),
-        new ItemDetails('AMOUNT_OF_SONGS', this.amountOfSongs),
-        new ItemDetails('FIT', this.fit),
-        new ItemDetails('MATERIAL', this.material),
-        new ItemDetails('FABRIC', this.fabric),
-        new ItemDetails('FABRIC_PATTERN', this.fabricPattern),
+        new ItemDetails('GENRE', item.genre),
+        new ItemDetails('SUBGENRE', item.subgenre),
+        new ItemDetails('MINIMUM_AGE', item.minimumAge),
+        new ItemDetails('INTERPRET', item.interpret),
+        new ItemDetails('AMOUNT_OF_MEDIA', item.amountOfMedia),
+        new ItemDetails('AMOUNT_OF_SONGS', item.amountOfSongs),
+        new ItemDetails('FIT', item.fit),
+        new ItemDetails('MATERIAL', item.material),
+        new ItemDetails('FABRIC', item.fabric),
+        new ItemDetails('FABRIC_PATTERN', item.fabricPattern),
       ].filter(detail => detail.value);
     }
 
