@@ -92,9 +92,30 @@ export class SingleProductViewComponent {
 
     const link: HTMLLinkElement = this.doc.createElement('link');
     this.doc.head.appendChild(link);
-    console.log('HI MARK!');
     link.setAttribute('rel', 'canonical');
-    link.setAttribute('href', 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), ''));
+    const productUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
+    link.setAttribute('href', productUri);
+
+    const contentModel: HTMLScriptElement = this.doc.createElement('script');
+    contentModel.setAttribute('type', 'application/ld+json');
+
+    const lowestPrice = Item.renderLowestPrice(this.item);
+
+    contentModel.innerHTML = JSON.stringify({
+      '@context': 'https://schema.org/',
+      '@type': 'Product',
+      name: this.item?.title || '',
+      description: this.item?.description || '',
+      image: [this.item?.titleImage || ''],
+      offers: !lowestPrice ? undefined : {
+        '@type': 'Offer',
+        url: productUri,
+        priceCurrency: 'EUR',
+        price: lowestPrice
+      }
+    });
+    this.doc.head.appendChild(contentModel);
+
   }
 
   ngOnInit() {
