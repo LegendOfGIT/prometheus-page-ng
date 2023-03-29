@@ -93,8 +93,7 @@ export class SingleProductViewComponent {
     const link: HTMLLinkElement = this.doc.createElement('link');
     this.doc.head.appendChild(link);
     link.setAttribute('rel', 'canonical');
-    console.log(this.doc.URL);
-    link.setAttribute('href', this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), 'https://www.wewanna.shop/'));
+    link.setAttribute('href', 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), ''));
   }
 
   ngOnInit() {
