@@ -43,7 +43,6 @@ export class HeaderComponent {
     private wishlistService: WishlistItemsApiService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    this.activatePageReloadOnEveryRouteNavigation();
     this.subscribeSearchPatternChanges();
     this.lastLoggedInFlag = this.userService.isLoggedIn;
     const searchPattern = this.isOnClientSide() ? new URL(window.location.href).searchParams.get('search') : '';
@@ -53,10 +52,6 @@ export class HeaderComponent {
 
   private isOnClientSide(): boolean {
     return isPlatformBrowser(this.platformId);
-  }
-
-  private activatePageReloadOnEveryRouteNavigation() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   private subscribeSearchPatternChanges(): void {
@@ -84,7 +79,12 @@ export class HeaderComponent {
   }
 
   public searchNow(): void {
-    this.router.navigate([], { queryParams: { search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value } });
+    this.router.navigate(
+      [],
+      { queryParams: { search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value } }
+    ).then(() => {
+      window.location.reload();
+    });
   }
 
   get hasJustLoggedIn(): boolean {
