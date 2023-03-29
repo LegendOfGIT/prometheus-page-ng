@@ -92,6 +92,7 @@ export class SingleProductViewComponent {
 
     const link: HTMLLinkElement = this.doc.createElement('link');
     this.doc.head.appendChild(link);
+    console.log('HI MARK!');
     link.setAttribute('rel', 'canonical');
     link.setAttribute('href', 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), ''));
   }
