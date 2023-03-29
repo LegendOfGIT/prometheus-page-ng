@@ -45,9 +45,13 @@ export class HeaderComponent {
   ) {
     this.subscribeSearchPatternChanges();
     this.lastLoggedInFlag = this.userService.isLoggedIn;
-    const searchPattern = this.isOnClientSide() ? new URL(window.location.href).searchParams.get('search') : '';
+    const searchPattern = this.getSearchParameterFromUrl();
     this.searchPatternControl.setValue(searchPattern);
     this.secondBarSearchPatternControl.setValue(searchPattern);
+  }
+
+  private getSearchParameterFromUrl(): string | null {
+    return this.isOnClientSide() ? new URL(window.location.href).searchParams.get('search') : '';
   }
 
   private isOnClientSide(): boolean {
@@ -79,11 +83,15 @@ export class HeaderComponent {
   }
 
   public searchNow(): void {
+    const searchPattern = this.getSearchParameterFromUrl();
+
     this.router.navigate(
       [],
       { queryParams: { search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value } }
     ).then(() => {
-      window.location.reload();
+      if (searchPattern !== this.searchPatternControl.value) {
+        window.location.reload();
+      }
     });
   }
 
