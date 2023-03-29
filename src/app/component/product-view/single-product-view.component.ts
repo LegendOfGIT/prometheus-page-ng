@@ -99,7 +99,7 @@ export class SingleProductViewComponent {
     const contentModel: HTMLScriptElement = this.doc.createElement('script');
     contentModel.setAttribute('type', 'application/ld+json');
 
-    const lowestPrice = Item.renderLowestPrice(this.item);
+    const lowestPrice = Item.getProviderItemWithLowestPrice(this.item);
 
     contentModel.innerHTML = JSON.stringify({
       '@context': 'https://schema.org/',
@@ -107,11 +107,11 @@ export class SingleProductViewComponent {
       name: this.item?.title || '',
       description: this.item?.description || '',
       image: [this.item?.titleImage || ''],
-      offers: !lowestPrice ? undefined : {
+      offers: !lowestPrice || 0 === lowestPrice.priceCurrent ? undefined : {
         '@type': 'Offer',
         url: productUri,
         priceCurrency: 'EUR',
-        price: lowestPrice
+        price: lowestPrice.priceCurrent
       }
     });
     this.doc.head.appendChild(contentModel);
