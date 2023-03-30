@@ -23,6 +23,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_COSMETICS_HAIR_STYLING: 'styling',
       NAVIGATION_COSMETICS_MAKEUP: 'makeup',
       NAVIGATION_COSMETICS_MAKEUP_EYES: 'eyes',
+      NAVIGATION_COSMETICS_MAKEUP_LIPS: 'lips',
       NAVIGATION_COSMETICS_WOMEN: 'women',
       NAVIGATION_COSMETICS_WOMEN_FRAGRANCES: 'fragrances',
       NAVIGATION_ELECTRONICS_AND_COMPUTERS: 'electronics & computers',
