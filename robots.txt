@@ -1,10 +1,12 @@
 User-agent: *
+Disallow: /.env
 Disallow: /admin
 Disallow: /boaform
 Disallow: /server-info
 Disallow: /shell
 Disallow: /stalker_portal
 Disallow: /wordpress
+Disallow: /wp
 Disallow: /wp-admin
 
 User-agent: zgrab
