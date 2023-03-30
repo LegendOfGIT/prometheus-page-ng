@@ -1,6 +1,7 @@
 User-agent: *
 Disallow: /admin
 Disallow: /boaform
+Disallow: /remote
 Disallow: /server-info
 Disallow: /shell
 
