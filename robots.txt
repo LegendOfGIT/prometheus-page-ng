@@ -4,6 +4,8 @@ Disallow: /boaform
 Disallow: /server-info
 Disallow: /shell
 Disallow: /stalker_portal
+Disallow: /wordpress
+Disallow: /wp-admin
 
 User-agent: zgrab
 Disallow: /
