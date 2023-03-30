@@ -14,9 +14,9 @@
     <div class="col-12 col-md-6">
       <div class="carousel__viewport">
           <div
-            *ngFor="let imageBigUrl of (item?.imagesBig || []).concat([item?.titleImage || ''])"
+            *ngFor="let imageBigUrl of [item?.titleImage || ''].concat(item?.imagesBig || []); let i = index;"
           >
-            <img src="{{imageBigUrl}}" class="mainStage__mainImage"/>
+            <img src="{{imageBigUrl}}" alt="{{i+1}}. {{ 'IMAGE_OF' | translate }} {{item?.title || ''}}" class="mainStage__mainImage"/>
           </div>
       </div>
     </div>

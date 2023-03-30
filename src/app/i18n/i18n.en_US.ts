@@ -10,6 +10,7 @@ export class I18nEnUs implements I18nInterface {
       CATEGORIES: 'Categories',
       DATA_PROTECTION: 'Data-Protection',
       FURTHER_PRODUCTS_OF_CATEGORY: 'More products of this category',
+      IMAGE_OF: 'Image of',
       IMPRINT: 'Imprint',
       MORE_OFFERS: 'More offers',
       NAVIGATION_ALL: 'all products',

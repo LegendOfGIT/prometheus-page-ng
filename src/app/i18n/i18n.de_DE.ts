@@ -10,6 +10,7 @@ export class I18nDeDe implements I18nInterface {
       CATEGORIES: 'Kategorien',
       DATA_PROTECTION: 'Datenschutzerklärung',
       FURTHER_PRODUCTS_OF_CATEGORY: 'Mehr aus dieser Kategorie',
+      IMAGE_OF: 'Bild von',
       IMPRINT: 'Impressum',
       MORE_OFFERS: 'Weitere Angebote',
       NAVIGATION_ALL: 'Alle Produkte',

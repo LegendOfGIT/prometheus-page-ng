@@ -12,7 +12,7 @@
           <a href="{{getSeoFriendlySingleProductViewUrl(item)}}">
             <img
               class="informationItem__image"
-              alt="{{item.title}}"
+              alt="{{ 'IMAGE_OF' | translate }} {{item?.title || ''}}"
               src="{{item.titleImage}}"
               loading="lazy"
             />
