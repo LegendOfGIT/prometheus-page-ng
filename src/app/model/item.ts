@@ -35,8 +35,11 @@ export class Item extends BaseModel {
         const item = this.bindFrom<ItemDto, Item>(Item, data);
         if (item) {
           item.id = (data as any)._id;
+          item.heightInCm = (data as any)['height-in-cm'];
           item.imagesBig = (data as any)['images-big'];
+          item.lengthInCm = (data as any)['length-in-cm'];
           item.titleImage = (data as any)['title-image'];
+          item.widthInCm = (data as any)['width-in-cm'];
           item.providers = (data.providers || []).map(provider => CorrespondingItem.fromModel(provider));
         }
 
