@@ -42,6 +42,16 @@ export class Navigation {
     new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['electronics-and-computers', '', ''], 2).setHasSlogan(true),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
+      'ELECTRONICS_AND_COMPUTERS_HOME',
+      ['electronics-and-computers', 'home', '']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_TVS',
+      ['electronics-and-computers', 'home', 'tvs']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
       ['electronics-and-computers', 'large-appliances', '']
     ),
@@ -50,6 +60,21 @@ export class Navigation {
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_FRIDGES_AND_FREEZERS',
       ['electronics-and-computers', 'large-appliances', 'fridges-and-freezers']
     ).setHasSlogan(true),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
+      'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_DRYERS',
+      ['electronics-and-computers', 'large-appliances', 'dryers']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
+      'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_WASHING_MACHINES',
+      ['electronics-and-computers', 'large-appliances', 'washing-machines']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
+      'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_DISHWASHERS',
+      ['electronics-and-computers', 'large-appliances', 'dishwashers']
+    ),
 
     new NavigationItem('ALL', 'LIGHTING', ['lighting', '', ''], 5).setHasSlogan(true),
     new NavigationItem('LIGHTING', 'LIGHTING_INNERLIGHTING', ['lighting', 'inner-lighting', '']),
