@@ -97,8 +97,12 @@ export class Navigation {
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_KIDS', ['beauty-and-care', 'skin-care', 'kids']),
 
     new NavigationItem('ALL', 'HOME', ['home', '', ''], 9).setHasSlogan(true),
-    new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['home', 'acccessoires', '']),
+    new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['home', 'accessoires', '']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['home', 'accessoires', 'carpets']),
+    new NavigationItem('HOME', 'HOME_GARDEN', ['home', 'garden', '']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GARDENHOUSES', ['home', 'garden', 'garden-houses']),
+    new NavigationItem('HOME', 'HOME_TOOLS', ['home', 'tools', '']),
+    new NavigationItem('HOME_TOOLS', 'HOME_TOOLS_DRILLINGMACHINES', ['home', 'tools', 'drilling-machines']),
 
     new NavigationItem('ALL', 'COSMETICS', ['cosmetics', '', ''], 8).setHasSlogan(true),
     new NavigationItem('COSMETICS', 'COSMETICS_HAIR', ['cosmetics', 'hair', '']),
