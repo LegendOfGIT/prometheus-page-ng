@@ -19,11 +19,14 @@ export class Item extends BaseModel {
     fit: string = '';
     interpret: string = '';
     genre: string = '';
+    heightInCm: number = 0;
+    lengthInCm: number = 0;
     material: string = '';
     minimumAge: number = 0;
     subgenre: string = '';
     seoDescription: string = '';
     seoKeywords: string = '';
+    widthInCm: number = 0;
 
     imagesBig: Array<string> = [];
     providers: Array<CorrespondingItem | null> = [];
@@ -84,6 +87,9 @@ export class Item extends BaseModel {
         new ItemDetails('MATERIAL', item.material),
         new ItemDetails('FABRIC', item.fabric),
         new ItemDetails('FABRIC_PATTERN', item.fabricPattern),
+        new ItemDetails('LENGTH_IN_CM', item.lengthInCm),
+        new ItemDetails('WIDTH_IN_CM', item.widthInCm),
+        new ItemDetails('HEIGHT_IN_CM', item.heightInCm)
       ].filter(detail => detail.value);
     }
 
