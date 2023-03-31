@@ -4,6 +4,10 @@
     <span class="header__titleCapitalLetter">W</span><span class="header__title">anna</span>
     <span class="header__titleSlogan"> {{('NAVIGATION_SLOGAN_' + (navigationItem?.hasSlogan ? navigationItem?.toId || 'ALL' : 'ALL')) | translate}}!</span>
   </h2>
+
+  <h3 *ngIf="showHeader && navigationItem?.hasTeaser">
+    <span class="header__titleTeaser"> {{('NAVIGATION_TEASER_' + (navigationItem?.toId || 'ALL')) | translate}}</span>
+  </h3>
   <div class="col-12 informationItems__container">
     <div *ngFor="let item of getItemsOfCategory(); let i = index;">
 

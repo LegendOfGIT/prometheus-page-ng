@@ -94,6 +94,8 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_SLOGAN_MULTIMEDIA: 'be entertained',
       NAVIGATION_SLOGAN_MULTIMEDIA_GAMES: 'play',
       NAVIGATION_SLOGAN_MUSIC: 'listen',
+      NAVIGATION_TEASER_ELECTRONICS_AND_COMPUTERS: 'Keep yourself and your loved ones up to date! You can find TVs, Household devices and many more here.',
+      NAVIGATION_TEASER_FASHION: 'Discover Jeans, Sweatshirts, Bags, Jewelery and your very own style!',
       OFFER: 'Offer',
       PRICE_FROM: 'from',
       PRIVATSPHERE_OPTIONS: 'Privatsphere-Options',

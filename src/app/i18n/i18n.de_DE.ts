@@ -94,6 +94,8 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_SLOGAN_MULTIMEDIA: 'be entertained',
       NAVIGATION_SLOGAN_MULTIMEDIA_GAMES: 'play',
       NAVIGATION_SLOGAN_MUSIC: 'listen',
+      NAVIGATION_TEASER_ELECTRONICS_AND_COMPUTERS: 'Halte dich und deine lieben auf dem Laufenden! Hier findest du Fernseher, Haushaltsgeräte und vieles mehr.',
+      NAVIGATION_TEASER_FASHION: 'Entdeckt Jeans, Pullover, Taschen, Schmuck und deinen ganz eigenen Style!',
       OFFER: 'Angebot',
       PRICE_FROM: 'ab',
       PRIVATSPHERE_OPTIONS: 'Privatsphäre Einstellungen',

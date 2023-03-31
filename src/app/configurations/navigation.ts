@@ -5,7 +5,9 @@ export class Navigation {
   public static ITEMS: NavigationItem[] = [
     new NavigationItem('', 'ALL', ['', '', '']),
 
-    new NavigationItem('ALL', 'FASHION', ['fashion', '', ''], 1).setHasSlogan(true),
+    new NavigationItem('ALL', 'FASHION', ['fashion', '', ''], 1)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['fashion', 'women', '']).setHasSlogan(true),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_BAGS', ['fashion', 'women', 'bags']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['fashion', 'women', 'jeans']),
@@ -39,7 +41,9 @@ export class Navigation {
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_XBOX_ONE', ['multimedia', 'games', 'xbox-one']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_XBOX_360', ['multimedia', 'games', 'xbox-360']),
 
-    new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['electronics-and-computers', '', ''], 2).setHasSlogan(true),
+    new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['electronics-and-computers', '', ''], 2)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_HOME',
