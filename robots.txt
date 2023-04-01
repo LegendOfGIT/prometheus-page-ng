@@ -1,6 +1,10 @@
 User-agent: *
 Disallow: /.env
+Disallow: /.git
+Disallow: /_profiler
 Disallow: /admin
+Disallow: /config.json
+Disallow: /debug
 Disallow: /remote
 Disallow: /boaform
 Disallow: /server-info

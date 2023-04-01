@@ -66,6 +66,10 @@ export class AppComponent implements AfterViewInit, OnInit  {
     this.searchProfilesApiService.getItems(this.userService.activeUser?.id || '')
       .pipe(takeUntil(this.destroyedService$))
       .subscribe((items) => { this.searchProfilesApiService.items = items || []; });
+
+    this.searchProfilesApiService.getSearchProfile(this.userService.activeUser?.activeSearchProfile || '')
+      .pipe(takeUntil(this.destroyedService$))
+      .subscribe((item) => { this.searchProfilesApiService.activeItem = item; });
   }
 
   private initialiseWishlist(): void {

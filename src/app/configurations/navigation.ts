@@ -22,7 +22,9 @@ export class Navigation {
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_SHOES', ['fashion', 'men', 'shoes']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_SWEATERS_AND_KNITWEAR', ['fashion', 'men', 'sweaters-and-knitwear']),
 
-    new NavigationItem('ALL', 'KIDS', ['kids', '', ''], 4).setHasSlogan(true),
+    new NavigationItem('ALL', 'KIDS', ['kids', '', ''], 4)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
     new NavigationItem('KIDS', 'KIDS_PARTY', ['kids', 'party', '']).setHasSlogan(true),
     new NavigationItem('KIDS_PARTY', 'KIDS_PARTY_TABLEWARE', ['kids', 'party', 'tableware']),
     new NavigationItem('KIDS', 'KIDS_SCHOOL', ['kids', 'school', '']).setHasSlogan(true),
@@ -32,7 +34,9 @@ export class Navigation {
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_ELECTRICVEHICLES', ['kids', 'toys', 'electric-vehicles']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_SCOOTERS', ['kids', 'toys', 'scooters']),
 
-    new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', ''], 3).setHasSlogan(true),
+    new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', ''], 3)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_GAMES', ['multimedia', 'games', '']).setHasSlogan(true),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_NINTENDO_SWITCH', ['multimedia', 'games', 'nintendo-switch']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_PC', ['multimedia', 'games', 'pc']),
@@ -80,23 +84,31 @@ export class Navigation {
       ['electronics-and-computers', 'large-appliances', 'dishwashers']
     ),
 
-    new NavigationItem('ALL', 'LIGHTING', ['lighting', '', ''], 5).setHasSlogan(true),
+    new NavigationItem('ALL', 'LIGHTING', ['lighting', '', ''], 5)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
     new NavigationItem('LIGHTING', 'LIGHTING_INNERLIGHTING', ['lighting', 'inner-lighting', '']),
     new NavigationItem('LIGHTING_INNERLIGHTING', 'LIGHTING_INNERLIGHTING_CEILING', ['lighting', 'inner-lighting', 'ceiling']),
 
-    new NavigationItem('ALL', 'MUSIC', ['music', '', ''], 6).setHasSlogan(true),
+    new NavigationItem('ALL', 'MUSIC', ['music', '', ''], 6)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
     new NavigationItem('MUSIC', 'MUSIC_CD', ['music', 'cd', '']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_ALTERNATIVE', ['music', 'cd', 'alternative']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_GERMANFOLK', ['music', 'cd', 'german-folk-music']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_POP', ['music', 'cd', 'pop']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_ROCK', ['music', 'cd', 'rock']),
 
-    new NavigationItem('ALL', 'BEAUTY_CARE', ['beauty-and-care', '', ''], 7).setHasSlogan(true),
+    new NavigationItem('ALL', 'BEAUTY_CARE', ['beauty-and-care', '', ''], 7)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SKIN_CARE', ['beauty-and-care', 'skin-care', '']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_FACE_CARE', ['beauty-and-care', 'skin-care', 'face-care']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_KIDS', ['beauty-and-care', 'skin-care', 'kids']),
 
-    new NavigationItem('ALL', 'HOME', ['home', '', ''], 9).setHasSlogan(true),
+    new NavigationItem('ALL', 'HOME', ['home', '', ''], 9)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
     new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['home', 'accessoires', '']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['home', 'accessoires', 'carpets']),
     new NavigationItem('HOME', 'HOME_GARDEN', ['home', 'garden', '']),
@@ -104,7 +116,9 @@ export class Navigation {
     new NavigationItem('HOME', 'HOME_TOOLS', ['home', 'tools', '']),
     new NavigationItem('HOME_TOOLS', 'HOME_TOOLS_DRILLINGMACHINES', ['home', 'tools', 'drilling-machines']),
 
-    new NavigationItem('ALL', 'COSMETICS', ['cosmetics', '', ''], 8).setHasSlogan(true),
+    new NavigationItem('ALL', 'COSMETICS', ['cosmetics', '', ''], 8)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
     new NavigationItem('COSMETICS', 'COSMETICS_HAIR', ['cosmetics', 'hair', '']),
     new NavigationItem('COSMETICS_HAIR', 'COSMETICS_HAIR_STYLING', ['cosmetics', 'hair', 'styling']),
     new NavigationItem('COSMETICS', 'COSMETICS_MAKEUP', ['cosmetics', 'makeup', '']),

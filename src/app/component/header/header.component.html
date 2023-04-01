@@ -6,11 +6,13 @@
           <i class="fa fa-regular fa-bars" (click)="categorySelection.showModal()"></i>
         </div>
 
-        <h1 class="header__logo" [routerLink]="['/']" style="cursor: pointer;">
-          <span class="header__titleCapitalLetter">W</span><span style="color: lightblue;">e</span>
-          <span class="header__titleCapitalLetter">W</span><span style="color: lightblue;">anna</span>
-          <span style="color: goldenrod;"> {{'NAVIGATION_SLOGAN_' + (activeNavigationItem?.hasSlogan ? activeNavigationItem?.toId || 'ALL' : 'ALL') | translate}}!</span>
-        </h1>
+          <h1 class="header__logo" style="cursor: pointer;">
+            <a href="/">
+              <span class="header__titleCapitalLetter">W</span><span style="color: lightblue;">e</span>
+              <span class="header__titleCapitalLetter">W</span><span style="color: lightblue;">anna</span>
+              <span style="color: goldenrod;"> {{'NAVIGATION_SLOGAN_' + (activeNavigationItem?.hasSlogan ? activeNavigationItem?.toId || 'ALL' : 'ALL') | translate}}!</span>
+            </a>
+          </h1>
 
         <div class="header__icons">
           <div class="header__iconWrapper">

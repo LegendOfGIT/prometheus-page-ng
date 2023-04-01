@@ -6,6 +6,7 @@ export const endpoints = {
     deleteWishlistItem: '/wishlist-item?userId={userId}&itemId={itemId}',
     getWishlistItems: '/wishlist-items?userId={userId}&searchPattern={searchPattern}',
     saveWishlistItem: '/wishlist-item',
+    getSearchProfileItem: '/search-profile?searchProfileId={searchProfileId}',
     getSearchProfileItems: '/search-profiles?userId={userId}',
     removeSearchProfile: '/search-profile?userId={userId}&searchProfileId={searchProfileId}',
     saveSearchProfile: '/search-profile'
