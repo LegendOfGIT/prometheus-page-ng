@@ -29,6 +29,20 @@
   },
   {
     "httpRequest": {
+      "path": "/api/search-profiles",
+      "queryStringParameters": {
+        "userId": ".*?"
+      }
+    },
+    "httpResponse": {
+      "headers": {
+        "Content-Type": ["application/json"]
+      },
+      "body": "{\"errorMessage\":\"\",\"items\": [{\"title\":\"KeyWe PlayStation 4\",          \"title-image\":\"https://i.otto.de/i/otto/54ce160a-bd93-5ba8-aec5-f7b73f72cb17\",          \"navigationPath\":[             \"MULTIMEDIA\",             \"MULTIMEDIA_GAMES\",             \"MULTIMEDIA_GAMES_PLAYSTATION_4\"          ],          \"updatedOn\":\"2023-03-07T12:56:36.919Z\",          \"providers\":[             {                \"link\":\"https://mytoys.de/ps4-keywe-21221438.html\",                \"price-current\":29.99,                \"price-initial\":29.99,                \"itemId\":\"mytoys.de-5056208810618\",                \"updatedOn\":\"2023-03-06T04:19:36.427Z\"             },             {                \"link\":\"https://otto.de/p/1355695306\",                \"price-current\":28.99,                \"price-initial\":28.99,                \"itemId\":\"otto.de-1355695306\",                \"updatedOn\":\"2023-03-07T12:56:36.919Z\"             }          ],          \"description\":\"Hersteller:Sold Out SoftwareTitel: KeyWeGenre: Familie / GesellschaftAltersfreigabe (USK):\\tFreigegeben ohne AltersbeschränkungPlattform:\\tPlayStation 4Datenträger:\\tBlu-rayDer Postbetrieb muss laufen! KeyWe ist ein niedliches, kooperatives Post-Rätselspiel mit Jeff und Debra in den Hauptrollen, zwei kleinen Kiwi-Vögeln, die in einem skurrilen Postamt arbeiten. Ohne Hände, die ihnen helfen könnten, müssen sie springen, flattern, picken und mit dem Hintern wackeln, um sich ihren Weg durch eine interaktive Landschaft aus Hebeln, Glocken und Knöpfen zu bahnen, damit die Post pünktlich zugestellt wird.Erlebe gefährliche Postumgebungen und meistere saisonale Gefahren, während du durch die verschiedenen Posträume der Telepost watschelst. Schließe dich mit einem Partner zusammen, um diesen liebenswerten Kiwis bei jedem Wetter bei der Erfüllung ihrer Aufgaben zu helfen. Schalte neue Accessoires frei, um deinen Kiwi individuell zu gestalten und zum bestangezogenen Postvogel in Bungalow Basin zu werden.Features:Chaos in der Poststelle - schlüpfe in die Rolle eines bei der Post arbeitenden Kiwi-Vogels und tippe gemeinsam mit einem Freund Telegramme ab, verschicke dringende Nachrichten, versende Pakete und halte den Postbetrieb am Laufen.Niedliches, chaotisches Coop - verbündet euch auf der Couch oder online!Ebenso niedlicher Einzelspielermodus - steuere beide Kiwi-Vögel mit einem einzigen Controller und wage dich auf ein Postdienst-Solo-Abenteuer.Gefährliche Postumgebungen - navigiere über Postschreibtische und durch Versandräume, um Meister des Postdienstes zu werden.Saisonale Verrücktheiten - stelle dich Gefahren wie Winterwetter, herbstliche Gewitter und mehr auf dem Weg zum Postprofi.Anpassbare Kiwis - ändere die Farbe der Federn deines Kiwis und schalte neue Accessoires frei - denn Kiwi-Vögel sehen mit Hüten niedlich aus!\",          \"ean\":\"5056208810618\"}] }"
+    }
+  },
+  {
+    "httpRequest": {
       "path": "/api/wishlist-items",
       "queryStringParameters": {
         "searchPattern": "",

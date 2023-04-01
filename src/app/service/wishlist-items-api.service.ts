@@ -62,7 +62,10 @@ export class WishlistItemsApiService extends ApiBase {
           return of([]);
         }
 
-        const url = this.get(endpoints.getWishlistItems, { userId });
+        const url = this.get(endpoints.getWishlistItems, {
+          searchPattern: '',
+          userId
+        });
 
         return this.http
            .get<ItemDto[]>(url)

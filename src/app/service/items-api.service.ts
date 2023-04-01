@@ -30,6 +30,10 @@ export class ItemsApiService extends ApiBase {
       return isPlatformServer(this.platformId) ? ApplicationConfiguration.SERVICE_REQUESTS_BASE : '';
     }
 
+    private getActiveSearchProfileId(): string {
+      return this.userService.activeUser?.activeSearchProfile || '';
+    }
+
     getItems(navigationId: string,
              searchPattern: string,
              numberOfResults: number | undefined = undefined,
@@ -41,7 +45,7 @@ export class ItemsApiService extends ApiBase {
           numberOfResults: numberOfResults ? `${numberOfResults}` : '',
           randomItems : randomItems ? 'true': 'false',
           searchPattern,
-          searchProfileId: this.userService.activeUser?.activeSearchProfile || ''
+          searchProfileId: this.getActiveSearchProfileId()
         });
 
       return this.http
@@ -53,7 +57,8 @@ export class ItemsApiService extends ApiBase {
       const url = this.getRequestBase() + this.get(
         endpoints.singleItem,
         {
-          id
+          id,
+          searchProfileId: this.getActiveSearchProfileId()
         });
 
       return this.http
