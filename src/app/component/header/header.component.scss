@@ -4,7 +4,7 @@
 .header {
   backdrop-filter: blur(3px);
   background: $container-background-color-as-rgba;
-  color: $content-color;
+  color: $header-footer-content-color;
   padding: 0.5em 0.5em 0.7em 0.5em;
   position: fixed;
   width: 100%;
@@ -15,7 +15,7 @@
   }
 
   &__icon {
-    color: $content-color;
+    color: $header-footer-content-color;
     cursor: pointer;
     font-size: 1.35em;
 
@@ -68,7 +68,7 @@
     }
 
     &Close {
-      color: $content-color;
+      color: $container-color;
       cursor: pointer;
       padding: 0.5em;
       position: absolute;
@@ -79,7 +79,7 @@
     &Item {
       border-radius: 0.5em;
       cursor: pointer;
-      color: $content-color;
+      color: $container-color;
 
       &:focus-visible {
         outline: none;
@@ -94,7 +94,7 @@
   }
 
   &__menuHeader {
-    color: $content-color;
+    color: $container-color;
     font-weight: bold;
   }
 
@@ -110,7 +110,7 @@
   }
 
   &__titleCapitalLetter {
-    color:#0dcaf0;
+    color: $header-footer-content-color;
     font-weight: bold;
   }
 
@@ -125,7 +125,7 @@
 .searchbar {
   &__input {
     background-color: unset;
-    border: 2px solid $content-color;
+    border: 2px solid $header-footer-content-color;
     border-radius: 2em;
     color: #FFF;
     height: 1.8em;

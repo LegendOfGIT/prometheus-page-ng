@@ -3,7 +3,7 @@
 
 .category {
   &__actions {
-    padding: 1em 1em 6em 1em;
+    padding: 1em 1em 1em 1em;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -24,7 +24,7 @@
   }
 
   &__titleCapitalLetter {
-    color: $content-color;
+    color: $logo-capital-letter-color;
   }
 
   &__titleSlogan {
@@ -32,6 +32,7 @@
   }
 
   &__titleTeaser {
+    color: $container-color;
     font-size: 0.75em;
     padding-bottom: 0.5em;
   }
@@ -58,7 +59,8 @@
   }
 
   a {
-    color: #FFF;
+    color: $content-color;
+    font-weight: bold;
     text-decoration: none;
   }
 
@@ -114,6 +116,7 @@
   &__price {
     background-color: $container-background-color;
     border-radius: 15px;
+    color: $container-color;
     margin: 1em;
     padding: 0.3em;
 
@@ -160,11 +163,18 @@
 
 .informationItems {
   &__container {
-    background-color: rgba(7, 80, 97, .25);
-    border-radius: 0.5em;
+    background-color: #fff;
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-top: 1em;
+  }
+
+  &__containerWrapper {
+    background-color: $container-background-color-as-rgba;
+    border: 1px solid lightgray;
+    border-radius: 0.5em;
+    margin-bottom: 2em;
     padding-top: 1em;
   }
 

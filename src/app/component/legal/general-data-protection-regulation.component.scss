@@ -3,7 +3,7 @@
 
 .gdpr {
   background: $container-background-color;
-  color: $content-color;
+  color: $container-color;
 
   &__actions {
     display: flex;
@@ -20,7 +20,7 @@
     padding-bottom: 1em;
 
     a {
-      color: $content-color;
+      color: $container-color;
       outline: 0;
     }
   }

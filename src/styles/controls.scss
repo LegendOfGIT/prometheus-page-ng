@@ -4,7 +4,7 @@ button {
   align-items: center;
   background-color: $container-background-color;
   border: 1px solid #0dcaf0;
-  color: #0dcaf0;
+  color: $container-color;
   display: flex;
   transition: background-color 200ms linear;
   outline: 0;
@@ -12,7 +12,7 @@ button {
 }
 
 button:hover {
-  background-color: #0dcaf0;
+  background-color: $container-color;
   border: 1px solid $container-background-color;
   color: $container-background-color;
   transition: background-color 200ms linear;
@@ -21,19 +21,23 @@ button:hover {
 .button {
   align-items: center;
   background-color: $container-background-color;
-  border: 1px solid #0dcaf0;
-  color: #0dcaf0;
+  border: 1px solid $container-color;
+  color: $container-color;
   display: flex;
   transition: background-color 200ms linear;
   outline: 0;
   padding: 0.5em;
   text-decoration: none;
-  
+
   &:hover {
-    background-color: #0dcaf0;
+    background-color: $container-color;
     border: 1px solid $container-background-color;
     color: $container-background-color;
     transition: background-color 200ms linear;
+  }
+
+  &__wrapper {
+    text-decoration: none;
   }
 }
 
