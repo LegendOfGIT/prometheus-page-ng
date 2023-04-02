@@ -31,8 +31,11 @@ export class Navigation {
     new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SATCHEL', ['kids', 'school', 'satchel']),
     new NavigationItem('KIDS', 'KIDS_TOYS', ['kids', 'toys', '']).setHasSlogan(true),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_BABIES', ['kids', 'toys', 'babies']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_CONSTRUCTIONTOYS', ['kids', 'toys', 'construction-toys']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_GAMES', ['kids', 'toys', 'games']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_ELECTRICVEHICLES', ['kids', 'toys', 'electric-vehicles']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_SCOOTERS', ['kids', 'toys', 'scooters']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_TOYVEHICLES', ['kids', 'toys', 'toy-vehicles']),
 
     new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', ''], 3)
       .setHasSlogan(true)
