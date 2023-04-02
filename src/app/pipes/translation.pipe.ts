@@ -7,6 +7,10 @@ export class TranslationPipe {
   }
 
   public transform(key: string): string {
+    if (!this.translationService.getTranslations()) {
+      return key;
+    }
+
     return this.translationService.getTranslations()[key] || key;
   }
 }

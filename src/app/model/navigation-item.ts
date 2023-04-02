@@ -4,6 +4,7 @@ export class NavigationItem {
     toId: string = '';
     pathParts: Array<string> = [];
     hasSlogan = false;
+    hasTeaser = false;
     sortOrder: number;
 
     constructor(fromId: string, toId: string, pathParts: Array<string>, sortOrder: number = 0) {
@@ -17,4 +18,9 @@ export class NavigationItem {
       this.hasSlogan = hasSlogan;
       return this;
     }
+
+  public setHasTeaser(hasTeaser: boolean): NavigationItem {
+    this.hasTeaser = hasTeaser;
+    return this;
+  }
 }

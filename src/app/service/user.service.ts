@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -7,6 +7,8 @@ import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
 
 import { User } from 'src/app/model/user';
+import {StorageService} from './storage.service';
+import {isPlatformServer} from '@angular/common';
 
 @Injectable({
     providedIn: 'root'
@@ -21,7 +23,14 @@ export class UserService {
     private _activeUser: User | null = null;
 
     constructor(private socialAuthService: SocialAuthService,
-                private wishlistItemsService: WishlistItemsApiService) {
+                private wishlistItemsService: WishlistItemsApiService,
+                private storageService: StorageService,
+                @Inject(PLATFORM_ID) platformId: Object) {
+
+      if (isPlatformServer(platformId)) {
+        return;
+      }
+
       this.initializeAnonymousUser();
       this.initializeActiveUser();
 
@@ -48,12 +57,7 @@ export class UserService {
     }
 
     private getUserFromStorageById(storageId: string): User | null {
-      const storageValue = localStorage.getItem(storageId);
-      if (!storageValue) {
-        return null;
-      }
-
-      return JSON.parse(storageValue);
+      return this.storageService.getFromStorageById(storageId);
     }
 
     private storeUserWithId(storageId: string, user: User | null): void {
@@ -61,7 +65,7 @@ export class UserService {
         return;
       }
 
-      localStorage.setItem(storageId, JSON.stringify(user));
+      this.storageService.storeWithId(storageId, user);
     }
 
     private removeUserFromStorageById(storageId: string): void {

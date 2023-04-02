@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DOCUMENT, isPlatformServer } from '@angular/common';
+
 import { Module, NavigationService } from '../../service/navigation.service';
 import { Navigation } from '../../configurations/navigation';
 import { NavigationItem } from '../../model/navigation-item';
-import {Meta, Title} from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { TranslationService } from '../../service/translation.service';
+import { SearchProfilesApiService } from '../../service/search-profiles-api.service';
 
 @Component({
   selector: 'start-page',
@@ -12,13 +15,15 @@ import { TranslationService } from '../../service/translation.service';
   styleUrls: ['./start-page.component.scss']
 })
 export class StartPageComponent {
-
   constructor(
     private route: ActivatedRoute,
     private navigationService: NavigationService,
+    private searchProfilesService: SearchProfilesApiService,
     translationService: TranslationService,
     titleService: Title,
-    metaService: Meta) {
+    metaService: Meta,
+    @Inject(DOCUMENT) private doc: Document,
+    @Inject(PLATFORM_ID) private platformId: Object) {
 
     route.paramMap.subscribe(() => {
       this.navigationService.activeModule = Module.HOME;
@@ -29,7 +34,20 @@ export class StartPageComponent {
     metaService.updateTag({ name: 'keywords', content: SEO_PAGE_KEYWORDS })
   }
 
-  get allRootRootItems(): Array<NavigationItem> {
-    return Navigation.getAllRootItems();
+  ngOnInit(): void {
+    if (isPlatformServer(this.platformId)) {
+      const link: HTMLLinkElement = this.doc.createElement('link');
+      this.doc.head.appendChild(link);
+      link.setAttribute('rel', 'canonical');
+      const pageUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
+      link.setAttribute('href', pageUri);
+    }
+  }
+
+  get allRootRootItems(): Array<NavigationItem | undefined> {
+    const rankedCategoryIds = this.searchProfilesService.activeItem?.rankedCategoryIds || [];
+
+    return (rankedCategoryIds.map(categoryId => Navigation.getNavigationItemByToId(categoryId)) || [])
+      .concat(Navigation.getAllRootItems().filter(rootCategory => -1 === rankedCategoryIds.indexOf(rootCategory.toId)));
   }
 }

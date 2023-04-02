@@ -17,7 +17,7 @@ export class CorrespondingItem extends BaseModel {
       return item;
     }
 
-  public renderPrice(): string | undefined {
-    return this.priceCurrent ? `${this.priceCurrent.toLocaleString('de-DE', {minimumFractionDigits: 2})} EUR` : undefined;
+  public static renderPrice(item: CorrespondingItem | null): string | undefined {
+    return item?.priceCurrent ? `${item.priceCurrent.toLocaleString('de-DE', {minimumFractionDigits: 2})} EUR` : undefined;
   }
 }

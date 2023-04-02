@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {Observable, of} from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { endpoints } from '../../environments/endpoints';
 import { Item } from '../model/item';
 import { ItemDto } from '../model/dto/item-dto';
-import { ItemsResponseDto } from '../model/dto/items-response-dto';
 import { ApiBase } from './api-base';
-import { UserService } from './user.service';
+import { ApplicationConfiguration } from '../configurations/app';
+import {isPlatformServer} from "@angular/common";
 
 @Injectable({
     providedIn: 'root'
@@ -18,10 +18,10 @@ export class WishlistItemsApiService extends ApiBase {
     private _items: Array<Item | null> = [];
 
     constructor(
-      @Inject('API_BASE') apiBase: string,
-      private http: HttpClient
+      private http: HttpClient,
+      @Inject(PLATFORM_ID) private platformId: Object
     ) {
-        super(apiBase);
+        super(ApplicationConfiguration.API_BASE);
     }
 
     get items(): Array<Item | null> {
@@ -58,8 +58,14 @@ export class WishlistItemsApiService extends ApiBase {
     }
 
     public getItems(userId: string): Observable<Array<Item | null>> {
+        if (isPlatformServer(this.platformId)) {
+          return of([]);
+        }
 
-        const url = this.get(endpoints.getWishlistItems, { userId });
+        const url = this.get(endpoints.getWishlistItems, {
+          searchPattern: '',
+          userId
+        });
 
         return this.http
            .get<ItemDto[]>(url)

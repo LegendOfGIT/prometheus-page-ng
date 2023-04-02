@@ -1,9 +1,19 @@
 User-agent: *
+Disallow: /.env
+Disallow: /.git
+Disallow: /_profiler
 Disallow: /admin
+Disallow: /config.json
+Disallow: /debug
+Disallow: /remote
 Disallow: /boaform
 Disallow: /remote
 Disallow: /server-info
 Disallow: /shell
+Disallow: /stalker_portal
+Disallow: /wordpress
+Disallow: /wp
+Disallow: /wp-admin
 
 User-agent: zgrab
 Disallow: /

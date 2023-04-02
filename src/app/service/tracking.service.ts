@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { ApiBase } from './api-base';
@@ -6,6 +6,8 @@ import { TrackingActivityItem } from '../model/tracking-activity-item';
 import { TrackingInterestLevel } from '../model/tracking-interest-level';
 import { UserService } from './user.service';
 import { endpoints } from 'src/environments/endpoints';
+import {ApplicationConfiguration} from '../configurations/app';
+import {isPlatformServer} from '@angular/common';
 
 @Injectable({
     providedIn: 'root'
@@ -23,10 +25,14 @@ export class TrackingService extends ApiBase {
       { level: TrackingInterestLevel.VERY_HIGH, scoring: 0.40 }
     ];
 
-    constructor(@Inject('API_BASE') apiBase: string,
-                private http: HttpClient,
-                private userService: UserService) {
-        super(apiBase);
+    constructor(private http: HttpClient,
+                private userService: UserService,
+                @Inject(PLATFORM_ID) platformId: Object) {
+        super(ApplicationConfiguration.API_BASE);
+
+        if (isPlatformServer(platformId)) {
+          return;
+        }
 
         setInterval(() => {
           while(this.trackedActivities.length) {

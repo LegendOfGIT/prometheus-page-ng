@@ -14,57 +14,59 @@
     <div class="col-12 col-md-6">
       <div class="carousel__viewport">
           <div
-            *ngFor="let imageBigUrl of (item?.imagesBig || []).concat([item?.titleImage || ''])"
+            *ngFor="let imageBigUrl of [item?.titleImage || ''].concat(item?.imagesBig || []); let i = index;"
           >
-            <img src="{{imageBigUrl}}" class="mainStage__mainImage"/>
+            <img src="{{imageBigUrl}}" alt="{{i+1}}. {{ 'IMAGE_OF' | translate }} {{item?.title || ''}}" class="mainStage__mainImage"/>
           </div>
       </div>
     </div>
     <div class="col-12 col-md-6">
       <div class="productInformation">
-        <h4>{{item?.title}}</h4>
-        <p class="mainStage__productDescription">
-          {{item?.description}}
-        </p>
+        <section>
+          <h2 class="singleProductView__sectionHeader">{{item?.title}}</h2>
+          <p class="mainStage__productDescription">
+            {{item?.description}}
+          </p>
+        </section>
 
-        <div>
+        <section>
           <div class="productInformation__header">
-            <h4>{{( areThereMorePrices ? 'TOP_OFFER' : 'OFFER') | translate }}</h4>
+            <h2 class="singleProductView__sectionHeader">{{( areThereMorePrices ? 'TOP_OFFER' : 'OFFER') | translate }}</h2>
           </div>
 
           <div class="productInformation__offers">
             <a href="{{itemWithLowestPrice?.link}}" target="_blank" class="button__wrapper">
               <div class="button">
-                {{getShopNameFromUrl(itemWithLowestPrice?.link)}}<span *ngIf="itemWithLowestPrice?.renderPrice()">: {{itemWithLowestPrice?.renderPrice()}}</span>
+                {{getShopNameFromUrl(itemWithLowestPrice?.link)}}<span *ngIf="renderPrice(itemWithLowestPrice)">: {{renderPrice(itemWithLowestPrice)}}</span>
               </div>
             </a>
           </div>
 
           <div *ngIf="areThereMorePrices">
             <div class="productInformation__header">
-              <h5>{{ 'MORE_OFFERS' | translate }}</h5>
+              <h2 class="singleProductView__sectionHeader">{{ 'MORE_OFFERS' | translate }}</h2>
             </div>
             <div class="productInformation__offers">
               <a *ngFor="let offer of moreExpensiveOfferItems" href="{{offer?.link}}" target="_blank" class="button__wrapper">
                 <div class="button">
-                  {{getShopNameFromUrl(offer?.link)}}<span *ngIf="offer?.renderPrice()">: {{offer?.renderPrice()}}</span>
+                  {{getShopNameFromUrl(offer?.link)}}<span *ngIf="renderPrice(offer)">: {{renderPrice(offer)}}</span>
                 </div>
               </a>
               <a *ngFor="let offer of offerItemsWithoutPrice" href="{{offer?.link}}" target="_blank" class="button__wrapper">
                 <div class="button">
-                      {{getShopNameFromUrl(offer?.link)}}<span *ngIf="offer?.renderPrice()">: {{offer?.renderPrice()}}</span>
+                      {{getShopNameFromUrl(offer?.link)}}<span *ngIf="renderPrice(offer)">: {{renderPrice(offer)}}</span>
                 </div>
               </a>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   </div>
   <div class="row productInformation__share">
     <div class="col-12">
       <div class="productInformation">
-        <h5>{{'SHARE' | translate}}</h5>
+        <h2 class="singleProductView__sectionHeader">{{'SHARE' | translate}}</h2>
         <a [href]="safeWhatsAppUri" class="button__wrapper">
           <div class="button">
             {{'SHARE_ON_WHATSAPP' | translate}}
@@ -75,25 +77,25 @@
   </div>
   <div class="row">
     <div class="col-12 productDetails">
-      <div class="productInformation productInformation--last productInformation__header productDetails__wrapper">
-        <div *ngIf="item?.getItemDetails()?.length">
+      <section class="productInformation productInformation--last productInformation__header productDetails__wrapper">
+        <div *ngIf="getItemDetails(item)?.length">
           <div class="productInformation__header">
-            <h4>{{'PRODUCT_DETAILS' | translate}}</h4>
+            <h2 class="singleProductView__sectionHeader">{{'PRODUCT_DETAILS' | translate}}</h2>
           </div>
-          <div *ngFor="let detail of item?.getItemDetails()" class="productDetails__content">
+          <div *ngFor="let detail of getItemDetails(item)" class="productDetails__content">
             <div class="productDetails__label">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</div>
             <div>{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate }}</div>
           </div>
         </div>
         &nbsp;
-      </div>
+      </section>
     </div>
   </div>
 
-  <div *ngIf="activeNavigationItem" class="row">
+  <section *ngIf="activeNavigationItem" class="row">
     <div class="col-12">
-      <h4>{{'FURTHER_PRODUCTS_OF_CATEGORY' | translate}}</h4>
+      <h2 class="singleProductView__sectionHeader">{{'FURTHER_PRODUCTS_OF_CATEGORY' | translate}}</h2>
       <category-teaser [navigationItem]="activeNavigationItem" [showHeader]="false" [randomItems]="true"></category-teaser>
     </div>
-  </div>
+  </section>
 </div>

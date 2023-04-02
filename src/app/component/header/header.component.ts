@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, PLATFORM_ID, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {debounceTime} from 'rxjs/operators';
@@ -8,8 +8,9 @@ import {SearchProfilesApiService} from 'src/app/service/search-profiles-api.serv
 import {WishlistItemsApiService} from 'src/app/service/wishlist-items-api.service';
 import {SearchProfile} from 'src/app/model/search-profile';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
-import {NavigationItem} from "../../model/navigation-item";
-import {Navigation} from "../../configurations/navigation";
+import {NavigationItem} from '../../model/navigation-item';
+import {Navigation} from '../../configurations/navigation';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
   selector: 'header',
@@ -18,7 +19,6 @@ import {Navigation} from "../../configurations/navigation";
 })
 export class HeaderComponent {
 
-  public isCategoryMenuOpen: boolean = false;
   public navigationItems: NavigationItem[] = Navigation.ITEMS;
 
   public searchPatternControl: FormControl = new FormControl();
@@ -40,21 +40,29 @@ export class HeaderComponent {
     private userService: UserService,
     private navigationService: NavigationService,
     private searchProfilesApiService: SearchProfilesApiService,
-    private wishlistService: WishlistItemsApiService
+    private wishlistService: WishlistItemsApiService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    this.activatePageReloadOnEveryRouteNavigation();
     this.subscribeSearchPatternChanges();
     this.lastLoggedInFlag = this.userService.isLoggedIn;
-    const searchPattern = new URL(window.location.href).searchParams.get('search');
+    const searchPattern = this.getSearchParameterFromUrl();
     this.searchPatternControl.setValue(searchPattern);
     this.secondBarSearchPatternControl.setValue(searchPattern);
   }
 
-  private activatePageReloadOnEveryRouteNavigation() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  private getSearchParameterFromUrl(): string | null {
+    return this.isOnClientSide() ? new URL(window.location.href).searchParams.get('search') : '';
+  }
+
+  private isOnClientSide(): boolean {
+    return isPlatformBrowser(this.platformId);
   }
 
   private subscribeSearchPatternChanges(): void {
+    if (!this.isOnClientSide()) {
+      return;
+    }
+
     this.searchPatternControl.valueChanges
       .subscribe((val) => {
         this.secondBarSearchPatternControl.setValue(val, {onlySelf: true, emitEvent: false});
@@ -75,7 +83,16 @@ export class HeaderComponent {
   }
 
   public searchNow(): void {
-    this.router.navigate([], { queryParams: { search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value } });
+    const searchPattern = this.getSearchParameterFromUrl();
+
+    this.router.navigate(
+      [],
+      { queryParams: { search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value } }
+    ).then(() => {
+      if (searchPattern !== this.searchPatternControl.value) {
+        window.location.reload();
+      }
+    });
   }
 
   get hasJustLoggedIn(): boolean {

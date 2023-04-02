@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import {Component, Inject, PLATFORM_ID, Renderer2} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
-import { DOCUMENT } from '@angular/common';
+import { DomSanitizer, makeStateKey, Meta, SafeHtml, Title, TransferState } from '@angular/platform-browser';
+import { DOCUMENT, isPlatformServer } from '@angular/common';
 
 
 import { Module, NavigationService } from '../../service/navigation.service';
@@ -11,6 +11,7 @@ import { CorrespondingItem } from '../../model/corresponding-item';
 import { NavigationItem } from '../../model/navigation-item';
 import { Navigation } from '../../configurations/navigation';
 import { TranslationService } from '../../service/translation.service';
+import {ItemDetails} from "../../model/item-details";
 
 @Component({
   selector: 'single-product-view',
@@ -25,7 +26,7 @@ export class SingleProductViewComponent {
 
   public item: Item | null = null;
 
-  public safeWhatsAppUri: SafeHtml;
+  public safeWhatsAppUri: SafeHtml | null = null;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -33,43 +34,22 @@ export class SingleProductViewComponent {
     private itemsService: ItemsApiService,
     private navigationService: NavigationService,
     private translation: TranslationService,
-    translationService: TranslationService,
-    titleService: Title,
-    metaService: Meta,
-    @Inject(DOCUMENT) private doc: Document
+    private translationService: TranslationService,
+    private titleService: Title,
+    private metaService: Meta,
+    private transferState: TransferState,
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) private doc: Document,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
-
     route.paramMap.subscribe((params) => {
       this.navigationService.activeModule = Module.SINGLE_PRODUCT_VIEW;
       this.itemId = params.get('itemId') || '';
     });
 
-    itemsService.getItemsById(this.itemId).subscribe(items => {
-      if (!items?.length) {
-        return;
-      }
-
-      this.item = items[0];
-
-      const script: HTMLScriptElement = this.doc.createElement('script');
-      script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ "autoplay": true, "autoplaySpeed": 7000, "arrows": false}); });';
-      this.doc.body.appendChild(script);
-
-      titleService.setTitle(
-        translationService.getTranslations().SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE
-          .replace('{product-name}', this.item?.title.substring(0, 50)));
-
-      metaService.updateTag({ name: 'description', content: this.item?.seoDescription || (this.item?.description || '') });
-      metaService.updateTag({ name: 'keywords', content: this.item?.seoKeywords || (this.item?.title || '') });
-      metaService.updateTag({ name: 'og:title', content: this.item?.title || '' });
-      metaService.updateTag({ name: 'og:image', content: this.item?.titleImage || '' });
-      metaService.updateTag({ name: 'og:type', content: 'product' });
-
-      const link: HTMLLinkElement = doc.createElement('link');
-      link.setAttribute('rel', 'canonical');
-      doc.head.appendChild(link);
-      link.setAttribute('href', doc.URL);
-    });
+    if (isPlatformServer(platformId)) {
+      return;
+    }
 
     this.safeWhatsAppUri = this.getSanitizedUri([
       'whatsapp://send?text=',
@@ -77,6 +57,77 @@ export class SingleProductViewComponent {
       encodeURIComponent(' - '),
       encodeURIComponent(window.location.href)
     ]);
+  }
+
+  private initialiseItem(): void {
+    if (this.transferState.hasKey(makeStateKey('productItem'))) {
+      this.item = this.transferState.get(makeStateKey('productItem'), null);
+      return;
+    }
+
+    this.itemsService.getItemsById(this.itemId).subscribe(items => {
+      if (!items?.length) {
+        this.item = null;
+        return;
+      }
+
+      this.item = items[0];
+      if (isPlatformServer(this.platformId)) {
+        this.transferState.set<Item | null>(makeStateKey('productItem'), this.item);
+        this.renderSEOInformation();
+      }
+    });
+  }
+
+  private renderSEOInformation(): void {
+    this.titleService.setTitle(
+      (this.translationService.getTranslations().SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE || '')
+        .replace('{product-name}', this.item?.title.substring(0, 50)));
+
+    this.metaService.updateTag({ name: 'description', content: this.item?.seoDescription || (this.item?.description || '') });
+    this.metaService.updateTag({ name: 'keywords', content: this.item?.seoKeywords || (this.item?.title || '') });
+    this.metaService.updateTag({ name: 'og:title', content: this.item?.title || '' });
+    this.metaService.updateTag({ name: 'og:image', content: this.item?.titleImage || '' });
+    this.metaService.updateTag({ name: 'og:type', content: 'product' });
+
+    const link: HTMLLinkElement = this.doc.createElement('link');
+    this.doc.head.appendChild(link);
+    link.setAttribute('rel', 'canonical');
+    const productUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
+    link.setAttribute('href', productUri);
+
+    const contentModel: HTMLScriptElement = this.doc.createElement('script');
+    contentModel.setAttribute('type', 'application/ld+json');
+
+    const lowestPrice = Item.getProviderItemWithLowestPrice(this.item);
+
+    contentModel.innerHTML = JSON.stringify({
+      '@context': 'https://schema.org/',
+      '@type': 'Product',
+      name: this.item?.title || '',
+      description: this.item?.description || '',
+      image: [this.item?.titleImage || ''],
+      offers: !lowestPrice || 0 === lowestPrice.priceCurrent ? undefined : {
+        '@type': 'Offer',
+        url: productUri,
+        priceCurrency: 'EUR',
+        price: lowestPrice.priceCurrent
+      }
+    });
+    this.doc.head.appendChild(contentModel);
+
+  }
+
+  ngOnInit() {
+    this.initialiseItem();
+
+    if (!this.item) {
+      return;
+    }
+
+    const script: HTMLScriptElement = this.doc.createElement('script');
+    script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ "autoplay": true, "autoplaySpeed": 7000, "arrows": false}); });';
+    this.doc.body.appendChild(script);
   }
 
 
@@ -89,12 +140,20 @@ export class SingleProductViewComponent {
     return this.sanitizer.bypassSecurityTrustUrl(uriTokens.join(''));
   }
 
+  public renderPrice(item: CorrespondingItem | null): string | undefined {
+    return CorrespondingItem.renderPrice(item);
+  }
+
+  public getItemDetails(item: Item | null): Array<ItemDetails> {
+    return Item.getItemDetails(item);
+  }
+
   get itemWithLowestPrice(): CorrespondingItem | null {
     if (!this.item) {
       return null;
     }
 
-    return this.item.getProviderItemWithLowestPrice();
+    return Item.getProviderItemWithLowestPrice(this.item);
   }
 
   get areThereMorePrices(): boolean {
@@ -107,7 +166,7 @@ export class SingleProductViewComponent {
     }
 
     return (this.item?.providers || [])
-      .filter(providerItem => providerItem !== this.item?.getProviderItemWithLowestPrice())
+      .filter(providerItem => providerItem !== Item.getProviderItemWithLowestPrice(this.item))
       .filter(item => (item?.priceCurrent || 0) > 0)
       .sort((a, b) => (a?.priceCurrent || 0) - (b?.priceCurrent || 0));
   }
@@ -118,7 +177,7 @@ export class SingleProductViewComponent {
     }
 
     return (this.item?.providers || [])
-      .filter(providerItem => providerItem !== this.item?.getProviderItemWithLowestPrice())
+      .filter(providerItem => providerItem !== Item.getProviderItemWithLowestPrice(this.item))
       .filter(item => 0 === (item?.priceCurrent || 0));
   }
 

@@ -6,6 +6,7 @@ export class SearchProfile extends BaseModel {
     avatarBackgroundColor: string = '';
     name: string = '';
     profileItemIds: Array<string> = [];
+    rankedCategoryIds: Array<string> = [];
 
     public setId(id: string): SearchProfile {
       this.id = id;

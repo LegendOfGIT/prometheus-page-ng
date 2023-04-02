@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, PLATFORM_ID, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
+import { DOCUMENT, isPlatformServer } from '@angular/common';
 
 import {Item} from 'src/app/model/item';
 import {ItemsApiService} from 'src/app/service/items-api.service';
@@ -34,7 +35,9 @@ export class ItemsComponent implements OnInit {
       private navigationService: NavigationService,
       private trackingService: TrackingService,
       translationService: TranslationService,
-      titleService: Title
+      titleService: Title,
+      @Inject(DOCUMENT) private doc: Document,
+      @Inject(PLATFORM_ID) private platformId: Object
     ) {
 
       route.paramMap.subscribe((params) => {
@@ -68,11 +71,14 @@ export class ItemsComponent implements OnInit {
                   this.items = items;
                 });
 
+        if (isPlatformServer(this.platformId)) {
+          const link: HTMLLinkElement = this.doc.createElement('link');
+          this.doc.head.appendChild(link);
+          link.setAttribute('rel', 'canonical');
+          const pageUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
+          link.setAttribute('href', pageUri);
+        }
 
-    }
-
-    public getFirstLinkFromItem(item: Item) {
-      return item.getLinkOfLowestPriceItem();
     }
 
     public pickedInformation(item: Item): void {
@@ -98,5 +104,9 @@ export class ItemsComponent implements OnInit {
     }
 
     return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
+  }
+
+  public renderLowestPrice(item: Item): string {
+      return Item.renderLowestPrice(item);
   }
 }
