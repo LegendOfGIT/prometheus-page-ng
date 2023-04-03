@@ -4,6 +4,7 @@
 .header {
   backdrop-filter: blur(3px);
   background: $container-background-color-as-rgba;
+  box-shadow: 0.1em 0.1em 0.8em silver;
   color: $header-footer-content-color;
   padding: 0.5em 0.5em 0.7em 0.5em;
   position: fixed;
@@ -55,7 +56,7 @@
 
   &__menu {
     background-color: $container-background-color;
-    border: 1px solid $content-color--active;
+    border: 1px solid $content-color;
     border-radius: 0.5em;
     left: 1em;
     position: absolute;
@@ -87,7 +88,7 @@
 
       &--active,
       &:hover {
-        background-color: $content-color--active;
+        background-color: $content-color;
         color: $container-background-color;
       }
     }

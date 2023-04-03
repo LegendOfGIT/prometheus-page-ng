@@ -38,15 +38,16 @@
   min-width: 70%;
 
   &__content {
+    border: 1px solid $logo-letter-color;
     padding: 0.5em;
 
     &:nth-child(odd) {
       background-color: $container-background-color;
-      color: $content-color--active;
+      color: $logo-letter-color;
     }
 
     &:nth-child(even) {
-      background-color: $content-color--active;
+      background-color: $logo-letter-color;
       color: $container-background-color;
     }
   }
