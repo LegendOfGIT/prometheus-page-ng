@@ -1,12 +1,20 @@
+@import 'src/app/variables';
+
 .item {
   &__wishlist {
     background: #fff;
-    border: 1px solid #4AA7EB;
-    border-radius: 50%;
     cursor: pointer;
-    padding: 10px;
+    font-size: 2em;
     position: absolute;
     top: -1em;
     right: -1em;
+  }
+
+  &__wishlistIcon {
+    color: $logo-capital-letter-color;
+
+    &--inactive {
+      color: rgba($logo-capital-letter-color, 0.5);
+    }
   }
 }

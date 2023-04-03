@@ -1,10 +1,6 @@
-<a
-  *ngIf="item?.itemId"
-  class="item__wishlist {{ isItemOnWishlist ? 'item__wishlist--active' : ''}}"
-  (click)="toggleItem()"
->
-  <img
-    alt="add to wishlist"
-    src="assets/images/{{ isItemOnWishlist ? 'wishlist-selected.svg' : 'wishlist-neutral.svg'}}"
-  />
-</a>
+<div class="item__wishlist {{ isItemOnWishlist ? 'item__wishlist--active' : ''}}">
+  <i *ngIf="item?.itemId"
+    class="fa fa-heart item__wishlistIcon {{isItemOnWishlist ? 'e' : 'item__wishlistIcon--inactive'}} header__icon"
+    (click)="toggleItem()"
+  ></i>
+</div>
