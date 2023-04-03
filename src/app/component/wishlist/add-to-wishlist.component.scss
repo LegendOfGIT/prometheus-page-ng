@@ -7,7 +7,8 @@
     font-size: 2em;
     position: absolute;
     top: -1em;
-    right: -1em;
+    right: -0.65em;
+    z-index: 2;
   }
 
   &__wishlistIcon {

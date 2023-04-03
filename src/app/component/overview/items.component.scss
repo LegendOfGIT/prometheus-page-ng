@@ -34,10 +34,11 @@
   &__image {
     border-radius: 0.5em;
     max-height: 18em;
-    max-width: 100%;
+    max-width: 10em;
 
     @media screen and (min-width: 768px) {
       max-height: 22em;
+      max-width: 14em;
     }
   }
 
@@ -77,11 +78,25 @@
   }
 
   &__price {
+    color: $content-price-color;
+    font-family: $font-family;
+
+    @media screen and (min-width: 576px) {
+      font-size: 1.5em;
+    }
+
+    &:hover {
+      color: $logo-slogan-color;
+    }
+  }
+
+  &__priceWrapper {
+    align-items: baseline;
     background-color: $container-background-color;
     border-radius: 15px;
-    color: $content-price-color;
+    font-weight: bold;
     justify-content: center;
-    margin: 1em;
+    margin-bottom: 1em;
     padding: 0.3em;
 
     &--hidden {
