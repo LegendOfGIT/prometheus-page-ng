@@ -65,7 +65,7 @@ import { DataProtectionComponent } from './component/legal/data-protection.compo
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '408077216324-u368r57tn13rdju7832l1nj7fs7c4mdf.apps.googleusercontent.com'
+              '328551070850-937c4n1tnk2gdo3mbatgs8n17qr6qg6g.apps.googleusercontent.com'
             )
           }
         ],

@@ -14,18 +14,22 @@ export class Item extends BaseModel {
 
     amountOfMedia: number = 0;
     amountOfSongs: number = 0;
+    diameterInInch: number = 0;
     fabric: string = '';
     fabricPattern: string = '';
     fit: string = '';
     interpret: string = '';
     genre: string = '';
     heightInCm: number = 0;
+    loadIndex: number = 0;
     lengthInCm: number = 0;
     material: string = '';
     minimumAge: number = 0;
     subgenre: string = '';
     seoDescription: string = '';
     seoKeywords: string = '';
+    speedKey: string = '';
+    tyreType: string = '';
     widthInCm: number = 0;
 
     imagesBig: Array<string> = [];
@@ -35,6 +39,7 @@ export class Item extends BaseModel {
         const item = this.bindFrom<ItemDto, Item>(Item, data);
         if (item) {
           item.id = (data as any)._id;
+          item.diameterInInch = (data as any)['diameter-in-inch'];
           item.heightInCm = (data as any)['height-in-cm'];
           item.imagesBig = (data as any)['images-big'];
           item.lengthInCm = (data as any)['length-in-cm'];
@@ -92,7 +97,12 @@ export class Item extends BaseModel {
         new ItemDetails('FABRIC_PATTERN', item.fabricPattern),
         new ItemDetails('LENGTH_IN_CM', item.lengthInCm),
         new ItemDetails('WIDTH_IN_CM', item.widthInCm),
-        new ItemDetails('HEIGHT_IN_CM', item.heightInCm)
+        new ItemDetails('HEIGHT_IN_CM', item.heightInCm),
+        new ItemDetails('TYRE_TYPE', item.tyreType),
+        new ItemDetails('DIAMETER_IN_INCH', item.diameterInInch),
+        new ItemDetails('LOADINDEX', item.loadIndex),
+        new ItemDetails('SPEEDKEY', item.speedKey),
+
       ].filter(detail => detail.value);
     }
 
