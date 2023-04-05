@@ -145,12 +145,17 @@
 
   &__title {
     display: -webkit-box;
+
     line-clamp: 4;
     min-height: 6em;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
+
+    @media screen and (min-width: 576px) {
+      font-size: 1.1em;
+    }
   }
 
   &--displayFromXXL {
