@@ -162,3 +162,32 @@
     padding-top: 4.5em;
   }
 }
+
+.pages {
+  &__container {
+    color: $content-color;
+    display: flex;
+    font-family: $font-family;
+    justify-content: center;
+    padding-bottom: 3.5em;
+    padding-top: 2em;
+  }
+
+  &__page {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+
+    a {
+      color: $content-color;
+      text-decoration: none;
+    }
+
+    &--active {
+      font-weight: bold;
+    }
+
+    &--disabled {
+      color: lightgray;
+    }
+  }
+}

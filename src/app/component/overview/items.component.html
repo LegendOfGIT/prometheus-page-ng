@@ -35,3 +35,40 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="col-12 pages__container">
+    <div *ngIf="currentPage > 1; else leftDisabled" class="pages__page">
+      <a href="{{linkToPage(currentPage - 1)}}">
+        &laquo;
+      </a>
+    </div>
+    <ng-template #leftDisabled>
+      <div class="pages__page--disabled">
+        &laquo;
+      </div>
+    </ng-template>
+
+    <div *ngFor="let page of availablePages" class="pages__page {{currentPage === page ? 'pages__page--active' : ''}}">
+
+      <a *ngIf="0 !== page; else dots" href="{{linkToPage(page)}}">
+        {{page}}
+      </a>
+
+      <ng-template #dots>
+        ...
+      </ng-template>
+    </div>
+
+    <div *ngIf="isNextPageNotLastPage; else rightDisabled" class="pages__page">
+      <a href="{{linkToPage(currentPage + 1)}}">
+        &raquo;
+      </a>
+    </div>
+    <ng-template #rightDisabled>
+      <div class="pages__page--disabled">
+        &raquo;
+      </div>
+    </ng-template>
+  </div>
+</div>

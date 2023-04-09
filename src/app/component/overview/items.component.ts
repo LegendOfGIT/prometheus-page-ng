@@ -1,7 +1,7 @@
 import {Component, Inject, PLATFORM_ID, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { DOCUMENT, isPlatformServer } from '@angular/common';
 
 import {Item} from 'src/app/model/item';
@@ -12,7 +12,6 @@ import {TrackingActivityItem} from 'src/app/model/tracking-activity-item';
 import {TrackingInterestLevel} from 'src/app/model/tracking-interest-level';
 import {TranslationService} from "../../service/translation.service";
 import {Title} from "@angular/platform-browser";
-import {Navigation} from "../../configurations/navigation";
 
 @Component({
   selector: 'app-items',
@@ -28,8 +27,11 @@ export class ItemsComponent implements OnInit {
       new Item(), new Item(), new Item(),
       new Item(), new Item(), new Item()
     ];
+    public availablePages: Array<number> = [1];
+    public currentPage: number = 1;
 
     constructor(
+      private router: Router,
       private route: ActivatedRoute,
       private itemsService: ItemsApiService,
       private navigationService: NavigationService,
@@ -63,12 +65,15 @@ export class ItemsComponent implements OnInit {
             ? this.navigationService.activeNavigationItem.toId
             : '';
         const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
+        const page = this.route.snapshot?.queryParamMap?.get('page') as string || '1';
+        this.currentPage = parseInt(page);
 
-        this.itemsService.getItems(activeNavigationId, searchPattern)
+        this.itemsService.getItems(activeNavigationId, searchPattern, undefined, false, page)
             .pipe(takeUntil(this.destroyedService$))
             .subscribe(
-                items => {
-                  this.items = items;
+              itemsResponse => {
+                  this.availablePages = itemsResponse?.availablePages;
+                  this.items = itemsResponse?.items;
                 });
 
         if (isPlatformServer(this.platformId)) {
@@ -93,7 +98,7 @@ export class ItemsComponent implements OnInit {
     return (value || '').substring(0, 100)
       .replace(",", "")
       .replace(/[^\w\s]/gi, '')
-      .replace(/[\(\)]/g, '')
+      .replace(/[()]/g, '')
       .replace(/\s+/g, '-')
       .toLowerCase();
   }
@@ -108,5 +113,19 @@ export class ItemsComponent implements OnInit {
 
   public renderLowestPrice(item: Item): string {
       return Item.renderLowestPrice(item);
+  }
+
+  public linkToPage(page: number) {
+    let urlTree = this.router.parseUrl(this.router.url);
+    urlTree.queryParams['page'] = page;
+    return urlTree.toString();
+  }
+
+  get isNextPageNotLastPage(): boolean {
+      if (!this.currentPage || !this.availablePages) {
+        return false;
+      }
+
+      return this.currentPage < this.availablePages[this.availablePages.length - 1];
   }
 }

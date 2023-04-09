@@ -5,8 +5,8 @@ import { ItemsApiService } from '../../service/items-api.service';
 import { Subject } from 'rxjs';
 import { NavigationItem } from '../../model/navigation-item';
 import { isPlatformServer } from '@angular/common';
-import {makeStateKey, StateKey, TransferState} from "@angular/platform-browser";
-import {takeUntil} from "rxjs/operators";
+import { makeStateKey,  TransferState } from '@angular/platform-browser';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'category-teaser',
@@ -50,9 +50,9 @@ export class CategoryTeaserComponent implements OnInit {
     }
 
     const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
-    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 8, this.randomItems).subscribe(items => {
-      if (items?.length) {
-        this.categoryItems = items;
+    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 8, this.randomItems).subscribe(itemsResponse => {
+      if (itemsResponse?.items?.length) {
+        this.categoryItems = itemsResponse.items;
         if (isPlatformServer(this.platformId)) {
           this.transferState.set<Array<Item | null>>(makeStateKey(this.getItemsKey()), this.categoryItems);
         }
@@ -62,8 +62,8 @@ export class CategoryTeaserComponent implements OnInit {
       this.itemsService.getItems(this.navigationItem?.toId || '', '', 8)
         .pipe(takeUntil(this.destroyedService$))
         .subscribe(
-          items => {
-            this.categoryItems = items;
+          itemsResponse => {
+            this.categoryItems = itemsResponse?.items;
             if (isPlatformServer(this.platformId)) {
               this.transferState.set<Array<Item | null>>(makeStateKey(this.getItemsKey()), this.categoryItems);
             }
@@ -84,7 +84,7 @@ export class CategoryTeaserComponent implements OnInit {
     return (value || '').substring(0, 100)
       .replace(",", "")
       .replace(/[^\w\s]/gi, '')
-      .replace(/[\(\)]/g, '')
+      .replace(/[()]/g, '')
       .replace(/\s+/g, '-')
       .toLowerCase();
   }

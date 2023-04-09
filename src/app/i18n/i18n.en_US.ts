@@ -55,6 +55,8 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_HOME_TOOLS: 'tools',
       NAVIGATION_HOME_TOOLS_DRILLINGMACHINES: 'drilling-machines',
       NAVIGATION_KIDS: 'kids',
+      NAVIGATION_KIDS_BOOKS: 'books',
+      NAVIGATION_KIDS_BOOKS_AUDIOBOOKS: 'audio books',
       NAVIGATION_KIDS_PARTY: 'party',
       NAVIGATION_KIDS_PARTY_TABLEWARE: 'tableware / decoration',
       NAVIGATION_KIDS_SCHOOL: 'school',

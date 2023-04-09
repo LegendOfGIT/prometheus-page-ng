@@ -55,6 +55,8 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_HOME_TOOLS: 'Werkzeuge',
       NAVIGATION_HOME_TOOLS_DRILLINGMACHINES: 'Bohrmaschinen & Akku-Schrauber',
       NAVIGATION_KIDS: 'Kinder',
+      NAVIGATION_KIDS_BOOKS: 'Bücher',
+      NAVIGATION_KIDS_BOOKS_AUDIOBOOKS: 'Hörbücher',
       NAVIGATION_KIDS_PARTY: 'Party',
       NAVIGATION_KIDS_PARTY_TABLEWARE: 'Tischgeschirr / Dekoration',
       NAVIGATION_KIDS_SCHOOL: 'Schule',
