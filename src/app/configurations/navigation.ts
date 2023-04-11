@@ -58,6 +58,16 @@ export class Navigation {
       .setHasTeaser(true),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
+      'ELECTRONICS_AND_COMPUTERS_COMPUTERS',
+      ['electronics-and-computers', 'computers', '']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_COMPUTERS',
+      'ELECTRONICS_AND_COMPUTERS_COMPUTERS_TABLETS',
+      ['electronics-and-computers', 'computers', 'tablets']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_HOME',
       ['electronics-and-computers', 'home', '']
     ),
@@ -119,6 +129,8 @@ export class Navigation {
       .setHasTeaser(true),
     new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['home', 'accessoires', '']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['home', 'accessoires', 'carpets']),
+    new NavigationItem('HOME', 'HOME_FURNITURE', ['home', 'furniture', '']),
+    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_GAMINGCHAIRS', ['home', 'furniture', 'gaming-chairs']),
     new NavigationItem('HOME', 'HOME_GARDEN', ['home', 'garden', '']),
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GARDENHOUSES', ['home', 'garden', 'garden-houses']),
     new NavigationItem('HOME', 'HOME_TOOLS', ['home', 'tools', '']),
