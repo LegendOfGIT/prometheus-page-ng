@@ -1,4 +1,6 @@
+@import 'src/app/variables';
+
 /* You can add global styles to this file, and also import other style files */
 .page__body {
-  background-color: #282c34;
+  background-color: $page-background;
 }

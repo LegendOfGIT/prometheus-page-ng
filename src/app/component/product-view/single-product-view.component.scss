@@ -1,23 +1,5 @@
 @import 'src/app/variables';
-
-.button {
-  background-color: $container-background-color;
-  border-radius: 0.5em;
-  cursor: pointer;
-  max-width: 18em;
-  margin: 0.5em;
-  padding: 0.5em 1em 0.5em 1em;
-  text-align: center;
-
-  &__wrapper {
-    color: $content-color;
-    text-decoration: none;
-
-    &:hover {
-      color: $content-color--active;
-    }
-  }
-}
+@import 'src/styles/controls';
 
 .content {
   &--center {
@@ -56,15 +38,16 @@
   min-width: 70%;
 
   &__content {
+    border: 1px solid $logo-letter-color;
     padding: 0.5em;
 
     &:nth-child(odd) {
       background-color: $container-background-color;
-      color: $content-color--active;
+      color: $logo-letter-color;
     }
 
     &:nth-child(even) {
-      background-color: $content-color--active;
+      background-color: $logo-letter-color;
       color: $container-background-color;
     }
   }
@@ -80,6 +63,7 @@
 }
 
 .productInformation {
+  color: $content-color;
   max-width: 30em;
   padding: 3em 1em 0 1em;
   text-align: left;
@@ -136,6 +120,7 @@
   }
 
   &__sectionHeader {
+    color: $content-color;
     font-size: 1.5em;
   }
 }

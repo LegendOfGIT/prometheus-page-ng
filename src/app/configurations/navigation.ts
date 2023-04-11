@@ -25,6 +25,8 @@ export class Navigation {
     new NavigationItem('ALL', 'KIDS', ['kids', '', ''], 4)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('KIDS', 'KIDS_BOOKS', ['kids', 'books', '']),
+    new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_AUDIOBOOKS', ['kids', 'books', 'audio-books']),
     new NavigationItem('KIDS', 'KIDS_PARTY', ['kids', 'party', '']).setHasSlogan(true),
     new NavigationItem('KIDS_PARTY', 'KIDS_PARTY_TABLEWARE', ['kids', 'party', 'tableware']),
     new NavigationItem('KIDS', 'KIDS_SCHOOL', ['kids', 'school', '']).setHasSlogan(true),
@@ -40,6 +42,9 @@ export class Navigation {
     new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', ''], 3)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_BOOKS', ['multimedia', 'books', '']).setHasSlogan(true),
+    new NavigationItem('MULTIMEDIA_BOOKS', 'MULTIMEDIA_BOOKS_HISTORY', ['multimedia', 'books', 'history']),
+    new NavigationItem('MULTIMEDIA_BOOKS', 'MULTIMEDIA_BOOKS_PHILOSOPHY', ['multimedia', 'books', 'philosophy']),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_GAMES', ['multimedia', 'games', '']).setHasSlogan(true),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_NINTENDO_SWITCH', ['multimedia', 'games', 'nintendo-switch']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_PC', ['multimedia', 'games', 'pc']),
@@ -128,7 +133,15 @@ export class Navigation {
     new NavigationItem('COSMETICS_MAKEUP', 'COSMETICS_MAKEUP_EYES', ['cosmetics', 'makeup', 'eyes']),
     new NavigationItem('COSMETICS_MAKEUP', 'COSMETICS_MAKEUP_LIPS', ['cosmetics', 'makeup', 'lips']),
     new NavigationItem('COSMETICS', 'COSMETICS_WOMEN', ['cosmetics', 'women', '']),
-    new NavigationItem('COSMETICS_WOMEN', 'COSMETICS_WOMEN_FRAGRANCES', ['cosmetics', 'women', 'fragrances'])
+    new NavigationItem('COSMETICS_WOMEN', 'COSMETICS_WOMEN_FRAGRANCES', ['cosmetics', 'women', 'fragrances']),
+
+    new NavigationItem('ALL', 'VEHICLES', ['vehicles', '', ''], 10)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
+    new NavigationItem('VEHICLES', 'VEHICLES_CARS', ['vehicles', 'cars', '']),
+    new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_SUMMERTYRES', ['vehicles', 'cars', 'summer-tyres']),
+    new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_WINTERTYRES', ['vehicles', 'cars', 'winter-tyres']),
+    new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_ALLWEATHERTYRES', ['vehicles', 'cars', 'all-weather-tyres']),
   ];
 
   public static getAllRootItems(): Array<NavigationItem> {

@@ -3,8 +3,8 @@
 .footer {
   backdrop-filter: blur(3px);
   background: $container-background-color-as-rgba;
+  border-top: 1px solid lightgray;
   bottom: 0;
-  border-top: 1px solid lightblue;
   font-size: 0.85em;
   height: 2.3em;
   padding-top: 0.3em;
@@ -14,7 +14,7 @@
   z-index: 2;
 
   &__link {
-    color: $content-color;
+    color: $header-footer-content-color;
     cursor: pointer;
     padding-left: 1em;
 

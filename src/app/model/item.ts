@@ -13,20 +13,30 @@ export class Item extends BaseModel {
     navigationPath: Array<string> = [];
 
     amountOfMedia: number = 0;
+    amountOfPages: number = 0;
     amountOfSongs: number = 0;
+    author: string = '';
+    diameterInInch: number = 0;
     fabric: string = '';
     fabricPattern: string = '';
     fit: string = '';
     interpret: string = '';
     genre: string = '';
     heightInCm: number = 0;
+    isbn: string = '';
+    languages: string = '';
+    loadIndex: number = 0;
     lengthInCm: number = 0;
     material: string = '';
     minimumAge: number = 0;
+    publisher: string = '';
     subgenre: string = '';
     seoDescription: string = '';
     seoKeywords: string = '';
+    speedKey: string = '';
+    tyreType: string = '';
     widthInCm: number = 0;
+    weightInG: number = 0;
 
     imagesBig: Array<string> = [];
     providers: Array<CorrespondingItem | null> = [];
@@ -35,6 +45,7 @@ export class Item extends BaseModel {
         const item = this.bindFrom<ItemDto, Item>(Item, data);
         if (item) {
           item.id = (data as any)._id;
+          item.diameterInInch = (data as any)['diameter-in-inch'];
           item.heightInCm = (data as any)['height-in-cm'];
           item.imagesBig = (data as any)['images-big'];
           item.lengthInCm = (data as any)['length-in-cm'];
@@ -83,16 +94,26 @@ export class Item extends BaseModel {
         new ItemDetails('GENRE', item.genre),
         new ItemDetails('SUBGENRE', item.subgenre),
         new ItemDetails('MINIMUM_AGE', item.minimumAge),
+        new ItemDetails('AUTHOR', item.author),
         new ItemDetails('INTERPRET', item.interpret),
+        new ItemDetails('ISBN', item.isbn),
+        new ItemDetails('PUBLISHER', item.publisher),
         new ItemDetails('AMOUNT_OF_MEDIA', item.amountOfMedia),
+        new ItemDetails('AMOUNT_OF_PAGES', item.amountOfPages),
         new ItemDetails('AMOUNT_OF_SONGS', item.amountOfSongs),
+        new ItemDetails('LANGUAGES', item.languages),
         new ItemDetails('FIT', item.fit),
         new ItemDetails('MATERIAL', item.material),
         new ItemDetails('FABRIC', item.fabric),
         new ItemDetails('FABRIC_PATTERN', item.fabricPattern),
         new ItemDetails('LENGTH_IN_CM', item.lengthInCm),
         new ItemDetails('WIDTH_IN_CM', item.widthInCm),
-        new ItemDetails('HEIGHT_IN_CM', item.heightInCm)
+        new ItemDetails('HEIGHT_IN_CM', item.heightInCm),
+        new ItemDetails('WEIGHT_IN_G', item.weightInG),
+        new ItemDetails('TYRE_TYPE', item.tyreType),
+        new ItemDetails('DIAMETER_IN_INCH', item.diameterInInch),
+        new ItemDetails('LOADINDEX', item.loadIndex),
+        new ItemDetails('SPEEDKEY', item.speedKey)
       ].filter(detail => detail.value);
     }
 
