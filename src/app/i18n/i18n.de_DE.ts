@@ -194,6 +194,7 @@ export class I18nDeDe implements I18nInterface {
       SEARCH_PROFILE_GENDER_AGE_ADULT_MAN: 'Mann',
       SEARCH_PROFILE_GENDER_AGE_ELDER_WOMAN: 'Seniorin',
       SEARCH_PROFILE_GENDER_AGE_ELDER_MAN: 'Senior',
+      SELECT_LANGUAGE: 'Wähle eine Sprache',
       SEO_PAGE_KEYWORDS: 'finden, shopping, mode, musik, kinder, multimedia, technik, videospiele, konsolen, elektronik, computer, schönheit, pflege, entertainment',
       SEO_PAGE_TITLE: 'Finde alles auf WeWanna.shop!',
       SEO_CATEGORY_PAGE_TITLE: 'Finde alles aus {category} auf WeWanna.shop!',
@@ -204,7 +205,39 @@ export class I18nDeDe implements I18nInterface {
       SHOW_MORE_PREFIX: 'Zeige mehr aus',
       SHOW_MORE_SUFFIX: 'an',
       TOP_OFFER: 'Top-Angebot',
-      profileLogout: 'ausloggen'
+      profileLogout: 'ausloggen',
+      WHY_WEWANNA: 'Was hast du von WeWanna?',
+      WHY_WEWANNA_WHAT_WE_KNOW: '<h4>Was wissen wir über dich?</h4><p>\n' +
+        '    Viel wichtiger ist, was wir nicht über dich wissen und auch nicht wissen wollen.\n' +
+        '  </p>\n' +
+        '\n' +
+        '  <p>\n' +
+        '    Wir wissen nicht wie du heißt, wo du wohnst, auf welchen Seiten du bereitsss was getan hast,\n' +
+        '    oder auf welchen Seiten du weiter unterwegs sein wirst.\n' +
+        '  </p>\n' +
+        '\n' +
+        '  <p>\n' +
+        '    All diese Informationen über dich brauchen wir nicht um zu wissen, das du hier bist um unter\n' +
+        '    tausenden Produkten da draußen die Produkte zu finden die du, deine Familie, deine Freunde, Kollegen, ...\n' +
+        '    brauchst um das Leben ein klein wenig schöner zu machen.\n' +
+        '  </p>\n' +
+        '\n' +
+        '  <p>\n' +
+        '    Viel Spaß beim stöbern!\n' +
+        '    Du kannst jederzeit gerne wiederkommen :)\n' +
+        '  </p>',
+      WHY_WEWANNA_WHAT_IS_IN_FOR_YOU: '<h4>Was hat WeWanna davon?</h4>\n' +
+        '\n' +
+        '  <p>\n' +
+        '    Sobald du dich für den Besuch einer der angeschlossenen Shop-Seiten (mytoys, amazon, dress-for-less, ...)\n' +
+        '    entscheidest und dort eines der hier gezeigten Produkte kaufst, erhalten wir als Vermittler dieses Kaufes\n' +
+        '    eine kleine Provision.\n' +
+        '  </p>\n' +
+        '\n' +
+        '  <p>\n' +
+        '    Wir wissen in diesem Fall ausschließlich das die Shop-Seite besucht und welches Produkt dort zu welcher Zeit gekauft wurde.\n' +
+        '    Rückschlüsse auf dich als Person und deine persönlichen Daten sind damit nicht möglich.\n' +
+        '  </p>'
     }
   }
 }

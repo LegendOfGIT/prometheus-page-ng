@@ -1,6 +1,35 @@
+@import '../../../styles/controls';
+@import '../../../styles';
+
+#advantagesDialog {
+  border: 1px solid lightgray;
+  border-radius: 1em;
+  font-family: $font-family;
+  max-width: 80%;
+}
+
 .startPage {
+  &__actions {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1em;
+  }
+
+  &__button {
+    width: fit-content;
+  }
+
   &__content {
     padding-top: 4.5em;
     text-align: center;
+  }
+
+  &__dialogClose {
+    color: $container-color;
+    cursor: pointer;
+    padding: 0.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }

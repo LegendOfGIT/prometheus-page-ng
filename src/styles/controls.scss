@@ -3,7 +3,7 @@
 button {
   align-items: center;
   background-color: $container-background-color;
-  border: 1px solid #0dcaf0;
+  border: 1px solid $container-color;
   color: $container-color;
   display: flex;
   transition: background-color 200ms linear;
@@ -23,6 +23,7 @@ button:hover {
   background-color: $container-background-color;
   border: 1px solid $container-color;
   color: $container-color;
+  cursor: pointer;
   display: flex;
   transition: background-color 200ms linear;
   outline: 0;

@@ -19,7 +19,7 @@ export class StartPageComponent {
     private route: ActivatedRoute,
     private navigationService: NavigationService,
     private searchProfilesService: SearchProfilesApiService,
-    translationService: TranslationService,
+    private translationService: TranslationService,
     titleService: Title,
     metaService: Meta,
     @Inject(DOCUMENT) private doc: Document,
@@ -49,5 +49,12 @@ export class StartPageComponent {
 
     return (rankedCategoryIds.map(categoryId => Navigation.getNavigationItemByToId(categoryId)) || [])
       .concat(Navigation.getAllRootItems().filter(rootCategory => -1 === rankedCategoryIds.indexOf(rootCategory.toId)));
+  }
+
+  get whatWeKnow(): string {
+    return this.translationService.getTranslations().WHY_WEWANNA_WHAT_WE_KNOW;
+  }
+  get whatIsInForYou(): string {
+    return this.translationService.getTranslations().WHY_WEWANNA_WHAT_IS_IN_FOR_YOU;
   }
 }

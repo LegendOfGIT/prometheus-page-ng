@@ -2,8 +2,16 @@
 @import 'src/app/variables';
 
 .profile {
+  &__button {
+    justify-content: center;
+    margin-top: 0.5em;
+    width: 15em;
+  }
+
   &__content {
     background-color: $container-background-color;
+    color: $content-color;
+    font-family: $font-family;
     margin-top: 3em;
     padding: 1em;
   }

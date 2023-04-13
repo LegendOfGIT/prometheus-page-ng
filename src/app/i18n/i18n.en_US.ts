@@ -194,6 +194,7 @@ export class I18nEnUs implements I18nInterface {
       SEARCH_PROFILE_GENDER_AGE_ADULT_MAN: 'Man',
       SEARCH_PROFILE_GENDER_AGE_ELDER_WOMAN: 'Elder woman',
       SEARCH_PROFILE_GENDER_AGE_ELDER_MAN: 'Elder man',
+      SELECT_LANGUAGE: 'Select a language',
       SEO_PAGE_KEYWORDS: 'find, shopping, fashion, music, kids, multimedia, tech, videogames, games, consoles, electronics, computers, beauty, care, entertainment',
       SEO_PAGE_TITLE: 'Find everything on WeWanna.shop!',
       SEO_CATEGORY_PAGE_TITLE: 'Find everything of {category} on WeWanna.shop!',
@@ -204,7 +205,39 @@ export class I18nEnUs implements I18nInterface {
       SHOW_MORE_PREFIX: 'Show more of',
       SHOW_MORE_SUFFIX: '...',
       TOP_OFFER: 'Best offer',
-      profileLogout: "logout"
+      profileLogout: 'logout',
+      WHY_WEWANNA: 'Why WeWanna?',
+      WHY_WEWANNA_WHAT_WE_KNOW: '<h4>What do we know about you?</h4><p>\n' +
+        '    Much more important is what we don\'t know about you and don\'t want to know.\n' +
+        '  </p>\n' +
+        '\n' +
+        '  <p>\n' +
+        '    We don´t know your name, where you live, on which pages you´ve already done something,\n' +
+          ' or on which pages you will continue to travel.\n' +
+        '  </p>\n' +
+        '\n' +
+        '  <p>\n' +
+        '    We don´t need all this information about you to know that you are here at\n' +
+    ' thousands of products out there to find the products you, your family, your friends, colleagues, ...\n' +
+    ' need to make life a little bit nicer.\n' +
+        '  </p>\n' +
+        '\n' +
+        '  <p>\n' +
+        '    Have fun!\n' +
+        'You´re welcome to come back anytime :)\n' +
+        '  </p>',
+      WHY_WEWANNA_WHAT_IS_IN_FOR_YOU: '<h4>What´s in for WeWanna?</h4>\n' +
+        '\n' +
+        '  <p>\n' +
+        '    As soon as you decide to visit one of the connected shop pages (mytoys, amazon, dress-for-less, ...)\n' +
+        ' you decide and buy one of the products shown here, we receive it as an intermediary\n' +
+        ' a small commission.\n' +
+        '  </p>\n' +
+        '\n' +
+        '  <p>\n' +
+        'In this case, we only know that the shop page was visited and which product was bought there at what time.\n' +
+    ' Conclusions about you as a person and your personal data are not possible.\n' +
+        '  </p>'
     }
   }
 }

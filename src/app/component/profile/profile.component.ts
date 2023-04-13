@@ -39,6 +39,7 @@ export class ProfileComponent{
 
   switchLanguage(locale: string): void {
      this.userService.setDisplayLocaleOfActiveUser(locale);
+     window.location.reload();
   }
 
   get isLoggedIn() {

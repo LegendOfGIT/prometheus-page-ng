@@ -1,8 +1,26 @@
-<div>
-  <div class="container startPage__content">
+<div class="startPage__content">
+  <div class="container startPage__actions">
+    <div class="button startPage__button" (click)="advantagesDialog.showModal();">
+      {{'WHY_WEWANNA' | translate}}
+    </div>
+  </div>
+
+  <div class="container">
     <category-teaser
       *ngFor="let item of allRootRootItems"
       [navigationItem]="item"
     ></category-teaser>
   </div>
 </div>
+
+<dialog #advantagesDialog id="advantagesDialog">
+  <div class="startPage__dialogClose" (click)="advantagesDialog.close()">
+    <i class="fa fa-times-circle"></i>
+  </div>
+
+  <span [innerHTML]="whatWeKnow"></span>
+
+  <span [innerHTML]="whatIsInForYou"></span>
+
+
+</dialog>
