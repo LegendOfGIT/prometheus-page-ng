@@ -133,6 +133,7 @@ export class Navigation {
     new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_GAMINGCHAIRS', ['home', 'furniture', 'gaming-chairs']),
     new NavigationItem('HOME', 'HOME_GARDEN', ['home', 'garden', '']),
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GARDENHOUSES', ['home', 'garden', 'garden-houses']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GRILLS', ['home', 'garden', 'grills']),
     new NavigationItem('HOME', 'HOME_TOOLS', ['home', 'tools', '']),
     new NavigationItem('HOME_TOOLS', 'HOME_TOOLS_DRILLINGMACHINES', ['home', 'tools', 'drilling-machines']),
 
@@ -151,6 +152,7 @@ export class Navigation {
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('VEHICLES', 'VEHICLES_CARS', ['vehicles', 'cars', '']),
+    new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_CHILDSEATS', ['vehicles', 'cars', 'child-seats']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_SUMMERTYRES', ['vehicles', 'cars', 'summer-tyres']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_WINTERTYRES', ['vehicles', 'cars', 'winter-tyres']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_ALLWEATHERTYRES', ['vehicles', 'cars', 'all-weather-tyres']),
