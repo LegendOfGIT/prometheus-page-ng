@@ -32,9 +32,9 @@ export class ItemsApiService extends ApiBase {
       return this.userService.activeUser?.activeSearchProfile || '';
     }
 
-    private getUserAgentFromClient(): string | undefined {
+    private getUserAgentFromClient(): string {
       if (isPlatformServer(this.platformId)) {
-        return;
+        return '';
       }
 
       return window.navigator.userAgent || '';
@@ -56,8 +56,10 @@ export class ItemsApiService extends ApiBase {
           searchProfileId: this.getActiveSearchProfileId()
         });
 
-      const headers= new HttpHeaders()
-        .set('User-Agent', this.getUserAgentFromClient());
+      const headers = new HttpHeaders();
+      if (this.getUserAgentFromClient()) {
+        headers.set('User-Agent', this.getUserAgentFromClient());
+      }
 
       return this.http
          .get<ItemsResponseDto>(url, { headers })
@@ -78,8 +80,10 @@ export class ItemsApiService extends ApiBase {
           searchProfileId: this.getActiveSearchProfileId()
         });
 
-      const headers= new HttpHeaders()
-        .set('User-Agent', this.getUserAgentFromClient());
+      const headers = new HttpHeaders();
+      if (this.getUserAgentFromClient()) {
+        headers.set('User-Agent', this.getUserAgentFromClient());
+      }
 
       return this.http
         .get<ItemsResponseDto>(url, { headers })
