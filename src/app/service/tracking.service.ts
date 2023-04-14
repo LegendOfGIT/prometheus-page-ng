@@ -46,14 +46,14 @@ export class TrackingService extends ApiBase {
               return;
             }
 
-            this.http.put(
+            /*this.http.put(
               this.get(endpoints.scoreItem),
               {
                 itemId: trackedActivity.getInformationItemId(),
                 searchProfileId: userService.activeUser?.activeSearchProfile,
                 scoring: scorings[0].scoring
               }
-            ).subscribe();
+            ).subscribe();*/
           }
         }, 3000);
     }

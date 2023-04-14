@@ -1,53 +1,24 @@
-.informationItem {
-  padding: 1em;
-  text-align: -webkit-center;
-  width: 20em;
+@import "../../../styles";
 
-  @media screen and (min-width: 576px) {
-    width: 15em;
+.informationItems {
+  &__container {
+    background-color: #fff;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 1em;
   }
 
-  @media screen and (min-width: 1140px) {
-    width: 16em;
+  &__containerWrapper {
+    background-color: $container-background-color-as-rgba;
+    border: 1px solid lightgray;
+    border-radius: 0.5em;
+    margin-bottom: 2em;
+    padding-top: 1em;
   }
 
   &__content {
     display: flex;
-    padding-top: 4em;
-  }
-
-  &__contentContainer {
-    margin-top: 2em;
-  }
-
-  &__image {
-    border-radius: 0.5em;
-    max-height: 14em;
-    max-width: 100%;
-  }
-
-  &__imageContainer {
-    min-height: 14em;
-    position: relative;
-    width: 10em;
-
-    @media screen and (min-width: 576px) {
-      width: 9em;
-    }
-
-    @media screen and (min-width: 1140px) {
-      width: 12em;
-    }
-
-    &:hover {
-      transform: scale(1.1);
-      transition: transform 0.5s;
-    }
-  }
-
-  &sContainer {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    padding-top: 4.5em;
   }
 }

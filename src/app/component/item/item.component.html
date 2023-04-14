@@ -1,0 +1,30 @@
+<div>
+  <div *ngIf="item" [ngClass]="['informationItem', item.itemId ? '' : 'informationItem--loading', additionalCssClasses]">
+    <div [ngClass]="['informationItem__imageContainer', item.itemId ? '' : 'informationItem__imageContainer--loading']">
+      <a href="{{getSeoFriendlySingleProductViewUrl(item)}}" (click)="pickedInformation(item)">
+        <img *ngIf="item.itemId"
+          class="informationItem__image"
+          alt="{{'IMAGE_OF' | translate }} {{item.title}}"
+          src="{{item.titleImage}}"
+          loading="lazy"
+        />
+      </a>
+      <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
+    </div>
+
+    <a href="{{getSeoFriendlySingleProductViewUrl(item)}}" (click)="pickedInformation(item)">
+      <div class="informationItem__contentContainer">
+        <div *ngIf="renderLowestPrice(item); else noPrice" [ngClass]="['button', 'informationItem__priceWrapper']">
+          {{ 'PRICE_FROM' | translate }}
+          <span class="informationItem__price">&nbsp;{{renderLowestPrice(item) || ''}}</span>
+        </div>
+        <ng-template #noPrice>
+          <div [ngClass]="['informationItem__price', 'informationItem__price--hidden']">
+            &nbsp;
+          </div>
+        </ng-template>
+        <div class="informationItem__title">{{item.title}}</div>
+      </div>
+    </a>
+  </div>
+</div>

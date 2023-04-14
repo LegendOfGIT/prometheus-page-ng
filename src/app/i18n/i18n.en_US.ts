@@ -6,6 +6,7 @@ export class I18nEnUs implements I18nInterface {
       iAmSearchingFor: 'I am looking for ...',
       languageDeDe: 'german',
       languageEnUs: 'english (US)',
+      BACK: 'Back',
       BACK_TO: 'Back to',
       CATEGORIES: 'Categories',
       DATA_PROTECTION: 'Data-Protection',
@@ -130,6 +131,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_TEASER_MULTIMEDIA: 'Here you can Music, Movies, Videogames and many more for your entertainment',
       NAVIGATION_TEASER_MUSIC: 'Find your favorite music or music you need for the next party here',
       NAVIGATION_TEASER_VEHICLES: 'On a long trip, on the way to work or just for fun! Here you will find everything you need to get around.',
+      NEXT: 'Next',
       OFFER: 'Offer',
       PRICE_FROM: 'from',
       PRIVATSPHERE_OPTIONS: 'Privatsphere-Options',
@@ -212,27 +214,23 @@ export class I18nEnUs implements I18nInterface {
         '   Much more important is what we don\'t know about you and don\'t want to know.' +
         '</p>' +
         '<p>' +
-        '   We don´t know your name, where you live, on which pages you´ve already done something,' +
-        '   or on which pages you will continue to travel.' +
+        '   We do not know your name, where you live, what you have done on which pages or which pages you will visit in the future' +
+        '   We don´t need all this information to know that you are here ' +
+        '   to find the products you, your family, your friends, colleagues, ...' +
+        '   need to make life a little nicer.' +
         '</p>' +
         '<p>' +
-        '   We don´t need all this information about you to know that you are here at' +
-        '   thousands of products out there to find the products you, your family, your friends, colleagues, ...' +
-        '   need to make life a little bit nicer.' +
-        '</p>' +
-        '<p>' +
-        '   Have fun!' +
+        '   Enjoy your day!' +
         '   You´re welcome to come back anytime :)' +
         '</p>',
       WHY_WEWANNA_WHAT_IS_IN_FOR_YOU: '<h4>What´s in for WeWanna?</h4>' +
         '<p>' +
         '   As soon as you decide to visit one of the connected shop pages (mytoys, amazon, dress-for-less, ...)' +
-        '   you decide and buy one of the products shown here, we receive it as an intermediary' +
-        '   a small commission.' +
+        '   and also buy one of the products shown here, we receive a small intermediary commission.' +
         '</p>' +
         '<p>' +
-        '   In this case, we only know that the shop page was visited and which product was bought there at what time.' +
-        '   Conclusions about you as a person and your personal data are not possible.' +
+        '   In this case, we only know that the shop page was visited and which product was bought there at which point in time.' +
+        '   We are not able to draw any conclusion about you as a person and your personal data.' +
         '</p>'
     }
   }

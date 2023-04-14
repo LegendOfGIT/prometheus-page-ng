@@ -3,13 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
-import { SocialLoginModule } from '@abacritt/angularx-social-login';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AddToWishlistComponent } from './component/wishlist/add-to-wishlist.component';
+import { ItemComponent } from './component/item/item.component';
 import { ItemsComponent } from './component/overview/items.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -37,6 +35,7 @@ import { DataProtectionComponent } from './component/legal/data-protection.compo
     HeaderComponent, FooterComponent,
     DataProtectionComponent,
     ImprintComponent,
+    ItemComponent,
     ItemsComponent,
     NavigationComponent,
     ProfileComponent,
@@ -53,27 +52,9 @@ import { DataProtectionComponent } from './component/legal/data-protection.compo
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    SocialLoginModule
+    ReactiveFormsModule
   ],
-  providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '328551070850-937c4n1tnk2gdo3mbatgs8n17qr6qg6g.apps.googleusercontent.com'
-            )
-          }
-        ],
-        onError: (err) => {
-        }
-      } as SocialAuthServiceConfig
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

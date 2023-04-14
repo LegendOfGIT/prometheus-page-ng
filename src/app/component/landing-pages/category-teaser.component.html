@@ -9,36 +9,11 @@
     <div class="header__titleTeaser"> {{('NAVIGATION_TEASER_' + (navigationItem?.toId || 'ALL')) | translate}}</div>
   </h3>
   <div class="col-12 informationItems__container">
-    <div *ngFor="let item of getItemsOfCategory(); let i = index;">
-
-      <div *ngIf="item" [ngClass]="['informationItem', item?.itemId ? '' : 'informationItem--loading', -1 !== [0, 1].indexOf(i) ? 'informationItem--displayUpToL informationItem--displayFromXXL' : '' ]">
-        <div [ngClass]="['informationItem__imageContainer', item?.itemId ? '' : 'informationItem__imageContainer--loading']">
-          <a href="{{getSeoFriendlySingleProductViewUrl(item)}}">
-            <img
-              class="informationItem__image"
-              alt="{{ 'IMAGE_OF' | translate }} {{item?.title || ''}}"
-              src="{{item.titleImage}}"
-              loading="lazy"
-            />
-          </a>
-          <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
-        </div>
-        <a href="{{getSeoFriendlySingleProductViewUrl(item)}}">
-          <div class="informationItem__contentContainer">
-            <div *ngIf="renderLowestPrice(item); else noPrice" [ngClass]="['button', 'informationItem__priceWrapper']">
-              {{ 'PRICE_FROM' | translate }}
-              <span class="informationItem__price">&nbsp;{{renderLowestPrice(item) || ''}}</span>
-            </div>
-            <ng-template #noPrice>
-              <div [ngClass]="['informationItem__price', 'informationItem__price--hidden']">
-                &nbsp;
-              </div>
-            </ng-template>
-            <div class="informationItem__title">{{item.title}}</div>
-          </div>
-        </a>
-      </div>
-    </div>
+    <app-item
+      *ngFor="let item of getItemsOfCategory(); let i = index;"
+      [item]="item"
+      [additionalCssClasses]="-1 !== [0, 1].indexOf(i) ? 'informationItem--displayUpToL informationItem--displayFromXXL' : ''"
+    ></app-item>
   </div>
   <div class="category__actions">
     <a href="{{moreLink}}" class="button">

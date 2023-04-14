@@ -1,26 +1,7 @@
 <div *ngIf="items">
-  <div class="container informationItem__content">
-    <div class="col-1"></div>
-    <div class="col-10 informationItemsContainer">
-      <div *ngFor="let item of items">
-
-        <div *ngIf="item && item.titleImage" class="informationItem">
-          <div class="informationItem__imageContainer">
-            <img
-              class="informationItem__image"
-              alt="{{item.title}}"
-              src="{{item.titleImage}}"
-              loading="lazy"
-            />
-            <app-add-to-wishlist [item]="item"></app-add-to-wishlist>
-          </div>
-          <div class="informationItem__contentContainer">
-            <div class="item__title">{{item.title}}</div>
-          </div>
-        </div>
-      </div>
+  <div class="container informationItems__content">
+    <div class="col-12 informationItems__container">
+      <app-item *ngFor="let item of items" [item]="item"></app-item>
     </div>
-    <div class="col-1"></div>
-
   </div>
 </div>

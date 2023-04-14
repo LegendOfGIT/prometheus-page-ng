@@ -80,27 +80,6 @@ export class CategoryTeaserComponent implements OnInit {
     return this.categoryItems;
   }
 
-  private getHyphenatedString(value: string) {
-    return (value || '').substring(0, 100)
-      .replace(",", "")
-      .replace(/[^\w\s]/gi, '')
-      .replace(/[()]/g, '')
-      .replace(/\s+/g, '-')
-      .toLowerCase();
-  }
-
-  public getSeoFriendlySingleProductViewUrl(item: Item | null): string {
-    if (!item) {
-      return '';
-    }
-
-    return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
-  }
-
-  public renderLowestPrice(item: Item): string {
-    return Item.renderLowestPrice(item);
-  }
-
   get moreLink(): string {
     return '/' + [(this.navigationItem?.pathParts || []).filter(p => p).join('/')];
   }

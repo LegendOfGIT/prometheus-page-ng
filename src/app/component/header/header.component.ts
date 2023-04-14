@@ -45,13 +45,13 @@ export class HeaderComponent {
   ) {
     this.subscribeSearchPatternChanges();
     this.lastLoggedInFlag = this.userService.isLoggedIn;
-    const searchPattern = this.getSearchParameterFromUrl();
+    const searchPattern = this.getParameterFromUrl('search');
     this.searchPatternControl.setValue(searchPattern);
     this.secondBarSearchPatternControl.setValue(searchPattern);
   }
 
-  private getSearchParameterFromUrl(): string | null {
-    return this.isOnClientSide() ? new URL(window.location.href).searchParams.get('search') : '';
+  private getParameterFromUrl(parameterKey: string): string | null {
+    return this.isOnClientSide() ? new URL(window.location.href).searchParams.get(parameterKey) : '';
   }
 
   private isOnClientSide(): boolean {
@@ -83,13 +83,20 @@ export class HeaderComponent {
   }
 
   public searchNow(): void {
-    const searchPattern = this.getSearchParameterFromUrl();
+    const searchPattern = this.getParameterFromUrl('search');
+    const hasSearchPatternChanged = searchPattern !== this.searchPatternControl.value;
+    const page = hasSearchPatternChanged ? undefined : this.getParameterFromUrl('page');
 
     this.router.navigate(
       [],
-      { queryParams: { search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value } }
+      {
+        queryParams: {
+          search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value,
+          page
+        }
+      }
     ).then(() => {
-      if (searchPattern !== this.searchPatternControl.value) {
+      if (hasSearchPatternChanged) {
         window.location.reload();
       }
     });

@@ -3,7 +3,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { v4 as uuidV4 } from 'uuid';
-import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
 
 import { User } from 'src/app/model/user';
@@ -22,8 +21,7 @@ export class UserService {
     private _anonymousUser: User | null = null;
     private _activeUser: User | null = null;
 
-    constructor(private socialAuthService: SocialAuthService,
-                private wishlistItemsService: WishlistItemsApiService,
+    constructor(private wishlistItemsService: WishlistItemsApiService,
                 private storageService: StorageService,
                 @Inject(PLATFORM_ID) platformId: Object) {
 
@@ -33,19 +31,6 @@ export class UserService {
 
       this.initializeAnonymousUser();
       this.initializeActiveUser();
-
-      this.socialAuthService.authState
-        .subscribe((user: SocialUser) => {
-          this._activeUser = new User()
-            .setId(user.id)
-            .setEmailAddress(user.email)
-            .setFirstName(user.firstName)
-            .setLastName(user.lastName);
-
-          this.storeUserWithId(UserService.STORAGE_ID_ACTIVE_USER, this._activeUser);
-          this.updateWishlist(this._activeUser.id || '');
-        });
-
     }
 
     private updateWishlist(userId: string): void {

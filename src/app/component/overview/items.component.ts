@@ -2,16 +2,14 @@ import {Component, Inject, PLATFORM_ID, OnInit} from '@angular/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
-import { DOCUMENT, isPlatformServer } from '@angular/common';
+import {DOCUMENT, isPlatformServer} from '@angular/common';
 
 import {Item} from 'src/app/model/item';
 import {ItemsApiService} from 'src/app/service/items-api.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {TrackingService} from 'src/app/service/tracking.service';
-import {TrackingActivityItem} from 'src/app/model/tracking-activity-item';
-import {TrackingInterestLevel} from 'src/app/model/tracking-interest-level';
-import {TranslationService} from "../../service/translation.service";
-import {Title} from "@angular/platform-browser";
+import {TranslationService} from '../../service/translation.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-items',
@@ -85,35 +83,6 @@ export class ItemsComponent implements OnInit {
         }
 
     }
-
-    public pickedInformation(item: Item): void {
-      this.trackingService.addActivity(
-        TrackingActivityItem.create()
-          .setInformationItemId(item.itemId)
-          .setInterestLevel(TrackingInterestLevel.VERY_HIGH)
-          .setTrackingId('overview.item.clicked'));
-    }
-
-  private getHyphenatedString(value: string) {
-    return (value || '').substring(0, 100)
-      .replace(",", "")
-      .replace(/[^\w\s]/gi, '')
-      .replace(/[()]/g, '')
-      .replace(/\s+/g, '-')
-      .toLowerCase();
-  }
-
-  public getSeoFriendlySingleProductViewUrl(item: Item | null): string {
-    if (!item) {
-      return '';
-    }
-
-    return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
-  }
-
-  public renderLowestPrice(item: Item): string {
-      return Item.renderLowestPrice(item);
-  }
 
   public linkToPage(page: number) {
     let urlTree = this.router.parseUrl(this.router.url);
