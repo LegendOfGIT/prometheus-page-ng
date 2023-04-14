@@ -10,6 +10,8 @@ import { Observable } from 'rxjs';
 import { ApplicationConfiguration } from '../configurations/app';
 import { isPlatformServer } from '@angular/common';
 import { ItemsResponse } from '../model/items-response';
+import {REQUEST} from '@nguniversal/express-engine/tokens';
+import {Request} from 'express';
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +21,8 @@ export class ItemsApiService extends ApiBase {
     constructor(
       private http: HttpClient,
       private userService: UserService,
-      @Inject(PLATFORM_ID) private platformId: Object
+      @Inject(PLATFORM_ID) private platformId: Object,
+      @Optional() @Inject(REQUEST) private request: Request
     ) {
         super(ApplicationConfiguration.API_BASE);
     }
@@ -32,9 +35,9 @@ export class ItemsApiService extends ApiBase {
       return this.userService.activeUser?.activeSearchProfile || '';
     }
 
-    private getUserAgentFromClient(): string {
-      if (isPlatformServer(this.platformId)) {
-        return '';
+    private getUserAgent(): string {
+      if (this.request) {
+        return this.request.headers['user-agent'] || '';
       }
 
       return window.navigator.userAgent || '';
@@ -56,9 +59,10 @@ export class ItemsApiService extends ApiBase {
           searchProfileId: this.getActiveSearchProfileId()
         });
 
-      const headers = new HttpHeaders();
-      if (this.getUserAgentFromClient()) {
-        headers.set('User-Agent', this.getUserAgentFromClient());
+      let headers = new HttpHeaders();
+      const userAgent = this.getUserAgent();
+      if (userAgent) {
+        headers = headers.set('user-agent', userAgent);
       }
 
       return this.http
@@ -80,9 +84,10 @@ export class ItemsApiService extends ApiBase {
           searchProfileId: this.getActiveSearchProfileId()
         });
 
-      const headers = new HttpHeaders();
-      if (this.getUserAgentFromClient()) {
-        headers.set('User-Agent', this.getUserAgentFromClient());
+      let headers = new HttpHeaders();
+      const userAgent = this.getUserAgent();
+      if (userAgent) {
+        headers = headers.set('user-agent', userAgent);
       }
 
       return this.http
