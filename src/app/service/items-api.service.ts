@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Inject, Injectable, Optional, PLATFORM_ID} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { endpoints } from '../../environments/endpoints';
@@ -56,8 +56,11 @@ export class ItemsApiService extends ApiBase {
           searchProfileId: this.getActiveSearchProfileId()
         });
 
+      const headers= new HttpHeaders()
+        .set('User-Agent', this.getUserAgentFromClient());
+
       return this.http
-         .get<ItemsResponseDto>(url, { options: { headers: { 'User-Agent': this.getUserAgentFromClient() } } })
+         .get<ItemsResponseDto>(url, { headers })
          .pipe(map(dto => {
            const response = new ItemsResponse();
            response.items = dto.items?.map(item => Item.fromModel(item));
@@ -75,8 +78,11 @@ export class ItemsApiService extends ApiBase {
           searchProfileId: this.getActiveSearchProfileId()
         });
 
+      const headers= new HttpHeaders()
+        .set('User-Agent', this.getUserAgentFromClient());
+
       return this.http
-        .get<ItemsResponseDto>(url, { options: { headers: { 'User-Agent': this.getUserAgentFromClient() } } })
+        .get<ItemsResponseDto>(url, { headers })
         .pipe(map(dto => dto.items?.map(item => Item.fromModel(item))));
     }
 
