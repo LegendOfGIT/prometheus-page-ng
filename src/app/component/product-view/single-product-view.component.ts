@@ -20,8 +20,6 @@ import {ItemDetails} from "../../model/item-details";
 })
 export class SingleProductViewComponent {
 
-  private sliderInitiated = false;
-
   public itemId: string = '';
 
   public item: Item | null = null;
@@ -192,5 +190,11 @@ export class SingleProductViewComponent {
 
   get activeNavigationItem(): NavigationItem | undefined {
     return Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
+  }
+
+  get slideImageUrls(): Array<string> {
+    return [this.item?.titleImage || '']
+      .concat(this.item?.imagesBig || [])
+      .filter((value, index, array) => array.indexOf(value) === index);
   }
 }
