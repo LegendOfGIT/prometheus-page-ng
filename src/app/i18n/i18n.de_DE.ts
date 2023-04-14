@@ -207,37 +207,33 @@ export class I18nDeDe implements I18nInterface {
       TOP_OFFER: 'Top-Angebot',
       profileLogout: 'ausloggen',
       WHY_WEWANNA: 'Was hast du von WeWanna?',
-      WHY_WEWANNA_WHAT_WE_KNOW: '<h4>Was wissen wir über dich?</h4><p>\n' +
-        '    Viel wichtiger ist, was wir nicht über dich wissen und auch nicht wissen wollen.\n' +
-        '  </p>\n' +
-        '\n' +
-        '  <p>\n' +
-        '    Wir wissen nicht wie du heißt, wo du wohnst, auf welchen Seiten du bereitsss was getan hast,\n' +
-        '    oder auf welchen Seiten du weiter unterwegs sein wirst.\n' +
-        '  </p>\n' +
-        '\n' +
-        '  <p>\n' +
-        '    All diese Informationen über dich brauchen wir nicht um zu wissen, das du hier bist um unter\n' +
-        '    tausenden Produkten da draußen die Produkte zu finden die du, deine Familie, deine Freunde, Kollegen, ...\n' +
-        '    brauchst um das Leben ein klein wenig schöner zu machen.\n' +
-        '  </p>\n' +
-        '\n' +
-        '  <p>\n' +
-        '    Viel Spaß beim stöbern!\n' +
-        '    Du kannst jederzeit gerne wiederkommen :)\n' +
-        '  </p>',
-      WHY_WEWANNA_WHAT_IS_IN_FOR_YOU: '<h4>Was hat WeWanna davon?</h4>\n' +
-        '\n' +
-        '  <p>\n' +
-        '    Sobald du dich für den Besuch einer der angeschlossenen Shop-Seiten (mytoys, amazon, dress-for-less, ...)\n' +
-        '    entscheidest und dort eines der hier gezeigten Produkte kaufst, erhalten wir als Vermittler dieses Kaufes\n' +
-        '    eine kleine Provision.\n' +
-        '  </p>\n' +
-        '\n' +
-        '  <p>\n' +
-        '    Wir wissen in diesem Fall ausschließlich das die Shop-Seite besucht und welches Produkt dort zu welcher Zeit gekauft wurde.\n' +
-        '    Rückschlüsse auf dich als Person und deine persönlichen Daten sind damit nicht möglich.\n' +
-        '  </p>'
+      WHY_WEWANNA_WHAT_WE_KNOW: '<h4>Was wissen wir über dich?</h4>' +
+        '<p>' +
+        '    Viel wichtiger ist, was wir nicht über dich wissen und auch nicht wissen wollen.' +
+        '</p>' +
+        '<p>' +
+        '    Wir wissen nicht wie du heißt, wo du wohnst, auf welchen Seiten du bereitsss was getan hast,' +
+        '    oder auf welchen Seiten du weiter unterwegs sein wirst.' +
+        '</p>' +
+        '<p>' +
+        '    All diese Informationen über dich brauchen wir nicht um zu wissen, das du hier bist um unter' +
+        '    tausenden Produkten da draußen die Produkte zu finden die du, deine Familie, deine Freunde, Kollegen, ...' +
+        '    brauchst um das Leben ein klein wenig schöner zu machen.' +
+        '</p>' +
+        '<p>' +
+        '    Viel Spaß beim stöbern!' +
+        '    Du kannst jederzeit gerne wiederkommen :)' +
+        '</p>',
+      WHY_WEWANNA_WHAT_IS_IN_FOR_YOU: '<h4>Was hat WeWanna davon?</h4>' +
+        '<p>' +
+        '    Sobald du dich für den Besuch einer der angeschlossenen Shop-Seiten (mytoys, amazon, dress-for-less, ...)' +
+        '    entscheidest und dort eines der hier gezeigten Produkte kaufst, erhalten wir als Vermittler dieses Kaufes' +
+        '    eine kleine Provision.' +
+        '</p>' +
+        '<p>' +
+        '    Wir wissen in diesem Fall ausschließlich das die Shop-Seite besucht und welches Produkt dort zu welcher Zeit gekauft wurde.' +
+        '    Rückschlüsse auf dich als Person und deine persönlichen Daten sind damit nicht möglich.' +
+        '</p>'
     }
   }
 }
