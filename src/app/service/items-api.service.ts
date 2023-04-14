@@ -32,7 +32,7 @@ export class ItemsApiService extends ApiBase {
       return this.userService.activeUser?.activeSearchProfile || '';
     }
 
-    private getUserAgentFromClient(): string {
+    private getUserAgentFromClient(): string | undefined {
       if (isPlatformServer(this.platformId)) {
         return;
       }
