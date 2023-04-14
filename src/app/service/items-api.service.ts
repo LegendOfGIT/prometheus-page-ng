@@ -57,7 +57,7 @@ export class ItemsApiService extends ApiBase {
         });
 
       return this.http
-         .get<ItemsResponseDto>(url, { headers: { 'User-Agent': this.getUserAgentFromClient() } })
+         .get<ItemsResponseDto>(url, { options: { headers: { 'User-Agent': this.getUserAgentFromClient() } } })
          .pipe(map(dto => {
            const response = new ItemsResponse();
            response.items = dto.items?.map(item => Item.fromModel(item));
@@ -76,7 +76,7 @@ export class ItemsApiService extends ApiBase {
         });
 
       return this.http
-        .get<ItemsResponseDto>(url, { headers: { 'User-Agent': this.getUserAgentFromClient() } })
+        .get<ItemsResponseDto>(url, { options: { headers: { 'User-Agent': this.getUserAgentFromClient() } } })
         .pipe(map(dto => dto.items?.map(item => Item.fromModel(item))));
     }
 
