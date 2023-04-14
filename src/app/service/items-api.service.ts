@@ -32,6 +32,14 @@ export class ItemsApiService extends ApiBase {
       return this.userService.activeUser?.activeSearchProfile || '';
     }
 
+    private getUserAgentFromClient(): string {
+      if (isPlatformServer(this.platformId)) {
+        return;
+      }
+
+      return window.navigator.userAgent || '';
+    }
+
     getItems(navigationId: string,
              searchPattern: string,
              numberOfResults: number | undefined = undefined,
@@ -49,7 +57,7 @@ export class ItemsApiService extends ApiBase {
         });
 
       return this.http
-         .get<ItemsResponseDto>(url)
+         .get<ItemsResponseDto>(url, { headers: { 'User-Agent': this.getUserAgentFromClient() } })
          .pipe(map(dto => {
            const response = new ItemsResponse();
            response.items = dto.items?.map(item => Item.fromModel(item));
@@ -68,7 +76,7 @@ export class ItemsApiService extends ApiBase {
         });
 
       return this.http
-        .get<ItemsResponseDto>(url)
+        .get<ItemsResponseDto>(url, { headers: { 'User-Agent': this.getUserAgentFromClient() } })
         .pipe(map(dto => dto.items?.map(item => Item.fromModel(item))));
     }
 
