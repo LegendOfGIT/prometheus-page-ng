@@ -43,6 +43,15 @@ export class ItemsApiService extends ApiBase {
       return window.navigator.userAgent || '';
     }
 
+    private isBotRequest(): boolean {
+      const agent = this.getUserAgent().toLowerCase();
+      if (-1 !== agent.indexOf('googlebot')) {
+        return true;
+      }
+
+      return -1 !== agent.indexOf('bingbot');
+    }
+
     getItems(navigationId: string,
              searchPattern: string,
              numberOfResults: number | undefined = undefined,
@@ -53,6 +62,7 @@ export class ItemsApiService extends ApiBase {
         {
           navigationId,
           numberOfResults: numberOfResults ? `${numberOfResults}` : '',
+          isBot: this.isBotRequest() ? 'true': 'false',
           randomItems : randomItems ? 'true': 'false',
           page,
           searchPattern,
@@ -81,6 +91,7 @@ export class ItemsApiService extends ApiBase {
         endpoints.singleItem,
         {
           id,
+          isBot: this.isBotRequest() ? 'true': 'false',
           searchProfileId: this.getActiveSearchProfileId()
         });
 
