@@ -156,6 +156,12 @@ export class Navigation {
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_SUMMERTYRES', ['vehicles', 'cars', 'summer-tyres']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_WINTERTYRES', ['vehicles', 'cars', 'winter-tyres']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_ALLWEATHERTYRES', ['vehicles', 'cars', 'all-weather-tyres']),
+
+    new NavigationItem('ALL', 'SPORTS', ['sports', '', ''], 11)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
+    new NavigationItem('SPORTS', 'SPORTS_EXERCISE', ['sports', 'exercise', '']),
+    new NavigationItem('SPORTS_EXERCISE', 'SPORTS_EXERCISE_EQUIPMENT', ['sports', 'exercise', 'equipment'])
   ];
 
   public static getAllRootItems(): Array<NavigationItem> {
