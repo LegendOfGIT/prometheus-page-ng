@@ -86,6 +86,25 @@ export class ItemsApiService extends ApiBase {
          }));
     }
 
+    getHighlightedItems(numberOfResults: number | undefined = undefined): Observable<ItemsResponse> {
+      const url = this.getRequestBase() + this.get(
+        endpoints.highlightedItems,
+        {
+          numberOfResults: numberOfResults ? `${numberOfResults}` : '',
+          isBot: this.isBotRequest() ? 'true': 'false'
+        });
+
+      return this.http
+        .get<ItemsResponseDto>(url)
+        .pipe(map(dto => {
+          const response = new ItemsResponse();
+          response.items = dto.items?.map(item => Item.fromModel(item));
+          response.availablePages = dto.availablePages;
+
+          return response;
+        }));
+    }
+
     getItemsById(id: string): Observable<Array<Item | null>> {
       const url = this.getRequestBase() + this.get(
         endpoints.singleItem,

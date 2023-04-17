@@ -23,6 +23,9 @@ export class CategoryTeaserComponent implements OnInit {
   @Input()
   public randomItems = false;
 
+  @Input()
+  public showHighlights = false;
+
   private destroyedService$ = new Subject();
 
   private categoryItems: Array<Item | null> = [
@@ -40,12 +43,26 @@ export class CategoryTeaserComponent implements OnInit {
   }
 
   private getItemsKey(): string {
-    return 'productItems-' + this.navigationItem?.toId;
+    return 'productItems-' + (this.showHighlights ? 'highlights' : (this.navigationItem?.toId || ''));
   }
 
   private initialiseItems(): void {
     if (this.transferState.hasKey(makeStateKey(this.getItemsKey()))) {
       this.categoryItems = this.transferState.get(makeStateKey(this.getItemsKey()), []);
+      return;
+    }
+
+    if (this.showHighlights) {
+      this.itemsService.getHighlightedItems(8).subscribe(itemsResponse => {
+        if (itemsResponse?.items?.length) {
+          this.categoryItems = itemsResponse.items;
+          if (isPlatformServer(this.platformId)) {
+            this.transferState.set<Array<Item | null>>(makeStateKey(this.getItemsKey()), this.categoryItems);
+          }
+          return;
+        }
+      });
+
       return;
     }
 
@@ -81,6 +98,26 @@ export class CategoryTeaserComponent implements OnInit {
   }
 
   get moreLink(): string {
+    if (this.showHighlights) {
+      return '/highlights';
+    }
+
     return '/' + [(this.navigationItem?.pathParts || []).filter(p => p).join('/')];
+  }
+
+  get sloganTranslationId(): string {
+    if (this.showHighlights) {
+      return 'NAVIGATION_SLOGAN_HIGHLIGHTS';
+    }
+
+    return 'NAVIGATION_SLOGAN_' + (this.navigationItem?.hasSlogan ? this.navigationItem?.toId || 'ALL' : 'ALL');
+  }
+
+  get navigationTranslationId(): string {
+    if (this.showHighlights) {
+      return 'NAVIGATION_HIGHLIGHTS';
+    }
+
+    return 'NAVIGATION_' + (this.navigationItem?.toId || '');
   }
 }

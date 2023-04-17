@@ -28,6 +28,8 @@ export class ItemsComponent implements OnInit {
     public availablePages: Array<number> = [1];
     public currentPage: number = 1;
 
+    private isCategoryHighlights = false;
+
     constructor(
       private router: Router,
       private route: ActivatedRoute,
@@ -43,11 +45,14 @@ export class ItemsComponent implements OnInit {
       route.paramMap.subscribe((params) => {
         this.navigationService.activeModule = Module.ITEMS;
 
+        const navigationIdLevelA = params.get('navigationIdLevelA') || '';
         this.navigationService.setActiveNavigationLevelIds([
-          params.get('navigationIdLevelA') || '',
+          navigationIdLevelA,
           params.get('navigationIdLevelB') || '',
           params.get('navigationIdLevelC') || ''
         ]);
+
+        this.isCategoryHighlights = 'highlights' === navigationIdLevelA;
       });
 
       const translations = translationService.getTranslations();
@@ -56,23 +61,39 @@ export class ItemsComponent implements OnInit {
           translations['NAVIGATION_' + this.navigationService.activeNavigationItem?.toId]));
     }
 
-    ngOnInit(): void {
+    private initItems(page: string): void {
+      if (this.isCategoryHighlights) {
+        this.itemsService.getHighlightedItems(undefined)
+          .pipe(takeUntil(this.destroyedService$))
+          .subscribe(
+            itemsResponse => {
+              this.availablePages = itemsResponse?.availablePages;
+              this.items = itemsResponse?.items;
+            });
 
-        const activeNavigationId =
-          this.navigationService.activeNavigationItem && this.navigationService.activeNavigationItem.fromId
-            ? this.navigationService.activeNavigationItem.toId
-            : '';
-        const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
+        return;
+      }
+
+      const activeNavigationId =
+        this.navigationService.activeNavigationItem && this.navigationService.activeNavigationItem.fromId
+          ? this.navigationService.activeNavigationItem.toId
+          : '';
+      const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
+
+      this.itemsService.getItems(activeNavigationId, searchPattern, undefined, false, page)
+        .pipe(takeUntil(this.destroyedService$))
+        .subscribe(
+          itemsResponse => {
+            this.availablePages = itemsResponse?.availablePages;
+            this.items = itemsResponse?.items;
+          });
+    }
+
+    ngOnInit(): void {
         const page = this.route.snapshot?.queryParamMap?.get('page') as string || '1';
         this.currentPage = parseInt(page);
 
-        this.itemsService.getItems(activeNavigationId, searchPattern, undefined, false, page)
-            .pipe(takeUntil(this.destroyedService$))
-            .subscribe(
-              itemsResponse => {
-                  this.availablePages = itemsResponse?.availablePages;
-                  this.items = itemsResponse?.items;
-                });
+        this.initItems(page);
 
         if (isPlatformServer(this.platformId)) {
           const link: HTMLLinkElement = this.doc.createElement('link');
@@ -81,20 +102,19 @@ export class ItemsComponent implements OnInit {
           const pageUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
           link.setAttribute('href', pageUri);
         }
-
     }
 
-  public linkToPage(page: number) {
-    let urlTree = this.router.parseUrl(this.router.url);
-    urlTree.queryParams['page'] = page;
-    return urlTree.toString();
-  }
+    public linkToPage(page: number) {
+      let urlTree = this.router.parseUrl(this.router.url);
+      urlTree.queryParams['page'] = page;
+      return urlTree.toString();
+    }
 
-  get isNextPageNotLastPage(): boolean {
-      if (!this.currentPage || !this.availablePages) {
-        return false;
-      }
+    get isNextPageNotLastPage(): boolean {
+        if (!this.currentPage || !this.availablePages) {
+          return false;
+        }
 
-      return this.currentPage < this.availablePages[this.availablePages.length - 1];
-  }
+        return this.currentPage < this.availablePages[this.availablePages.length - 1];
+    }
 }

@@ -7,6 +7,10 @@
 
   <div class="container">
     <category-teaser
+      [showHighlights]="true"
+    ></category-teaser>
+
+    <category-teaser
       *ngFor="let item of allRootRootItems"
       [navigationItem]="item"
     ></category-teaser>
