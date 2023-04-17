@@ -130,12 +130,15 @@ export class Navigation {
     new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['home', 'accessoires', '']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['home', 'accessoires', 'carpets']),
     new NavigationItem('HOME', 'HOME_FURNITURE', ['home', 'furniture', '']),
+    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_BEDS', ['home', 'furniture', 'beds']),
     new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_GAMINGCHAIRS', ['home', 'furniture', 'gaming-chairs']),
+    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_KIDSBEDS', ['home', 'furniture', 'kids-beds']),
     new NavigationItem('HOME', 'HOME_GARDEN', ['home', 'garden', '']),
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GARDENHOUSES', ['home', 'garden', 'garden-houses']),
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GRILLS', ['home', 'garden', 'grills']),
     new NavigationItem('HOME', 'HOME_TOOLS', ['home', 'tools', '']),
     new NavigationItem('HOME_TOOLS', 'HOME_TOOLS_DRILLINGMACHINES', ['home', 'tools', 'drilling-machines']),
+    new NavigationItem('HOME_TOOLS', 'HOME_TOOLS_ELECTRICSAWS', ['home', 'tools', 'electric-saws']),
 
     new NavigationItem('ALL', 'COSMETICS', ['cosmetics', '', ''], 8)
       .setHasSlogan(true)
@@ -151,6 +154,9 @@ export class Navigation {
     new NavigationItem('ALL', 'VEHICLES', ['vehicles', '', ''], 10)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('VEHICLES', 'VEHICLES_BICYCLES', ['vehicles', 'bicycles', '']),
+    new NavigationItem('VEHICLES_BICYCLES', 'VEHICLES_BICYCLES_CITYBIKES', ['vehicles', 'bicycles', 'city-bikes']),
+    new NavigationItem('VEHICLES_BICYCLES', 'VEHICLES_BICYCLES_ELECTRICBIKES', ['vehicles', 'bicycles', 'electric-bikes']),
     new NavigationItem('VEHICLES', 'VEHICLES_CARS', ['vehicles', 'cars', '']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_CHILDSEATS', ['vehicles', 'cars', 'child-seats']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_SUMMERTYRES', ['vehicles', 'cars', 'summer-tyres']),
