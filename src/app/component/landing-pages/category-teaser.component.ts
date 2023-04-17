@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ItemsApiService } from '../../service/items-api.service';
 import { Subject } from 'rxjs';
 import { NavigationItem } from '../../model/navigation-item';
-import { isPlatformServer } from '@angular/common';
+import {isPlatformServer} from '@angular/common';
 import { makeStateKey,  TransferState } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs/operators';
 
@@ -93,16 +93,23 @@ export class CategoryTeaserComponent implements OnInit {
     this.initialiseItems();
   }
 
+  private getParameterFromUrl(parameterKey: string): string | null {
+    return isPlatformServer(this.platformId) ? '' : new URL(window.location.href).searchParams.get(parameterKey);
+  }
+
   public getItemsOfCategory(): (Item | null)[] {
     return this.categoryItems;
   }
 
   get moreLink(): string {
+    let searchParameter = this.getParameterFromUrl('search');
+    searchParameter = searchParameter ? `?search=${searchParameter}` : '';
+
     if (this.showHighlights) {
-      return '/highlights';
+      return '/highlights' + searchParameter;
     }
 
-    return '/' + [(this.navigationItem?.pathParts || []).filter(p => p).join('/')];
+    return '/' + [(this.navigationItem?.pathParts || []).filter(p => p).join('/')] + searchParameter;
   }
 
   get sloganTranslationId(): string {
