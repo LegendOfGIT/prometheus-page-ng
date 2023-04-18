@@ -22,12 +22,12 @@ export class Navigation {
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_SHOES', ['fashion', 'men', 'shoes']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_SWEATERS_AND_KNITWEAR', ['fashion', 'men', 'sweaters-and-knitwear']),
 
-    new NavigationItem('ALL', 'LUXURIES', ['luxuries', '', ''], 2)
+    /*new NavigationItem('ALL', 'LUXURIES', ['luxuries', '', ''], 2)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('LUXURIES', 'LUXURIES_WRITINGSUPPLIES', ['luxuries', 'writing-supplies', '']),
     new NavigationItem('LUXURIES_WRITINGSUPPLIES', 'LUXURIES_WRITINGSUPPLIES_BIROS', ['luxuries', 'writing-supplies', 'biros']),
-    new NavigationItem('LUXURIES_WRITINGSUPPLIES', 'LUXURIES_WRITINGSUPPLIES_FOUNTAINPENS', ['luxuries', 'writing-supplies', 'fountain-pens']),
+    new NavigationItem('LUXURIES_WRITINGSUPPLIES', 'LUXURIES_WRITINGSUPPLIES_FOUNTAINPENS', ['luxuries', 'writing-supplies', 'fountain-pens']),*/
 
     new NavigationItem('ALL', 'KIDS', ['kids', '', ''], 5)
       .setHasSlogan(true)
