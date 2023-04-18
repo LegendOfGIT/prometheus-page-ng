@@ -22,7 +22,14 @@ export class Navigation {
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_SHOES', ['fashion', 'men', 'shoes']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_SWEATERS_AND_KNITWEAR', ['fashion', 'men', 'sweaters-and-knitwear']),
 
-    new NavigationItem('ALL', 'KIDS', ['kids', '', ''], 4)
+    new NavigationItem('ALL', 'LUXURIES', ['luxuries', '', ''], 2)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
+    new NavigationItem('LUXURIES', 'LUXURIES_WRITINGSUPPLIES', ['luxuries', 'writing-supplies', '']),
+    new NavigationItem('LUXURIES_WRITINGSUPPLIES', 'LUXURIES_WRITINGSUPPLIES_BIROS', ['luxuries', 'writing-supplies', 'biros']),
+    new NavigationItem('LUXURIES_WRITINGSUPPLIES', 'LUXURIES_WRITINGSUPPLIES_FOUNTAINPENS', ['luxuries', 'writing-supplies', 'fountain-pens']),
+
+    new NavigationItem('ALL', 'KIDS', ['kids', '', ''], 5)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('KIDS', 'KIDS_BOOKS', ['kids', 'books', '']),
@@ -39,7 +46,7 @@ export class Navigation {
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_SCOOTERS', ['kids', 'toys', 'scooters']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_TOYVEHICLES', ['kids', 'toys', 'toy-vehicles']),
 
-    new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', ''], 3)
+    new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', ''], 4)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_BOOKS', ['multimedia', 'books', '']).setHasSlogan(true),
@@ -53,7 +60,7 @@ export class Navigation {
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_XBOX_ONE', ['multimedia', 'games', 'xbox-one']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_XBOX_360', ['multimedia', 'games', 'xbox-360']),
 
-    new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['electronics-and-computers', '', ''], 2)
+    new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['electronics-and-computers', '', ''], 3)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem(
@@ -102,13 +109,13 @@ export class Navigation {
       ['electronics-and-computers', 'large-appliances', 'dishwashers']
     ),
 
-    new NavigationItem('ALL', 'LIGHTING', ['lighting', '', ''], 5)
+    new NavigationItem('ALL', 'LIGHTING', ['lighting', '', ''], 6)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('LIGHTING', 'LIGHTING_INNERLIGHTING', ['lighting', 'inner-lighting', '']),
     new NavigationItem('LIGHTING_INNERLIGHTING', 'LIGHTING_INNERLIGHTING_CEILING', ['lighting', 'inner-lighting', 'ceiling']),
 
-    new NavigationItem('ALL', 'MUSIC', ['music', '', ''], 6)
+    new NavigationItem('ALL', 'MUSIC', ['music', '', ''], 7)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('MUSIC', 'MUSIC_CD', ['music', 'cd', '']),
@@ -117,14 +124,14 @@ export class Navigation {
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_POP', ['music', 'cd', 'pop']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_ROCK', ['music', 'cd', 'rock']),
 
-    new NavigationItem('ALL', 'BEAUTY_CARE', ['beauty-and-care', '', ''], 7)
+    new NavigationItem('ALL', 'BEAUTY_CARE', ['beauty-and-care', '', ''], 8)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SKIN_CARE', ['beauty-and-care', 'skin-care', '']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_FACE_CARE', ['beauty-and-care', 'skin-care', 'face-care']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_KIDS', ['beauty-and-care', 'skin-care', 'kids']),
 
-    new NavigationItem('ALL', 'HOME', ['home', '', ''], 9)
+    new NavigationItem('ALL', 'HOME', ['home', '', ''], 10)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['home', 'accessoires', '']),
@@ -140,7 +147,7 @@ export class Navigation {
     new NavigationItem('HOME_TOOLS', 'HOME_TOOLS_DRILLINGMACHINES', ['home', 'tools', 'drilling-machines']),
     new NavigationItem('HOME_TOOLS', 'HOME_TOOLS_ELECTRICSAWS', ['home', 'tools', 'electric-saws']),
 
-    new NavigationItem('ALL', 'COSMETICS', ['cosmetics', '', ''], 8)
+    new NavigationItem('ALL', 'COSMETICS', ['cosmetics', '', ''], 9)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('COSMETICS', 'COSMETICS_HAIR', ['cosmetics', 'hair', '']),
@@ -151,7 +158,7 @@ export class Navigation {
     new NavigationItem('COSMETICS', 'COSMETICS_WOMEN', ['cosmetics', 'women', '']),
     new NavigationItem('COSMETICS_WOMEN', 'COSMETICS_WOMEN_FRAGRANCES', ['cosmetics', 'women', 'fragrances']),
 
-    new NavigationItem('ALL', 'VEHICLES', ['vehicles', '', ''], 10)
+    new NavigationItem('ALL', 'VEHICLES', ['vehicles', '', ''], 11)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('VEHICLES', 'VEHICLES_BICYCLES', ['vehicles', 'bicycles', '']),
@@ -163,7 +170,7 @@ export class Navigation {
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_WINTERTYRES', ['vehicles', 'cars', 'winter-tyres']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_ALLWEATHERTYRES', ['vehicles', 'cars', 'all-weather-tyres']),
 
-    new NavigationItem('ALL', 'SPORTS', ['sports', '', ''], 11)
+    new NavigationItem('ALL', 'SPORTS', ['sports', '', ''], 12)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('SPORTS', 'SPORTS_EXERCISE', ['sports', 'exercise', '']),

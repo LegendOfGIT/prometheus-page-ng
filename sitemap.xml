@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.wewanna.shop/highlights</loc></url>
+
   <url><loc>https://www.wewanna.shop/cosmetics/women/fragrances</loc></url>
   <url><loc>https://www.wewanna.shop/cosmetics/makeup/eyes</loc></url>
   <url><loc>https://www.wewanna.shop/cosmetics/makeup/lips</loc></url>
@@ -29,6 +31,8 @@
   <url><loc>https://www.wewanna.shop/kids/toys/babies</loc></url>
   <url><loc>https://www.wewanna.shop/kids/toys/electric-vehicles</loc></url>
   <url><loc>https://www.wewanna.shop/kids/toys/scooters</loc></url>
+  <url><loc>https://www.wewanna.shop/luxuries/writing-supplies/biros</loc></url>
+  <url><loc>https://www.wewanna.shop/luxuries/writing-supplies/fountain-pens</loc></url>
   <url><loc>https://www.wewanna.shop/multimedia/books/history</loc></url>
   <url><loc>https://www.wewanna.shop/multimedia/books/philosophy</loc></url>
   <url><loc>https://www.wewanna.shop/multimedia/games/nintendo-switch</loc></url>
