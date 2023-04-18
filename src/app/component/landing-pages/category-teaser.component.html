@@ -1,8 +1,8 @@
 <section class="informationItems__containerWrapper">
   <h2 *ngIf="showHeader" class="category__title">
-    <span class="header__titleCapitalLetter">W</span><span class="header__title">e</span>
-    <span class="header__titleCapitalLetter">W</span><span class="header__title">anna</span>
-    <span class="header__titleSlogan"> {{ sloganTranslationId | translate}}!</span>
+    <span class="header__titleCapitalLetter">W</span><span class="header__title">{{ 'TITLE_WE_WORD_SUFFIX' | translate }}</span>
+    <span class="header__titleCapitalLetter">{{ 'TITLE_WANNA_WORD_PREFIX' | translate }}</span><span class="header__title">{{ 'TITLE_WANNA_WORD_SUFFIX' | translate }}</span>
+    <span class="header__titleSlogan"> {{ sloganTranslationId | translate }}!</span>
   </h2>
 
   <h3 *ngIf="showHeader && navigationItem?.hasTeaser">

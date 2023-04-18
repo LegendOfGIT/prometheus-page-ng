@@ -58,7 +58,7 @@ export class ItemsComponent implements OnInit {
       const translations = translationService.getTranslations();
       titleService.setTitle(
         translations.SEO_CATEGORY_PAGE_TITLE.replace('{category}',
-          translations['NAVIGATION_' + this.navigationService.activeNavigationItem?.toId]));
+          translations['NAVIGATION_' + (this.isCategoryHighlights ? 'HIGHLIGHTS' : this.navigationService.activeNavigationItem?.toId)]));
     }
 
     private initItems(page: string): void {
