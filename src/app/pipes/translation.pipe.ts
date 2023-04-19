@@ -6,11 +6,11 @@ export class TranslationPipe {
   constructor(private translationService: TranslationService) {
   }
 
-  public transform(key: string): string {
-    if (!this.translationService.getTranslations()) {
+  public transform(key: string, locale: string = ''): string {
+    if (!this.translationService.getTranslations(locale)) {
       return key;
     }
 
-    return this.translationService.getTranslations()[key] || key;
+    return this.translationService.getTranslations(locale)[key] || key;
   }
 }

@@ -18,9 +18,11 @@ export class TranslationService  {
   constructor(private userService: UserService) {
   }
 
-  public getTranslations(): any {
+  public getTranslations(locale: string = ''): any {
+    const localeForDisplay = locale ? locale : this.userService.activeUser?.localeForDisplay;
+
     const i18Key = this.userService.activeUser
-      ? this.userService.activeUser?.localeForDisplay as keyof typeof this.localeMapping
+      ? localeForDisplay as keyof typeof this.localeMapping
       : 'de_DE';
 
     if (!this.localeMapping[i18Key]) {
