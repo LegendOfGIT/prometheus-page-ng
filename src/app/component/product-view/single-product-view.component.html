@@ -24,7 +24,7 @@
       <div class="productInformation">
         <section>
           <h2 class="singleProductView__sectionHeader">{{item?.title}}</h2>
-          <p class="mainStage__productDescription">
+          <p class="mainStage__productDescription{{showFullDescription ? ' mainStage__productDescription--full' : ''}}" (click)="toggleFullDescription()">
             {{item?.description}}
           </p>
         </section>

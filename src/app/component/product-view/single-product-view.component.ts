@@ -26,6 +26,8 @@ export class SingleProductViewComponent {
 
   public safeWhatsAppUri: SafeHtml | null = null;
 
+  public showFullDescription = false;
+
   constructor(
     private sanitizer: DomSanitizer,
     private route: ActivatedRoute,
@@ -144,6 +146,10 @@ export class SingleProductViewComponent {
 
   public getItemDetails(item: Item | null): Array<ItemDetails> {
     return Item.getItemDetails(item);
+  }
+
+  public toggleFullDescription(): void {
+    this.showFullDescription = !this.showFullDescription;
   }
 
   get itemWithLowestPrice(): CorrespondingItem | null {

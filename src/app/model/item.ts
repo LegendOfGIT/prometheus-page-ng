@@ -16,6 +16,7 @@ export class Item extends BaseModel {
     amountOfPages: number = 0;
     amountOfSongs: number = 0;
     author: string = '';
+    colors: string = '';
     diameterInInch: number = 0;
     fabric: string = '';
     fabricPattern: string = '';
@@ -30,6 +31,7 @@ export class Item extends BaseModel {
     material: string = '';
     minimumAge: number = 0;
     publisher: string = '';
+    sizes: string = '';
     subgenre: string = '';
     seoDescription: string = '';
     seoKeywords: string = '';
@@ -103,6 +105,8 @@ export class Item extends BaseModel {
         new ItemDetails('AMOUNT_OF_SONGS', item.amountOfSongs),
         new ItemDetails('LANGUAGES', item.languages),
         new ItemDetails('FIT', item.fit),
+        new ItemDetails('SIZES', item.sizes),
+        new ItemDetails('COLORS', item.colors),
         new ItemDetails('MATERIAL', item.material),
         new ItemDetails('FABRIC', item.fabric),
         new ItemDetails('FABRIC_PATTERN', item.fabricPattern),
