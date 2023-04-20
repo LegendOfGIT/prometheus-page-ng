@@ -64,6 +64,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_HOME_GARDEN: 'Garten',
       NAVIGATION_HOME_GARDEN_GARDENHOUSES: 'Gartenhäuser',
       NAVIGATION_HOME_GARDEN_GRILLS: 'Grillen',
+      NAVIGATION_HOME_GARDEN_LOUNGEFURNITURE: 'Loungemöbel',
       NAVIGATION_HOME_TOOLS: 'Werkzeuge',
       NAVIGATION_HOME_TOOLS_DRILLINGMACHINES: 'Bohrmaschinen & Akku-Schrauber',
       NAVIGATION_HOME_TOOLS_ELECTRICSAWS: 'Elektrische Sägen',
