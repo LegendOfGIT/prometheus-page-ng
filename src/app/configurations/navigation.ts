@@ -193,4 +193,14 @@ export class Navigation {
     const items = this.ITEMS.filter(item => toId === item.toId);
     return items && items.length ? items[0] : undefined;
   }
+
+  public static getAllSubNavigationItemsFrom(item: NavigationItem | undefined): Array<NavigationItem> {
+    if (!item) {
+      return [];
+    }
+
+    return this.ITEMS
+      .filter(navigationItem => item.pathParts[0] === navigationItem.pathParts[0])
+      .filter(navigationItem => navigationItem.pathParts.length > 2 && navigationItem.pathParts[2]);
+  }
 }

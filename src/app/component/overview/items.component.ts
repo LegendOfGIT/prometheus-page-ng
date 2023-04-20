@@ -10,6 +10,8 @@ import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {TrackingService} from 'src/app/service/tracking.service';
 import {TranslationService} from '../../service/translation.service';
 import {Title} from '@angular/platform-browser';
+import {NavigationItem} from '../../model/navigation-item';
+import {Navigation} from '../../configurations/navigation';
 
 @Component({
   selector: 'app-items',
@@ -116,5 +118,9 @@ export class ItemsComponent implements OnInit {
         }
 
         return this.currentPage < this.availablePages[this.availablePages.length - 1];
+    }
+
+    get subNavigationItems(): Array<NavigationItem> {
+      return Navigation.getAllSubNavigationItemsFrom(this.navigationService.activeNavigationItem);
     }
 }

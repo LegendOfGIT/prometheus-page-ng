@@ -1,3 +1,11 @@
+<div class="container informationItems__content">
+  <div class="col-12 informationItems__container">
+    <div *ngFor="let subNavigationItem of subNavigationItems">
+      <span>{{ 'NAVIGATION_' + (subNavigationItem.toId || '') | translate }}</span>
+    </div>
+  </div>
+</div>
+
 <div *ngIf="items">
 
   <div class="container informationItems__content">
