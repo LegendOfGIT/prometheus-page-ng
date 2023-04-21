@@ -180,7 +180,14 @@ export class Navigation {
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('SPORTS', 'SPORTS_EXERCISE', ['sports', 'exercise', '']),
-    new NavigationItem('SPORTS_EXERCISE', 'SPORTS_EXERCISE_EQUIPMENT', ['sports', 'exercise', 'equipment'])
+    new NavigationItem('SPORTS_EXERCISE', 'SPORTS_EXERCISE_EQUIPMENT', ['sports', 'exercise', 'equipment']),
+
+    new NavigationItem('ALL', 'GROCERIES', ['groceries', '', ''], 13)
+      .setHasSlogan(true)
+      .setHasTeaser(true),
+    new NavigationItem('GROCERIES', 'GROCERIES_FOOD', ['groceries', 'food', '']),
+    new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_SAUCES', ['groceries', 'food', 'sauces']),
+    new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_SPICES', ['groceries', 'food', 'spices'])
   ];
 
   public static getAllRootItems(): Array<NavigationItem> {
