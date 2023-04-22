@@ -6,7 +6,7 @@
   </div>
 
   <div class="container">
-    <category-teaser
+    <category-teaser *ngIf="!hasUserSearched"
       [showHighlights]="true"
     ></category-teaser>
 

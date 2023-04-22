@@ -1,6 +1,6 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DOCUMENT, isPlatformServer } from '@angular/common';
+import {DOCUMENT, isPlatformBrowser, isPlatformServer} from '@angular/common';
 
 import { Module, NavigationService } from '../../service/navigation.service';
 import { Navigation } from '../../configurations/navigation';
@@ -14,7 +14,9 @@ import { SearchProfilesApiService } from '../../service/search-profiles-api.serv
   templateUrl: './start-page.component.html',
   styleUrls: ['./start-page.component.scss']
 })
-export class StartPageComponent {
+export class StartPageComponent implements OnInit {
+  public hasUserSearched = false;
+
   constructor(
     private route: ActivatedRoute,
     private navigationService: NavigationService,
@@ -35,13 +37,25 @@ export class StartPageComponent {
   }
 
   ngOnInit(): void {
-    if (isPlatformServer(this.platformId)) {
-      const link: HTMLLinkElement = this.doc.createElement('link');
-      this.doc.head.appendChild(link);
-      link.setAttribute('rel', 'canonical');
-      const pageUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
-      link.setAttribute('href', pageUri);
+    this.hasUserSearched = '' !== (this.getParameterFromUrl('search') || '');
+
+    if (!isPlatformServer(this.platformId)) {
+      return;
     }
+
+    const link: HTMLLinkElement = this.doc.createElement('link');
+    this.doc.head.appendChild(link);
+    link.setAttribute('rel', 'canonical');
+    const pageUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
+    link.setAttribute('href', pageUri);
+  }
+
+  private isOnClientSide(): boolean {
+    return isPlatformBrowser(this.platformId);
+  }
+
+  private getParameterFromUrl(parameterKey: string): string | null {
+    return this.isOnClientSide() ? new URL(window.location.href).searchParams.get(parameterKey) : '';
   }
 
   get allRootRootItems(): Array<NavigationItem | undefined> {
