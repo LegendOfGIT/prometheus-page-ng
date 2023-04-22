@@ -88,13 +88,28 @@
   &__offer {
     background-color: $container-background-color;
     border-radius: 0.5em;
+    font-weight: bold;
     margin-bottom: 0.5em;
-    max-width: 18em;
     padding: 0.5em;
     color: $content-color;
+    width: 20em;
 
     &:hover {
-      color: $content-color--active;
+      color: $container-background-color;
+    }
+
+    &--price {
+      color: $content-price-color;
+      font-family: $font-family;
+      padding-left: 0.25em;
+
+      @media screen and (min-width: 576px) {
+        font-size: 1.5em;
+      }
+
+      &:hover {
+        color: $logo-slogan-color;
+      }
     }
   }
 

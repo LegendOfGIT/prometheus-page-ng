@@ -36,8 +36,8 @@
 
           <div class="productInformation__offers">
             <a href="{{itemWithLowestPrice?.link}}" target="_blank" class="button__wrapper">
-              <div class="button">
-                {{getShopNameFromUrl(itemWithLowestPrice?.link)}}<span *ngIf="renderPrice(itemWithLowestPrice)">: {{renderPrice(itemWithLowestPrice)}}</span>
+              <div class="button productInformation__offer">
+                {{getShopNameFromUrl(itemWithLowestPrice?.link)}}:<span *ngIf="renderPrice(itemWithLowestPrice)" class="productInformation__offer--price">{{renderPrice(itemWithLowestPrice)}}</span>
               </div>
             </a>
           </div>
@@ -48,13 +48,13 @@
             </div>
             <div class="productInformation__offers">
               <a *ngFor="let offer of moreExpensiveOfferItems" href="{{offer?.link}}" target="_blank" class="button__wrapper">
-                <div class="button">
-                  {{getShopNameFromUrl(offer?.link)}}<span *ngIf="renderPrice(offer)">: {{renderPrice(offer)}}</span>
+                <div class="button productInformation__offer">
+                  {{getShopNameFromUrl(offer?.link)}}: <span *ngIf="renderPrice(offer)" class="productInformation__offer--price">{{renderPrice(offer)}}</span>
                 </div>
               </a>
               <a *ngFor="let offer of offerItemsWithoutPrice" href="{{offer?.link}}" target="_blank" class="button__wrapper">
-                <div class="button">
-                      {{getShopNameFromUrl(offer?.link)}}<span *ngIf="renderPrice(offer)">: {{renderPrice(offer)}}</span>
+                <div class="button productInformation__offer">
+                      {{getShopNameFromUrl(offer?.link)}}: <span *ngIf="renderPrice(offer)" class="productInformation__offer--price">{{renderPrice(offer)}}</span>
                 </div>
               </a>
             </div>
