@@ -69,14 +69,8 @@ export class ItemsApiService extends ApiBase {
           searchProfileId: this.getActiveSearchProfileId()
         });
 
-      let headers = new HttpHeaders();
-      const userAgent = this.getUserAgent();
-      if (userAgent) {
-        headers = headers.set('user-agent', userAgent);
-      }
-
       return this.http
-         .get<ItemsResponseDto>(url, { headers })
+         .get<ItemsResponseDto>(url)
          .pipe(map(dto => {
            const response = new ItemsResponse();
            response.items = dto.items?.map(item => Item.fromModel(item));
@@ -84,6 +78,26 @@ export class ItemsApiService extends ApiBase {
 
            return response;
          }));
+    }
+
+    getRandomItemOfCategories(categoryIds: Array<string>): Observable<ItemsResponse> {
+      const url = this.getRequestBase() + this.get(
+        endpoints.itemsByCategories,
+        {
+          navigationIds: categoryIds.join(','),
+          numberOfResults: '1',
+          randomItems: 'true'
+        });
+
+      return this.http
+        .get<ItemsResponseDto>(url)
+        .pipe(map(dto => {
+          const response = new ItemsResponse();
+          response.items = dto.items?.map(item => Item.fromModel(item));
+          response.availablePages = dto.availablePages;
+
+          return response;
+        }));
     }
 
     getHighlightedItems(numberOfResults: number | undefined = undefined): Observable<ItemsResponse> {

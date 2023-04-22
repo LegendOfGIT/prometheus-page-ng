@@ -1,6 +1,13 @@
 @import "src/styles/controls";
 @import 'src/app/variables';
 
+.category {
+  &__image {
+    border-radius: 2em;
+    min-height: 14em;
+  }
+}
+
 .informationItems {
   &__container {
     background-color: #fff;

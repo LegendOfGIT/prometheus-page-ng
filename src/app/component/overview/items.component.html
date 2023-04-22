@@ -1,7 +1,7 @@
 <div class="container informationItems__content">
   <div class="col-12 informationItems__container">
     <div *ngFor="let subNavigationItem of subNavigationItems">
-      <span>{{ 'NAVIGATION_' + (subNavigationItem.toId || '') | translate }}</span>
+      <app-item [item]="itemOfCategory(subNavigationItem?.toId || '')" [showPrice]=false></app-item>
     </div>
   </div>
 </div>

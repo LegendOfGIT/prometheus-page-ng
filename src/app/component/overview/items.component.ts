@@ -21,6 +21,7 @@ import {Navigation} from '../../configurations/navigation';
 export class ItemsComponent implements OnInit {
 
     private destroyedService$ = new Subject();
+    private sampleItemsOfCategories: Array<Item | null> | undefined;
     public items: Array<Item | null> = [
       new Item(), new Item(), new Item(),
       new Item(), new Item(), new Item(),
@@ -89,6 +90,13 @@ export class ItemsComponent implements OnInit {
             this.availablePages = itemsResponse?.availablePages;
             this.items = itemsResponse?.items;
           });
+
+      this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map(navigationItem => navigationItem.toId))
+        .pipe(takeUntil(this.destroyedService$))
+        .subscribe(
+          itemsResponse => {
+            this.sampleItemsOfCategories = itemsResponse?.items;
+          });
     }
 
     ngOnInit(): void {
@@ -112,15 +120,25 @@ export class ItemsComponent implements OnInit {
       return urlTree.toString();
     }
 
-    get isNextPageNotLastPage(): boolean {
-        if (!this.currentPage || !this.availablePages) {
-          return false;
-        }
+  public navigationLink(item: NavigationItem): string {
+    return `/${item.pathParts.filter(pathPart => pathPart).join('/')}`;
+  }
 
-        return this.currentPage < this.availablePages[this.availablePages.length - 1];
+  public itemOfCategory(categoryId: string): Item | null {
+      const item = (this.sampleItemsOfCategories || []).find(item => -1 !== (item?.navigationPath || []).indexOf(categoryId));
+
+      return item ? item : null;
+  }
+
+  get isNextPageNotLastPage(): boolean {
+    if (!this.currentPage || !this.availablePages) {
+      return false;
     }
 
-    get subNavigationItems(): Array<NavigationItem> {
-      return Navigation.getAllSubNavigationItemsFrom(this.navigationService.activeNavigationItem);
-    }
+    return this.currentPage < this.availablePages[this.availablePages.length - 1];
+  }
+
+  get subNavigationItems(): Array<NavigationItem> {
+    return Navigation.getAllSubNavigationItemsFrom(this.navigationService.activeNavigationItem);
+  }
 }

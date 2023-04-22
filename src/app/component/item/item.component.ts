@@ -20,6 +20,9 @@ export class ItemComponent {
     @Input()
     public additionalCssClasses: string = '';
 
+    @Input()
+    public showPrice = true;
+
 
     public pickedInformation(item: Item): void {
       this.trackingService.addActivity(

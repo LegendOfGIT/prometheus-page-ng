@@ -1,6 +1,7 @@
 
 export const endpoints = {
     items: '/information-items?navigationId={navigationId}&searchProfileId={searchProfileId}&id=&searchPattern={searchPattern}&numberOfResults={numberOfResults}&randomItems={randomItems}&page={page}&isBot={isBot}',
+    itemsByCategories: '/information-items/by-categories?navigationIds={navigationIds}&numberOfResults={numberOfResults}&randomItems={randomItems}',
     highlightedItems: '/information-items?numberOfResults={numberOfResults}&isBot={isBot}&highlightedItems=true',
     singleItem: '/information-items?id={id}&searchProfileId={searchProfileId}&isBot={isBot}',
     scoreItem: '/information-item/scoring',
