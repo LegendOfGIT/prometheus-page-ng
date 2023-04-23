@@ -1,9 +1,12 @@
-import {Component, inject, Inject, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 
 import {Item} from 'src/app/model/item';
 import {TrackingService} from 'src/app/service/tracking.service';
 import {TrackingActivityItem} from 'src/app/model/tracking-activity-item';
 import {TrackingInterestLevel} from 'src/app/model/tracking-interest-level';
+import {NavigationService} from '../../service/navigation.service';
+import {NavigationItem} from '../../model/navigation-item';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-item',
@@ -12,7 +15,9 @@ import {TrackingInterestLevel} from 'src/app/model/tracking-interest-level';
 })
 export class ItemComponent {
 
+    private route = inject(ActivatedRoute);
     private trackingService = inject(TrackingService);
+    private navigationService = inject(NavigationService);
 
     @Input()
     public item: Item | null = null;
@@ -21,8 +26,7 @@ export class ItemComponent {
     public additionalCssClasses: string = '';
 
     @Input()
-    public showPrice = true;
-
+    public displayMode = ItemDisplayMode.DEFAULT;
 
     public pickedInformation(item: Item): void {
       this.trackingService.addActivity(
@@ -32,24 +36,69 @@ export class ItemComponent {
           .setTrackingId('item.clicked'));
     }
 
-  private getHyphenatedString(value: string) {
-    return (value || '').substring(0, 100)
-      .replace(",", "")
-      .replace(/[^\w\s]/gi, '')
-      .replace(/[()]/g, '')
-      .replace(/\s+/g, '-')
-      .toLowerCase();
-  }
-
-  public getSeoFriendlySingleProductViewUrl(item: Item | null): string {
-    if (!item) {
-      return '';
+    private getHyphenatedString(value: string) {
+      return (value || '').substring(0, 100)
+        .replace(",", "")
+        .replace(/[^\w\s]/gi, '')
+        .replace(/[()]/g, '')
+        .replace(/\s+/g, '-')
+        .toLowerCase();
     }
 
-    return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
-  }
+    public getSeoFriendlySingleProductViewUrl(item: Item | null): string {
+      if (!item) {
+        return '';
+      }
 
-  public renderLowestPrice(item: Item): string {
-      return Item.renderLowestPrice(item);
-  }
+      return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
+    }
+
+    public renderLowestPrice(item: Item): string {
+        return Item.renderLowestPrice(item);
+    }
+
+    private getNextNavigationItem(): NavigationItem | undefined {
+        return this.navigationService.nextNavigationItems
+          .find(nextNavigationItem =>
+            -1 !== (this.item?.navigationPath || []).indexOf(nextNavigationItem.toId || ''));
+    }
+
+    private isCategoryItem(): boolean {
+      return ItemDisplayMode.CATEGORY === this.displayMode;
+    }
+
+    get itemUrl(): string {
+        if (this.isCategoryItem()) {
+          const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
+          const navigationItem = this.getNextNavigationItem();
+          return (navigationItem?.pathParts || []).filter(pathPart => pathPart).join('/') + (searchPattern ? `?search=${searchPattern}` : '');
+        }
+
+        return this.getSeoFriendlySingleProductViewUrl(this.item);
+    }
+
+    get showPrice(): boolean {
+        return ItemDisplayMode.DEFAULT === this.displayMode;
+    }
+
+    get showWishlistIcon(): boolean {
+      return ItemDisplayMode.DEFAULT === this.displayMode;
+    }
+
+    get itemTitle(): string {
+      if (this.isCategoryItem()) {
+        return `NAVIGATION_${this.getNextNavigationItem()?.toId || ''}`;
+      }
+
+      return this.item?.title || '';
+    }
+
+    get cssModifier(): string {
+      return this.isCategoryItem() ? '--category' : '';
+    }
+}
+
+export enum ItemDisplayMode {
+  DEFAULT,
+  CATEGORY
 }

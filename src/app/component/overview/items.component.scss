@@ -15,6 +15,10 @@
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 1em;
+
+    &--categories {
+      padding-top: unset;
+    }
   }
 
   &__containerWrapper {
@@ -29,7 +33,11 @@
     color: $content-color;
     display: flex;
     font-family: $font-family;
-    padding-top: 4.5em;
+    padding-top: 1em;
+
+    &--categories {
+      padding-top: 4.5em;
+    }
   }
 }
 

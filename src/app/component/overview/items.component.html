@@ -1,7 +1,7 @@
-<div class="container informationItems__content">
-  <div class="col-12 informationItems__container">
+<div class="container informationItems__content informationItems__content--categories">
+  <div *ngIf="subNavigationItems.length > 1" class="col-12 informationItems__container informationItems__container--categories">
     <div *ngFor="let subNavigationItem of subNavigationItems">
-      <app-item [item]="itemOfCategory(subNavigationItem?.toId || '')" [showPrice]=false></app-item>
+      <app-item [item]="itemOfCategory(subNavigationItem?.toId || '')" [displayMode]="ITEM_MODE_CATEGORY"></app-item>
     </div>
   </div>
 </div>

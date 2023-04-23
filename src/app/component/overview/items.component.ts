@@ -1,4 +1,4 @@
-import {Component, Inject, PLATFORM_ID, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -12,6 +12,7 @@ import {TranslationService} from '../../service/translation.service';
 import {Title} from '@angular/platform-browser';
 import {NavigationItem} from '../../model/navigation-item';
 import {Navigation} from '../../configurations/navigation';
+import {ItemDisplayMode} from '../item/item.component';
 
 @Component({
   selector: 'app-items',
@@ -30,6 +31,7 @@ export class ItemsComponent implements OnInit {
     ];
     public availablePages: Array<number> = [1];
     public currentPage: number = 1;
+    public ITEM_MODE_CATEGORY: ItemDisplayMode = ItemDisplayMode.CATEGORY;
 
     private isCategoryHighlights = false;
 
@@ -120,25 +122,22 @@ export class ItemsComponent implements OnInit {
       return urlTree.toString();
     }
 
-  public navigationLink(item: NavigationItem): string {
-    return `/${item.pathParts.filter(pathPart => pathPart).join('/')}`;
-  }
+    public itemOfCategory(categoryId: string): Item | null {
+        const item = (this.sampleItemsOfCategories || [])
+          .find(item => -1 !== (item?.navigationPath || []).indexOf(categoryId));
 
-  public itemOfCategory(categoryId: string): Item | null {
-      const item = (this.sampleItemsOfCategories || []).find(item => -1 !== (item?.navigationPath || []).indexOf(categoryId));
-
-      return item ? item : null;
-  }
-
-  get isNextPageNotLastPage(): boolean {
-    if (!this.currentPage || !this.availablePages) {
-      return false;
+        return item ? item : null;
     }
 
-    return this.currentPage < this.availablePages[this.availablePages.length - 1];
-  }
+    get isNextPageNotLastPage(): boolean {
+      if (!this.currentPage || !this.availablePages) {
+        return false;
+      }
 
-  get subNavigationItems(): Array<NavigationItem> {
-    return Navigation.getAllSubNavigationItemsFrom(this.navigationService.activeNavigationItem);
-  }
+      return this.currentPage < this.availablePages[this.availablePages.length - 1];
+    }
+
+    get subNavigationItems(): Array<NavigationItem> {
+      return Navigation.getNextLevelNavigationItemsFrom(this.navigationService.activeNavigationItem);
+    }
 }

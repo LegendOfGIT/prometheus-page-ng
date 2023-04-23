@@ -1,4 +1,5 @@
 import { NavigationItem } from 'src/app/model/navigation-item';
+import {Item} from '../model/item';
 
 export class Navigation {
 
@@ -201,13 +202,22 @@ export class Navigation {
     return items && items.length ? items[0] : undefined;
   }
 
-  public static getAllSubNavigationItemsFrom(item: NavigationItem | undefined): Array<NavigationItem> {
+  public static getNavigationItemOfItem(item: Item | null): NavigationItem | undefined {
+    if (!item || !item.navigationPath) {
+      return;
+    }
+
+    const itemNavigationPath = item.navigationPath.filter(navigationPath => navigationPath);
+    return this.getNavigationItemByToId(
+      itemNavigationPath[itemNavigationPath.length - 1]);
+  }
+
+  public static getNextLevelNavigationItemsFrom(item: NavigationItem | undefined): Array<NavigationItem> {
     if (!item) {
       return [];
     }
 
     return this.ITEMS
-      .filter(navigationItem => item.pathParts[0] === navigationItem.pathParts[0])
-      .filter(navigationItem => navigationItem.pathParts.length > 2 && navigationItem.pathParts[2]);
+      .filter(navigationItem => item.toId === navigationItem.fromId);
   }
 }
