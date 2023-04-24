@@ -71,7 +71,9 @@ export class ItemComponent {
         if (this.isCategoryItem()) {
           const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
           const navigationItem = this.getNextNavigationItem();
-          return (navigationItem?.pathParts || []).filter(pathPart => pathPart).join('/') + (searchPattern ? `?search=${searchPattern}` : '');
+          return '/' +
+            (navigationItem?.pathParts || []).filter(pathPart => pathPart).join('/') +
+            (searchPattern ? `?search=${searchPattern}` : '');
         }
 
         return this.getSeoFriendlySingleProductViewUrl(this.item);
