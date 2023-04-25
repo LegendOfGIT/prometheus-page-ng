@@ -17,6 +17,7 @@ export class Item extends BaseModel {
     amountOfSongs: number = 0;
     author: string = '';
     colors: string = '';
+    coverType: string = '';
     diameterInInch: number = 0;
     fabric: string = '';
     fabricPattern: string = '';
@@ -103,6 +104,7 @@ export class Item extends BaseModel {
         new ItemDetails('AMOUNT_OF_MEDIA', item.amountOfMedia),
         new ItemDetails('AMOUNT_OF_PAGES', item.amountOfPages),
         new ItemDetails('AMOUNT_OF_SONGS', item.amountOfSongs),
+        new ItemDetails('COVER_TYPE', item.coverType),
         new ItemDetails('LANGUAGES', item.languages),
         new ItemDetails('FIT', item.fit),
         new ItemDetails('SIZES', item.sizes),
