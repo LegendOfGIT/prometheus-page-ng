@@ -95,7 +95,12 @@
   <section *ngIf="activeNavigationItem" class="row">
     <div class="col-12">
       <h2 class="singleProductView__sectionHeader">{{'FURTHER_PRODUCTS_OF_CATEGORY' | translate}}</h2>
-      <category-teaser [navigationItem]="activeNavigationItem" [showHeader]="false" [randomItems]="true"></category-teaser>
+      <category-teaser
+        [navigationItem]="activeNavigationItem"
+        [showHeader]="false"
+        [randomItems]="true"
+        [numberOfItems]="8"
+      ></category-teaser>
     </div>
   </section>
 </div>

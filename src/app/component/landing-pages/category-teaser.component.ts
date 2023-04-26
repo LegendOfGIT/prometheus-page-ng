@@ -26,6 +26,9 @@ export class CategoryTeaserComponent implements OnInit {
   @Input()
   public showHighlights = false;
 
+  @Input()
+  public numberOfItems = 4;
+
   private destroyedService$ = new Subject();
 
   private categoryItems: Array<Item | null> = [
@@ -53,7 +56,7 @@ export class CategoryTeaserComponent implements OnInit {
     }
 
     if (this.showHighlights) {
-      this.itemsService.getHighlightedItems(8).subscribe(itemsResponse => {
+      this.itemsService.getHighlightedItems(6).subscribe(itemsResponse => {
         if (itemsResponse?.items?.length) {
           this.categoryItems = itemsResponse.items;
           if (isPlatformServer(this.platformId)) {
@@ -67,7 +70,7 @@ export class CategoryTeaserComponent implements OnInit {
     }
 
     const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
-    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, 8, this.randomItems).subscribe(itemsResponse => {
+    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, this.numberOfItems, this.randomItems).subscribe(itemsResponse => {
       if (itemsResponse?.items?.length) {
         this.categoryItems = itemsResponse.items;
         if (isPlatformServer(this.platformId)) {
@@ -76,7 +79,7 @@ export class CategoryTeaserComponent implements OnInit {
         return;
       }
 
-      this.itemsService.getItems(this.navigationItem?.toId || '', '', 8)
+      this.itemsService.getItems(this.navigationItem?.toId || '', '', this.numberOfItems)
         .pipe(takeUntil(this.destroyedService$))
         .subscribe(
           itemsResponse => {

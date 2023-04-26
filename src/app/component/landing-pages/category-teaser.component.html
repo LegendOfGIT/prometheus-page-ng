@@ -12,7 +12,7 @@
     <app-item
       *ngFor="let item of getItemsOfCategory(); let i = index;"
       [item]="item"
-      [additionalCssClasses]="-1 !== [0, 1].indexOf(i) ? 'informationItem--displayUpToL informationItem--displayFromXXL' : ''"
+      [additionalCssClasses]="-1 !== [0].indexOf(i) ? 'informationItem--displayUpToL informationItem--displayFromXXL' : ''"
     ></app-item>
   </div>
   <div class="category__actions">
