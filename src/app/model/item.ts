@@ -29,10 +29,14 @@ export class Item extends BaseModel {
     languages: string = '';
     loadIndex: number = 0;
     lengthInCm: number = 0;
+    make: string = '';
     material: string = '';
     minimumAge: number = 0;
     publisher: string = '';
+    ramSize: string = '';
+    resolution: string = '';
     sizes: string = '';
+    storageSize: string = '';
     subgenre: string = '';
     seoDescription: string = '';
     seoKeywords: string = '';
@@ -101,6 +105,7 @@ export class Item extends BaseModel {
         new ItemDetails('INTERPRET', item.interpret),
         new ItemDetails('ISBN', item.isbn),
         new ItemDetails('PUBLISHER', item.publisher),
+        new ItemDetails('MAKE', item.make),
         new ItemDetails('AMOUNT_OF_MEDIA', item.amountOfMedia),
         new ItemDetails('AMOUNT_OF_PAGES', item.amountOfPages),
         new ItemDetails('AMOUNT_OF_SONGS', item.amountOfSongs),
@@ -117,6 +122,9 @@ export class Item extends BaseModel {
         new ItemDetails('HEIGHT_IN_CM', item.heightInCm),
         new ItemDetails('WEIGHT_IN_G', item.weightInG),
         new ItemDetails('TYRE_TYPE', item.tyreType),
+        new ItemDetails('RAM_SIZE', item.ramSize),
+        new ItemDetails('STORAGE_SIZE', item.storageSize),
+        new ItemDetails('RESOLUTION', item.resolution),
         new ItemDetails('DIAMETER_IN_INCH', item.diameterInInch),
         new ItemDetails('LOADINDEX', item.loadIndex),
         new ItemDetails('SPEEDKEY', item.speedKey)

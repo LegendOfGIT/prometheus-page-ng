@@ -112,6 +112,26 @@ export class Navigation {
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_DISHWASHERS',
       ['electronics-and-computers', 'large-appliances', 'dishwashers']
     ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS',
+      'ELECTRONICS_AND_COMPUTERS_PHONES',
+      ['electronics-and-computers', 'phones', '']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_PHONES',
+      'ELECTRONICS_AND_COMPUTERS_PHONES_SMARTPHONESCELLPHONES',
+      ['electronics-and-computers', 'phones', 'smartphones-and-cellphones']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS',
+      'ELECTRONICS_AND_COMPUTERS_WEARABLES',
+      ['electronics-and-computers', 'wearables', '']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_WEARABLES',
+      'ELECTRONICS_AND_COMPUTERS_WEARABLES_SMARTWATCHES',
+      ['electronics-and-computers', 'wearables', 'smartwatches']
+    ),
 
     new NavigationItem('ALL', 'LIGHTING', ['lighting', '', ''], 6)
       .setHasSlogan(true)
