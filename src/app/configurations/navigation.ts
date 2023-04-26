@@ -9,6 +9,10 @@ export class Navigation {
     new NavigationItem('ALL', 'FASHION', ['fashion', '', ''], 1)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('FASHION', 'FASHION_BOYS', ['fashion', 'boys', '']),
+    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SHOES', ['fashion', 'boys', 'shoes']),
+    new NavigationItem('FASHION', 'FASHION_GIRLS', ['fashion', 'girls', '']),
+    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SHOES', ['fashion', 'girls', 'shoes']),
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['fashion', 'women', '']).setHasSlogan(true),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_BAGS', ['fashion', 'women', 'bags']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JACKETS', ['fashion', 'women', 'jackets']),
