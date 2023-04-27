@@ -62,8 +62,10 @@ export class SingleProductViewComponent {
     this.safePinterestUri = this.getSanitizedUri([
       'https://pinterest.com/pin/create/button/?url=',
       encodeURIComponent(window.location.href),
-      "&media=",
-      encodeURIComponent(this.item?.titleImage || '')
+      '&media=',
+      encodeURIComponent(this.item?.titleImage || ''),
+      '&description=',
+      encodeURIComponent(this.item?.title || '')
     ]);
   }
 
