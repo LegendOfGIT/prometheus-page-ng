@@ -122,9 +122,7 @@
   }
 
   &__share {
-    @media screen and (min-width: 768px) {
-      display: none;
-    }
+    margin-top: 1.5em;
   }
 }
 
@@ -141,6 +139,23 @@
   &__sectionHeader {
     color: $content-color;
     font-size: 1.5em;
+  }
+
+  &__shareButton {
+    margin-bottom: 0.25em;
+    width: 20em;
+
+    &--onlyForMobile {
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+    }
+  }
+
+  &__shareIcon {
+    height: 2em;
+    margin-right: 0.25em;
+    width: 2em;
   }
 }
 

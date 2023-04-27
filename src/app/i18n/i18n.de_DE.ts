@@ -257,6 +257,7 @@ export class I18nDeDe implements I18nInterface {
       SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE: '{product-name} | Gefunden auf WeWanna.shop',
       SHARE: 'Teilen',
       SHARE_FOUND_AT_WE_WANNA: 'Gefunden auf WeWanna',
+      SHARE_ON_PINTEREST: 'Auf Pinterest teilen',
       SHARE_ON_WHATSAPP: 'Auf WhatsApp teilen',
       SHOW_MORE_PREFIX: 'Zeige mehr aus',
       SHOW_MORE_SUFFIX: 'an',

@@ -257,6 +257,7 @@ export class I18nEnUs implements I18nInterface {
       SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE: '{product-name} | Found on WeWanna.shop',
       SHARE: 'Share',
       SHARE_FOUND_AT_WE_WANNA: 'found on WeWanna',
+      SHARE_ON_PINTEREST: 'share on Pinterest',
       SHARE_ON_WHATSAPP: 'share on WhatsApp',
       SHOW_MORE_PREFIX: 'Show more of',
       SHOW_MORE_SUFFIX: '...',

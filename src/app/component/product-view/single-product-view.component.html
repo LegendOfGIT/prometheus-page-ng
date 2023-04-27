@@ -64,11 +64,19 @@
     </div>
   </div>
   <div class="row productInformation__share">
-    <div class="col-12">
+    <div class="col-12 productDetails">
       <div class="productInformation">
         <h2 class="singleProductView__sectionHeader">{{'SHARE' | translate}}</h2>
+        <a [href]="safePinterestUri" target="pinterest" class="button__wrapper">
+          <div class="button singleProductView__shareButton">
+            <img src="assets/images/pinterest.png" class="singleProductView__shareIcon"/>
+            {{'SHARE_ON_PINTEREST' | translate}}
+          </div>
+        </a>
+
         <a [href]="safeWhatsAppUri" class="button__wrapper">
-          <div class="button">
+          <div class="button singleProductView__shareButton singleProductView__shareButton--onlyForMobile">
+            <img src="assets/images/whatsapp.png" class="singleProductView__shareIcon"/>
             {{'SHARE_ON_WHATSAPP' | translate}}
           </div>
         </a>

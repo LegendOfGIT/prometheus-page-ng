@@ -25,6 +25,7 @@ export class SingleProductViewComponent {
   public item: Item | null = null;
 
   public safeWhatsAppUri: SafeHtml | null = null;
+  public safePinterestUri: SafeHtml | null = null;
 
   public showFullDescription = false;
 
@@ -56,6 +57,13 @@ export class SingleProductViewComponent {
       encodeURIComponent(this.translation.getTranslations().SHARE_FOUND_AT_WE_WANNA),
       encodeURIComponent(' - '),
       encodeURIComponent(window.location.href)
+    ]);
+
+    this.safePinterestUri = this.getSanitizedUri([
+      'https://pinterest.com/pin/create/button/?url=',
+      encodeURIComponent(window.location.href),
+      "&media=",
+      encodeURIComponent(this.item?.titleImage || '')
     ]);
   }
 
