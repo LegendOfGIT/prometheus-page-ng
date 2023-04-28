@@ -63,6 +63,8 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_FASHION_WOMEN_SWEATERS_AND_KNITWEAR: 'women sweaters & knitwear',
       NAVIGATION_GROCERIES: 'groceries',
       NAVIGATION_GROCERIES_FOOD: 'food',
+      NAVIGATION_GROCERIES_FOOD_DRYFRUITS: 'dry fruits',
+      NAVIGATION_GROCERIES_FOOD_NUTS: 'nuts',
       NAVIGATION_GROCERIES_FOOD_SAUCES: 'pesto and sauces',
       NAVIGATION_GROCERIES_FOOD_SPICES: 'spices',
       NAVIGATION_HIGHLIGHTS: 'highlights',
