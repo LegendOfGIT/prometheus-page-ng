@@ -1,7 +1,7 @@
 import {Component, Inject, PLATFORM_ID, Renderer2} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, makeStateKey, Meta, SafeHtml, Title, TransferState } from '@angular/platform-browser';
-import { DOCUMENT, isPlatformServer } from '@angular/common';
+import {DOCUMENT, formatDate, isPlatformServer } from '@angular/common';
 
 
 import { Module, NavigationService } from '../../service/navigation.service';
@@ -160,6 +160,14 @@ export class SingleProductViewComponent {
 
   public toggleFullDescription(): void {
     this.showFullDescription = !this.showFullDescription;
+  }
+
+  public updatedOnOfItem(item: CorrespondingItem | null): string {
+    if (!item?.updatedOn) {
+      return '';
+    }
+
+    return item.updatedOn;
   }
 
   get itemWithLowestPrice(): CorrespondingItem | null {

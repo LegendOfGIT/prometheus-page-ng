@@ -5,14 +5,17 @@ export class CorrespondingItem extends BaseModel {
     public link: string = '';
     public priceCurrent: number = 0;
     public priceInitial: number = 0;
+    public updatedOn: string = '';
 
     static override fromModel(data: CorrespondingItemDto): CorrespondingItem {
 
       const item = this.bindFrom<CorrespondingItemDto, CorrespondingItem>(CorrespondingItem, data) || new CorrespondingItem();
-      if (item) {
-        item.priceCurrent = (data as any)['price-current'];
-        item.priceInitial = (data as any)['price-initial'];
+      if (!item) {
+        return new CorrespondingItem();
       }
+
+      item.priceCurrent = (data as any)['price-current'];
+      item.priceInitial = (data as any)['price-initial'];
 
       return item;
     }

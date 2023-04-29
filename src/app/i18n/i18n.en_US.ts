@@ -268,6 +268,7 @@ export class I18nEnUs implements I18nInterface {
       TITLE_WE_WORD_SUFFIX: 'e',
       TOP_OFFER: 'Best offer',
       profileLogout: 'logout',
+      UPDATED_ON: 'updated on',
       WHY_WEWANNA: 'Why WeWanna?',
       WHY_WEWANNA_WHAT_WE_KNOW: '<h4>What do we know about you?</h4>' +
         '<p>' +

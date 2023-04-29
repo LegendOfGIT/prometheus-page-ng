@@ -37,7 +37,13 @@
           <div class="productInformation__offers">
             <a href="{{itemWithLowestPrice?.link}}" target="_blank" class="button__wrapper">
               <div class="button productInformation__offer">
-                {{getShopNameFromUrl(itemWithLowestPrice?.link)}}:<span *ngIf="renderPrice(itemWithLowestPrice)" class="productInformation__offer--price">{{renderPrice(itemWithLowestPrice)}}</span>
+                <div>
+                  {{getShopNameFromUrl(itemWithLowestPrice?.link)}}:<span *ngIf="renderPrice(itemWithLowestPrice)" class="productInformation__offer--price">{{renderPrice(itemWithLowestPrice)}}</span>
+                </div>
+                <div *ngIf="itemWithLowestPrice?.updatedOn" class="productInformation__offer--updatedOn">
+                  aktualisiert am:
+                  {{itemWithLowestPrice?.updatedOn | date:'dd.MM.yyyy' }}
+                </div>
               </div>
             </a>
           </div>
@@ -49,7 +55,13 @@
             <div class="productInformation__offers">
               <a *ngFor="let offer of moreExpensiveOfferItems" href="{{offer?.link}}" target="_blank" class="button__wrapper">
                 <div class="button productInformation__offer">
+                  <div>
                   {{getShopNameFromUrl(offer?.link)}}: <span *ngIf="renderPrice(offer)" class="productInformation__offer--price">{{renderPrice(offer)}}</span>
+                  </div>
+                  <div *ngIf="offer?.updatedOn" class="productInformation__offer--updatedOn">
+                    {{ 'UPDATED_ON' | translate }}:
+                    {{offer?.updatedOn | date:'dd.MM.yyyy' }}
+                  </div>
                 </div>
               </a>
               <a *ngFor="let offer of offerItemsWithoutPrice" href="{{offer?.link}}" target="_blank" class="button__wrapper">

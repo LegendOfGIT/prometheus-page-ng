@@ -267,6 +267,7 @@ export class I18nDeDe implements I18nInterface {
       TITLE_WANNA_WORD_SUFFIX: 'ollen',
       TITLE_WE_WORD_SUFFIX: 'ir ',
       TOP_OFFER: 'Top-Angebot',
+      UPDATED_ON: 'aktualisiert am',
       profileLogout: 'ausloggen',
       WHY_WEWANNA: 'Was hast du von WeWanna?',
       WHY_WEWANNA_WHAT_WE_KNOW: '<h4>Was wissen wir über dich?</h4>' +
