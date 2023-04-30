@@ -32,7 +32,7 @@ export class ItemComponent {
       this.trackingService.addActivity(
         TrackingActivityItem.create()
           .setInformationItemId(item.itemId)
-          .setInterestLevel(TrackingInterestLevel.VERY_HIGH)
+          .setInterestLevel(TrackingInterestLevel.HIGH)
           .setTrackingId('item.clicked'));
     }
 

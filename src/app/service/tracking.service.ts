@@ -1,4 +1,4 @@
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {inject, Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { ApiBase } from './api-base';
@@ -6,8 +6,9 @@ import { TrackingActivityItem } from '../model/tracking-activity-item';
 import { TrackingInterestLevel } from '../model/tracking-interest-level';
 import { UserService } from './user.service';
 import { endpoints } from 'src/environments/endpoints';
-import {ApplicationConfiguration} from '../configurations/app';
-import {isPlatformServer} from '@angular/common';
+import { ApplicationConfiguration } from '../configurations/app';
+import { isPlatformServer } from '@angular/common';
+import {StorageService} from './storage.service';
 
 @Injectable({
     providedIn: 'root'
@@ -22,12 +23,15 @@ export class TrackingService extends ApiBase {
       { level: TrackingInterestLevel.AVERAGE, scoring: 0 },
       { level: TrackingInterestLevel.SLIGHTLY_HIGH, scoring: 0.10 },
       { level: TrackingInterestLevel.HIGH, scoring: 0.20 },
-      { level: TrackingInterestLevel.VERY_HIGH, scoring: 0.40 }
+      { level: TrackingInterestLevel.VERY_HIGH, scoring: 0.40 },
+      { level: TrackingInterestLevel.EVEN_HIGHER, scoring: 0.60 }
     ];
 
-    constructor(private http: HttpClient,
-                private userService: UserService,
-                @Inject(PLATFORM_ID) platformId: Object) {
+    private http = inject(HttpClient);
+    private storageService = inject(StorageService);
+    private userService = inject(UserService);
+
+    constructor(@Inject(PLATFORM_ID) platformId: Object) {
         super(ApplicationConfiguration.API_BASE);
 
         if (isPlatformServer(platformId)) {
@@ -35,30 +39,35 @@ export class TrackingService extends ApiBase {
         }
 
         setInterval(() => {
-          while(this.trackedActivities.length) {
+          this.trackedActivities = this.storageService.getFromStorageById('activities') || [];
+
+          while (this.trackedActivities.length) {
             const trackedActivity = this.trackedActivities.pop();
+            this.storageService.storeWithId('activities', this.trackedActivities);
+
             if (!trackedActivity) {
               return;
             }
 
-            const scorings = this.interestLevelToScoringMapping.filter(mappingItem => trackedActivity.getInterestLevel() == mappingItem.level);
-            if (!(scorings || []).length) {
+            const scoring = this.interestLevelToScoringMapping.find(mappingItem => trackedActivity.interestLevel == mappingItem.level);
+            if (!scoring) {
               return;
             }
 
-            /*this.http.put(
+            this.http.put(
               this.get(endpoints.scoreItem),
               {
-                itemId: trackedActivity.getInformationItemId(),
-                searchProfileId: userService.activeUser?.activeSearchProfile,
-                scoring: scorings[0].scoring
+                itemId: trackedActivity.informationItemId,
+                searchProfileId: this.userService.activeUser?.activeSearchProfile,
+                scoring: scoring.scoring
               }
-            ).subscribe();*/
+            ).subscribe();
           }
         }, 3000);
     }
 
     public addActivity(activity: TrackingActivityItem): void {
       this.trackedActivities.push(activity);
+      this.storageService.storeWithId('activities', this.trackedActivities);
     }
 }
