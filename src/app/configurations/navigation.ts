@@ -229,16 +229,6 @@ export class Navigation {
     return items && items.length ? items[0] : undefined;
   }
 
-  public static getNavigationItemOfItem(item: Item | null): NavigationItem | undefined {
-    if (!item || !item.navigationPath) {
-      return;
-    }
-
-    const itemNavigationPath = item.navigationPath.filter(navigationPath => navigationPath);
-    return this.getNavigationItemByToId(
-      itemNavigationPath[itemNavigationPath.length - 1]);
-  }
-
   public static getNextLevelNavigationItemsFrom(item: NavigationItem | undefined): Array<NavigationItem> {
     if (!item) {
       return [];

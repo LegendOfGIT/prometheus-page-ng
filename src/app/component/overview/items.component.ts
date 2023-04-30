@@ -140,4 +140,12 @@ export class ItemsComponent implements OnInit {
     get subNavigationItems(): Array<NavigationItem> {
       return Navigation.getNextLevelNavigationItemsFrom(this.navigationService.activeNavigationItem);
     }
-}
+
+    get showCategoryNavigation(): boolean {
+        if (this.navigationService.activeNavigationItem?.isFirstNavigationLevel()) {
+          return true;
+        }
+
+        return this.subNavigationItems.length > 1;
+    }
+ }
