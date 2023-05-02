@@ -196,6 +196,7 @@ export class Navigation {
     new NavigationItem('VEHICLES', 'VEHICLES_BICYCLES', ['vehicles', 'bicycles', '']),
     new NavigationItem('VEHICLES_BICYCLES', 'VEHICLES_BICYCLES_CITYBIKES', ['vehicles', 'bicycles', 'city-bikes']),
     new NavigationItem('VEHICLES_BICYCLES', 'VEHICLES_BICYCLES_ELECTRICBIKES', ['vehicles', 'bicycles', 'electric-bikes']),
+    new NavigationItem('VEHICLES_BICYCLES', 'VEHICLES_BICYCLES_KIDSBIKES', ['vehicles', 'bicycles', 'kids-bikes']),
     new NavigationItem('VEHICLES', 'VEHICLES_CARS', ['vehicles', 'cars', '']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_CHILDSEATS', ['vehicles', 'cars', 'child-seats']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_SUMMERTYRES', ['vehicles', 'cars', 'summer-tyres']),
