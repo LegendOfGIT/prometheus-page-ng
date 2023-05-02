@@ -39,7 +39,7 @@ export class AddToWishlistComponent {
     this.trackingService.addActivity(
       TrackingActivityItem.create()
         .setInformationItemId(this.item.itemId)
-        .setInterestLevel(isOnWishlist ? TrackingInterestLevel.HIGH : TrackingInterestLevel.LOW)
+        .setInterestLevel(isOnWishlist ? TrackingInterestLevel.VERY_HIGH : TrackingInterestLevel.LOW)
         .setTrackingId(isOnWishlist ? 'wishlist.item.added' : 'wishlist.item.removed'));
   }
 

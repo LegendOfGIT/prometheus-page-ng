@@ -1,24 +1,26 @@
-import {Component, Inject, PLATFORM_ID, Renderer2} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer, makeStateKey, Meta, SafeHtml, Title, TransferState } from '@angular/platform-browser';
-import {DOCUMENT, formatDate, isPlatformServer } from '@angular/common';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {DomSanitizer, makeStateKey, Meta, SafeHtml, Title, TransferState} from '@angular/platform-browser';
+import {DOCUMENT, isPlatformServer} from '@angular/common';
 
-
-import { Module, NavigationService } from '../../service/navigation.service';
-import { ItemsApiService } from '../../service/items-api.service';
-import { Item } from '../../model/item';
-import { CorrespondingItem } from '../../model/corresponding-item';
-import { NavigationItem } from '../../model/navigation-item';
-import { Navigation } from '../../configurations/navigation';
-import { TranslationService } from '../../service/translation.service';
+import {Module, NavigationService} from '../../service/navigation.service';
+import {ItemsApiService} from '../../service/items-api.service';
+import {Item} from '../../model/item';
+import {CorrespondingItem} from '../../model/corresponding-item';
+import {NavigationItem} from '../../model/navigation-item';
+import {Navigation} from '../../configurations/navigation';
+import {TranslationService} from '../../service/translation.service';
 import {ItemDetails} from "../../model/item-details";
+import {TrackingService} from '../../service/tracking.service';
+import {TrackingActivityItem} from '../../model/tracking-activity-item';
+import {TrackingInterestLevel} from '../../model/tracking-interest-level';
 
 @Component({
   selector: 'single-product-view',
   templateUrl: './single-product-view.component.html',
   styleUrls: ['./single-product-view.component.scss']
 })
-export class SingleProductViewComponent {
+export class SingleProductViewComponent implements OnInit {
 
   public itemId: string = '';
 
@@ -39,7 +41,7 @@ export class SingleProductViewComponent {
     private titleService: Title,
     private metaService: Meta,
     private transferState: TransferState,
-    private renderer: Renderer2,
+    private trackingService: TrackingService,
     @Inject(DOCUMENT) private doc: Document,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
@@ -140,6 +142,15 @@ export class SingleProductViewComponent {
     this.doc.body.appendChild(script);
   }
 
+  public pickedOffer(): void {
+    if (!this.item) {
+      return;
+    }
+
+    this.trackingService.addActivity(TrackingActivityItem.create()
+      .setInformationItemId(this.item.itemId)
+      .setInterestLevel(TrackingInterestLevel.EVEN_HIGHER));
+  }
 
   public getShopNameFromUrl(url: string | undefined) {
     const match = (url || '').match(/\/\/(www.)?(.*?)\//);

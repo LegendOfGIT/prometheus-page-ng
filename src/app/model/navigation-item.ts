@@ -19,8 +19,12 @@ export class NavigationItem {
       return this;
     }
 
-  public setHasTeaser(hasTeaser: boolean): NavigationItem {
-    this.hasTeaser = hasTeaser;
-    return this;
-  }
+    public setHasTeaser(hasTeaser: boolean): NavigationItem {
+      this.hasTeaser = hasTeaser;
+      return this;
+    }
+
+    public isFirstNavigationLevel(): boolean {
+      return 'ALL' === (this.fromId || 'ALL');
+    }
 }

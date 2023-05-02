@@ -5,5 +5,6 @@ export enum TrackingInterestLevel {
   AVERAGE,
   SLIGHTLY_HIGH,
   HIGH,
-  VERY_HIGH
+  VERY_HIGH,
+  EVEN_HIGHER
 }
