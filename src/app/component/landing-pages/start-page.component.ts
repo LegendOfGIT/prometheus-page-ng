@@ -7,7 +7,6 @@ import { Navigation } from '../../configurations/navigation';
 import { NavigationItem } from '../../model/navigation-item';
 import { Meta, Title } from '@angular/platform-browser';
 import { TranslationService } from '../../service/translation.service';
-import { SearchProfilesApiService } from '../../service/search-profiles-api.service';
 
 @Component({
   selector: 'start-page',
@@ -20,7 +19,6 @@ export class StartPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private navigationService: NavigationService,
-    private searchProfilesService: SearchProfilesApiService,
     private translationService: TranslationService,
     titleService: Title,
     metaService: Meta,
@@ -59,10 +57,12 @@ export class StartPageComponent implements OnInit {
   }
 
   get allRootRootItems(): Array<NavigationItem | undefined> {
-    const rankedCategoryIds = this.searchProfilesService.activeItem?.rankedCategoryIds || [];
+    return Navigation.getAllRootItems();
+
+    /*const rankedCategoryIds = this.searchProfilesService.activeItem?.rankedCategoryIds || [];
 
     return (rankedCategoryIds.map(categoryId => Navigation.getNavigationItemByToId(categoryId)) || [])
-      .concat(Navigation.getAllRootItems().filter(rootCategory => -1 === rankedCategoryIds.indexOf(rootCategory.toId)));
+      .concat(Navigation.getAllRootItems().filter(rootCategory => -1 === rankedCategoryIds.indexOf(rootCategory.toId)));*/
   }
 
   get whatWeKnow(): string {

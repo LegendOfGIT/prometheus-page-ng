@@ -11,8 +11,6 @@ import { ItemComponent } from './component/item/item.component';
 import { ItemsComponent } from './component/overview/items.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { SearchProfilesComponent } from './component/profile/search/search-profiles.component';
-import { SearchProfileSelectionComponent } from './component/profile/search/search-profile-selection.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 import { ImprintComponent } from './component/legal/imprint.component';
@@ -37,7 +35,6 @@ import { DataProtectionComponent } from './component/legal/data-protection.compo
     ItemComponent,
     ItemsComponent,
     ProfileComponent,
-    SearchProfilesComponent, SearchProfileSelectionComponent,
     SingleProductViewComponent,
     StartPageComponent,
     WishlistItemsComponent,

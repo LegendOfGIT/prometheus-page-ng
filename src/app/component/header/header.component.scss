@@ -6,7 +6,7 @@
   background: $container-background-color-as-rgba;
   box-shadow: 0.1em 0.1em 0.8em lightgray;
   color: $header-footer-content-color;
-  padding: 0.5em 0.5em 0.7em 0.5em;
+  padding: 0.5em 0.5em 0 0.5em;
   position: fixed;
   width: 100%;
   z-index: 3;
@@ -125,6 +125,13 @@
   }
 }
 
+.hashtags {
+  display: inline-flex;
+  font-size: 0.8em;
+  justify-content: center;
+  padding: 0.5em;
+}
+
 .headerbar {
   &__content {
     display: inline-flex;
@@ -169,7 +176,7 @@
   }
 }
 
-.secondSearchbar {
+.searchbar {
   padding-top: 0.5em;
 
   &__content {

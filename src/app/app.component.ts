@@ -3,8 +3,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { UserService } from './service/user.service';
-import { SearchProfilesApiService } from './service/search-profiles-api.service';
-import { TrackingService } from './service/tracking.service';
 import { WishlistItemsApiService } from './service/wishlist-items-api.service';
 import { GdprService } from './service/gdpr.service';
 import { GdprDecision } from './model/gdpr-settings';
@@ -25,18 +23,15 @@ export class AppComponent implements AfterViewInit, OnInit  {
 
   constructor(
     private userService: UserService,
-    private searchProfilesApiService: SearchProfilesApiService,
     private wishlistItemsService: WishlistItemsApiService,
     private gdprService: GdprService,
     private consentService: ConsentService,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    trackingService: TrackingService
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
 
   }
 
   ngOnInit(): void {
-    this.initialiseSearchProfiles();
     this.initialiseWishlist();
 
     if (!isPlatformBrowser(this.platformId)) {
@@ -56,20 +51,6 @@ export class AppComponent implements AfterViewInit, OnInit  {
     setTimeout(
       () => this.gdpr?.nativeElement.click(),
       5000);
-  }
-
-  private initialiseSearchProfiles(): void {
-    if (this.searchProfilesApiService.items?.length) {
-      return;
-    }
-
-    this.searchProfilesApiService.getItems(this.userService.activeUser?.id || '')
-      .pipe(takeUntil(this.destroyedService$))
-      .subscribe((items) => { this.searchProfilesApiService.items = items || []; });
-
-    this.searchProfilesApiService.getSearchProfile(this.userService.activeUser?.activeSearchProfile || '')
-      .pipe(takeUntil(this.destroyedService$))
-      .subscribe((item) => { this.searchProfilesApiService.activeItem = item; });
   }
 
   private initialiseWishlist(): void {

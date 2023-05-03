@@ -8,7 +8,8 @@ import { UserService } from './user.service';
 import { endpoints } from 'src/environments/endpoints';
 import { ApplicationConfiguration } from '../configurations/app';
 import { isPlatformServer } from '@angular/common';
-import {StorageService} from './storage.service';
+import { StorageService } from './storage.service';
+import {DEFAULT_HASHTAGS} from '../model/user';
 
 @Injectable({
     providedIn: 'root'
@@ -58,7 +59,7 @@ export class TrackingService extends ApiBase {
               this.get(endpoints.scoreItem),
               {
                 itemId: trackedActivity.informationItemId,
-                searchProfileId: this.userService.activeUser?.activeSearchProfile,
+                hashTags: (this.userService.activeUser?.activeHashTags || DEFAULT_HASHTAGS).join(','),
                 scoring: scoring.scoring
               }
             ).subscribe();

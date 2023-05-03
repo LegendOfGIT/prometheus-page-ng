@@ -1,6 +1,6 @@
 export class User {
     id: string = '';
-    activeSearchProfile: string = '';
+    activeHashTags: Array<string> = DEFAULT_HASHTAGS;
     emailAddress: string = '';
     firstName: string = '';
     lastName: string = '';
@@ -26,3 +26,5 @@ export class User {
       return this;
     }
 }
+
+export const DEFAULT_HASHTAGS: Array<string> = [ 'WeWannaShop' ];

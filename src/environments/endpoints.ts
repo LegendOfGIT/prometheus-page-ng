@@ -1,15 +1,11 @@
 
 export const endpoints = {
-    items: '/information-items?navigationId={navigationId}&searchProfileId={searchProfileId}&id=&searchPattern={searchPattern}&numberOfResults={numberOfResults}&randomItems={randomItems}&page={page}&isBot={isBot}',
+    items: '/information-items?navigationId={navigationId}&hashTags={searchProfileId}&id=&searchPattern={searchPattern}&numberOfResults={numberOfResults}&randomItems={randomItems}&page={page}&isBot={isBot}',
     itemsByCategories: '/information-items/by-categories?navigationIds={navigationIds}&numberOfResults={numberOfResults}&randomItems={randomItems}',
     highlightedItems: '/information-items?numberOfResults={numberOfResults}&isBot={isBot}&highlightedItems=true',
-    singleItem: '/information-items?id={id}&searchProfileId={searchProfileId}&numberOfResults=1&isBot={isBot}',
+    singleItem: '/information-items?id={id}&hashTags={searchProfileId}&numberOfResults=1&isBot={isBot}',
     scoreItem: '/information-item/scoring',
     deleteWishlistItem: '/wishlist-item?userId={userId}&itemId={itemId}',
     getWishlistItems: '/wishlist-items?userId={userId}&searchPattern={searchPattern}',
-    saveWishlistItem: '/wishlist-item',
-    getSearchProfileItem: '/search-profile?searchProfileId={searchProfileId}',
-    getSearchProfileItems: '/search-profiles?userId={userId}',
-    removeSearchProfile: '/search-profile?userId={userId}&searchProfileId={searchProfileId}',
-    saveSearchProfile: '/search-profile'
+    saveWishlistItem: '/wishlist-item'
 };

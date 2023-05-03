@@ -12,6 +12,7 @@ import { isPlatformServer } from '@angular/common';
 import { ItemsResponse } from '../model/items-response';
 import {REQUEST} from '@nguniversal/express-engine/tokens';
 import {Request} from 'express';
+import {DEFAULT_HASHTAGS} from '../model/user';
 
 @Injectable({
     providedIn: 'root'
@@ -31,8 +32,8 @@ export class ItemsApiService extends ApiBase {
       return isPlatformServer(this.platformId) ? ApplicationConfiguration.SERVICE_REQUESTS_BASE : '';
     }
 
-    private getActiveSearchProfileId(): string {
-      return this.userService.activeUser?.activeSearchProfile || '';
+    private getActiveHashTags(): Array<string> {
+      return this.userService.activeUser?.activeHashTags || DEFAULT_HASHTAGS;
     }
 
     private getUserAgent(): string {
@@ -66,7 +67,7 @@ export class ItemsApiService extends ApiBase {
           randomItems : randomItems ? 'true': 'false',
           page,
           searchPattern,
-          searchProfileId: this.getActiveSearchProfileId()
+          hashTags: this.getActiveHashTags().join(',')
         });
 
       return this.http
@@ -125,7 +126,7 @@ export class ItemsApiService extends ApiBase {
         {
           id,
           isBot: this.isBotRequest() ? 'true': 'false',
-          searchProfileId: this.getActiveSearchProfileId()
+          hashTags: this.getActiveHashTags().join(',')
         });
 
       let headers = new HttpHeaders();

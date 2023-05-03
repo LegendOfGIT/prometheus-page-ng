@@ -1,4 +1,4 @@
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -87,8 +87,8 @@ export class UserService {
       this.storeAllUsers();
     }
 
-    public setActiveSearchProfile(profileId: string) {
-      this.activeUser!.activeSearchProfile = profileId;
+    public setHashTags(hashTags: Array<string>) {
+      this.activeUser!.activeHashTags = hashTags;
       this.storeAllUsers();
     }
 
