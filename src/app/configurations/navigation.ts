@@ -73,6 +73,26 @@ export class Navigation {
       .setHasTeaser(true),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
+      'ELECTRONICS_AND_COMPUTERS_CABLES',
+      ['electronics-and-computers', 'cables', '']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_CABLES',
+      'ELECTRONICS_AND_COMPUTERS_CABLES_ELECTRICCABLES',
+      ['electronics-and-computers', 'cables', 'electrical-cables']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_CABLES',
+      'ELECTRONICS_AND_COMPUTERS_CABLES_DISPLAYCABLES',
+      ['electronics-and-computers', 'cables', 'display-cables']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_CABLES',
+      'ELECTRONICS_AND_COMPUTERS_CABLES_NETWORKCABLES',
+      ['electronics-and-computers', 'cables', 'network-cables']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_COMPUTERS',
       ['electronics-and-computers', 'computers', '']
     ),
@@ -189,6 +209,8 @@ export class Navigation {
     new NavigationItem('COSMETICS_MAKEUP', 'COSMETICS_MAKEUP_LIPS', ['cosmetics', 'makeup', 'lips']),
     new NavigationItem('COSMETICS', 'COSMETICS_WOMEN', ['cosmetics', 'women', '']),
     new NavigationItem('COSMETICS_WOMEN', 'COSMETICS_WOMEN_FRAGRANCES', ['cosmetics', 'women', 'fragrances']),
+    new NavigationItem('COSMETICS', 'COSMETICS_MEN', ['cosmetics', 'men', '']),
+    new NavigationItem('COSMETICS_MEN', 'COSMETICS_MEN_FRAGRANCES', ['cosmetics', 'men', 'fragrances']),
 
     new NavigationItem('ALL', 'VEHICLES', ['vehicles', '', ''], 11)
       .setHasSlogan(true)
