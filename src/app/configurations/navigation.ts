@@ -78,6 +78,11 @@ export class Navigation {
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_CABLES',
+      'ELECTRONICS_AND_COMPUTERS_CABLES_AUDIOCABLES',
+      ['electronics-and-computers', 'cables', 'audio-cables']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_CABLES',
       'ELECTRONICS_AND_COMPUTERS_CABLES_ELECTRICCABLES',
       ['electronics-and-computers', 'cables', 'electrical-cables']
     ),
