@@ -1,12 +1,13 @@
 import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {DOCUMENT, isPlatformBrowser, isPlatformServer} from '@angular/common';
+import { DOCUMENT, isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 import { Module, NavigationService } from '../../service/navigation.service';
 import { Navigation } from '../../configurations/navigation';
 import { NavigationItem } from '../../model/navigation-item';
 import { Meta, Title } from '@angular/platform-browser';
 import { TranslationService } from '../../service/translation.service';
+import { HashTagsApiService } from '../../service/hashtags-api.service';
 
 @Component({
   selector: 'start-page',
@@ -20,6 +21,7 @@ export class StartPageComponent implements OnInit {
     private route: ActivatedRoute,
     private navigationService: NavigationService,
     private translationService: TranslationService,
+    private hashTagsService: HashTagsApiService,
     titleService: Title,
     metaService: Meta,
     @Inject(DOCUMENT) private doc: Document,
@@ -57,12 +59,10 @@ export class StartPageComponent implements OnInit {
   }
 
   get allRootRootItems(): Array<NavigationItem | undefined> {
-    return Navigation.getAllRootItems();
-
-    /*const rankedCategoryIds = this.searchProfilesService.activeItem?.rankedCategoryIds || [];
+    const rankedCategoryIds = this.hashTagsService.rankedCategoryIds || [];
 
     return (rankedCategoryIds.map(categoryId => Navigation.getNavigationItemByToId(categoryId)) || [])
-      .concat(Navigation.getAllRootItems().filter(rootCategory => -1 === rankedCategoryIds.indexOf(rootCategory.toId)));*/
+      .concat(Navigation.getAllRootItems().filter(rootCategory => -1 === rankedCategoryIds.indexOf(rootCategory.toId)));
   }
 
   get whatWeKnow(): string {

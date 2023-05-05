@@ -23,7 +23,7 @@ export abstract class ApiBase {
             });
         }
 
-        return `${path}${end}`;
+        return `${path}${end}`.split(/[^?=&]+=[&|$]/).join('');
     }
 
     protected getDefaultContentType() {
