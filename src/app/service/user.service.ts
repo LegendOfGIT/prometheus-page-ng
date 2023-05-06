@@ -6,14 +6,14 @@ import { v4 as uuidV4 } from 'uuid';
 import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
 
 import { User } from 'src/app/model/user';
-import {StorageService} from './storage.service';
-import {isPlatformServer} from '@angular/common';
+import { StorageService } from './storage.service';
+import {isPlatformBrowser, isPlatformServer} from '@angular/common';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
-
     private static STORAGE_ID_ACTIVE_USER: string = 'active_user';
     private static STORAGE_ID_ANONYMOUS_USER: string = 'anonymous_user';
 
@@ -23,7 +23,7 @@ export class UserService {
 
     constructor(private wishlistItemsService: WishlistItemsApiService,
                 private storageService: StorageService,
-                @Inject(PLATFORM_ID) platformId: Object) {
+                @Inject(PLATFORM_ID) private platformId: Object) {
 
       if (isPlatformServer(platformId)) {
         return;
@@ -31,6 +31,16 @@ export class UserService {
 
       this.initializeAnonymousUser();
       this.initializeActiveUser();
+
+      const hashtagsFromUrl = this.getParameterFromUrl('hashtags');
+      if (this.activeUser && hashtagsFromUrl) {
+        this.activeUser.activeHashtags = hashtagsFromUrl.split(',');
+        this.storeAllUsers();
+      }
+    }
+
+    private getParameterFromUrl(parameterKey: string): string | null {
+      return isPlatformBrowser(this.platformId) ? new URL(window.location.href).searchParams.get(parameterKey) : '';
     }
 
     private updateWishlist(userId: string): void {
@@ -87,8 +97,8 @@ export class UserService {
       this.storeAllUsers();
     }
 
-    public setHashTags(hashTags: Array<string>) {
-      this.activeUser!.activeHashTags = hashTags;
+    public setHashTags(hashtags: Array<string>) {
+      this.activeUser!.activeHashtags = hashtags;
       this.storeAllUsers();
     }
 

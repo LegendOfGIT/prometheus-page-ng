@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
+import { Inject, inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { endpoints } from '../../environments/endpoints';
 import { ApiBase } from './api-base';
 import { UserService } from './user.service';
@@ -9,13 +9,15 @@ import { isPlatformServer } from '@angular/common';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request } from 'express';
 import { DEFAULT_HASHTAGS } from '../model/user';
-import {map} from "rxjs/operators";
-import {RankedCategoryDto} from "../model/dto/ranked-category-dto";
+import { map } from 'rxjs/operators';
+import { RankedCategoryDto} from '../model/dto/ranked-category-dto';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class HashTagsApiService extends ApiBase {
+    private route = inject(ActivatedRoute);
 
     constructor(
       private http: HttpClient,
@@ -24,14 +26,13 @@ export class HashTagsApiService extends ApiBase {
       @Optional() @Inject(REQUEST) private request: Request
     ) {
         super(ApplicationConfiguration.API_BASE);
-
         this.init();
     }
 
     public rankedCategoryIds: Array<string> = [];
 
     private init(): void {
-      this.getRankedCategoriesByHashTags().subscribe(categoryIds => {
+      this.getRankedCategoriesByHashtags().subscribe(categoryIds => {
         this.rankedCategoryIds = categoryIds;
       });
     }
@@ -40,15 +41,15 @@ export class HashTagsApiService extends ApiBase {
       return isPlatformServer(this.platformId) ? ApplicationConfiguration.SERVICE_REQUESTS_BASE : '';
     }
 
-    private getActiveHashTags(): Array<string> {
-      return this.userService.activeUser?.activeHashTags || DEFAULT_HASHTAGS;
+    private getActiveHashtags(): Array<string> {
+      return this.userService.activeUser?.activeHashtags || DEFAULT_HASHTAGS;
     }
 
-    getRankedCategoriesByHashTags(): Observable<Array<string>> {
+    getRankedCategoriesByHashtags(): Observable<Array<string>> {
       const url = this.getRequestBase() + this.get(
-        endpoints.rankedCategoriesByHashTags,
+        endpoints.rankedCategoriesByHashtags,
         {
-          hashTags: this.getActiveHashTags().join(',')
+          hashtags: this.getActiveHashtags().join(',')
         });
 
       return this.http

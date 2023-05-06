@@ -29,5 +29,11 @@
         <div class="informationItem__title{{cssModifier ? ' informationItem__title' + cssModifier : ''}}">{{ itemTitle | translate }}</div>
       </div>
     </a>
+
+    <div class="informationItem__hashtagsWrapper">
+      <div class="button informationItem__hashtag" *ngFor="let hashtag of item.hashtags">
+          #{{hashtag}}
+      </div>
+    </div>
   </div>
 </div>

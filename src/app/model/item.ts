@@ -11,6 +11,7 @@ export class Item extends BaseModel {
     title: string = '';
     titleImage: string = '';
     navigationPath: Array<string> = [];
+    hashtags: Array<string> = [];
 
     amountOfMedia: number = 0;
     amountOfPages: number = 0;
@@ -59,6 +60,11 @@ export class Item extends BaseModel {
           item.titleImage = (data as any)['title-image'];
           item.widthInCm = (data as any)['width-in-cm'];
           item.providers = (data.providers || []).map(provider => CorrespondingItem.fromModel(provider));
+
+          const hashtagsToIgnore = ['', 'noprofile', 'WeWannaShop'];
+          item.hashtags = Object.keys(data.scoring || {})
+            .filter(key => -1 === hashtagsToIgnore.indexOf(key))
+            .map(key => key);
         }
 
         return item;
@@ -78,11 +84,6 @@ export class Item extends BaseModel {
         .sort((a, b) => (a?.priceCurrent || 0) - (b?.priceCurrent || 0));
 
       return providers[0];
-    }
-
-    public getLinkOfLowestPriceItem(): string {
-      const item = Item.getProviderItemWithLowestPrice(this);
-      return item?.link || '';
     }
 
     public static renderLowestPrice(item: Item | null): string {

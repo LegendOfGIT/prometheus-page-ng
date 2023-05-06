@@ -21,7 +21,7 @@ export class StartPageComponent implements OnInit {
     private route: ActivatedRoute,
     private navigationService: NavigationService,
     private translationService: TranslationService,
-    private hashTagsService: HashTagsApiService,
+    private hashtagsService: HashTagsApiService,
     titleService: Title,
     metaService: Meta,
     @Inject(DOCUMENT) private doc: Document,
@@ -59,7 +59,7 @@ export class StartPageComponent implements OnInit {
   }
 
   get allRootRootItems(): Array<NavigationItem | undefined> {
-    const rankedCategoryIds = this.hashTagsService.rankedCategoryIds || [];
+    const rankedCategoryIds = this.hashtagsService.rankedCategoryIds || [];
 
     return (rankedCategoryIds.map(categoryId => Navigation.getNavigationItemByToId(categoryId)) || [])
       .concat(Navigation.getAllRootItems().filter(rootCategory => -1 === rankedCategoryIds.indexOf(rootCategory.toId)));

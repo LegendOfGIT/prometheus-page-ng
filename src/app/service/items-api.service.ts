@@ -32,8 +32,8 @@ export class ItemsApiService extends ApiBase {
       return isPlatformServer(this.platformId) ? ApplicationConfiguration.SERVICE_REQUESTS_BASE : '';
     }
 
-    private getActiveHashTags(): Array<string> {
-      return this.userService.activeUser?.activeHashTags || DEFAULT_HASHTAGS;
+    private getActiveHashtags(): Array<string> {
+      return this.userService.activeUser?.activeHashtags || DEFAULT_HASHTAGS;
     }
 
     private getUserAgent(): string {
@@ -67,7 +67,7 @@ export class ItemsApiService extends ApiBase {
           randomItems : randomItems ? 'true': 'false',
           page,
           searchPattern,
-          hashTags: this.getActiveHashTags().join(',')
+          hashtags: isPlatformServer(this.platformId) ? '' : this.getActiveHashtags().join(',')
         });
 
       return this.http
@@ -126,7 +126,7 @@ export class ItemsApiService extends ApiBase {
         {
           id,
           isBot: this.isBotRequest() ? 'true': 'false',
-          hashTags: this.getActiveHashTags().join(',')
+          hashtags: isPlatformServer(this.platformId) ? '' : this.getActiveHashtags().join(',')
         });
 
       let headers = new HttpHeaders();

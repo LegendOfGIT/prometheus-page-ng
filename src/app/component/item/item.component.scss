@@ -42,6 +42,18 @@
     }
   }
 
+  &__hashtag {
+    margin-right: 0.25em;
+    padding-bottom: 0.25em;
+    padding-top: 0.25em;
+    width: unset;
+  }
+
+  &__hashtagsWrapper {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+
   &__image {
     border-radius: 0.5em;
     max-height: 18em;

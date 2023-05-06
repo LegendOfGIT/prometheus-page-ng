@@ -59,7 +59,7 @@ export class TrackingService extends ApiBase {
               this.get(endpoints.scoreItem),
               {
                 itemId: trackedActivity.informationItemId,
-                hashTags: (this.userService.activeUser?.activeHashTags || DEFAULT_HASHTAGS).join(','),
+                hashtags: (this.userService.activeUser?.activeHashtags || DEFAULT_HASHTAGS).join(','),
                 scoring: scoring.scoring
               }
             ).subscribe();

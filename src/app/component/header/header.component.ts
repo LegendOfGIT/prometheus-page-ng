@@ -66,6 +66,7 @@ export class HeaderComponent {
   public searchNow(): void {
     const searchPattern = this.getParameterFromUrl('search');
     const hasSearchPatternChanged = searchPattern !== this.searchPatternControl.value;
+    const hashtags = this.getParameterFromUrl('hashtags');
     const page = hasSearchPatternChanged ? undefined : this.getParameterFromUrl('page');
 
     this.router.navigate(
@@ -73,6 +74,7 @@ export class HeaderComponent {
       {
         queryParams: {
           search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value,
+          hashtags,
           page
         }
       }
@@ -116,10 +118,4 @@ export class HeaderComponent {
   get showSearchBar(): boolean {
     return -1 !== [Module.ITEMS, Module.HOME].indexOf(this.navigationService.activeModule);
   }
-
-  get firstHashTag(): string {
-    const hashTags = this.userService.activeUser?.activeHashTags || DEFAULT_HASHTAGS;
-    return hashTags[0];
-  }
-
 }

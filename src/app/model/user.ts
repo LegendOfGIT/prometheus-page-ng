@@ -1,6 +1,6 @@
 export class User {
     id: string = '';
-    activeHashTags: Array<string> = DEFAULT_HASHTAGS;
+    activeHashtags: Array<string> = DEFAULT_HASHTAGS;
     emailAddress: string = '';
     firstName: string = '';
     lastName: string = '';
@@ -27,4 +27,4 @@ export class User {
     }
 }
 
-export const DEFAULT_HASHTAGS: Array<string> = [ 'WeWannaShop' ];
+export const DEFAULT_HASHTAGS: Array<string> = [ 'Highlights' ];
