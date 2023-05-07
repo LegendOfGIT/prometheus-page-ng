@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable, inject, Inject, PLATFORM_ID} from '@angular/core';
 
 import { Navigation } from 'src/app/configurations/navigation';
 import { NavigationItem } from 'src/app/model/navigation-item';
+import {Router} from '@angular/router';
+import {isPlatformServer} from '@angular/common';
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +13,10 @@ export class NavigationService {
   private _activeModule: Module = Module.HOME;
 
   private activeNavigationLevelIds: Array<string> = [];
+
+  private router = inject(Router);
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   public setActiveNavigationLevelIds(activeNavigationLevelIds: Array<string>): void {
     this.activeNavigationLevelIds = activeNavigationLevelIds;
@@ -29,21 +35,6 @@ export class NavigationService {
       : undefined;
   }
 
-  get previousNavigationItem(): NavigationItem | undefined {
-    const activeItem = this.activeNavigationItem;
-    if (!activeItem) {
-      return;
-    }
-
-    const items = Navigation.ITEMS
-      .filter((item: NavigationItem) => activeItem.fromId == item.toId);
-
-    return items && items.length
-      ? items[0]
-      : undefined;
-
-  }
-
   get nextNavigationItems(): Array<NavigationItem> {
     const activeItem = this.activeNavigationItem;
     if (!activeItem) {
@@ -60,6 +51,40 @@ export class NavigationService {
 
   set activeModule(activeModule: Module) {
     this._activeModule = activeModule;
+  }
+
+  private getParameterFromUrl(parameterKey: string): string | null {
+    return isPlatformServer(this.platformId) ? '' : new URL(window.location.href).searchParams.get(parameterKey);
+  }
+
+  public navigateWithModifiedQueryParameters(
+    keepQueryParameters: Array<string>,
+    modificationParameters: any,
+    reloadPage: boolean
+  ): void {
+    if (isPlatformServer(this.platformId)) {
+      return;
+    }
+
+    const parametersToKeep: any = {};
+    keepQueryParameters.forEach(keepQueryParameter => {
+      parametersToKeep[keepQueryParameter] = this.getParameterFromUrl(keepQueryParameter);
+    });
+
+    console.log(parametersToKeep);
+
+    this.router.navigate(
+      [],
+      {
+        queryParams: { ...parametersToKeep, ...modificationParameters }
+      }
+    ).then(() => {
+      if (!reloadPage) {
+        return;
+      }
+
+      window.location.reload();
+    });
   }
 
 }

@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-12 content--center">
-      <a href="/{{(navigationItemToCategory?.pathParts || [''])[0]}}" target="_self" class="button__wrapper">
+      <a href="{{backToCategoryUrl}}" target="_self" class="button__wrapper">
         <div *ngIf="navigationItemToCategory?.toId" class="button singleProductView__backToOverview">
             {{ 'BACK_TO' | translate }} "{{ 'NAVIGATION_' + navigationItemToCategory?.toId | translate }}"
         </div>

@@ -7,6 +7,7 @@ import { NavigationItem } from '../../model/navigation-item';
 import {isPlatformServer} from '@angular/common';
 import { makeStateKey,  TransferState } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs/operators';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'category-teaser',
@@ -41,6 +42,7 @@ export class CategoryTeaserComponent implements OnInit {
     private route: ActivatedRoute,
     private itemsService: ItemsApiService,
     private transferState: TransferState,
+    private userService: UserService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
   }
@@ -50,10 +52,10 @@ export class CategoryTeaserComponent implements OnInit {
   }
 
   private initialiseItems(): void {
-    if (this.transferState.hasKey(makeStateKey(this.getItemsKey()))) {
+    /*if (this.transferState.hasKey(makeStateKey(this.getItemsKey()))) {
       this.categoryItems = this.transferState.get(makeStateKey(this.getItemsKey()), []);
       return;
-    }
+    }*/
 
     if (this.showHighlights) {
       this.itemsService.getHighlightedItems(6).subscribe(itemsResponse => {
@@ -106,13 +108,20 @@ export class CategoryTeaserComponent implements OnInit {
 
   get moreLink(): string {
     let searchParameter = this.getParameterFromUrl('search');
+    const parameters: any = {};
+    if (searchParameter) { parameters.search = searchParameter; }
+
+    const hashtags = this.userService.activeUser?.activeHashtags || [];
+    if (hashtags.length) { parameters.hashtags = hashtags.join(','); }
+
     searchParameter = searchParameter ? `?search=${searchParameter}` : '';
 
+    const queryParameters = Object.keys(parameters).length ? `?${Object.keys(parameters).map(key => `${key}=${parameters[key]}`).join('&')}` : '';
     if (this.showHighlights) {
-      return '/highlights' + searchParameter;
+      return '/highlights' + queryParameters;
     }
 
-    return '/' + [(this.navigationItem?.pathParts || []).filter(p => p).join('/')] + searchParameter;
+    return '/' + [(this.navigationItem?.pathParts || []).filter(p => p).join('/')] + queryParameters;
   }
 
   get sloganTranslationId(): string {

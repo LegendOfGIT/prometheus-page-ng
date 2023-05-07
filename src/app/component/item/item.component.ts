@@ -67,6 +67,13 @@ export class ItemComponent {
       return ItemDisplayMode.CATEGORY === this.displayMode;
     }
 
+    public visitHashtag(hashtag: string): void {
+      this.navigationService.navigateWithModifiedQueryParameters(
+        [ 'search' ],
+        { hashtags: hashtag },
+        true);
+    }
+
     get itemUrl(): string {
         if (this.isCategoryItem()) {
           const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;

@@ -64,7 +64,10 @@ export class Item extends BaseModel {
           const hashtagsToIgnore = ['', 'noprofile', 'WeWannaShop'];
           item.hashtags = Object.keys(data.scoring || {})
             .filter(key => -1 === hashtagsToIgnore.indexOf(key))
-            .map(key => key);
+            .map(key => ({ key, value: data.scoring[key] }))
+            .filter(hashtag => hashtag.value > 0.4)
+            .sort((a, b) => a.value + b.value)
+            .map(hashtag => hashtag.key);
         }
 
         return item;

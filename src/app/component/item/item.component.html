@@ -31,7 +31,7 @@
     </a>
 
     <div class="informationItem__hashtagsWrapper">
-      <div class="button informationItem__hashtag" *ngFor="let hashtag of item.hashtags">
+      <div class="button informationItem__hashtag" *ngFor="let hashtag of item.hashtags" (click)="visitHashtag(hashtag)">
           #{{hashtag}}
       </div>
     </div>

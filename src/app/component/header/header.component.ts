@@ -9,7 +9,6 @@ import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {NavigationItem} from '../../model/navigation-item';
 import {Navigation} from '../../configurations/navigation';
 import {isPlatformBrowser} from '@angular/common';
-import {DEFAULT_HASHTAGS} from '../../model/user';
 
 @Component({
   selector: 'header',
@@ -66,23 +65,16 @@ export class HeaderComponent {
   public searchNow(): void {
     const searchPattern = this.getParameterFromUrl('search');
     const hasSearchPatternChanged = searchPattern !== this.searchPatternControl.value;
-    const hashtags = this.getParameterFromUrl('hashtags');
-    const page = hasSearchPatternChanged ? undefined : this.getParameterFromUrl('page');
 
-    this.router.navigate(
-      [],
-      {
-        queryParams: {
-          search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value,
-          hashtags,
-          page
-        }
-      }
-    ).then(() => {
-      if (hasSearchPatternChanged) {
-        window.location.reload();
-      }
-    });
+    const queryParametersToKeep = ['hashtags', 'page', 'search'];
+    if (hasSearchPatternChanged) {
+      queryParametersToKeep.push('search');
+    }
+
+    this.navigationService.navigateWithModifiedQueryParameters(
+      queryParametersToKeep,
+      { search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value },
+      hasSearchPatternChanged);
   }
 
   get hasJustLoggedIn(): boolean {

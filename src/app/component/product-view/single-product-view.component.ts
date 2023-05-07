@@ -14,6 +14,7 @@ import {ItemDetails} from "../../model/item-details";
 import {TrackingService} from '../../service/tracking.service';
 import {TrackingActivityItem} from '../../model/tracking-activity-item';
 import {TrackingInterestLevel} from '../../model/tracking-interest-level';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'single-product-view',
@@ -42,6 +43,7 @@ export class SingleProductViewComponent implements OnInit {
     private metaService: Meta,
     private transferState: TransferState,
     private trackingService: TrackingService,
+    private userService: UserService,
     @Inject(DOCUMENT) private doc: Document,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
@@ -173,14 +175,6 @@ export class SingleProductViewComponent implements OnInit {
     this.showFullDescription = !this.showFullDescription;
   }
 
-  public updatedOnOfItem(item: CorrespondingItem | null): string {
-    if (!item?.updatedOn) {
-      return '';
-    }
-
-    return item.updatedOn;
-  }
-
   get itemWithLowestPrice(): CorrespondingItem | null {
     if (!this.item) {
       return null;
@@ -231,5 +225,11 @@ export class SingleProductViewComponent implements OnInit {
     return [this.item?.titleImage || '']
       .concat(this.item?.imagesBig || [])
       .filter((value, index, array) => array.indexOf(value) === index);
+  }
+
+  get backToCategoryUrl(): string {
+    const hashtags = this.userService.activeUser?.activeHashtags;
+
+    return `/${(this.navigationItemToCategory?.pathParts || [''])[0]}${hashtags ? `?hashtags=${hashtags.join(',')}` : ''}`;
   }
 }
