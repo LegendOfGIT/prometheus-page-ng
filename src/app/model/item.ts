@@ -32,6 +32,9 @@ export class Item extends BaseModel {
     lengthInCm: number = 0;
     make: string = '';
     material: string = '';
+    innerMaterial: string = '';
+    outerMaterial: string = '';
+    materialProperties: string = '';
     minimumAge: number = 0;
     publisher: string = '';
     ramSize: string = '';
@@ -119,6 +122,8 @@ export class Item extends BaseModel {
         new ItemDetails('SIZES', item.sizes),
         new ItemDetails('COLORS', item.colors),
         new ItemDetails('MATERIAL', item.material),
+        new ItemDetails('INNER_MATERIAL', item.innerMaterial),
+        new ItemDetails('OUTER_MATERIAL', item.outerMaterial),
         new ItemDetails('FABRIC', item.fabric),
         new ItemDetails('FABRIC_PATTERN', item.fabricPattern),
         new ItemDetails('LENGTH_IN_CM', item.lengthInCm),
