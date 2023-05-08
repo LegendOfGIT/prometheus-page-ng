@@ -86,6 +86,10 @@ export class ItemComponent {
         return this.getSeoFriendlySingleProductViewUrl(this.item);
     }
 
+    get showHashtags(): boolean {
+      return ItemDisplayMode.DEFAULT === this.displayMode;
+    }
+
     get showPrice(): boolean {
         return ItemDisplayMode.DEFAULT === this.displayMode;
     }
