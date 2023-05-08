@@ -69,7 +69,7 @@ export class Item extends BaseModel {
             .filter(key => -1 === hashtagsToIgnore.indexOf(key))
             .map(key => ({ key, value: data.scoring[key] }))
             .filter(hashtag => hashtag.value > 0.4)
-            .sort((a, b) => a.value - b.value)
+            .sort((a, b) => b.value - a.value)
             .map(hashtag => hashtag.key)
             .splice(0, 3);
         }
