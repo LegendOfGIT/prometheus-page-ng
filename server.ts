@@ -31,7 +31,10 @@ export function app(): express.Express {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    res.header({ 'Cache-Control': 'max-age=300'});
+    if (-1 === req.url.indexOf('hashtags')) {
+      res.header({'Cache-Control': 'max-age=300'});
+    }
+
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
 

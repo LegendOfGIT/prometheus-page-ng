@@ -52,8 +52,10 @@ export class CategoryTeaserComponent implements OnInit {
   }
 
   private initialiseItems(): void {
+
+    const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
     if (this.showHashtags) {
-      this.itemsService.getHashtagsItems('', 6).subscribe(itemsResponse => {
+      this.itemsService.getHashtagsItems(searchPattern, this.numberOfItems).subscribe(itemsResponse => {
         if (itemsResponse?.items?.length) {
           this.categoryItems = itemsResponse.items;
           if (isPlatformServer(this.platformId)) {
@@ -61,12 +63,21 @@ export class CategoryTeaserComponent implements OnInit {
           }
           return;
         }
+
+        this.itemsService.getHashtagsItems('', this.numberOfItems)
+          .pipe(takeUntil(this.destroyedService$))
+          .subscribe(
+            itemsResponse => {
+              this.categoryItems = itemsResponse.items;
+              if (isPlatformServer(this.platformId)) {
+                this.transferState.set<Array<Item | null>>(makeStateKey(this.getItemsKey()), this.categoryItems);
+              }
+            });
       });
 
       return;
     }
 
-    const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
     this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, this.numberOfItems, this.randomItems).subscribe(itemsResponse => {
       if (itemsResponse?.items?.length) {
         this.categoryItems = itemsResponse.items;
@@ -85,8 +96,6 @@ export class CategoryTeaserComponent implements OnInit {
               this.transferState.set<Array<Item | null>>(makeStateKey(this.getItemsKey()), this.categoryItems);
             }
           });
-
-
     });
   }
   ngOnInit(): void {
