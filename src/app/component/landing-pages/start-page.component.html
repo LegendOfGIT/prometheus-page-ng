@@ -6,10 +6,7 @@
   </div>
 
   <div class="container">
-    <category-teaser *ngIf="!hasUserSearched"
-      [showHashtags]="true"
-      [showHeader]="false"
-    ></category-teaser>
+    <category-teaser [showHashtags]="true" [showHeader]="false"></category-teaser>
 
     <category-teaser
       *ngFor="let item of allRootRootItems"

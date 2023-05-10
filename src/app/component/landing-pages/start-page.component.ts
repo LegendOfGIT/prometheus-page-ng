@@ -15,8 +15,6 @@ import { HashTagsApiService } from '../../service/hashtags-api.service';
   styleUrls: ['./start-page.component.scss']
 })
 export class StartPageComponent implements OnInit {
-  public hasUserSearched = false;
-
   constructor(
     private route: ActivatedRoute,
     private navigationService: NavigationService,
@@ -37,8 +35,6 @@ export class StartPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.hasUserSearched = '' !== (this.getParameterFromUrl('search') || '');
-
     if (!isPlatformServer(this.platformId)) {
       return;
     }

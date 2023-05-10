@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { v4 as uuidV4 } from 'uuid';
 import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
 
-import { User } from 'src/app/model/user';
+import {DEFAULT_HASHTAGS, User} from 'src/app/model/user';
 import { StorageService } from './storage.service';
 import {isPlatformBrowser, isPlatformServer} from '@angular/common';
 import {ActivatedRoute, Router} from "@angular/router";
@@ -33,8 +33,8 @@ export class UserService {
       this.initializeActiveUser();
 
       const hashtagsFromUrl = this.getParameterFromUrl('hashtags');
-      if (this.activeUser && hashtagsFromUrl) {
-        this.activeUser.activeHashtags = hashtagsFromUrl.split(',');
+      if (this.activeUser) {
+        this.activeUser.activeHashtags = hashtagsFromUrl ? hashtagsFromUrl.split(',') : DEFAULT_HASHTAGS;
         this.storeAllUsers();
       }
     }
