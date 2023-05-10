@@ -203,7 +203,7 @@ export class Navigation {
     new NavigationItem('HOME', 'HOME_GARDEN', ['home', 'garden', '']),
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GARDENHOUSES', ['home', 'garden', 'garden-houses']),
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GRILLS', ['home', 'garden', 'grills']),
-    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_lAWNMOWERS', ['home', 'garden', 'lawnmowers']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_LAWNMOWERS', ['home', 'garden', 'lawnmowers']),
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_LOUNGEFURNITURE', ['home', 'garden', 'lounge-furniture']),
     new NavigationItem('HOME', 'HOME_PETS', ['home', 'pets', '']),
     new NavigationItem('HOME_PETS', 'HOME_PETS_CATS', ['home', 'pets', 'cats']),
