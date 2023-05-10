@@ -92,10 +92,10 @@ export class NavigationService {
 export enum Module {
   HOME,
   DATA_PROTECTION,
+  HASHTAGS,
   IMPRINT,
   ITEMS,
   PROFILE,
-  SEARCH_PROFILES,
   WISHLIST,
   SINGLE_PRODUCT_VIEW
 }

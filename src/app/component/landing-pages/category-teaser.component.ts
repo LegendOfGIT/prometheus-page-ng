@@ -4,10 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { ItemsApiService } from '../../service/items-api.service';
 import { Subject } from 'rxjs';
 import { NavigationItem } from '../../model/navigation-item';
-import {isPlatformServer} from '@angular/common';
+import { isPlatformServer } from '@angular/common';
 import { makeStateKey,  TransferState } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs/operators';
-import {UserService} from '../../service/user.service';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'category-teaser',
@@ -25,7 +25,7 @@ export class CategoryTeaserComponent implements OnInit {
   public randomItems = false;
 
   @Input()
-  public showHighlights = false;
+  public showHashtags = false;
 
   @Input()
   public numberOfItems = 4;
@@ -48,17 +48,12 @@ export class CategoryTeaserComponent implements OnInit {
   }
 
   private getItemsKey(): string {
-    return 'productItems-' + (this.showHighlights ? 'highlights' : (this.navigationItem?.toId || ''));
+    return 'productItems-' + (this.showHashtags ? this.userService.activeUser?.activeHashtags.join(',') : (this.navigationItem?.toId || ''));
   }
 
   private initialiseItems(): void {
-    /*if (this.transferState.hasKey(makeStateKey(this.getItemsKey()))) {
-      this.categoryItems = this.transferState.get(makeStateKey(this.getItemsKey()), []);
-      return;
-    }*/
-
-    if (this.showHighlights) {
-      this.itemsService.getHighlightedItems(6).subscribe(itemsResponse => {
+    if (this.showHashtags) {
+      this.itemsService.getHashtagsItems('', 6).subscribe(itemsResponse => {
         if (itemsResponse?.items?.length) {
           this.categoryItems = itemsResponse.items;
           if (isPlatformServer(this.platformId)) {
@@ -114,18 +109,16 @@ export class CategoryTeaserComponent implements OnInit {
     const hashtags = this.userService.activeUser?.activeHashtags || [];
     if (hashtags.length) { parameters.hashtags = hashtags.join(','); }
 
-    searchParameter = searchParameter ? `?search=${searchParameter}` : '';
-
     const queryParameters = Object.keys(parameters).length ? `?${Object.keys(parameters).map(key => `${key}=${parameters[key]}`).join('&')}` : '';
-    if (this.showHighlights) {
-      return '/highlights' + queryParameters;
+    if (this.showHashtags) {
+      return '/hashtags' + queryParameters;
     }
 
     return '/' + [(this.navigationItem?.pathParts || []).filter(p => p).join('/')] + queryParameters;
   }
 
   get sloganTranslationId(): string {
-    if (this.showHighlights) {
+    if (this.showHashtags) {
       return 'NAVIGATION_SLOGAN_HIGHLIGHTS';
     }
 
@@ -133,10 +126,14 @@ export class CategoryTeaserComponent implements OnInit {
   }
 
   get navigationTranslationId(): string {
-    if (this.showHighlights) {
+    if (this.showHashtags) {
       return 'NAVIGATION_HIGHLIGHTS';
     }
 
     return 'NAVIGATION_' + (this.navigationItem?.toId || '');
+  }
+
+  get activeHashtags(): Array<string> {
+    return this.userService.activeUser?.activeHashtags.map(hashtag => `#${hashtag}`) || [];
   }
 }

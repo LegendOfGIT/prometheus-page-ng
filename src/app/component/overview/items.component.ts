@@ -13,6 +13,7 @@ import {Title} from '@angular/platform-browser';
 import {NavigationItem} from '../../model/navigation-item';
 import {Navigation} from '../../configurations/navigation';
 import {ItemDisplayMode} from '../item/item.component';
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-items',
@@ -33,7 +34,7 @@ export class ItemsComponent implements OnInit {
     public currentPage: number = 1;
     public ITEM_MODE_CATEGORY: ItemDisplayMode = ItemDisplayMode.CATEGORY;
 
-    private isCategoryHighlights = false;
+    private isCategoryHashtags = false;
 
     constructor(
       private router: Router,
@@ -41,6 +42,7 @@ export class ItemsComponent implements OnInit {
       private itemsService: ItemsApiService,
       private navigationService: NavigationService,
       private trackingService: TrackingService,
+      private userService: UserService,
       translationService: TranslationService,
       titleService: Title,
       @Inject(DOCUMENT) private doc: Document,
@@ -48,8 +50,6 @@ export class ItemsComponent implements OnInit {
     ) {
 
       route.paramMap.subscribe((params) => {
-        this.navigationService.activeModule = Module.ITEMS;
-
         const navigationIdLevelA = params.get('navigationIdLevelA') || '';
         this.navigationService.setActiveNavigationLevelIds([
           navigationIdLevelA,
@@ -57,18 +57,28 @@ export class ItemsComponent implements OnInit {
           params.get('navigationIdLevelC') || ''
         ]);
 
-        this.isCategoryHighlights = 'highlights' === navigationIdLevelA;
+        this.isCategoryHashtags = 'hashtags' === navigationIdLevelA;
+        this.navigationService.activeModule = this.isCategoryHashtags ? Module.HASHTAGS : Module.ITEMS;
       });
 
       const translations = translationService.getTranslations();
       titleService.setTitle(
-        translations.SEO_CATEGORY_PAGE_TITLE.replace('{category}',
-          translations['NAVIGATION_' + (this.isCategoryHighlights ? 'HIGHLIGHTS' : this.navigationService.activeNavigationItem?.toId)]));
+        translations.SEO_CATEGORY_PAGE_TITLE.replace(
+          '{category}',
+          this.isCategoryHashtags
+            ? this.getActiveHashtags().join(' ')
+            : translations['NAVIGATION_' + this.navigationService.activeNavigationItem?.toId]));
+    }
+
+    private getActiveHashtags(): Array<string> {
+      return this.userService.activeUser?.activeHashtags.map(hashtag => `#${hashtag}`) || [];
     }
 
     private initItems(page: string): void {
-      if (this.isCategoryHighlights) {
-        this.itemsService.getHighlightedItems(undefined)
+      const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
+
+      if (this.isCategoryHashtags) {
+        this.itemsService.getHashtagsItems(searchPattern, undefined, page)
           .pipe(takeUntil(this.destroyedService$))
           .subscribe(
             itemsResponse => {
@@ -83,7 +93,6 @@ export class ItemsComponent implements OnInit {
         this.navigationService.activeNavigationItem && this.navigationService.activeNavigationItem.fromId
           ? this.navigationService.activeNavigationItem.toId
           : '';
-      const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
 
       this.itemsService.getItems(activeNavigationId, searchPattern, undefined, false, page)
         .pipe(takeUntil(this.destroyedService$))

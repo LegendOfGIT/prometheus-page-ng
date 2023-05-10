@@ -108,6 +108,14 @@ export class HeaderComponent {
   }
 
   get showSearchBar(): boolean {
-    return -1 !== [Module.ITEMS, Module.HOME].indexOf(this.navigationService.activeModule);
+    return -1 !== [Module.ITEMS, Module.HASHTAGS, Module.HOME].indexOf(this.navigationService.activeModule);
+  }
+
+  get isHashtagsModule(): boolean {
+    return Module.HASHTAGS === this.navigationService.activeModule;
+  }
+
+  get activeHashtags(): Array<string> {
+    return this.userService.activeUser?.activeHashtags.map(hashtag => `#${hashtag}`) || [];
   }
 }

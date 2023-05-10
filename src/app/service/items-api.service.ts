@@ -101,12 +101,15 @@ export class ItemsApiService extends ApiBase {
         }));
     }
 
-    getHighlightedItems(numberOfResults: number | undefined = undefined): Observable<ItemsResponse> {
+    getHashtagsItems(searchPattern: string = '', numberOfResults: number | undefined = undefined, page: string = '1'): Observable<ItemsResponse> {
       const url = this.getRequestBase() + this.get(
-        endpoints.highlightedItems,
+        endpoints.hashtagsItems,
         {
+          hashtags: this.getActiveHashtags().join(','),
           numberOfResults: numberOfResults ? `${numberOfResults}` : '',
-          isBot: this.isBotRequest() ? 'true': 'false'
+          isBot: this.isBotRequest() ? 'true': 'false',
+          page,
+          searchPattern
         });
 
       return this.http

@@ -4,6 +4,10 @@
     <span class="header__titleCapitalLetter">{{ 'TITLE_WANNA_WORD_PREFIX' | translate }}</span><span class="header__title">{{ 'TITLE_WANNA_WORD_SUFFIX' | translate }}</span>
     <span class="header__titleSlogan"> {{ sloganTranslationId | translate }}!</span>
   </h2>
+  <h2 *ngIf="showHashtags" class="category__title">
+    <span class="header__title">{{ activeHashtags.join(' ') }}</span>
+  </h2>
+
 
   <h3 *ngIf="showHeader && navigationItem?.hasTeaser">
     <div class="header__titleTeaser"> {{('NAVIGATION_TEASER_' + (navigationItem?.toId || 'ALL')) | translate}}</div>
@@ -17,7 +21,7 @@
   </div>
   <div class="category__actions">
     <a href="{{moreLink}}" class="button">
-        {{'SHOW_MORE_PREFIX' | translate }} "{{ navigationTranslationId | translate }}" {{'SHOW_MORE_SUFFIX' | translate }}
+        {{'SHOW_MORE_PREFIX' | translate }} "{{ showHashtags ? activeHashtags.join(' ') : navigationTranslationId | translate }}" {{'SHOW_MORE_SUFFIX' | translate }}
     </a>
   </div>
 </section>

@@ -2,7 +2,7 @@
 export const endpoints = {
   items: '/information-items?navigationId={navigationId}&hashtags={hashtags}&id=&searchPattern={searchPattern}&numberOfResults={numberOfResults}&randomItems={randomItems}&page={page}&isBot={isBot}',
   itemsByCategories: '/information-items/by-categories?navigationIds={navigationIds}&numberOfResults={numberOfResults}&randomItems={randomItems}',
-  highlightedItems: '/information-items?numberOfResults={numberOfResults}&isBot={isBot}&highlightedItems=true',
+  hashtagsItems: '/information-items?numberOfResults={numberOfResults}&page={page}&isBot={isBot}&hashtags={hashtags}&searchPattern={searchPattern}',
   singleItem: '/information-items?id={id}&hashtags={hashtags}&numberOfResults=1&isBot={isBot}',
   scoreItem: '/information-item/scoring',
   deleteWishlistItem: '/wishlist-item?userId={userId}&itemId={itemId}',
