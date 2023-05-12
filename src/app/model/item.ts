@@ -34,17 +34,19 @@ export class Item extends BaseModel {
     material: string = '';
     innerMaterial: string = '';
     outerMaterial: string = '';
-    materialProperties: string = '';
     minimumAge: number = 0;
     publisher: string = '';
     ramSize: string = '';
     resolution: string = '';
+    size: string = '';
     sizes: string = '';
     storageSize: string = '';
     subgenre: string = '';
     seoDescription: string = '';
     seoKeywords: string = '';
     speedKey: string = '';
+    type: string = '';
+    types: string = '';
     tyreType: string = '';
     widthInCm: number = 0;
     weightInG: number = 0;
@@ -120,6 +122,9 @@ export class Item extends BaseModel {
         new ItemDetails('COVER_TYPE', item.coverType),
         new ItemDetails('LANGUAGES', item.languages),
         new ItemDetails('FIT', item.fit),
+        new ItemDetails('TYPE', item.type),
+        new ItemDetails('TYPES', item.types),
+        new ItemDetails('SIZE', item.size),
         new ItemDetails('SIZES', item.sizes),
         new ItemDetails('COLORS', item.colors),
         new ItemDetails('MATERIAL', item.material),

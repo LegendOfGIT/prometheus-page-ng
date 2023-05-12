@@ -34,6 +34,8 @@ export class Navigation {
     new NavigationItem('ALL', 'LUXURIES', ['luxuries', '', ''], 2)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('LUXURIES', 'LUXURIES_DRINKS', ['luxuries', 'drinks', '']),
+    new NavigationItem('LUXURIES_DRINKS', 'LUXURIES_DRINKS_COFFEE', ['luxuries', 'drinks', 'coffee']),
     new NavigationItem('LUXURIES', 'LUXURIES_WRITINGSUPPLIES', ['luxuries', 'writing-supplies', '']),
     new NavigationItem('LUXURIES_WRITINGSUPPLIES', 'LUXURIES_WRITINGSUPPLIES_BIROS', ['luxuries', 'writing-supplies', 'biros']),
     new NavigationItem('LUXURIES_WRITINGSUPPLIES', 'LUXURIES_WRITINGSUPPLIES_FOUNTAINPENS', ['luxuries', 'writing-supplies', 'fountain-pens']),
@@ -247,6 +249,8 @@ export class Navigation {
     new NavigationItem('ALL', 'GROCERIES', ['groceries', '', ''], 13)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('GROCERIES', 'GROCERIES_DRINKS', ['groceries', 'drinks', '']),
+    new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_COFFEE', ['groceries', 'drinks', 'coffee']),
     new NavigationItem('GROCERIES', 'GROCERIES_FOOD', ['groceries', 'food', '']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_DRYFRUITS', ['groceries', 'food', 'dry-fruits']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_NUTS', ['groceries', 'food', 'nuts']),
