@@ -71,6 +71,9 @@ export class Navigation {
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_PLAYSTATION_4', ['multimedia', 'games', 'playstation-4']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_XBOX_ONE', ['multimedia', 'games', 'xbox-one']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_XBOX_360', ['multimedia', 'games', 'xbox-360']),
+    new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_MOVIES', ['multimedia', 'movies', '']),
+    new NavigationItem('MULTIMEDIA_MOVIES', 'MULTIMEDIA_MOVIES_ACTION', ['multimedia', 'movies', 'action']),
+    new NavigationItem('MULTIMEDIA_MOVIES', 'MULTIMEDIA_MOVIES_FANTASY', ['multimedia', 'movies', 'fantasy']),
 
     new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['electronics-and-computers', '', ''], 3)
       .setHasSlogan(true)
