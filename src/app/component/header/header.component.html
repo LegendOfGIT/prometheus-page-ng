@@ -56,6 +56,18 @@
         </div>
       </div>
     </div>
+
+    <div *ngIf="showSuggestions">
+      <a href="{{getSuggestionLink(suggestion)}}" *ngFor="let suggestion of suggestions; let i = index;" class="col-12 searchbar__content">
+        <div [ngClass]="['col-12', 'suggestion__item', 0 === i ? 'suggestion__item--first' : suggestions.length-1 === i ? 'suggestion__item--last' : '']">
+          <div class="col-11">
+            <div class="suggestion__item--column suggestion__item--trend fa fa-chart-line"></div>
+            <div class="suggestion__item--column">#{{suggestion.label}}</div>
+          </div>
+          <div class="col-1 suggestion__item--column suggestion__item--go fa fa-chevron-right"></div>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
 

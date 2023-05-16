@@ -9,6 +9,7 @@ import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {NavigationItem} from '../../model/navigation-item';
 import {Navigation} from '../../configurations/navigation';
 import {isPlatformBrowser} from '@angular/common';
+import {SuggestionItem} from "../../model/suggestion-item";
 
 @Component({
   selector: 'header',
@@ -22,6 +23,16 @@ export class HeaderComponent {
   public Module: typeof Module = Module;
 
   public searchPatternControl: FormControl = new FormControl();
+
+  public showSuggestions = false;
+
+  public suggestions: Array<SuggestionItem> = [
+    new SuggestionItem('Highlights'),
+    new SuggestionItem('SchlafSchön'),
+    new SuggestionItem('Schurr'),
+    new SuggestionItem('BlackIsBeautiful'),
+    new SuggestionItem('AbInsGrüne')
+  ];
 
   @ViewChild('searchPattern')
   private searchPatternElement: ElementRef | undefined = undefined;
@@ -60,6 +71,10 @@ export class HeaderComponent {
       .pipe(debounceTime(10000))
       .subscribe(() => this.searchNow());
 
+    this.searchPatternControl.valueChanges
+      .subscribe(() => {
+        this.showSuggestions = this.searchPatternControl.value && '' !== this.searchPatternControl.value;
+      });
   }
 
   public searchNow(): void {
@@ -97,6 +112,16 @@ export class HeaderComponent {
 
   public isModuleActive(module: Module): boolean {
     return module === this.navigationService.activeModule;
+  }
+
+  public getSuggestionLink(item: SuggestionItem): string {
+    if (!this.isOnClientSide()) {
+      return '';
+    }
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('hashtags', item.label);
+    return url.toString();
   }
 
   get categoryItems(): NavigationItem[] {
