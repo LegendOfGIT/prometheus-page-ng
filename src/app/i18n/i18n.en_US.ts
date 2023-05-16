@@ -94,6 +94,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_HOME_GARDEN_GRILLS: 'grills',
       NAVIGATION_HOME_GARDEN_LAWNMOWERS: 'lawnmowers',
       NAVIGATION_HOME_GARDEN_LOUNGEFURNITURE: 'garden lounge furniture',
+      NAVIGATION_HOME_GARDEN_SPORTS: 'garden sports und games',
       NAVIGATION_HOME_PETS: 'pets',
       NAVIGATION_HOME_PETS_CATS: 'cats',
       NAVIGATION_HOME_PETS_DOGS: 'dogs',
