@@ -113,6 +113,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_KIDS_TOYS_BABIES: 'Babys',
       NAVIGATION_KIDS_TOYS_CONSTRUCTIONTOYS: 'Bau- und Konstruktionsspielzeug',
       NAVIGATION_KIDS_TOYS_ELECTRICVEHICLES: 'Kinder Elektro-Fahrzeuge',
+      NAVIGATION_KIDS_TOYS_EXPERIMENTANDRESEARCH: 'Experimentier- und Forschungsspielzeug',
       NAVIGATION_KIDS_TOYS_GAMES: 'Spiele',
       NAVIGATION_KIDS_TOYS_SCOOTERS: 'Roller',
       NAVIGATION_KIDS_TOYS_TOYVEHICLES: 'Spielzeug-Fahrzeuge',
