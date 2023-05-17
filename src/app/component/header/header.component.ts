@@ -66,23 +66,25 @@ export class HeaderComponent {
       .subscribe(() => {
         this.suggestions = [];
         const searchPattern = this.getParameterFromUrl('search');
-        const givenHashtag = this.searchPatternControl.value;
-        if (searchPattern === givenHashtag) {
+        const givenPattern = this.searchPatternControl.value;
+        if (searchPattern === givenPattern) {
           return;
         }
 
-        if (!givenHashtag || givenHashtag.length < 3) {
+        if (!givenPattern || givenPattern.trim().length < 3) {
           return;
         }
 
-        this.hashtagsService.getHashtags(givenHashtag)
+        this.hashtagsService.getHashtags(givenPattern)
           .subscribe(items => {
-            const searchItem = new SuggestionItem(givenHashtag);
+            this.suggestions = [];
+
+            const searchItem = new SuggestionItem(givenPattern);
             searchItem.mode = SuggestionItemMode.SEARCH;
             this.suggestions.push(searchItem);
 
-            if (!this.suggestions.find(suggestion => !suggestion.isSearchItem() && givenHashtag.toLowerCase() === suggestion.label.toLowerCase())) {
-              const newHashtagItem = new SuggestionItem(givenHashtag);
+            if (!this.suggestions.find(suggestion => !suggestion.isSearchItem() && givenPattern.toLowerCase() === suggestion.label.toLowerCase())) {
+              const newHashtagItem = new SuggestionItem(givenPattern.split(' ').join('').substring(0, 20));
               newHashtagItem.mode = SuggestionItemMode.NEW;
               items = [newHashtagItem].concat(items);
             }

@@ -35,6 +35,7 @@ export class UserService {
       const hashtagsFromUrl = this.getParameterFromUrl('hashtags');
       if (this.activeUser) {
         this.activeUser.activeHashtags = hashtagsFromUrl ? hashtagsFromUrl.split(',') : this.activeUser.activeHashtags || DEFAULT_HASHTAGS;
+        this.activeUser.activeHashtags = this.activeUser.activeHashtags.map(hashtag => hashtag.substring(0, 20));
         this.storeAllUsers();
       }
     }
