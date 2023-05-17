@@ -76,6 +76,10 @@ export class ItemsApiService extends ApiBase {
            const response = new ItemsResponse();
            response.items = dto.items?.map(item => Item.fromModel(item));
            response.availablePages = dto.availablePages;
+           if (dto.errorCode === 'HASHTAGS_CONTAIN_BAD_TERM') {
+             this.userService.setHashTags(DEFAULT_HASHTAGS);
+           }
+
 
            return response;
          }));
