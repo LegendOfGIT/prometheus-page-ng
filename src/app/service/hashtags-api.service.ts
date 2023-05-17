@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { endpoints } from '../../environments/endpoints';
 import { ApiBase } from './api-base';
 import { UserService } from './user.service';
@@ -11,14 +11,13 @@ import { Request } from 'express';
 import { DEFAULT_HASHTAGS } from '../model/user';
 import { map } from 'rxjs/operators';
 import { RankedCategoryDto} from '../model/dto/ranked-category-dto';
-import { ActivatedRoute } from '@angular/router';
+import {SuggestionItem} from '../model/suggestion-item';
+import {HashtagItemsResponseDto} from '../model/dto/hashtag-items-response-dto';
 
 @Injectable({
     providedIn: 'root'
 })
 export class HashTagsApiService extends ApiBase {
-    private route = inject(ActivatedRoute);
-
     constructor(
       private http: HttpClient,
       private userService: UserService,
@@ -43,6 +42,20 @@ export class HashTagsApiService extends ApiBase {
 
     private getActiveHashtags(): Array<string> {
       return this.userService.activeUser?.activeHashtags || DEFAULT_HASHTAGS;
+    }
+
+    getHashtags(hashtagsPattern: string): Observable<Array<SuggestionItem>> {
+      const url = this.getRequestBase() + this.get(
+        endpoints.hashtags,
+        {
+          hashtagsPattern
+        });
+
+      return this.http
+        .get<HashtagItemsResponseDto>(url)
+        .pipe(map(dto => dto.items
+          .map(item => new SuggestionItem(item.hashtag))
+          .splice(0, 10)));
     }
 
     getRankedCategoriesByHashtags(): Observable<Array<string>> {

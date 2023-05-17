@@ -71,8 +71,6 @@ export class NavigationService {
       parametersToKeep[keepQueryParameter] = this.getParameterFromUrl(keepQueryParameter);
     });
 
-    console.log(parametersToKeep);
-
     this.router.navigate(
       [],
       {

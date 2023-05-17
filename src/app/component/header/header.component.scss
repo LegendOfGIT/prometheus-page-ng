@@ -1,6 +1,12 @@
 @import 'src/styles/animations';
 @import 'src/app/variables';
 
+a  {
+  color: $content-color;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .header {
   backdrop-filter: blur(3px);
   background: $container-background-color-as-rgba;
@@ -176,5 +182,37 @@
     display:inline-flex;
     padding-left: 0.8em;
     padding-right: 1em;
+  }
+}
+
+.suggestion {
+  &__item {
+    border-top: 1px solid lightgray;
+    display: inline-flex;
+    padding-bottom: 0.50em;
+    padding-top: 0.50em;
+
+    &--column {
+      align-content: center;
+      display: inline-grid;
+    }
+
+    &--first {
+      border-top: unset;
+      padding-top: 1em;
+    }
+
+    &--go {
+      color: $content-color--active;
+      justify-content: center;
+    }
+
+    &--last {
+      padding-bottom: unset;
+    }
+
+    &--trend {
+      padding: 0.5em 1em 0.5em 0.5em;
+    }
   }
 }

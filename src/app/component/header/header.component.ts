@@ -9,6 +9,8 @@ import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {NavigationItem} from '../../model/navigation-item';
 import {Navigation} from '../../configurations/navigation';
 import {isPlatformBrowser} from '@angular/common';
+import {SuggestionItem, SuggestionItemMode} from '../../model/suggestion-item';
+import {HashTagsApiService} from '../../service/hashtags-api.service';
 
 @Component({
   selector: 'header',
@@ -23,6 +25,8 @@ export class HeaderComponent {
 
   public searchPatternControl: FormControl = new FormControl();
 
+  public suggestions: Array<SuggestionItem> = [];
+
   @ViewChild('searchPattern')
   private searchPatternElement: ElementRef | undefined = undefined;
 
@@ -35,6 +39,7 @@ export class HeaderComponent {
     private userService: UserService,
     private navigationService: NavigationService,
     private wishlistService: WishlistItemsApiService,
+    private hashtagsService: HashTagsApiService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.subscribeSearchPatternChanges();
@@ -57,9 +62,34 @@ export class HeaderComponent {
     }
 
     this.searchPatternControl.valueChanges
-      .pipe(debounceTime(10000))
-      .subscribe(() => this.searchNow());
+      .pipe(debounceTime(150))
+      .subscribe(() => {
+        this.suggestions = [];
+        const searchPattern = this.getParameterFromUrl('search');
+        const givenHashtag = this.searchPatternControl.value;
+        if (searchPattern === givenHashtag) {
+          return;
+        }
 
+        if (!givenHashtag || givenHashtag.length < 3) {
+          return;
+        }
+
+        this.hashtagsService.getHashtags(givenHashtag)
+          .subscribe(items => {
+            const searchItem = new SuggestionItem(givenHashtag);
+            searchItem.mode = SuggestionItemMode.SEARCH;
+            this.suggestions.push(searchItem);
+
+            if (!this.suggestions.find(suggestion => !suggestion.isSearchItem() && givenHashtag.toLowerCase() === suggestion.label.toLowerCase())) {
+              const newHashtagItem = new SuggestionItem(givenHashtag);
+              newHashtagItem.mode = SuggestionItemMode.NEW;
+              items = [newHashtagItem].concat(items);
+            }
+
+            this.suggestions = this.suggestions.concat(items);
+          });
+      });
   }
 
   public searchNow(): void {
@@ -97,6 +127,16 @@ export class HeaderComponent {
 
   public isModuleActive(module: Module): boolean {
     return module === this.navigationService.activeModule;
+  }
+
+  public getSuggestionLink(item: SuggestionItem): string {
+    if (!this.isOnClientSide()) {
+      return '';
+    }
+
+    const url = new URL(window.location.href.replace(/\?.*/, ''));
+    url.searchParams.set(item.isSearchItem() ? 'search' : 'hashtags', item.label);
+    return url.toString();
   }
 
   get categoryItems(): NavigationItem[] {
