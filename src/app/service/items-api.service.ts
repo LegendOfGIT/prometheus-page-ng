@@ -33,7 +33,7 @@ export class ItemsApiService extends ApiBase {
     }
 
     private getActiveHashtags(): Array<string> {
-      return this.userService.activeUser?.activeHashtags || DEFAULT_HASHTAGS;
+      return this.userService.getHashtags();
     }
 
     private getUserAgent(): string {

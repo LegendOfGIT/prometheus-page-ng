@@ -9,7 +9,7 @@ import {ItemsApiService} from 'src/app/service/items-api.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {TrackingService} from 'src/app/service/tracking.service';
 import {TranslationService} from '../../service/translation.service';
-import {Title} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 import {NavigationItem} from '../../model/navigation-item';
 import {Navigation} from '../../configurations/navigation';
 import {ItemDisplayMode} from '../item/item.component';
@@ -35,6 +35,7 @@ export class ItemsComponent implements OnInit {
     public ITEM_MODE_CATEGORY: ItemDisplayMode = ItemDisplayMode.CATEGORY;
 
     private isCategoryHashtags = false;
+    private hashtagsFromPath: string = '';
 
     constructor(
       private router: Router,
@@ -43,7 +44,8 @@ export class ItemsComponent implements OnInit {
       private navigationService: NavigationService,
       private trackingService: TrackingService,
       private userService: UserService,
-      translationService: TranslationService,
+      private metaService: Meta,
+      private translationService: TranslationService,
       titleService: Title,
       @Inject(DOCUMENT) private doc: Document,
       @Inject(PLATFORM_ID) private platformId: Object
@@ -51,13 +53,19 @@ export class ItemsComponent implements OnInit {
 
       route.paramMap.subscribe((params) => {
         const navigationIdLevelA = params.get('navigationIdLevelA') || '';
+        const navigationIdLevelB = params.get('navigationIdLevelB') || '';
         this.navigationService.setActiveNavigationLevelIds([
           navigationIdLevelA,
-          params.get('navigationIdLevelB') || '',
+          navigationIdLevelB,
           params.get('navigationIdLevelC') || ''
         ]);
 
         this.isCategoryHashtags = 'hashtags' === navigationIdLevelA;
+        this.hashtagsFromPath = this.isCategoryHashtags ? navigationIdLevelB : '';
+        if (this.hashtagsFromPath) {
+          this.userService.setHashTags(this.hashtagsFromPath.split(','));
+        }
+
         this.navigationService.activeModule = this.isCategoryHashtags ? Module.HASHTAGS : Module.ITEMS;
       });
 
@@ -122,6 +130,11 @@ export class ItemsComponent implements OnInit {
           link.setAttribute('rel', 'canonical');
           const pageUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
           link.setAttribute('href', pageUri);
+
+          const sloganId = Navigation.getTeaserIdForNavigationItem(this.navigationService.activeNavigationItem);
+          if (sloganId) {
+            this.metaService.updateTag({ name: 'description', content: this.translationService.getTranslations()[sloganId] });
+          }
         }
     }
 

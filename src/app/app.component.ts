@@ -8,6 +8,8 @@ import { GdprService } from './service/gdpr.service';
 import { GdprDecision } from './model/gdpr-settings';
 import { ConsentService } from './service/consent-service';
 import { isPlatformBrowser } from '@angular/common';
+import {NavigationItem} from './model/navigation-item';
+import {Navigation} from './configurations/navigation';
 
 @Component({
   selector: 'app-root',
@@ -63,4 +65,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
       .subscribe((items) => { this.wishlistItemsService.items = items || []; });
   }
 
+  get deepestLevelNavigationItems(): Array<NavigationItem> {
+    return Navigation.getDeepestLevelItems();
+  }
 }

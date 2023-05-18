@@ -269,6 +269,10 @@ export class Navigation {
     return rootItems;
   }
 
+  public static getDeepestLevelItems(): Array<NavigationItem> {
+    return this.ITEMS.filter(item => 0 === (item.pathParts || []).filter(pathPart => '' === pathPart).length);
+  }
+
   public static getNavigationItemByToId(toId: string): NavigationItem | undefined {
     const items = this.ITEMS.filter(item => toId === item.toId);
     return items && items.length ? items[0] : undefined;
@@ -281,5 +285,29 @@ export class Navigation {
 
     return this.ITEMS
       .filter(navigationItem => item.toId === navigationItem.fromId);
+  }
+
+  public static getTeaserIdForNavigationItem(item: NavigationItem | undefined): string {
+    if (!item) {
+      return '';
+    }
+
+    if (item.hasTeaser) {
+      return `NAVIGATION_TEASER_${item.toId}`;
+    }
+
+    let levelItem = this.ITEMS.find(i => i.toId === item.fromId);
+    if (levelItem?.hasTeaser) {
+      return `NAVIGATION_TEASER_${levelItem.toId}`;
+    }
+
+    while (levelItem && levelItem.fromId !== 'ALL') {
+      levelItem = this.ITEMS.find(i => i.toId === levelItem?.fromId);
+      if (levelItem?.hasTeaser) {
+        return `NAVIGATION_TEASER_${levelItem.toId}`;
+      }
+    }
+
+    return '';
   }
 }

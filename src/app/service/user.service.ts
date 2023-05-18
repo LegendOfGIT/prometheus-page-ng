@@ -8,7 +8,6 @@ import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.serv
 import {DEFAULT_HASHTAGS, User} from 'src/app/model/user';
 import { StorageService } from './storage.service';
 import {isPlatformBrowser, isPlatformServer} from '@angular/common';
-import {ActivatedRoute, Router} from "@angular/router";
 
 @Injectable({
     providedIn: 'root'
@@ -20,6 +19,7 @@ export class UserService {
     private destroyedService$ = new Subject();
     private _anonymousUser: User | null = null;
     private _activeUser: User | null = null;
+    private _activeHashtags: Array<string> | undefined;
 
     constructor(private wishlistItemsService: WishlistItemsApiService,
                 private storageService: StorageService,
@@ -99,8 +99,13 @@ export class UserService {
     }
 
     public setHashTags(hashtags: Array<string>) {
+      this._activeHashtags = hashtags;
       this.activeUser!.activeHashtags = hashtags;
       this.storeAllUsers();
+    }
+
+    public getHashtags(): Array<string> {
+      return this.activeUser?.activeHashtags || this._activeHashtags || DEFAULT_HASHTAGS;
     }
 
     get activeUser(): User | null {

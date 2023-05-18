@@ -7,6 +7,10 @@
     <input #gdpr (click)="gdprDialog.showModal();" style="display: none;" />
 
     <router-outlet></router-outlet>
+
+    <a *ngFor="let deepestNavigationItem of deepestLevelNavigationItems" href="/{{deepestNavigationItem.pathParts.join('/')}}" class="bot__link">
+      {{ 'NAVIGATION_' + deepestNavigationItem.toId | translate: 'de_DE' }} / {{ 'NAVIGATION_' + deepestNavigationItem.toId | translate: 'en_US' }}
+    </a>
   </div>
   <footer></footer>
 </div>
