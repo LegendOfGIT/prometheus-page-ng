@@ -40,6 +40,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_BEAUTY_CARE_SKIN_CARE_KIDS: 'Kinderhautpflege',
       NAVIGATION_COSMETICS: 'Kosmetik',
       NAVIGATION_COSMETICS_HAIR: 'Haar',
+      NAVIGATION_COSMETICS_HAIR_CARE: 'Haar Pflege',
       NAVIGATION_COSMETICS_HAIR_STYLING: 'Haar Styling',
       NAVIGATION_COSMETICS_MAKEUP: 'Makeup',
       NAVIGATION_COSMETICS_MAKEUP_EYES: 'Augen Makeup',
