@@ -75,6 +75,23 @@
       </div>
     </div>
   </div>
+
+  <div *ngIf="item?.size || item?.sizes" class="row">
+    <div  class="col-12 productDetails productDetails--left">
+      <div class="productInformation productInformation--p">
+        <span *ngIf="item?.size">
+          {{ 'PRODUCT_DESCRIPTION_SHOWN_PRODUCT_SIZE' | translate }} {{item?.size}}.<br/>
+        </span>
+        <span *ngIf="productSizes">
+          <span *ngIf="!item?.size">{{ 'PRODUCT_DESCRIPTION_SHOWN_PRODUCT_SIZES' | translate }}:<br/> {{productSizes}}</span>
+          <span *ngIf="item?.size">
+            {{ 'PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES' | translate }} {{productSizes}} {{ 'PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES_SUFFIX' | translate }}.
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+
   <div class="row productInformation__share">
     <div class="col-12 productDetails">
       <div class="productInformation">

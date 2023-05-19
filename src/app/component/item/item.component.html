@@ -30,10 +30,12 @@
       </div>
     </a>
 
-    <div *ngIf="showHashtags" class="informationItem__hashtagsWrapper">
-      <div class="button informationItem__hashtag" *ngFor="let hashtag of item.hashtags" (click)="visitHashtag(hashtag)">
-          #{{hashtag}}
+    <a *ngFor="let hashtag of item.hashtags" href="/hashtags/{{hashtag}}">
+      <div *ngIf="showHashtags" class="informationItem__hashtagsWrapper">
+        <div class="button informationItem__hashtag">
+            #{{hashtag}}
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 </div>

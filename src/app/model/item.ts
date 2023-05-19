@@ -124,8 +124,6 @@ export class Item extends BaseModel {
         new ItemDetails('FIT', item.fit),
         new ItemDetails('TYPE', item.type),
         new ItemDetails('TYPES', item.types),
-        new ItemDetails('SIZE', item.size),
-        new ItemDetails('SIZES', item.sizes),
         new ItemDetails('COLORS', item.colors),
         new ItemDetails('MATERIAL', item.material),
         new ItemDetails('INNER_MATERIAL', item.innerMaterial),

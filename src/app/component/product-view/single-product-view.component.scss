@@ -64,6 +64,10 @@
   &__wrapper {
     width: 100%;
   }
+
+  &--left {
+    justify-content: unset;
+  }
 }
 
 .productInformation {
@@ -78,6 +82,10 @@
 
   &--last {
     padding-bottom: 3em;
+  }
+
+  &--p {
+    padding-top: 1em;
   }
 
   &__header {
