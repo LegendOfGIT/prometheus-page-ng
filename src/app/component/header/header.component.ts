@@ -83,7 +83,7 @@ export class HeaderComponent {
             searchItem.mode = SuggestionItemMode.SEARCH;
             this.suggestions.push(searchItem);
 
-            if (!this.suggestions.find(suggestion => !suggestion.isSearchItem() && givenPattern.toLowerCase() === suggestion.label.toLowerCase())) {
+            if (!items.find(suggestion => !suggestion.isSearchItem() && givenPattern.toLowerCase() === suggestion.label.toLowerCase())) {
               const newHashtagItem = new SuggestionItem(givenPattern.split(' ').join('').substring(0, 20));
               newHashtagItem.mode = SuggestionItemMode.NEW;
               items = [newHashtagItem].concat(items);
@@ -134,6 +134,10 @@ export class HeaderComponent {
   public getSuggestionLink(item: SuggestionItem): string {
     if (!this.isOnClientSide()) {
       return '';
+    }
+
+    if (this.isHashtagsModule) {
+      return '/hashtags/' + item.label;
     }
 
     const url = new URL(window.location.href.replace(/\?.*/, ''));
