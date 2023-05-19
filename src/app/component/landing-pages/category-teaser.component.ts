@@ -116,11 +116,11 @@ export class CategoryTeaserComponent implements OnInit {
     if (searchParameter) { parameters.search = searchParameter; }
 
     const hashtags = this.userService.activeUser?.activeHashtags || [];
-    if (hashtags.length) { parameters.hashtags = hashtags.join(','); }
+    if (!this.showHashtags && hashtags.length) { parameters.hashtags = hashtags.join(','); }
 
     const queryParameters = Object.keys(parameters).length ? `?${Object.keys(parameters).map(key => `${key}=${parameters[key]}`).join('&')}` : '';
     if (this.showHashtags) {
-      return '/hashtags' + queryParameters;
+      return '/hashtags/' + this.userService.getHashtags().join(',') + queryParameters;
     }
 
     return '/' + [(this.navigationItem?.pathParts || []).filter(p => p).join('/')] + queryParameters;
