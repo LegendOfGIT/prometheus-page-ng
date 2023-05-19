@@ -191,6 +191,8 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_TEASER_ELECTRONICS_AND_COMPUTERS: 'Halte dich und deine lieben auf dem Laufenden! Hier findest du Fernseher, Haushaltsgeräte und vieles mehr.',
       NAVIGATION_TEASER_FASHION: 'Entdecke Jeans, Pullover, Taschen, Schmuck und deinen ganz eigenen Style!',
       NAVIGATION_TEASER_GROCERIES: 'Du möchtest dich bewusst ernähren oder einfach nur genießen? Hier findest du eine große Auswahl an Lebensmitteln.',
+      NAVIGATION_TEASER_HASHTAG: 'Passende Produkte zum Hashtag-Thema {hashtags} findet ihr hier',
+      NAVIGATION_TEASER_HASHTAGS: 'Passende Produkte zu den Hashtag-Themen {hashtags} findet ihr hier',
       NAVIGATION_TEASER_HOME: 'Mein zu Hause, mein Reich! Alles rund um dein Haus und dein zu Hause',
       NAVIGATION_TEASER_KIDS: 'Kinder erleben jeden Tag Abenteuer! Um diese noch spannender zu machen gibt es hier alles was Kinder zum spielen und lachen brauchen',
       NAVIGATION_TEASER_LIGHTING: 'Es werde Licht! Erleuchte deinen Alltag mit diesen tollen Produkten',

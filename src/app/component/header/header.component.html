@@ -15,7 +15,7 @@
               <span class="header__titleSlogan"> {{'NAVIGATION_SLOGAN_' + (activeNavigationItem?.hasSlogan ? activeNavigationItem?.toId || 'ALL' : 'ALL') | translate: 'en_US' }}!</span>
             </span>
             <div>
-              <span class="header__title"> {{ activeHashtags }}</span>
+              <span class="header__title"> {{ activeHashtags.join(' ') }}</span>
             </div>
 
           </a>

@@ -100,7 +100,11 @@ export class UserService {
 
     public setHashTags(hashtags: Array<string>) {
       this._activeHashtags = hashtags;
-      this.activeUser!.activeHashtags = hashtags;
+
+      if (this.activeUser) {
+        this.activeUser.activeHashtags = hashtags;
+      }
+
       this.storeAllUsers();
     }
 

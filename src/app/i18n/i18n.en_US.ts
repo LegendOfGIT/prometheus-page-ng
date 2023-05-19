@@ -189,6 +189,8 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_TEASER_ELECTRONICS_AND_COMPUTERS: 'Keep yourself and your loved ones up to date! You can find TVs, Household devices and many more here.',
       NAVIGATION_TEASER_FASHION: 'Discover Jeans, Sweatshirts, Bags, Jewelery and your very own style!',
       NAVIGATION_TEASER_GROCERIES: 'You want to eat consciously or just enjoy? Here you will find a large selection of groceries.',
+      NAVIGATION_TEASER_HASHTAG: 'You can find suitable products of the hashtag topic {hashtags} here',
+      NAVIGATION_TEASER_HASHTAGS: 'You can find suitable products of the hashtag topics {hashtags} here',
       NAVIGATION_TEASER_HOME: 'My home, my kingdom! Everything about your house and your home',
       NAVIGATION_TEASER_KIDS: 'Children experience adventures every day! To make them even more exciting, here is everything they need to play and laugh',
       NAVIGATION_TEASER_LIGHTING: 'Let there be light! Enlighten your everyday life with these great products',

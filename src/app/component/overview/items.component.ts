@@ -92,6 +92,10 @@ export class ItemsComponent implements OnInit {
             itemsResponse => {
               this.availablePages = itemsResponse?.availablePages;
               this.items = itemsResponse?.items;
+
+              (this.items || []).filter(item => item?.titleImage).splice(0, 3).forEach(item => {
+                this.metaService.addTag({ name: 'og:image', content: item?.titleImage || '' });
+              });
             });
 
         return;
@@ -108,6 +112,10 @@ export class ItemsComponent implements OnInit {
           itemsResponse => {
             this.availablePages = itemsResponse?.availablePages;
             this.items = itemsResponse?.items;
+
+            (this.items || []).filter(item => item?.titleImage).splice(0, 3).forEach(item => {
+              this.metaService.addTag({ name: 'og:image', content: item?.titleImage || '' });
+            });
           });
 
       this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map(navigationItem => navigationItem.toId))
@@ -131,9 +139,16 @@ export class ItemsComponent implements OnInit {
           const pageUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
           link.setAttribute('href', pageUri);
 
-          const sloganId = Navigation.getTeaserIdForNavigationItem(this.navigationService.activeNavigationItem);
-          if (sloganId) {
-            this.metaService.updateTag({ name: 'description', content: this.translationService.getTranslations()[sloganId] });
+          const hashtags = this.userService.getHashtags().map(ht => '#' + ht);
+          const teaserId = this.isCategoryHashtags
+            ? hashtags.length > 1 ? 'NAVIGATION_TEASER_HASHTAGS' : 'NAVIGATION_TEASER_HASHTAG'
+            : Navigation.getTeaserIdForNavigationItem(this.navigationService.activeNavigationItem);
+
+          if (teaserId) {
+            this.metaService.updateTag({
+              name: 'description',
+              content: this.translationService.getTranslations()[teaserId].replace('{hashtags}', hashtags.join(' '))
+            });
           }
         }
     }
