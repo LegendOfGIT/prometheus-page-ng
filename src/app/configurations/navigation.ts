@@ -121,6 +121,21 @@ export class Navigation {
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_FULLYAUTOMATICCOFFEEMACHINES',
+      ['electronics-and-computers', 'home', 'fully-automatic-coffee-machines']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_INKJETPRINTER',
+      ['electronics-and-computers', 'home', 'inkjet-printers']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_LASERPRINTER',
+      ['electronics-and-computers', 'home', 'laser-printers']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_TVS',
       ['electronics-and-computers', 'home', 'tvs']
     ),
