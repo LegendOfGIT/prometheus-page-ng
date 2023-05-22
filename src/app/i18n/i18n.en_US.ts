@@ -16,6 +16,8 @@ export class I18nEnUs implements I18nInterface {
       MORE_OFFERS: 'More offers',
       NAVIGATION_ALL: 'all products',
       NAVIGATION_BEAUTY_CARE: 'beauty & care',
+      NAVIGATION_BEAUTY_CARE_HEALTH: 'health',
+      NAVIGATION_BEAUTY_CARE_HEALTH_PAINKILLERS: 'painkillers',
       NAVIGATION_BEAUTY_CARE_SKIN_CARE: 'skin-care',
       NAVIGATION_BEAUTY_CARE_SKIN_CARE_FACE_CARE: 'face-care',
       NAVIGATION_BEAUTY_CARE_SKIN_CARE_KIDS: 'kids skin-care',
