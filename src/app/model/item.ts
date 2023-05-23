@@ -17,6 +17,7 @@ export class Item extends BaseModel {
     amountOfPages: number = 0;
     amountOfSongs: number = 0;
     author: string = '';
+    brand: string = '';
     colors: string = '';
     coverType: string = '';
     diameterInInch: number = 0;
@@ -115,6 +116,7 @@ export class Item extends BaseModel {
         new ItemDetails('INTERPRET', item.interpret),
         new ItemDetails('ISBN', item.isbn),
         new ItemDetails('PUBLISHER', item.publisher),
+        new ItemDetails('MAKE', item.brand),
         new ItemDetails('MAKE', item.make),
         new ItemDetails('AMOUNT_OF_MEDIA', item.amountOfMedia),
         new ItemDetails('AMOUNT_OF_PAGES', item.amountOfPages),

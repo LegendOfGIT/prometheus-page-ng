@@ -2,8 +2,13 @@
 @import 'src/styles/controls';
 
 .content {
+  &__backToOverview {
+    margin-bottom: 2em;
+  }
+
   &--center {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
   }
 }
@@ -103,6 +108,10 @@
     color: $content-color;
     width: 20em;
 
+    @media screen and (min-width: 576px) {
+      width: 22em;
+    }
+
     &:hover {
       color: $container-background-color;
     }
@@ -142,7 +151,7 @@
 
 .singleProductView {
   &__backToOverview {
-    margin-bottom: 2em;
+    margin: 0.25em;
   }
 
   &__content {

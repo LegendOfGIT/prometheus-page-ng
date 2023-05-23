@@ -233,11 +233,29 @@ export class SingleProductViewComponent implements OnInit {
     return `/${(this.navigationItemToCategory?.pathParts || [''])[0]}${hashtags ? `?hashtags=${hashtags.join(',')}` : ''}`;
   }
 
+  get backToHashtagsUrl(): string {
+    const hashtags = this.userService.activeUser?.activeHashtags || [];
+    if (!hashtags.length) {
+      return '';
+    }
+
+    return `/hashtags/${hashtags.join(',')}`;
+  }
+
   get productSizes(): string {
     if (!(this.item?.sizes || []).length) {
       return '';
     }
 
     return (this.item?.sizes || '').split(',').filter(size => this.item?.size !== size as string).join(', ');
+  }
+
+  get activeHashtags(): string {
+    const hashtags = this.userService.activeUser?.activeHashtags || [];
+    if (!hashtags.length) {
+      return '';
+    }
+
+    return hashtags.join(' ');
   }
 }
