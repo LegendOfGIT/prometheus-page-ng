@@ -320,13 +320,16 @@ export class I18nDeDe implements I18nInterface {
         '    Viel wichtiger ist, was wir nicht über dich wissen und auch nicht wissen wollen.' +
         '</p>' +
         '<p>' +
-        '    Wir wissen nicht wie du heißt, wo du wohnst, auf welchen Seiten du bereitsss was getan hast,' +
-        '    oder auf welchen Seiten du weiter unterwegs sein wirst.' +
+        '    Wir wissen nicht ... <br/>' +
+        '    ... wie du heißt.<br/>' +
+        '    ... wo du wohnst.<br/>' +
+        '    ... auf welchen Seiten du bereits was getan hast<br/>' +
+        '    ... auf welchen Seiten du weiter unterwegs sein wirst.' +
         '</p>' +
         '<p>' +
-        '    All diese Informationen über dich brauchen wir nicht um zu wissen, das du hier bist um unter' +
-        '    tausenden Produkten da draußen die Produkte zu finden die du, deine Familie, deine Freunde, Kollegen, ...' +
-        '    brauchst um das Leben ein klein wenig schöner zu machen.' +
+        '    All diese Informationen über dich brauchen wir nicht, um unter tausenden Produkten da draußen<br/>' +
+        '    die zu finden die du, deine Familie, deine Freunde, Kollegen, ... brauchen<br/>' +
+        '    um das Leben ein klein wenig schöner zu machen.' +
         '</p>' +
         '<p>' +
         '    Viel Spaß beim stöbern!' +
@@ -334,12 +337,11 @@ export class I18nDeDe implements I18nInterface {
         '</p>',
       WHY_WEWANNA_WHAT_IS_IN_FOR_YOU: '<h4>Was hat WeWanna davon?</h4>' +
         '<p>' +
-        '    Sobald du dich für den Besuch einer der angeschlossenen Shop-Seiten (mytoys, amazon, dress-for-less, ...)' +
-        '    entscheidest und dort eines der hier gezeigten Produkte kaufst, erhalten wir als Vermittler dieses Kaufes' +
-        '    eine kleine Provision.' +
+        '    Sobald du dich für den Besuch einer der angeschlossenen Shop-Seiten (mytoys, amazon, dress-for-less, ...) entscheidest<br/>' +
+        '    und dort eines der hier gezeigten Produkte kaufst, erhalten wir als Vermittler dieses Kaufes eine kleine Provision.' +
         '</p>' +
         '<p>' +
-        '    Wir wissen in diesem Fall ausschließlich das die Shop-Seite besucht und welches Produkt dort zu welcher Zeit gekauft wurde.' +
+        '    Wir wissen in diesem Fall ausschließlich das die Shop-Seite besucht und welches Produkt dort zu welcher Zeit gekauft wurde.<br/>' +
         '    Rückschlüsse auf dich als Person und deine persönlichen Daten sind damit nicht möglich.' +
         '</p>'
     }

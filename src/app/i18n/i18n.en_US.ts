@@ -318,10 +318,14 @@ export class I18nEnUs implements I18nInterface {
         '   Much more important is what we don\'t know about you and don\'t want to know.' +
         '</p>' +
         '<p>' +
-        '   We do not know your name, where you live, what you have done on which pages or which pages you will visit in the future' +
-        '   We don´t need all this information to know that you are here ' +
-        '   to find the products you, your family, your friends, colleagues, ...' +
-        '   need to make life a little nicer.' +
+        '   We do not know ...<br/>' +
+        '   ... your name<br/>' +
+        '   ... where you live<br/>' +
+        '   ... what you have done on which pages<br/>' +
+        '   ... which pages you will visit in the future<br/><br/>' +
+        '   We don´t need all this information to know that you are here to find<br/>' +
+        '   the products you, your family, your friends, colleagues, ... need<br/>' +
+        '   to make life a little nicer.' +
         '</p>' +
         '<p>' +
         '   Enjoy your day!' +
@@ -329,11 +333,12 @@ export class I18nEnUs implements I18nInterface {
         '</p>',
       WHY_WEWANNA_WHAT_IS_IN_FOR_YOU: '<h4>What´s in for WeWanna?</h4>' +
         '<p>' +
-        '   As soon as you decide to visit one of the connected shop pages (mytoys, amazon, dress-for-less, ...)' +
+        '   As soon as you decide to visit one of the connected shop pages (mytoys, amazon, dress-for-less, ...)<br/>' +
         '   and also buy one of the products shown here, we receive a small intermediary commission.' +
         '</p>' +
         '<p>' +
-        '   In this case, we only know that the shop page was visited and which product was bought there at which point in time.' +
+        '   In this case, we only know that the shop page was visited and which product was bought<br/> ' +
+        '   at which point in time.<br/>' +
         '   We are not able to draw any conclusion about you as a person and your personal data.' +
         '</p>'
     }
