@@ -44,7 +44,8 @@
         #searchPattern
         autofocus
         tabIndex="0"
-        type="text"
+        type="search"
+        (search)="searchNow()"
         class="searchbar__input"
         placeholder="{{'iAmSearchingFor'|translate}}"
         [formControl]="searchPatternControl"
