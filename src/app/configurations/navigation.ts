@@ -204,6 +204,9 @@ export class Navigation {
     new NavigationItem('ALL', 'BEAUTY_CARE', ['beauty-and-care', '', ''], 8)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_FRAGRANCES', ['beauty-and-care', 'fragrances', '']),
+    new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_WOMEN', ['beauty-and-care', 'fragrances', 'women']),
+
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_HEALTH', ['beauty-and-care', 'health', '']),
     new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_PAINKILLERS', ['beauty-and-care', 'health', 'painkillers']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SKIN_CARE', ['beauty-and-care', 'skin-care', '']),
@@ -247,8 +250,6 @@ export class Navigation {
     new NavigationItem('COSMETICS', 'COSMETICS_MAKEUP', ['cosmetics', 'makeup', '']),
     new NavigationItem('COSMETICS_MAKEUP', 'COSMETICS_MAKEUP_EYES', ['cosmetics', 'makeup', 'eyes']),
     new NavigationItem('COSMETICS_MAKEUP', 'COSMETICS_MAKEUP_LIPS', ['cosmetics', 'makeup', 'lips']),
-    new NavigationItem('COSMETICS', 'COSMETICS_WOMEN', ['cosmetics', 'women', '']),
-    new NavigationItem('COSMETICS_WOMEN', 'COSMETICS_WOMEN_FRAGRANCES', ['cosmetics', 'women', 'fragrances']),
     new NavigationItem('COSMETICS', 'COSMETICS_MEN', ['cosmetics', 'men', '']),
     new NavigationItem('COSMETICS_MEN', 'COSMETICS_MEN_FRAGRANCES', ['cosmetics', 'men', 'fragrances']),
 
