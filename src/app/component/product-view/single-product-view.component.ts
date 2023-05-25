@@ -102,6 +102,8 @@ export class SingleProductViewComponent implements OnInit {
     this.metaService.updateTag({ name: 'keywords', content: this.item?.seoKeywords || (this.item?.title || '') });
     this.metaService.updateTag({ name: 'og:title', content: this.item?.title || '' });
     this.metaService.updateTag({ name: 'og:image', content: this.item?.titleImage || '' });
+    this.metaService.addTag({ name: 'og:image:height', content: '450' });
+    this.metaService.addTag({ name: 'og:image:width', content: '450' });
     this.metaService.updateTag({ name: 'og:type', content: 'product' });
 
     const link: HTMLLinkElement = this.doc.createElement('link');

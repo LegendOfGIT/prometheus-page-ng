@@ -95,6 +95,8 @@ export class ItemsComponent implements OnInit {
 
               (this.items || []).filter(item => item?.titleImage).splice(0, 3).forEach(item => {
                 this.metaService.addTag({ name: 'og:image', content: item?.titleImage || '' });
+                this.metaService.addTag({ name: 'og:image:height', content: '450' });
+                this.metaService.addTag({ name: 'og:image:width', content: '450' });
               });
             });
 
@@ -115,6 +117,8 @@ export class ItemsComponent implements OnInit {
 
             (this.items || []).filter(item => item?.titleImage).splice(0, 3).forEach(item => {
               this.metaService.addTag({ name: 'og:image', content: item?.titleImage || '' });
+              this.metaService.addTag({ name: 'og:image:height', content: '450' });
+              this.metaService.addTag({ name: 'og:image:width', content: '450' });
             });
           });
 
