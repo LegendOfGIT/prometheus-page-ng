@@ -207,9 +207,14 @@ export class Navigation {
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_FRAGRANCES', ['beauty-and-care', 'fragrances', '']),
     new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_MEN', ['beauty-and-care', 'fragrances', 'men']),
     new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_WOMEN', ['beauty-and-care', 'fragrances', 'women']),
-
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_HAIR', ['beauty-and-care', 'hair', '']),
+    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_CARE', ['beauty-and-care', 'hair', 'care']),
+    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_STYLING', ['beauty-and-care', 'hair', 'styling']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_HEALTH', ['beauty-and-care', 'health', '']),
     new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_PAINKILLERS', ['beauty-and-care', 'health', 'painkillers']),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_MAKEUP', ['beauty-and-care', 'makeup', '']),
+    new NavigationItem('BEAUTY_CARE_MAKEUP', 'BEAUTY_CARE_MAKEUP_EYES', ['beauty-and-care', 'makeup', 'eyes']),
+    new NavigationItem('BEAUTY_CARE_MAKEUP', 'BEAUTY_CARE_MAKEUP_LIPS', ['beauty-and-care', 'makeup', 'lips']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SKIN_CARE', ['beauty-and-care', 'skin-care', '']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_FACE_CARE', ['beauty-and-care', 'skin-care', 'face-care']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_KIDS', ['beauty-and-care', 'skin-care', 'kids']),
@@ -241,16 +246,6 @@ export class Navigation {
     new NavigationItem('HOME', 'HOME_TOOLS', ['home', 'tools', '']),
     new NavigationItem('HOME_TOOLS', 'HOME_TOOLS_DRILLINGMACHINES', ['home', 'tools', 'drilling-machines']),
     new NavigationItem('HOME_TOOLS', 'HOME_TOOLS_ELECTRICSAWS', ['home', 'tools', 'electric-saws']),
-
-    new NavigationItem('ALL', 'COSMETICS', ['cosmetics', '', ''], 9)
-      .setHasSlogan(true)
-      .setHasTeaser(true),
-    new NavigationItem('COSMETICS', 'COSMETICS_HAIR', ['cosmetics', 'hair', '']),
-    new NavigationItem('COSMETICS_HAIR', 'COSMETICS_HAIR_CARE', ['cosmetics', 'hair', 'care']),
-    new NavigationItem('COSMETICS_HAIR', 'COSMETICS_HAIR_STYLING', ['cosmetics', 'hair', 'styling']),
-    new NavigationItem('COSMETICS', 'COSMETICS_MAKEUP', ['cosmetics', 'makeup', '']),
-    new NavigationItem('COSMETICS_MAKEUP', 'COSMETICS_MAKEUP_EYES', ['cosmetics', 'makeup', 'eyes']),
-    new NavigationItem('COSMETICS_MAKEUP', 'COSMETICS_MAKEUP_LIPS', ['cosmetics', 'makeup', 'lips']),
 
     new NavigationItem('ALL', 'VEHICLES', ['vehicles', '', ''], 11)
       .setHasSlogan(true)
