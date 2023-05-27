@@ -80,6 +80,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_GROCERIES_FOOD: 'Essen',
       NAVIGATION_GROCERIES_FOOD_DRYFRUITS: 'Trockenfrüchte',
       NAVIGATION_GROCERIES_FOOD_NUTS: 'Nüsse',
+      NAVIGATION_GROCERIES_FOOD_OILSVINEGAR: 'Öl & Essig',
       NAVIGATION_GROCERIES_FOOD_SAUCES: 'Pesto & Soßen',
       NAVIGATION_GROCERIES_FOOD_SPICES: 'Gewürze',
       NAVIGATION_HIGHLIGHTS: 'Highlights',

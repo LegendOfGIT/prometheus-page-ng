@@ -80,6 +80,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_GROCERIES_FOOD: 'food',
       NAVIGATION_GROCERIES_FOOD_DRYFRUITS: 'dry fruits',
       NAVIGATION_GROCERIES_FOOD_NUTS: 'nuts',
+      NAVIGATION_GROCERIES_FOOD_OILSVINEGAR: 'oils and vinegar',
       NAVIGATION_GROCERIES_FOOD_SAUCES: 'pesto and sauces',
       NAVIGATION_GROCERIES_FOOD_SPICES: 'spices',
       NAVIGATION_HOME: 'home',
