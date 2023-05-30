@@ -54,3 +54,12 @@
     </div>
   </div>
 </div>
+
+<div *ngFor="let seoKey of ['A', 'B', 'C', 'D', 'E']">
+  <div *ngIf="seoHeader(seoKey)" class="container informationItems__content">
+    <div  class="col-12">
+      <h2>{{ seoHeader(seoKey) }}</h2>
+      <p [innerHTML]="seoContent(seoKey)"></p>
+    </div>
+  </div>
+</div>

@@ -177,6 +177,14 @@ export class SingleProductViewComponent implements OnInit {
     this.showFullDescription = !this.showFullDescription;
   }
 
+  public seoHeader(numberKey: string): string {
+    return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.activeNavigationItem?.toId || ''}_HEADER_${numberKey}`] || '';
+  }
+
+  public seoContent(numberKey: string): string {
+    return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.activeNavigationItem?.toId || ''}_CONTENT_${numberKey}`] || '';
+  }
+
   get itemWithLowestPrice(): CorrespondingItem | null {
     if (!this.item) {
       return null;

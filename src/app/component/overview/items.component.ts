@@ -170,6 +170,14 @@ export class ItemsComponent implements OnInit {
         return item ? item : null;
     }
 
+    public seoHeader(numberKey: string): string {
+      return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.navigationService.activeNavigationItem?.toId || ''}_HEADER_${numberKey}`] || '';
+    }
+
+    public seoContent(numberKey: string): string {
+      return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.navigationService.activeNavigationItem?.toId || ''}_CONTENT_${numberKey}`] || '';
+    }
+
     get isNextPageNotLastPage(): boolean {
       if (!this.currentPage || !this.availablePages) {
         return false;
@@ -189,4 +197,8 @@ export class ItemsComponent implements OnInit {
 
         return this.subNavigationItems.length > 1;
     }
- }
+
+    get activeNavigationItemId(): string {
+      return this.navigationService.activeNavigationItem?.toId || '';
+    }
+}

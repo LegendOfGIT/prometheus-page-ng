@@ -127,7 +127,7 @@
           </div>
           <div *ngFor="let detail of getItemDetails(item)" class="productDetails__content">
             <div class="productDetails__label">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</div>
-            <div>{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate }}</div>
+            <div>{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate : '' : ' ' }}</div>
           </div>
         </div>
         &nbsp;
@@ -146,4 +146,14 @@
       ></category-teaser>
     </div>
   </section>
+
+  <div *ngFor="let seoKey of ['A', 'B', 'C', 'D', 'E']">
+    <div *ngIf="seoHeader(seoKey)" class="container seo__wrapper">
+      <div class="col-12 seo__content">
+        <h2>{{ seoHeader(seoKey) }}</h2>
+        <p [innerHTML]="seoContent(seoKey)"></p>
+      </div>
+    </div>
+  </div>
+
 </div>

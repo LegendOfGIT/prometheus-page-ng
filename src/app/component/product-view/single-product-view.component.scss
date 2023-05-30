@@ -182,6 +182,17 @@
   }
 }
 
+.seo {
+  &__content {
+    color: $content-color;
+  }
+
+  &__wrapper {
+    display: inherit;
+    text-align: start;
+  }
+}
+
 .slick-slide {
   display: flex;
   justify-content: center;
