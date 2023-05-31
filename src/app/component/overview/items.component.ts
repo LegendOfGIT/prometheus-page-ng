@@ -170,12 +170,12 @@ export class ItemsComponent implements OnInit {
         return item ? item : null;
     }
 
-    public seoHeader(numberKey: string): string {
-      return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.navigationService.activeNavigationItem?.toId || ''}_HEADER_${numberKey}`] || '';
+    public seoHeader(navigationId: string, numberKey: string): string {
+      return this.translationService.getTranslations('')[`NAVIGATION_SEO_${navigationId}_HEADER_${numberKey}`] || '';
     }
 
-    public seoContent(numberKey: string): string {
-      return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.navigationService.activeNavigationItem?.toId || ''}_CONTENT_${numberKey}`] || '';
+    public seoContent(navigationId: string, numberKey: string): string {
+      return this.translationService.getTranslations('')[`NAVIGATION_SEO_${navigationId}_CONTENT_${numberKey}`] || '';
     }
 
     get isNextPageNotLastPage(): boolean {
@@ -198,7 +198,12 @@ export class ItemsComponent implements OnInit {
         return this.subNavigationItems.length > 1;
     }
 
-    get activeNavigationItemId(): string {
-      return this.navigationService.activeNavigationItem?.toId || '';
+    get seoNavigationIds(): Array<string> {
+      if (this.isCategoryHashtags) {
+        return [];
+      }
+
+      return [this.navigationService.activeNavigationItem?.toId || '']
+        .concat(Navigation.getAllSubsequentNavigationIdsByItem(this.navigationService.activeNavigationItem));
     }
 }

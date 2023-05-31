@@ -306,6 +306,18 @@ export class Navigation {
       .filter(navigationItem => item.toId === navigationItem.fromId);
   }
 
+  public static getAllSubsequentNavigationIdsByItem(item: NavigationItem | undefined): Array<string> {
+    let navigationIds: Array<string> = []
+
+    const nextLevelItems: Array<NavigationItem> = this.getNextLevelNavigationItemsFrom(item);
+    nextLevelItems?.forEach(nextLevelItem => {
+      navigationIds.push(nextLevelItem.toId);
+      navigationIds = navigationIds.concat(this.getAllSubsequentNavigationIdsByItem(nextLevelItem))
+    });
+
+    return navigationIds;
+  }
+
   public static getTeaserIdForNavigationItem(item: NavigationItem | undefined): string {
     if (!item) {
       return '';

@@ -176,12 +176,18 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_SEO_BEAUTY_CARE_MAKEUP_LIPS_HEADER_A: 'Gibt es vegane Lippenstifte?',
       NAVIGATION_SEO_BEAUTY_CARE_MAKEUP_LIPS_CONTENT_A: 'Ja! Mittlerweile gibt es eine gut gefüllte Palette an ' +
         '<a href="/beauty-and-care/makeup/lips?search=vegan">veganen Lippenstiften</a> und weiteren Kosmetikprodukten ' +
-        'die ebenfalls vollständig vegan sind.<br/>' +
+        'die ebenfalls vollständig vegan sind. ' +
         'Vegane Kosmetik wird bei uns unter anderem von den Händlern "100 Percent Pure", "Big Green Smile", "Amazon" angeboten',
       NAVIGATION_SEO_BEAUTY_CARE_MAKEUP_LIPS_HEADER_B: 'Was versteht man unter Naturkosmetik?',
       NAVIGATION_SEO_BEAUTY_CARE_MAKEUP_LIPS_CONTENT_B: 'Naturkosmetik erkennt man am Siegel. ' +
         'Das bedeutet, dass die Produkte keine Inhaltsstoffe auf Erdölbasis, Silikone, Polyethylenglykole (PEG) beinhalten. ' +
         'Dabei handelt es sich um Stoffe, die in konventionellen Kosmetika häufig als Schaumbildner oder Emulgatoren eingesetzt werden.',
+
+      NAVIGATION_SEO_BEAUTY_CARE_SKIN_CARE_HEADER_A : 'Was ist das besondere an koreanischer Hautpflege?',
+      NAVIGATION_SEO_BEAUTY_CARE_SKIN_CARE_CONTENT_A : 'Für uns im Westen sehr ungewohnt, basiert die koreanische Hauptpflege auf Zutaten wie zum Beispiel ' +
+        'Reis, Tee, fermentierte Inhaltsstoffe und Schneckenschleim. ' +
+        'Der Grund: Eine makellose, straffe Porzellanhaut und ein reiner Teint sind das ultimative Schönheitsideal in Korea.' +
+        'Falls ihr jetzt Interesse bekommen habt, findet ihr unter anderem von <a href="/beauty-and-care/skin-care?search=Sandawha">Sandawha</a> im Bereich Hauptpflege',
 
       NAVIGATION_SLOGAN_ALL: 'shop',
       NAVIGATION_SLOGAN_BEAUTY_CARE: 'gesund bleiben',

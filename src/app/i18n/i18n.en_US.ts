@@ -182,6 +182,12 @@ export class I18nEnUs implements I18nInterface {
         'This means that the products contain no petroleum-based ingredients, silicones, polyethylene glycols (PEG). ' +
         'These are substances that are often used in conventional cosmetics as foaming agents or emulsifiers.',
 
+      NAVIGATION_SEO_BEAUTY_CARE_SKIN_CARE_HEADER_A : 'What is special about korean skin care products?',
+      NAVIGATION_SEO_BEAUTY_CARE_SKIN_CARE_CONTENT_A : 'Very unusual for us in the West, the Korean skin care is based on ingredients such as ' +
+        'Rice, tea, fermented ingredients and snail slime. ' +
+        'The reason: flawless, firm porcelain skin and a clear complexion are the ultimate ideal of beauty in Korea.' +
+        'If you are now interested, you will find <a href="/beauty-and-care/skin-care?search=Sandawha">Sandawha</a> in the skin care section',
+
       NAVIGATION_SLOGAN_ALL: 'shop',
       NAVIGATION_SLOGAN_BEAUTY_CARE: 'be healthy',
       NAVIGATION_SLOGAN_ELECTRONICS_AND_COMPUTERS: 'be up to date',

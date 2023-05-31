@@ -136,7 +136,7 @@ export class HeaderComponent {
       return '';
     }
 
-    if (this.isHashtagsModule) {
+    if (this.isHashtagsModule && !item.isSearchItem()) {
       return '/hashtags/' + item.label;
     }
 
