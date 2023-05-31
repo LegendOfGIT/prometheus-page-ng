@@ -65,6 +65,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_FASHION_MEN_JEWELRY: 'men jewelry',
       NAVIGATION_FASHION_MEN_NIGHTWEAR: 'men nightwear',
       NAVIGATION_FASHION_MEN_PANTS: 'men pants',
+      NAVIGATION_FASHION_MEN_SHIRTS: 'men shirts',
       NAVIGATION_FASHION_MEN_SHOES: 'men shoes',
       NAVIGATION_FASHION_MEN_SWEATERS_AND_KNITWEAR: 'men sweaters & knitwear',
       NAVIGATION_FASHION_WOMEN: 'women fashion',

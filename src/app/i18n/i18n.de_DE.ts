@@ -65,6 +65,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_FASHION_MEN_JEWELRY: 'Herren Schmuck',
       NAVIGATION_FASHION_MEN_NIGHTWEAR: 'Herren Nachtwäsche',
       NAVIGATION_FASHION_MEN_PANTS: 'Herren Hosen',
+      NAVIGATION_FASHION_MEN_SHIRTS: 'Herren Hemden',
       NAVIGATION_FASHION_MEN_SHOES: 'Herren Schuhe',
       NAVIGATION_FASHION_MEN_SWEATERS_AND_KNITWEAR: 'Herren Pullover & Strickwaren',
       NAVIGATION_FASHION_WOMEN: 'Damenmode',
