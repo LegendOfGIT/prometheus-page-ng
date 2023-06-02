@@ -11,8 +11,10 @@ export class Navigation {
       .setHasTeaser(true),
     new NavigationItem('FASHION', 'FASHION_BOYS', ['fashion', 'boys', '']),
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SHOES', ['fashion', 'boys', 'shoes']),
+    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SWIMWEAR', ['fashion', 'boys', 'swimwear']),
     new NavigationItem('FASHION', 'FASHION_GIRLS', ['fashion', 'girls', '']),
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SHOES', ['fashion', 'girls', 'shoes']),
+    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SWIMWEAR', ['fashion', 'girls', 'swimwear']),
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['fashion', 'women', '']).setHasSlogan(true),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_BAGS', ['fashion', 'women', 'bags']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JACKETS', ['fashion', 'women', 'jackets']),
@@ -22,6 +24,7 @@ export class Navigation {
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_PANTS', ['fashion', 'women', 'pants']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SHOES', ['fashion', 'women', 'shoes']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SWEATERS_AND_KNITWEAR', ['fashion', 'women', 'sweaters-and-knitwear']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SWIMWEAR', ['fashion', 'women', 'swimwear']),
     new NavigationItem('FASHION', 'FASHION_MEN', ['fashion', 'men', '']).setHasSlogan(true),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_JACKETS', ['fashion', 'men', 'jackets']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEANS', ['fashion', 'men', 'jeans']),
@@ -31,6 +34,7 @@ export class Navigation {
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_SHIRTS', ['fashion', 'men', 'shirts']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_SHOES', ['fashion', 'men', 'shoes']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_SWEATERS_AND_KNITWEAR', ['fashion', 'men', 'sweaters-and-knitwear']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_SWIMWEAR', ['fashion', 'men', 'swimwear']),
 
     new NavigationItem('ALL', 'LUXURIES', ['luxuries', '', ''], 2)
       .setHasSlogan(true)
