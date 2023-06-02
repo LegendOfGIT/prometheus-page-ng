@@ -193,6 +193,51 @@ export class I18nDeDe implements I18nInterface {
         'Der Grund: Eine makellose, straffe Porzellanhaut und ein reiner Teint sind das ultimative Schönheitsideal in Korea.' +
         'Falls ihr jetzt Interesse bekommen habt, findet ihr unter anderem von <a href="/beauty-and-care/skin-care?search=Sandawha">Sandawha</a> im Bereich Hauptpflege',
 
+      NAVIGATION_SEO_ELECTRONICS_AND_COMPUTERS_PHONES_SMARTPHONESCELLPHONES_HEADER_A: 'Was ist der Unterschied zwischen Refurbished und gebraucht?',
+      NAVIGATION_SEO_ELECTRONICS_AND_COMPUTERS_PHONES_SMARTPHONESCELLPHONES_CONTENT_A:
+        'Wenn du ein gebrauchtes Gerät kaufst, dann bekommst du es genau in dem Zustand, in dem es aussortiert wurde. ' +
+        'Bei einem Direktverkauf kann man auch von "Gekauft wie gesehen" sprechen.' +
+        'Beschädigter Akku? Kaputter Bildschirm? Wildfremde Personen zeigen ihr schönstes Lächeln aus dem Fotospeicher? ' +
+        'All das kaufst du unter Umständen alles mit. ' +
+        'Klar sparst du so wahrscheinlich am meisten, aber du hast keine Garantie, dass dein Gerät funktioniert. ' +
+        'Mit dem Rückgaberecht sieht es im Normalfall eher schlecht aus aus. ' +
+        'Rückrufaktionen seitens der Hersteller bekommst du auf diesem Kaufweg auch nicht. ' +
+        'Ob das Gerät noch technisch sicher ist, kannst du beim Gebrauchtkauf nur mutmaßen. ' +
+        '<br/><br/>' +
+        'Generalüberholt (Refurbished) ist viel mehr als nur gebraucht. ' +
+        'Diese Geräte gehen nicht einfach unverändert über den Ladentisch, sondern kommen vorher unter die Lupe von Expert:innen. ' +
+        'Sie gewährleisten Qualität, indem sie die Geräte auf Herz und Nieren durchchecken und ihnen eine professionelle Reinigung spendieren. ' +
+        'Wenn an der Hardware etwas kaputt ist, werden Einzelteile ausgetauscht (Defekte Kamera, schwacher Akku, ...). ' +
+        'Das alles machen Refurbisher, also die Händler:innen, die Geräte aufbereiten und zum Beispiel bei Back Market verkaufen. ' +
+        'Wenn sie damit fertig sind, funktioniert das Gerät genauso gut wie eines vom Fließband.' +
+        'Hier bei uns auf WeWanna shop! kannst du Geräte finden, die von Backmarket.de refurbished wurden.' +
+        'Backmarket bietet die so wiederhergestellten Geräte inklusive 12 Monate Garantie, 30-Tage-Rückgaberecht und kostenlosem Standardversand an. ' +
+        'Günstiger als Neugeräte sind professionell erneuerte Alternativen auch (Bis zu 70% günstiger). ' +
+        'Und falls mal was nicht klappen sollte, helfen dir dort auch echte Menschen weiter, 6 Tage die Woche.',
+
+      NAVIGATION_SEO_ELECTRONICS_AND_COMPUTERS_HOME_TVS_HEADER_A: 'Werden 8K Fernseher verboten?',
+      NAVIGATION_SEO_ELECTRONICS_AND_COMPUTERS_HOME_TVS_CONTENT_A:
+        'Ab März 2023 möchte die EU den Verkauf einiger der besten TVs wegen ihrer hohen Stromverbrauchswerte verbieten. ' +
+        'Sofern sich nichts mehr an der geplanten Verschärfung des Energieeffizienzindex und der Ökodesign-Richtlinie ändert, ' +
+        'verschwinden alle 8K-TVs sowie einige hochwertige 4K-Fernseher vom Markt. ' +
+        'Seit der CES 2023 zeichnet sich ab, dass die neuen Energieeffizienzrichtlinien für Fernseher zunächst nur geringe Auswirkungen haben. ' +
+        'Hersteller wie Samsung, TCL und LG kündigten wie gewohnt neue 8K-TVs an. ' +
+        'Und aktuelle Modelle, welche die neuen Effizienzkriterien nicht erfüllen, aber vor dem 1. März 2023 an den Handel ausgeliefert wurden, ' +
+        'dürfen weiterhin verkauft werden. ' +
+        'Samsung löst das Problem bei neuen TVs mit einem Eco-Modus für den Werkszustand, wie schon im Artikel unten im Vorfeld spekuliert. ' +
+        'Dieser ist auf eine sehr geringe Helligkeit begrenzt, bei der Ersteinrichtung weist der Hersteller die Nutzer allerdings gleich auf optionale Bildmodi hin. ' +
+        'Damit bekommen die Nutzer das gewohnt helle Bild bei höherem Stromverbrauch. ' +
+        'Es ist noch unklar, welche Lösung LG für die neuen 8K-TVs der Z3-Familie geplant hat. ' +
+        'Allerdings: Der Branchenverband gfu rügte die Energieeffizienz-Vorgaben der EU Ende Februar 2023 in einer Pressemitteilung. ' +
+        'Um hellere, kontrastreichere und hochauflösendere Bilder liefern zu können, die sich Verbraucher zunehmend wünschten, ' +
+        'benötigten die Geräte tendenziell mehr Strom. ' +
+        'Während die neuen EU-Vorgaben aktuell also nur geringe Auswirkungen haben, ' +
+        'könnte das bei zukünftigen Geräten und neuen Technologien anders aussehen. ' +
+        '„Wenn Vorgaben dazu führen, dass technologischer Fortschritt im Sinne der Verbraucherinnen und Verbraucher nicht stattfinden kann, ' +
+        'dann sollten diese Vorgaben unbedingt den Realitäten angepasst werden“, sagte Dr. Sara Warneke, die gfu-Geschäftsführerin.' +
+        '<br/><br/>' +
+        '8K Fernseher findest du auf WeWanna shop <a href="/electronics-and-computers/home/tvs?hashtags=Filmabend&search=8K">hier</a>',
+
       NAVIGATION_SLOGAN_ALL: 'shop',
       NAVIGATION_SLOGAN_BEAUTY_CARE: 'gesund bleiben',
       NAVIGATION_SLOGAN_ELECTRONICS_AND_COMPUTERS: 'up to date sein',
