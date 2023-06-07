@@ -70,6 +70,7 @@ export class Navigation {
     new NavigationItem('MULTIMEDIA_BOOKS', 'MULTIMEDIA_BOOKS_CRIMETHRILLERS', ['multimedia', 'books', 'crime-and-thrillers']),
     new NavigationItem('MULTIMEDIA_BOOKS', 'MULTIMEDIA_BOOKS_HISTORY', ['multimedia', 'books', 'history']),
     new NavigationItem('MULTIMEDIA_BOOKS', 'MULTIMEDIA_BOOKS_PHILOSOPHY', ['multimedia', 'books', 'philosophy']),
+    new NavigationItem('MULTIMEDIA_BOOKS', 'MULTIMEDIA_BOOKS_SCHOOLBOOKS', ['multimedia', 'books', 'school-books']),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_GAMES', ['multimedia', 'games', '']).setHasSlogan(true),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_NINTENDO_SWITCH', ['multimedia', 'games', 'nintendo-switch']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_PC', ['multimedia', 'games', 'pc']),

@@ -145,6 +145,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_MULTIMEDIA_BOOKS_CRIMETHRILLERS: "crime- and thriller-books",
       NAVIGATION_MULTIMEDIA_BOOKS_HISTORY: 'history-books',
       NAVIGATION_MULTIMEDIA_BOOKS_PHILOSOPHY: 'philosophy-books',
+      NAVIGATION_MULTIMEDIA_BOOKS_SCHOOLBOOKS: 'school-books',
       NAVIGATION_MULTIMEDIA_GAMES: 'games',
       NAVIGATION_MULTIMEDIA_GAMES_NINTENDO_SWITCH: 'switch games',
       NAVIGATION_MULTIMEDIA_GAMES_PC: 'pc games',
