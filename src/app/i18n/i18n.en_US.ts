@@ -176,6 +176,8 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_VEHICLES_CARS_SUMMERTYRES: 'summer tyres',
       NAVIGATION_VEHICLES_CARS_WINTERTYRES: 'winter tyres',
       NAVIGATION_VEHICLES_CARS_ALLWEATHERTYRES: 'all-weather tyres',
+      NAVIGATION_VEHICLES_SCOOTERS: 'scooters',
+      NAVIGATION_VEHICLES_SCOOTERS_ELECTRICALSCOOTERS: 'e-scooters',
 
       NAVIGATION_SEO_BEAUTY_CARE_MAKEUP_LIPS_HEADER_A: 'Are there vegan lipsticks?',
       NAVIGATION_SEO_BEAUTY_CARE_MAKEUP_LIPS_CONTENT_A: 'Yes! There is now a well-stocked range of ' +
@@ -238,8 +240,38 @@ export class I18nEnUs implements I18nInterface {
         '<br/><br/>' +
         '8K TVs can also be found on WeWanna shop <a href="/electronics-and-computers/home/tvs?hashtags=Filmabend&search=8K">click here</a>',
 
+      NAVIGATION_SEO_HOME_FURNITURE_BEDS_HEADER_A: 'What do you have to consider when choosing the right bed size?',
+      NAVIGATION_SEO_HOME_FURNITURE_BEDS_CONTENT_A: 'Of course you will find numerous classic single beds with a width of 80 to 90 centimeters and a length of 200 centimeters. ' +
+        'However, since people have become taller and taller in recent decades, numerous extra-long beds of up to 220 centimeters are now available. ' +
+        'If you depend on this length, always pay attention to the measurements in the product description. ' +
+        '<br/><br/>' +
+        'For singles, very wide beds such as the queen-size bed have become new favorites in recent years. ' +
+        'With a width of 140 or 160 centimetres, it offers a wonderful amount of space for a person sleeping alone. ' +
+        'However, if a visitor stays overnight, it is still very comfortable for two. ' +
+        'In small apartments, the 160 cm wide bed can also serve as a space-saving double bed.' +
+        '<br/><br/>' +
+        'If you share your bedroom permanently with another person, nothing beats the good old double bed. ' +
+        'This can be between 180 and 200 centimeters wide. ' +
+        'You have the choice between a continuous lying surface with a large mattress for two and two separate mattresses. ' +
+        'Unfortunately, this creates the visitor gap that many couples fear. ' +
+        'On the other hand, you sleep more peacefully if you do not feel your partners every movement on your own mattress.' +
+        '<br/><br/>' +
+        'Normal beds take up a lot of space in small studios and apartments. ' +
+        'However, a number of alternatives are conceivable: You use so-called day beds (or day beds) as a sofa in your living room during the day and in the evening. ' +
+        'Only when you want to sleep do you get the bedding from a large drawer under the mattress.' +
+        '<br/><br/>' +
+        'Day beds are not to be exchanged for upholstered loungers: these also have a dual function, but instead of a mattress, they have a continuous seat cushion like a sofa. ' +
+        'They are not recommended as regular sleeping places. ' +
+        'Better use it as a guest bed for visitors who drop by every now and then.' +
+        '<br/><br/>' +
+        'Functional beds are beds with additional storage space. ' +
+        'Most of the time it is one or more drawers. ' +
+        'They are a popular choice in childrens and teenagers bedrooms, where there never seems to be enough room for the little ones belongings." ' +
+        'If you use it as a guest bed, you can store the bedding in the drawers to protect it from dust. ' +
+        'If the bed is fresh, the visitor uses it for the clothes he has brought with him.',
+
       NAVIGATION_SLOGAN_ALL: 'shop',
-      NAVIGATION_SLOGAN_BEAUTY_CARE: 'be healthy',
+      NAVIGATION_SLOGAN_BEAUTY_CARE: 'be beautiful',
       NAVIGATION_SLOGAN_ELECTRONICS_AND_COMPUTERS: 'be up to date',
       NAVIGATION_SLOGAN_ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_FRIDGES_AND_FREEZERS: 'cool down',
       NAVIGATION_SLOGAN_FASHION: 'dress up',

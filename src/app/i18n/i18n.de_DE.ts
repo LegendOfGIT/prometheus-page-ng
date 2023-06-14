@@ -177,6 +177,8 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_VEHICLES_CARS_SUMMERTYRES: 'Sommerreifen',
       NAVIGATION_VEHICLES_CARS_WINTERTYRES: 'Winterreifen',
       NAVIGATION_VEHICLES_CARS_ALLWEATHERTYRES: 'Allwetter-Reifen',
+      NAVIGATION_VEHICLES_SCOOTERS: 'Scooter',
+      NAVIGATION_VEHICLES_SCOOTERS_ELECTRICALSCOOTERS: 'E-Scooter',
 
       NAVIGATION_SEO_BEAUTY_CARE_MAKEUP_LIPS_HEADER_A: 'Gibt es vegane Lippenstifte?',
       NAVIGATION_SEO_BEAUTY_CARE_MAKEUP_LIPS_CONTENT_A: 'Ja! Mittlerweile gibt es eine gut gefüllte Palette an ' +
@@ -239,8 +241,38 @@ export class I18nDeDe implements I18nInterface {
         '<br/><br/>' +
         '8K Fernseher findest du auf WeWanna shop <a href="/electronics-and-computers/home/tvs?hashtags=Filmabend&search=8K">hier</a>',
 
+      NAVIGATION_SEO_HOME_FURNITURE_BEDS_HEADER_A: 'Worauf musst du bei der Auswahl der richtigen Bettengröße achten?',
+      NAVIGATION_SEO_HOME_FURNITURE_BEDS_CONTENT_A: 'Natürlich findest du zahlreiche klassische Einzelbetten mit einer Breite von 80 bis 90 Zentimetern und einer Länge von 200 Zentimetern. ' +
+        'Da die Menschen jedoch in den letzten Jahrzehnten immer größer geworden sind, sind heute auch zahlreiche Betten in Überlänge bis 220 Zentimeter verfügbar. ' +
+        'Bist du auf diese Länge angewiesen, achte stets auf die Maßangaben in der Produktbeschreibung. ' +
+        '<br/><br/>' +
+        'Bei Singles haben sich in den letzten Jahren sehr breite Betten wie das Queensize-Bett zu neuen Favoriten entwickelt. ' +
+        'Mit einer Breite von 140 oder 160 Zentimetern gewähren sie einer allein schlafenden Person herrlich viel Platz. ' +
+        'Bleibt jedoch mal Besuch über Nacht, ist es auch zu zweit noch sehr gemütlich. ' +
+        'In kleinen Wohnungen kann das 160 cm breite Bett auch als platzsparendes Doppelbett dienen.' +
+        '<br/><br/>' +
+        'Teilst du dein Schlafzimmer dauerhaft mit einer anderen Person, geht nichts über das gute alte Doppelbett. ' +
+        'Dieses kann zwischen 180 und 200 Zentimeter breit sein. ' +
+        'Du hast die Wahl zwischen einer durchgängigen Liegefläche mit großer Matratze für zwei und zwei getrennten Matratzen. ' +
+        'Dabei entsteht leider die von vielen Paaren gefürchtete Besucherritze. ' +
+        'Auf der anderen Seite schläfst du jedoch ruhiger, wenn du auf deiner eigenen Matratze nicht jede Bewegung des Partners spürst.' +
+        '<br/><br/>' +
+        'Normale Betten nehmen in kleinen Einzimmerwohnungen und Appartements viel Platz weg. ' +
+        'Es sind jedoch eine Reihe Alternativen denkbar: Sogenannte Tagesbetten (oder Daybetten) nutzt du tagsüber und abends als Sofa in deinem Wohnraum. ' +
+        'Erst wenn du schlafen möchten, holst du das Bettzeug aus einer großen Schublade unter der Matratze.' +
+        '<br/><br/>' +
+        'Tagesbetten sind nicht mit Polsterliegen zu verwechseln: Diese üben zwar auch eine Doppelfunktion aus, doch statt einer Matratze weisen sie ein durchgängiges Sitzpolster wie bei einem Sofa auf. ' +
+        'Als regelmäßige Schlafstätte sind sie nicht zu empfehlen. ' +
+        'Verwende sie lieber als Gästebett für Besucher, die ab und zu vorbeikommen.' +
+        '<br/><br/>' +
+        'Als Funktionsbetten werden Betten mit zusätzlichem Stauraum bezeichnet. ' +
+        'Meist handelt es sich dabei um eine oder mehrere Schubladen. ' +
+        'Sie sind eine beliebte Wahl im Kinder- und Jugendzimmer, wo scheinbar nie genug Platz für die Habseligkeiten des Nachwuchses ist. ' +
+        'Kommen sie bei dir als Gästebetten zum Einsatz, kannst du das Bettzeug staubgeschützt in den Schubladen verwahren. ' +
+        'Ist das Bett dann frisch bezogen, benutzt der Besuch sie für seine mitgebrachte Kleidung.',
+
       NAVIGATION_SLOGAN_ALL: 'shop',
-      NAVIGATION_SLOGAN_BEAUTY_CARE: 'gesund bleiben',
+      NAVIGATION_SLOGAN_BEAUTY_CARE: 'schön sein',
       NAVIGATION_SLOGAN_ELECTRONICS_AND_COMPUTERS: 'up to date sein',
       NAVIGATION_SLOGAN_ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_FRIDGES_AND_FREEZERS: 'abkühlen',
       NAVIGATION_SLOGAN_FASHION: 'gut aussehen',

@@ -267,6 +267,8 @@ export class Navigation {
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_SUMMERTYRES', ['vehicles', 'cars', 'summer-tyres']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_WINTERTYRES', ['vehicles', 'cars', 'winter-tyres']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_ALLWEATHERTYRES', ['vehicles', 'cars', 'all-weather-tyres']),
+    new NavigationItem('VEHICLES', 'VEHICLES_SCOOTERS', ['vehicles', 'scooters', '']),
+    new NavigationItem('VEHICLES_SCOOTERS', 'VEHICLES_SCOOTERS_ELECTRICALSCOOTERS', ['vehicles', 'scooters', 'e-scooters']),
 
     new NavigationItem('ALL', 'SPORTS', ['sports', '', ''], 12)
       .setHasSlogan(true)
