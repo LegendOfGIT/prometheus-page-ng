@@ -108,6 +108,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_HOME_FURNITURE_KIDSBEDS: 'kids beds',
       NAVIGATION_HOME_FURNITURE_SOFAS: 'sofas',
       NAVIGATION_HOME_GARDEN: 'garden',
+      NAVIGATION_HOME_GARDEN_DECORATIONS: 'garden decorations',
       NAVIGATION_HOME_GARDEN_GARDENHOUSES: 'garden houses',
       NAVIGATION_HOME_GARDEN_GRILLS: 'grills',
       NAVIGATION_HOME_GARDEN_LAWNMOWERS: 'lawnmowers',

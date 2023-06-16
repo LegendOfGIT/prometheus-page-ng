@@ -109,6 +109,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_HOME_FURNITURE_KIDSBEDS: 'Kinderbetten',
       NAVIGATION_HOME_FURNITURE_SOFAS: 'Sofas',
       NAVIGATION_HOME_GARDEN: 'Garten',
+      NAVIGATION_HOME_GARDEN_DECORATIONS: 'Gartendekoration',
       NAVIGATION_HOME_GARDEN_GARDENHOUSES: 'Gartenhäuser',
       NAVIGATION_HOME_GARDEN_GRILLS: 'Grillen',
       NAVIGATION_HOME_GARDEN_LAWNMOWERS: 'Rasenmäher',
