@@ -294,6 +294,7 @@ export class Navigation {
       .setHasTeaser(true),
     new NavigationItem('GROCERIES', 'GROCERIES_DRINKS', ['groceries', 'drinks', '']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_COFFEE', ['groceries', 'drinks', 'coffee']),
+    new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_WINE', ['groceries', 'drinks', 'wine']),
     new NavigationItem('GROCERIES', 'GROCERIES_FOOD', ['groceries', 'food', '']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_DRYFRUITS', ['groceries', 'food', 'dry-fruits']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_NUTS', ['groceries', 'food', 'nuts']),

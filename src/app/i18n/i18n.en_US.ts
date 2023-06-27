@@ -88,6 +88,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_GROCERIES: 'groceries',
       NAVIGATION_GROCERIES_DRINKS: 'drink',
       NAVIGATION_GROCERIES_DRINKS_COFFEE: 'coffee',
+      NAVIGATION_GROCERIES_DRINKS_WINE: 'wine',
       NAVIGATION_GROCERIES_FOOD: 'food',
       NAVIGATION_GROCERIES_FOOD_DRYFRUITS: 'dry fruits',
       NAVIGATION_GROCERIES_FOOD_NUTS: 'nuts',
