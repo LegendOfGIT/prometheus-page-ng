@@ -293,7 +293,10 @@ export class Navigation {
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('GROCERIES', 'GROCERIES_DRINKS', ['groceries', 'drinks', '']),
+    new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_CHAMPAIGN', ['groceries', 'drinks', 'champaign']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_COFFEE', ['groceries', 'drinks', 'coffee']),
+    new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_SPARKLINGWINE', ['groceries', 'drinks', 'sparkling-wine']),
+    new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_TEA', ['groceries', 'drinks', 'tea']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_WINE', ['groceries', 'drinks', 'wine']),
     new NavigationItem('GROCERIES', 'GROCERIES_FOOD', ['groceries', 'food', '']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_DRYFRUITS', ['groceries', 'food', 'dry-fruits']),

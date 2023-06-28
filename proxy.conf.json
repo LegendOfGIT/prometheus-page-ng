@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "http://localhost:3002",
+        "target": "https://www.wewanna.shop",
         "secure": true,
         "logLevel": "debug",
         "changeOrigin": true
