@@ -64,7 +64,9 @@
         <div [ngClass]="['col-12', 'suggestion__item', 0 === i ? 'suggestion__item--first' : suggestions.length-1 === i ? 'suggestion__item--last' : '']">
           <div class="col-11">
             <div [ngClass]="[ 'suggestion__item--column', 'suggestion__item--trend', 'fa', suggestion.isNewItem() ? 'fa-plus' : suggestion.isSearchItem() ? 'fa-search' : 'fa-chart-line']"></div>
-            <div class="suggestion__item--column">{{suggestion.isSearchItem() ? '' : '#'}}{{suggestion.label}}</div>
+            <div class="suggestion__item--column">
+              {{getSuggestionItemPrefix(suggestion) | translate }}{{suggestion.isSearchItem() ? '' : '#'}}{{suggestion.label}}{{getSuggestionItemSuffix(suggestion) | translate }}
+            </div>
           </div>
           <div class="col-1 suggestion__item--column suggestion__item--go fa fa-chevron-right"></div>
         </div>

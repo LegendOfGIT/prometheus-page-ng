@@ -145,6 +145,34 @@ export class HeaderComponent {
     return url.toString();
   }
 
+  public getSuggestionItemPrefix(item: SuggestionItem): string {
+    const searchPattern = this.searchPatternControl.value || '';
+
+    if (!item || searchPattern.length > 15) {
+      return '';
+    }
+
+    if (item.isNewItem()) {
+      return 'CREATE_HASHTAG_PREFIX';
+    }
+
+    return item.isSearchItem() ? 'SEARCH_FOR_PATTERN_PREFIX' : 'DISCOVER_HASHTAG_PREFIX';
+  }
+
+  public getSuggestionItemSuffix(item: SuggestionItem): string {
+    const searchPattern = this.searchPatternControl.value || '';
+
+    if (!item || searchPattern.length > 15) {
+      return '';
+    }
+
+    if (item.isNewItem()) {
+      return 'CREATE_HASHTAG_SUFFIX';
+    }
+
+    return item.isSearchItem() ? 'SEARCH_FOR_PATTERN_SUFFIX' : 'DISCOVER_HASHTAG_SUFFIX';
+  }
+
   get categoryItems(): NavigationItem[] {
     return this.navigationItems.filter(item => !item.fromId || item.fromId === 'ALL');
   }

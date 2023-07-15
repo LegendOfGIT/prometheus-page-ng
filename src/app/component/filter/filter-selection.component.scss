@@ -1,0 +1,38 @@
+@import "src/styles/controls";
+
+.dialog {
+  &__apply {
+    justify-content: center;
+    margin-top: 1.5em;
+  }
+
+  &__close {
+    color: $container-color;
+    cursor: pointer;
+    padding: 0.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.filter {
+  &__title {
+    &--gap {
+      padding-top: 1em;
+    }
+  }
+}
+
+.filters {
+  &__item {
+    padding-right: 0.5em;
+    padding-top: 0.2em;
+    width: 10em;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

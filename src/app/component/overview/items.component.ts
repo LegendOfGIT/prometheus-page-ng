@@ -83,10 +83,11 @@ export class ItemsComponent implements OnInit {
     }
 
     private initItems(page: string): void {
+      const filterIds = this.route.snapshot?.queryParamMap?.get('filters') as string;
       const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
 
       if (this.isCategoryHashtags) {
-        this.itemsService.getHashtagsItems(searchPattern, undefined, page)
+        this.itemsService.getHashtagsItems(searchPattern, filterIds, undefined, page)
           .pipe(takeUntil(this.destroyedService$))
           .subscribe(
             itemsResponse => {
@@ -108,7 +109,7 @@ export class ItemsComponent implements OnInit {
           ? this.navigationService.activeNavigationItem.toId
           : '';
 
-      this.itemsService.getItems(activeNavigationId, searchPattern, undefined, false, page)
+      this.itemsService.getItems(activeNavigationId, searchPattern, filterIds, undefined, false, page)
         .pipe(takeUntil(this.destroyedService$))
         .subscribe(
           itemsResponse => {

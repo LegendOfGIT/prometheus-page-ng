@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Inject, Injectable, Optional, PLATFORM_ID} from '@angular/core';
+import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { endpoints } from '../../environments/endpoints';
 import { Item } from '../model/item';
@@ -10,9 +10,9 @@ import { Observable } from 'rxjs';
 import { ApplicationConfiguration } from '../configurations/app';
 import { isPlatformServer } from '@angular/common';
 import { ItemsResponse } from '../model/items-response';
-import {REQUEST} from '@nguniversal/express-engine/tokens';
-import {Request} from 'express';
-import {DEFAULT_HASHTAGS} from '../model/user';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { Request } from 'express';
+import { DEFAULT_HASHTAGS } from '../model/user';
 
 @Injectable({
     providedIn: 'root'
@@ -55,12 +55,14 @@ export class ItemsApiService extends ApiBase {
 
     getItems(navigationId: string,
              searchPattern: string,
+             filterIds: string = '1000004',
              numberOfResults: number | undefined = undefined,
              randomItems: boolean | undefined = false,
              page: string = '1'): Observable<ItemsResponse> {
       const url = this.getRequestBase() + this.get(
         endpoints.items,
         {
+          filterIds,
           navigationId,
           numberOfResults: numberOfResults ? `${numberOfResults}` : '',
           isBot: this.isBotRequest() ? 'true': 'false',
@@ -105,10 +107,14 @@ export class ItemsApiService extends ApiBase {
         }));
     }
 
-    getHashtagsItems(searchPattern: string = '', numberOfResults: number | undefined = undefined, page: string = '1'): Observable<ItemsResponse> {
+    getHashtagsItems(searchPattern: string = '',
+                     filterIds: string = '1000004',
+                     numberOfResults: number | undefined = undefined,
+                     page: string = '1'): Observable<ItemsResponse> {
       const url = this.getRequestBase() + this.get(
         endpoints.hashtagsItems,
         {
+          filterIds,
           hashtags: this.getActiveHashtags().join(','),
           numberOfResults: numberOfResults ? `${numberOfResults}` : '',
           isBot: this.isBotRequest() ? 'true': 'false',

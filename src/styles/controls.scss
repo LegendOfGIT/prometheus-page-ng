@@ -32,6 +32,12 @@ button:hover {
   padding: 0.5em;
   text-decoration: none;
 
+  &--highlighted {
+    border: 1px solid $container-background-color;
+    background-color: $logo-capital-letter-color;
+    color: $container-background-color;
+  }
+
   &:hover {
     background-color: $container-color;
     border: 1px solid $container-background-color;
@@ -44,7 +50,7 @@ button:hover {
   }
 }
 
-input {
+input[type='text'] {
     background-color: unset;
     border: 0;
     border-bottom: 2px solid #4AA7EB;

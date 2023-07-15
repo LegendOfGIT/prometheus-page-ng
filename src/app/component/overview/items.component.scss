@@ -1,10 +1,32 @@
 @import "src/styles/controls";
 @import 'src/app/variables';
 
+#filterSelectionDialog {
+  border: 1px solid lightgray;
+  border-radius: 1em;
+  font-family: $font-family;
+  max-width: 90%;
+}
+
 .category {
   &__image {
     border-radius: 2em;
     min-height: 14em;
+  }
+}
+
+.filters {
+  &__button {
+    justify-content: center;
+    position: relative;
+    top: 0;
+    width: 2.5em;
+  }
+
+  &__buttonWrapper {
+    display: inline-flex;
+    margin-top: 1em;
+    justify-content: center;
   }
 }
 
@@ -53,10 +75,23 @@
 
   &__page {
     align-items: center;
+    background-color: inherit;
+    color: inherit;
     display: flex;
     height: 2.5em;
     padding-left: 0.75em;
     padding-right: 0.75em;
+    text-decoration: none;
+
+    &--next {
+      border-bottom-right-radius: 1em;
+      border-top-right-radius: 1em;
+    }
+
+    &--previous {
+      border-bottom-left-radius: 1em;
+      border-top-left-radius: 1em;
+    }
 
     a {
       background-color: inherit;

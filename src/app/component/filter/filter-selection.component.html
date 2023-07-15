@@ -1,0 +1,55 @@
+<div *ngIf="dialog">
+  <div class="dialog dialog__close">
+    <i class="fa fa-times-circle" (click)="dialog.close()"></i>
+  </div>
+  <div>
+    <h5 class="filter filter__title">Shops</h5>
+    <div class="filters filters__items">
+      <div *ngFor="let filter of shopsFilters" class="form-check filters__item">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="{{filter.id}}"
+          value="{{filter.id}}"
+          (change)="toggleFilter(filter.id)"
+          [defaultChecked]="isFilterSelected(filter.id)"
+        />
+        <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId}}</label>
+      </div>
+    </div>
+
+    <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_COLORS' | translate }}</h5>
+    <div class="filters filters__items">
+      <div *ngFor="let filter of colorFilters" class="form-check filters__item">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="{{filter.id}}"
+          value="{{filter.id}}"
+          (change)="toggleFilter(filter.id)"
+          [defaultChecked]="isFilterSelected(filter.id)"/>
+        <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId | translate}}</label>
+      </div>
+    </div>
+
+    <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_FITS' | translate }}</h5>
+    <div class="filters filters__items">
+      <div *ngFor="let filter of fitFilters" class="form-check filters__item">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="{{filter.id}}"
+          value="{{filter.id}}"
+          (change)="toggleFilter(filter.id)"
+          [defaultChecked]="isFilterSelected(filter.id)"/>
+        <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="button dialog__apply" (click)="applyFilters()">
+      <span>{{ 'FILTERS_DONE' | translate }}</span>
+    </div>
+  </div>
+</div>

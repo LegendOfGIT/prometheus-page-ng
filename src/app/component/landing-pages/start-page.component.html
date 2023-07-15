@@ -3,6 +3,9 @@
     <div class="button startPage__button" (click)="advantagesDialog.showModal();">
       {{'WHY_WEWANNA' | translate}}
     </div>
+
+    <div class="button button--highlighted fa fa-sliders-h" (click)="filterSelectionDialog.showModal();">
+    </div>
   </div>
 
   <div class="container">
@@ -23,6 +26,8 @@
   <span [innerHTML]="whatWeKnow"></span>
   <br/>
   <span [innerHTML]="whatIsInForYou"></span>
+</dialog>
 
-
+<dialog #filterSelectionDialog id="filterSelectionDialog">
+  <app-filter-selection [dialog]="filterSelectionDialog"></app-filter-selection>
 </dialog>

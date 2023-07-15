@@ -7,6 +7,16 @@
 </div>
 
 <div *ngIf="items">
+  <div class="container">
+    <div class="row">
+      <div class="col-5"></div>
+      <div class="col-2 filters__buttonWrapper">
+        <div class="button button--highlighted filters filters__button fa fa-sliders-h" (click)="filterSelectionDialog.showModal();">
+      </div>
+      </div>
+      <div class="col-5"></div>
+    </div>
+  </div>
 
   <div class="container informationItems__content">
     <div class="col-12 informationItems__container">
@@ -19,11 +29,9 @@
 <div class="container">
   <div class="col-12 pages__container">
     <div class="pages__wrapper">
-      <div *ngIf="currentPage > 1; else leftDisabled" class="pages__page">
-        <a href="{{linkToPage(currentPage - 1)}}">
+      <a *ngIf="currentPage > 1; else leftDisabled" href="{{linkToPage(currentPage - 1)}}" class="pages__page pages__page--previous">
           &laquo; {{'BACK' | translate}}
-        </a>
-      </div>
+      </a>
       <ng-template #leftDisabled>
         <div class="pages__page--disabled">
           &laquo; {{'BACK' | translate}}
@@ -41,11 +49,9 @@
         </ng-template>
       </div>
 
-      <div *ngIf="isNextPageNotLastPage; else rightDisabled" class="pages__page">
-        <a href="{{linkToPage(currentPage + 1)}}">
-          {{'NEXT' | translate}} &raquo;
-        </a>
-      </div>
+      <a *ngIf="isNextPageNotLastPage; else rightDisabled" href="{{linkToPage(currentPage + 1)}}" class="pages__page pages__page--next">
+        {{'NEXT' | translate}} &raquo;
+      </a>
       <ng-template #rightDisabled>
         <div class="pages__page--disabled">
           {{'NEXT' | translate}} &raquo;
@@ -65,3 +71,7 @@
     </div>
   </div>
 </div>
+
+<dialog #filterSelectionDialog id="filterSelectionDialog">
+  <app-filter-selection [dialog]="filterSelectionDialog"></app-filter-selection>
+</dialog>
