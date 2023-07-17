@@ -38,6 +38,16 @@ export class FilterSelectionComponent implements OnInit {
   ];
 
   public productTypeFilters: Array<FilterItem> = [
+    new FilterItem('1000056', 'FILTERS_PRODUCTTYPES_HAIR_CARE'),
+    new FilterItem('1000057', 'FILTERS_PRODUCTTYPES_HAIR_STYLING'),
+    new FilterItem('1000055', 'FILTERS_PRODUCTTYPES_FRAGRANCES_WOMEN'),
+    new FilterItem('1000061', 'FILTERS_PRODUCTTYPES_FACE_CARE'),
+    new FilterItem('1000062', 'FILTERS_PRODUCTTYPES_SKIN_CARE_KIDS'),
+    new FilterItem('1000054', 'FILTERS_PRODUCTTYPES_FRAGRANCES_MEN'),
+    new FilterItem('1000059', 'FILTERS_PRODUCTTYPES_MAKEUP_EYES'),
+    new FilterItem('1000060', 'FILTERS_PRODUCTTYPES_MAKEUP_LIPS'),
+    new FilterItem('1000058', 'FILTERS_PRODUCTTYPES_PAINKILLERS'),
+    new FilterItem('1000053', 'FILTERS_PRODUCTTYPES_SOAP'),
     new FilterItem('1000051', 'FILTERS_PRODUCTTYPES_TEA')
   ];
 
@@ -59,6 +69,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000030', 'Inhofer'),
     new FilterItem('1000031', 'IMWH'),
     new FilterItem('1000032', 'Jan Vanderstorm'),
+    new FilterItem('1000052', 'Meßmer'),
     new FilterItem('1000033', 'Mytoys'),
     new FilterItem('1000034', 'Natural Food'),
     new FilterItem('1000035', 'Otto'),
