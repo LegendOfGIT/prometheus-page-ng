@@ -32,6 +32,8 @@ export class I18nEnUs implements I18nInterface {
       FILTERS_DONE: 'done',
       FILTERS_FITS: 'Fits',
       FURTHER_PRODUCTS_OF_CATEGORY: 'More products of this category',
+      FILTERS_PRODUCTTYPES: 'Product types',
+      FILTERS_PRODUCTTYPES_TEA: 'tea',
       IMAGE_OF: 'Image of',
       IMPRINT: 'Imprint',
       MORE_OFFERS: 'More offers',

@@ -32,6 +32,8 @@ export class I18nDeDe implements I18nInterface {
       FILTERS_DONE: 'fertig',
       FILTERS_FITS: 'Passformen',
       FURTHER_PRODUCTS_OF_CATEGORY: 'Mehr aus dieser Kategorie',
+      FILTERS_PRODUCTTYPES: 'Produktarten',
+      FILTERS_PRODUCTTYPES_TEA: 'Tee',
       IMAGE_OF: 'Bild von',
       IMPRINT: 'Impressum',
       MORE_OFFERS: 'Weitere Angebote',

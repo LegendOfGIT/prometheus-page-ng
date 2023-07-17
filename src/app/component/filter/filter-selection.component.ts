@@ -37,6 +37,10 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000003', 'skinny fit')
   ];
 
+  public productTypeFilters: Array<FilterItem> = [
+    new FilterItem('1000051', 'FILTERS_PRODUCTTYPES_TEA')
+  ];
+
   public shopsFilters: Array<FilterItem> = [
     new FilterItem('1000000', 'dressforless'),
     new FilterItem('1000001', 'BigGreen Smile'),
