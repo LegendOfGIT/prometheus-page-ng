@@ -16,6 +16,7 @@ export class Item extends BaseModel {
     amountOfMedia: number = 0;
     amountOfPages: number = 0;
     amountOfSongs: number = 0;
+    annualConsumptionInKWH: number = 0;
     author: string = '';
     brand: string = '';
     colors: string = '';
@@ -50,6 +51,7 @@ export class Item extends BaseModel {
     types: string = '';
     tyreType: string = '';
     widthInCm: number = 0;
+    weightInKG: number = 0;
     weightInG: number = 0;
 
     imagesBig: Array<string> = [];
@@ -135,13 +137,15 @@ export class Item extends BaseModel {
         new ItemDetails('WIDTH_IN_CM', item.widthInCm),
         new ItemDetails('HEIGHT_IN_CM', item.heightInCm),
         new ItemDetails('WEIGHT_IN_G', item.weightInG),
+        new ItemDetails('WEIGHT_IN_KG', item.weightInKG),
         new ItemDetails('TYRE_TYPE', item.tyreType),
         new ItemDetails('RAM_SIZE', item.ramSize),
         new ItemDetails('STORAGE_SIZE', item.storageSize),
         new ItemDetails('RESOLUTION', item.resolution),
         new ItemDetails('DIAMETER_IN_INCH', item.diameterInInch),
         new ItemDetails('LOADINDEX', item.loadIndex),
-        new ItemDetails('SPEEDKEY', item.speedKey)
+        new ItemDetails('SPEEDKEY', item.speedKey),
+        new ItemDetails('ANNUAL_CONSUMPTION_IN_KWH', item.annualConsumptionInKWH)
       ].filter(detail => detail.value);
     }
 
