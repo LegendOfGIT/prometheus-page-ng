@@ -32,9 +32,27 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000016', 'FILTERS_COLORS_WHITE')
   ];
 
+  public brandsFilters: Array<FilterItem> = [
+    new FilterItem('1000088', 'Adidas'),
+    new FilterItem('1000087', 'Apple'),
+    new FilterItem('1000091', 'Google'),
+    new FilterItem('1000090', 'Puma'),
+    new FilterItem('1000089', 'Samsung'),
+    new FilterItem('1000092', 'Sony')
+  ];
+
   public fitFilters: Array<FilterItem> = [
     new FilterItem('1000002', 'flare fit'),
     new FilterItem('1000003', 'skinny fit')
+  ];
+
+  public storageSizeFilters: Array<FilterItem> = [
+    new FilterItem('1000081', '16 GB'),
+    new FilterItem('1000082', '32 GB'),
+    new FilterItem('1000083', '64 GB'),
+    new FilterItem('1000084', '128 GB'),
+    new FilterItem('1000085', '256 GB'),
+    new FilterItem('1000086', '512 GB')
   ];
 
   public productTypeFilters: Array<FilterItem> = [
@@ -48,7 +66,24 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000060', 'FILTERS_PRODUCTTYPES_MAKEUP_LIPS'),
     new FilterItem('1000058', 'FILTERS_PRODUCTTYPES_PAINKILLERS'),
     new FilterItem('1000053', 'FILTERS_PRODUCTTYPES_SOAP'),
-    new FilterItem('1000051', 'FILTERS_PRODUCTTYPES_TEA')
+    new FilterItem('1000051', 'FILTERS_PRODUCTTYPES_TEA'),
+    new FilterItem('1000064', 'FILTERS_PRODUCTTYPES_CABLES_AUDIOCABLES'),
+    new FilterItem('1000065', 'FILTERS_PRODUCTTYPES_CABLES_DISPLAYCABLES'),
+    new FilterItem('1000066', 'FILTERS_PRODUCTTYPES_CABLES_ELECTRICCABLES'),
+    new FilterItem('1000067', 'FILTERS_PRODUCTTYPES_CABLES_NETWORKCABLES'),
+    new FilterItem('1000068', 'FILTERS_PRODUCTTYPES_COMPUTERS_TABLETS'),
+    new FilterItem('1000069', 'FILTERS_PRODUCTTYPES_FULLYAUTOMATICCOFFEEMACHINES'),
+    new FilterItem('1000070', 'FILTERS_PRODUCTTYPES_HOMECINEMA'),
+    new FilterItem('1000071', 'FILTERS_PRODUCTTYPES_INKJETPRINTER'),
+    new FilterItem('1000072', 'FILTERS_PRODUCTTYPES_LASERPRINTER'),
+    new FilterItem('1000073', 'FILTERS_PRODUCTTYPES_PRODUCTTYPES_HOME_TVS'),
+    new FilterItem('1000074', 'FILTERS_PRODUCTTYPES_DISHWASHERS'),
+    new FilterItem('1000075', 'FILTERS_PRODUCTTYPES_DRYERS'),
+    new FilterItem('1000076', 'FILTERS_PRODUCTTYPES_FRIDGES_AND_FREEZERS'),
+    new FilterItem('1000077', 'FILTERS_PRODUCTTYPES_OVENS'),
+    new FilterItem('1000078', 'FILTERS_PRODUCTTYPES_WASHING_MACHINES'),
+    new FilterItem('1000079', 'FILTERS_PRODUCTTYPES_SMARTPHONESCELLPHONES'),
+    new FilterItem('1000080', 'FILTERS_PRODUCTTYPES_SMARTWATCHES')
   ];
 
   public shopsFilters: Array<FilterItem> = [
