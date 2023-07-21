@@ -218,6 +218,8 @@ export class Navigation {
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_GERMANFOLK', ['music', 'cd', 'german-folk-music']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_POP', ['music', 'cd', 'pop']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_ROCK', ['music', 'cd', 'rock']),
+    new NavigationItem('MUSIC', 'MUSIC_INSTRUMENTS', ['music', 'instruments', '']),
+    new NavigationItem('MUSIC_INSTRUMENTS', 'MUSIC_INSTRUMENTS_GUITARS', ['music', 'instruments', 'guitars']),
 
     new NavigationItem('ALL', 'BEAUTY_CARE', ['beauty-and-care', '', ''], 8)
       .setHasSlogan(true)

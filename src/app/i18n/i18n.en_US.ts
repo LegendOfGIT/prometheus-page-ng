@@ -224,6 +224,8 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_MUSIC_CD_GERMANFOLK: 'german folk music cds',
       NAVIGATION_MUSIC_CD_POP: 'pop cds',
       NAVIGATION_MUSIC_CD_ROCK: 'rock cds',
+      NAVIGATION_MUSIC_INSTRUMENTS: 'musical instruments',
+      NAVIGATION_MUSIC_INSTRUMENTS_GUITARS: 'guitars',
       NAVIGATION_SPORTS: 'sport',
       NAVIGATION_SPORTS_EXERCISE: 'exercise',
       NAVIGATION_SPORTS_EXERCISE_EQUIPMENT: 'exercise equipment',
