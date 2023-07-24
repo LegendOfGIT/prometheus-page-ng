@@ -220,6 +220,8 @@ export class Navigation {
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_ROCK', ['music', 'cd', 'rock']),
     new NavigationItem('MUSIC', 'MUSIC_INSTRUMENTS', ['music', 'instruments', '']),
     new NavigationItem('MUSIC_INSTRUMENTS', 'MUSIC_INSTRUMENTS_GUITARS', ['music', 'instruments', 'guitars']),
+    new NavigationItem('MUSIC_INSTRUMENTS', 'MUSIC_INSTRUMENTS_MIXINGPANELS', ['music', 'instruments', 'mixing-panels']),
+    new NavigationItem('MUSIC_INSTRUMENTS', 'MUSIC_INSTRUMENTS_PIANOS', ['music', 'instruments', 'pianos']),
 
     new NavigationItem('ALL', 'BEAUTY_CARE', ['beauty-and-care', '', ''], 8)
       .setHasSlogan(true)

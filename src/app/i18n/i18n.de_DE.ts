@@ -227,6 +227,8 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_MUSIC_CD_ROCK: 'Rock CDs',
       NAVIGATION_MUSIC_INSTRUMENTS: 'Musikinstrumente',
       NAVIGATION_MUSIC_INSTRUMENTS_GUITARS: 'Gitarren',
+      NAVIGATION_MUSIC_INSTRUMENTS_MIXINGPANELS: 'Mischpulte',
+      NAVIGATION_MUSIC_INSTRUMENTS_PIANOS: 'Pianos und Keyboards',
       NAVIGATION_SPORTS: 'Sport',
       NAVIGATION_SPORTS_EXERCISE: 'Training',
       NAVIGATION_SPORTS_EXERCISE_EQUIPMENT: 'Trainingszubehör',
