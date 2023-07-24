@@ -33,17 +33,21 @@ export class FilterSelectionComponent implements OnInit {
   ];
 
   public brandsFilters: Array<FilterItem> = [
+    new FilterItem('1000109', 'Activision'),
     new FilterItem('1000088', 'Adidas'),
     new FilterItem('1000087', 'Apple'),
     new FilterItem('1000098', 'Bruno Banani'),
     new FilterItem('1000101', 'Bugatti'),
     new FilterItem('1000103', 'Calvin Klein'),
+    new FilterItem('1000110', 'Chanel'),
     new FilterItem('1000099', 'Desigual'),
+    new FilterItem('1000107', 'Electronic Arts'),
     new FilterItem('1000105', 'Esprit'),
     new FilterItem('1000102', 'Fossil'),
     new FilterItem('1000100', 'Gabor'),
     new FilterItem('1000091', 'Google'),
     new FilterItem('1000096', 'Guess'),
+    new FilterItem('1000106', 'Hudora'),
     new FilterItem('1000097', 'Lascara'),
     new FilterItem('1000093', 'LEGO'),
     new FilterItem('1000104', 'Nike'),
@@ -51,7 +55,8 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000090', 'Puma'),
     new FilterItem('1000089', 'Samsung'),
     new FilterItem('1000092', 'Sony'),
-    new FilterItem('1000094', 'Vivanco')
+    new FilterItem('1000094', 'Vivanco'),
+    new FilterItem('1000108', 'Vtech')
   ];
 
   public fitFilters: Array<FilterItem> = [
