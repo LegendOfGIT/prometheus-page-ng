@@ -63,6 +63,7 @@ export class I18nEnUs implements I18nInterface {
       FILTERS_PRODUCTTYPES_TEA: 'tea',
       FILTERS_PRODUCTTYPES_WASHING_MACHINES: 'washing machines',
       FILTERS_STORAGE_SIZE: 'Storage size',
+      FILTERS_SUSTAINABILITY: 'Sustainability',
       IMAGE_OF: 'Image of',
       IMPRINT: 'Imprint',
       MORE_OFFERS: 'More offers',
@@ -337,6 +338,7 @@ export class I18nEnUs implements I18nInterface {
 
       NAVIGATION_SLOGAN_ALL: 'shop',
       NAVIGATION_SLOGAN_BEAUTY_CARE: 'be beautiful',
+      NAVIGATION_SLOGAN_DIY: 'do it ourself',
       NAVIGATION_SLOGAN_ELECTRONICS_AND_COMPUTERS: 'be up to date',
       NAVIGATION_SLOGAN_ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_FRIDGES_AND_FREEZERS: 'cool down',
       NAVIGATION_SLOGAN_FASHION: 'dress up',
@@ -357,6 +359,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_SLOGAN_SPORTS: 'be fit',
       NAVIGATION_SLOGAN_VEHICLES: 'go places',
       NAVIGATION_TEASER_BEAUTY_CARE: 'We all want to stay beautiful and healthy. In this category you will find everything you need.',
+      NAVIGATION_TEASER_DIY: 'Get it on! Everything about building and crafting can be found here',
       NAVIGATION_TEASER_ELECTRONICS_AND_COMPUTERS: 'Keep yourself and your loved ones up to date! You can find TVs, Household devices and many more here.',
       NAVIGATION_TEASER_FASHION: 'Discover Jeans, Sweatshirts, Bags, Jewelery and your very own style!',
       NAVIGATION_TEASER_GROCERIES: 'You want to eat consciously or just enjoy? Here you will find a large selection of groceries.',

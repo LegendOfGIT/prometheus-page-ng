@@ -64,6 +64,10 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000003', 'skinny fit')
   ];
 
+  public sustainabilityFilters: Array<FilterItem> = [
+    new FilterItem('1000111', 'bio')
+  ];
+
   public storageSizeFilters: Array<FilterItem> = [
     new FilterItem('1000081', '16 GB'),
     new FilterItem('1000082', '32 GB'),
