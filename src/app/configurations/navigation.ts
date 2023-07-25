@@ -312,9 +312,9 @@ export class Navigation {
     new NavigationItem('ALL', 'DIY', ['diy', '', ''], 14)
       .setHasSlogan(true)
       .setHasTeaser(true),
-    new NavigationItem('DIY', 'DIY_BUILDANDRENOVATE', ['groceries', 'build-and-renovate', '']),
-    new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_DOORS', ['groceries', 'build-and-renovate', 'doors']),
-    new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_TILES', ['groceries', 'build-and-renovate', 'tiles']),
+    new NavigationItem('DIY', 'DIY_BUILDANDRENOVATE', ['diy', 'build-and-renovate', '']),
+    new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_DOORS', ['diy', 'build-and-renovate', 'doors']),
+    new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_TILES', ['diy', 'build-and-renovate', 'tiles']),
   ];
 
   public static getAllRootItems(): Array<NavigationItem> {
