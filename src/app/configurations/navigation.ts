@@ -268,9 +268,6 @@ export class Navigation {
     new NavigationItem('HOME', 'HOME_PETS', ['home', 'pets', '']),
     new NavigationItem('HOME_PETS', 'HOME_PETS_CATS', ['home', 'pets', 'cats']),
     new NavigationItem('HOME_PETS', 'HOME_PETS_DOGS', ['home', 'pets', 'dogs']),
-    new NavigationItem('HOME', 'HOME_TOOLS', ['home', 'tools', '']),
-    new NavigationItem('HOME_TOOLS', 'HOME_TOOLS_DRILLINGMACHINES', ['home', 'tools', 'drilling-machines']),
-    new NavigationItem('HOME_TOOLS', 'HOME_TOOLS_ELECTRICSAWS', ['home', 'tools', 'electric-saws']),
 
     new NavigationItem('ALL', 'VEHICLES', ['vehicles', '', ''], 11)
       .setHasSlogan(true)
@@ -315,6 +312,9 @@ export class Navigation {
     new NavigationItem('DIY', 'DIY_BUILDANDRENOVATE', ['diy', 'build-and-renovate', '']),
     new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_DOORS', ['diy', 'build-and-renovate', 'doors']),
     new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_TILES', ['diy', 'build-and-renovate', 'tiles']),
+    new NavigationItem('DIY', 'DIY_TOOLS', ['diy', 'tools', '']),
+    new NavigationItem('DIY_TOOLS', 'DIY_TOOLS_DRILLINGMACHINES', ['diy', 'tools', 'drilling-machines']),
+    new NavigationItem('DIY_TOOLS', 'DIY_TOOLS_ELECTRICSAWS', ['diy', 'tools', 'electric-saws'])
   ];
 
   public static getAllRootItems(): Array<NavigationItem> {
