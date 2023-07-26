@@ -12,12 +12,13 @@
   <h3 *ngIf="showHeader && navigationItem?.hasTeaser">
     <div class="header__titleTeaser"> {{('NAVIGATION_TEASER_' + (navigationItem?.toId || 'ALL')) | translate}}</div>
   </h3>
-  <div class="col-12 informationItems__container">
-    <app-item
-      *ngFor="let item of getItemsOfCategory(); let i = index;"
-      [item]="item"
-      [additionalCssClasses]="-1 !== [0].indexOf(i) ? 'informationItem--displayUpToL informationItem--displayFromXXL' : ''"
-    ></app-item>
+  <div class="col-12">
+    <div class="image-mosaic">
+      <div *ngFor="let item of getItemsOfCategory(); let i = index;"
+        class="card {{0 === i || i === getItemsOfCategory().length - 1 ? 'card-wide' : '' }}"
+           [ngStyle]="{'background-image': 'url(' + item?.titleImage + ')'}"
+      ></div>
+    </div>
   </div>
   <div class="category__actions">
     <a href="{{moreLink}}" class="button">
