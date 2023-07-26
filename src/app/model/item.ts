@@ -47,6 +47,7 @@ export class Item extends BaseModel {
     seoDescription: string = '';
     seoKeywords: string = '';
     speedKey: string = '';
+    teaserTexts: Array<string> = [];
     type: string = '';
     types: string = '';
     tyreType: string = '';
@@ -66,6 +67,7 @@ export class Item extends BaseModel {
           item.imagesBig = (data as any)['images-big'];
           item.lengthInCm = (data as any)['length-in-cm'];
           item.titleImage = (data as any)['title-image'];
+          item.teaserTexts = (data as any)['teaser-texts'];
           item.widthInCm = (data as any)['width-in-cm'];
           item.providers = (data.providers || []).map(provider => CorrespondingItem.fromModel(provider));
 

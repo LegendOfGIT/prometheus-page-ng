@@ -120,7 +120,7 @@
   </div>
   <div class="row">
     <div class="col-12 productDetails">
-      <section class="productInformation productInformation--last productInformation__header productDetails__wrapper">
+      <section class="productInformation {{item?.teaserTexts?.length ? '' : 'productInformation--last'}} productInformation__header productDetails__wrapper">
         <div *ngIf="getItemDetails(item)?.length">
           <div class="productInformation__header">
             <h2 class="singleProductView__sectionHeader">{{'PRODUCT_DETAILS' | translate}}</h2>
@@ -131,6 +131,21 @@
           </div>
         </div>
         &nbsp;
+      </section>
+    </div>
+  </div>
+
+  <div *ngIf="item?.teaserTexts?.length" class="row">
+    <div class="col-12 productDetails">
+      <section class="productInformation productInformation--last productInformation__header productDetails__wrapper">
+        <div class="productInformation__header">
+          <h2 class="singleProductView__sectionHeader">Highlights</h2>
+        </div>
+        <ul>
+          <li class="highlights__item" *ngFor="let teaserText of item?.teaserTexts">
+            {{teaserText}}
+          </li>
+        </ul>
       </section>
     </div>
   </div>
