@@ -89,6 +89,8 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_DIY_BUILDANDRENOVATE: 'build and renovate',
       NAVIGATION_DIY_BUILDANDRENOVATE_DOORS: 'doors',
       NAVIGATION_DIY_BUILDANDRENOVATE_TILES: 'tiles',
+      NAVIGATION_DIY_SEW: 'sew',
+      NAVIGATION_DIY_SEW_FABRICS: 'fabrics',
       NAVIGATION_DIY_TOOLS: 'tools',
       NAVIGATION_DIY_TOOLS_DRILLINGMACHINES: 'drilling machines',
       NAVIGATION_DIY_TOOLS_ELECTRICSAWS: 'electrical saws',

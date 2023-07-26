@@ -113,6 +113,8 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_DIY_BUILDANDRENOVATE: 'Bauen und Renovieren',
       NAVIGATION_DIY_BUILDANDRENOVATE_DOORS: 'Türen',
       NAVIGATION_DIY_BUILDANDRENOVATE_TILES: 'Fliesen',
+      NAVIGATION_DIY_SEW: 'Nähen',
+      NAVIGATION_DIY_SEW_FABRICS: 'Stoffe',
       NAVIGATION_DIY_TOOLS: 'Werkzeuge',
       NAVIGATION_DIY_TOOLS_DRILLINGMACHINES: 'Bohrmaschinen & Akku-Schrauber',
       NAVIGATION_DIY_TOOLS_ELECTRICSAWS: 'Elektrische Sägen',

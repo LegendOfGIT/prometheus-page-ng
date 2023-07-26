@@ -24,6 +24,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000011', 'FILTERS_COLORS_GOLD'),
     new FilterItem('1000005', 'FILTERS_COLORS_GRAY'),
     new FilterItem('1000012', 'FILTERS_COLORS_GREEN'),
+    new FilterItem('1000112', 'Orange'),
     new FilterItem('1000017', 'FILTERS_COLORS_PURPLE'),
     new FilterItem('1000013', 'FILTERS_COLORS_PINK'),
     new FilterItem('1000004', 'FILTERS_COLORS_RED'),
