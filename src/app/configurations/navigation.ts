@@ -287,6 +287,8 @@ export class Navigation {
     new NavigationItem('ALL', 'SPORTS', ['sports', '', ''], 12)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('SPORTS', 'SPORTS_BALLSPORTS', ['sports', 'ballsports', '']),
+    new NavigationItem('SPORTS_BALLSPORTS', 'SPORTS_BALLSPORTS_SOCCER', ['sports', 'ballsports', 'soccer']),
     new NavigationItem('SPORTS', 'SPORTS_EXERCISE', ['sports', 'exercise', '']),
     new NavigationItem('SPORTS_EXERCISE', 'SPORTS_EXERCISE_EQUIPMENT', ['sports', 'exercise', 'equipment']),
 

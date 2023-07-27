@@ -237,6 +237,8 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_MUSIC_INSTRUMENTS_MIXINGPANELS: 'Mischpulte',
       NAVIGATION_MUSIC_INSTRUMENTS_PIANOS: 'Pianos und Keyboards',
       NAVIGATION_SPORTS: 'Sport',
+      NAVIGATION_SPORTS_BALLSPORTS: 'Ballsport',
+      NAVIGATION_SPORTS_BALLSPORTS_SOCCER: 'Ballsport Fußball',
       NAVIGATION_SPORTS_EXERCISE: 'Training',
       NAVIGATION_SPORTS_EXERCISE_EQUIPMENT: 'Trainingszubehör',
       NAVIGATION_VEHICLES: 'Fahrzeuge',

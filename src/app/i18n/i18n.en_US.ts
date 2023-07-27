@@ -236,6 +236,8 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_MUSIC_INSTRUMENTS_MIXINGPANELS: 'mixing panels',
       NAVIGATION_MUSIC_INSTRUMENTS_PIANOS: 'pianos and keyboards',
       NAVIGATION_SPORTS: 'sport',
+      NAVIGATION_SPORTS_BALLSPORTS: 'ballsports',
+      NAVIGATION_SPORTS_BALLSPORTS_SOCCER: 'ballsports soccer',
       NAVIGATION_SPORTS_EXERCISE: 'exercise',
       NAVIGATION_SPORTS_EXERCISE_EQUIPMENT: 'exercise equipment',
       NAVIGATION_VEHICLES: 'vehicles',
