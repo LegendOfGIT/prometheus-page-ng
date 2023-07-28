@@ -153,6 +153,11 @@ export class Navigation {
       ['electronics-and-computers', 'home', 'tvs']
     ),
     new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_VACUUMCLEANERS',
+      ['electronics-and-computers', 'home', 'vacuum-cleaners']
+    ),
+    new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
       ['electronics-and-computers', 'large-appliances', '']
@@ -250,6 +255,8 @@ export class Navigation {
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_BEDCOVERS', ['home', 'accessoires', 'bed-covers']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['home', 'accessoires', 'carpets']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_PILLOWS', ['home', 'accessoires', 'pillows']),
+    new NavigationItem('HOME', 'HOME_CLEANING', ['home', 'cleaning', '']),
+    new NavigationItem('HOME_CLEANING', 'HOME_CLEANING_LAUNDRYDETERGENT', ['home', 'cleaning', 'laundry-detergent']),
     new NavigationItem('HOME', 'HOME_COOKINGANDBAKING', ['home', 'cooking-and-baking', '']),
     new NavigationItem('HOME_COOKINGANDBAKING', 'HOME_COOKINGANDBAKING_BAKINGSUPPLIES', ['home', 'cooking-and-baking', 'baking-supplies']),
     new NavigationItem('HOME', 'HOME_FURNITURE', ['home', 'furniture', '']),
