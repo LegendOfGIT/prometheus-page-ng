@@ -321,6 +321,7 @@ export class Navigation {
     new NavigationItem('DIY', 'DIY_BUILDANDRENOVATE', ['diy', 'build-and-renovate', '']),
     new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_DOORS', ['diy', 'build-and-renovate', 'doors']),
     new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_TILES', ['diy', 'build-and-renovate', 'tiles']),
+    new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_WALLPAINT', ['diy', 'build-and-renovate', 'wallpaint']),
     new NavigationItem('DIY', 'DIY_SEW', ['diy', 'sew', '']),
     new NavigationItem('DIY_SEW', 'DIY_SEW_FABRICS', ['diy', 'sew', 'fabrics']),
     new NavigationItem('DIY', 'DIY_TOOLS', ['diy', 'tools', '']),
