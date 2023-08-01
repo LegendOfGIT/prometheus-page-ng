@@ -233,6 +233,8 @@ export class Navigation {
       .setHasTeaser(true),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_BODYCARE', ['beauty-and-care', 'body-care', '']),
     new NavigationItem('BEAUTY_CARE_BODYCARE', 'BEAUTY_CARE_BODYCARE_SOAP', ['beauty-and-care', 'body-care', 'soap']),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_EROTIC', ['beauty-and-care', 'erotic', '']),
+    new NavigationItem('BEAUTY_CARE_EROTIC', 'BEAUTY_CARE_EROTIC_MASSAGES', ['beauty-and-care', 'erotic', 'massages']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_FRAGRANCES', ['beauty-and-care', 'fragrances', '']),
     new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_MEN', ['beauty-and-care', 'fragrances', 'men']),
     new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_WOMEN', ['beauty-and-care', 'fragrances', 'women']),

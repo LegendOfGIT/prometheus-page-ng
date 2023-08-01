@@ -96,6 +96,8 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_BEAUTY_CARE: 'Schönheit & Pflege',
       NAVIGATION_BEAUTY_CARE_BODYCARE: 'Körperpflege',
       NAVIGATION_BEAUTY_CARE_BODYCARE_SOAP: 'Seifen',
+      NAVIGATION_BEAUTY_CARE_EROTIC: 'Schönheit & Pflege (Erotik)',
+      NAVIGATION_BEAUTY_CARE_EROTIC_MASSAGES: 'Erotische Massagen',
       NAVIGATION_BEAUTY_CARE_FRAGRANCES: 'Düfte',
       NAVIGATION_BEAUTY_CARE_FRAGRANCES_MEN: 'Herren Düfte',
       NAVIGATION_BEAUTY_CARE_FRAGRANCES_WOMEN: 'Damen Düfte',
