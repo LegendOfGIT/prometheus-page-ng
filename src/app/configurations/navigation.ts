@@ -64,6 +64,7 @@ export class Navigation {
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_GAMES', ['kids', 'toys', 'games']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_ELECTRICVEHICLES', ['kids', 'toys', 'electric-vehicles']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_EXPERIMENTANDRESEARCH', ['kids', 'toys', 'experiment-and-research']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_FIGURES', ['kids', 'toys', 'toy-figures']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_SCOOTERS', ['kids', 'toys', 'scooters']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_TOYVEHICLES', ['kids', 'toys', 'toy-vehicles']),
 
@@ -84,6 +85,7 @@ export class Navigation {
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_XBOX_360', ['multimedia', 'games', 'xbox-360']),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_MOVIES', ['multimedia', 'movies', '']),
     new NavigationItem('MULTIMEDIA_MOVIES', 'MULTIMEDIA_MOVIES_ACTION', ['multimedia', 'movies', 'action']),
+    new NavigationItem('MULTIMEDIA_MOVIES', 'MULTIMEDIA_MOVIES_ANIME', ['multimedia', 'movies', 'anime']),
     new NavigationItem('MULTIMEDIA_MOVIES', 'MULTIMEDIA_MOVIES_FANTASY', ['multimedia', 'movies', 'fantasy']),
 
     new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['electronics-and-computers', '', ''], 3)
