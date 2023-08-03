@@ -15,6 +15,9 @@ export class FilterSelectionComponent implements OnInit {
   private router: Router = inject(Router);
   private selectedFilterIds: Array<string> = [];
 
+  public maximumPrice: number = 30000;
+  public minimumPrice: number = 0;
+
   public colorFilters: Array<FilterItem> = [
     new FilterItem('1000008', 'FILTERS_COLORS_BLUE'),
     new FilterItem('1000009', 'FILTERS_COLORS_BROWN'),
@@ -132,6 +135,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000052', 'Meßmer'),
     new FilterItem('1000033', 'Mytoys'),
     new FilterItem('1000034', 'Natural Food'),
+    new FilterItem('1000114', 'Oh my fantasy'),
     new FilterItem('1000035', 'Otto'),
     new FilterItem('1000036', 'Pakama'),
     new FilterItem('1000037', 'PlantLife'),
@@ -153,6 +157,12 @@ export class FilterSelectionComponent implements OnInit {
   ngOnInit(): void {
     const filterIds = this.route.snapshot?.queryParamMap?.get('filters') as string || '';
     this.selectedFilterIds = filterIds.split('-').filter(id => id);
+
+    let val = this.route.snapshot?.queryParamMap?.get('p_min');
+    this.minimumPrice = val ? Number.parseInt(val) : this.minimumPrice;
+
+    val = this.route.snapshot?.queryParamMap?.get('p_max');
+    this.maximumPrice = val ? Number.parseInt(val) : this.maximumPrice;
   }
 
   public isFilterSelected(filterId: string): boolean {
@@ -168,15 +178,24 @@ export class FilterSelectionComponent implements OnInit {
     this.selectedFilterIds = this.selectedFilterIds.filter(id => filterId !== id);
   }
 
+  public minPrice(value: string): void {
+    this.minimumPrice = Number.parseFloat(value);
+  }
+
+  public maxPrice(value: string): void {
+    this.maximumPrice = Number.parseFloat(value);
+  }
+
   public applyFilters(): void {
     let urlTree = this.router.parseUrl(this.router.url);
+
+    urlTree.queryParams['p_min'] = this.minimumPrice;
+    urlTree.queryParams['p_max'] = this.maximumPrice;
 
     if (this.selectedFilterIds.length) {
       urlTree.queryParams['filters'] = this.selectedFilterIds.join('-');
     }
-    else {
-      delete urlTree.queryParams['filters'];
-    }
+    else { delete urlTree.queryParams['filters']; }
 
     this.router.navigateByUrl(urlTree.toString()).then(() => {
       window.location.reload();
