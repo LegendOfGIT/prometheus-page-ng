@@ -1,6 +1,8 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
+import {Component, inject, Input, OnInit, PLATFORM_ID} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FilterItem} from "../../model/filter-item";
+import {isPlatformBrowser} from "@angular/common";
+import {LabelType} from "@angular-slider/ngx-slider";
 
 @Component({
   selector: 'app-filter-selection',
@@ -13,6 +15,7 @@ export class FilterSelectionComponent implements OnInit {
 
   private route: ActivatedRoute = inject(ActivatedRoute);
   private router: Router = inject(Router);
+  private platformId: Object = inject(PLATFORM_ID);
   private selectedFilterIds: Array<string> = [];
 
   public maximumPrice: number = 30000;
@@ -154,6 +157,13 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000050', 'White Collection')
   ];
 
+  public priceSliderOptions: any = {
+    floor: 0,
+    ceil: 30000,
+    step: 5,
+    translate: (value: number, label: LabelType): string => value + ' EUR'
+  };
+
   ngOnInit(): void {
     const filterIds = this.route.snapshot?.queryParamMap?.get('filters') as string || '';
     this.selectedFilterIds = filterIds.split('-').filter(id => id);
@@ -200,5 +210,9 @@ export class FilterSelectionComponent implements OnInit {
     this.router.navigateByUrl(urlTree.toString()).then(() => {
       window.location.reload();
     });
+  }
+
+  get isClientSide(): boolean {
+    return isPlatformBrowser(this.platformId);
   }
 }

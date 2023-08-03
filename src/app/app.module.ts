@@ -21,7 +21,8 @@ import { SingleProductViewComponent } from './component/product-view/single-prod
 import { UrlEncodePipe } from './pipes/web.pipe';
 import { GeneralDataProtectionRegulationComponent } from './component/legal/general-data-protection-regulation.component';
 import { DataProtectionComponent } from './component/legal/data-protection.component';
-import { FilterSelectionComponent } from "./component/filter/filter-selection.component";
+import { FilterSelectionComponent } from './component/filter/filter-selection.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FilterSelectionComponent } from "./component/filter/filter-selection.co
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxSliderModule,
     ReactiveFormsModule
   ],
   providers: [],

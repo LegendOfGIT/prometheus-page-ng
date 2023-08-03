@@ -7,36 +7,9 @@
     <h5 class="filter filter__title filter__title--gap">Preis</h5>
     <div class="container">
       <div class="row">
-        <div class="col-6 price__slider">
-          <input
-            type="range"
-            class="form-range"
-            min="0"
-            max="15000"
-            [value]="minimumPrice"
-            #minPr
-            (input)="minPrice(minPr.value)"
-          >
-        </div>
-        <div class="col-6 price__slider">
-          <input
-            type="range"
-            class="form-range"
-            min="15000"
-            max="30000"
-            step="20"
-            [value]="maximumPrice"
-            #maxPr
-            (input)="maxPrice(maxPr.value)"
-          >
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          {{minimumPrice}} EUR
-        </div>
-        <div class="col-6 price__maximum">
-          {{maximumPrice}} EUR
+        <div *ngIf="isClientSide">
+          <ngx-slider [options]="priceSliderOptions" [(value)]="minimumPrice" [(highValue)]="maximumPrice">
+          </ngx-slider>
         </div>
       </div>
     </div>
