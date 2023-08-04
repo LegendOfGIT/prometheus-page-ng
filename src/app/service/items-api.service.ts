@@ -55,7 +55,7 @@ export class ItemsApiService extends ApiBase {
 
     getItems(navigationId: string,
              searchPattern: string,
-             filterIds: string = '1000004',
+             filterIds: string = '',
              numberOfResults: number | undefined = undefined,
              randomItems: boolean | undefined = false,
              page: string = '1',
