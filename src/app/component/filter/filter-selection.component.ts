@@ -5,6 +5,7 @@ import {isPlatformBrowser} from "@angular/common";
 import {LabelType} from "@angular-slider/ngx-slider";
 import {FiltersApiService} from "../../service/filters-api.service";
 import {NavigationService} from "../../service/navigation.service";
+import {AvailableFilterItem} from "../../model/available-filter-item";
 
 @Component({
   selector: 'app-filter-selection',
@@ -20,6 +21,7 @@ export class FilterSelectionComponent implements OnInit {
   private platformId: Object = inject(PLATFORM_ID);
   private filtersService: FiltersApiService = inject(FiltersApiService);
   private navigationService: NavigationService = inject(NavigationService);
+  private availableFilters: Array<AvailableFilterItem | null> = [];
   private selectedFilterIds: Array<string> = [];
 
   public maximumPrice: number = 30000;
@@ -178,8 +180,10 @@ export class FilterSelectionComponent implements OnInit {
 
     val = this.route.snapshot?.queryParamMap?.get('p_max');
     this.maximumPrice = val ? Number.parseInt(val) : this.maximumPrice;
+  }
 
-    if (this.isClientSide) {
+  public ngAfterViewChecked() {
+    if (this.isClientSide && this.dialog?.open && !this.availableFilters.length && !this.isLoading) {
       this.isLoading = true;
       this.filtersService.getAvailableFilters(
         this.navigationService.activeNavigationItem?.toId || '',
@@ -187,6 +191,8 @@ export class FilterSelectionComponent implements OnInit {
         this.route.snapshot?.queryParamMap?.get('p_min') || '',
         this.route.snapshot?.queryParamMap?.get('p_max') || ''
       ).subscribe(filters => {
+        this.availableFilters = filters;
+
         this.brandsFilters = this.brandsFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.colorFilters = this.colorFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.fitFilters = this.fitFilters.filter(f => filters.find(af => f.id === af?.filterId));
@@ -210,14 +216,6 @@ export class FilterSelectionComponent implements OnInit {
     }
 
     this.selectedFilterIds = this.selectedFilterIds.filter(id => filterId !== id);
-  }
-
-  public minPrice(value: string): void {
-    this.minimumPrice = Number.parseFloat(value);
-  }
-
-  public maxPrice(value: string): void {
-    this.maximumPrice = Number.parseFloat(value);
   }
 
   public applyFilters(): void {
