@@ -179,22 +179,24 @@ export class FilterSelectionComponent implements OnInit {
     val = this.route.snapshot?.queryParamMap?.get('p_max');
     this.maximumPrice = val ? Number.parseInt(val) : this.maximumPrice;
 
-    this.isLoading = true;
-    this.filtersService.getAvailableFilters(
-      this.navigationService.activeNavigationItem?.toId || '',
-      this.route.snapshot?.queryParamMap?.get('search') || '',
-      this.route.snapshot?.queryParamMap?.get('p_min') || '',
-      this.route.snapshot?.queryParamMap?.get('p_max') || ''
-    ).subscribe(filters => {
-      this.brandsFilters = this.brandsFilters.filter(f => filters.find(af => f.id === af?.filterId));
-      this.colorFilters = this.colorFilters.filter(f => filters.find(af => f.id === af?.filterId));
-      this.fitFilters = this.fitFilters.filter(f => filters.find(af => f.id === af?.filterId));
-      this.productTypeFilters = this.productTypeFilters.filter(f => filters.find(af => f.id === af?.filterId));
-      this.shopsFilters = this.shopsFilters.filter(f => filters.find(af => f.id === af?.filterId));
-      this.storageSizeFilters = this.storageSizeFilters.filter(f => filters.find(af => f.id === af?.filterId));
-      this.sustainabilityFilters = this.sustainabilityFilters.filter(f => filters.find(af => f.id === af?.filterId));
-      this.isLoading = false;
-    });
+    if (this.isClientSide) {
+      this.isLoading = true;
+      this.filtersService.getAvailableFilters(
+        this.navigationService.activeNavigationItem?.toId || '',
+        this.route.snapshot?.queryParamMap?.get('search') || '',
+        this.route.snapshot?.queryParamMap?.get('p_min') || '',
+        this.route.snapshot?.queryParamMap?.get('p_max') || ''
+      ).subscribe(filters => {
+        this.brandsFilters = this.brandsFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.colorFilters = this.colorFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.fitFilters = this.fitFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.productTypeFilters = this.productTypeFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.shopsFilters = this.shopsFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.storageSizeFilters = this.storageSizeFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.sustainabilityFilters = this.sustainabilityFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.isLoading = false;
+      });
+    }
   }
 
   public isFilterSelected(filterId: string): boolean {
