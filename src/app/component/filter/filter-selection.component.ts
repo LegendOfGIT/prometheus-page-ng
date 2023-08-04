@@ -1,6 +1,11 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
+import {Component, inject, Input, OnInit, PLATFORM_ID} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FilterItem} from "../../model/filter-item";
+import {isPlatformBrowser} from "@angular/common";
+import {LabelType} from "@angular-slider/ngx-slider";
+import {FiltersApiService} from "../../service/filters-api.service";
+import {NavigationService} from "../../service/navigation.service";
+import {AvailableFilterItem} from "../../model/available-filter-item";
 
 @Component({
   selector: 'app-filter-selection',
@@ -13,7 +18,15 @@ export class FilterSelectionComponent implements OnInit {
 
   private route: ActivatedRoute = inject(ActivatedRoute);
   private router: Router = inject(Router);
+  private platformId: Object = inject(PLATFORM_ID);
+  private filtersService: FiltersApiService = inject(FiltersApiService);
+  private navigationService: NavigationService = inject(NavigationService);
+  private availableFilters: Array<AvailableFilterItem | null> = [];
   private selectedFilterIds: Array<string> = [];
+
+  public maximumPrice: number = 30000;
+  public minimumPrice: number = 0;
+  public isLoading = false;
 
   public colorFilters: Array<FilterItem> = [
     new FilterItem('1000008', 'FILTERS_COLORS_BLUE'),
@@ -24,7 +37,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000011', 'FILTERS_COLORS_GOLD'),
     new FilterItem('1000005', 'FILTERS_COLORS_GRAY'),
     new FilterItem('1000012', 'FILTERS_COLORS_GREEN'),
-    new FilterItem('1000112', 'Orange'),
+    new FilterItem('1000112', 'orange'),
     new FilterItem('1000017', 'FILTERS_COLORS_PURPLE'),
     new FilterItem('1000013', 'FILTERS_COLORS_PINK'),
     new FilterItem('1000004', 'FILTERS_COLORS_RED'),
@@ -53,6 +66,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000093', 'LEGO'),
     new FilterItem('1000104', 'Nike'),
     new FilterItem('1000095', 'Nintendo'),
+    new FilterItem('1000113', 'Nokia'),
     new FilterItem('1000090', 'Puma'),
     new FilterItem('1000089', 'Samsung'),
     new FilterItem('1000092', 'Sony'),
@@ -131,6 +145,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000052', 'Meßmer'),
     new FilterItem('1000033', 'Mytoys'),
     new FilterItem('1000034', 'Natural Food'),
+    new FilterItem('1000114', 'Oh my fantasy'),
     new FilterItem('1000035', 'Otto'),
     new FilterItem('1000036', 'Pakama'),
     new FilterItem('1000037', 'PlantLife'),
@@ -149,9 +164,45 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000050', 'White Collection')
   ];
 
+  public priceSliderOptions: any = {
+    floor: 0,
+    ceil: 30000,
+    step: 5,
+    translate: (value: number, label: LabelType): string => value + ' EUR'
+  };
+
   ngOnInit(): void {
     const filterIds = this.route.snapshot?.queryParamMap?.get('filters') as string || '';
     this.selectedFilterIds = filterIds.split('-').filter(id => id);
+
+    let val = this.route.snapshot?.queryParamMap?.get('p_min');
+    this.minimumPrice = val ? Number.parseInt(val) : this.minimumPrice;
+
+    val = this.route.snapshot?.queryParamMap?.get('p_max');
+    this.maximumPrice = val ? Number.parseInt(val) : this.maximumPrice;
+  }
+
+  public ngAfterViewChecked() {
+    if (this.isClientSide && this.dialog?.open && !this.availableFilters.length && !this.isLoading) {
+      this.isLoading = true;
+      this.filtersService.getAvailableFilters(
+        this.navigationService.activeNavigationItem?.toId || '',
+        this.route.snapshot?.queryParamMap?.get('search') || '',
+        this.route.snapshot?.queryParamMap?.get('p_min') || '',
+        this.route.snapshot?.queryParamMap?.get('p_max') || ''
+      ).subscribe(filters => {
+        this.availableFilters = filters;
+
+        this.brandsFilters = this.brandsFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.colorFilters = this.colorFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.fitFilters = this.fitFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.productTypeFilters = this.productTypeFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.shopsFilters = this.shopsFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.storageSizeFilters = this.storageSizeFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.sustainabilityFilters = this.sustainabilityFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.isLoading = false;
+      });
+    }
   }
 
   public isFilterSelected(filterId: string): boolean {
@@ -170,15 +221,20 @@ export class FilterSelectionComponent implements OnInit {
   public applyFilters(): void {
     let urlTree = this.router.parseUrl(this.router.url);
 
+    urlTree.queryParams['p_min'] = this.minimumPrice;
+    urlTree.queryParams['p_max'] = this.maximumPrice;
+
     if (this.selectedFilterIds.length) {
       urlTree.queryParams['filters'] = this.selectedFilterIds.join('-');
     }
-    else {
-      delete urlTree.queryParams['filters'];
-    }
+    else { delete urlTree.queryParams['filters']; }
 
     this.router.navigateByUrl(urlTree.toString()).then(() => {
       window.location.reload();
     });
+  }
+
+  get isClientSide(): boolean {
+    return isPlatformBrowser(this.platformId);
   }
 }

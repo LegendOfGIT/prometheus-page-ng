@@ -55,10 +55,12 @@ export class ItemsApiService extends ApiBase {
 
     getItems(navigationId: string,
              searchPattern: string,
-             filterIds: string = '1000004',
+             filterIds: string = '',
              numberOfResults: number | undefined = undefined,
              randomItems: boolean | undefined = false,
-             page: string = '1'): Observable<ItemsResponse> {
+             page: string = '1',
+             priceFrom: string = '',
+             priceTo: string = ''): Observable<ItemsResponse> {
       const url = this.getRequestBase() + this.get(
         endpoints.items,
         {
@@ -68,6 +70,8 @@ export class ItemsApiService extends ApiBase {
           isBot: this.isBotRequest() ? 'true': 'false',
           randomItems : randomItems ? 'true': 'false',
           page,
+          priceFrom,
+          priceTo,
           searchPattern,
           hashtags: isPlatformServer(this.platformId) ? '' : this.getActiveHashtags().join(',')
         });
@@ -108,9 +112,11 @@ export class ItemsApiService extends ApiBase {
     }
 
     getHashtagsItems(searchPattern: string = '',
-                     filterIds: string = '1000004',
+                     filterIds: string = '',
                      numberOfResults: number | undefined = undefined,
-                     page: string = '1'): Observable<ItemsResponse> {
+                     page: string = '1',
+                     priceFrom: string = '',
+                     priceTo: string = ''): Observable<ItemsResponse> {
       const url = this.getRequestBase() + this.get(
         endpoints.hashtagsItems,
         {
@@ -119,6 +125,8 @@ export class ItemsApiService extends ApiBase {
           numberOfResults: numberOfResults ? `${numberOfResults}` : '',
           isBot: this.isBotRequest() ? 'true': 'false',
           page,
+          priceFrom,
+          priceTo,
           searchPattern
         });
 

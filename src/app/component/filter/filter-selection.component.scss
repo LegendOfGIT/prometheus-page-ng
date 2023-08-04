@@ -36,3 +36,14 @@
     flex-wrap: wrap;
   }
 }
+
+.price {
+  &__maximum {
+    display: inline-flex;
+    flex-flow: row-reverse;
+  }
+
+  &__slider {
+    padding: 0;
+  }
+}

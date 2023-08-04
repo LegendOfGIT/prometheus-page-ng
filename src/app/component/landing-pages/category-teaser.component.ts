@@ -37,6 +37,7 @@ export class CategoryTeaserComponent implements OnInit {
     new Item(), new Item(), new Item(),
     new Item(), new Item()
   ];
+  private isFallbackProductSelection = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -53,11 +54,13 @@ export class CategoryTeaserComponent implements OnInit {
 
   private initialiseItems(): void {
 
-    const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
     const filterIds = this.route.snapshot?.queryParamMap?.get('filters') as string;
+    const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
+    const minimumPrice = this.route.snapshot?.queryParamMap?.get('p_min') as string;
+    const maximumPrice = this.route.snapshot?.queryParamMap?.get('p_max') as string;
 
     if (this.showHashtags) {
-      this.itemsService.getHashtagsItems(searchPattern, filterIds, this.numberOfItems).subscribe(itemsResponse => {
+      this.itemsService.getHashtagsItems(searchPattern, filterIds, this.numberOfItems, undefined, minimumPrice, maximumPrice).subscribe(itemsResponse => {
         if (itemsResponse?.items?.length) {
           this.categoryItems = itemsResponse.items;
           if (isPlatformServer(this.platformId)) {
@@ -66,7 +69,7 @@ export class CategoryTeaserComponent implements OnInit {
           return;
         }
 
-        this.itemsService.getHashtagsItems('', filterIds, this.numberOfItems)
+        this.itemsService.getHashtagsItems('', filterIds, this.numberOfItems, undefined, minimumPrice, maximumPrice)
           .pipe(takeUntil(this.destroyedService$))
           .subscribe(
             itemsResponse => {
@@ -82,6 +85,8 @@ export class CategoryTeaserComponent implements OnInit {
                 .pipe(takeUntil(this.destroyedService$))
                 .subscribe(
                   itemsResponse => {
+                    this.isFallbackProductSelection = true;
+
                     if (itemsResponse?.items?.length) {
                       this.categoryItems = itemsResponse.items;
                       if (isPlatformServer(this.platformId)) {
@@ -96,7 +101,16 @@ export class CategoryTeaserComponent implements OnInit {
       return;
     }
 
-    this.itemsService.getItems(this.navigationItem?.toId || '', searchPattern, filterIds, this.numberOfItems, this.randomItems).subscribe(itemsResponse => {
+    this.itemsService.getItems(
+      this.navigationItem?.toId || '',
+      searchPattern,
+      filterIds,
+      this.numberOfItems,
+      this.randomItems,
+      undefined,
+      minimumPrice,
+      maximumPrice
+    ).subscribe(itemsResponse => {
       if (itemsResponse?.items?.length) {
         this.categoryItems = itemsResponse.items;
         if (isPlatformServer(this.platformId)) {
@@ -105,7 +119,16 @@ export class CategoryTeaserComponent implements OnInit {
         return;
       }
 
-      this.itemsService.getItems(this.navigationItem?.toId || '', '', filterIds, this.numberOfItems)
+      this.itemsService.getItems(
+        this.navigationItem?.toId || '',
+        '',
+        filterIds,
+        this.numberOfItems,
+        undefined,
+        undefined,
+        minimumPrice,
+        maximumPrice
+      )
         .pipe(takeUntil(this.destroyedService$))
         .subscribe(
           itemsResponse => {
@@ -117,10 +140,17 @@ export class CategoryTeaserComponent implements OnInit {
               return;
             }
 
-            this.itemsService.getItems(this.navigationItem?.toId || '', '', '', this.numberOfItems)
+            this.itemsService.getItems(
+              this.navigationItem?.toId || '',
+              '',
+              '',
+              this.numberOfItems
+            )
               .pipe(takeUntil(this.destroyedService$))
               .subscribe(
                 itemsResponse => {
+                  this.isFallbackProductSelection = true;
+
                   if (itemsResponse?.items?.length) {
                     this.categoryItems = itemsResponse?.items;
                     if (isPlatformServer(this.platformId)) {
@@ -142,7 +172,7 @@ export class CategoryTeaserComponent implements OnInit {
 
   private addParameterIfGiven(parameters: any, parameterKey: string): void {
     const parameter = this.getParameterFromUrl(parameterKey);
-    if (!parameter) {
+    if (this.isFallbackProductSelection || !parameter) {
       return;
     }
 
@@ -157,6 +187,8 @@ export class CategoryTeaserComponent implements OnInit {
     const parameters: any = {};
 
     this.addParameterIfGiven(parameters, 'filters');
+    this.addParameterIfGiven(parameters, 'p_min');
+    this.addParameterIfGiven(parameters, 'p_max');
     this.addParameterIfGiven(parameters, 'search');
 
     const hashtags = this.userService.activeUser?.activeHashtags || [];

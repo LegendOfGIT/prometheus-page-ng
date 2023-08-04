@@ -13,6 +13,12 @@
   }
 }
 
+.highlights {
+  &__item {
+    margin-top: 0.5em;
+  }
+}
+
 .mainStage {
   display: flex;
 
