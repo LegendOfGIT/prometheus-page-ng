@@ -54,6 +54,8 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000101', 'Bugatti'),
     new FilterItem('1000103', 'Calvin Klein'),
     new FilterItem('1000110', 'Chanel'),
+    new FilterItem('1000115', 'Charlsten'),
+    new FilterItem('1000116', 'Cougar'),
     new FilterItem('1000099', 'Desigual'),
     new FilterItem('1000107', 'Electronic Arts'),
     new FilterItem('1000105', 'Esprit'),

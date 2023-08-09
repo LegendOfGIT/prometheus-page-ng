@@ -262,6 +262,7 @@ export class Navigation {
     new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['home', 'accessoires', '']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_BEDCOVERS', ['home', 'accessoires', 'bed-covers']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['home', 'accessoires', 'carpets']),
+    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_DECORATIONS', ['home', 'accessoires', 'decorations']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_PILLOWS', ['home', 'accessoires', 'pillows']),
     new NavigationItem('HOME', 'HOME_CLEANING', ['home', 'cleaning', '']),
     new NavigationItem('HOME_CLEANING', 'HOME_CLEANING_LAUNDRYDETERGENT', ['home', 'cleaning', 'laundry-detergent']),
@@ -306,6 +307,10 @@ export class Navigation {
     new NavigationItem('SPORTS_BALLSPORTS', 'SPORTS_BALLSPORTS_SOCCER', ['sports', 'ballsports', 'soccer']),
     new NavigationItem('SPORTS', 'SPORTS_EXERCISE', ['sports', 'exercise', '']),
     new NavigationItem('SPORTS_EXERCISE', 'SPORTS_EXERCISE_EQUIPMENT', ['sports', 'exercise', 'equipment']),
+    new NavigationItem('SPORTS', 'SPORTS_TABLESPORTS', ['sports', 'tablesports', '']),
+    new NavigationItem('SPORTS_TABLESPORTS', 'SPORTS_TABLESPORTS_BILLARD', ['sports', 'tablesports', 'billard']),
+    new NavigationItem('SPORTS_TABLESPORTS', 'SPORTS_TABLESPORTS_TABLESOCCER', ['sports', 'tablesports', 'tablesoccer']),
+    new NavigationItem('SPORTS_TABLESPORTS', 'SPORTS_TABLESPORTS_TABLETENNIS', ['sports', 'tablesports', 'tabletennis']),
 
     new NavigationItem('ALL', 'GROCERIES', ['groceries', '', ''], 13)
       .setHasSlogan(true)
