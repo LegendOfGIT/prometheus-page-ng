@@ -1,4 +1,4 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, Inject, inject, Input, PLATFORM_ID} from '@angular/core';
 
 import {Item} from 'src/app/model/item';
 import {TrackingService} from 'src/app/service/tracking.service';
@@ -7,6 +7,7 @@ import {TrackingInterestLevel} from 'src/app/model/tracking-interest-level';
 import {NavigationService} from '../../service/navigation.service';
 import {NavigationItem} from '../../model/navigation-item';
 import {ActivatedRoute} from '@angular/router';
+import {isPlatformBrowser} from "@angular/common";
 
 @Component({
   selector: 'app-item',
@@ -18,6 +19,7 @@ export class ItemComponent {
     private route = inject(ActivatedRoute);
     private trackingService = inject(TrackingService);
     private navigationService = inject(NavigationService);
+    private platformId: Object = inject(PLATFORM_ID);
 
     @Input()
     public item: Item | null = null;
@@ -28,11 +30,21 @@ export class ItemComponent {
     @Input()
     public displayMode = ItemDisplayMode.DEFAULT;
 
+    private isOnClientSide(): boolean {
+      return isPlatformBrowser(this.platformId);
+    }
+
+    private getParameterFromUrl(parameterKey: string): string | null {
+      return this.isOnClientSide() ? new URL(window.location.href).searchParams.get(parameterKey) : '';
+    }
+
     public pickedInformation(item: Item): void {
       this.trackingService.addActivity(
         TrackingActivityItem.create()
           .setInformationItemId(item.itemId)
           .setInterestLevel(TrackingInterestLevel.HIGH)
+          .setSearchPattern(this.getParameterFromUrl('search') || '')
+          .setfFilters(this.getParameterFromUrl('filters') || '')
           .setTrackingId('item.clicked'));
     }
 
