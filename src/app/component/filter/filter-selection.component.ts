@@ -71,6 +71,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000113', 'Nokia'),
     new FilterItem('1000090', 'Puma'),
     new FilterItem('1000089', 'Samsung'),
+    new FilterItem('1000118', 'Schleich'),
     new FilterItem('1000092', 'Sony'),
     new FilterItem('1000094', 'Vivanco'),
     new FilterItem('1000108', 'Vtech')
@@ -162,6 +163,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000046', 'Timber Taste'),
     new FilterItem('1000047', 'Toom'),
     new FilterItem('1000048', 'Top Parfümerie'),
+    new FilterItem('1000117', 'Vertical Extreme'),
     new FilterItem('1000049', 'Waschbär'),
     new FilterItem('1000050', 'White Collection')
   ];
