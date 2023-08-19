@@ -132,8 +132,28 @@ export class Navigation {
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
+      'ELECTRONICS_AND_COMPUTERS_EROTIC',
+      ['electronics-and-computers', 'erotic', '']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_EROTIC',
+      'ELECTRONICS_AND_COMPUTERS_EROTIC_VIBRATORS',
+      ['electronics-and-computers', 'erotic', 'vibrators']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_HOME',
       ['electronics-and-computers', 'home', '']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_AIRPURIFIERS',
+      ['electronics-and-computers', 'home', 'air-purifiers']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_AIRVENTS',
+      ['electronics-and-computers', 'home', 'air-vents']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
@@ -309,6 +329,7 @@ export class Navigation {
     new NavigationItem('SPORTS_BALLSPORTS', 'SPORTS_BALLSPORTS_SOCCER', ['sports', 'ballsports', 'soccer']),
     new NavigationItem('SPORTS', 'SPORTS_CLIMBING', ['sports', 'climbing', '']),
     new NavigationItem('SPORTS_CLIMBING', 'SPORTS_CLIMBING_BACKPACKS', ['sports', 'climbing', 'backpacks']),
+    new NavigationItem('SPORTS_CLIMBING', 'SPORTS_CLIMBING_HELMETS', ['sports', 'climbing', 'helmets']),
     new NavigationItem('SPORTS_CLIMBING', 'SPORTS_CLIMBING_SHOES', ['sports', 'climbing', 'shoes']),
     new NavigationItem('SPORTS_CLIMBING', 'SPORTS_CLIMBING_SUNGLASSES', ['sports', 'climbing', 'sunglasses']),
     new NavigationItem('SPORTS', 'SPORTS_EXERCISE', ['sports', 'exercise', '']),
