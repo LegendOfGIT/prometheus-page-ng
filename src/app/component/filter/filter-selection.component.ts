@@ -135,6 +135,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000021', 'Bearfamily records'),
     new FilterItem('1000022', 'Black is beautiful'),
     new FilterItem('1000023', 'Buch24'),
+    new FilterItem('1000119', 'Dunleath'),
     new FilterItem('1000024', 'Ebrosia'),
     new FilterItem('1000025', 'Enners'),
     new FilterItem('1000063', 'Flaconi'),
