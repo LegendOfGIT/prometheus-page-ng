@@ -75,6 +75,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_BEAUTY_CARE_EROTIC_MASSAGES: 'erotic massages',
       NAVIGATION_BEAUTY_CARE_FRAGRANCES: 'fragrances',
       NAVIGATION_BEAUTY_CARE_FRAGRANCES_MEN: 'men fragrances',
+      NAVIGATION_BEAUTY_CARE_FRAGRANCES_UNISEX: 'unisex fragrances',
       NAVIGATION_BEAUTY_CARE_FRAGRANCES_WOMEN: 'women fragrances',
       NAVIGATION_BEAUTY_CARE_HAIR: 'hair',
       NAVIGATION_BEAUTY_CARE_HAIR_CARE: 'hair care',

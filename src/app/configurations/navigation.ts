@@ -265,6 +265,7 @@ export class Navigation {
     new NavigationItem('BEAUTY_CARE_EROTIC', 'BEAUTY_CARE_EROTIC_MASSAGES', ['beauty-and-care', 'erotic', 'massages']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_FRAGRANCES', ['beauty-and-care', 'fragrances', '']),
     new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_MEN', ['beauty-and-care', 'fragrances', 'men']),
+    new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_UNISEX', ['beauty-and-care', 'fragrances', 'unisex']),
     new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_WOMEN', ['beauty-and-care', 'fragrances', 'women']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_HAIR', ['beauty-and-care', 'hair', '']),
     new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_CARE', ['beauty-and-care', 'hair', 'care']),
