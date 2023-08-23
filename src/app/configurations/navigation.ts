@@ -307,6 +307,9 @@ export class Navigation {
     new NavigationItem('HOME', 'HOME_PETS', ['home', 'pets', '']),
     new NavigationItem('HOME_PETS', 'HOME_PETS_CATS', ['home', 'pets', 'cats']),
     new NavigationItem('HOME_PETS', 'HOME_PETS_DOGS', ['home', 'pets', 'dogs']),
+    new NavigationItem('HOME', 'HOME_WELLNESS', ['home', 'wellness', '']),
+    new NavigationItem('HOME_WELLNESS', 'HOME_WELLNESS_SAUNAS', ['home', 'wellness', 'saunas']),
+    new NavigationItem('HOME_WELLNESS', 'HOME_WELLNESS_WHIRLPOOLS', ['home', 'wellness', 'whirlpools']),
 
     new NavigationItem('ALL', 'VEHICLES', ['vehicles', '', ''], 11)
       .setHasSlogan(true)
