@@ -127,14 +127,15 @@ export class FilterSelectionComponent implements OnInit {
   ];
 
   public shopsFilters: Array<FilterItem> = [
-    new FilterItem('1000000', 'dressforless'),
-    new FilterItem('1000001', 'BigGreen Smile'),
     new FilterItem('1000018', '100% pure'),
     new FilterItem('1000019', 'Amazon'),
+    new FilterItem('1000121', 'AWG Mode'),
+    new FilterItem('1000001', 'BigGreen Smile'),
     new FilterItem('1000020', 'Backmarket'),
     new FilterItem('1000021', 'Bearfamily records'),
     new FilterItem('1000022', 'Black is beautiful'),
     new FilterItem('1000023', 'Buch24'),
+    new FilterItem('1000000', 'Dressforless'),
     new FilterItem('1000119', 'Dunleath'),
     new FilterItem('1000024', 'Ebrosia'),
     new FilterItem('1000025', 'Enners'),
