@@ -147,6 +147,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000030', 'Inhofer'),
     new FilterItem('1000031', 'IMWH'),
     new FilterItem('1000032', 'Jan Vanderstorm'),
+    new FilterItem('1000122', 'Medimops'),
     new FilterItem('1000052', 'Meßmer'),
     new FilterItem('1000033', 'Mytoys'),
     new FilterItem('1000034', 'Natural Food'),
