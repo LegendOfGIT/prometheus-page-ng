@@ -46,6 +46,28 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000016', 'FILTERS_COLORS_WHITE')
   ];
 
+  public sizesFilter: Array<FilterItem> = [
+    new FilterItem('1000134', 'XXS'),
+    new FilterItem('1000135', 'XS'),
+    new FilterItem('1000136', 'S'),
+    new FilterItem('1000137', 'M'),
+    new FilterItem('1000138', 'L'),
+    new FilterItem('1000139', 'XL'),
+    new FilterItem('1000140', 'XXL'),
+    new FilterItem('1000141', 'XXXL'),
+    new FilterItem('1000123', '25'),
+    new FilterItem('1000124', '26'),
+    new FilterItem('1000125', '27'),
+    new FilterItem('1000126', '28'),
+    new FilterItem('1000127', '29'),
+    new FilterItem('1000128', '30'),
+    new FilterItem('1000129', '31'),
+    new FilterItem('1000130', '32'),
+    new FilterItem('1000131', '33'),
+    new FilterItem('1000132', '34'),
+    new FilterItem('1000133', '35'),
+  ];
+
   public brandsFilters: Array<FilterItem> = [
     new FilterItem('1000109', 'Activision'),
     new FilterItem('1000088', 'Adidas'),
@@ -203,6 +225,7 @@ export class FilterSelectionComponent implements OnInit {
 
         this.brandsFilters = this.brandsFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.colorFilters = this.colorFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.sizesFilter = this.sizesFilter.filter(f => filters.find(af => f.id === af?.filterId));
         this.fitFilters = this.fitFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.productTypeFilters = this.productTypeFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.shopsFilters = this.shopsFilters.filter(f => filters.find(af => f.id === af?.filterId));

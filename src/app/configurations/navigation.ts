@@ -81,6 +81,7 @@ export class Navigation {
     new NavigationItem('MULTIMEDIA_BOOKS', 'MULTIMEDIA_BOOKS_SCHOOLBOOKS', ['multimedia', 'books', 'school-books']),
     new NavigationItem('MULTIMEDIA_BOOKS', 'MULTIMEDIA_BOOKS_SCIENCEFICTION', ['multimedia', 'books', 'science-fiction']),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_GAMES', ['multimedia', 'games', '']).setHasSlogan(true),
+    new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_NINTENDODS', ['multimedia', 'games', 'nintendo-ds']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_NINTENDO_SWITCH', ['multimedia', 'games', 'nintendo-switch']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_PC', ['multimedia', 'games', 'pc']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_PLAYSTATION_5', ['multimedia', 'games', 'playstation-5']),
