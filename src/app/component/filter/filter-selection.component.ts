@@ -263,6 +263,8 @@ export class FilterSelectionComponent implements OnInit {
     this.router.navigateByUrl(urlTree.toString()).then(() => {
       window.location.reload();
     });
+
+    this.isLoading = true;
   }
 
   get isClientSide(): boolean {
