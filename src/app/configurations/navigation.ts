@@ -10,13 +10,16 @@ export class Navigation {
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('FASHION', 'FASHION_BOYS', ['fashion', 'boys', '']),
+    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_DISGUISES', ['fashion', 'boys', 'disguises']),
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SHOES', ['fashion', 'boys', 'shoes']),
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SWIMWEAR', ['fashion', 'boys', 'swimwear']),
     new NavigationItem('FASHION', 'FASHION_GIRLS', ['fashion', 'girls', '']),
+    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_DISGUISES', ['fashion', 'girls', 'disguises']),
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SHOES', ['fashion', 'girls', 'shoes']),
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SWIMWEAR', ['fashion', 'girls', 'swimwear']),
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['fashion', 'women', '']).setHasSlogan(true),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_BAGS', ['fashion', 'women', 'bags']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES', ['fashion', 'women', 'disguises']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JACKETS', ['fashion', 'women', 'jackets']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['fashion', 'women', 'jeans']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELRY', ['fashion', 'women', 'jewelry']),
@@ -27,6 +30,7 @@ export class Navigation {
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SWEATERS_AND_KNITWEAR', ['fashion', 'women', 'sweaters-and-knitwear']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SWIMWEAR', ['fashion', 'women', 'swimwear']),
     new NavigationItem('FASHION', 'FASHION_MEN', ['fashion', 'men', '']).setHasSlogan(true),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_DISGUISES', ['fashion', 'men', 'disguises']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_EROTICUNDERWEAR', ['fashion', 'men', 'erotic-underwear']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_JACKETS', ['fashion', 'men', 'jackets']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEANS', ['fashion', 'men', 'jeans']),
@@ -69,6 +73,7 @@ export class Navigation {
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_FIGURES', ['kids', 'toys', 'toy-figures']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_SCOOTERS', ['kids', 'toys', 'scooters']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_TOYVEHICLES', ['kids', 'toys', 'toy-vehicles']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_TRADINGCARDS', ['kids', 'toys', 'trading-cards']),
 
     new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', ''], 4)
       .setHasSlogan(true)
@@ -303,6 +308,7 @@ export class Navigation {
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GARDENHOUSES', ['home', 'garden', 'garden-houses']),
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GRILLS', ['home', 'garden', 'grills']),
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_LAWNMOWERS', ['home', 'garden', 'lawnmowers']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_LEAFBLOWERS', ['home', 'garden', 'leafblowers']),
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_LOUNGEFURNITURE', ['home', 'garden', 'lounge-furniture']),
     new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_SPORTS', ['home', 'garden', 'sports']),
     new NavigationItem('HOME', 'HOME_PETS', ['home', 'pets', '']),
