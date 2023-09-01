@@ -65,6 +65,7 @@ export class I18nDeDe implements I18nInterface {
       FILTERS_SIZES: 'Größen',
       FILTERS_STORAGE_SIZE: 'Speicherkapazität',
       FILTERS_SUSTAINABILITY: 'Nachhaltigkeit',
+      HERO_DISCOVER_DUNLEATH: 'ENTDECKE DUNLEATH',
       IMAGE_OF: 'Bild von',
       IMPRINT: 'Impressum',
       MORE_OFFERS: 'Weitere Angebote',

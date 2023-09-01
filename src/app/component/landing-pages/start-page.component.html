@@ -1,12 +1,15 @@
 <div class="startPage__content">
-  <div class="container startPage__actions">
-    <div class="button startPage__button" (click)="advantagesDialog.showModal();">
-      {{'WHY_WEWANNA' | translate}}
-    </div>
-
-    <div class="button button--highlighted fa fa-sliders-h" (click)="filterSelectionDialog.showModal();">
-    </div>
+  <div class="startPage__filter button button--highlighted fa fa-sliders-h" (click)="filterSelectionDialog.showModal();">
   </div>
+
+  <a href="{{currentHero?.heroUrl}}">
+    <div
+      class="startPage__hero"
+      [style.background-image]="currentHero?.backgroundImage"
+    >
+      <div class="startPage__heroTitle" *ngIf="currentHero?.heroText">{{currentHero?.heroText || '' | translate}}</div>
+    </div>
+  </a>
 
   <div class="container">
     <category-teaser [showHashtags]="true" [showHeader]="false" [numberOfItems]="6"></category-teaser>
