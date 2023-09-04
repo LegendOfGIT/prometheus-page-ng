@@ -5,6 +5,7 @@ export class CorrespondingItem extends BaseModel {
     public link: string = '';
     public priceCurrent: number = 0;
     public priceInitial: number = 0;
+    public productCondition: string = '';
     public updatedOn: string = '';
 
     static override fromModel(data: CorrespondingItemDto): CorrespondingItem {
