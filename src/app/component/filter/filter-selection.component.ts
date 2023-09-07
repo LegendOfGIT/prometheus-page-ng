@@ -152,6 +152,7 @@ export class FilterSelectionComponent implements OnInit {
   public shopsFilters: Array<FilterItem> = [
     new FilterItem('1000018', '100% pure'),
     new FilterItem('1000019', 'Amazon'),
+    new FilterItem('1000144', 'Artgerecht'),
     new FilterItem('1000121', 'AWG Mode'),
     new FilterItem('1000001', 'BigGreen Smile'),
     new FilterItem('1000020', 'Backmarket'),
@@ -164,6 +165,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000025', 'Enners'),
     new FilterItem('1000063', 'Flaconi'),
     new FilterItem('1000026', 'Fussmattenwelt'),
+    new FilterItem('1000143', 'Galapel'),
     new FilterItem('1000027', 'Hayman Coffee'),
     new FilterItem('1000028', 'Hörner'),
     new FilterItem('1000029', 'Idee'),

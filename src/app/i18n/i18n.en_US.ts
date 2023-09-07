@@ -83,6 +83,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_BEAUTY_CARE_HAIR_CARE: 'hair care',
       NAVIGATION_BEAUTY_CARE_HAIR_STYLING: 'hair styling',
       NAVIGATION_BEAUTY_CARE_HEALTH: 'health',
+      NAVIGATION_BEAUTY_CARE_HEALTH_NUTRITIALSUPPLEMENTS: 'nutritional supplements',
       NAVIGATION_BEAUTY_CARE_HEALTH_PAINKILLERS: 'painkillers',
       NAVIGATION_BEAUTY_CARE_MAKEUP: 'makeup',
       NAVIGATION_BEAUTY_CARE_MAKEUP_EYES: 'eye makeup',
