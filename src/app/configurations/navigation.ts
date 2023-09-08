@@ -275,6 +275,8 @@ export class Navigation {
     new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_WOMEN', ['beauty-and-care', 'fragrances', 'women']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_HAIR', ['beauty-and-care', 'hair', '']),
     new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_CARE', ['beauty-and-care', 'hair', 'care']),
+    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_HAIRREMOVERS', ['beauty-and-care', 'hair', 'hair-removers']),
+    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_SHAVERS', ['beauty-and-care', 'hair', 'shavers']),
     new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_STYLING', ['beauty-and-care', 'hair', 'styling']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_HEALTH', ['beauty-and-care', 'health', '']),
     new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_NUTRITIALSUPPLEMENTS', ['beauty-and-care', 'health', 'nutritional-supplements']),

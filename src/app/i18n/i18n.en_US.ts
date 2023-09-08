@@ -81,6 +81,8 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_BEAUTY_CARE_FRAGRANCES_WOMEN: 'women fragrances',
       NAVIGATION_BEAUTY_CARE_HAIR: 'hair',
       NAVIGATION_BEAUTY_CARE_HAIR_CARE: 'hair care',
+      NAVIGATION_BEAUTY_CARE_HAIR_HAIRREMOVERS: 'hair removal',
+      NAVIGATION_BEAUTY_CARE_HAIR_SHAVERS: 'shavers and trimmers',
       NAVIGATION_BEAUTY_CARE_HAIR_STYLING: 'hair styling',
       NAVIGATION_BEAUTY_CARE_HEALTH: 'health',
       NAVIGATION_BEAUTY_CARE_HEALTH_NUTRITIALSUPPLEMENTS: 'nutritional supplements',
