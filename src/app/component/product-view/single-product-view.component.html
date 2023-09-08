@@ -31,7 +31,14 @@
         <section>
           <h2 class="singleProductView__sectionHeader">{{item?.title}}</h2>
           <p class="mainStage__productDescription{{showFullDescription ? ' mainStage__productDescription--full' : ''}}" (click)="toggleFullDescription()">
-            {{item?.description}}
+            <span *ngIf="!item?.descriptions?.length">
+              {{item?.description}}
+            </span>
+            <span *ngFor="let descriptionItem of item?.descriptions">
+                <b>{{descriptionItem?.headline}}</b><br/>
+                {{descriptionItem?.content}}
+                <br/><br/>
+            </span>
           </p>
         </section>
 
