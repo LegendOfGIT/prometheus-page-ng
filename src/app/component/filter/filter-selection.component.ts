@@ -167,6 +167,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000063', 'Flaconi'),
     new FilterItem('1000026', 'Fussmattenwelt'),
     new FilterItem('1000143', 'Galapel'),
+    new FilterItem('1000146', 'Gewürzland'),
     new FilterItem('1000027', 'Hayman Coffee'),
     new FilterItem('1000028', 'Hörner'),
     new FilterItem('1000029', 'Idee'),
