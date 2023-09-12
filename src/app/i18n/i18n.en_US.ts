@@ -66,6 +66,7 @@ export class I18nEnUs implements I18nInterface {
       FILTERS_STORAGE_SIZE: 'Storage size',
       FILTERS_SUSTAINABILITY: 'Sustainability',
       HERO_DISCOVER_DUNLEATH: 'DISCOVER DUNLEATH',
+      HERO_DISCOVER_TONIES: "HERE YOU CAN FIND TONIES !",
       IMAGE_OF: 'Image of',
       IMPRINT: 'Imprint',
       MORE_OFFERS: 'More offers',

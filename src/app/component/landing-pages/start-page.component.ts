@@ -36,6 +36,12 @@ export class StartPageComponent implements OnInit {
 
   private heroes: Array<Hero> = [
     {
+      background: 'rgb(211,0,15)',
+      backgroundImage: 'url("/assets/heroes/tonies.png"), linear-gradient(180deg, rgba(211,0,15,1) 71%, rgba(255,208,204,1) 95%, rgba(243,244,242,1) 100%)',
+      heroText: 'HERO_DISCOVER_TONIES',
+      heroUrl: '/kids?search=tonie'
+    },
+    {
       background: 'rgb(255,250,239)',
       backgroundImage: 'url("/assets/heroes/dunleath.jpg"), linear-gradient(180deg, rgba(255,250,239,1) 0%, rgba(255,250,239,1) 27%, rgba(243,244,242,1) 100%)',
       heroText: 'HERO_DISCOVER_DUNLEATH',
@@ -47,6 +53,7 @@ export class StartPageComponent implements OnInit {
       heroText: '',
       heroUrl: '/beauty-and-care?filters=1000018'
     }
+
   ];
 
   public currentHero: Hero | undefined = undefined;
@@ -73,7 +80,6 @@ export class StartPageComponent implements OnInit {
     currentHeroIndex = this.heroes.length -1 === currentHeroIndex ? 0 : currentHeroIndex + 1;
 
     this.currentHero = this.heroes[currentHeroIndex];
-    console.log(currentHeroIndex);
   }
 
   private isOnClientSide(): boolean {
