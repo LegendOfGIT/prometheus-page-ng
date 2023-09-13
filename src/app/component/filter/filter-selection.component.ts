@@ -77,6 +77,15 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000152', 'FILTERS_AGE_FROM_36_MONTHS'),
     new FilterItem('1000153', 'FILTERS_AGE_FROM_42_MONTHS'),
     new FilterItem('1000154', 'FILTERS_AGE_FROM_48_MONTHS'),
+    new FilterItem('1000155', 'FILTERS_AGE_FROM_1_YEAR'),
+    new FilterItem('1000156', 'FILTERS_AGE_FROM_2_YEARS'),
+    new FilterItem('1000157', 'FILTERS_AGE_FROM_3_YEARS'),
+    new FilterItem('1000158', 'FILTERS_AGE_FROM_4_YEARS'),
+    new FilterItem('1000159', 'FILTERS_AGE_FROM_6_YEARS'),
+    new FilterItem('1000160', 'FILTERS_AGE_FROM_8_YEARS'),
+    new FilterItem('1000161', 'FILTERS_AGE_FROM_12_YEARS'),
+    new FilterItem('1000162', 'FILTERS_AGE_FROM_16_YEARS'),
+    new FilterItem('1000163', 'FILTERS_AGE_FROM_18_YEARS')
   ];
 
   public brandsFilters: Array<FilterItem> = [
