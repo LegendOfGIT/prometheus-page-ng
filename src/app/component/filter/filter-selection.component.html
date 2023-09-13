@@ -84,6 +84,22 @@
       </div>
     </div>
 
+    <div *ngIf="ageFilter.length">
+      <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_AGE' | translate }}</h5>
+      <div class="filters filters__items">
+        <div *ngFor="let filter of ageFilter" class="form-check filters__item">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="{{filter.id}}"
+            value="{{filter.id}}"
+            (change)="toggleFilter(filter.id)"
+            [defaultChecked]="isFilterSelected(filter.id)"/>
+          <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId | translate}}</label>
+        </div>
+      </div>
+    </div>
+
     <div *ngIf="brandsFilters.length">
       <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_BRANDS' | translate }}</h5>
       <div class="filters filters__items">
