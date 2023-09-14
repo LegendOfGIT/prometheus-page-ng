@@ -307,6 +307,7 @@ export class Navigation {
     new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_DININGTABLES', ['home', 'furniture', 'dining-tables']),
     new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_GAMINGCHAIRS', ['home', 'furniture', 'gaming-chairs']),
     new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_KIDSBEDS', ['home', 'furniture', 'kids-beds']),
+    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_KIDSSOFAS', ['home', 'furniture', 'kids-sofas']),
     new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_OFFICECHAIRS', ['home', 'furniture', 'office-chairs']),
     new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_SOFAS', ['home', 'furniture', 'sofas']),
     new NavigationItem('HOME', 'HOME_GARDEN', ['home', 'garden', '']),
