@@ -239,6 +239,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_KIDS_PARTY: 'kids party',
       NAVIGATION_KIDS_PARTY_TABLEWARE: 'kids tableware / decoration',
       NAVIGATION_KIDS_SCHOOL: 'school',
+      NAVIGATION_KIDS_SCHOOL_LUNCHBOXES: 'kids lunchboxes',
       NAVIGATION_KIDS_SCHOOL_SATCHEL: 'satchels',
       NAVIGATION_KIDS_SCHOOL_SCHOOLCONES: 'school cones',
       NAVIGATION_KIDS_SCHOOL_SUPPLIES: 'school supplies',
