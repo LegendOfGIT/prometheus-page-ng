@@ -240,6 +240,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_KIDS_PARTY: 'Kinder Party',
       NAVIGATION_KIDS_PARTY_TABLEWARE: 'Kinder Tischgeschirr / Dekoration',
       NAVIGATION_KIDS_SCHOOL: 'Schule',
+      NAVIGATION_KIDS_SCHOOL_DRINKINGBOTTLES: 'Kinder Trinkflaschen',
       NAVIGATION_KIDS_SCHOOL_LUNCHBOXES: 'Kinder Brotdosen',
       NAVIGATION_KIDS_SCHOOL_SATCHEL: 'Schulranzen',
       NAVIGATION_KIDS_SCHOOL_SCHOOLCONES: 'Schultüten',

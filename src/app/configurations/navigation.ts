@@ -61,6 +61,7 @@ export class Navigation {
     new NavigationItem('KIDS', 'KIDS_PARTY', ['kids', 'party', '']).setHasSlogan(true),
     new NavigationItem('KIDS_PARTY', 'KIDS_PARTY_TABLEWARE', ['kids', 'party', 'tableware']),
     new NavigationItem('KIDS', 'KIDS_SCHOOL', ['kids', 'school', '']).setHasSlogan(true),
+    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_DRINKINGBOTTLES', ['kids', 'school', 'drinking-bottles']),
     new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_LUNCHBOXES', ['kids', 'school', 'lunchboxes']),
     new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SATCHEL', ['kids', 'school', 'satchel']),
     new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SCHOOLCONES', ['kids', 'school', 'school-cones']),
