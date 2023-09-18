@@ -29,6 +29,7 @@ export class Navigation {
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SKIRTS', ['fashion', 'women', 'skirts']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SWEATERS_AND_KNITWEAR', ['fashion', 'women', 'sweaters-and-knitwear']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SWIMWEAR', ['fashion', 'women', 'swimwear']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_UNDERWEAR', ['fashion', 'women', 'underwear']),
     new NavigationItem('FASHION', 'FASHION_MEN', ['fashion', 'men', '']).setHasSlogan(true),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_DISGUISES', ['fashion', 'men', 'disguises']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_EROTICUNDERWEAR', ['fashion', 'men', 'erotic-underwear']),

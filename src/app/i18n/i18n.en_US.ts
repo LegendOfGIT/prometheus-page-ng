@@ -186,6 +186,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_FASHION_WOMEN_SKIRTS: 'women skirts',
       NAVIGATION_FASHION_WOMEN_SWEATERS_AND_KNITWEAR: 'women sweaters & knitwear',
       NAVIGATION_FASHION_WOMEN_SWIMWEAR: 'women swimwear',
+      NAVIGATION_FASHION_WOMEN_UNDERWEAR: 'women underwear',
       NAVIGATION_GROCERIES: 'groceries',
       NAVIGATION_GROCERIES_DRINKS: 'drink',
       NAVIGATION_GROCERIES_DRINKS_BEER: 'beers',

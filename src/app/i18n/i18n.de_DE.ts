@@ -186,6 +186,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_FASHION_WOMEN_SKIRTS: 'Damen Röcke',
       NAVIGATION_FASHION_WOMEN_SWEATERS_AND_KNITWEAR: 'Damen Pullover & Strickwaren',
       NAVIGATION_FASHION_WOMEN_SWIMWEAR: 'Damen Bademode',
+      NAVIGATION_FASHION_WOMEN_UNDERWEAR: 'Damen Unterwäsche',
       NAVIGATION_GROCERIES: 'Lebensmittel',
       NAVIGATION_GROCERIES_DRINKS: 'Trinken',
       NAVIGATION_GROCERIES_DRINKS_BEER: 'Biere',
