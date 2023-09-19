@@ -187,6 +187,11 @@ export class Navigation {
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_SOLARSYSTEMS',
+      ['electronics-and-computers', 'home', 'solar-systems']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_TVS',
       ['electronics-and-computers', 'home', 'tvs']
     ),
@@ -284,6 +289,7 @@ export class Navigation {
     new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_STYLING', ['beauty-and-care', 'hair', 'styling']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_HEALTH', ['beauty-and-care', 'health', '']),
     new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_NUTRITIALSUPPLEMENTS', ['beauty-and-care', 'health', 'nutritional-supplements']),
+    new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_ORALHYGIENE', ['beauty-and-care', 'health', 'oral-hygiene']),
     new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_PAINKILLERS', ['beauty-and-care', 'health', 'painkillers']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_MAKEUP', ['beauty-and-care', 'makeup', '']),
     new NavigationItem('BEAUTY_CARE_MAKEUP', 'BEAUTY_CARE_MAKEUP_EYES', ['beauty-and-care', 'makeup', 'eyes']),
@@ -340,6 +346,8 @@ export class Navigation {
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_SUMMERTYRES', ['vehicles', 'cars', 'summer-tyres']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_WINTERTYRES', ['vehicles', 'cars', 'winter-tyres']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_ALLWEATHERTYRES', ['vehicles', 'cars', 'all-weather-tyres']),
+    new NavigationItem('VEHICLES', 'VEHICLES_KIDS', ['vehicles', 'kids', '']),
+    new NavigationItem('VEHICLES_KIDS', 'VEHICLES_KIDS_STROLLERS', ['vehicles', 'kids', 'strollers']),
     new NavigationItem('VEHICLES', 'VEHICLES_MOTORCYCLES', ['vehicles', 'motorcycles', '']),
     new NavigationItem('VEHICLES_MOTORCYCLES', 'VEHICLES_MOTORCYCLES_MOTORBIKES', ['vehicles', 'motorcycles', 'motor-bikes']),
     new NavigationItem('VEHICLES_MOTORCYCLES', 'VEHICLES_MOTORCYCLES_QUADS', ['vehicles', 'motorcycles', 'quads']),
