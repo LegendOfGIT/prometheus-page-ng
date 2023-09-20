@@ -183,6 +183,7 @@ export class FilterSelectionComponent implements OnInit {
   public shopsFilters: Array<FilterItem> = [
     new FilterItem('1000018', '100% pure'),
     new FilterItem('1000019', 'Amazon'),
+    new FilterItem('1000176', 'AMD Möbel'),
     new FilterItem('1000144', 'Artgerecht'),
     new FilterItem('1000121', 'AWG Mode'),
     new FilterItem('1000001', 'BigGreen Smile'),
