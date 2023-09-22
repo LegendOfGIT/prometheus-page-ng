@@ -46,31 +46,86 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000016', 'FILTERS_COLORS_WHITE')
   ];
 
+  public sizesFilter: Array<FilterItem> = [
+    new FilterItem('1000134', 'XXS'),
+    new FilterItem('1000135', 'XS'),
+    new FilterItem('1000136', 'S'),
+    new FilterItem('1000137', 'M'),
+    new FilterItem('1000138', 'L'),
+    new FilterItem('1000139', 'XL'),
+    new FilterItem('1000140', 'XXL'),
+    new FilterItem('1000141', 'XXXL'),
+    new FilterItem('1000123', '25'),
+    new FilterItem('1000124', '26'),
+    new FilterItem('1000125', '27'),
+    new FilterItem('1000126', '28'),
+    new FilterItem('1000127', '29'),
+    new FilterItem('1000128', '30'),
+    new FilterItem('1000129', '31'),
+    new FilterItem('1000130', '32'),
+    new FilterItem('1000131', '33'),
+    new FilterItem('1000132', '34'),
+    new FilterItem('1000133', '35'),
+  ];
+
+  public ageFilter: Array<FilterItem> = [
+    new FilterItem('1000147', 'FILTERS_AGE_FROM_6_MONTHS'),
+    new FilterItem('1000148', 'FILTERS_AGE_FROM_12_MONTHS'),
+    new FilterItem('1000149', 'FILTERS_AGE_FROM_18_MONTHS'),
+    new FilterItem('1000150', 'FILTERS_AGE_FROM_24_MONTHS'),
+    new FilterItem('1000151', 'FILTERS_AGE_FROM_30_MONTHS'),
+    new FilterItem('1000152', 'FILTERS_AGE_FROM_36_MONTHS'),
+    new FilterItem('1000153', 'FILTERS_AGE_FROM_42_MONTHS'),
+    new FilterItem('1000154', 'FILTERS_AGE_FROM_48_MONTHS'),
+    new FilterItem('1000155', 'FILTERS_AGE_FROM_1_YEAR'),
+    new FilterItem('1000156', 'FILTERS_AGE_FROM_2_YEARS'),
+    new FilterItem('1000157', 'FILTERS_AGE_FROM_3_YEARS'),
+    new FilterItem('1000158', 'FILTERS_AGE_FROM_4_YEARS'),
+    new FilterItem('1000159', 'FILTERS_AGE_FROM_6_YEARS'),
+    new FilterItem('1000160', 'FILTERS_AGE_FROM_8_YEARS'),
+    new FilterItem('1000161', 'FILTERS_AGE_FROM_12_YEARS'),
+    new FilterItem('1000162', 'FILTERS_AGE_FROM_16_YEARS'),
+    new FilterItem('1000163', 'FILTERS_AGE_FROM_18_YEARS')
+  ];
+
   public brandsFilters: Array<FilterItem> = [
     new FilterItem('1000109', 'Activision'),
     new FilterItem('1000088', 'Adidas'),
     new FilterItem('1000087', 'Apple'),
+    new FilterItem('1000145', 'Bench'),
     new FilterItem('1000098', 'Bruno Banani'),
     new FilterItem('1000101', 'Bugatti'),
     new FilterItem('1000103', 'Calvin Klein'),
     new FilterItem('1000110', 'Chanel'),
     new FilterItem('1000115', 'Charlsten'),
     new FilterItem('1000116', 'Cougar'),
+    new FilterItem('1000173', 'Costway'),
     new FilterItem('1000099', 'Desigual'),
     new FilterItem('1000107', 'Electronic Arts'),
     new FilterItem('1000105', 'Esprit'),
+    new FilterItem('1000172', 'Fisher-Price'),
     new FilterItem('1000102', 'Fossil'),
+    new FilterItem('1000165', 'Funzy'),
     new FilterItem('1000100', 'Gabor'),
     new FilterItem('1000091', 'Google'),
     new FilterItem('1000096', 'Guess'),
+    new FilterItem('1000170', 'Hasbro'),
     new FilterItem('1000106', 'Hudora'),
     new FilterItem('1000097', 'Lascara'),
     new FilterItem('1000093', 'LEGO'),
+    new FilterItem('1000166', 'Mattel'),
     new FilterItem('1000104', 'Nike'),
     new FilterItem('1000095', 'Nintendo'),
     new FilterItem('1000113', 'Nokia'),
+    new FilterItem('1000142', 'Pandora'),
+    new FilterItem('1000167', 'Playmobil'),
     new FilterItem('1000090', 'Puma'),
+    new FilterItem('1000171', 'Relaxdays'),
     new FilterItem('1000089', 'Samsung'),
+    new FilterItem('1000118', 'Schleich'),
+    new FilterItem('1000174', 'Schmidt Spiele'),
+    new FilterItem('1000168', 'Schöner Wohnen'),
+    new FilterItem('1000169', 'Spin Master'),
     new FilterItem('1000092', 'Sony'),
     new FilterItem('1000094', 'Vivanco'),
     new FilterItem('1000108', 'Vtech')
@@ -126,24 +181,33 @@ export class FilterSelectionComponent implements OnInit {
   ];
 
   public shopsFilters: Array<FilterItem> = [
-    new FilterItem('1000000', 'dressforless'),
-    new FilterItem('1000001', 'BigGreen Smile'),
     new FilterItem('1000018', '100% pure'),
     new FilterItem('1000019', 'Amazon'),
+    new FilterItem('1000176', 'AMD Möbel'),
+    new FilterItem('1000144', 'Artgerecht'),
+    new FilterItem('1000121', 'AWG Mode'),
+    new FilterItem('1000001', 'BigGreen Smile'),
     new FilterItem('1000020', 'Backmarket'),
     new FilterItem('1000021', 'Bearfamily records'),
     new FilterItem('1000022', 'Black is beautiful'),
+    new FilterItem('1000175', 'Bruno Banani'),
     new FilterItem('1000023', 'Buch24'),
+    new FilterItem('1000000', 'Dressforless'),
+    new FilterItem('1000119', 'Dunleath'),
     new FilterItem('1000024', 'Ebrosia'),
     new FilterItem('1000025', 'Enners'),
     new FilterItem('1000063', 'Flaconi'),
     new FilterItem('1000026', 'Fussmattenwelt'),
+    new FilterItem('1000143', 'Galapel'),
+    new FilterItem('1000146', 'Gewürzland'),
     new FilterItem('1000027', 'Hayman Coffee'),
     new FilterItem('1000028', 'Hörner'),
     new FilterItem('1000029', 'Idee'),
     new FilterItem('1000030', 'Inhofer'),
     new FilterItem('1000031', 'IMWH'),
     new FilterItem('1000032', 'Jan Vanderstorm'),
+    new FilterItem('1000164', 'Little hipstar'),
+    new FilterItem('1000122', 'Medimops'),
     new FilterItem('1000052', 'Meßmer'),
     new FilterItem('1000033', 'Mytoys'),
     new FilterItem('1000034', 'Natural Food'),
@@ -154,6 +218,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000038', 'Quelle'),
     new FilterItem('1000039', 'Reifen.de'),
     new FilterItem('1000040', 'Sandawha Skincare'),
+    new FilterItem('1000120', 'Saunaloft'),
     new FilterItem('1000041', 'Shop24 direct'),
     new FilterItem('1000042', 'Shop-Apotheke'),
     new FilterItem('1000043', 'Songmics'),
@@ -162,6 +227,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000046', 'Timber Taste'),
     new FilterItem('1000047', 'Toom'),
     new FilterItem('1000048', 'Top Parfümerie'),
+    new FilterItem('1000117', 'Vertical Extreme'),
     new FilterItem('1000049', 'Waschbär'),
     new FilterItem('1000050', 'White Collection')
   ];
@@ -197,6 +263,8 @@ export class FilterSelectionComponent implements OnInit {
 
         this.brandsFilters = this.brandsFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.colorFilters = this.colorFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.sizesFilter = this.sizesFilter.filter(f => filters.find(af => f.id === af?.filterId));
+        this.ageFilter = this.ageFilter.filter(f => filters.find(af => f.id === af?.filterId));
         this.fitFilters = this.fitFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.productTypeFilters = this.productTypeFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.shopsFilters = this.shopsFilters.filter(f => filters.find(af => f.id === af?.filterId));
@@ -234,6 +302,8 @@ export class FilterSelectionComponent implements OnInit {
     this.router.navigateByUrl(urlTree.toString()).then(() => {
       window.location.reload();
     });
+
+    this.isLoading = true;
   }
 
   get isClientSide(): boolean {

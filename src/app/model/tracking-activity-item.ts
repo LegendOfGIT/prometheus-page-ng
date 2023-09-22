@@ -3,6 +3,8 @@ import { TrackingInterestLevel } from './tracking-interest-level';
 export class TrackingActivityItem {
     public interestLevel: TrackingInterestLevel = TrackingInterestLevel.AVERAGE;
     public informationItemId: string = '';
+    public filters: string = '';
+    public searchPattern: string = '';
     public trackingId: string = '';
     public activityTimestamp: Date = new Date();
 
@@ -23,6 +25,16 @@ export class TrackingActivityItem {
 
     public setTrackingId(trackingId: string): TrackingActivityItem {
       this.trackingId = trackingId;
+      return this;
+    }
+
+    public setSearchPattern(searchPattern: string): TrackingActivityItem {
+      this.searchPattern = searchPattern;
+      return this;
+    }
+
+    public setfFilters(filters: string): TrackingActivityItem {
+      this.filters = filters;
       return this;
     }
 }

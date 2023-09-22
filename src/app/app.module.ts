@@ -23,6 +23,7 @@ import { GeneralDataProtectionRegulationComponent } from './component/legal/gene
 import { DataProtectionComponent } from './component/legal/data-protection.component';
 import { FilterSelectionComponent } from './component/filter/filter-selection.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { LoadingComponent } from './component/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     ImprintComponent,
     ItemComponent,
     ItemsComponent,
+    LoadingComponent,
     ProfileComponent,
     SingleProductViewComponent,
     StartPageComponent,

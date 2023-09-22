@@ -31,7 +31,14 @@
         <section>
           <h2 class="singleProductView__sectionHeader">{{item?.title}}</h2>
           <p class="mainStage__productDescription{{showFullDescription ? ' mainStage__productDescription--full' : ''}}" (click)="toggleFullDescription()">
-            {{item?.description}}
+            <span *ngIf="!item?.descriptions?.length">
+              {{item?.description}}
+            </span>
+            <span *ngFor="let descriptionItem of item?.descriptions">
+                <b>{{descriptionItem?.headline}}</b><br/>
+                {{descriptionItem?.content}}
+                <br/><br/>
+            </span>
           </p>
         </section>
 
@@ -45,6 +52,9 @@
               <div class="button productInformation__offer">
                 <div>
                   {{getShopNameFromUrl(itemWithLowestPrice?.link)}}:<span *ngIf="renderPrice(itemWithLowestPrice)" class="productInformation__offer--price">{{renderPrice(itemWithLowestPrice)}}</span>
+                </div>
+                <div *ngIf="itemWithLowestPrice?.productCondition">
+                  {{itemWithLowestPrice?.productCondition}}
                 </div>
                 <div *ngIf="itemWithLowestPrice?.updatedOn" class="productInformation__offer--updatedOn">
                   aktualisiert am:
@@ -62,7 +72,10 @@
               <a *ngFor="let offer of moreExpensiveOfferItems" href="{{offer?.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
                 <div class="button productInformation__offer">
                   <div>
-                  {{getShopNameFromUrl(offer?.link)}}: <span *ngIf="renderPrice(offer)" class="productInformation__offer--price">{{renderPrice(offer)}}</span>
+                    {{getShopNameFromUrl(offer?.link)}}: <span *ngIf="renderPrice(offer)" class="productInformation__offer--price">{{renderPrice(offer)}}</span>
+                  </div>
+                  <div *ngIf="offer?.productCondition">
+                    {{offer?.productCondition}}
                   </div>
                   <div *ngIf="offer?.updatedOn" class="productInformation__offer--updatedOn">
                     {{ 'UPDATED_ON' | translate }}:

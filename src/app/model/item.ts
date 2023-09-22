@@ -2,9 +2,9 @@ import { ItemDto } from './dto/item-dto';
 import { BaseModel } from './factory/factory-base';
 import { CorrespondingItem } from './corresponding-item';
 import { ItemDetails } from './item-details';
+import {ItemDescription} from "./item-description";
 
 export class Item extends BaseModel {
-
     id: string = '';
     itemId: string = '';
     description: string = '';
@@ -56,6 +56,7 @@ export class Item extends BaseModel {
     weightInG: number = 0;
 
     imagesBig: Array<string> = [];
+    descriptions: Array<ItemDescription | null> = [];
     providers: Array<CorrespondingItem | null> = [];
 
     static override fromModel(data: ItemDto): Item | null {
@@ -69,6 +70,10 @@ export class Item extends BaseModel {
           item.titleImage = (data as any)['title-image'];
           item.teaserTexts = (data as any)['teaser-texts'];
           item.widthInCm = (data as any)['width-in-cm'];
+
+          item.descriptions = (data.descriptions || [])
+            .map(description => ItemDescription.fromModel(description))
+            .filter(description => description.content);
           item.providers = (data.providers || []).map(provider => CorrespondingItem.fromModel(provider));
 
           const hashtagsToIgnore = ['', 'noprofile', 'WeWannaShop'];

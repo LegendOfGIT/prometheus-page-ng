@@ -137,6 +137,13 @@ a  {
   }
 }
 
+#loadingDialog {
+  border: 1px solid lightgray;
+  border-radius: 1em;
+  font-family: $font-family;
+  max-width: 90%;
+}
+
 .searchbar {
   &__input {
     background-color: unset;

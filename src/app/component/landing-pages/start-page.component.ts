@@ -34,8 +34,37 @@ export class StartPageComponent implements OnInit {
     metaService.updateTag({ name: 'keywords', content: SEO_PAGE_KEYWORDS })
   }
 
+  private heroes: Array<Hero> = [
+    {
+      background: 'rgb(211,0,15)',
+      backgroundImage: 'url("/assets/heroes/tonies.png"), linear-gradient(180deg, rgba(211,0,15,1) 71%, rgba(255,208,204,1) 95%, rgba(243,244,242,1) 100%)',
+      heroText: 'HERO_DISCOVER_TONIES',
+      heroUrl: '/kids?search=tonie'
+    },
+    {
+      background: 'rgb(255,250,239)',
+      backgroundImage: 'url("/assets/heroes/dunleath.jpg"), linear-gradient(180deg, rgba(255,250,239,1) 0%, rgba(255,250,239,1) 27%, rgba(243,244,242,1) 100%)',
+      heroText: 'HERO_DISCOVER_DUNLEATH',
+      heroUrl: '/beauty-and-care?filters=1000119'
+    },
+    {
+      background: 'rgb(255,208,204)',
+      backgroundImage: 'url("/assets/heroes/100pp.jpg"), linear-gradient(180deg, rgba(255,133,130,1) 0%, rgba(255,208,204,1) 69%, rgba(243,244,242,1) 100%)',
+      heroText: '',
+      heroUrl: '/beauty-and-care?filters=1000018'
+    }
+
+  ];
+
+  public currentHero: Hero | undefined = undefined;
+
   ngOnInit(): void {
     if (!isPlatformServer(this.platformId)) {
+      this.showNextHero();
+      setInterval(() => {
+        this.showNextHero();
+      }, 12000);
+
       return;
     }
 
@@ -44,6 +73,13 @@ export class StartPageComponent implements OnInit {
     link.setAttribute('rel', 'canonical');
     const pageUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
     link.setAttribute('href', pageUri);
+  }
+
+  private showNextHero(): void {
+    let currentHeroIndex = this.heroes.indexOf(this.currentHero || new Hero());
+    currentHeroIndex = this.heroes.length -1 === currentHeroIndex ? 0 : currentHeroIndex + 1;
+
+    this.currentHero = this.heroes[currentHeroIndex];
   }
 
   private isOnClientSide(): boolean {
@@ -67,4 +103,11 @@ export class StartPageComponent implements OnInit {
   get whatIsInForYou(): string {
     return this.translationService.getTranslations().WHY_WEWANNA_WHAT_IS_IN_FOR_YOU;
   }
+}
+
+class Hero {
+  background: string = ''
+  backgroundImage: string = ''
+  heroText: string = '';
+  heroUrl: string = '';
 }

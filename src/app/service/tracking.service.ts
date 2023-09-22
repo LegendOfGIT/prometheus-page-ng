@@ -59,8 +59,10 @@ export class TrackingService extends ApiBase {
               this.get(endpoints.scoreItem),
               {
                 itemId: trackedActivity.informationItemId,
+                filters: trackedActivity.filters,
                 hashtags: (this.userService.activeUser?.activeHashtags || DEFAULT_HASHTAGS).join(','),
-                scoring: scoring.scoring
+                scoring: scoring.scoring,
+                searchPattern: trackedActivity.searchPattern
               }
             ).subscribe();
           }

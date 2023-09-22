@@ -22,8 +22,12 @@
   }
 
   &__content {
-    padding-top: 4.5em;
+    padding-top: 15em;
     text-align: center;
+
+    @media screen and (min-width: 786px) {
+      padding-top: 20em;
+    }
   }
 
   &__dialogClose {
@@ -33,5 +37,36 @@
     position: absolute;
     right: 0;
     top: 0;
+  }
+
+  &__filter {
+    position: absolute;
+    right: 1em;
+    top: 4.5em;
+  }
+
+  &__hero {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 20em;
+    position: absolute;
+    top: 3.6em;
+    width: 100%;
+
+    @media screen and (min-width: 576px) {
+      height: 80em;
+    }
+
+    &Title {
+      color: #FFF;
+      font-size: 2.3em;
+      font-weight: bolder;
+      margin-top: 1em;
+      text-shadow: #FC0 1px 0 10px;
+
+      @media screen and (min-width: 576px) {
+        margin-top: 2em;
+      }
+    }
   }
 }

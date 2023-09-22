@@ -1,4 +1,5 @@
 import { CorrespondingItemDto } from './corresponding-item-dto';
+import { ItemDescriptionDto } from './item-description';
 
 export interface ItemDto {
     itemId: string;
@@ -6,5 +7,6 @@ export interface ItemDto {
     titleImage: string;
     scoring: any;
 
+    descriptions: Array<ItemDescriptionDto>;
     providers: Array<CorrespondingItemDto>;
 }

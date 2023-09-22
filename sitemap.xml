@@ -5,9 +5,14 @@
   <url><loc>https://www.wewanna.shop/beauty-and-care/body-care/soap</loc></url>
   <url><loc>https://www.wewanna.shop/beauty-and-care/erotic/massages</loc></url>
   <url><loc>https://www.wewanna.shop/beauty-and-care/fragrances/men</loc></url>
+  <url><loc>https://www.wewanna.shop/beauty-and-care/fragrances/unisex</loc></url>
   <url><loc>https://www.wewanna.shop/beauty-and-care/fragrances/women</loc></url>
   <url><loc>https://www.wewanna.shop/beauty-and-care/hair/care</loc></url>
+  <url><loc>https://www.wewanna.shop/beauty-and-care/hair/hair-removers</loc></url>
+  <url><loc>https://www.wewanna.shop/beauty-and-care/hair/shavers</loc></url>
   <url><loc>https://www.wewanna.shop/beauty-and-care/hair/styling</loc></url>
+  <url><loc>https://www.wewanna.shop/beauty-and-care/health/nutritional-supplements</loc></url>
+  <url><loc>https://www.wewanna.shop/beauty-and-care/health/oral-hygiene</loc></url>
   <url><loc>https://www.wewanna.shop/beauty-and-care/health/painkillers</loc></url>
   <url><loc>https://www.wewanna.shop/beauty-and-care/makeup/eyes</loc></url>
   <url><loc>https://www.wewanna.shop/beauty-and-care/makeup/lips</loc></url>
@@ -30,10 +35,13 @@
   <url><loc>https://www.wewanna.shop/groceries/food/oils-and-vinegar</loc></url>
   <url><loc>https://www.wewanna.shop/groceries/food/sauces</loc></url>
   <url><loc>https://www.wewanna.shop/groceries/food/spices</loc></url>
+  <url><loc>https://www.wewanna.shop/fashion/boys/disguises</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/boys/shoes</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/boys/swimwear</loc></url>
+  <url><loc>https://www.wewanna.shop/fashion/girls/disguises</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/girls/shoes</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/girls/swimwear</loc></url>
+  <url><loc>https://www.wewanna.shop/fashion/men/disguises</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/men/erotic-underwear</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/men/jackets</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/men/jeans</loc></url>
@@ -47,6 +55,7 @@
   <url><loc>https://www.wewanna.shop/fashion/men/swimwear</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/men/underwear</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/women/bags</loc></url>
+  <url><loc>https://www.wewanna.shop/fashion/women/disguises</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/women/jackets</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/women/jeans</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/women/jewelry</loc></url>
@@ -56,9 +65,11 @@
   <url><loc>https://www.wewanna.shop/fashion/women/skirts</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/women/sweats-and-knitwear</loc></url>
   <url><loc>https://www.wewanna.shop/fashion/women/swimwear</loc></url>
+  <url><loc>https://www.wewanna.shop/fashion/women/underwear</loc></url>
   <url><loc>https://www.wewanna.shop/home/accessoires/bed-covers</loc></url>
   <url><loc>https://www.wewanna.shop/home/accessoires/carpets</loc></url>
   <url><loc>https://www.wewanna.shop/home/accessoires/decorations</loc></url>
+  <url><loc>https://www.wewanna.shop/home/accessoires/mattresses</loc></url>
   <url><loc>https://www.wewanna.shop/home/accessoires/pillows</loc></url>
   <url><loc>https://www.wewanna.shop/home/cleaning/laundry-detergent</loc></url>
   <url><loc>https://www.wewanna.shop/home/cooking-and-baking/baking-supplies</loc></url>
@@ -66,21 +77,33 @@
   <url><loc>https://www.wewanna.shop/home/furniture/dining-tables</loc></url>
   <url><loc>https://www.wewanna.shop/home/furniture/gaming-chairs</loc></url>
   <url><loc>https://www.wewanna.shop/home/furniture/kids-beds</loc></url>
+  <url><loc>https://www.wewanna.shop/home/furniture/kids-sofas</loc></url>
+  <url><loc>https://www.wewanna.shop/home/furniture/office-chairs</loc></url>
   <url><loc>https://www.wewanna.shop/home/furniture/sofas</loc></url>
   <url><loc>https://www.wewanna.shop/home/garden/decorations</loc></url>
   <url><loc>https://www.wewanna.shop/home/garden/garden-houses</loc></url>
   <url><loc>https://www.wewanna.shop/home/garden/grills</loc></url>
+  <url><loc>https://www.wewanna.shop/home/garden/leafblowers</loc></url>
   <url><loc>https://www.wewanna.shop/home/garden/lawnmowers</loc></url>
   <url><loc>https://www.wewanna.shop/home/garden/lounge-furniture</loc></url>
   <url><loc>https://www.wewanna.shop/home/garden/sports</loc></url>
   <url><loc>https://www.wewanna.shop/home/pets/cats</loc></url>
   <url><loc>https://www.wewanna.shop/home/pets/dogs</loc></url>
+  <url><loc>https://www.wewanna.shop/home/wellness/saunas</loc></url>
+  <url><loc>https://www.wewanna.shop/home/wellness/whirlpools</loc></url>
   <url><loc>https://www.wewanna.shop/kids/books/audio-books</loc></url>
   <url><loc>https://www.wewanna.shop/kids/party/tableware</loc></url>
+  <url><loc>https://www.wewanna.shop/kids/school/drinking-bottles</loc></url>
+  <url><loc>https://www.wewanna.shop/kids/school/lunchboxes</loc></url>
   <url><loc>https://www.wewanna.shop/kids/school/satchel</loc></url>
+  <url><loc>https://www.wewanna.shop/kids/school/school-cones</loc></url>
+  <url><loc>https://www.wewanna.shop/kids/school/supplies</loc></url>
   <url><loc>https://www.wewanna.shop/kids/toys/babies</loc></url>
+  <url><loc>https://www.wewanna.shop/kids/toys/beach-and-water</loc></url>
+  <url><loc>https://www.wewanna.shop/kids/toys/educational-toys</loc></url>
   <url><loc>https://www.wewanna.shop/kids/toys/electric-vehicles</loc></url>
   <url><loc>https://www.wewanna.shop/kids/toys/experiment-and-research</loc></url>
+  <url><loc>https://www.wewanna.shop/kids/toys/trading-cards</loc></url>
   <url><loc>https://www.wewanna.shop/kids/toys/scooters</loc></url>
   <url><loc>https://www.wewanna.shop/kids/toys/toy-figures</loc></url>
   <url><loc>https://www.wewanna.shop/luxuries/drinks/coffee</loc></url>
@@ -92,6 +115,7 @@
   <url><loc>https://www.wewanna.shop/multimedia/books/philosophy</loc></url>
   <url><loc>https://www.wewanna.shop/multimedia/books/school-books</loc></url>
   <url><loc>https://www.wewanna.shop/multimedia/books/science-fiction</loc></url>
+  <url><loc>https://www.wewanna.shop/multimedia/games/nintendo-ds</loc></url>
   <url><loc>https://www.wewanna.shop/multimedia/games/nintendo-switch</loc></url>
   <url><loc>https://www.wewanna.shop/multimedia/games/pc</loc></url>
   <url><loc>https://www.wewanna.shop/multimedia/games/playstation-4</loc></url>
@@ -106,10 +130,14 @@
   <url><loc>https://www.wewanna.shop/electronics-and-computers/cables/electrical-cables</loc></url>
   <url><loc>https://www.wewanna.shop/electronics-and-computers/cables/network-cables</loc></url>
   <url><loc>https://www.wewanna.shop/electronics-and-computers/computers/tablets</loc></url>
+  <url><loc>https://www.wewanna.shop/electronics-and-computers/erotic/vibrators</loc></url>
+  <url><loc>https://www.wewanna.shop/electronics-and-computers/home/air-purifiers</loc></url>
+  <url><loc>https://www.wewanna.shop/electronics-and-computers/home/air-vents</loc></url>
   <url><loc>https://www.wewanna.shop/electronics-and-computers/home/fully-automatic-coffee-machines</loc></url>
   <url><loc>https://www.wewanna.shop/electronics-and-computers/home/home-cinema</loc></url>
   <url><loc>https://www.wewanna.shop/electronics-and-computers/home/inkjet-printers</loc></url>
   <url><loc>https://www.wewanna.shop/electronics-and-computers/home/laser-printers</loc></url>
+  <url><loc>https://www.wewanna.shop/electronics-and-computers/home/solar-systems</loc></url>
   <url><loc>https://www.wewanna.shop/electronics-and-computers/home/tvs</loc></url>
   <url><loc>https://www.wewanna.shop/electronics-and-computers/home/vacuum-cleaners</loc></url>
   <url><loc>https://www.wewanna.shop/electronics-and-computers/large-appliances/dishwashers</loc></url>
@@ -129,6 +157,10 @@
   <url><loc>https://www.wewanna.shop/music/instruments/mixing-panels</loc></url>
   <url><loc>https://www.wewanna.shop/music/instruments/pianos</loc></url>
   <url><loc>https://www.wewanna.shop/sports/ballsports/soccer</loc></url>
+  <url><loc>https://www.wewanna.shop/sports/climbing/backpacks</loc></url>
+  <url><loc>https://www.wewanna.shop/sports/climbing/helmets</loc></url>
+  <url><loc>https://www.wewanna.shop/sports/climbing/shoes</loc></url>
+  <url><loc>https://www.wewanna.shop/sports/climbing/sunglasses</loc></url>
   <url><loc>https://www.wewanna.shop/sports/exercise/equipment</loc></url>
   <url><loc>https://www.wewanna.shop/sports/tablesports/billard</loc></url>
   <url><loc>https://www.wewanna.shop/sports/tablesports/soccer</loc></url>
@@ -140,5 +172,8 @@
   <url><loc>https://www.wewanna.shop/vehicles/cars/summer-tyres</loc></url>
   <url><loc>https://www.wewanna.shop/vehicles/cars/winter-tyres</loc></url>
   <url><loc>https://www.wewanna.shop/vehicles/cars/all-weather-tyres</loc></url>
+  <url><loc>https://www.wewanna.shop/vehicles/kids/strollers</loc></url>
+  <url><loc>https://www.wewanna.shop/vehicles/motorcycles/motor-bikes</loc></url>
+  <url><loc>https://www.wewanna.shop/vehicles/motorcycles/quads</loc></url>
   <url><loc>https://www.wewanna.shop/vehicles/scooters/e-scooters</loc></url>
 </urlset>

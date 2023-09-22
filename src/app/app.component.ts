@@ -46,7 +46,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
   }
 
   ngAfterViewInit() {
-    if (GdprDecision.NoDecision !== this.gdprService.getSettings()?.gdprDecision) {
+    if (GdprDecision.NoDecision !== (this.gdprService.getSettings()?.gdprDecision || GdprDecision.NoDecision)) {
       return;
     }
 

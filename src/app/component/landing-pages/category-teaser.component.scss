@@ -50,11 +50,13 @@
   }
 
   &__containerWrapper {
-    background-color: $container-background-color-as-rgba;
+    background-color: #fff;
     border: 1px solid lightgray;
     border-radius: 0.5em;
     margin-bottom: 2em;
     padding-top: 1em;
+    position: relative;
+    z-index: 1;
   }
 
   &__content {

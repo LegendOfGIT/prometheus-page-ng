@@ -60,7 +60,12 @@
     </div>
 
     <div *ngIf="suggestions.length">
-      <a href="{{getSuggestionLink(suggestion)}}" *ngFor="let suggestion of suggestions; let i = index;" class="col-12 searchbar__content">
+      <a
+        href="{{getSuggestionLink(suggestion)}}"
+        *ngFor="let suggestion of suggestions; let i = index;"
+        class="col-12 searchbar__content"
+        (click)="loadingDialog.showModal();"
+      >
         <div [ngClass]="['col-12', 'suggestion__item', 0 === i ? 'suggestion__item--first' : suggestions.length-1 === i ? 'suggestion__item--last' : '']">
           <div class="col-11">
             <div [ngClass]="[ 'suggestion__item--column', 'suggestion__item--trend', 'fa', suggestion.isNewItem() ? 'fa-plus' : suggestion.isSearchItem() ? 'fa-search' : 'fa-chart-line']"></div>
@@ -90,4 +95,8 @@
   >
     {{'NAVIGATION_' + item.toId | translate}}
   </div>
+</dialog>
+
+<dialog #loadingDialog id="loadingDialog">
+  <app-loading></app-loading>
 </dialog>
