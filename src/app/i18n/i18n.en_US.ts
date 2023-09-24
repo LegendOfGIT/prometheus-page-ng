@@ -325,6 +325,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_VEHICLES_CARS_WINTERTYRES: 'winter tyres',
       NAVIGATION_VEHICLES_CARS_ALLWEATHERTYRES: 'all-weather tyres',
       NAVIGATION_VEHICLES_KIDS: 'kids vehicles',
+      NAVIGATION_VEHICLES_KIDS_HANDCARTS: 'kids handcarts',
       NAVIGATION_VEHICLES_KIDS_STROLLERS: 'strollers and buggies',
       NAVIGATION_VEHICLES_MOTORCYCLES: 'motorcycles',
       NAVIGATION_VEHICLES_MOTORCYCLES_MOTORBIKES: 'motor bikes',

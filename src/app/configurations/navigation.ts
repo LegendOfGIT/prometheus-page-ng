@@ -348,6 +348,7 @@ export class Navigation {
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_WINTERTYRES', ['vehicles', 'cars', 'winter-tyres']),
     new NavigationItem('VEHICLES_CARS', 'VEHICLES_CARS_ALLWEATHERTYRES', ['vehicles', 'cars', 'all-weather-tyres']),
     new NavigationItem('VEHICLES', 'VEHICLES_KIDS', ['vehicles', 'kids', '']),
+    new NavigationItem('VEHICLES_KIDS', 'VEHICLES_KIDS_HANDCARTS', ['vehicles', 'kids', 'handcarts']),
     new NavigationItem('VEHICLES_KIDS', 'VEHICLES_KIDS_STROLLERS', ['vehicles', 'kids', 'strollers']),
     new NavigationItem('VEHICLES', 'VEHICLES_MOTORCYCLES', ['vehicles', 'motorcycles', '']),
     new NavigationItem('VEHICLES_MOTORCYCLES', 'VEHICLES_MOTORCYCLES_MOTORBIKES', ['vehicles', 'motorcycles', 'motor-bikes']),

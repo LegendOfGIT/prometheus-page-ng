@@ -326,6 +326,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_VEHICLES_CARS_WINTERTYRES: 'Winterreifen',
       NAVIGATION_VEHICLES_CARS_ALLWEATHERTYRES: 'Allwetter-Reifen',
       NAVIGATION_VEHICLES_KIDS: 'Kinderfahrzeuge',
+      NAVIGATION_VEHICLES_KIDS_HANDCARTS: 'Kinder Bollerwagen',
       NAVIGATION_VEHICLES_KIDS_STROLLERS: 'Kinderwagen und Buggys',
       NAVIGATION_VEHICLES_MOTORCYCLES: 'Krafträder',
       NAVIGATION_VEHICLES_MOTORCYCLES_MOTORBIKES: 'Motorräder',
