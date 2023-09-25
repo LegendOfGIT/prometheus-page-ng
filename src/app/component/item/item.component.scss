@@ -9,18 +9,6 @@
   text-align: -webkit-center;
   width: 11em;
 
-  @media screen and (min-width: 576px) {
-    width: 15em;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 20em;
-  }
-
-  @media screen and (min-width: 1400px) {
-    width: 20em;
-  }
-
   a {
     color: $content-color;
     font-family: $font-family;
@@ -28,12 +16,26 @@
     text-decoration: none;
   }
 
+  &--big {
+    @media screen and (min-width: 576px) {
+      width: 15em;
+    }
+
+    @media screen and (min-width: 768px) {
+      width: 20em;
+    }
+
+    @media screen and (min-width: 1400px) {
+      width: 20em;
+    }
+  }
+
   &--category {
     padding: unset;
   }
 
   &__contentContainer {
-    margin-top: 2em;
+    margin-top: 0.5em;
 
     &--category {
       margin-top: unset;
@@ -56,12 +58,16 @@
 
   &__image {
     border-radius: 0.5em;
-    max-height: 18em;
+    max-height: 14em;
     max-width: 10em;
 
-    @media screen and (min-width: 768px) {
-      max-height: 22em;
-      max-width: 14em;
+    &--big {
+      max-height: 18em;
+
+      @media screen and (min-width: 768px) {
+        max-height: 22em;
+        max-width: 14em;
+      }
     }
 
     &--category {
@@ -84,28 +90,32 @@
     border-radius: 0.5em;
     display: flex;
     justify-content: center;
-    min-height: 20em;
+    min-height: 15em;
     padding: 0.5em;
     position: relative;
     width: 10em;
 
-    @media screen and (min-width: 576px) {
-      width: 9em;
-    }
-
-    @media screen and (min-width: 768px) {
-      min-height: 23em;
-      width: 12em;
-    }
-
-    @media screen and (min-width: 1400px) {
-      min-height: 23em;
-      width: 14em;
-    }
-
     &:hover {
-      transform: scale(1.1);
-      transition: transform 0.5s;
+      #transform: scale(1.1);
+      #transition: transform 0.5s;
+    }
+
+    &--big {
+      min-height: 20em;
+
+      @media screen and (min-width: 576px) {
+        width: 9em;
+      }
+
+      @media screen and (min-width: 768px) {
+        min-height: 23em;
+        width: 12em;
+      }
+
+      @media screen and (min-width: 1400px) {
+        min-height: 23em;
+        width: 14em;
+      }
     }
 
     &--category {
@@ -121,12 +131,14 @@
     color: $content-price-color;
     font-family: $font-family;
 
-    @media screen and (min-width: 576px) {
-      font-size: 1.5em;
-    }
-
     &:hover {
       color: $logo-slogan-color;
+    }
+
+    &--big {
+      @media screen and (min-width: 576px) {
+        font-size: 1.5em;
+      }
     }
   }
 

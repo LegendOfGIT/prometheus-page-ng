@@ -1,8 +1,7 @@
 @import '../../../styles/controls';
 @import '../../../styles';
 
-#advantagesDialog,
-#filterSelectionDialog {
+#advantagesDialog {
   border: 1px solid lightgray;
   border-radius: 1em;
   font-family: $font-family;
@@ -37,12 +36,6 @@
     position: absolute;
     right: 0;
     top: 0;
-  }
-
-  &__filter {
-    position: absolute;
-    right: 1em;
-    top: 4.5em;
   }
 
   &__hero {

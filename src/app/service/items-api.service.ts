@@ -60,7 +60,8 @@ export class ItemsApiService extends ApiBase {
              randomItems: boolean | undefined = false,
              page: string = '1',
              priceFrom: string = '',
-             priceTo: string = ''): Observable<ItemsResponse> {
+             priceTo: string = '',
+             hashtags: Array<string> | undefined = []): Observable<ItemsResponse> {
       const url = this.getRequestBase() + this.get(
         endpoints.items,
         {
@@ -73,7 +74,7 @@ export class ItemsApiService extends ApiBase {
           priceFrom,
           priceTo,
           searchPattern,
-          hashtags: isPlatformServer(this.platformId) ? '' : this.getActiveHashtags().join(',')
+          hashtags: hashtags && hashtags.length ? hashtags.join(',') : isPlatformServer(this.platformId) ? '' : this.getActiveHashtags().join(',')
         });
 
       return this.http

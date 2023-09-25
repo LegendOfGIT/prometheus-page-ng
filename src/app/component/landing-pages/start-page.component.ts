@@ -8,6 +8,8 @@ import { NavigationItem } from '../../model/navigation-item';
 import { Meta, Title } from '@angular/platform-browser';
 import { TranslationService } from '../../service/translation.service';
 import { HashTagsApiService } from '../../service/hashtags-api.service';
+import {Startpage} from "../../configurations/startpage";
+import {TeaserItem} from "../../model/teaser-item";
 
 @Component({
   selector: 'start-page',
@@ -15,6 +17,8 @@ import { HashTagsApiService } from '../../service/hashtags-api.service';
   styleUrls: ['./start-page.component.scss']
 })
 export class StartPageComponent implements OnInit {
+  public STARTPAGE_TEASER_ITEMS: Array<TeaserItem> = Startpage.TEASER_ITEMS;
+
   constructor(
     private route: ActivatedRoute,
     private navigationService: NavigationService,

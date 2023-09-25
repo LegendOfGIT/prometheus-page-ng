@@ -1,7 +1,4 @@
 <div class="startPage__content">
-  <div class="startPage__filter button button--highlighted fa fa-sliders-h" (click)="filterSelectionDialog.showModal();">
-  </div>
-
   <a href="{{currentHero?.heroUrl}}">
     <div
       class="startPage__hero"
@@ -12,12 +9,17 @@
   </a>
 
   <div class="container">
-    <category-teaser [showHashtags]="true" [showHeader]="false" [numberOfItems]="6"></category-teaser>
-
-    <category-teaser
-      *ngFor="let item of allRootRootItems"
-      [navigationItem]="item"
-    ></category-teaser>
+    <moderated-teaser
+      *ngFor="let teaserItem of STARTPAGE_TEASER_ITEMS"
+      [filters]="teaserItem.filters"
+      [hashtags]="teaserItem.hashtags"
+      [headerTitle]="teaserItem.headerTitle"
+      [linkUri]="teaserItem.linkUri"
+      [navigationId]="teaserItem.navigationId"
+      [searchPattern]="teaserItem.searchPattern"
+      [ssrRendering]="teaserItem.ssrRendering"
+    >
+    </moderated-teaser>
   </div>
 </div>
 
@@ -29,8 +31,4 @@
   <span [innerHTML]="whatWeKnow"></span>
   <br/>
   <span [innerHTML]="whatIsInForYou"></span>
-</dialog>
-
-<dialog #filterSelectionDialog id="filterSelectionDialog">
-  <app-filter-selection [dialog]="filterSelectionDialog"></app-filter-selection>
 </dialog>

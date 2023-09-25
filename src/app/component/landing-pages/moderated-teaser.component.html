@@ -1,0 +1,14 @@
+<section class="informationItems__containerWrapper{{headerTitle ? ' informationItems__containerWrapper--topGap' : ''}}">
+  <a href="{{linkUri}}">
+    <div class="col-12 header header__title" *ngIf="headerTitle">
+      {{headerTitle | translate}} <span class="header__more">mehr &raquo;</span>
+    </div>
+  </a>
+  <div class="col-12 informationItems__container">
+    <app-item
+      *ngFor="let item of items; let i = index;"
+      [item]="item"
+      [displayMode]="DISPLAY_MODE_TEASER"
+    ></app-item>
+  </div>
+</section>

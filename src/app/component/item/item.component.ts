@@ -96,7 +96,7 @@ export class ItemComponent {
     }
 
     get showPrice(): boolean {
-        return ItemDisplayMode.DEFAULT === this.displayMode;
+        return ItemDisplayMode.DEFAULT === this.displayMode || ItemDisplayMode.TEASER == this.displayMode;
     }
 
     get showWishlistIcon(): boolean {
@@ -114,9 +114,14 @@ export class ItemComponent {
     get cssModifier(): string {
       return this.isCategoryItem() ? '--category' : '';
     }
+
+    get showBig(): boolean {
+      return ItemDisplayMode.TEASER !== this.displayMode;
+    }
 }
 
 export enum ItemDisplayMode {
   DEFAULT,
-  CATEGORY
+  CATEGORY,
+  TEASER
 }
