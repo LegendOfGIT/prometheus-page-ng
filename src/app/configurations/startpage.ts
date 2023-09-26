@@ -17,6 +17,16 @@ export class Startpage {
     new TeaserItem('', 'BEAUTY_CARE_FRAGRANCES_MEN', '', ''),
     new TeaserItem('/beauty-and-care?search=vegan', 'BEAUTY_CARE', 'vegan', 'TEASER_TITLE_VEGAN_COSMETICS'),
 
+    new TeaserItem('/hashtags/Schnäppchen', '', '', 'TEASER_TITLE_HASHTAG_DEALS')
+      .setHashtags(['Schnäppchen'])
+      .setSsrRendering(true),
+    new TeaserItem('', 'KIDS', '', '')
+      .setHashtags(['Schnäppchen']),
+    new TeaserItem('', 'FASHION', '', '')
+      .setHashtags(['Schnäppchen']),
+    new TeaserItem('', 'ELECTRONICS_AND_COMPUTERS', '', '')
+      .setHashtags(['Schnäppchen']),
+
     new TeaserItem('/electronics-and-computers', 'ELECTRONICS_AND_COMPUTERS', '', 'TEASER_TITLE_HASHTAG_KEEPCOOL')
       .setHashtags(['KeepCool'])
       .setSsrRendering(true),

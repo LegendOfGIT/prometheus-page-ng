@@ -23,6 +23,7 @@ export class Navigation {
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JACKETS', ['fashion', 'women', 'jackets']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['fashion', 'women', 'jeans']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELRY', ['fashion', 'women', 'jewelry']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_MATERNITYWEAR', ['fashion', 'women', 'maternity-wear']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_NIGHTWEAR', ['fashion', 'women', 'nightwear']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_PANTS', ['fashion', 'women', 'pants']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SHOES', ['fashion', 'women', 'shoes']),
