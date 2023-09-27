@@ -5,11 +5,13 @@ export class Startpage {
     new TeaserItem('/kids?hashtags=LetsPlay', 'KIDS', '', 'TEASER_TITLE_HASHTAG_LETSPLAY')
       .setHashtags(['LetsPlay'])
       .setSsrRendering(true),
-    new TeaserItem('/kids?search=tonies', 'KIDS', 'tonies', 'TEASER_TITLE_TONIES'),
-    new TeaserItem('/kids?search=pokemon', 'KIDS', 'pokemon', 'TEASER_TITLE_POKEMON'),
 
     new TeaserItem('/home?filters=1000165', 'HOME', '', 'TEASER_TITLE_FUNZY')
-      .setFilters(['1000165']),
+      .setFilters(['1000165'])
+      .setSsrRendering(true),
+
+    new TeaserItem('/kids?search=tonies', 'KIDS', 'tonies', 'TEASER_TITLE_TONIES'),
+    new TeaserItem('/kids?search=pokemon', 'KIDS', 'pokemon', 'TEASER_TITLE_POKEMON'),
 
     new TeaserItem('/beauty-and-care', 'BEAUTY_CARE', '', 'TEASER_TITLE_BEAUTY_CARE')
       .setSsrRendering(true),
@@ -36,9 +38,11 @@ export class Startpage {
       .setHashtags(['Sommer2023'])
       .setSsrRendering(true),
     new TeaserItem('/fashion?filters=1000096-1000099-1000102-1000103-1000105', 'FASHION_WOMEN', '', 'TEASER_TITLE_FASHION_BRANDS')
-      .setHashtags(['Sommer2023']),
+      .setFilters(['1000096', '1000099', '1000102', '1000103', '1000105']),
     new TeaserItem('', 'FASHION_MEN', '', '')
       .setFilters(['1000096', '1000099', '1000102', '1000103', '1000105']),
+    new TeaserItem('/fashion/women/maternity-wear', 'FASHION_WOMEN_MATERNITYWEAR', '', 'TEASER_TITLE_MATERNITY'),
+    new TeaserItem('', 'KIDS_TOYS_BABIES', '', ''),
 
     new TeaserItem('/hashtags/Gold', '', '', 'TEASER_TITLE_HASHTAG_GOLD')
       .setHashtags(['Gold'])

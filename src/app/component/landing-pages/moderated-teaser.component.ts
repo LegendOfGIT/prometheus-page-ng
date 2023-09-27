@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, ElementRef, Inject, Input, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { Item } from '../../model/item';
 import { ActivatedRoute } from '@angular/router';
 import { ItemsApiService } from '../../service/items-api.service';
@@ -14,6 +14,8 @@ import {ItemDisplayMode} from "../item/item.component";
   styleUrls: ['./moderated-teaser.component.scss']
 })
 export class ModeratedTeaserComponent implements OnInit {
+  @ViewChild('teaserSection') teaserSection: ElementRef | undefined;
+
   @Input()
   public navigationItem: NavigationItem | undefined = undefined;
 
@@ -54,6 +56,27 @@ export class ModeratedTeaserComponent implements OnInit {
   ) {
   }
 
+  ngAfterViewInit() {
+    const threshold = 0.2; // how much % of the element is in view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          this.initialiseItems();
+
+          observer.disconnect();
+        });
+      },
+      { threshold }
+    );
+
+    if (!this.teaserSection || this.ssrRendering) { return; }
+    observer.observe(this.teaserSection.nativeElement);
+  }
+
   private getItemsKey(): string {
     return 'productItems-' + (this.linkUri);
   }
@@ -86,6 +109,7 @@ export class ModeratedTeaserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!this.ssrRendering) { return; }
     this.initialiseItems();
   }
 }
