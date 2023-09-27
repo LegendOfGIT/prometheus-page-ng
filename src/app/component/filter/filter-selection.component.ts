@@ -137,7 +137,8 @@ export class FilterSelectionComponent implements OnInit {
   ];
 
   public sustainabilityFilters: Array<FilterItem> = [
-    new FilterItem('1000111', 'bio')
+    new FilterItem('1000111', 'bio'),
+    new FilterItem('1000178', 'FILTERS_SUSTAINABILITY_SUSTAINABLE')
   ];
 
   public storageSizeFilters: Array<FilterItem> = [
@@ -182,6 +183,7 @@ export class FilterSelectionComponent implements OnInit {
 
   public shopsFilters: Array<FilterItem> = [
     new FilterItem('1000018', '100% pure'),
+    new FilterItem('1000177', '60 Beans'),
     new FilterItem('1000019', 'Amazon'),
     new FilterItem('1000176', 'AMD Möbel'),
     new FilterItem('1000144', 'Artgerecht'),
