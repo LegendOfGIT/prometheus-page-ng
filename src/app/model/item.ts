@@ -20,10 +20,12 @@ export class Item extends BaseModel {
     author: string = '';
     brand: string = '';
     colors: string = '';
+    countryOfOrigin: string = '';
     coverType: string = '';
     diameterInInch: number = 0;
     fabric: string = '';
     fabricPattern: string = '';
+    flavours: string = '';
     fit: string = '';
     interpret: string = '';
     genre: string = '';
@@ -39,6 +41,7 @@ export class Item extends BaseModel {
     minimumAge: number = 0;
     publisher: string = '';
     ramSize: string = '';
+    regionOfOrigin: string = '';
     resolution: string = '';
     size: string = '';
     sizes: string = '';
@@ -47,6 +50,7 @@ export class Item extends BaseModel {
     seoDescription: string = '';
     seoKeywords: string = '';
     speedKey: string = '';
+    tasteType: string = '';
     teaserTexts: Array<string> = [];
     type: string = '';
     types: string = '';
@@ -126,11 +130,15 @@ export class Item extends BaseModel {
         new ItemDetails('ISBN', item.isbn),
         new ItemDetails('PUBLISHER', item.publisher),
         new ItemDetails('MAKE', item.make || item.brand),
+        new ItemDetails('COUNTRY_OF_ORIGIN', item.countryOfOrigin),
+        new ItemDetails('REGION_OF_ORIGIN', item.regionOfOrigin),
         new ItemDetails('AMOUNT_OF_MEDIA', item.amountOfMedia),
         new ItemDetails('AMOUNT_OF_PAGES', item.amountOfPages),
         new ItemDetails('AMOUNT_OF_SONGS', item.amountOfSongs),
         new ItemDetails('COVER_TYPE', item.coverType),
         new ItemDetails('LANGUAGES', item.languages),
+        new ItemDetails('TASTE_TYPE', item.tasteType),
+        new ItemDetails('FLAVOURS', item.flavours),
         new ItemDetails('FIT', item.fit),
         new ItemDetails('TYPE', item.type),
         new ItemDetails('TYPES', item.types),
