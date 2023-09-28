@@ -429,6 +429,18 @@ export class Navigation {
       .filter(navigationItem => item.toId === navigationItem.fromId);
   }
 
+  public static getAllSupersequentNavigationIdsByItem(item: NavigationItem | undefined): Array<string> {
+    let navigationIds: Array<string> = []
+
+    let previousLevelItem: NavigationItem | undefined = Navigation.ITEMS.find(i => i.toId == item?.fromId);
+    while (undefined !== previousLevelItem && previousLevelItem.fromId) {
+      navigationIds = navigationIds.concat(previousLevelItem.toId);
+      previousLevelItem = Navigation.ITEMS.find(i => i.toId == previousLevelItem?.fromId);
+    }
+
+    return navigationIds.reverse();
+  }
+
   public static getAllSubsequentNavigationIdsByItem(item: NavigationItem | undefined): Array<string> {
     let navigationIds: Array<string> = []
 

@@ -18,6 +18,14 @@
     </div>
   </div>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <app-breadcrumbs [navigationIds]="activeNavigationItemPathParts"></app-breadcrumbs>
+      </div>
+    </div>
+  </div>
+
   <div class="container informationItems__content">
     <div class="col-12 informationItems__container">
       <app-item *ngFor="let item of items" [item]="item">

@@ -93,6 +93,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000088', 'Adidas'),
     new FilterItem('1000087', 'Apple'),
     new FilterItem('1000145', 'Bench'),
+    new FilterItem('1000179', 'Braun'),
     new FilterItem('1000098', 'Bruno Banani'),
     new FilterItem('1000101', 'Bugatti'),
     new FilterItem('1000103', 'Calvin Klein'),

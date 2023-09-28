@@ -218,4 +218,9 @@ export class ItemsComponent implements OnInit {
       return [this.navigationService.activeNavigationItem?.toId || '']
         .concat(Navigation.getAllSubsequentNavigationIdsByItem(this.navigationService.activeNavigationItem));
     }
+
+    get activeNavigationItemPathParts(): Array<string> | undefined {
+      return Navigation.getAllSupersequentNavigationIdsByItem(this.navigationService.activeNavigationItem)
+        .concat(this.navigationService.activeNavigationItem?.toId || '');
+    }
 }

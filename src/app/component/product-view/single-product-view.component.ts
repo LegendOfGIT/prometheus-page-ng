@@ -237,12 +237,6 @@ export class SingleProductViewComponent implements OnInit {
       .filter((value, index, array) => array.indexOf(value) === index);
   }
 
-  get backToCategoryUrl(): string {
-    const hashtags = this.userService.activeUser?.activeHashtags;
-
-    return `/${(this.navigationItemToCategory?.pathParts || [''])[0]}${hashtags ? `?hashtags=${hashtags.join(',')}` : ''}`;
-  }
-
   get backToHashtagsUrl(): string {
     const hashtags = this.userService.activeUser?.activeHashtags || [];
     if (!hashtags.length) {

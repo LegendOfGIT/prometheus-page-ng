@@ -1,19 +1,7 @@
 <div class="container singleProductView__content">
 
-  <div class="row">
-    <div class="col-12 content__backToOverview content--center">
-      <a *ngIf="backToHashtagsUrl" href="{{backToHashtagsUrl}}" target="_self" class="button__wrapper">
-        <div *ngIf="navigationItemToCategory?.toId" class="button singleProductView__backToOverview">
-          {{ 'BACK_TO' | translate }} "#{{activeHashtags}}"
-        </div>
-      </a>
-
-      <a href="{{backToCategoryUrl}}" target="_self" class="button__wrapper">
-        <div *ngIf="navigationItemToCategory?.toId" class="button singleProductView__backToOverview">
-            {{ 'BACK_TO' | translate }} "{{ 'NAVIGATION_' + navigationItemToCategory?.toId | translate }}"
-        </div>
-      </a>
-    </div>
+  <div class="content__backToOverview">
+    <app-breadcrumbs [navigationIds]="item?.navigationPath"></app-breadcrumbs>
   </div>
 
   <div class="row">

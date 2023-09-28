@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-12 breadcrumbs">
+    <div *ngFor="let navigationId of navigationIds; let ix=index">
+      <span *ngIf="ix > 0">&raquo;&nbsp;</span>
+      <a href="{{getUriOfNavigationId(navigationId)}}" class="breadcrumbs__item">{{ 'NAVIGATION_' + navigationId | translate }}</a>
+    </div>
+  </div>
+</div>

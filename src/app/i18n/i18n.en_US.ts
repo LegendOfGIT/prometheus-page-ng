@@ -7,7 +7,6 @@ export class I18nEnUs implements I18nInterface {
       languageDeDe: 'german',
       languageEnUs: 'english (US)',
       BACK: 'Back',
-      BACK_TO: 'Back to',
       CATEGORIES: 'Categories',
       CREATE_HASHTAG_PREFIX: 'Create hashtag ',
       CREATE_HASHTAG_SUFFIX: ' ',

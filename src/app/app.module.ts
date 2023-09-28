@@ -25,12 +25,14 @@ import { DataProtectionComponent } from './component/legal/data-protection.compo
 import { FilterSelectionComponent } from './component/filter/filter-selection.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { LoadingComponent } from './component/loading/loading.component';
+import { BreadcrumbsComponent } from './component/breadcrumbs/breadcrumbs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
 
     AddToWishlistComponent,
+    BreadcrumbsComponent,
     CategoryTeaserComponent,
     ModeratedTeaserComponent,
     GeneralDataProtectionRegulationComponent,
