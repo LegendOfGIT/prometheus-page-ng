@@ -118,6 +118,10 @@ export class ItemComponent {
     get showBig(): boolean {
       return ItemDisplayMode.TEASER !== this.displayMode;
     }
+
+    get renderedReduction(): string {
+      return Item.renderReductionOfLowestPriceItem(this.item);
+    }
 }
 
 export enum ItemDisplayMode {

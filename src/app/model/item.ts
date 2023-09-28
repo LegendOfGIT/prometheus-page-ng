@@ -116,6 +116,21 @@ export class Item extends BaseModel {
       return lowestPrice ? `${lowestPrice.toLocaleString('de-DE', {minimumFractionDigits: 2})} EUR` : '';
     }
 
+    public static renderReductionOfLowestPriceItem(item: Item | null): string {
+      const itemWithLowestPrice = Item.getProviderItemWithLowestPrice(item);
+      if (!itemWithLowestPrice?.priceCurrent || !itemWithLowestPrice?.priceInitial) {
+        return '';
+      }
+
+      const reductionInPercent = 100 - Math.floor((itemWithLowestPrice?.priceCurrent || 0) * 100 / (itemWithLowestPrice?.priceInitial || 1));
+
+      if (reductionInPercent < 20) {
+        return '';
+      }
+
+      return `- ${reductionInPercent} %`
+    }
+
     public static getItemDetails(item: Item | null): Array<ItemDetails> {
       if (!item) {
         return [];

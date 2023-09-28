@@ -156,6 +156,25 @@
     }
   }
 
+  &__stamp {
+    align-items: center;
+    background-color: $logo-capital-letter-color;
+    bottom: 0;
+    color: #fff;
+    display: inline-flex;
+    font-weight: bold;
+    height: 2em;
+    justify-content: center;
+    position: absolute;
+    right: -1em;
+    width: 4em;
+    z-index: 3;
+
+    &--big {
+      right: -4.5em;
+    }
+  }
+
   &__title {
     display: -webkit-box;
     line-clamp: 4;

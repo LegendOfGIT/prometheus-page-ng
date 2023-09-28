@@ -8,6 +8,7 @@
           src="{{item.titleImage}}"
           loading="lazy"
         />
+        <div class="informationItem__stamp{{showBig ? ' informationItem__stamp--big' : ''}}" *ngIf="renderedReduction">{{renderedReduction}}</div>
       </a>
       <app-add-to-wishlist [item]="item" *ngIf="showWishlistIcon"></app-add-to-wishlist>
     </div>
