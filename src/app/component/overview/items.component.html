@@ -1,8 +1,10 @@
 <div class="container informationItems__content informationItems__content--categories">
-  <div *ngIf="showCategoryNavigation" class="col-12 informationItems__container informationItems__container--categories">
-    <div *ngFor="let subNavigationItem of subNavigationItems">
-      <app-item [item]="itemOfCategory(subNavigationItem?.toId || '')" [displayMode]="ITEM_MODE_CATEGORY"></app-item>
-    </div>
+  <div *ngIf="showCategoryNavigation" class="col-12 informationItems__container informationItems__container--categories carousel__viewport">
+    <app-item
+      *ngFor="let subNavigationItem of subNavigationItems"
+      [item]="itemOfCategory(subNavigationItem?.toId || '')"
+      [displayMode]="ITEM_MODE_CATEGORY">
+    </app-item>
   </div>
 </div>
 

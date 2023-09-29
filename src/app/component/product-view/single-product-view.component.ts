@@ -142,7 +142,7 @@ export class SingleProductViewComponent implements OnInit {
     }
 
     const script: HTMLScriptElement = this.doc.createElement('script');
-    script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ "autoplay": true, "autoplaySpeed": 7000, "arrows": false}); });';
+    script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ "autoplay": true, centerMode: true, centerPadding: "15px", "autoplaySpeed": 7000, "arrows": false}); });';
     this.doc.body.appendChild(script);
   }
 

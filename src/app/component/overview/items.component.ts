@@ -139,6 +139,10 @@ export class ItemsComponent implements OnInit {
         .subscribe(
           itemsResponse => {
             this.sampleItemsOfCategories = itemsResponse?.items;
+
+            const script: HTMLScriptElement = this.doc.createElement('script');
+            script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ arrows: false, dots: false, centerMode: true, infinite: true, slidesToShow: 3, responsive: [{ breakpoint: 576, settings: { slidesToShow: 2 } }, { breakpoint: 1280, settings: { slidesToShow: 4 } }] }); });';
+            this.doc.body.appendChild(script);
           });
     }
 
