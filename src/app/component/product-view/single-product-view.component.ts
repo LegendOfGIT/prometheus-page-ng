@@ -237,15 +237,6 @@ export class SingleProductViewComponent implements OnInit {
       .filter((value, index, array) => array.indexOf(value) === index);
   }
 
-  get backToHashtagsUrl(): string {
-    const hashtags = this.userService.activeUser?.activeHashtags || [];
-    if (!hashtags.length) {
-      return '';
-    }
-
-    return `/hashtags/${hashtags.join(',')}`;
-  }
-
   get productSizes(): string {
     if (!(this.item?.sizes || []).length) {
       return '';
