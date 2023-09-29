@@ -534,6 +534,7 @@ export class I18nDeDe implements I18nInterface {
       SHOW_MORE_PREFIX: 'Zeige mehr aus',
       SHOW_MORE_SUFFIX: 'an',
       TEASER_TITLE_ANIMES: 'Anime Filme und Serien',
+      TEASER_TITLE_AUTUMNANDHALLOWEEN: 'Herbst und Halloween',
       TEASER_TITLE_COFFEE_MACHINES: 'Für einen guten Start in den Tag',
       TEASER_TITLE_BEAUTY_CARE: 'Bleib schön und gesund',
       TEASER_TITLE_FASHION_BRANDS: 'Große Fashion Marken für dich',

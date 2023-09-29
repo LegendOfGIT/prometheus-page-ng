@@ -532,6 +532,7 @@ export class I18nEnUs implements I18nInterface {
       SHOW_MORE_PREFIX: 'Show more of',
       SHOW_MORE_SUFFIX: '...',
       TEASER_TITLE_ANIMES: 'Anime movies and series',
+      TEASER_TITLE_AUTUMNANDHALLOWEEN: 'Autumn and Halloween',
       TEASER_TITLE_BEAUTY_CARE: 'Stay beautiful and healthy',
       TEASER_TITLE_FASHION_BRANDS: 'Best fashion brands for you',
       TEASER_TITLE_FRAGRANCES: 'Welcome to the world of fragrances',
