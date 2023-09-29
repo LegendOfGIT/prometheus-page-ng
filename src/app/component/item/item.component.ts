@@ -120,6 +120,10 @@ export class ItemComponent {
     }
 
     get renderedReduction(): string {
+      if (ItemDisplayMode.CATEGORY === this.displayMode) {
+        return '';
+      }
+
       return Item.renderReductionOfLowestPriceItem(this.item);
     }
 }

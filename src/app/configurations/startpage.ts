@@ -11,7 +11,12 @@ export class Startpage {
       .setSsrRendering(true),
 
     new TeaserItem('/kids?search=tonies', 'KIDS', 'tonies', 'TEASER_TITLE_TONIES'),
-    new TeaserItem('/kids?search=pokemon', 'KIDS', 'pokemon', 'TEASER_TITLE_POKEMON'),
+    //new TeaserItem('/kids?search=pokemon', 'KIDS', 'pokemon', 'TEASER_TITLE_POKEMON'),
+
+    new TeaserItem('/home/accessoires/decorations?search=halloween', 'HOME_ACCESSOIRES_DECORATIONS', 'halloween', 'TEASER_TITLE_AUTUMNANDHALLOWEEN'),
+    new TeaserItem('/home/accessoires/decorations?search=herbst', 'HOME_ACCESSOIRES_DECORATIONS', 'herbst', ''),
+    new TeaserItem('/fashion/girls/disguises', 'FASHION_GIRLS_DISGUISES', '', ''),
+    new TeaserItem('/fashion/boys/disguises', 'FASHION_BOYS_DISGUISES', '', ''),
 
     new TeaserItem('/beauty-and-care', 'BEAUTY_CARE', '', 'TEASER_TITLE_BEAUTY_CARE')
       .setSsrRendering(true),
