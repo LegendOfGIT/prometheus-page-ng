@@ -141,7 +141,7 @@ export class ItemsComponent implements OnInit {
             this.sampleItemsOfCategories = itemsResponse?.items;
 
             const script: HTMLScriptElement = this.doc.createElement('script');
-            script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ arrows: false, dots: false, infinite: true, autoplay: true, autoplaySpeed: 7000, slidesToScroll: 3, slidesToShow: 3, responsive: [{ breakpoint: 576, settings: { slidesToScroll: 2, slidesToShow: 2 } }, { breakpoint: 1280, settings: { slidesToScroll: 4, slidesToShow: 4 } }] }); });';
+            script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ arrows: false, dots: false, infinite: true, autoplay: true, autoplaySpeed: 7000, slidesToScroll: 3, slidesToShow: 3, responsive: [{ breakpoint: 576, settings: { slidesToScroll: 2, slidesToShow: 2 } }, { breakpoint: 1280, settings: { slidesToScroll: 4, slidesToShow: 4 } }] }); }, 100);';
             this.doc.body.appendChild(script);
           });
     }
