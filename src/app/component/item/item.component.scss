@@ -171,7 +171,9 @@
     z-index: 3;
 
     &--big {
-      right: -4.5em;
+      @media screen and (min-width: 576px) {
+        right: -4.5em;
+      }
     }
   }
 
