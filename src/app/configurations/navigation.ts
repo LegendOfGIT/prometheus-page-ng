@@ -134,6 +134,26 @@ export class Navigation {
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
+      'ELECTRONICS_AND_COMPUTERS_CAMERAS',
+      ['electronics-and-computers', 'cameras', '']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_CAMERAS',
+      'ELECTRONICS_AND_COMPUTERS_CAMERAS_CAMERAOBJECTIVES',
+      ['electronics-and-computers', 'cameras', 'camera-objectives']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_CAMERAS',
+      'ELECTRONICS_AND_COMPUTERS_CAMERAS_SLRCAMERAS',
+      ['electronics-and-computers', 'cameras', 'slr-cameras']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_CAMERAS',
+      'ELECTRONICS_AND_COMPUTERS_CAMERAS_SYSTEMCAMERAS',
+      ['electronics-and-computers', 'cameras', 'system-cameras']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_COMPUTERS',
       ['electronics-and-computers', 'computers', '']
     ),
