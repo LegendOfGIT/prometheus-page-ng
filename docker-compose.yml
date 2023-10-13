@@ -70,13 +70,39 @@ services:
     environment:
       - TZ=Europe/Berlin
 
-  satellite:
+  satellite-a:
     image: node
-    container_name: satellite
+    container_name: satellite-a
     hostname: satellite
     command: npm run start
     ports:
       - "3000:3000"
+    working_dir: /app
+    volumes:
+      - "/var/www/prometheus/information-satellite:/app"
+    environment:
+      - TZ=Europe/Berlin
+
+  satellite-b:
+    image: node
+    container_name: satellite-b
+    hostname: satellite
+    command: npm run start
+    ports:
+      - "2999:3000"
+    working_dir: /app
+    volumes:
+      - "/var/www/prometheus/information-satellite:/app"
+    environment:
+      - TZ=Europe/Berlin
+
+  satellite-c:
+    image: node
+    container_name: satellite-c
+    hostname: satellite
+    command: npm run start
+    ports:
+      - "2998:3000"
     working_dir: /app
     volumes:
       - "/var/www/prometheus/information-satellite:/app"
