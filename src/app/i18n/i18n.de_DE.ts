@@ -259,6 +259,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_KIDS: 'Kinder & Familie',
       NAVIGATION_KIDS_BOOKS: 'Kinderbücher',
       NAVIGATION_KIDS_BOOKS_AUDIOBOOKS: 'Kinder Hörbücher',
+      NAVIGATION_KIDS_BOOKS_READINGBOOKS: 'Kinder Lese- und Beschäftigungsbücher',
       NAVIGATION_KIDS_PARTY: 'Kinder Party',
       NAVIGATION_KIDS_PARTY_TABLEWARE: 'Kinder Tischgeschirr / Dekoration',
       NAVIGATION_KIDS_SCHOOL: 'Schule',

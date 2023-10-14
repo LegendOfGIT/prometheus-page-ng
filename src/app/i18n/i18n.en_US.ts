@@ -258,6 +258,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_KIDS: 'kids and family',
       NAVIGATION_KIDS_BOOKS: 'kids books',
       NAVIGATION_KIDS_BOOKS_AUDIOBOOKS: 'kids audio books',
+      NAVIGATION_KIDS_BOOKS_READINGBOOKS: 'kids reading- and activity books',
       NAVIGATION_KIDS_PARTY: 'kids party',
       NAVIGATION_KIDS_PARTY_TABLEWARE: 'kids tableware / decoration',
       NAVIGATION_KIDS_SCHOOL: 'school',
