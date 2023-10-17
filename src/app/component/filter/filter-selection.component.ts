@@ -188,6 +188,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000019', 'Amazon'),
     new FilterItem('1000176', 'AMD Möbel'),
     new FilterItem('1000144', 'Artgerecht'),
+    new FilterItem('1000182', 'Asian Foodlovers'),
     new FilterItem('1000121', 'AWG Mode'),
     new FilterItem('1000001', 'BigGreen Smile'),
     new FilterItem('1000020', 'Backmarket'),

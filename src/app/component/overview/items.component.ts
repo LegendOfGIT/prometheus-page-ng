@@ -88,6 +88,19 @@ export class ItemsComponent implements OnInit {
       const minimumPrice = this.route.snapshot?.queryParamMap?.get('p_min') as string;
       const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
 
+      this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map(navigationItem => navigationItem.toId))
+        .pipe(takeUntil(this.destroyedService$))
+        .subscribe(
+          itemsResponse => {
+            this.sampleItemsOfCategories = itemsResponse?.items;
+
+            if (!isPlatformServer(this.platformId)) {
+              const script: HTMLScriptElement = this.doc.createElement('script');
+              script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").not(".slick-initialized").slick({ arrows: false, dots: false, infinite: true, autoplay: true, autoplaySpeed: 7000, slidesToScroll: 3, slidesToShow: 3, responsive: [{ breakpoint: 576, settings: { slidesToScroll: 2, slidesToShow: 2 } }, { breakpoint: 1280, settings: { slidesToScroll: 4, slidesToShow: 4 } }] }); }, 200);';
+              this.doc.body.appendChild(script);
+            }
+          });
+
       if (this.isCategoryHashtags) {
         this.itemsService.getHashtagsItems(searchPattern, filterIds, undefined, page, minimumPrice, maximumPrice)
           .pipe(takeUntil(this.destroyedService$))
@@ -132,19 +145,6 @@ export class ItemsComponent implements OnInit {
               this.metaService.addTag({ name: 'og:image:height', content: '450' });
               this.metaService.addTag({ name: 'og:image:width', content: '450' });
             });
-          });
-
-      this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map(navigationItem => navigationItem.toId))
-        .pipe(takeUntil(this.destroyedService$))
-        .subscribe(
-          itemsResponse => {
-            this.sampleItemsOfCategories = itemsResponse?.items;
-
-            if (!isPlatformServer(this.platformId)) {
-              const script: HTMLScriptElement = this.doc.createElement('script');
-              script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").not(".slick-initialized").slick({ arrows: false, dots: false, infinite: true, autoplay: true, autoplaySpeed: 7000, slidesToScroll: 3, slidesToShow: 3, responsive: [{ breakpoint: 576, settings: { slidesToScroll: 2, slidesToShow: 2 } }, { breakpoint: 1280, settings: { slidesToScroll: 4, slidesToShow: 4 } }] }); }, 200);';
-              this.doc.body.appendChild(script);
-            }
           });
     }
 
@@ -205,7 +205,10 @@ export class ItemsComponent implements OnInit {
     }
 
     get subNavigationItems(): Array<NavigationItem> {
-      return Navigation.getNextLevelNavigationItemsFrom(this.navigationService.activeNavigationItem);
+      let items = Navigation.getNextLevelNavigationItemsFrom(this.navigationService.activeNavigationItem);
+      items = 0 === items.length ? Navigation.getAllRootItems() : items;
+
+      return items;
     }
 
     get showCategoryNavigation(): boolean {
