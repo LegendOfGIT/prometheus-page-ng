@@ -8,6 +8,7 @@ import {NavigationService} from '../../service/navigation.service';
 import {NavigationItem} from '../../model/navigation-item';
 import {ActivatedRoute} from '@angular/router';
 import {isPlatformBrowser} from "@angular/common";
+import {Navigation} from "../../configurations/navigation";
 
 @Component({
   selector: 'app-item',
@@ -70,7 +71,10 @@ export class ItemComponent {
     }
 
     private getNextNavigationItem(): NavigationItem | undefined {
-        return this.navigationService.nextNavigationItems
+        let items = this.navigationService.nextNavigationItems;
+        items = items?.length ? items : Navigation.getAllRootItems();
+
+        return items
           .find(nextNavigationItem =>
             -1 !== (this.item?.navigationPath || []).indexOf(nextNavigationItem.toId || ''));
     }

@@ -29,4 +29,8 @@ export class BreadcrumbsComponent {
   get breadcrumbItemModifier(): string {
     return this.numberOfTotalBreadcrumbsCharacters() >= 40 ? '' : '  breadcrumbs__item--big';
   }
+
+  get showBreadcrumbs(): boolean {
+    return (this.navigationIds || []).filter(navigationId => navigationId).length > 0;
+  }
 }

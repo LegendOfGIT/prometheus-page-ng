@@ -206,7 +206,8 @@ export class ItemsComponent implements OnInit {
 
     get subNavigationItems(): Array<NavigationItem> {
       let items = Navigation.getNextLevelNavigationItemsFrom(this.navigationService.activeNavigationItem);
-      items = 0 === items.length ? Navigation.getAllRootItems() : items;
+      items = 0 === items.length && this.isCategoryHashtags ? Navigation.getAllRootItems() : items;
+
 
       return items;
     }
