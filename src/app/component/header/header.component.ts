@@ -140,8 +140,12 @@ export class HeaderComponent {
       return '/hashtags/' + item.label;
     }
 
-    const url = new URL(window.location.href.replace(/\?.*/, ''));
+    const url: URL = new URL(window.location.href.replace(/\?.*/, ''));
     url.searchParams.set(item.isSearchItem() ? 'search' : 'hashtags', item.label);
+    if (item.isSearchItem() && this.isModuleActive(Module.HOME)) {
+      url.pathname = `/hashtags/${this.userService.getFirstHashtag()}`
+    }
+
     return url.toString();
   }
 
@@ -182,7 +186,7 @@ export class HeaderComponent {
   }
 
   get showSearchBar(): boolean {
-    return -1 !== [Module.ITEMS, Module.HASHTAGS].indexOf(this.navigationService.activeModule);
+    return -1 !== [Module.HOME, Module.ITEMS, Module.HASHTAGS].indexOf(this.navigationService.activeModule);
   }
 
   get isHashtagsModule(): boolean {

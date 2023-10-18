@@ -112,6 +112,10 @@ export class UserService {
       return this.activeUser?.activeHashtags || this._activeHashtags || DEFAULT_HASHTAGS;
     }
 
+    public getFirstHashtag(): string {
+      return this.getHashtags().length ? this.getHashtags()[0] : '';
+    }
+
     get activeUser(): User | null {
       if (null == this._activeUser) {
         return this._anonymousUser;
