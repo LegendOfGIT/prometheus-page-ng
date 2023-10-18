@@ -131,52 +131,22 @@ export class Item extends BaseModel {
       return `- ${reductionInPercent} %`
     }
 
-    public static getItemDetails(item: Item | null): Array<ItemDetails> {
+    public static getItemDetails(item: Item | null, translations: any): Array<ItemDetails> {
       if (!item) {
         return [];
       }
 
-      return [
-        new ItemDetails('GENRE', item.genre),
-        new ItemDetails('SUBGENRE', item.subgenre),
-        new ItemDetails('MINIMUM_AGE', item.minimumAge),
-        new ItemDetails('AUTHOR', item.author),
-        new ItemDetails('INTERPRET', item.interpret),
-        new ItemDetails('ISBN', item.isbn),
-        new ItemDetails('PUBLISHER', item.publisher),
-        new ItemDetails('MAKE', item.make || item.brand),
-        new ItemDetails('COUNTRY_OF_ORIGIN', item.countryOfOrigin),
-        new ItemDetails('REGION_OF_ORIGIN', item.regionOfOrigin),
-        new ItemDetails('AMOUNT_OF_MEDIA', item.amountOfMedia),
-        new ItemDetails('AMOUNT_OF_PAGES', item.amountOfPages),
-        new ItemDetails('AMOUNT_OF_SONGS', item.amountOfSongs),
-        new ItemDetails('COVER_TYPE', item.coverType),
-        new ItemDetails('LANGUAGES', item.languages),
-        new ItemDetails('TASTE_TYPE', item.tasteType),
-        new ItemDetails('FLAVOURS', item.flavours),
-        new ItemDetails('FIT', item.fit),
-        new ItemDetails('TYPE', item.type),
-        new ItemDetails('TYPES', item.types),
-        new ItemDetails('COLORS', item.colors),
-        new ItemDetails('MATERIAL', item.material),
-        new ItemDetails('INNER_MATERIAL', item.innerMaterial),
-        new ItemDetails('OUTER_MATERIAL', item.outerMaterial),
-        new ItemDetails('FABRIC', item.fabric),
-        new ItemDetails('FABRIC_PATTERN', item.fabricPattern),
-        new ItemDetails('LENGTH_IN_CM', item.lengthInCm),
-        new ItemDetails('WIDTH_IN_CM', item.widthInCm),
-        new ItemDetails('HEIGHT_IN_CM', item.heightInCm),
-        new ItemDetails('WEIGHT_IN_G', item.weightInG),
-        new ItemDetails('WEIGHT_IN_KG', item.weightInKG),
-        new ItemDetails('TYRE_TYPE', item.tyreType),
-        new ItemDetails('RAM_SIZE', item.ramSize),
-        new ItemDetails('STORAGE_SIZE', item.storageSize),
-        new ItemDetails('RESOLUTION', item.resolution),
-        new ItemDetails('DIAMETER_IN_INCH', item.diameterInInch),
-        new ItemDetails('LOADINDEX', item.loadIndex),
-        new ItemDetails('SPEEDKEY', item.speedKey),
-        new ItemDetails('ANNUAL_CONSUMPTION_IN_KWH', item.annualConsumptionInKWH)
-      ].filter(detail => detail.value);
+      const itemDetails = [new ItemDetails('MAKE', item.make || item.brand)];
+
+      Object.keys(translations).filter((translationKey: string) => translationKey.startsWith('PRODUCT_DETAILS_')).forEach((translationKey: string) => {
+          Object.keys(item).forEach((key: string) => {
+            if (translationKey === `PRODUCT_DETAILS_${key.toUpperCase()}`) {
+              itemDetails.push(new ItemDetails(key.toUpperCase(), item[key as keyof Item]));
+            }
+          });
+      });
+
+      return itemDetails.filter(detail => detail.value);
     }
 
 }

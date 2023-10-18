@@ -170,7 +170,7 @@ export class SingleProductViewComponent implements OnInit {
   }
 
   public getItemDetails(item: Item | null): Array<ItemDetails> {
-    return Item.getItemDetails(item);
+    return Item.getItemDetails(item, this.translationService.getTranslations(''));
   }
 
   public toggleFullDescription(): void {
