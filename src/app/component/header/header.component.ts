@@ -44,7 +44,7 @@ export class HeaderComponent {
   ) {
     this.subscribeSearchPatternChanges();
     this.lastLoggedInFlag = this.userService.isLoggedIn;
-    const searchPattern = this.getParameterFromUrl('search');
+    const searchPattern: string | null = this.getParameterFromUrl('search');
     this.searchPatternControl.setValue(searchPattern);
   }
 
@@ -76,15 +76,15 @@ export class HeaderComponent {
         }
 
         this.hashtagsService.getHashtags(givenPattern)
-          .subscribe(items => {
+          .subscribe((items: Array<SuggestionItem>): void => {
             this.suggestions = [];
 
-            const searchItem = new SuggestionItem(givenPattern);
+            const searchItem: SuggestionItem = new SuggestionItem(givenPattern);
             searchItem.mode = SuggestionItemMode.SEARCH;
             this.suggestions.push(searchItem);
 
-            if (!items.find(suggestion => !suggestion.isSearchItem() && givenPattern.toLowerCase() === suggestion.label.toLowerCase())) {
-              const newHashtagItem = new SuggestionItem(givenPattern.split(' ').join('').substring(0, 20));
+            if (!items.find((suggestion: SuggestionItem) => !suggestion.isSearchItem() && givenPattern.toLowerCase() === suggestion.label.toLowerCase())) {
+              const newHashtagItem: SuggestionItem = new SuggestionItem(givenPattern.split(' ').join('').substring(0, 20));
               newHashtagItem.mode = SuggestionItemMode.NEW;
               items = [newHashtagItem].concat(items);
             }
@@ -95,10 +95,22 @@ export class HeaderComponent {
   }
 
   public searchNow(): void {
-    const searchPattern = this.getParameterFromUrl('search');
-    const hasSearchPatternChanged = searchPattern !== this.searchPatternControl.value;
+    const searchPattern: string | null = this.getParameterFromUrl('search');
 
-    const queryParametersToKeep = ['hashtags', 'page', 'search'];
+    if (this.isModuleActive(Module.HOME)) {
+      this.router.navigate(
+        ['/', 'hashtags', this.userService.getFirstHashtag()],
+        {
+          queryParams: {
+            search: this.searchPatternControl.value
+          }
+        });
+
+      return;
+    }
+
+    const hasSearchPatternChanged = searchPattern !== this.searchPatternControl.value;
+    const queryParametersToKeep: Array<string> = ['hashtags', 'page', 'search'];
     if (hasSearchPatternChanged) {
       queryParametersToKeep.push('search');
     }
@@ -178,7 +190,7 @@ export class HeaderComponent {
   }
 
   get categoryItems(): NavigationItem[] {
-    return this.navigationItems.filter(item => !item.fromId || item.fromId === 'ALL');
+    return this.navigationItems.filter((item: NavigationItem) => !item.fromId || item.fromId === 'ALL');
   }
 
   get activeNavigationItem(): NavigationItem | undefined {
@@ -194,6 +206,6 @@ export class HeaderComponent {
   }
 
   get activeHashtags(): Array<string> {
-    return this.userService.activeUser?.activeHashtags.map(hashtag => `#${hashtag}`) || [];
+    return this.userService.activeUser?.activeHashtags.map((hashtag: string): string => `#${hashtag}`) || [];
   }
 }
