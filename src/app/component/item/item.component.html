@@ -1,7 +1,7 @@
 <div>
   <div *ngIf="item" [ngClass]="['informationItem', item.itemId ? '' : 'informationItem--loading', showBig ? 'informationItem--big' : '', cssModifier ? 'informationItem' + cssModifier : '', additionalCssClasses]">
     <div [ngClass]="['informationItem__imageContainer', cssModifier ? 'informationItem__imageContainer' + cssModifier : '', item.itemId ? '' : 'informationItem__imageContainer--loading']">
-      <a href="{{itemUrl}}" (click)="pickedInformation(item)" target="{{linkTarget}}">
+      <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item)" target="{{linkTarget}}">
         <img *ngIf="item.itemId"
           class="informationItem__image{{showBig ? ' informationItem__image--big' : ''}}{{cssModifier ? ' informationItem__image' + cssModifier : ''}}"
           alt="{{'IMAGE_OF' | translate }} {{item.title}}"
@@ -13,7 +13,7 @@
       <app-add-to-wishlist [item]="item" *ngIf="showWishlistIcon"></app-add-to-wishlist>
     </div>
 
-    <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item)">
+    <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item)" target="{{linkTarget}}" >
       <div class="informationItem__contentContainer{{cssModifier ? ' informationItem__contentContainer' + cssModifier : ''}}">
         <div *ngIf="showPrice">
           <div *ngIf="renderLowestPrice(item); else noPrice" [ngClass]="['button', 'informationItem__priceWrapper']">
@@ -32,7 +32,7 @@
     <a href="{{singleProductViewUrl}}" class="informationItem__details--link" *ngIf="showOfferDetailsLink" (click)="pickedInformation(item)">
       <div>{{ 'OFFER_DETAILS' | translate }}</div>
     </a>
-    <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item)">
+    <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item)" target="{{linkTarget}}">
         <div class="informationItem__title{{cssModifier ? ' informationItem__title' + cssModifier : ''}}">{{ itemTitle | translate }}</div>
     </a>
 
