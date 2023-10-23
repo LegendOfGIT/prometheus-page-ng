@@ -1,7 +1,7 @@
 <div>
   <div *ngIf="item" [ngClass]="['informationItem', item.itemId ? '' : 'informationItem--loading', showBig ? 'informationItem--big' : '', cssModifier ? 'informationItem' + cssModifier : '', additionalCssClasses]">
     <div [ngClass]="['informationItem__imageContainer', cssModifier ? 'informationItem__imageContainer' + cssModifier : '', item.itemId ? '' : 'informationItem__imageContainer--loading']">
-      <a href="{{itemUrl}}" (click)="pickedInformation(item)">
+      <a href="{{itemUrl}}" (click)="pickedInformation(item)" target="{{linkTarget}}">
         <img *ngIf="item.itemId"
           class="informationItem__image{{showBig ? ' informationItem__image--big' : ''}}{{cssModifier ? ' informationItem__image' + cssModifier : ''}}"
           alt="{{'IMAGE_OF' | translate }} {{item.title}}"
@@ -13,11 +13,11 @@
       <app-add-to-wishlist [item]="item" *ngIf="showWishlistIcon"></app-add-to-wishlist>
     </div>
 
-    <a href="{{itemUrl}}" (click)="pickedInformation(item)">
+    <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item)">
       <div class="informationItem__contentContainer{{cssModifier ? ' informationItem__contentContainer' + cssModifier : ''}}">
         <div *ngIf="showPrice">
           <div *ngIf="renderLowestPrice(item); else noPrice" [ngClass]="['button', 'informationItem__priceWrapper']">
-            {{ 'PRICE_FROM' | translate }}
+            <span *ngIf="!hasOnlyOneOffer">{{ 'PRICE_FROM' | translate }}</span>
             <span class="informationItem__price{{showBig ? ' informationItem__price--big' : ''}}">&nbsp;{{renderLowestPrice(item) || ''}}</span>
           </div>
           <ng-template #noPrice>
@@ -26,9 +26,14 @@
             </div>
           </ng-template>
         </div>
-
-        <div class="informationItem__title{{cssModifier ? ' informationItem__title' + cssModifier : ''}}">{{ itemTitle | translate }}</div>
       </div>
+    </a>
+
+    <a href="{{singleProductViewUrl}}" class="informationItem__details--link" *ngIf="showOfferDetailsLink">
+      <div>{{ 'OFFER_DETAILS' | translate }}</div>
+    </a>
+    <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item)">
+        <div class="informationItem__title{{cssModifier ? ' informationItem__title' + cssModifier : ''}}">{{ itemTitle | translate }}</div>
     </a>
 
     <a *ngFor="let hashtag of item.hashtags" href="/hashtags/{{hashtag}}">

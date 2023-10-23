@@ -92,11 +92,27 @@ export class ItemComponent {
             (searchPattern ? `?search=${searchPattern}` : '');
         }
 
-        return this.getSeoFriendlySingleProductViewUrl(this.item);
+        if (this.hasOnlyOneOffer) {
+          return this.item?.providers[0]?.link || '';
+        }
+
+        return this.singleProductViewUrl;
+    }
+
+    get singleProductViewUrl(): string {
+      return this.getSeoFriendlySingleProductViewUrl(this.item);
+    }
+
+    get linkTarget(): string {
+      return this.hasOnlyOneOffer ? this.item?.id || '' : '_self';
     }
 
     get showHashtags(): boolean {
       return ItemDisplayMode.DEFAULT === this.displayMode;
+    }
+
+    get hasOnlyOneOffer(): boolean {
+      return 1 === this.item?.providers.length;
     }
 
     get showPrice(): boolean {
@@ -129,6 +145,10 @@ export class ItemComponent {
       }
 
       return Item.renderReductionOfLowestPriceItem(this.item);
+    }
+
+    get showOfferDetailsLink(): boolean {
+      return this.hasOnlyOneOffer && !this.isCategoryItem();
     }
 }
 

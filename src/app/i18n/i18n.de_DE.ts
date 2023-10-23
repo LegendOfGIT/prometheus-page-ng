@@ -490,6 +490,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_TEASER_VEHICLES: 'Auf großer Reise, auf dem Weg zur Arbeit oder einfach nur aus Spaß! Hier findest du alles um in Bewegung zu bleiben.',
       NEXT: 'Weiter',
       OFFER: 'Angebot',
+      OFFER_DETAILS: 'Angebotdetails',
       PRICE_FROM: 'ab',
       PRIVATSPHERE_OPTIONS: 'Privatsphäre Einstellungen',
       PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES: 'Es ist zusätzlich auch in den Größen',

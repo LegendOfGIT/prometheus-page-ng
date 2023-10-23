@@ -488,6 +488,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_TEASER_VEHICLES: 'On a long trip, on the way to work or just for fun! Here you will find everything you need to get around.',
       NEXT: 'Next',
       OFFER: 'Offer',
+      OFFER_DETAILS: 'Offer Details',
       PRICE_FROM: 'from',
       PRIVATSPHERE_OPTIONS: 'Privatsphere-Options',
       PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES: 'It is additionally also available in sizes',

@@ -9,7 +9,7 @@
   text-align: -webkit-center;
   width: 11em;
 
-  a {
+  &--link {
     color: $content-color;
     font-family: $font-family;
     letter-spacing: 0.02em;
@@ -41,6 +41,17 @@
       margin-top: unset;
       padding-bottom: 0.5em;
       padding-top: 0.5em;
+    }
+  }
+
+  &__details {
+    &--link {
+      color: $content-color;
+      display: block;
+      font-family: $font-family;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5em;
+      text-decoration: underline;
     }
   }
 
