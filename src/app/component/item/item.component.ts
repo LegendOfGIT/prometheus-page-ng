@@ -45,7 +45,7 @@ export class ItemComponent {
           .setInformationItemId(item.itemId)
           .setInterestLevel(TrackingInterestLevel.HIGH)
           .setSearchPattern(this.getParameterFromUrl('search') || '')
-          .setfFilters(this.getParameterFromUrl('filters') || '')
+          .setFilters(this.getParameterFromUrl('filters') || '')
           .setTrackingId('item.clicked'));
     }
 

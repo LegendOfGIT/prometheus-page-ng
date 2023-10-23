@@ -33,7 +33,7 @@ export class TrackingActivityItem {
       return this;
     }
 
-    public setfFilters(filters: string): TrackingActivityItem {
+    public setFilters(filters: string): TrackingActivityItem {
       this.filters = filters;
       return this;
     }

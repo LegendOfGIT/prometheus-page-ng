@@ -50,7 +50,7 @@ export class AddToWishlistComponent {
       TrackingActivityItem.create()
         .setInformationItemId(this.item.itemId)
         .setInterestLevel(isOnWishlist ? TrackingInterestLevel.VERY_HIGH : TrackingInterestLevel.SLIGHTLY_LOW)
-        .setfFilters(this.getParameterFromUrl('filters') || '')
+        .setFilters(this.getParameterFromUrl('filters') || '')
         .setSearchPattern(this.getParameterFromUrl('search') || '')
         .setTrackingId(isOnWishlist ? 'wishlist.item.added' : 'wishlist.item.removed'));
   }
