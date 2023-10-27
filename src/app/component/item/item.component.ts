@@ -1,4 +1,4 @@
-import {Component, Inject, inject, Input, PLATFORM_ID} from '@angular/core';
+import {Component, inject, Input, PLATFORM_ID} from '@angular/core';
 
 import {Item} from 'src/app/model/item';
 import {TrackingService} from 'src/app/service/tracking.service';
@@ -7,8 +7,8 @@ import {TrackingInterestLevel} from 'src/app/model/tracking-interest-level';
 import {NavigationService} from '../../service/navigation.service';
 import {NavigationItem} from '../../model/navigation-item';
 import {ActivatedRoute} from '@angular/router';
-import {isPlatformBrowser} from "@angular/common";
-import {Navigation} from "../../configurations/navigation";
+import {isPlatformBrowser} from '@angular/common';
+import {Navigation} from '../../configurations/navigation';
 
 @Component({
   selector: 'app-item',
@@ -17,9 +17,9 @@ import {Navigation} from "../../configurations/navigation";
 })
 export class ItemComponent {
 
-    private route = inject(ActivatedRoute);
-    private trackingService = inject(TrackingService);
-    private navigationService = inject(NavigationService);
+    private route: ActivatedRoute = inject(ActivatedRoute);
+    private trackingService: TrackingService = inject(TrackingService);
+    private navigationService: NavigationService = inject(NavigationService);
     private platformId: Object = inject(PLATFORM_ID);
 
     @Input()
@@ -29,7 +29,7 @@ export class ItemComponent {
     public additionalCssClasses: string = '';
 
     @Input()
-    public displayMode = ItemDisplayMode.DEFAULT;
+    public displayMode: ItemDisplayMode = ItemDisplayMode.DEFAULT;
 
     private isOnClientSide(): boolean {
       return isPlatformBrowser(this.platformId);
@@ -49,7 +49,7 @@ export class ItemComponent {
           .setTrackingId('item.clicked'));
     }
 
-    private getHyphenatedString(value: string) {
+    private getHyphenatedString(value: string): string {
       return (value || '').substring(0, 100)
         .replace(",", "")
         .replace(/[^\w\s]/gi, '')
@@ -70,8 +70,18 @@ export class ItemComponent {
         return Item.renderLowestPrice(item);
     }
 
+    public getShopNameOfItem(): string {
+      if (!(this.item?.providers || []).length) {
+        return '';
+      }
+
+      const url: string | undefined = this.item?.providers[0]?.link || '';
+      const match: RegExpMatchArray | null = (url || '').match(/\/\/(www.)?(.*?)\//);
+      return match && match.length > 2 ? match[2].toUpperCase().replace(/\..*/, '') : '';
+    }
+
     private getNextNavigationItem(): NavigationItem | undefined {
-        let items = this.navigationService.nextNavigationItems;
+        let items: Array<NavigationItem> = this.navigationService.nextNavigationItems;
         items = items?.length ? items : Navigation.getAllRootItems();
 
         return items
@@ -104,7 +114,7 @@ export class ItemComponent {
     }
 
     get linkTarget(): string {
-      return this.hasOnlyOneOffer ? this.item?.id || '' : '_self';
+      return this.hasOnlyOneOffer && ItemDisplayMode.CATEGORY !== this.displayMode ? this.item?.id || '' : '_self';
     }
 
     get showHashtags(): boolean {

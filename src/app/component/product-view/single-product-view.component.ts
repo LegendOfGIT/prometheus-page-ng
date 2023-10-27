@@ -218,15 +218,6 @@ export class SingleProductViewComponent implements OnInit {
       .filter(item => 0 === (item?.priceCurrent || 0));
   }
 
-  get navigationItemToCategory(): NavigationItem | undefined {
-    const pathTokens = (this.item?.navigationPath || []);
-    if (!pathTokens.length) {
-      return;
-    }
-
-    return Navigation.getNavigationItemByToId(pathTokens[0]);
-  }
-
   get activeNavigationItem(): NavigationItem | undefined {
     return Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
   }
@@ -243,14 +234,5 @@ export class SingleProductViewComponent implements OnInit {
     }
 
     return (this.item?.sizes || '').split(',').filter(size => this.item?.size !== size as string).join(', ');
-  }
-
-  get activeHashtags(): string {
-    const hashtags = this.userService.activeUser?.activeHashtags || [];
-    if (!hashtags.length) {
-      return '';
-    }
-
-    return hashtags.join(' ');
   }
 }

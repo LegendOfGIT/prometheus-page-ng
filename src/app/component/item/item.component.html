@@ -29,6 +29,9 @@
       </div>
     </a>
 
+    <a href="{{itemUrl}}" class="informationItem--link" *ngIf="showOfferDetailsLink" (click)="pickedInformation(item)" target="{{linkTarget}}">
+      <span>{{getShopNameOfItem()}}</span>
+    </a>
     <a href="{{singleProductViewUrl}}" class="informationItem__details--link" *ngIf="showOfferDetailsLink" (click)="pickedInformation(item)">
       <div>{{ 'OFFER_DETAILS' | translate }}</div>
     </a>
