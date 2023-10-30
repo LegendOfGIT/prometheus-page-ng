@@ -227,6 +227,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000120', 'Saunaloft'),
     new FilterItem('1000041', 'Shop24 direct'),
     new FilterItem('1000042', 'Shop-Apotheke'),
+    new FilterItem('1000183', 'Silkes Weinkeller'),
     new FilterItem('1000043', 'Songmics'),
     new FilterItem('1000044', 'Studibuch'),
     new FilterItem('1000045', 'Third of Life'),
