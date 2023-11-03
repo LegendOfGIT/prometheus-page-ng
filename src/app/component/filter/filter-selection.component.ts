@@ -216,6 +216,7 @@ export class FilterSelectionComponent implements OnInit {
     new FilterItem('1000164', 'Little hipstar'),
     new FilterItem('1000122', 'Medimops'),
     new FilterItem('1000052', 'Meßmer'),
+    new FilterItem('1000185', 'Metabrew Society'),
     new FilterItem('1000033', 'Mytoys'),
     new FilterItem('1000034', 'Natural Food'),
     new FilterItem('1000114', 'Oh my fantasy'),
