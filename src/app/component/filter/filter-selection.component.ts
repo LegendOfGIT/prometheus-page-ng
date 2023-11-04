@@ -1,18 +1,18 @@
-import {Component, inject, Input, OnInit, PLATFORM_ID} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {FilterItem} from "../../model/filter-item";
-import {isPlatformBrowser} from "@angular/common";
-import {LabelType} from "@angular-slider/ngx-slider";
-import {FiltersApiService} from "../../service/filters-api.service";
-import {NavigationService} from "../../service/navigation.service";
-import {AvailableFilterItem} from "../../model/available-filter-item";
+import {AfterViewChecked, Component, inject, Input, OnInit, PLATFORM_ID} from '@angular/core';
+import {ActivatedRoute, Router, UrlTree} from '@angular/router';
+import {FilterItem} from '../../model/filter-item';
+import {isPlatformBrowser} from '@angular/common';
+import {LabelType} from '@angular-slider/ngx-slider';
+import {FiltersApiService} from '../../service/filters-api.service';
+import {NavigationService} from '../../service/navigation.service';
+import {AvailableFilterItem} from '../../model/available-filter-item';
 
 @Component({
   selector: 'app-filter-selection',
   templateUrl: './filter-selection.component.html',
   styleUrls: ['./filter-selection.component.scss']
 })
-export class FilterSelectionComponent implements OnInit {
+export class FilterSelectionComponent implements OnInit, AfterViewChecked {
   @Input()
   dialog: HTMLDialogElement | undefined = undefined;
 
@@ -249,10 +249,10 @@ export class FilterSelectionComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    const filterIds = this.route.snapshot?.queryParamMap?.get('filters') as string || '';
+    const filterIds: string = this.route.snapshot?.queryParamMap?.get('filters') as string || '';
     this.selectedFilterIds = filterIds.split('-').filter(id => id);
 
-    let val = this.route.snapshot?.queryParamMap?.get('p_min');
+    let val: string | null = this.route.snapshot?.queryParamMap?.get('p_min');
     this.minimumPrice = val ? Number.parseInt(val) : this.minimumPrice;
 
     val = this.route.snapshot?.queryParamMap?.get('p_max');
@@ -294,11 +294,11 @@ export class FilterSelectionComponent implements OnInit {
       return;
     }
 
-    this.selectedFilterIds = this.selectedFilterIds.filter(id => filterId !== id);
+    this.selectedFilterIds = this.selectedFilterIds.filter((id: string): boolean => filterId !== id);
   }
 
   public applyFilters(): void {
-    let urlTree = this.router.parseUrl(this.router.url);
+    let urlTree: UrlTree = this.router.parseUrl(this.router.url);
 
     urlTree.queryParams['p_min'] = this.minimumPrice;
     urlTree.queryParams['p_max'] = this.maximumPrice;
@@ -308,7 +308,9 @@ export class FilterSelectionComponent implements OnInit {
     }
     else { delete urlTree.queryParams['filters']; }
 
-    this.router.navigateByUrl(urlTree.toString()).then(() => {
+    delete urlTree.queryParams['noResults'];
+
+    this.router.navigateByUrl(urlTree.toString()).then((): void => {
       window.location.reload();
     });
 

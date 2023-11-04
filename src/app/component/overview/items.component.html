@@ -28,6 +28,13 @@
     </div>
   </div>
 
+  <div *ngIf="noResults" class="container">
+    <div class="col-12 noResults__container">
+      Deine Suche hat leider keinen Treffer ergeben.
+      Lass' dich von ein paar unserer anderen Produkte inspirieren!
+    </div>
+  </div>
+
   <div class="container informationItems__content">
     <div class="col-12 informationItems__container">
       <app-item *ngFor="let item of items" [item]="item">

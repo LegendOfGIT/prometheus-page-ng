@@ -64,6 +64,16 @@
   }
 }
 
+.noResults {
+  &__container {
+    background-color: $container-hint-background-color;
+    display: flex;
+    margin-top: 0.5em;
+    padding: 0.5em;
+    text-align: center;
+  }
+}
+
 .pages {
   &__container {
     color: $content-color;

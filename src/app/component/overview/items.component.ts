@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router, UrlTree} from '@angular/router';
 import {DOCUMENT, isPlatformServer} from '@angular/common';
 
 import {Item} from 'src/app/model/item';
@@ -13,7 +13,8 @@ import {Meta, Title} from '@angular/platform-browser';
 import {NavigationItem} from '../../model/navigation-item';
 import {Navigation} from '../../configurations/navigation';
 import {ItemDisplayMode} from '../item/item.component';
-import {UserService} from "../../service/user.service";
+import {UserService} from '../../service/user.service';
+import {ItemsResponse} from "../../model/items-response";
 
 @Component({
   selector: 'app-items',
@@ -36,6 +37,7 @@ export class ItemsComponent implements OnInit {
 
     private isCategoryHashtags = false;
     private hashtagsFromPath: string = '';
+    public noResults = false;
 
     constructor(
       private router: Router,
@@ -51,9 +53,9 @@ export class ItemsComponent implements OnInit {
       @Inject(PLATFORM_ID) private platformId: Object
     ) {
 
-      route.paramMap.subscribe((params) => {
-        const navigationIdLevelA = params.get('navigationIdLevelA') || '';
-        const navigationIdLevelB = params.get('navigationIdLevelB') || '';
+      route.paramMap.subscribe((params: ParamMap): void => {
+        const navigationIdLevelA: string = params.get('navigationIdLevelA') || '';
+        const navigationIdLevelB: string = params.get('navigationIdLevelB') || '';
         this.navigationService.setActiveNavigationLevelIds([
           navigationIdLevelA,
           navigationIdLevelB,
@@ -79,19 +81,32 @@ export class ItemsComponent implements OnInit {
     }
 
     private getActiveHashtags(): Array<string> {
-      return this.userService.activeUser?.activeHashtags.map(hashtag => `#${hashtag}`) || [];
+      return this.userService.activeUser?.activeHashtags.map((hashtag: string): string => `#${hashtag}`) || [];
+    }
+
+    private requestOverviewWithoutFiltersWhenNecessary(): void {
+      console.log(this.items);
+      if ((this.items || []).length) {
+        return;
+      }
+
+      let urlTree: UrlTree = this.router.parseUrl(this.router.url);
+      urlTree.queryParams = {
+        noResults: true
+      };
+      this.router.navigateByUrl(urlTree.toString()).then(() => window.location.reload());
     }
 
     private initItems(page: string): void {
-      const filterIds = this.route.snapshot?.queryParamMap?.get('filters') as string;
-      const maximumPrice = this.route.snapshot?.queryParamMap?.get('p_max') as string;
-      const minimumPrice = this.route.snapshot?.queryParamMap?.get('p_min') as string;
-      const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
+      const filterIds: string = this.route.snapshot?.queryParamMap?.get('filters') as string;
+      const maximumPrice: string = this.route.snapshot?.queryParamMap?.get('p_max') as string;
+      const minimumPrice: string = this.route.snapshot?.queryParamMap?.get('p_min') as string;
+      const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
 
       this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map(navigationItem => navigationItem.toId))
         .pipe(takeUntil(this.destroyedService$))
         .subscribe(
-          itemsResponse => {
+          (itemsResponse: ItemsResponse): void => {
             this.sampleItemsOfCategories = itemsResponse?.items;
 
             if (!isPlatformServer(this.platformId)) {
@@ -105,21 +120,24 @@ export class ItemsComponent implements OnInit {
         this.itemsService.getHashtagsItems(searchPattern, filterIds, undefined, page, minimumPrice, maximumPrice)
           .pipe(takeUntil(this.destroyedService$))
           .subscribe(
-            itemsResponse => {
+            (itemsResponse: ItemsResponse): void => {
               this.availablePages = itemsResponse?.availablePages;
               this.items = itemsResponse?.items;
 
-              (this.items || []).filter(item => item?.titleImage).splice(0, 3).forEach(item => {
-                this.metaService.addTag({ name: 'og:image', content: item?.titleImage || '' });
-                this.metaService.addTag({ name: 'og:image:height', content: '450' });
-                this.metaService.addTag({ name: 'og:image:width', content: '450' });
-              });
+              this.requestOverviewWithoutFiltersWhenNecessary();
+
+              (this.items || []).filter((item: Item | null) => item?.titleImage).splice(0, 3)
+                .forEach((item: Item | null): void => {
+                  this.metaService.addTag({ name: 'og:image', content: item?.titleImage || '' });
+                  this.metaService.addTag({ name: 'og:image:height', content: '450' });
+                  this.metaService.addTag({ name: 'og:image:width', content: '450' });
+                });
             });
 
         return;
       }
 
-      const activeNavigationId =
+      const activeNavigationId: string =
         this.navigationService.activeNavigationItem && this.navigationService.activeNavigationItem.fromId
           ? this.navigationService.activeNavigationItem.toId
           : '';
@@ -136,19 +154,24 @@ export class ItemsComponent implements OnInit {
       )
         .pipe(takeUntil(this.destroyedService$))
         .subscribe(
-          itemsResponse => {
+          (itemsResponse: ItemsResponse): void => {
             this.availablePages = itemsResponse?.availablePages;
             this.items = itemsResponse?.items;
 
-            (this.items || []).filter(item => item?.titleImage).splice(0, 3).forEach(item => {
-              this.metaService.addTag({ name: 'og:image', content: item?.titleImage || '' });
-              this.metaService.addTag({ name: 'og:image:height', content: '450' });
-              this.metaService.addTag({ name: 'og:image:width', content: '450' });
-            });
+            this.requestOverviewWithoutFiltersWhenNecessary();
+
+            (this.items || []).filter((item: Item | null) => item?.titleImage).splice(0, 3)
+              .forEach((item: Item | null): void => {
+                this.metaService.addTag({ name: 'og:image', content: item?.titleImage || '' });
+                this.metaService.addTag({ name: 'og:image:height', content: '450' });
+                this.metaService.addTag({ name: 'og:image:width', content: '450' });
+              });
           });
     }
 
     ngOnInit(): void {
+        this.noResults = 'true' === (this.route.snapshot?.queryParamMap?.get('noResults') as string || 'false');
+
         const page = this.route.snapshot?.queryParamMap?.get('page') as string || '1';
         this.currentPage = parseInt(page);
 
@@ -161,8 +184,8 @@ export class ItemsComponent implements OnInit {
           const pageUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
           link.setAttribute('href', pageUri);
 
-          const hashtags = this.userService.getHashtags().map(ht => '#' + ht);
-          const teaserId = this.isCategoryHashtags
+          const hashtags: Array<string> = this.userService.getHashtags().map(ht => '#' + ht);
+          const teaserId: string = this.isCategoryHashtags
             ? hashtags.length > 1 ? 'NAVIGATION_TEASER_HASHTAGS' : 'NAVIGATION_TEASER_HASHTAG'
             : Navigation.getTeaserIdForNavigationItem(this.navigationService.activeNavigationItem);
 
@@ -175,15 +198,16 @@ export class ItemsComponent implements OnInit {
         }
     }
 
-    public linkToPage(page: number) {
-      let urlTree = this.router.parseUrl(this.router.url);
+    public linkToPage(page: number): string {
+      let urlTree: UrlTree = this.router.parseUrl(this.router.url);
       urlTree.queryParams['page'] = page;
+      delete urlTree.queryParams['noResults'];
       return urlTree.toString();
     }
 
     public itemOfCategory(categoryId: string): Item | null {
-        const item = (this.sampleItemsOfCategories || [])
-          .find(item => -1 !== (item?.navigationPath || []).indexOf(categoryId));
+        const item: Item | null | undefined = (this.sampleItemsOfCategories || [])
+          .find((item: Item | null): boolean => -1 !== (item?.navigationPath || []).indexOf(categoryId));
 
         return item ? item : null;
     }
@@ -205,9 +229,8 @@ export class ItemsComponent implements OnInit {
     }
 
     get subNavigationItems(): Array<NavigationItem> {
-      let items = Navigation.getNextLevelNavigationItemsFrom(this.navigationService.activeNavigationItem);
+      let items: Array<NavigationItem> = Navigation.getNextLevelNavigationItemsFrom(this.navigationService.activeNavigationItem);
       items = 0 === items.length && this.isCategoryHashtags ? Navigation.getAllRootItems() : items;
-
 
       return items;
     }
