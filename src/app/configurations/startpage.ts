@@ -2,21 +2,18 @@ import {TeaserItem} from '../model/teaser-item';
 
 export class Startpage {
   public static TEASER_ITEMS: TeaserItem[] = [
-    new TeaserItem('/kids?hashtags=LetsPlay', 'KIDS', '', 'TEASER_TITLE_HASHTAG_LETSPLAY')
-      .setHashtags(['LetsPlay'])
-      .setSsrRendering(true),
+    new TeaserItem('/home/accessoires/decorations?search=weihnacht', 'HOME_ACCESSOIRES_DECORATIONS', 'weihnacht', 'TEASER_TITLE_CHRISTMAS_DECORATION'),
+    new TeaserItem('/kids?search=geschenk', 'KIDS', 'geschenk', 'TEASER_TITLE_CHRISTMAS_KIDS_GIFT_IDEAS'),
 
     new TeaserItem('/home?filters=1000165', 'HOME', '', 'TEASER_TITLE_FUNZY')
       .setFilters(['1000165'])
       .setSsrRendering(true),
 
     new TeaserItem('/kids?search=tonies', 'KIDS', 'tonies', 'TEASER_TITLE_TONIES'),
-    //new TeaserItem('/kids?search=pokemon', 'KIDS', 'pokemon', 'TEASER_TITLE_POKEMON'),
 
-    new TeaserItem('/home/accessoires/decorations?search=halloween', 'HOME_ACCESSOIRES_DECORATIONS', 'halloween', 'TEASER_TITLE_AUTUMNANDHALLOWEEN'),
-    new TeaserItem('/home/accessoires/decorations?search=herbst', 'HOME_ACCESSOIRES_DECORATIONS', 'herbst', ''),
-    new TeaserItem('/fashion/girls/disguises', 'FASHION_GIRLS_DISGUISES', '', ''),
-    new TeaserItem('/fashion/boys/disguises', 'FASHION_BOYS_DISGUISES', '', ''),
+    new TeaserItem('/kids?hashtags=LetsPlay', 'KIDS', '', 'TEASER_TITLE_HASHTAG_LETSPLAY')
+      .setHashtags(['LetsPlay'])
+      .setSsrRendering(true),
 
     new TeaserItem('/beauty-and-care', 'BEAUTY_CARE', '', 'TEASER_TITLE_BEAUTY_CARE')
       .setSsrRendering(true),
