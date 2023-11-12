@@ -4,7 +4,7 @@
 
 <div *ngIf="dialog && !isLoading">
   <div class="dialog dialog__close">
-    <i class="fa fa-times-circle" (click)="dialog.close()"></i>
+    <i class="fa fa-times-circle" (click)="dialog!.close()"></i>
   </div>
 
   <div>

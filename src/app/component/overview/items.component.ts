@@ -85,7 +85,6 @@ export class ItemsComponent implements OnInit {
     }
 
     private requestOverviewWithoutFiltersWhenNecessary(): void {
-      console.log(this.items);
       if ((this.items || []).length) {
         return;
       }
