@@ -24,6 +24,7 @@ import { LoadingComponent } from './loading/loading.component';
   ],
   imports: [
     CommonModule,
+
     PipesModule
   ]
 })

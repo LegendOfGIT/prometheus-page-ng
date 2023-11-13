@@ -1,0 +1,18 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+import { ItemsComponent } from './items.component';
+
+const routes: Routes = [
+  { path: '', component: ItemsComponent },
+  { path: ':navigationIdLevelB', component: ItemsComponent },
+  { path: ':navigationIdLevelB/:navigationIdLevelC', component: ItemsComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabledBlocking'
+  })],
+  exports: [RouterModule]
+})
+export class ProductOverviewRoutingModule { }
