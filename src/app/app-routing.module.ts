@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ItemsComponent } from './component/overview/items.component';
 import { ProfileComponent } from './component/profile/profile.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 import { ImprintComponent } from './component/legal/imprint.component';
@@ -15,9 +14,6 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'wishlist', component: WishlistItemsComponent },
   { path: 'p/:itemId/:seoFriendlyProductTitle', component: SingleProductViewComponent },
-  { path: ':navigationIdLevelA', component: ItemsComponent },
-  { path: ':navigationIdLevelA/:navigationIdLevelB', component: ItemsComponent },
-  { path: ':navigationIdLevelA/:navigationIdLevelB/:navigationIdLevelC', component: ItemsComponent },
   { path: '', component: StartPageComponent }
 ];
 

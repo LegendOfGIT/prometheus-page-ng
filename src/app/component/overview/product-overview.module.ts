@@ -5,7 +5,7 @@ import { SharedComponentsModule } from '../shared-components.module';
 import { PipesModule } from '../../pipes/pipes.module';
 import { FilterSelectionComponent } from '../filter/filter-selection.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { BrowserModule } from '@angular/platform-browser';
     ItemsComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     NgxSliderModule,
 
     PipesModule,

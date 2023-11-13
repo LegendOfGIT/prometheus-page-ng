@@ -19,6 +19,7 @@ import { DataProtectionComponent } from './component/legal/data-protection.compo
 import { ProductOverviewModule } from './component/overview/product-overview.module';
 import { SharedComponentsModule } from './component/shared-components.module';
 import { PipesModule } from './pipes/pipes.module';
+import {ProductOverviewRoutingModule} from "./component/overview/product-overview-routing.module";
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { PipesModule } from './pipes/pipes.module';
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
+    ProductOverviewRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
