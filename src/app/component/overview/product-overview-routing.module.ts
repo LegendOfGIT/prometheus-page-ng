@@ -4,13 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { ItemsComponent } from './items.component';
 
 const routes: Routes = [
-  { path: ':navigationIdLevelA', component: ItemsComponent },
-  { path: ':navigationIdLevelA/:navigationIdLevelB', component: ItemsComponent },
-  { path: ':navigationIdLevelA/:navigationIdLevelB/:navigationIdLevelC', component: ItemsComponent }
+  { path: '', component: ItemsComponent },
+  { path: ':navigationIdLevelB', component: ItemsComponent },
+  { path: ':navigationIdLevelB/:navigationIdLevelC', component: ItemsComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class ProductOverviewRoutingModule { }

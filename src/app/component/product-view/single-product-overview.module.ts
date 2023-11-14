@@ -1,23 +1,21 @@
 import { NgModule } from '@angular/core';
 
-import { ItemsComponent } from './items.component';
 import { SharedComponentsModule } from '../shared-components.module';
 import { PipesModule } from '../../pipes/pipes.module';
-import { FilterSelectionComponent } from '../filter/filter-selection.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CommonModule } from '@angular/common';
-import {ProductOverviewRoutingModule} from "./product-overview-routing.module";
+import { SingleProductOverviewRoutingModule } from './single-product-overview-routing.module';
+import { SingleProductViewComponent } from './single-product-view.component';
 
 @NgModule({
   declarations: [
-    FilterSelectionComponent,
-    ItemsComponent
+    SingleProductViewComponent
   ],
   exports: [
-    ItemsComponent
+    SingleProductViewComponent
   ],
   imports: [
-    ProductOverviewRoutingModule,
+    SingleProductOverviewRoutingModule,
 
     CommonModule,
     NgxSliderModule,
@@ -26,4 +24,4 @@ import {ProductOverviewRoutingModule} from "./product-overview-routing.module";
     SharedComponentsModule
   ]
 })
-export class ProductOverviewModule { }
+export class SingleProductOverviewModule { }

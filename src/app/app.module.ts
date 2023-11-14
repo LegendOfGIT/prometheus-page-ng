@@ -13,13 +13,10 @@ import { WishlistItemsComponent } from './component/wishlist/wishlist-items.comp
 import { ImprintComponent } from './component/legal/imprint.component';
 import { StartPageComponent } from './component/landing-pages/start-page.component';
 import { ModeratedTeaserComponent } from './component/landing-pages/moderated-teaser.component';
-import { SingleProductViewComponent } from './component/product-view/single-product-view.component';
 import { GeneralDataProtectionRegulationComponent } from './component/legal/general-data-protection-regulation.component';
 import { DataProtectionComponent } from './component/legal/data-protection.component';
-import { ProductOverviewModule } from './component/overview/product-overview.module';
 import { SharedComponentsModule } from './component/shared-components.module';
 import { PipesModule } from './pipes/pipes.module';
-import {ProductOverviewRoutingModule} from "./component/overview/product-overview-routing.module";
 
 @NgModule({
   declarations: [
@@ -31,21 +28,18 @@ import {ProductOverviewRoutingModule} from "./component/overview/product-overvie
     DataProtectionComponent,
     ImprintComponent,
     ProfileComponent,
-    SingleProductViewComponent,
     StartPageComponent,
     WishlistItemsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
-    ProductOverviewRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
 
     SharedComponentsModule,
-    PipesModule,
-    ProductOverviewModule
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

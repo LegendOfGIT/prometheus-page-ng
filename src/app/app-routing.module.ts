@@ -5,7 +5,6 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 import { ImprintComponent } from './component/legal/imprint.component';
 import { StartPageComponent } from './component/landing-pages/start-page.component';
-import { SingleProductViewComponent } from './component/product-view/single-product-view.component';
 import { DataProtectionComponent } from './component/legal/data-protection.component';
 
 const routes: Routes = [
@@ -13,7 +12,14 @@ const routes: Routes = [
   { path: 'imprint', component: ImprintComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'wishlist', component: WishlistItemsComponent },
-  { path: 'p/:itemId/:seoFriendlyProductTitle', component: SingleProductViewComponent },
+  {
+    path: 'p',
+    loadChildren: () => import('./component/product-view/single-product-overview.module').then(m => m.SingleProductOverviewModule)
+  },
+  {
+    path: ':navigationIdLevelA',
+    loadChildren: () => import('./component/overview/product-overview.module').then(m => m.ProductOverviewModule)
+  },
   { path: '', component: StartPageComponent }
 ];
 
