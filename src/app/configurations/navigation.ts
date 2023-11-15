@@ -419,6 +419,7 @@ export class Navigation {
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_BEER', ['groceries', 'drinks', 'beer']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_CHAMPAIGN', ['groceries', 'drinks', 'champaign']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_COFFEE', ['groceries', 'drinks', 'coffee']),
+    new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_COFFEEACCESSORIES', ['groceries', 'drinks', 'coffee-accessories']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_SPARKLINGWINE', ['groceries', 'drinks', 'sparkling-wine']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_SPIRITS', ['groceries', 'drinks', 'spirits']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_TEA', ['groceries', 'drinks', 'tea']),
