@@ -14,7 +14,7 @@ import {NavigationItem} from '../../model/navigation-item';
 import {Navigation} from '../../configurations/navigation';
 import {ItemDisplayMode} from '../item/item.component';
 import {UserService} from '../../service/user.service';
-import {ItemsResponse} from "../../model/items-response";
+import {ItemsResponse} from '../../model/items-response';
 
 @Component({
   selector: 'app-items',
@@ -122,6 +122,7 @@ export class ItemsComponent implements OnInit {
             (itemsResponse: ItemsResponse): void => {
               this.availablePages = itemsResponse?.availablePages;
               this.items = itemsResponse?.items;
+              this.noResults = this.noResults ? this.noResults : !this.items?.length;
 
               this.requestOverviewWithoutFiltersWhenNecessary();
 
@@ -156,6 +157,7 @@ export class ItemsComponent implements OnInit {
           (itemsResponse: ItemsResponse): void => {
             this.availablePages = itemsResponse?.availablePages;
             this.items = itemsResponse?.items;
+            this.noResults = this.noResults ? this.noResults : !this.items?.length;
 
             this.requestOverviewWithoutFiltersWhenNecessary();
 

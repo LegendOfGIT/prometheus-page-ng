@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class="container informationItems__content">
+  <div *ngIf="items?.length" class="container informationItems__content">
     <div class="col-12 informationItems__container">
       <app-item *ngFor="let item of items" [item]="item">
       </app-item>
