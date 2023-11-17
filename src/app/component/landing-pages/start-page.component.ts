@@ -1,10 +1,8 @@
 import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DOCUMENT, isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { DOCUMENT, isPlatformServer } from '@angular/common';
 
 import { Module, NavigationService } from '../../service/navigation.service';
-import { Navigation } from '../../configurations/navigation';
-import { NavigationItem } from '../../model/navigation-item';
 import { Meta, Title } from '@angular/platform-browser';
 import { TranslationService } from '../../service/translation.service';
 import { HashTagsApiService } from '../../service/hashtags-api.service';
@@ -29,7 +27,7 @@ export class StartPageComponent implements OnInit {
     @Inject(DOCUMENT) private doc: Document,
     @Inject(PLATFORM_ID) private platformId: Object) {
 
-    route.paramMap.subscribe(() => {
+    route.paramMap.subscribe((): void => {
       this.navigationService.activeModule = Module.HOME;
     });
 
@@ -65,7 +63,7 @@ export class StartPageComponent implements OnInit {
   ngOnInit(): void {
     if (!isPlatformServer(this.platformId)) {
       this.showNextHero();
-      setInterval(() => {
+      setInterval((): void => {
         this.showNextHero();
       }, 12000);
 
@@ -80,25 +78,10 @@ export class StartPageComponent implements OnInit {
   }
 
   private showNextHero(): void {
-    let currentHeroIndex = this.heroes.indexOf(this.currentHero || new Hero());
+    let currentHeroIndex: number = this.heroes.indexOf(this.currentHero || new Hero());
     currentHeroIndex = this.heroes.length -1 === currentHeroIndex ? 0 : currentHeroIndex + 1;
 
     this.currentHero = this.heroes[currentHeroIndex];
-  }
-
-  private isOnClientSide(): boolean {
-    return isPlatformBrowser(this.platformId);
-  }
-
-  private getParameterFromUrl(parameterKey: string): string | null {
-    return this.isOnClientSide() ? new URL(window.location.href).searchParams.get(parameterKey) : '';
-  }
-
-  get allRootRootItems(): Array<NavigationItem | undefined> {
-    const rankedCategoryIds = this.hashtagsService.rankedCategoryIds || [];
-
-    return (rankedCategoryIds.map(categoryId => Navigation.getNavigationItemByToId(categoryId)) || [])
-      .concat(Navigation.getAllRootItems().filter(rootCategory => -1 === rankedCategoryIds.indexOf(rootCategory.toId)));
   }
 
   get whatWeKnow(): string {

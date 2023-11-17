@@ -1,4 +1,14 @@
-import { Component, ElementRef, Inject, Input, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnInit,
+  Optional,
+  PLATFORM_ID,
+  ViewChild
+} from '@angular/core';
 import { Item } from '../../model/item';
 import { ActivatedRoute } from '@angular/router';
 import { ItemsApiService } from '../../service/items-api.service';
@@ -6,14 +16,16 @@ import { NavigationItem } from '../../model/navigation-item';
 import { isPlatformServer } from '@angular/common';
 import { makeStateKey,  TransferState } from '@angular/platform-browser';
 import { UserService } from '../../service/user.service';
-import {ItemDisplayMode} from "../item/item.component";
+import { ItemDisplayMode } from '../item/item.component';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { Request } from 'express';
 
 @Component({
   selector: 'moderated-teaser',
   templateUrl: './moderated-teaser.component.html',
   styleUrls: ['./moderated-teaser.component.scss']
 })
-export class ModeratedTeaserComponent implements OnInit {
+export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
   @ViewChild('teaserSection') teaserSection: ElementRef | undefined;
 
   @Input()
@@ -52,15 +64,16 @@ export class ModeratedTeaserComponent implements OnInit {
     private itemsService: ItemsApiService,
     private transferState: TransferState,
     private userService: UserService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Optional() @Inject(REQUEST) private request: Request
   ) {
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     const threshold = 0.2; // how much % of the element is in view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+    const observer: IntersectionObserver = new IntersectionObserver(
+      (entries: Array<IntersectionObserverEntry>): void => {
+        entries.forEach((entry: IntersectionObserverEntry): void => {
           if (!entry.isIntersecting) {
             return;
           }
@@ -81,8 +94,24 @@ export class ModeratedTeaserComponent implements OnInit {
     return 'productItems-' + (this.linkUri);
   }
 
-  private initialiseItems(): void {
+  private getUserAgent(): string {
+    if (this.request) {
+      return this.request.headers['user-agent'] || '';
+    }
 
+    return window.navigator.userAgent || '';
+  }
+
+  private isBotRequest(): boolean {
+    const agent = this.getUserAgent().toLowerCase();
+    if (-1 !== agent.indexOf('googlebot')) {
+      return true;
+    }
+
+    return -1 !== agent.indexOf('bingbot');
+  }
+
+  private initialiseItems(): void {
     if (isPlatformServer(this.platformId) && !this.ssrRendering) {
       return;
     }
@@ -109,6 +138,8 @@ export class ModeratedTeaserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.ssrRendering = this.isBotRequest() ? this.ssrRendering : false;
+
     if (!this.ssrRendering) { return; }
     this.initialiseItems();
   }

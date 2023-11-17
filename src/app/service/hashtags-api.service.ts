@@ -11,8 +11,8 @@ import { Request } from 'express';
 import { DEFAULT_HASHTAGS } from '../model/user';
 import { map } from 'rxjs/operators';
 import { RankedCategoryDto} from '../model/dto/ranked-category-dto';
-import {SuggestionItem} from '../model/suggestion-item';
-import {HashtagItemsResponseDto} from '../model/dto/hashtag-items-response-dto';
+import { SuggestionItem } from '../model/suggestion-item';
+import { HashtagItemsResponseDto } from '../model/dto/hashtag-items-response-dto';
 
 @Injectable({
     providedIn: 'root'
@@ -25,15 +25,6 @@ export class HashTagsApiService extends ApiBase {
       @Optional() @Inject(REQUEST) private request: Request
     ) {
         super(ApplicationConfiguration.API_BASE);
-        this.init();
-    }
-
-    public rankedCategoryIds: Array<string> = [];
-
-    private init(): void {
-      this.getRankedCategoriesByHashtags().subscribe(categoryIds => {
-        this.rankedCategoryIds = categoryIds;
-      });
     }
 
     private getRequestBase(): string {
