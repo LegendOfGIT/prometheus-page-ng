@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   Inject,
@@ -25,7 +24,7 @@ import { Request } from 'express';
   templateUrl: './moderated-teaser.component.html',
   styleUrls: ['./moderated-teaser.component.scss']
 })
-export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
+export class ModeratedTeaserComponent implements OnInit {
   @ViewChild('teaserSection') teaserSection: ElementRef | undefined;
 
   @Input()
@@ -70,6 +69,10 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    if(isPlatformServer(this.platformId)) {
+      return;
+    }
+
     const threshold = 0.2; // how much % of the element is in view
     const observer: IntersectionObserver = new IntersectionObserver(
       (entries: Array<IntersectionObserverEntry>): void => {
@@ -92,23 +95,6 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
 
   private getItemsKey(): string {
     return 'productItems-' + (this.linkUri);
-  }
-
-  private getUserAgent(): string {
-    if (this.request) {
-      return this.request.headers['user-agent'] || '';
-    }
-
-    return window.navigator.userAgent || '';
-  }
-
-  private isBotRequest(): boolean {
-    const agent = this.getUserAgent().toLowerCase();
-    if (-1 !== agent.indexOf('googlebot')) {
-      return true;
-    }
-
-    return -1 !== agent.indexOf('bingbot');
   }
 
   private initialiseItems(): void {
@@ -138,7 +124,7 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.ssrRendering = this.isBotRequest() ? this.ssrRendering : false;
+    this.ssrRendering = UserService.isBotRequest(this.request) ? this.ssrRendering : false;
 
     if (!this.ssrRendering) { return; }
     this.initialiseItems();

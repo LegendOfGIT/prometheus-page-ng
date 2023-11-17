@@ -36,23 +36,6 @@ export class ItemsApiService extends ApiBase {
       return this.userService.getHashtags();
     }
 
-    private getUserAgent(): string {
-      if (this.request) {
-        return this.request.headers['user-agent'] || '';
-      }
-
-      return window.navigator.userAgent || '';
-    }
-
-    private isBotRequest(): boolean {
-      const agent = this.getUserAgent().toLowerCase();
-      if (-1 !== agent.indexOf('googlebot')) {
-        return true;
-      }
-
-      return -1 !== agent.indexOf('bingbot');
-    }
-
     getItems(navigationId: string,
              searchPattern: string,
              filterIds: string = '',
@@ -68,7 +51,7 @@ export class ItemsApiService extends ApiBase {
           filterIds,
           navigationId,
           numberOfResults: numberOfResults ? `${numberOfResults}` : '',
-          isBot: this.isBotRequest() ? 'true': 'false',
+          isBot: UserService.isBotRequest(this.request) ? 'true': 'false',
           randomItems : randomItems ? 'true': 'false',
           page,
           priceFrom,
@@ -124,7 +107,7 @@ export class ItemsApiService extends ApiBase {
           filterIds,
           hashtags: this.getActiveHashtags().join(','),
           numberOfResults: numberOfResults ? `${numberOfResults}` : '',
-          isBot: this.isBotRequest() ? 'true': 'false',
+          isBot: UserService.isBotRequest(this.request) ? 'true': 'false',
           page,
           priceFrom,
           priceTo,
@@ -147,12 +130,12 @@ export class ItemsApiService extends ApiBase {
         endpoints.singleItem,
         {
           id,
-          isBot: this.isBotRequest() ? 'true': 'false',
+          isBot: UserService.isBotRequest(this.request) ? 'true': 'false',
           hashtags: isPlatformServer(this.platformId) ? '' : this.getActiveHashtags().join(',')
         });
 
       let headers = new HttpHeaders();
-      const userAgent = this.getUserAgent();
+      const userAgent = UserService.getUserAgent(this.request);
       if (userAgent) {
         headers = headers.set('user-agent', userAgent);
       }

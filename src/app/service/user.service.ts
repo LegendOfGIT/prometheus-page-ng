@@ -8,6 +8,7 @@ import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.serv
 import {DEFAULT_HASHTAGS, User} from 'src/app/model/user';
 import { StorageService } from './storage.service';
 import {isPlatformBrowser, isPlatformServer} from '@angular/common';
+import {Request} from "express";
 
 @Injectable({
     providedIn: 'root'
@@ -116,6 +117,23 @@ export class UserService {
       return this.getHashtags().length ? this.getHashtags()[0] : '';
     }
 
+    public static getUserAgent(request: Request): string {
+      if (request) {
+        return request.headers['user-agent'] || '';
+      }
+
+      return window.navigator.userAgent || '';
+    }
+
+    public static isBotRequest(request: Request): boolean {
+      const agent: string = this.getUserAgent(request).toLowerCase();
+      if (-1 !== agent.indexOf('googlebot')) {
+        return true;
+      }
+
+      return -1 !== agent.indexOf('bingbot');
+    }
+
     get activeUser(): User | null {
       if (null == this._activeUser) {
         return this._anonymousUser;
@@ -127,5 +145,4 @@ export class UserService {
     get isLoggedIn() : boolean {
       return !!this._activeUser;
     }
-
 }

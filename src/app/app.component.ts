@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, PLATFORM_ID, ViewChild} from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -8,8 +8,10 @@ import { GdprService } from './service/gdpr.service';
 import { GdprDecision } from './model/gdpr-settings';
 import { ConsentService } from './service/consent-service';
 import { isPlatformBrowser } from '@angular/common';
-import {NavigationItem} from './model/navigation-item';
-import {Navigation} from './configurations/navigation';
+import { NavigationItem } from './model/navigation-item';
+import { Navigation } from './configurations/navigation';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { Request } from 'express';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +30,8 @@ export class AppComponent implements AfterViewInit, OnInit  {
     private wishlistItemsService: WishlistItemsApiService,
     private gdprService: GdprService,
     private consentService: ConsentService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Optional() @Inject(REQUEST) private request: Request
   ) {
 
   }
@@ -45,7 +48,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
       3000);
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     if (GdprDecision.NoDecision !== (this.gdprService.getSettings()?.gdprDecision || GdprDecision.NoDecision)) {
       return;
     }
@@ -66,6 +69,6 @@ export class AppComponent implements AfterViewInit, OnInit  {
   }
 
   get deepestLevelNavigationItems(): Array<NavigationItem> {
-    return Navigation.getDeepestLevelItems();
+    return UserService.isBotRequest(this.request) ? Navigation.getDeepestLevelItems() : [];
   }
 }
