@@ -25,11 +25,7 @@ export class ItemsApiService extends ApiBase {
       @Inject(PLATFORM_ID) private platformId: Object,
       @Optional() @Inject(REQUEST) private request: Request
     ) {
-        super(ApplicationConfiguration.API_BASE);
-    }
-
-    private getRequestBase(): string {
-      return isPlatformServer(this.platformId) ? ApplicationConfiguration.SERVICE_REQUESTS_BASE : '';
+      super(ApplicationConfiguration.API_BASE);
     }
 
     private getActiveHashtags(): Array<string> {
@@ -45,7 +41,7 @@ export class ItemsApiService extends ApiBase {
              priceFrom: string = '',
              priceTo: string = '',
              hashtags: Array<string> | undefined = []): Observable<ItemsResponse> {
-      const url = this.getRequestBase() + this.get(
+      const url: string = this.get(
         endpoints.items,
         {
           filterIds,
@@ -76,7 +72,7 @@ export class ItemsApiService extends ApiBase {
     }
 
     getRandomItemOfCategories(categoryIds: Array<string>): Observable<ItemsResponse> {
-      const url = this.getRequestBase() + this.get(
+      const url: string = this.get(
         endpoints.itemsByCategories,
         {
           navigationIds: categoryIds.join(','),
@@ -101,7 +97,7 @@ export class ItemsApiService extends ApiBase {
                      page: string = '1',
                      priceFrom: string = '',
                      priceTo: string = ''): Observable<ItemsResponse> {
-      const url = this.getRequestBase() + this.get(
+      const url: string = this.get(
         endpoints.hashtagsItems,
         {
           filterIds,
@@ -126,7 +122,7 @@ export class ItemsApiService extends ApiBase {
     }
 
     getItemsById(id: string): Observable<Array<Item | null>> {
-      const url = this.getRequestBase() + this.get(
+      const url: string = this.get(
         endpoints.singleItem,
         {
           id,

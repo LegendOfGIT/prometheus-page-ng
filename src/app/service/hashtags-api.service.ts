@@ -5,12 +5,9 @@ import { ApiBase } from './api-base';
 import { UserService } from './user.service';
 import { Observable } from 'rxjs';
 import { ApplicationConfiguration } from '../configurations/app';
-import { isPlatformServer } from '@angular/common';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request } from 'express';
-import { DEFAULT_HASHTAGS } from '../model/user';
 import { map } from 'rxjs/operators';
-import { RankedCategoryDto} from '../model/dto/ranked-category-dto';
 import { SuggestionItem } from '../model/suggestion-item';
 import { HashtagItemsResponseDto } from '../model/dto/hashtag-items-response-dto';
 
@@ -27,16 +24,8 @@ export class HashTagsApiService extends ApiBase {
         super(ApplicationConfiguration.API_BASE);
     }
 
-    private getRequestBase(): string {
-      return isPlatformServer(this.platformId) ? ApplicationConfiguration.SERVICE_REQUESTS_BASE : '';
-    }
-
-    private getActiveHashtags(): Array<string> {
-      return this.userService.activeUser?.activeHashtags || DEFAULT_HASHTAGS;
-    }
-
     getHashtags(hashtagsPattern: string): Observable<Array<SuggestionItem>> {
-      const url = this.getRequestBase() + this.get(
+      const url: string = this.get(
         endpoints.hashtags,
         {
           hashtagsPattern
@@ -47,17 +36,5 @@ export class HashTagsApiService extends ApiBase {
         .pipe(map(dto => dto.items
           .map(item => new SuggestionItem(item.hashtag))
           .splice(0, 10)));
-    }
-
-    getRankedCategoriesByHashtags(): Observable<Array<string>> {
-      const url = this.getRequestBase() + this.get(
-        endpoints.rankedCategoriesByHashtags,
-        {
-          hashtags: this.getActiveHashtags().join(',')
-        });
-
-      return this.http
-         .get<Array<RankedCategoryDto>>(url)
-         .pipe(map(dto => dto.map(rankedCategory => rankedCategory.categoryId)));
     }
 }

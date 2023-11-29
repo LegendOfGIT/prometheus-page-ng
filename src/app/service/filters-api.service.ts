@@ -30,15 +30,11 @@ export class FiltersApiService extends ApiBase {
         super(ApplicationConfiguration.API_BASE);
     }
 
-    private getRequestBase(): string {
-      return isPlatformServer(this.platformId) ? ApplicationConfiguration.SERVICE_REQUESTS_BASE : '';
-    }
-
     getAvailableFilters(navigationId: string,
                         searchPattern: string,
                         priceFrom: string = '',
                         priceTo: string = ''): Observable<Array<AvailableFilterItem | null>> {
-      const url = this.getRequestBase() + this.get(
+      const url: string = this.get(
         endpoints.availableFilters,
         {
           navigationId,

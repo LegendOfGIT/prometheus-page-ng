@@ -40,6 +40,7 @@ services:
     command: npm run start
     ports:
       - "3002:3002"
+    restart: always
     working_dir: /app
     volumes:
       - "/var/www/prometheus/information-warehouse:/app"
@@ -52,6 +53,7 @@ services:
     hostname: warehouse-database
     ports:
       - "27017:27017"
+    restart: always
     volumes:
       - "warehouse-database:/data/db"
     environment:

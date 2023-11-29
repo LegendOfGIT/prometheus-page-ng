@@ -6,6 +6,7 @@
     "start": "node dist/prometheus-page/server/main.js",
     "start:dev": "ng run prometheus-page:serve-ssr",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "coverage": "jest --coverage",
     "test": "jest --watch",
