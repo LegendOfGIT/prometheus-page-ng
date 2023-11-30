@@ -1,5 +1,4 @@
 import { NavigationItem } from 'src/app/model/navigation-item';
-import {Item} from '../model/item';
 
 export class Navigation {
 
@@ -96,6 +95,8 @@ export class Navigation {
     new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', ''], 4)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_ART', ['multimedia', 'art', '']),
+    new NavigationItem('MULTIMEDIA_ART', 'MULTIMEDIA_ART_POSTERSANDPICTURES', ['multimedia', 'art', 'pictures-and-posters']),
     new NavigationItem('MULTIMEDIA', 'MULTIMEDIA_BOOKS', ['multimedia', 'books', '']).setHasSlogan(true),
     new NavigationItem('MULTIMEDIA_BOOKS', 'MULTIMEDIA_BOOKS_CRIMETHRILLERS', ['multimedia', 'books', 'crime-and-thrillers']),
     new NavigationItem('MULTIMEDIA_BOOKS', 'MULTIMEDIA_BOOKS_FANTASY', ['multimedia', 'books', 'fantasy']),
@@ -168,6 +169,11 @@ export class Navigation {
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_COMPUTERS',
       ['electronics-and-computers', 'computers', '']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_COMPUTERS',
+      'ELECTRONICS_AND_COMPUTERS_COMPUTERS_LAPTOPS',
+      ['electronics-and-computers', 'computers', 'laptops']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_COMPUTERS',
@@ -333,6 +339,8 @@ export class Navigation {
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_MAKEUP', ['beauty-and-care', 'makeup', '']),
     new NavigationItem('BEAUTY_CARE_MAKEUP', 'BEAUTY_CARE_MAKEUP_EYES', ['beauty-and-care', 'makeup', 'eyes']),
     new NavigationItem('BEAUTY_CARE_MAKEUP', 'BEAUTY_CARE_MAKEUP_LIPS', ['beauty-and-care', 'makeup', 'lips']),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SLEEP', ['beauty-and-care', 'sleep', '']),
+    new NavigationItem('BEAUTY_CARE_SLEEP', 'BEAUTY_CARE_SLEEP_SLEEPAIDS', ['beauty-and-care', 'sleep', 'sleeping-aids']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SKIN_CARE', ['beauty-and-care', 'skin-care', '']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_FACE_CARE', ['beauty-and-care', 'skin-care', 'face-care']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_KIDS', ['beauty-and-care', 'skin-care', 'kids']),
