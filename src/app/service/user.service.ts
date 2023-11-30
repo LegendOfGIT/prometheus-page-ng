@@ -131,6 +131,14 @@ export class UserService {
         return true;
       }
 
+      if (-1 !== agent.indexOf('amazonbot')) {
+        return true;
+      }
+
+      if (-1 !== agent.indexOf('semrushbot')) {
+        return true;
+      }
+
       return -1 !== agent.indexOf('bingbot');
     }
 
