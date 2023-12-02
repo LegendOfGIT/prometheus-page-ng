@@ -9,6 +9,9 @@ export class Startpage {
       .setFilters(['1000165'])
       .setSsrRendering(true),
 
+    new TeaserItem('/kids?filters=1000164', 'KIDS', '', 'Little Hipstar Shop')
+      .setFilters(['1000164']),
+
     new TeaserItem('/kids?search=tonies', 'KIDS', 'tonies', 'TEASER_TITLE_TONIES'),
 
     new TeaserItem('/kids?hashtags=LetsPlay', 'KIDS', '', 'TEASER_TITLE_HASHTAG_LETSPLAY')
@@ -20,6 +23,11 @@ export class Startpage {
     new TeaserItem('/beauty-and-care/fragrances', 'BEAUTY_CARE_FRAGRANCES_WOMEN', '', 'TEASER_TITLE_FRAGRANCES'),
     new TeaserItem('', 'BEAUTY_CARE_FRAGRANCES_MEN', '', ''),
     new TeaserItem('/beauty-and-care?search=vegan', 'BEAUTY_CARE', 'vegan', 'TEASER_TITLE_VEGAN_COSMETICS'),
+
+    new TeaserItem('/beauty-and-care?filters=1000022', 'BEAUTY_CARE', '', 'Black is beautiful Shop')
+      .setFilters(['1000022']),
+    new TeaserItem('/beauty-and-care?filters=1000040', 'BEAUTY_CARE', '', 'Sandawha Shop')
+      .setFilters(['1000040']),
 
     new TeaserItem('/hashtags/Schnäppchen', '', '', 'TEASER_TITLE_HASHTAG_DEALS')
       .setHashtags(['Schnäppchen'])
@@ -36,9 +44,12 @@ export class Startpage {
       .setSsrRendering(true),
     new TeaserItem('/electronics-and-computers/home/fully-automatic-coffee-machines', 'ELECTRONICS_AND_COMPUTERS_HOME_FULLYAUTOMATICCOFFEEMACHINES', '', 'TEASER_TITLE_COFFEE_MACHINES'),
 
-    new TeaserItem('/fashion?hashtags=Sommer2023', 'FASHION', '', 'TEASER_TITLE_FASHION_SUMMER2023')
+    new TeaserItem('/kids?filters=1000049', 'FASHION', '', 'Waschbär Shop')
+      .setFilters(['1000049']),
+
+    /*new TeaserItem('/fashion?hashtags=Sommer2023', 'FASHION', '', 'TEASER_TITLE_FASHION_SUMMER2023')
       .setHashtags(['Sommer2023'])
-      .setSsrRendering(true),
+      .setSsrRendering(true),*/
     new TeaserItem('/fashion?filters=1000096-1000099-1000102-1000103-1000105', 'FASHION_WOMEN', '', 'TEASER_TITLE_FASHION_BRANDS')
       .setFilters(['1000096', '1000099', '1000102', '1000103', '1000105']),
     new TeaserItem('', 'FASHION_MEN', '', '')
@@ -54,8 +65,8 @@ export class Startpage {
       .setSsrRendering(true),
     new TeaserItem('/multimedia/movies/anime', 'MULTIMEDIA_MOVIES_ANIME', '', 'TEASER_TITLE_ANIMES'),
 
-    new TeaserItem('/home/garden', 'HOME_GARDEN', 'grill', 'TEASER_TITLE_INTO_THE_GARDEN'),
-    new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', ''),
+    /*new TeaserItem('/home/garden', 'HOME_GARDEN', 'grill', 'TEASER_TITLE_INTO_THE_GARDEN'),
+    new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', ''),*/
 
     new TeaserItem('/home/wellness', 'HOME_WELLNESS_SAUNAS', '', 'TEASER_TITLE_HOME_WELLNESS'),
     new TeaserItem('', 'HOME_WELLNESS_WHIRLPOOLS', '', ''),

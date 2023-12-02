@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 import {DomSanitizer, makeStateKey, Meta, SafeHtml, Title, TransferState} from '@angular/platform-browser';
 import {DOCUMENT, isPlatformServer} from '@angular/common';
 
@@ -14,7 +14,6 @@ import {ItemDetails} from "../../model/item-details";
 import {TrackingService} from '../../service/tracking.service';
 import {TrackingActivityItem} from '../../model/tracking-activity-item';
 import {TrackingInterestLevel} from '../../model/tracking-interest-level';
-import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'single-product-view',
@@ -33,8 +32,8 @@ export class SingleProductViewComponent implements OnInit {
   public showFullDescription = false;
 
   constructor(
+    route: ActivatedRoute,
     private sanitizer: DomSanitizer,
-    private route: ActivatedRoute,
     private itemsService: ItemsApiService,
     private navigationService: NavigationService,
     private translation: TranslationService,
@@ -43,11 +42,10 @@ export class SingleProductViewComponent implements OnInit {
     private metaService: Meta,
     private transferState: TransferState,
     private trackingService: TrackingService,
-    private userService: UserService,
     @Inject(DOCUMENT) private doc: Document,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    route.paramMap.subscribe((params) => {
+    route.paramMap.subscribe((params: ParamMap): void => {
       this.navigationService.activeModule = Module.SINGLE_PRODUCT_VIEW;
       this.itemId = params.get('itemId') || '';
     });
@@ -79,7 +77,7 @@ export class SingleProductViewComponent implements OnInit {
       return;
     }
 
-    this.itemsService.getItemsById(this.itemId).subscribe(items => {
+    this.itemsService.getItemsById(this.itemId).subscribe((items: Array<Item | null>): void => {
       if (!items?.length) {
         this.item = null;
         return;
@@ -115,7 +113,7 @@ export class SingleProductViewComponent implements OnInit {
     const contentModel: HTMLScriptElement = this.doc.createElement('script');
     contentModel.setAttribute('type', 'application/ld+json');
 
-    const lowestPrice = Item.getProviderItemWithLowestPrice(this.item);
+    const lowestPrice: CorrespondingItem | null = Item.getProviderItemWithLowestPrice(this.item);
 
     contentModel.innerHTML = JSON.stringify({
       '@context': 'https://schema.org/',
@@ -134,7 +132,7 @@ export class SingleProductViewComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initialiseItem();
 
     if (!this.item) {
@@ -156,8 +154,8 @@ export class SingleProductViewComponent implements OnInit {
       .setInterestLevel(TrackingInterestLevel.EVEN_HIGHER));
   }
 
-  public getShopNameFromUrl(url: string | undefined) {
-    const match = (url || '').match(/\/\/(www.)?(.*?)\//);
+  public getShopNameFromUrl(url: string | undefined): string {
+    const match: RegExpMatchArray | null = (url || '').match(/\/\/(www.)?(.*?)\//);
     return match && match.length > 2 ? match[2] : '';
   }
 
@@ -203,8 +201,8 @@ export class SingleProductViewComponent implements OnInit {
     }
 
     return (this.item?.providers || [])
-      .filter(providerItem => providerItem !== Item.getProviderItemWithLowestPrice(this.item))
-      .filter(item => (item?.priceCurrent || 0) > 0)
+      .filter((providerItem: CorrespondingItem | null): boolean => providerItem !== Item.getProviderItemWithLowestPrice(this.item))
+      .filter((item: CorrespondingItem | null): boolean => (item?.priceCurrent || 0) > 0)
       .sort((a, b) => (a?.priceCurrent || 0) - (b?.priceCurrent || 0));
   }
 
@@ -214,8 +212,8 @@ export class SingleProductViewComponent implements OnInit {
     }
 
     return (this.item?.providers || [])
-      .filter(providerItem => providerItem !== Item.getProviderItemWithLowestPrice(this.item))
-      .filter(item => 0 === (item?.priceCurrent || 0));
+      .filter((providerItem: CorrespondingItem | null): boolean => providerItem !== Item.getProviderItemWithLowestPrice(this.item))
+      .filter((item: CorrespondingItem | null): boolean => 0 === (item?.priceCurrent || 0));
   }
 
   get activeNavigationItem(): NavigationItem | undefined {

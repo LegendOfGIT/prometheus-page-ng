@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {Component, Inject, OnInit, Optional, PLATFORM_ID} from '@angular/core';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ActivatedRoute, ParamMap, Router, UrlTree} from '@angular/router';
@@ -7,7 +7,6 @@ import {DOCUMENT, isPlatformServer} from '@angular/common';
 import {Item} from 'src/app/model/item';
 import {ItemsApiService} from 'src/app/service/items-api.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
-import {TrackingService} from 'src/app/service/tracking.service';
 import {TranslationService} from '../../service/translation.service';
 import {Meta, Title} from '@angular/platform-browser';
 import {NavigationItem} from '../../model/navigation-item';
@@ -15,6 +14,8 @@ import {Navigation} from '../../configurations/navigation';
 import {ItemDisplayMode} from '../item/item.component';
 import {UserService} from '../../service/user.service';
 import {ItemsResponse} from '../../model/items-response';
+import {REQUEST} from "@nguniversal/express-engine/tokens";
+import {Request} from "express";
 
 @Component({
   selector: 'app-items',
@@ -44,13 +45,13 @@ export class ItemsComponent implements OnInit {
       private route: ActivatedRoute,
       private itemsService: ItemsApiService,
       private navigationService: NavigationService,
-      private trackingService: TrackingService,
       private userService: UserService,
       private metaService: Meta,
       private translationService: TranslationService,
       titleService: Title,
       @Inject(DOCUMENT) private doc: Document,
-      @Inject(PLATFORM_ID) private platformId: Object
+      @Inject(PLATFORM_ID) private platformId: Object,
+      @Optional() @Inject(REQUEST) private request: Request
     ) {
 
       route.paramMap.subscribe((params: ParamMap): void => {
@@ -93,16 +94,20 @@ export class ItemsComponent implements OnInit {
       urlTree.queryParams = {
         noResults: true
       };
-      this.router.navigateByUrl(urlTree.toString()).then(() => window.location.reload());
+      this.router.navigateByUrl(urlTree.toString()).then((): void => window.location.reload());
     }
 
     private initItems(page: string): void {
+      if (isPlatformServer(this.platformId) && !UserService.isBotRequest(this.request)) {
+        return;
+      }
+
       const filterIds: string = this.route.snapshot?.queryParamMap?.get('filters') as string;
       const maximumPrice: string = this.route.snapshot?.queryParamMap?.get('p_max') as string;
       const minimumPrice: string = this.route.snapshot?.queryParamMap?.get('p_min') as string;
       const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
 
-      this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map(navigationItem => navigationItem.toId))
+      this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map((navigationItem: NavigationItem) => navigationItem.toId))
         .pipe(takeUntil(this.destroyedService$))
         .subscribe(
           (itemsResponse: ItemsResponse): void => {
@@ -173,7 +178,7 @@ export class ItemsComponent implements OnInit {
     ngOnInit(): void {
         this.noResults = 'true' === (this.route.snapshot?.queryParamMap?.get('noResults') as string || 'false');
 
-        const page = this.route.snapshot?.queryParamMap?.get('page') as string || '1';
+        const page: string = this.route.snapshot?.queryParamMap?.get('page') as string || '1';
         this.currentPage = parseInt(page);
 
         this.initItems(page);
@@ -182,7 +187,7 @@ export class ItemsComponent implements OnInit {
           const link: HTMLLinkElement = this.doc.createElement('link');
           this.doc.head.appendChild(link);
           link.setAttribute('rel', 'canonical');
-          const pageUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
+          const pageUri: string = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
           link.setAttribute('href', pageUri);
 
           const hashtags: Array<string> = this.userService.getHashtags().map(ht => '#' + ht);
