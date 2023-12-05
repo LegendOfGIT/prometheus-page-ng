@@ -137,6 +137,28 @@ a  {
   }
 }
 
+.socialMedia {
+  &__icons {
+    height: 1.8em;
+    position: absolute;
+    top: 6.5em;
+    width: 1.8em;
+    z-index: 4;
+
+    &--facebook {
+      right: 4em;
+    }
+
+    &--instagram {
+      right: 6em;
+    }
+
+    &--pinterest {
+      right: 2em;
+    }
+  }
+}
+
 #loadingDialog {
   border: 1px solid lightgray;
   border-radius: 1em;
