@@ -3,10 +3,12 @@
     <div [ngClass]="['informationItem__imageContainer', cssModifier ? 'informationItem__imageContainer' + cssModifier : '', item.itemId ? '' : 'informationItem__imageContainer--loading']">
       <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item)" target="{{linkTarget}}">
         <img *ngIf="item.itemId"
-          class="informationItem__image{{showBig ? ' informationItem__image--big' : ''}}{{cssModifier ? ' informationItem__image' + cssModifier : ''}}"
-          alt="{{'IMAGE_OF' | translate }} {{item.title}}"
-          src="{{item.titleImage}}"
-          loading="lazy"
+             class="informationItem__image{{showBig ? ' informationItem__image--big' : ''}}{{cssModifier ? ' informationItem__image' + cssModifier : ''}}"
+             alt="{{'IMAGE_OF' | translate }} {{item.title}}"
+             [src]="showAlternateImage ? imageUrl : item.titleImage || ''"
+             (mouseenter)="imageUrl = secondaryImageUrl"
+             (mouseleave)="imageUrl = primaryImageUrl"
+             loading="lazy"
         />
         <div class="informationItem__stamp{{showBig ? ' informationItem__stamp--big' : ''}}" *ngIf="renderedReduction">{{renderedReduction}}</div>
       </a>

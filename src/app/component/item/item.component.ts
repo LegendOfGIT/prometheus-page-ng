@@ -1,4 +1,4 @@
-import {Component, inject, Input, PLATFORM_ID} from '@angular/core';
+import {AfterViewInit, Component, inject, Input, OnInit, PLATFORM_ID} from '@angular/core';
 
 import {Item} from 'src/app/model/item';
 import {TrackingService} from 'src/app/service/tracking.service';
@@ -10,17 +10,18 @@ import {ActivatedRoute} from '@angular/router';
 import {isPlatformBrowser} from '@angular/common';
 import {Navigation} from '../../configurations/navigation';
 
+
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent {
-
+export class ItemComponent implements OnInit {
     private route: ActivatedRoute = inject(ActivatedRoute);
     private trackingService: TrackingService = inject(TrackingService);
     private navigationService: NavigationService = inject(NavigationService);
     private platformId: Object = inject(PLATFORM_ID);
+    public imageUrl = '';
 
     @Input()
     public item: Item | null = null;
@@ -30,6 +31,10 @@ export class ItemComponent {
 
     @Input()
     public displayMode: ItemDisplayMode = ItemDisplayMode.DEFAULT;
+
+    ngOnInit(): void {
+      this.imageUrl = this.item?.titleImage || '';
+    }
 
     private isOnClientSide(): boolean {
       return isPlatformBrowser(this.platformId);
@@ -159,6 +164,18 @@ export class ItemComponent {
 
     get showOfferDetailsLink(): boolean {
       return this.hasOnlyOneOffer && !this.isCategoryItem();
+    }
+
+    get primaryImageUrl(): string {
+      return this.item?.titleImage || '';
+    }
+
+    get secondaryImageUrl(): string {
+      return (this.item?.imagesBig || [])[1] || this.item?.titleImage || '';
+    }
+
+    get showAlternateImage(): boolean {
+      return ItemDisplayMode.CATEGORY !== this.displayMode;
     }
 }
 
