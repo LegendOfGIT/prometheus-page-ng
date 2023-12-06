@@ -351,6 +351,7 @@ export class Navigation {
     new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['home', 'accessoires', '']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_BEDCOVERS', ['home', 'accessoires', 'bed-covers']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['home', 'accessoires', 'carpets']),
+    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CUPS', ['home', 'accessoires', 'cups']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_DECORATIONS', ['home', 'accessoires', 'decorations']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_MATTRESSES', ['home', 'accessoires', 'mattresses']),
     new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_PILLOWS', ['home', 'accessoires', 'pillows']),
