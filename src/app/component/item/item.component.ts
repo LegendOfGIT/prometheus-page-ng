@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, inject, Input, OnInit, PLATFORM_ID} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, inject, Input, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
 
 import {Item} from 'src/app/model/item';
 import {TrackingService} from 'src/app/service/tracking.service';
@@ -10,18 +10,19 @@ import {ActivatedRoute} from '@angular/router';
 import {isPlatformBrowser} from '@angular/common';
 import {Navigation} from '../../configurations/navigation';
 
-
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute = inject(ActivatedRoute);
     private trackingService: TrackingService = inject(TrackingService);
     private navigationService: NavigationService = inject(NavigationService);
     private platformId: Object = inject(PLATFORM_ID);
     public imageUrl = '';
+
+    @ViewChild('itemSection') itemSection: ElementRef | undefined;
 
     @Input()
     public item: Item | null = null;
@@ -34,6 +35,42 @@ export class ItemComponent implements OnInit {
 
     ngOnInit(): void {
       this.imageUrl = this.item?.titleImage || '';
+    }
+
+    ngAfterViewInit(): void {
+      const threshold = 0.2; // how much % of the element is in view
+      const observer: IntersectionObserver = new IntersectionObserver(
+        (entries: Array<IntersectionObserverEntry>): void => {
+          entries.forEach((entry: IntersectionObserverEntry): void => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            setTimeout((): void => {
+                this.toggleImage();
+                setInterval(() => this.toggleImage(),20000)
+            }, Math.floor(Math.random() * 10000))
+
+            observer.disconnect();
+          });
+        },
+        { threshold }
+      );
+
+      if  (!this.itemSection) {
+        return;
+      }
+
+      observer.observe(this.itemSection.nativeElement);
+    }
+
+    private toggleImage(): void {
+      const imagesBig: Array<string> = this.item?.imagesBig || [];
+      if (!imagesBig.length) {
+        this.imageUrl = this.item?.titleImage || '';
+      }
+
+      this.imageUrl = imagesBig[Math.floor(Math.random() * imagesBig.length)];
     }
 
     private isOnClientSide(): boolean {
@@ -164,14 +201,6 @@ export class ItemComponent implements OnInit {
 
     get showOfferDetailsLink(): boolean {
       return this.hasOnlyOneOffer && !this.isCategoryItem();
-    }
-
-    get primaryImageUrl(): string {
-      return this.item?.titleImage || '';
-    }
-
-    get secondaryImageUrl(): string {
-      return (this.item?.imagesBig || [])[1] || this.item?.titleImage || '';
     }
 
     get showAlternateImage(): boolean {

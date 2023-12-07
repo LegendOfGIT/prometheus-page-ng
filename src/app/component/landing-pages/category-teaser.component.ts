@@ -8,6 +8,7 @@ import { isPlatformServer } from '@angular/common';
 import { makeStateKey,  TransferState } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs/operators';
 import { UserService } from '../../service/user.service';
+import {ItemsResponse} from "../../model/items-response";
 
 @Component({
   selector: 'category-teaser',
@@ -72,7 +73,7 @@ export class CategoryTeaserComponent implements OnInit {
         this.itemsService.getHashtagsItems('', filterIds, this.numberOfItems, undefined, minimumPrice, maximumPrice)
           .pipe(takeUntil(this.destroyedService$))
           .subscribe(
-            itemsResponse => {
+            (itemsResponse: ItemsResponse): void => {
               if (itemsResponse?.items?.length) {
                 this.categoryItems = itemsResponse.items;
                 if (isPlatformServer(this.platformId)) {
@@ -84,7 +85,7 @@ export class CategoryTeaserComponent implements OnInit {
               this.itemsService.getHashtagsItems('', '', this.numberOfItems)
                 .pipe(takeUntil(this.destroyedService$))
                 .subscribe(
-                  itemsResponse => {
+                  (itemsResponse: ItemsResponse): void => {
                     this.isFallbackProductSelection = true;
 
                     if (itemsResponse?.items?.length) {
@@ -110,7 +111,7 @@ export class CategoryTeaserComponent implements OnInit {
       undefined,
       minimumPrice,
       maximumPrice
-    ).subscribe(itemsResponse => {
+    ).subscribe((itemsResponse: ItemsResponse): void => {
       if (itemsResponse?.items?.length) {
         this.categoryItems = itemsResponse.items;
         if (isPlatformServer(this.platformId)) {
@@ -131,7 +132,7 @@ export class CategoryTeaserComponent implements OnInit {
       )
         .pipe(takeUntil(this.destroyedService$))
         .subscribe(
-          itemsResponse => {
+          (itemsResponse: ItemsResponse): void => {
             if (itemsResponse?.items?.length) {
               this.categoryItems = itemsResponse?.items;
               if (isPlatformServer(this.platformId)) {
@@ -148,7 +149,7 @@ export class CategoryTeaserComponent implements OnInit {
             )
               .pipe(takeUntil(this.destroyedService$))
               .subscribe(
-                itemsResponse => {
+                (itemsResponse: ItemsResponse): void => {
                   this.isFallbackProductSelection = true;
 
                   if (itemsResponse?.items?.length) {
@@ -171,7 +172,7 @@ export class CategoryTeaserComponent implements OnInit {
   }
 
   private addParameterIfGiven(parameters: any, parameterKey: string): void {
-    const parameter = this.getParameterFromUrl(parameterKey);
+    const parameter: string | null = this.getParameterFromUrl(parameterKey);
     if (this.isFallbackProductSelection || !parameter) {
       return;
     }
@@ -191,15 +192,15 @@ export class CategoryTeaserComponent implements OnInit {
     this.addParameterIfGiven(parameters, 'p_max');
     this.addParameterIfGiven(parameters, 'search');
 
-    const hashtags = this.userService.activeUser?.activeHashtags || [];
+    const hashtags: Array<string> = this.userService.activeUser?.activeHashtags || [];
     if (!this.showHashtags && hashtags.length) { parameters.hashtags = hashtags.join(','); }
 
-    const queryParameters = Object.keys(parameters).length ? `?${Object.keys(parameters).map(key => `${key}=${parameters[key]}`).join('&')}` : '';
+    const queryParameters: string = Object.keys(parameters).length ? `?${Object.keys(parameters).map((key: string): string => `${key}=${parameters[key]}`).join('&')}` : '';
     if (this.showHashtags) {
       return '/hashtags/' + this.userService.getHashtags().join(',') + queryParameters;
     }
 
-    return '/' + [(this.navigationItem?.pathParts || []).filter(p => p).join('/')] + queryParameters;
+    return '/' + [(this.navigationItem?.pathParts || []).filter((p: string) => p).join('/')] + queryParameters;
   }
 
   get sloganTranslationId(): string {
@@ -219,6 +220,6 @@ export class CategoryTeaserComponent implements OnInit {
   }
 
   get activeHashtags(): Array<string> {
-    return this.userService.activeUser?.activeHashtags.map(hashtag => `#${hashtag}`) || [];
+    return this.userService.activeUser?.activeHashtags.map((hashtag: string): string => `#${hashtag}`) || [];
   }
 }

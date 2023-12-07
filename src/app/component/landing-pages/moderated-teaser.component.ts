@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   Inject,
@@ -9,7 +10,6 @@ import {
   ViewChild
 } from '@angular/core';
 import { Item } from '../../model/item';
-import { ActivatedRoute } from '@angular/router';
 import { ItemsApiService } from '../../service/items-api.service';
 import { NavigationItem } from '../../model/navigation-item';
 import { isPlatformServer } from '@angular/common';
@@ -18,13 +18,14 @@ import { UserService } from '../../service/user.service';
 import { ItemDisplayMode } from '../item/item.component';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request } from 'express';
+import {ItemsResponse} from "../../model/items-response";
 
 @Component({
   selector: 'moderated-teaser',
   templateUrl: './moderated-teaser.component.html',
   styleUrls: ['./moderated-teaser.component.scss']
 })
-export class ModeratedTeaserComponent implements OnInit {
+export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
   @ViewChild('teaserSection') teaserSection: ElementRef | undefined;
 
   @Input()
@@ -54,15 +55,13 @@ export class ModeratedTeaserComponent implements OnInit {
   @Input()
   public ssrRendering = false;
 
-  public DISPLAY_MODE_TEASER = ItemDisplayMode.TEASER;
+  public DISPLAY_MODE_TEASER: ItemDisplayMode = ItemDisplayMode.TEASER;
 
   public items: Array<Item | null> = [];
 
   constructor(
-    private route: ActivatedRoute,
     private itemsService: ItemsApiService,
     private transferState: TransferState,
-    private userService: UserService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() @Inject(REQUEST) private request: Request
   ) {
@@ -93,6 +92,13 @@ export class ModeratedTeaserComponent implements OnInit {
     observer.observe(this.teaserSection.nativeElement);
   }
 
+  ngOnInit(): void {
+    this.ssrRendering = UserService.isBotRequest(this.request) ? this.ssrRendering : false;
+
+    if (!this.ssrRendering) { return; }
+    this.initialiseItems();
+  }
+
   private getItemsKey(): string {
     return 'productItems-' + (this.linkUri);
   }
@@ -113,7 +119,7 @@ export class ModeratedTeaserComponent implements OnInit {
       undefined,
       undefined,
       undefined,
-      this.hashtags).subscribe(itemsResponse => {
+      this.hashtags).subscribe((itemsResponse: ItemsResponse): void => {
       if (itemsResponse?.items?.length) {
         this.items = itemsResponse.items;
         if (isPlatformServer(this.platformId)) {
@@ -121,12 +127,5 @@ export class ModeratedTeaserComponent implements OnInit {
         }
       }
     });
-  }
-
-  ngOnInit(): void {
-    this.ssrRendering = UserService.isBotRequest(this.request) ? this.ssrRendering : false;
-
-    if (!this.ssrRendering) { return; }
-    this.initialiseItems();
   }
 }
