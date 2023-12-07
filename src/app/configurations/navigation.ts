@@ -438,7 +438,9 @@ export class Navigation {
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_NOODLES', ['groceries', 'food', 'noodles']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_NUTS', ['groceries', 'food', 'nuts']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_OILSVINEGAR', ['groceries', 'food', 'oils-and-vinegar']),
+    new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_RICE', ['groceries', 'food', 'rice']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_SAUCES', ['groceries', 'food', 'sauces']),
+    new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_SNACKS', ['groceries', 'food', 'snacks']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_SPICES', ['groceries', 'food', 'spices']),
 
     new NavigationItem('ALL', 'DIY', ['diy', '', ''], 14)

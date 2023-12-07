@@ -213,6 +213,7 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     new FilterItem('1000030', 'Inhofer'),
     new FilterItem('1000031', 'IMWH'),
     new FilterItem('1000032', 'Jan Vanderstorm'),
+    new FilterItem('1000187', 'Karl Karlo'),
     new FilterItem('1000180', 'Laco'),
     new FilterItem('1000164', 'Little hipstar'),
     new FilterItem('1000122', 'Medimops'),
