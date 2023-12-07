@@ -68,6 +68,7 @@ export class ItemComponent implements OnInit, AfterViewInit {
       const imagesBig: Array<string> = this.item?.imagesBig || [];
       if (!imagesBig.length) {
         this.imageUrl = this.item?.titleImage || '';
+        return;
       }
 
       this.imageUrl = imagesBig[Math.floor(Math.random() * imagesBig.length)];
