@@ -6,7 +6,7 @@
              class="informationItem__image{{showBig ? ' informationItem__image--big' : ''}}{{cssModifier ? ' informationItem__image' + cssModifier : ''}}"
              alt="{{'IMAGE_OF' | translate }} {{item.title}}"
              [src]="showAlternateImage ? imageUrl : item.titleImage || ''"
-             (mouseenter)="imageUrl = item.titleImage || ''"
+             (mouseenter)="imageUrl = item.titleImage || ''; currentImageIndex = 0"
              loading="lazy"
         />
         <div class="informationItem__stamp{{showBig ? ' informationItem__stamp--big' : ''}}" *ngIf="renderedReduction">{{renderedReduction}}</div>

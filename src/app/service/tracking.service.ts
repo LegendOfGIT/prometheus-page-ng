@@ -9,7 +9,7 @@ import { endpoints } from 'src/environments/endpoints';
 import { ApplicationConfiguration } from '../configurations/app';
 import { isPlatformServer } from '@angular/common';
 import { StorageService } from './storage.service';
-import {DEFAULT_HASHTAGS} from '../model/user';
+import { DEFAULT_HASHTAGS } from '../model/user';
 
 @Injectable({
     providedIn: 'root'
@@ -28,9 +28,9 @@ export class TrackingService extends ApiBase {
       { level: TrackingInterestLevel.EVEN_HIGHER, scoring: 0.60 }
     ];
 
-    private http = inject(HttpClient);
-    private storageService = inject(StorageService);
-    private userService = inject(UserService);
+    private http: HttpClient = inject(HttpClient);
+    private storageService: StorageService = inject(StorageService);
+    private userService: UserService = inject(UserService);
 
     constructor(@Inject(PLATFORM_ID) platformId: Object) {
         super(ApplicationConfiguration.API_BASE);
@@ -39,7 +39,7 @@ export class TrackingService extends ApiBase {
           return;
         }
 
-        setInterval(() => {
+        setInterval((): void => {
           this.trackedActivities = this.storageService.getFromStorageById('activities') || [];
 
           while (this.trackedActivities.length) {
@@ -56,7 +56,7 @@ export class TrackingService extends ApiBase {
             }
 
             this.http.put(
-              this.get(endpoints.scoreItem),
+              this.get(`${endpoints.scoreItem}?itemTitle=${trackedActivity.informationItemLabel || ''}`),
               {
                 itemId: trackedActivity.informationItemId,
                 filters: trackedActivity.filters,

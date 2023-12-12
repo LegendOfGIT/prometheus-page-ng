@@ -14,6 +14,7 @@ import {ItemDetails} from "../../model/item-details";
 import {TrackingService} from '../../service/tracking.service';
 import {TrackingActivityItem} from '../../model/tracking-activity-item';
 import {TrackingInterestLevel} from '../../model/tracking-interest-level';
+import {HyphenationPipe} from "../../pipes/web.pipe";
 
 @Component({
   selector: 'single-product-view',
@@ -42,6 +43,7 @@ export class SingleProductViewComponent implements OnInit {
     private metaService: Meta,
     private transferState: TransferState,
     private trackingService: TrackingService,
+    private hyphenationPipe : HyphenationPipe,
     @Inject(DOCUMENT) private doc: Document,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
@@ -151,6 +153,7 @@ export class SingleProductViewComponent implements OnInit {
 
     this.trackingService.addActivity(TrackingActivityItem.create()
       .setInformationItemId(this.item.itemId)
+      .setInformationItemLabel(this.hyphenationPipe.transform(this.item.title))
       .setInterestLevel(TrackingInterestLevel.EVEN_HIGHER));
   }
 

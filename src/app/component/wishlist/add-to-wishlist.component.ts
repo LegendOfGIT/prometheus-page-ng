@@ -7,6 +7,7 @@ import { TrackingService } from 'src/app/service/tracking.service';
 import { TrackingActivityItem } from 'src/app/model/tracking-activity-item';
 import { TrackingInterestLevel } from 'src/app/model/tracking-interest-level';
 import { isPlatformBrowser } from '@angular/common';
+import {HyphenationPipe} from "../../pipes/web.pipe";
 
 @Component({
   selector: 'app-add-to-wishlist',
@@ -21,6 +22,7 @@ export class AddToWishlistComponent {
     private wishlistItemsService: WishlistItemsApiService,
     private userService: UserService,
     private trackingService: TrackingService,
+    private hyphenationPipe: HyphenationPipe,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
   }
@@ -49,6 +51,7 @@ export class AddToWishlistComponent {
     this.trackingService.addActivity(
       TrackingActivityItem.create()
         .setInformationItemId(this.item.itemId)
+        .setInformationItemLabel(this.hyphenationPipe.transform(this.item.title))
         .setInterestLevel(isOnWishlist ? TrackingInterestLevel.VERY_HIGH : TrackingInterestLevel.SLIGHTLY_LOW)
         .setFilters(this.getParameterFromUrl('filters') || '')
         .setSearchPattern(this.getParameterFromUrl('search') || '')

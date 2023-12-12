@@ -1,6 +1,6 @@
-import {Component, ElementRef, Inject, PLATFORM_ID, ViewChild} from '@angular/core';
-import {FormBuilder, FormControl} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, Inject, PLATFORM_ID} from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {Router} from '@angular/router';
 import {debounceTime} from 'rxjs/operators';
 
 import {UserService} from 'src/app/service/user.service';
@@ -27,15 +27,10 @@ export class HeaderComponent {
 
   public suggestions: Array<SuggestionItem> = [];
 
-  @ViewChild('searchPattern')
-  private searchPatternElement: ElementRef | undefined = undefined;
-
   public lastLoggedInFlag: boolean;
 
   constructor(
-    private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute,
     private userService: UserService,
     private navigationService: NavigationService,
     private wishlistService: WishlistItemsApiService,
@@ -63,9 +58,9 @@ export class HeaderComponent {
 
     this.searchPatternControl.valueChanges
       .pipe(debounceTime(150))
-      .subscribe(() => {
+      .subscribe((): void => {
         this.suggestions = [];
-        const searchPattern = this.getParameterFromUrl('search');
+        const searchPattern: string | null = this.getParameterFromUrl('search');
         const givenPattern = this.searchPatternControl.value;
         if (searchPattern === givenPattern) {
           return;
@@ -109,7 +104,7 @@ export class HeaderComponent {
       return;
     }
 
-    const hasSearchPatternChanged = searchPattern !== this.searchPatternControl.value;
+    const hasSearchPatternChanged: boolean = searchPattern !== this.searchPatternControl.value;
     const queryParametersToKeep: Array<string> = ['hashtags', 'page', 'search'];
     if (hasSearchPatternChanged) {
       queryParametersToKeep.push('search');
@@ -187,6 +182,21 @@ export class HeaderComponent {
     }
 
     return item.isSearchItem() ? 'SEARCH_FOR_PATTERN_SUFFIX' : 'DISCOVER_HASHTAG_SUFFIX';
+  }
+
+  public navigateToCategory(item: NavigationItem): void {
+    if (!item?.pathParts?.length) {
+      return;
+    }
+
+    const activeModuleBeforeNavigation: Module = this.navigationService.activeModule;
+    this.router.navigate([item.pathParts[0]]).then((): void => {
+      if (Module.ITEMS !== activeModuleBeforeNavigation) {
+        return;
+      }
+
+      window.location.reload();
+    })
   }
 
   get categoryItems(): NavigationItem[] {

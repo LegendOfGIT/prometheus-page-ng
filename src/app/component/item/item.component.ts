@@ -9,6 +9,7 @@ import {NavigationItem} from '../../model/navigation-item';
 import {ActivatedRoute} from '@angular/router';
 import {isPlatformBrowser} from '@angular/common';
 import {Navigation} from '../../configurations/navigation';
+import {HyphenationPipe} from "../../pipes/web.pipe";
 
 @Component({
   selector: 'app-item',
@@ -16,10 +17,12 @@ import {Navigation} from '../../configurations/navigation';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit, AfterViewInit {
-    private route: ActivatedRoute = inject(ActivatedRoute);
-    private trackingService: TrackingService = inject(TrackingService);
+    private hyphenationPipe: HyphenationPipe = inject(HyphenationPipe);
     private navigationService: NavigationService = inject(NavigationService);
     private platformId: Object = inject(PLATFORM_ID);
+    private route: ActivatedRoute = inject(ActivatedRoute);
+    private trackingService: TrackingService = inject(TrackingService);
+    public currentImageIndex = 0;
     public imageUrl = '';
 
     @ViewChild('itemSection') itemSection: ElementRef | undefined;
@@ -71,7 +74,8 @@ export class ItemComponent implements OnInit, AfterViewInit {
         return;
       }
 
-      this.imageUrl = imagesBig[Math.floor(Math.random() * imagesBig.length)];
+      this.currentImageIndex = imagesBig.length - 1 > this.currentImageIndex ? this.currentImageIndex + 1 : 0;
+      this.imageUrl = imagesBig[this.currentImageIndex];
     }
 
     private isOnClientSide(): boolean {
@@ -86,19 +90,11 @@ export class ItemComponent implements OnInit, AfterViewInit {
       this.trackingService.addActivity(
         TrackingActivityItem.create()
           .setInformationItemId(item.itemId)
+          .setInformationItemLabel(this.hyphenationPipe.transform(item?.title))
           .setInterestLevel(TrackingInterestLevel.HIGH)
           .setSearchPattern(this.getParameterFromUrl('search') || '')
           .setFilters(this.getParameterFromUrl('filters') || '')
           .setTrackingId('item.clicked'));
-    }
-
-    private getHyphenatedString(value: string): string {
-      return (value || '').substring(0, 100)
-        .replace(",", "")
-        .replace(/[^\w\s]/gi, '')
-        .replace(/[()]/g, '')
-        .replace(/\s+/g, '-')
-        .toLowerCase();
     }
 
     public getSeoFriendlySingleProductViewUrl(item: Item | null): string {
@@ -106,7 +102,7 @@ export class ItemComponent implements OnInit, AfterViewInit {
         return '';
       }
 
-      return `p/${item.id}/${this.getHyphenatedString(item.title)}`;
+      return `p/${item.id}/${this.hyphenationPipe.transform(item.title)}`;
     }
 
     public renderLowestPrice(item: Item): string {
@@ -128,7 +124,7 @@ export class ItemComponent implements OnInit, AfterViewInit {
         items = items?.length ? items : Navigation.getAllRootItems();
 
         return items
-          .find(nextNavigationItem =>
+          .find((nextNavigationItem: NavigationItem): boolean =>
             -1 !== (this.item?.navigationPath || []).indexOf(nextNavigationItem.toId || ''));
     }
 
