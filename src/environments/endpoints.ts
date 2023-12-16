@@ -10,5 +10,6 @@ export const endpoints = {
   deleteWishlistItem: '/wishlist-item?userId={userId}&itemId={itemId}',
   getWishlistItems: '/wishlist-items?userId={userId}&searchPattern={searchPattern}',
   rankedCategoriesByHashtags: '/ranked-categories?hashtags={hashtags}',
-  saveWishlistItem: '/wishlist-item'
+  saveWishlistItem: '/wishlist-item',
+  searchSuggestions: '/search-suggestions?searchPattern={searchPattern}&navigationId={navigationId}'
 };

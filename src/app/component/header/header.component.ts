@@ -11,6 +11,7 @@ import {Navigation} from '../../configurations/navigation';
 import {isPlatformBrowser} from '@angular/common';
 import {SuggestionItem, SuggestionItemMode} from '../../model/suggestion-item';
 import {HashTagsApiService} from '../../service/hashtags-api.service';
+import {SuggestionsApiService} from "../../service/suggestions-api.service";
 
 @Component({
   selector: 'header',
@@ -35,6 +36,7 @@ export class HeaderComponent {
     private navigationService: NavigationService,
     private wishlistService: WishlistItemsApiService,
     private hashtagsService: HashTagsApiService,
+    private suggestionsApiService : SuggestionsApiService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.subscribeSearchPatternChanges();
@@ -70,22 +72,26 @@ export class HeaderComponent {
           return;
         }
 
-        this.hashtagsService.getHashtags(givenPattern)
-          .subscribe((items: Array<SuggestionItem>): void => {
-            this.suggestions = [];
+        this.suggestionsApiService.getSearchSuggestions(givenPattern, this.navigationService.activeNavigationItem?.fromId || '').subscribe(((items: Array<SuggestionItem>): void => {
+          this.suggestions = [];
 
-            const searchItem: SuggestionItem = new SuggestionItem(givenPattern);
-            searchItem.mode = SuggestionItemMode.SEARCH;
-            this.suggestions.push(searchItem);
+          const searchItem: SuggestionItem = new SuggestionItem(givenPattern);
+          searchItem.mode = SuggestionItemMode.SEARCH;
+          this.suggestions.push(searchItem);
 
-            if (!items.find((suggestion: SuggestionItem) => !suggestion.isSearchItem() && givenPattern.toLowerCase() === suggestion.label.toLowerCase())) {
-              const newHashtagItem: SuggestionItem = new SuggestionItem(givenPattern.split(' ').join('').substring(0, 20));
-              newHashtagItem.mode = SuggestionItemMode.NEW;
-              items = [newHashtagItem].concat(items);
-            }
+          this.suggestions = this.suggestions.concat(items.map((item: SuggestionItem) => { item.mode = SuggestionItemMode.SEARCH; return item; }));
 
-            this.suggestions = this.suggestions.concat(items);
-          });
+          this.hashtagsService.getHashtags(givenPattern)
+            .subscribe((items: Array<SuggestionItem>): void => {
+              if (!items.find((suggestion: SuggestionItem) => !suggestion.isSearchItem() && givenPattern.toLowerCase() === suggestion.label.toLowerCase())) {
+                const newHashtagItem: SuggestionItem = new SuggestionItem(givenPattern.split(' ').join('').substring(0, 20));
+                newHashtagItem.mode = SuggestionItemMode.NEW;
+                items = [newHashtagItem].concat(items);
+              }
+
+              this.suggestions = this.suggestions.concat(items);
+            });
+        }));
       });
   }
 
