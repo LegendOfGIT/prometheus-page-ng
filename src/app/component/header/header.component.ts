@@ -83,12 +83,6 @@ export class HeaderComponent {
 
           this.hashtagsService.getHashtags(givenPattern)
             .subscribe((items: Array<SuggestionItem>): void => {
-              if (!items.find((suggestion: SuggestionItem) => !suggestion.isSearchItem() && givenPattern.toLowerCase() === suggestion.label.toLowerCase())) {
-                const newHashtagItem: SuggestionItem = new SuggestionItem(givenPattern.split(' ').join('').substring(0, 20));
-                newHashtagItem.mode = SuggestionItemMode.NEW;
-                items = [newHashtagItem].concat(items);
-              }
-
               this.suggestions = this.suggestions.concat(items);
             });
         }));
