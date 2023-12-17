@@ -75,9 +75,11 @@ export class HeaderComponent {
         this.suggestionsApiService.getSearchSuggestions(givenPattern, this.navigationService.activeNavigationItem?.fromId || '').subscribe(((items: Array<SuggestionItem>): void => {
           this.suggestions = [];
 
-          const searchItem: SuggestionItem = new SuggestionItem(givenPattern);
-          searchItem.mode = SuggestionItemMode.SEARCH;
-          this.suggestions.push(searchItem);
+          if (!items.find((item: SuggestItem) => givenPattern.trim().toLowerCase() === item.label.toLowerCase())) {
+            const searchItem: SuggestionItem = new SuggestionItem(givenPattern);
+            searchItem.mode = SuggestionItemMode.SEARCH;
+            this.suggestions.push(searchItem);
+          }
 
           this.suggestions = this.suggestions.concat(items.map((item: SuggestionItem) => { item.mode = SuggestionItemMode.SEARCH; return item; }));
 
