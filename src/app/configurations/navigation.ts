@@ -409,6 +409,7 @@ export class Navigation {
       .setHasTeaser(true),
     new NavigationItem('SPORTS', 'SPORTS_BALLSPORTS', ['sports', 'ballsports', '']),
     new NavigationItem('SPORTS_BALLSPORTS', 'SPORTS_BALLSPORTS_SOCCER', ['sports', 'ballsports', 'soccer']),
+    new NavigationItem('SPORTS_BALLSPORTS', 'SPORTS_BALLSPORTS_SOCCERSHOES', ['sports', 'ballsports', 'soccer-shoes']),
     new NavigationItem('SPORTS', 'SPORTS_CLIMBING', ['sports', 'climbing', '']),
     new NavigationItem('SPORTS_CLIMBING', 'SPORTS_CLIMBING_BACKPACKS', ['sports', 'climbing', 'backpacks']),
     new NavigationItem('SPORTS_CLIMBING', 'SPORTS_CLIMBING_HELMETS', ['sports', 'climbing', 'helmets']),

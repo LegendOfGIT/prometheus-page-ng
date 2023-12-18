@@ -338,6 +338,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_SPORTS: 'Sport',
       NAVIGATION_SPORTS_BALLSPORTS: 'Ballsport',
       NAVIGATION_SPORTS_BALLSPORTS_SOCCER: 'Ballsport Fußball',
+      NAVIGATION_SPORTS_BALLSPORTS_SOCCERSHOES: 'Ballsport Fußballschuhe',
       NAVIGATION_SPORTS_CLIMBING: 'Klettern',
       NAVIGATION_SPORTS_CLIMBING_BACKPACKS: 'Kletter- / Wanderrucksäcke',
       NAVIGATION_SPORTS_CLIMBING_HELMETS: 'Kletterhelme',

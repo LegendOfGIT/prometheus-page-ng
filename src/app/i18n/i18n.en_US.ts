@@ -337,6 +337,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_SPORTS: 'sport',
       NAVIGATION_SPORTS_BALLSPORTS: 'ballsports',
       NAVIGATION_SPORTS_BALLSPORTS_SOCCER: 'ballsports soccer',
+      NAVIGATION_SPORTS_BALLSPORTS_SOCCERSHOES: 'ballsports soccer shoes',
       NAVIGATION_SPORTS_CLIMBING: 'climbing',
       NAVIGATION_SPORTS_CLIMBING_BACKPACKS: 'climbing backpacks',
       NAVIGATION_SPORTS_CLIMBING_HELMETS: 'climbing helmets',
