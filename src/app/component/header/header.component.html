@@ -30,8 +30,8 @@
           </div>
           <div class="header__iconWrapper">
             <i
-              [ngClass]="['fa', 'header__icon', 'fa-user', (isLoggedIn ? '' : isModuleActive(Module.PROFILE) ? 'header__icon--activeEmpty' : 'header__icon--empty'), hasJustLoggedIn ? 'hithere' : '', isModuleActive(Module.PROFILE) ? 'header__icon--active' : '']"
-              [routerLink]="['/profile']"
+              [ngClass]="['fa', 'header__icon', 'fa-globe', isLanguageSelectionOpen ? 'header__icon--active' : 'header__icon--activeEmpty']"
+              (click)="isLanguageSelectionOpen = true; languageSelection.showModal()"
             ></i>
           </div>
         </div>
@@ -110,4 +110,17 @@
 
 <dialog #loadingDialog id="loadingDialog">
   <app-loading></app-loading>
+</dialog>
+
+<dialog #languageSelection id="languageSelection" class="header__menu">
+  <div class="header__menuClose" (click)="isLanguageSelectionOpen = false; languageSelection.close()">
+    <i class="fa fa-times-circle"></i>
+  </div>
+
+  <div class="header__menuHeader">
+    <h4>{{'SELECT_LANGUAGE' | translate }}</h4>
+  </div>
+
+  <div class="header__menuItem" (click)="switchLanguage('de_DE')">{{ 'languageDeDe' | translate }}</div>
+  <div class="header__menuItem" (click)="switchLanguage('en_US')">{{ 'languageEnUs' | translate }}</div>
 </dialog>

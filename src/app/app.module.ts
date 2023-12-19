@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { ProfileComponent } from './component/profile/profile.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 import { ImprintComponent } from './component/legal/imprint.component';
 import { StartPageComponent } from './component/landing-pages/start-page.component';
@@ -27,7 +26,6 @@ import { PipesModule } from './pipes/pipes.module';
     HeaderComponent, FooterComponent,
     DataProtectionComponent,
     ImprintComponent,
-    ProfileComponent,
     StartPageComponent,
     WishlistItemsComponent
   ],

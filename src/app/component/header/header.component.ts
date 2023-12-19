@@ -19,16 +19,11 @@ import {SuggestionsApiService} from "../../service/suggestions-api.service";
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
+  public isLanguageSelectionOpen = false;
   public navigationItems: NavigationItem[] = Navigation.ITEMS;
-
   public Module: typeof Module = Module;
-
   public searchPatternControl: FormControl = new FormControl();
-
   public suggestions: Array<SuggestionItem> = [];
-
-  public lastLoggedInFlag: boolean;
 
   constructor(
     private router: Router,
@@ -40,7 +35,6 @@ export class HeaderComponent {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.subscribeSearchPatternChanges();
-    this.lastLoggedInFlag = this.userService.isLoggedIn;
     const searchPattern: string | null = this.getParameterFromUrl('search');
     this.searchPatternControl.setValue(searchPattern);
   }
@@ -63,7 +57,7 @@ export class HeaderComponent {
       .subscribe((): void => {
         this.suggestions = [];
         const searchPattern: string | null = this.getParameterFromUrl('search');
-        const givenPattern = this.searchPatternControl.value;
+        const givenPattern: string | null = this.searchPatternControl.value;
         if (searchPattern === givenPattern) {
           return;
         }
@@ -91,6 +85,11 @@ export class HeaderComponent {
       });
   }
 
+  public switchLanguage(locale: string): void {
+    this.userService.setDisplayLocaleOfActiveUser(locale);
+    window.location.reload();
+  }
+
   public searchNow(): void {
     const searchPattern: string | null = this.getParameterFromUrl('search');
 
@@ -116,20 +115,6 @@ export class HeaderComponent {
       queryParametersToKeep,
       { search: '' === this.searchPatternControl.value ? undefined : this.searchPatternControl.value },
       hasSearchPatternChanged);
-  }
-
-  get hasJustLoggedIn(): boolean {
-    if (this.lastLoggedInFlag != this.userService.isLoggedIn) {
-      this.lastLoggedInFlag = this.userService.isLoggedIn;
-      return true;
-    }
-
-    this.lastLoggedInFlag = this.userService.isLoggedIn;
-    return false;
-  }
-
-  get isLoggedIn(): boolean {
-    return this.userService.isLoggedIn;
   }
 
   get userHasAtLeastOneWishlistItem(): boolean {

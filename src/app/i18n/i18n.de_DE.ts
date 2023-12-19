@@ -4,7 +4,7 @@ export class I18nDeDe implements I18nInterface {
   public getTranslations(): any {
     return {
       iAmSearchingFor: 'Ich suche ...',
-      languageDeDe: 'deutsch',
+      languageDeDe: 'deutsch (DE)',
       languageEnUs: 'englisch (US)',
       BACK: 'Zurück',
       CATEGORIES: 'Kategorien',

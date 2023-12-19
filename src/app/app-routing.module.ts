@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ProfileComponent } from './component/profile/profile.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 import { ImprintComponent } from './component/legal/imprint.component';
 import { StartPageComponent } from './component/landing-pages/start-page.component';
@@ -10,7 +9,6 @@ import { DataProtectionComponent } from './component/legal/data-protection.compo
 const routes: Routes = [
   { path: 'data-protection', component: DataProtectionComponent },
   { path: 'imprint', component: ImprintComponent },
-  { path: 'profile', component: ProfileComponent },
   { path: 'wishlist', component: WishlistItemsComponent },
   {
     path: 'p',

@@ -93,7 +93,6 @@ export enum Module {
   HASHTAGS,
   IMPRINT,
   ITEMS,
-  PROFILE,
   WISHLIST,
   SINGLE_PRODUCT_VIEW
 }
