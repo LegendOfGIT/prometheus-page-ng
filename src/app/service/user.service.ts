@@ -139,6 +139,10 @@ export class UserService {
         return true;
       }
 
+      if (-1 !== agent.indexOf('spider')) {
+        return true;
+      }
+
       return -1 !== agent.indexOf('bingbot');
     }
 
