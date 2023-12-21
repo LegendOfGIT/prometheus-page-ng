@@ -5,9 +5,8 @@ import { DOCUMENT, isPlatformServer } from '@angular/common';
 import { Module, NavigationService } from '../../service/navigation.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { TranslationService } from '../../service/translation.service';
-import { HashTagsApiService } from '../../service/hashtags-api.service';
-import {Startpage} from "../../configurations/startpage";
-import {TeaserItem} from "../../model/teaser-item";
+import { Startpage } from "../../configurations/startpage";
+import { TeaserItem } from "../../model/teaser-item";
 
 @Component({
   selector: 'start-page',
@@ -18,10 +17,9 @@ export class StartPageComponent implements OnInit {
   public STARTPAGE_TEASER_ITEMS: Array<TeaserItem> = Startpage.TEASER_ITEMS;
 
   constructor(
-    private route: ActivatedRoute,
+    route: ActivatedRoute,
     private navigationService: NavigationService,
     private translationService: TranslationService,
-    private hashtagsService: HashTagsApiService,
     titleService: Title,
     metaService: Meta,
     @Inject(DOCUMENT) private doc: Document,
@@ -38,19 +36,25 @@ export class StartPageComponent implements OnInit {
 
   private heroes: Array<Hero> = [
     {
-      background: 'rgb(211,0,15)',
       backgroundImage: 'url("/assets/heroes/tonies.png"), linear-gradient(180deg, rgba(211,0,15,1) 71%, rgba(255,208,204,1) 95%, rgba(243,244,242,1) 100%)',
+      backgroundPositionY: '2%',
       heroText: 'HERO_DISCOVER_TONIES',
       heroUrl: '/kids?search=tonie'
     },
     {
-      background: 'rgb(255,250,239)',
+      backgroundImage: 'url("/assets/heroes/senor-lopez.png"), linear-gradient(180deg, rgba(249,174,193,1) 71%, rgba(255,208,204,1) 95%, rgba(243,244,242,1) 100%)',
+      backgroundPositionX: 'center',
+      backgroundPositionY: '2%',
+      backgroundSize: 'initial',
+      heroText: 'HERO_DISCOVER_SENORLOPEZ',
+      heroUrl: '/groceries?filters=1000188'
+    },
+    {
       backgroundImage: 'url("/assets/heroes/dunleath.jpg"), linear-gradient(180deg, rgba(255,250,239,1) 0%, rgba(255,250,239,1) 27%, rgba(243,244,242,1) 100%)',
       heroText: 'HERO_DISCOVER_DUNLEATH',
       heroUrl: '/beauty-and-care?filters=1000119'
     },
     {
-      background: 'rgb(255,208,204)',
       backgroundImage: 'url("/assets/heroes/100pp.jpg"), linear-gradient(180deg, rgba(255,133,130,1) 0%, rgba(255,208,204,1) 69%, rgba(243,244,242,1) 100%)',
       heroText: '',
       heroUrl: '/beauty-and-care?filters=1000018'
@@ -93,8 +97,10 @@ export class StartPageComponent implements OnInit {
 }
 
 class Hero {
-  background: string = ''
+  backgroundPositionX?: string = ''
+  backgroundPositionY?: string = ''
   backgroundImage: string = ''
+  backgroundSize?: string = '';
   heroText: string = '';
   heroUrl: string = '';
 }

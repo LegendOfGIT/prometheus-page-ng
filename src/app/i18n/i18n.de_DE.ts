@@ -84,6 +84,7 @@ export class I18nDeDe implements I18nInterface {
       FILTERS_SUSTAINABILITY: 'Nachhaltigkeit',
       FILTERS_SUSTAINABILITY_SUSTAINABLE: 'Nachhaltig',
       HERO_DISCOVER_DUNLEATH: 'ENTDECKE DUNLEATH',
+      HERO_DISCOVER_SENORLOPEZ: 'Scharf ? Señor Lopez !',
       HERO_DISCOVER_TONIES: "HIER GEHT'S ZU DEN TONIES !",
       IMAGE_OF: 'Bild von',
       IMPRINT: 'Impressum',

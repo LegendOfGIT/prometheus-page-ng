@@ -3,6 +3,9 @@
     <div
       class="startPage__hero"
       [style.background-image]="currentHero?.backgroundImage"
+      [style.background-position-x]="currentHero?.backgroundPositionX"
+      [style.background-position-y]="currentHero?.backgroundPositionY"
+      [style.background-size]="currentHero?.backgroundSize || 'contain'"
     >
       <div class="startPage__heroTitle" *ngIf="currentHero?.heroText">{{currentHero?.heroText || '' | translate}}</div>
     </div>
