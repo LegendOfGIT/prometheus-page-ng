@@ -42,13 +42,13 @@
           </div>
 
           <div *ngIf="itemWithLowestPrice" class="productInformation__offers">
-            <a href="{{itemWithLowestPrice?.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
+            <a href="{{itemWithLowestPrice.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
               <div class="button productInformation__offer">
                 <div>
-                  {{getShopNameFromUrl(itemWithLowestPrice?.link)}}:<span *ngIf="renderPrice(itemWithLowestPrice)" class="productInformation__offer--price">{{renderPrice(itemWithLowestPrice)}}</span>
+                  {{getShopNameFromUrl(itemWithLowestPrice.link)}}:<span *ngIf="renderPrice(itemWithLowestPrice)" class="productInformation__offer--price">{{renderPrice(itemWithLowestPrice)}}</span>
                 </div>
-                <div *ngIf="itemWithLowestPrice?.productCondition">
-                  {{itemWithLowestPrice?.productCondition}}
+                <div *ngIf="itemWithLowestPrice.productCondition">
+                  {{itemWithLowestPrice.productCondition}}
                 </div>
                 <div *ngIf="itemWithLowestPrice.updatedOn" class="productInformation__offer--updatedOn">
                   aktualisiert am:
