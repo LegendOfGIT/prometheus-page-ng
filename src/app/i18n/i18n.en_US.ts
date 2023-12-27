@@ -498,6 +498,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_TEASER_SPORTS: 'Here you can find products that help you stay fit and keep your shape. GO for it!',
       NAVIGATION_TEASER_VEHICLES: 'On a long trip, on the way to work or just for fun! Here you will find everything you need to get around.',
       NEXT: 'Next',
+      NO_OFFER_AVAilABLE: "Unfortunately, there is currently no offer.",
       NO_PRODUCTS_FOUND: "There were no results. Get new inspiration from our other products!",
       OFFER: 'Offer',
       OFFER_DETAILS: 'Offer Details',

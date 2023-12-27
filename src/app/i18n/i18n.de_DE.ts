@@ -500,6 +500,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_TEASER_SPORTS: 'Hier findest du alles um dich Fit und in Form zu halten. GO for it!',
       NAVIGATION_TEASER_VEHICLES: 'Auf großer Reise, auf dem Weg zur Arbeit oder einfach nur aus Spaß! Hier findest du alles um in Bewegung zu bleiben.',
       NEXT: 'Weiter',
+      NO_OFFER_AVAilABLE: "Zu diesem Produkt gibt es zur Zeit leider kein Angebot",
       NO_PRODUCTS_FOUND: "Deine Suche hat leider keinen Treffer ergeben. Lass' dich von ein paar unserer anderen Produkte inspirieren!",
       OFFER: 'Angebot',
       OFFER_DETAILS: 'Angebotdetails',

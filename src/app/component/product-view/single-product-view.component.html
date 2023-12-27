@@ -10,7 +10,13 @@
           <div
             *ngFor="let imageBigUrl of slideImageUrls; let i = index;"
           >
-            <img src="{{imageBigUrl}}" alt="{{i+1}}. {{ 'IMAGE_OF' | translate }} {{item?.title || ''}}" class="mainStage__mainImage"/>
+            <img
+              #img
+              src="{{imageBigUrl}}"
+              alt="{{i+1}}. {{ 'IMAGE_OF' | translate }} {{item?.title || ''}}"
+              class="mainStage__mainImage"
+              (error)="img.src = 'assets/images/broken-image.png'"
+            />
           </div>
       </div>
     </div>
@@ -35,7 +41,7 @@
             <h2 class="singleProductView__sectionHeader">{{( areThereMorePrices ? 'TOP_OFFER' : 'OFFER') | translate }}</h2>
           </div>
 
-          <div class="productInformation__offers">
+          <div *ngIf="itemWithLowestPrice" class="productInformation__offers">
             <a href="{{itemWithLowestPrice?.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
               <div class="button productInformation__offer">
                 <div>
@@ -44,13 +50,14 @@
                 <div *ngIf="itemWithLowestPrice?.productCondition">
                   {{itemWithLowestPrice?.productCondition}}
                 </div>
-                <div *ngIf="itemWithLowestPrice?.updatedOn" class="productInformation__offer--updatedOn">
+                <div *ngIf="itemWithLowestPrice.updatedOn" class="productInformation__offer--updatedOn">
                   aktualisiert am:
-                  {{itemWithLowestPrice?.updatedOn | date:'dd.MM.yyyy' }}
+                  {{itemWithLowestPrice.updatedOn | date:'dd.MM.yyyy' }}
                 </div>
               </div>
             </a>
           </div>
+          <span *ngIf="!itemWithLowestPrice">{{ 'NO_OFFER_AVAilABLE' | translate }}</span>
 
           <div *ngIf="areThereMorePrices">
             <div class="productInformation__header">
