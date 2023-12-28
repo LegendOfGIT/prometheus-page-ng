@@ -2,7 +2,7 @@ import {TeaserItem} from '../model/teaser-item';
 
 export class Startpage {
   public static TEASER_ITEMS: TeaserItem[] = [
-    new TeaserItem('/home/accessoires/decorations?search=weihnacht', 'HOME_ACCESSOIRES_DECORATIONS', 'weihnacht', 'TEASER_TITLE_CHRISTMAS_DECORATION'),
+    new TeaserItem('/fashion?search=party', 'FASHION', 'party', 'We wanna party !'),
     new TeaserItem('/kids?search=geschenk', 'KIDS', 'geschenk', 'TEASER_TITLE_CHRISTMAS_KIDS_GIFT_IDEAS'),
 
     new TeaserItem('/home?filters=1000165', 'HOME', '', 'TEASER_TITLE_FUNZY')
