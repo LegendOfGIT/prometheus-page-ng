@@ -64,7 +64,7 @@
   </div>
 
   <div>
-    {{discountItem?.teaser || '' | translate}} *
+    {{discountItem?.teaser || '' | translate}} <span *ngIf="discountItem?.conditions">*</span>
   </div>
   <div class="mb-2 mt-2">
     <b>CODE: </b>
@@ -81,7 +81,7 @@
     </a>
   </div>
 
-  <div>
+  <div *ngIf="discountItem?.conditions">
     * {{discountItem?.conditions || '' | translate}}
   </div>
 </dialog>

@@ -20,6 +20,24 @@ export class Discounts {
       new Date(2024, 0, 5, 23, 59, 59)
     ).setConditionsToCheck([
       { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'silkes-weinkeller' }
+    ]),
+    new DiscountItem(
+      'DISCOUNT_TEASER_VANDERSTORM_ENDSPURT',
+      '',
+      'SALE10',
+      undefined,
+      new Date(2024, 0, 1, 23, 59, 59)
+    ).setConditionsToCheck([
+      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'janvanderstorm' }
+    ]),
+    new DiscountItem(
+      'DISCOUNT_TEASER_NATURESWAY_4THADVENT',
+      'DISCOUNT_CONDITIONS_NATURESWAY_4THADVENT',
+      'WINTER',
+      undefined,
+      new Date(2023, 11, 30, 23, 59, 59)
+    ).setConditionsToCheck([
+      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'naturesway' }
     ])
   ];
 
