@@ -7,6 +7,7 @@
              alt="{{'IMAGE_OF' | translate }} {{item.title}}"
              [src]="showAlternateImage ? imageUrl : item.titleImage || ''"
              (mouseenter)="imageUrl = item.titleImage || ''; currentImageIndex = 0"
+             (error)="imageUrl = 'assets/images/broken-image.png'"
              loading="lazy"
         />
         <div class="informationItem__stamp{{showBig ? ' informationItem__stamp--big' : ''}}" *ngIf="renderedReduction">{{renderedReduction}}</div>
@@ -30,6 +31,13 @@
       </div>
     </a>
 
+    <div *ngIf="discountItem" class="informationItem__discount" (click)="discountDialog.showModal()">
+      {{discountItem.teaser | translate}} *
+      <div>
+        <b>{{ 'DISCOUNT_SHOW_MORE' | translate }}</b>
+      </div>
+    </div>
+
     <a href="{{itemUrl}}" class="informationItem--link" *ngIf="showOfferDetailsLink" (click)="pickedInformation(item)" target="{{linkTarget}}">
       <span>{{getShopNameOfItem()}}</span>
     </a>
@@ -49,3 +57,31 @@
     </a>
   </div>
 </div>
+
+<dialog #discountDialog class="dialog informationItem__discountDialog">
+  <div class="dialog__close" (click)="discountDialog.close()">
+    <i class="fa fa-times-circle"></i>
+  </div>
+
+  <div>
+    {{discountItem?.teaser || '' | translate}} *
+  </div>
+  <div class="mb-2 mt-2">
+    <b>CODE: </b>
+    <b *ngIf="discountItem?.code">{{discountItem?.code || ''}}</b>
+    <span *ngIf="!discountItem?.code">{{ 'DISCOUNT_NO_CODE_REQUIRED' | translate }}</span>
+  </div>
+  <div *ngIf="discountItem?.maximumDate">
+    {{ 'DISCOUNT_UNTIL' | translate }} {{ discountItem?.maximumDate | date: 'dd.MM.yyyy' }}
+  </div>
+
+  <div *ngIf="item" class="informationItem__discountDialogLinkWrapper">
+    <a href="{{itemUrl}}" class="button informationItem__priceWrapper informationItem__price informationItem__discountDialogLink" (click)="pickedInformation(item)" target="{{linkTarget}}">
+      {{ 'DISCOUNT_GET_IT_NOW' | translate }}
+    </a>
+  </div>
+
+  <div>
+    * {{discountItem?.conditions || '' | translate}}
+  </div>
+</dialog>

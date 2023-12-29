@@ -4,3 +4,27 @@
 .page__body {
   background-color: $page-background;
 }
+
+.dialog {
+  background-color: $container-background-color;
+  border: 1px solid $content-color;
+  border-radius: 0.5em;
+  left: 1em;
+  position: absolute;
+  text-align: center;
+  top: 2.5em;
+  width: 20em;
+
+  a {
+    text-decoration: none;
+  }
+
+  &__close {
+    color: $container-color;
+    cursor: pointer;
+    padding: 0.5em;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}

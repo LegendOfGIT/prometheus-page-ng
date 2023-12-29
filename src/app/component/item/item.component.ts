@@ -10,6 +10,8 @@ import {ActivatedRoute} from '@angular/router';
 import {isPlatformBrowser} from '@angular/common';
 import {Navigation} from '../../configurations/navigation';
 import {HyphenationPipe} from "../../pipes/web.pipe";
+import {DiscountItem} from '../../model/discount-item';
+import {Discounts} from '../../configurations/discounts';
 
 @Component({
   selector: 'app-item',
@@ -41,6 +43,10 @@ export class ItemComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+      if (!this.isOnClientSide()) {
+        return;
+      }
+
       const threshold = 0.2; // how much % of the element is in view
       const observer: IntersectionObserver = new IntersectionObserver(
         (entries: Array<IntersectionObserverEntry>): void => {
@@ -202,6 +208,10 @@ export class ItemComponent implements OnInit, AfterViewInit {
 
     get showAlternateImage(): boolean {
       return ItemDisplayMode.CATEGORY !== this.displayMode;
+    }
+
+    get discountItem(): DiscountItem | undefined {
+      return Discounts.getDiscountForItem(this.item);
     }
 }
 
