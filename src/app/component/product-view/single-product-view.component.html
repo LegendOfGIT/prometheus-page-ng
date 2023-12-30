@@ -47,7 +47,7 @@
                 <div>
                   {{getShopNameFromUrl(itemWithLowestPrice.link)}}:<span *ngIf="renderPrice(itemWithLowestPrice)" class="productInformation__offer--price">{{renderPrice(itemWithLowestPrice)}}</span>
                 </div>
-                <div *ngIf="itemWithLowestPrice.priceInitial && itemWithLowestPrice.referenceUnit" class="productInformation__offer--referenceUnit">
+                <div *ngIf="itemWithLowestPrice.pricePerUnit && itemWithLowestPrice.referenceUnit" class="productInformation__offer--referenceUnit">
                   ({{ CorrespondingItem.renderPriceAmount(itemWithLowestPrice.pricePerUnit) }} / {{ (itemWithLowestPrice.referenceUnit || '').trim() }})
                 </div>
                 <div *ngIf="itemWithLowestPrice.productCondition">
@@ -72,7 +72,7 @@
                   <div>
                     {{getShopNameFromUrl(offer?.link)}}: <span *ngIf="renderPrice(offer)" class="productInformation__offer--price">{{renderPrice(offer)}}</span>
                   </div>
-                  <div *ngIf="offer?.priceInitial && offer?.referenceUnit" class="productInformation__offer--referenceUnit">
+                  <div *ngIf="offer?.pricePerUnit && offer?.referenceUnit" class="productInformation__offer--referenceUnit">
                     ({{ CorrespondingItem.renderPriceAmount(offer?.pricePerUnit) }} / {{ (offer?.referenceUnit || '').trim() }})
                   </div>
                   <div *ngIf="offer?.productCondition">
