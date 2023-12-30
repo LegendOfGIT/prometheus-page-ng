@@ -211,6 +211,10 @@ export class ItemComponent implements OnInit, AfterViewInit {
     }
 
     get discountItem(): DiscountItem | undefined {
+      if (this.isCategoryItem()) {
+        return undefined;
+      }
+
       return Discounts.getDiscountForItem(this.item);
     }
 }
