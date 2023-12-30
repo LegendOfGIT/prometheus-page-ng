@@ -343,6 +343,7 @@ export class Navigation {
     new NavigationItem('BEAUTY_CARE_SLEEP', 'BEAUTY_CARE_SLEEP_SLEEPAIDS', ['beauty-and-care', 'sleep', 'sleeping-aids']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SKIN_CARE', ['beauty-and-care', 'skin-care', '']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_FACE_CARE', ['beauty-and-care', 'skin-care', 'face-care']),
+    new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_HANDCARE', ['beauty-and-care', 'skin-care', 'hand-care']),
     new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_KIDS', ['beauty-and-care', 'skin-care', 'kids']),
 
     new NavigationItem('ALL', 'HOME', ['home', '', ''], 10)

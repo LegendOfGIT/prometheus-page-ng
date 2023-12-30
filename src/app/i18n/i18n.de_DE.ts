@@ -160,6 +160,7 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_BEAUTY_CARE_MAKEUP_LIPS: 'Lippen Makeup',
       NAVIGATION_BEAUTY_CARE_SKIN_CARE: 'Hauptpflege',
       NAVIGATION_BEAUTY_CARE_SKIN_CARE_FACE_CARE: 'Gesichtspflege',
+      NAVIGATION_BEAUTY_CARE_SKIN_CARE_HANDCARE: 'Handpflege',
       NAVIGATION_BEAUTY_CARE_SKIN_CARE_KIDS: 'Kinderhautpflege',
       NAVIGATION_BEAUTY_CARE_SLEEP: 'Schlafen',
       NAVIGATION_BEAUTY_CARE_SLEEP_SLEEPAIDS: 'Schlafhilfen',
@@ -523,6 +524,7 @@ export class I18nDeDe implements I18nInterface {
       PRODUCT_DESCRIPTION_SHOWN_PRODUCT_SIZES: 'Das Produkt ist in folgenden Größen erhältlich',
 
       PRODUCT_DETAILS: 'Produkt-Details',
+      PRODUCT_DETAILS_CONTENTSOFDELIVERY: 'Lieferumfang',
       PRODUCT_DETAILS_MAKE: 'Marke',
       PRODUCT_DETAILS_GENRE: 'Genre',
       PRODUCT_DETAILS_SUBGENRE: 'Sub-Genre',
@@ -541,6 +543,7 @@ export class I18nDeDe implements I18nInterface {
       PRODUCT_DETAILS_TASTETYPE: 'Geschmacksrichtung',
       PRODUCT_DETAILS_FLAVOURS: 'Geschmacksnoten',
       PRODUCT_DETAILS_FIT: 'Passform',
+      PRODUCT_DETAILS_SCENT: 'Duft',
       PRODUCT_DETAILS_TYPE: 'Gezeigte Art',
       PRODUCT_DETAILS_TYPES: 'Arten',
       PRODUCT_DETAILS_COLORS: 'Farben',

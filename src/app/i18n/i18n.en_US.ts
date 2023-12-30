@@ -124,6 +124,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_BEAUTY_CARE_MAKEUP_LIPS: 'lip makeup',
       NAVIGATION_BEAUTY_CARE_SKIN_CARE: 'skin-care',
       NAVIGATION_BEAUTY_CARE_SKIN_CARE_FACE_CARE: 'face-care',
+      NAVIGATION_BEAUTY_CARE_SKIN_CARE_HANDCARE: 'hand-care',
       NAVIGATION_BEAUTY_CARE_SKIN_CARE_KIDS: 'kids skin-care',
       NAVIGATION_BEAUTY_CARE_SLEEP: 'sleeping',
       NAVIGATION_BEAUTY_CARE_SLEEP_SLEEPAIDS: 'sleeping aids',
@@ -522,6 +523,7 @@ export class I18nEnUs implements I18nInterface {
 
       PRODUCT_DETAILS: 'Product details',
       PRODUCT_DETAILS_MAKE: 'Make',
+      PRODUCT_DETAILS_CONTENTSOFDELIVERY: 'Contents of delivery',
       PRODUCT_DETAILS_GENRE: 'Genre',
       PRODUCT_DETAILS_SUBGENRE: 'Sub-Genre',
       PRODUCT_DETAILS_MINIMUMAGE: 'Minimum age',
@@ -554,6 +556,7 @@ export class I18nEnUs implements I18nInterface {
       PRODUCT_DETAILS_WEIGHTINKG: 'Weight',
       PRODUCT_DETAILS_TYRETYPE: 'Tyre-Type',
       PRODUCT_DETAILS_RAMSIZE: 'RAM size',
+      PRODUCT_DETAILS_SCENT: 'Scent',
       PRODUCT_DETAILS_STORAGESIZE: 'Storage-Size',
       PRODUCT_DETAILS_RESOLUTION: 'Resolution',
       PRODUCT_DETAILS_DIAMETERININCH: 'Diameter',

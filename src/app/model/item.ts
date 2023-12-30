@@ -20,6 +20,7 @@ export class Item extends BaseModel {
     author: string = '';
     brand: string = '';
     colors: string = '';
+    contentsOfDelivery: string = '';
     countryOfOrigin: string = '';
     coverType: string = '';
     diameterInInch: number = 0;
@@ -47,6 +48,7 @@ export class Item extends BaseModel {
     sizes: string = '';
     storageSize: string = '';
     subgenre: string = '';
+    scent: string = '';
     seoDescription: string = '';
     seoKeywords: string = '';
     speedKey: string = '';
@@ -110,14 +112,14 @@ export class Item extends BaseModel {
     }
 
     public static renderLowestPrice(item: Item | null): string {
-      const itemWithLowestPrice = Item.getProviderItemWithLowestPrice(item);
+      const itemWithLowestPrice: CorrespondingItem | null = Item.getProviderItemWithLowestPrice(item);
 
-      const lowestPrice = itemWithLowestPrice?.priceCurrent;
+      const lowestPrice: number | undefined = itemWithLowestPrice?.priceCurrent;
       return lowestPrice ? `${lowestPrice.toLocaleString('de-DE', {minimumFractionDigits: 2})} EUR` : '';
     }
 
     public static renderReductionOfLowestPriceItem(item: Item | null): string {
-      const itemWithLowestPrice = Item.getProviderItemWithLowestPrice(item);
+      const itemWithLowestPrice: CorrespondingItem | null = Item.getProviderItemWithLowestPrice(item);
       if (!itemWithLowestPrice?.priceCurrent || !itemWithLowestPrice?.priceInitial) {
         return '';
       }

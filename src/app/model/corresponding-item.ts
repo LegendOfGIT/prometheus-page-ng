@@ -5,7 +5,9 @@ export class CorrespondingItem extends BaseModel {
     public link: string = '';
     public priceCurrent: number = 0;
     public priceInitial: number = 0;
+    public pricePerUnit: number = 0;
     public productCondition: string = '';
+    public referenceUnit: string = '';
     public updatedOn: string = '';
 
     static override fromModel(data: CorrespondingItemDto): CorrespondingItem {
@@ -22,6 +24,10 @@ export class CorrespondingItem extends BaseModel {
     }
 
   public static renderPrice(item: CorrespondingItem | null): string | undefined {
-    return item?.priceCurrent ? `${item.priceCurrent.toLocaleString('de-DE', {minimumFractionDigits: 2})} EUR` : undefined;
+    return CorrespondingItem.renderPriceAmount(item?.priceCurrent);
+  }
+
+  public static renderPriceAmount(price: number | undefined): string | undefined {
+      return price ? `${price.toLocaleString('de-DE', {minimumFractionDigits: 2})} EUR` : undefined;
   }
 }

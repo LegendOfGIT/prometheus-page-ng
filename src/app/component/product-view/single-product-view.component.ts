@@ -236,4 +236,6 @@ export class SingleProductViewComponent implements OnInit {
 
     return (this.item?.sizes || '').split(',').filter(size => this.item?.size !== size as string).join(', ');
   }
+
+  protected readonly CorrespondingItem = CorrespondingItem;
 }
