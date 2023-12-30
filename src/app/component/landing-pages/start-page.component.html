@@ -25,14 +25,10 @@
     >
     </moderated-teaser>
   </div>
-</div>
 
-<dialog #advantagesDialog id="advantagesDialog">
-  <div class="startPage__dialogClose" (click)="advantagesDialog.close()">
-    <i class="fa fa-times-circle"></i>
+  <div class="container pt-3 pb-3">
+    <div class="col-12 startPage__disclaimer">
+      {{ 'PROVISION_DISCLAIMER' | translate }}
+    </div>
   </div>
-
-  <span [innerHTML]="whatWeKnow"></span>
-  <br/>
-  <span [innerHTML]="whatIsInForYou"></span>
-</dialog>
+</div>

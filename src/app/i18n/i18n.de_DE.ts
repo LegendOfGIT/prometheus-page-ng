@@ -576,7 +576,7 @@ export class I18nDeDe implements I18nInterface {
       PRODUCT_DETAILS_SUFFIX_DIAMETERININCH: 'Zoll',
       PRODUCT_DETAILS_SUFFIX_ANNUALCONSUMPTIONINKWH: 'kWh',
       PRODUCT_DETAILS_SUFFIX_PUMPPRESSUREINBAR: 'bar',
-
+      PROVISION_DISCLAIMER: 'Als Partner der Shops werden wir an qualifizierten Verkäufen beteiligt.',
       SEARCH_FOR_PATTERN_PREFIX: 'Nach ',
       SEARCH_FOR_PATTERN_SUFFIX: ' suchen',
       SELECT_LANGUAGE: 'Wähle eine Sprache',

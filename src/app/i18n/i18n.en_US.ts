@@ -575,6 +575,8 @@ export class I18nEnUs implements I18nInterface {
       PRODUCT_DETAILS_SUFFIX_ANNUALCONSUMPTIONINKWH: 'kWh',
       PRODUCT_DETAILS_SUFFIX_PUMPPRESSUREINBAR: 'bar',
 
+      PROVISION_DISCLAIMER: 'As a partner of the shops, we are involved in qualified sales.',
+
       SEARCH_FOR_PATTERN_PREFIX: 'Search for ',
       SEARCH_FOR_PATTERN_SUFFIX: ' ',
       SELECT_LANGUAGE: 'Select a language',

@@ -1,13 +1,6 @@
 @import '../../../styles/controls';
 @import '../../../styles';
 
-#advantagesDialog {
-  border: 1px solid lightgray;
-  border-radius: 1em;
-  font-family: $font-family;
-  max-width: 90%;
-}
-
 .startPage {
   &__actions {
     display: flex;
@@ -33,13 +26,10 @@
     }
   }
 
-  &__dialogClose {
-    color: $container-color;
-    cursor: pointer;
-    padding: 0.5em;
-    position: absolute;
-    right: 0;
-    top: 0;
+  &__disclaimer {
+    color: $content-color;
+    font-size: 0.8em;
+    font-style: italic;
   }
 
   &__hero {

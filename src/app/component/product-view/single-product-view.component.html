@@ -41,6 +41,8 @@
             <h2 class="singleProductView__sectionHeader">{{( areThereMorePrices ? 'TOP_OFFER' : 'OFFER') | translate }}</h2>
           </div>
 
+          <div class="productInformation__disclaimer mb-2">{{'PROVISION_DISCLAIMER' | translate}}</div>
+
           <div *ngIf="itemWithLowestPrice" class="productInformation__offers">
             <a href="{{itemWithLowestPrice.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
               <div class="button productInformation__offer">
