@@ -599,6 +599,8 @@ export class I18nEnUs implements I18nInterface {
       TEASER_TITLE_FUNZY: 'Funzy Play-Sofas',
       TEASER_TITLE_COFFEE_MACHINES: 'For a days good start',
       TEASER_TITLE_FASHION_SUMMER2023: 'Fashion for your summer',
+      TEASER_TITLE_GOOD_INTENTION_LIVE_HEALTHY: 'Good Intention: Live healthy!',
+      TEASER_TITLE_GOOD_INTENTION_MORE_SPORTS: 'Good Intention: More Sports!',
       TEASER_TITLE_HASHTAG_DEALS: 'The greatest deals!',
       TEASER_TITLE_HASHTAG_GOLD: 'You discovered gold!',
       TEASER_TITLE_HASHTAG_KEEPCOOL: 'Always stay cool',

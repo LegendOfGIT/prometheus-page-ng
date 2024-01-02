@@ -2,8 +2,14 @@ import {TeaserItem} from '../model/teaser-item';
 
 export class Startpage {
   public static TEASER_ITEMS: TeaserItem[] = [
-    new TeaserItem('/fashion?search=party', 'FASHION', 'party', 'We wanna party !'),
-    new TeaserItem('/kids?search=geschenk', 'KIDS', 'geschenk', 'TEASER_TITLE_CHRISTMAS_KIDS_GIFT_IDEAS'),
+    new TeaserItem('/sports', 'SPORTS', '', 'TEASER_TITLE_GOOD_INTENTION_MORE_SPORTS')
+      .setSsrRendering(true),
+    new TeaserItem('/beauty-and-care/health', 'BEAUTY_CARE_HEALTH', '', 'TEASER_TITLE_GOOD_INTENTION_LIVE_HEALTHY'),
+    new TeaserItem('', '', 'Yoga', '')
+      .setHashtags(['Highlights']),
+    new TeaserItem('', 'GROCERIES_FOOD', 'Bio', ''),
+
+    //new TeaserItem('/kids?search=geschenk', 'KIDS', 'geschenk', 'TEASER_TITLE_CHRISTMAS_KIDS_GIFT_IDEAS'),
 
     new TeaserItem('/home?filters=1000165', 'HOME', '', 'TEASER_TITLE_FUNZY')
       .setFilters(['1000165'])

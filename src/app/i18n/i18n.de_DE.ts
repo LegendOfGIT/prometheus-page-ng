@@ -599,6 +599,8 @@ export class I18nDeDe implements I18nInterface {
       TEASER_TITLE_FASHION_SUMMER2023: 'Mode für deinen Sommer',
       TEASER_TITLE_FRAGRANCES: 'Willkommen in der Welt der Düfte',
       TEASER_TITLE_FUNZY: 'Funzy Spiel-Sofas',
+      TEASER_TITLE_GOOD_INTENTION_LIVE_HEALTHY: 'Guter Vorsatz: Gesund leben',
+      TEASER_TITLE_GOOD_INTENTION_MORE_SPORTS: 'Guter Vorsatz: Mehr Sport!',
       TEASER_TITLE_HASHTAG_DEALS: 'Die größten Schnäppchen!',
       TEASER_TITLE_HASHTAG_GOLD: 'Du bist auf Gold gestoßen!',
       TEASER_TITLE_HASHTAG_KEEPCOOL: 'Immer schön cool bleiben',
