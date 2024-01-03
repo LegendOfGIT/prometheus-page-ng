@@ -397,50 +397,15 @@ export class I18nEnUs implements I18nInterface {
         'The reason: flawless, firm porcelain skin and a clear complexion are the ultimate ideal of beauty in Korea.' +
         'If you are now interested, you will find <a href="/beauty-and-care/skin-care?search=Sandawha">Sandawha</a> in the skin care section',
 
-      NAVIGATION_SEO_ELECTRONICS_AND_COMPUTERS_PHONES_SMARTPHONESCELLPHONES_HEADER_A: 'Whats the difference between Refurbished and used?',
-      NAVIGATION_SEO_ELECTRONICS_AND_COMPUTERS_PHONES_SMARTPHONESCELLPHONES_CONTENT_A:
-        'If you buy a used device, you will receive it in the exact condition in which it was sorted out. ' +
-        'In the case of a direct sale one can also speak of "bought as seen".' +
-        'Damaged battery? broken screen? Complete strangers show their most beautiful smile from the photo storage? ' +
-        'You may buy all of that along with it. ' +
-        'Of course you will save the most this way, but you have no guarantee that your device will work. ' +
-        'With the right of return, it usually looks rather bad. ' +
-        'You wont get any recall campaigns from the manufacturers this way either. ' +
-        'When buying a used device, you can only guess whether the device is still technically safe. ' +
+      NAVIGATION_SEO_GROCERIES_FOOD_HEADER_A: 'The 3 most important steps to start your vegan journey',
+      NAVIGATION_SEO_GROCERIES_FOOD_CONTENT_A: '<h4><b>1. Get informed</b></h4>' +
+        'Start by understanding the basic principles of veganism. Explore documentaries, books, and online resources to learn more about the health benefits, environmental impact, and ethical considerations. Knowledge is the key to making informed decisions.' +
         '<br/><br/>' +
-        'Refurbished is much more than just used. ' +
-        'These devices do not just go over the counter unchanged, but are scrutinized by experts beforehand. ' +
-        'They guarantee quality by putting the devices through their paces and giving them a professional cleaning. ' +
-        'If something is broken on the hardware, individual parts are exchanged (defective camera, weak battery, ...). ' +
-        'Refurbishers do all this, i.e. the dealers who process devices and sell them at Back Market, for example. ' +
-        'Once they are done with that, the device will work just as well as one off the assembly line.' +
-        'Here at WeWanna shop! you can find devices that have been refurbished by Backmarket.de.' +
-        'Backmarket offers the restored devices with a 12-month guarantee, 30-day right of return and free standard shipping. ' +
-        'Professionally renovated alternatives are also cheaper than new devices (up to 70% cheaper). ' +
-        'And if something does not work out, real people will help you there, 6 days a week.',
-
-      NAVIGATION_SEO_ELECTRONICS_AND_COMPUTERS_HOME_TVS_HEADER_A: 'Will 8K TVs be banned?',
-      NAVIGATION_SEO_ELECTRONICS_AND_COMPUTERS_HOME_TVS_CONTENT_A:
-        'From March 2023, the EU wants to ban the sale of some of the best TVs because of their high power consumption values. ' +
-        'As long as nothing changes about the planned tightening of the energy efficiency index and the eco-design directive,' +
-        'All 8K TVs and some high quality 4K TVs will disappear from the market. ' +
-        'Since CES 2023 it has become apparent that the new energy efficiency guidelines for televisions will initially only have a minor impact. ' +
-        'Manufacturers like Samsung, TCL and LG announced new 8K TVs as usual. ' +
-        'And current models that do not meet the new efficiency criteria but were delivered to retailers before March 1, 2023,' +
-        'may continue to be sold. ' +
-        'Samsung solves the problem with new TVs with an Eco mode for the factory setting, as speculated in advance in the article below. ' +
-        'This is limited to a very low level of brightness, but the manufacturer informs the user about optional image modes during the initial setup. ' +
-        'This gives users the usual bright picture with higher power consumption. ' +
-        'It is still unclear what solution LG has planned for the new 8K TVs in the Z3 family. ' +
-        'However: The industry association gfu criticized the EUs energy efficiency requirements in a press release at the end of February 2023. ' +
-        'To deliver the brighter, higher-contrast, high-resolution images that consumers are increasingly demanding,' +
-        'The devices tended to require more power. ' +
-        'While the new EU regulations currently only have a minor impact, ' +
-        'This could be different with future devices and new technologies. ' +
-        '"If specifications mean that technological progress in the interests of consumers cannot take place, ' +
-        'Then these specifications should definitely be adjusted to reality" said Dr. Sara Warneke, the gfu managing director.' +
+        '<h4><b>2. Gradual transition</b></h4>' +
+        'Take a step-by-step approach to becoming vegan. Start by replacing animal products with plant-based alternatives and incorporating more fruits, vegetables, legumes and whole grains into your diet. Our <a href="/groceries/food?search=vegan">vegan foods</a> can help you with this. Experiment with new recipes to make the transition comfortable.' +
         '<br/><br/>' +
-        '8K TVs can also be found on WeWanna shop <a href="/electronics-and-computers/home/tvs?hashtags=Filmabend&search=8K">click here</a>',
+        '<h4><b>3. Connect with the vegan community</b></h4>' +
+        'Join local or online vegan communities for support and guidance. Connect with like-minded people, share experiences and learn from others who have successfully adopted a vegan lifestyle. Community support can make the journey more sustainable and fulfilling.',
 
       NAVIGATION_SEO_HOME_FURNITURE_BEDS_HEADER_A: 'What do you have to consider when choosing the right bed size?',
       NAVIGATION_SEO_HOME_FURNITURE_BEDS_CONTENT_A: 'Of course you will find numerous classic single beds with a width of 80 to 90 centimeters and a length of 200 centimeters. ' +
@@ -471,6 +436,18 @@ export class I18nEnUs implements I18nInterface {
         'They are a popular choice in childrens and teenagers bedrooms, where there never seems to be enough room for the little ones belongings." ' +
         'If you use it as a guest bed, you can store the bedding in the drawers to protect it from dust. ' +
         'If the bed is fresh, the visitor uses it for the clothes he has brought with him.',
+
+      NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_HEADER_A: 'Discover the world of Anime!',
+      NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_CONTENT_A: 'Anime has become a global phenomenon, captivating audiences with its unique storytelling, vivid characters and imaginative worlds. <a href="/multimedia/movies/anime">Dive into the realm of major anime brands</a> that have left an indelible mark on the industry:' +
+        '<br/><br/>' +
+        '<h4><b>Studio Ghibli</b></h4>' +
+        'Studio Ghibli is known for enchanting masterpieces such as "<a href="/hashtags/WorldOfAnime?search=chihiro">Spirited Away</a>", "<a href="/hashtags/WorldOfAnime?search=totoro" >My Neighbor Totoro</a>" and "<a href="/hashtags/WorldOfAnime?search=mononoke">Princess Mononoke</a>" and a legendary anime studio that has set the standard for artistic excellence and emotional storytelling .' +
+        '<br/><br/>' +
+        '<h4><b>Toei Animation</b></h4>' +
+        'As one of the oldest and most prolific animation studios in Japan, Toei Animation has created iconic series such as "<a href="/hashtags/WorldOfAnime?search=dragon%20ball">Dragon Ball</a>", "<a href="/hashtags /WorldOfAnime?search=one%20piece">One Piece</a>" and "<a href="/hashtags/WorldOfAnime?search=sailor%20moon">Sailor Moon</a>" were launched. Her diverse portfolio spans all genres and captures the hearts of audiences worldwide.' +
+        '<br/><br/>' +
+        '<h4><b>Kyoto Animation</b></h4>' +
+        'Known for its stunning visuals and heartwarming narratives, Kyoto Animation has produced hits such as Clannad, K-On! and <a href="/hashtags/WorldOfAnime?search=violet%20evergarden">Violet Evergarden</a >“ produced. Their commitment to high-quality animation and emotional storytelling has gained a loyal fan base.',
 
       NAVIGATION_SLOGAN_ALL: 'shop',
       NAVIGATION_SLOGAN_BEAUTY_CARE: 'be beautiful',
