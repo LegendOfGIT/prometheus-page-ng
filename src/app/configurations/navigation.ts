@@ -67,6 +67,7 @@ export class Navigation {
       .setHasTeaser(true),
     new NavigationItem('KIDS', 'KIDS_BOOKS', ['kids', 'books', '']),
     new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_AUDIOBOOKS', ['kids', 'books', 'audio-books']),
+    new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_LEARNINGBOOKS', ['kids', 'books', 'learning-books']),
     new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_READINGBOOKS', ['kids', 'books', 'reading-books']),
     new NavigationItem('KIDS', 'KIDS_PARTY', ['kids', 'party', '']).setHasSlogan(true),
     new NavigationItem('KIDS_PARTY', 'KIDS_PARTY_TABLEWARE', ['kids', 'party', 'tableware']),
