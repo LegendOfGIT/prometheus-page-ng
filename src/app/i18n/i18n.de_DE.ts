@@ -433,6 +433,9 @@ export class I18nDeDe implements I18nInterface {
         'Kommen sie bei dir als Gästebetten zum Einsatz, kannst du das Bettzeug staubgeschützt in den Schubladen verwahren. ' +
         'Ist das Bett dann frisch bezogen, benutzt der Besuch sie für seine mitgebrachte Kleidung.',
 
+      NAVIGATION_SEO_KIDS_TOYS_HEADER_A: 'Entdecke und sammele: Dein ultimativer Leitfaden für das Pokémon-Merchandise-Wunderland',
+      NAVIGATION_SEO_KIDS_TOYS_CONTENT_A: 'Begib dich auf eine magische Einkaufsreise durch unsere umfangreiche Sammlung an <a href="/hashtags/Highlights?search=pokemon">Pokémon-Produkten</a>! Lass der Nostalgie und Spannung freien Lauf, während du eine Schatzkammer erkundest, die alles enthält, wovon ein Pokémon-Fan nur träumen kann. Von plüschigen Pikachu-Gefährten bis hin zu exklusiven Sammelkarten – tauche ein in eine Welt voller Sammlerstücke, die das Pokémon-Universum zum Leben erwecken. Egal, ob du ein erfahrener Trainer oder ein Fan bist, der den Charme zum ersten Mal entdeckt, unsere reichhaltige Auswahl bietet für jeden etwas. Werten dein Pokémon-Erlebnis mit hochwertigen Merchandise-Artikeln auf, alles einfängt was das beliebte Franchise ausmacht. Got a shop em all! – denn jedes Pokémon verdient einen Platz in deiner Sammlung! Entdecke, wähle und lasse das Abenteuer beginnen.',
+
       NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_HEADER_A: 'Entdecke die Welt des Anime!',
       NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_CONTENT_A: 'Anime ist zu einem globalen Phänomen geworden und fasziniert das Publikum mit seinem einzigartigen Geschichtenerzählen, lebendigen Charakteren und fantasievollen Welten. <a href="/multimedia/movies/anime">Tauche ein in das Reich der großen Anime-Marken</a>, die einen unauslöschlichen Eindruck in der Branche hinterlassen haben:' +
         '<br/><br/>' +

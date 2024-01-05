@@ -438,6 +438,9 @@ export class I18nEnUs implements I18nInterface {
         'If you use it as a guest bed, you can store the bedding in the drawers to protect it from dust. ' +
         'If the bed is fresh, the visitor uses it for the clothes he has brought with him.',
 
+      NAVIGATION_SEO_KIDS_TOYS_HEADER_A: 'Discover and Collect: Your Ultimate Guide to Pokémon Merchandise Wonderland',
+      NAVIGATION_SEO_KIDS_TOYS_CONTENT_A: 'Embark on a magical shopping journey through our extensive collection of <a href="/hashtags/Highlights?search=pokemon">Pokémon products</a>! Unleash the nostalgia and excitement as you explore a treasure trove containing everything a Pokémon fan could dream of. From plush Pikachu companions to exclusive trading cards, immerse yourself in a world of collectibles that bring the Pokémon universe to life. Whether you\'re an experienced trainer or a fan discovering the charm for the first time, our extensive selection offers something for everyone. Enhance your Pokémon experience with high-quality merchandise that captures everything that defines the popular franchise. Got a shop em all! – because every Pokémon deserves a place in your collection! Discover, choose and let the adventure begin.',
+
       NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_HEADER_A: 'Discover the world of Anime!',
       NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_CONTENT_A: 'Anime has become a global phenomenon, captivating audiences with its unique storytelling, vivid characters and imaginative worlds. <a href="/multimedia/movies/anime">Dive into the realm of major anime brands</a> that have left an indelible mark on the industry:' +
         '<br/><br/>' +
