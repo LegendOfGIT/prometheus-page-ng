@@ -67,19 +67,19 @@ export class HeaderComponent {
         }
 
         this.suggestionsApiService.getSearchSuggestions(givenPattern, this.navigationService.activeNavigationItem?.fromId || '').subscribe(((items: Array<SuggestionItem>): void => {
-          this.suggestions = [];
+          let suggestions: Array<SuggestionItem> = [];
 
-          if (!items.find((item: SuggestionItem) => givenPattern.trim().toLowerCase() === item.label.toLowerCase())) {
+          if (!items.find((item: SuggestionItem): boolean => givenPattern.trim().toLowerCase() === item.label.toLowerCase())) {
             const searchItem: SuggestionItem = new SuggestionItem(givenPattern);
             searchItem.mode = SuggestionItemMode.SEARCH;
-            this.suggestions.push(searchItem);
+            suggestions.push(searchItem);
           }
 
-          this.suggestions = this.suggestions.concat(items.map((item: SuggestionItem) => { item.mode = SuggestionItemMode.SEARCH; return item; }));
+          suggestions = suggestions.concat(items.map((item: SuggestionItem) => { item.mode = SuggestionItemMode.SEARCH; return item; }));
 
           this.hashtagsService.getHashtags(givenPattern)
             .subscribe((items: Array<SuggestionItem>): void => {
-              this.suggestions = this.suggestions.concat(items);
+              this.suggestions = suggestions.concat(items);
             });
         }));
       });
@@ -100,7 +100,7 @@ export class HeaderComponent {
           queryParams: {
             search: this.searchPatternControl.value
           }
-        });
+        }).then(() => {});
 
       return;
     }

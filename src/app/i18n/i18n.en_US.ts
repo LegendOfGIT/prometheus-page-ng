@@ -234,7 +234,9 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_GROCERIES_DRINKS_TEA: 'tea',
       NAVIGATION_GROCERIES_DRINKS_WINE: 'wine',
       NAVIGATION_GROCERIES_FOOD: 'food',
+      NAVIGATION_GROCERIES_FOOD_DESSERTS: 'desserts',
       NAVIGATION_GROCERIES_FOOD_DRYFRUITS: 'dry fruits',
+      NAVIGATION_GROCERIES_FOOD_MEATSUBSTITUTES: 'meat substitutes',
       NAVIGATION_GROCERIES_FOOD_NODDLES: 'noodles and pasta',
       NAVIGATION_GROCERIES_FOOD_NUTS: 'nuts',
       NAVIGATION_GROCERIES_FOOD_OILSVINEGAR: 'oils and vinegar',
@@ -440,6 +442,24 @@ export class I18nEnUs implements I18nInterface {
 
       NAVIGATION_SEO_KIDS_TOYS_HEADER_A: 'Discover and Collect: Your Ultimate Guide to Pokémon Merchandise Wonderland',
       NAVIGATION_SEO_KIDS_TOYS_CONTENT_A: 'Embark on a magical shopping journey through our extensive collection of <a href="/hashtags/Highlights?search=pokemon">Pokémon products</a>! Unleash the nostalgia and excitement as you explore a treasure trove containing everything a Pokémon fan could dream of. From plush Pikachu companions to exclusive trading cards, immerse yourself in a world of collectibles that bring the Pokémon universe to life. Whether you\'re an experienced trainer or a fan discovering the charm for the first time, our extensive selection offers something for everyone. Enhance your Pokémon experience with high-quality merchandise that captures everything that defines the popular franchise. Got a shop em all! – because every Pokémon deserves a place in your collection! Discover, choose and let the adventure begin.',
+
+      NAVIGATION_SEO_MULTIMEDIA_GAMES_PLAYSTATION_5_HEADER_A: 'Playful Discoveries: Surprising and Fun Facts About PlayStation',
+      NAVIGATION_SEO_MULTIMEDIA_GAMES_PLAYSTATION_5_CONTENT_A: 'Get ready to expand your PlayStation knowledge with these fun facts. Whether you\'re a gaming nerd or just starting out, this information will add a new dimension to your PlayStation experience.' +
+        '<br/><br/>' +
+        '<h4><b>Super Marios influence on PlayStation</b></h4>' +
+        'Did you know that the origins of the <a href="/multimedia/games/playstation-5">PlayStation</a> have a connection to <a href="/multimedia/games/nintendo-switch">Nintendos</a > famous plumber <a href="/hashtags/Highlights?search=super%20mario">Mario</a> have? Sony and Nintendo originally wanted to collaborate on a CD-ROM add-on for the Super Nintendo, but when the deal fell through, Sony used the technology to create the first PlayStation.' +
+        '<br/><br/>' +
+        '<h4><b>PlayStations Secret Codename</b></h4>' +
+        'Before the big reveal, PlayStation was developed under the secret codename "Project Reality." It adds a touch of mystery to the early days of PlayStation, doesnt it?' +
+        '<br/><br/>' +
+        '<h4><b>Evolution of the iconic controller</b></h4>' +
+        'The iconic design of the <a href="/hashtags/LetsPlay?search=ps5%20controller">PlayStation controller</a> was no coincidence. Its shape and button layout are inspired by the human hand, providing a comfortable and intuitive gaming experience. Over the years the controller has evolved to include features such as rumble feedback and motion detection.' +
+        '<br/><br/>' +
+        '<h4><b>The PlayStation 2 "Matrix" Connection</b></h4>' +
+        'If youre a fan of <a href="/multimedia?search=Matrix">"Matrix"</a>, you may appreciate the fact that the iconic green symbols and graphics from the film inform the design of the PlayStation 2 console influenced. Its a subtle nod to the sci-fi classic that might give you a new look at your PS2.' +
+        '<br/><br/>' +
+        '<h4><b>An incredible record!</b></h4>' +
+        'PlayStation is not just a gaming giant; it also holds impressive records. With over 155 million units sold, the PlayStation 2 holds the title of the best-selling gaming console of all time!',
 
       NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_HEADER_A: 'Discover the world of Anime!',
       NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_CONTENT_A: 'Anime has become a global phenomenon, captivating audiences with its unique storytelling, vivid characters and imaginative worlds. <a href="/multimedia/movies/anime">Dive into the realm of major anime brands</a> that have left an indelible mark on the industry:' +

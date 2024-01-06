@@ -234,7 +234,9 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_GROCERIES_DRINKS_TEA: 'Tee',
       NAVIGATION_GROCERIES_DRINKS_WINE: 'Wein',
       NAVIGATION_GROCERIES_FOOD: 'Essen',
+      NAVIGATION_GROCERIES_FOOD_DESSERTS: 'Desserts',
       NAVIGATION_GROCERIES_FOOD_DRYFRUITS: 'Trockenfrüchte',
+      NAVIGATION_GROCERIES_FOOD_MEATSUBSTITUTES: 'Fleischersatz',
       NAVIGATION_GROCERIES_FOOD_NOODLES: 'Nudeln und Pasta',
       NAVIGATION_GROCERIES_FOOD_NUTS: 'Nüsse',
       NAVIGATION_GROCERIES_FOOD_OILSVINEGAR: 'Öl & Essig',
@@ -435,6 +437,24 @@ export class I18nDeDe implements I18nInterface {
 
       NAVIGATION_SEO_KIDS_TOYS_HEADER_A: 'Entdecke und sammele: Dein ultimativer Leitfaden für das Pokémon-Merchandise-Wunderland',
       NAVIGATION_SEO_KIDS_TOYS_CONTENT_A: 'Begib dich auf eine magische Einkaufsreise durch unsere umfangreiche Sammlung an <a href="/hashtags/Highlights?search=pokemon">Pokémon-Produkten</a>! Lass der Nostalgie und Spannung freien Lauf, während du eine Schatzkammer erkundest, die alles enthält, wovon ein Pokémon-Fan nur träumen kann. Von plüschigen Pikachu-Gefährten bis hin zu exklusiven Sammelkarten – tauche ein in eine Welt voller Sammlerstücke, die das Pokémon-Universum zum Leben erwecken. Egal, ob du ein erfahrener Trainer oder ein Fan bist, der den Charme zum ersten Mal entdeckt, unsere reichhaltige Auswahl bietet für jeden etwas. Werten dein Pokémon-Erlebnis mit hochwertigen Merchandise-Artikeln auf, alles einfängt was das beliebte Franchise ausmacht. Got a shop em all! – denn jedes Pokémon verdient einen Platz in deiner Sammlung! Entdecke, wähle und lasse das Abenteuer beginnen.',
+
+      NAVIGATION_SEO_MULTIMEDIA_GAMES_PLAYSTATION_5_HEADER_A: 'Spielerische Entdeckungen: Überraschende und unterhaltsame Fakten über PlayStation',
+      NAVIGATION_SEO_MULTIMEDIA_GAMES_PLAYSTATION_5_CONTENT_A: 'Mach dich bereit, dein Wissen über PlayStation mit diesen unterhaltsamen Fakten zu erweitern. Ganz gleich, ob du ein Gaming-Nerd bist oder gerade erst damit anfängst: Diese Informationen werden deinem PlayStation-Erlebnis eine neue Dimension verleihen.' +
+        '<br/><br/>' +
+        '<h4><b>Super Marios Einfluß auf PlayStation</b></h4>' +
+        'Wusstest du, dass die Ursprünge der <a href="/multimedia/games/playstation-5">PlayStation</a> eine Verbindung zu <a href="/multimedia/games/nintendo-switch">Nintendos</a> berühmtem Klempner <a href="/hashtags/Highlights?search=super%20mario">Mario</a> haben? Ursprünglich wollten Sony und Nintendo an einem CD-ROM-Add-on für den Super Nintendo zusammenarbeiten, doch als der Deal scheiterte, nutzte Sony die Technologie, um die erste PlayStation zu entwickeln.' +
+        '<br/><br/>' +
+        '<h4><b>PlayStations geheimer Codename</b></h4>' +
+        'Vor der großen Enthüllung wurde PlayStation unter dem geheimen Codenamen „Project Reality“ entwickelt. Es verleiht den frühen Tagen von PlayStation einen Hauch von Geheimnis, nicht wahr?' +
+        '<br/><br/>' +
+        '<h4><b>Entwicklung des ikonischen Controllers</b></h4>' +
+        'Das ikonische Design des <a href="/hashtags/LetsPlay?search=ps5%20controller">PlayStation-Controllers</a> war kein Zufall. Seine Form und Tastenanordnung wurden von der menschlichen Hand inspiriert und sorgen für ein komfortables und intuitives Spielerlebnis. Im Laufe der Jahre wurde der Controller weiterentwickelt und bietet Funktionen wie Rumble-Feedback und Bewegungserkennung.' +
+        '<br/><br/>' +
+        '<h4><b>Die „Matrix“-Verbindung der PlayStation 2</b></h4>' +
+        'Wenn du ein Fan von <a href="/multimedia?search=Matrix">„Matrix“</a> bist, wirst du vielleicht die Tatsache zu schätzen wissen, dass die ikonischen grünen Symbole und Grafiken aus dem Film das Design der PlayStation 2-Konsole beeinflusst haben. Es ist eine subtile Anspielung auf den Science-Fiction-Klassiker, die Ihnen vielleicht einen neuen Blick auf Ihre PS2 verschafft.' +
+        '<br/><br/>' +
+        '<h4><b>Ein wahnsinniger Rekord!</b></h4>' +
+        'PlayStation ist nicht nur ein Gaming-Riese; es hält auch beeindruckende Rekorde. Mit über 155 Millionen verkauften Einheiten hält die PlayStation 2 den Titel der meistverkauften Spielekonsole aller Zeiten!',
 
       NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_HEADER_A: 'Entdecke die Welt des Anime!',
       NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_CONTENT_A: 'Anime ist zu einem globalen Phänomen geworden und fasziniert das Publikum mit seinem einzigartigen Geschichtenerzählen, lebendigen Charakteren und fantasievollen Welten. <a href="/multimedia/movies/anime">Tauche ein in das Reich der großen Anime-Marken</a>, die einen unauslöschlichen Eindruck in der Branche hinterlassen haben:' +
