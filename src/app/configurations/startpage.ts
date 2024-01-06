@@ -2,6 +2,9 @@ import {TeaserItem} from '../model/teaser-item';
 
 export class Startpage {
   public static TEASER_ITEMS: TeaserItem[] = [
+    new TeaserItem('/hashtags/Highlights?search=vegan', '', 'vegan', 'VEGANuary')
+      .setHashtags(['Highlights']),
+    
     new TeaserItem('/sports', 'SPORTS', '', 'TEASER_TITLE_GOOD_INTENTION_MORE_SPORTS')
       .setSsrRendering(true),
     new TeaserItem('/beauty-and-care/health', 'BEAUTY_CARE_HEALTH', '', 'TEASER_TITLE_GOOD_INTENTION_LIVE_HEALTHY'),
@@ -15,8 +18,6 @@ export class Startpage {
       .setFilters(['1000165'])
       .setSsrRendering(true),
 
-    new TeaserItem('/kids?filters=1000164', 'KIDS', '', 'Little Hipstar Shop')
-      .setFilters(['1000164']),
 
     new TeaserItem('/kids?search=tonies', 'KIDS', 'tonies', 'TEASER_TITLE_TONIES'),
 
