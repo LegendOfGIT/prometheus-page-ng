@@ -104,12 +104,28 @@ export class Item extends BaseModel {
         return item.providers[0];
       }
 
-      const providers = item.providers
-        .filter(item => (item?.priceCurrent || 0) > 0)
+      const providers: Array<CorrespondingItem | null> = item.providers
+        .filter((item: CorrespondingItem | null): boolean => (item?.priceCurrent || 0) > 0)
         .sort((a, b) => (a?.priceCurrent || 0) - (b?.priceCurrent || 0));
 
       return providers[0];
     }
+
+  public static getProviderItemWithHighestPrice(item: Item | null): CorrespondingItem | null {
+    if (!item?.providers || !item.providers.length) {
+      return null;
+    }
+
+    if (1 === item.providers.length) {
+      return item.providers[0];
+    }
+
+    const providers: Array<CorrespondingItem | null> = item.providers
+      .filter((item: CorrespondingItem | null): boolean => (item?.priceCurrent || 0) > 0)
+      .sort((a, b) => (b?.priceCurrent || 0) - (a?.priceCurrent || 0));
+
+    return providers[0];
+  }
 
     public static renderLowestPrice(item: Item | null): string {
       const itemWithLowestPrice: CorrespondingItem | null = Item.getProviderItemWithLowestPrice(item);

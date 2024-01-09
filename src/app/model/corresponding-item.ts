@@ -3,6 +3,7 @@ import { CorrespondingItemDto } from './dto/corresponding-item-dto';
 
 export class CorrespondingItem extends BaseModel {
     public link: string = '';
+    public amountInStock: number | undefined;
     public priceCurrent: number = 0;
     public priceInitial: number = 0;
     public pricePerUnit: number = 0;
@@ -12,7 +13,7 @@ export class CorrespondingItem extends BaseModel {
 
     static override fromModel(data: CorrespondingItemDto): CorrespondingItem {
 
-      const item = this.bindFrom<CorrespondingItemDto, CorrespondingItem>(CorrespondingItem, data) || new CorrespondingItem();
+      const item: CorrespondingItem = this.bindFrom<CorrespondingItemDto, CorrespondingItem>(CorrespondingItem, data) || new CorrespondingItem();
       if (!item) {
         return new CorrespondingItem();
       }

@@ -578,7 +578,7 @@ export class I18nDeDe implements I18nInterface {
       SEO_PAGE_KEYWORDS: 'finden, shopping, mode, musik, kinder, multimedia, technik, videospiele, konsolen, elektronik, computer, schönheit, pflege, entertainment',
       SEO_PAGE_TITLE: 'Finde alles auf WeWanna.shop!',
       SEO_CATEGORY_PAGE_TITLE: 'Finde alles aus {category} auf WeWanna.shop!',
-      SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE: '{product-name} | Gefunden auf WeWanna.shop',
+      SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE: '{product-name} | Entdecke und kaufe auf WeWanna.shop',
       SHARE: 'Teilen',
       SHARE_FOUND_AT_WE_WANNA: 'Gefunden auf WeWanna',
       SHARE_ON_PINTEREST: 'Auf Pinterest teilen',

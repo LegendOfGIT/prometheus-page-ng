@@ -93,6 +93,35 @@ export class SingleProductViewComponent implements OnInit {
     });
   }
 
+  private getOffersObject(productUri: string): any {
+    const lowestPrice: number | undefined = Item.getProviderItemWithLowestPrice(this.item)?.priceCurrent;
+    const highestPrice: number | undefined = Item.getProviderItemWithHighestPrice(this.item)?.priceCurrent;
+
+    if (!lowestPrice && !highestPrice) {
+      return;
+    }
+
+    const providers: Array<CorrespondingItem | null> = this.item?.providers || [];
+    const providerCount: number = providers.length;
+    const offers: any = {
+      '@type': providerCount > 1 ? 'AggregateOffer' : 'Offer',
+      availability: !providers.find(provider => undefined !== provider?.amountInStock) || providers.find(provider => provider?.amountInStock) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+      offerCount: providerCount,
+      priceCurrency: 'EUR',
+      url: productUri,
+    };
+
+    if (lowestPrice && 1 === providerCount) {
+      offers.price = lowestPrice;
+    }
+    if (providerCount > 1) {
+      offers.lowPrice = lowestPrice ? lowestPrice : undefined;
+      offers.highPrice = highestPrice ? highestPrice : undefined;
+    }
+
+    return offers;
+  };
+
   private renderSEOInformation(): void {
     this.titleService.setTitle(
       (this.translationService.getTranslations().SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE || '')
@@ -115,23 +144,15 @@ export class SingleProductViewComponent implements OnInit {
     const contentModel: HTMLScriptElement = this.doc.createElement('script');
     contentModel.setAttribute('type', 'application/ld+json');
 
-    const lowestPrice: CorrespondingItem | null = Item.getProviderItemWithLowestPrice(this.item);
-
     contentModel.innerHTML = JSON.stringify({
       '@context': 'https://schema.org/',
       '@type': 'Product',
       name: this.item?.title || '',
       description: this.item?.description || '',
       image: [this.item?.titleImage || ''],
-      offers: !lowestPrice || 0 === lowestPrice.priceCurrent ? undefined : {
-        '@type': 'Offer',
-        url: productUri,
-        priceCurrency: 'EUR',
-        price: lowestPrice.priceCurrent
-      }
+      offers: this.getOffersObject(productUri)
     });
     this.doc.head.appendChild(contentModel);
-
   }
 
   ngOnInit(): void {

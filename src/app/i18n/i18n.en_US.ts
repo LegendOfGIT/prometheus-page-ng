@@ -584,7 +584,7 @@ export class I18nEnUs implements I18nInterface {
       SEO_PAGE_KEYWORDS: 'find, shopping, fashion, music, kids, multimedia, tech, videogames, games, consoles, electronics, computers, beauty, care, entertainment',
       SEO_PAGE_TITLE: 'Find everything on WeWanna.shop!',
       SEO_CATEGORY_PAGE_TITLE: 'Find everything of {category} on WeWanna.shop!',
-      SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE: '{product-name} | Found on WeWanna.shop',
+      SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE: '{product-name} | Discover and buy on WeWanna.shop',
       SHARE: 'Share',
       SHARE_FOUND_AT_WE_WANNA: 'found on WeWanna',
       SHARE_ON_PINTEREST: 'share on Pinterest',
