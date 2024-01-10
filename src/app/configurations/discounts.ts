@@ -4,24 +4,6 @@ import {Item} from '../model/item';
 export class Discounts {
   public static DISCOUNTS: DiscountItem[] = [
     new DiscountItem(
-      'DISCOUNT_TEASER_SILKESWK_NEUJAHR',
-      'DISCOUNT_CONDITIONS_SILKESWK_NEUJAHR',
-      '24NEUJAHR20',
-      new Date(2024, 0, 2, 0, 0, 0),
-      new Date(2024, 0, 5, 23, 59, 59)
-    ).setConditionsToCheck([
-      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'silkes-weinkeller' }
-    ]),
-    new DiscountItem(
-      'DISCOUNT_TEASER_VANDERSTORM_ENDSPURT',
-      '',
-      'SALE10',
-      undefined,
-      new Date(2024, 0, 1, 23, 59, 59)
-    ).setConditionsToCheck([
-      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'janvanderstorm' }
-    ]),
-    new DiscountItem(
       'DISCOUNT_TEASER_NATURESWAY_NEWYEAR_NEWME',
       'DISCOUNT_CONDITIONS_NATURESWAY_NEWYEAR_NEWME',
       '',
@@ -29,6 +11,15 @@ export class Discounts {
       new Date(2024, 0, 31, 23, 59, 59)
     ).setConditionsToCheck([
       { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'naturesway' }
+    ]),
+    new DiscountItem(
+      'DISCOUNT_TEASER_KARLKARLO_HEALTHY15',
+      '',
+      'HEALTHY15',
+      undefined,
+      new Date(2024, 0, 31, 23, 59, 59)
+    ).setConditionsToCheck([
+      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'karlkarlo' }
     ])
   ];
 
