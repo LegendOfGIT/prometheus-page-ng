@@ -527,6 +527,7 @@ export class I18nEnUs implements I18nInterface {
       PRODUCT_DETAILS_SUBGENRE: 'Sub-Genre',
       PRODUCT_DETAILS_MINIMUMAGE: 'Minimum age',
       PRODUCT_DETAILS_AUTHOR: 'Author',
+      PRODUCT_DETAILS_IMPORTANTHINTS: 'Important Notes',
       PRODUCT_DETAILS_INTERPRET: 'Interpret',
       PRODUCT_DETAILS_ISBN: 'ISBN',
       PRODUCT_DETAILS_PUBLISHER: 'Publisher',

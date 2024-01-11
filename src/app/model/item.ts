@@ -31,6 +31,7 @@ export class Item extends BaseModel {
     interpret: string = '';
     genre: string = '';
     heightInCm: number = 0;
+    importantHints: string = '';
     isbn: string = '';
     languages: string = '';
     loadIndex: number = 0;

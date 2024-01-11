@@ -523,6 +523,7 @@ export class I18nDeDe implements I18nInterface {
       PRODUCT_DETAILS_SUBGENRE: 'Sub-Genre',
       PRODUCT_DETAILS_MINIMUMAGE: 'Mindestalter',
       PRODUCT_DETAILS_AUTHOR: 'Autor',
+      PRODUCT_DETAILS_IMPORTANTHINTS: 'Wichtige Hinweise',
       PRODUCT_DETAILS_INTERPRET: 'Interpret',
       PRODUCT_DETAILS_ISBN: 'ISBN',
       PRODUCT_DETAILS_PUBLISHER: 'Herausgeber',
