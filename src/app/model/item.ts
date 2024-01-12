@@ -155,17 +155,19 @@ export class Item extends BaseModel {
         return [];
       }
 
-      const itemDetails = [new ItemDetails('MAKE', item.make || item.brand)];
+      const itemDetails: Array<ItemDetails> = [new ItemDetails('MAKE', item.make || item.brand)];
 
-      Object.keys(translations).filter((translationKey: string) => translationKey.startsWith('PRODUCT_DETAILS_')).forEach((translationKey: string) => {
-          Object.keys(item).forEach((key: string) => {
-            if (translationKey === `PRODUCT_DETAILS_${key.toUpperCase()}`) {
-              itemDetails.push(new ItemDetails(key.toUpperCase(), item[key as keyof Item]));
-            }
-          });
+      const prependedPropertyKeys: Array<string> = [ 'importantHints' ];
+      let propertyKeys: Array<string> = Object.keys(item).filter((key: string): boolean => -1 === prependedPropertyKeys.indexOf(key));
+      propertyKeys = propertyKeys.concat(prependedPropertyKeys);
+
+      propertyKeys.forEach((key: string): void => {
+        if (translations[`PRODUCT_DETAILS_${key.toUpperCase()}`]) {
+          itemDetails.push(new ItemDetails(key.toUpperCase(), item[key as keyof Item]));
+        }
       });
 
-      return itemDetails.filter(detail => detail.value);
+      return itemDetails.filter((detail: ItemDetails) => detail.value);
     }
 
 }
