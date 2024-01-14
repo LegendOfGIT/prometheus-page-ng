@@ -514,6 +514,7 @@ export class I18nEnUs implements I18nInterface {
       OFFER: 'Offer',
       OFFER_DETAILS: 'Offer Details',
       PRICE_FROM: 'from',
+      PRICE_HISTORY: 'Price History',
       PRIVATSPHERE_OPTIONS: 'Privatsphere-Options',
       PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES: 'It is additionally also available in sizes',
       PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES_SUFFIX: ' ',

@@ -3,6 +3,7 @@ import { BaseModel } from './factory/factory-base';
 import { CorrespondingItem } from './corresponding-item';
 import { ItemDetails } from './item-details';
 import {ItemDescription} from "./item-description";
+import {PriceHistoryItem} from "./price-history-item";
 
 export class Item extends BaseModel {
     id: string = '';
@@ -65,9 +66,10 @@ export class Item extends BaseModel {
     imagesBig: Array<string> = [];
     descriptions: Array<ItemDescription | null> = [];
     providers: Array<CorrespondingItem | null> = [];
+    priceHistory: Array<PriceHistoryItem> = [];
 
     static override fromModel(data: ItemDto): Item | null {
-        const item = this.bindFrom<ItemDto, Item>(Item, data);
+        const item: Item | null = this.bindFrom<ItemDto, Item>(Item, data);
         if (item) {
           item.id = (data as any)._id;
           item.diameterInInch = (data as any)['diameter-in-inch'];
@@ -82,6 +84,7 @@ export class Item extends BaseModel {
             .map(description => ItemDescription.fromModel(description))
             .filter(description => description.content);
           item.providers = (data.providers || []).map(provider => CorrespondingItem.fromModel(provider));
+          item.priceHistory = (data.priceHistory || []).map(historyItem => PriceHistoryItem.fromModel(historyItem));
 
           const hashtagsToIgnore = ['', 'noprofile', 'WeWannaShop'];
           item.hashtags = Object.keys(data.scoring || {})

@@ -1,6 +1,12 @@
 @import 'src/app/variables';
 @import 'src/styles/controls';
 
+.carousel__viewport {
+  background-color: #ffffff;
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
+
 .content {
   &__backToOverview {
     margin-bottom: 2em;
@@ -164,7 +170,7 @@
   }
 
   &__share {
-    margin-top: 1.5em;
+    margin-bottom: 1.5em;
   }
 }
 
@@ -210,6 +216,12 @@
     display: inherit;
     text-align: start;
   }
+}
+
+.slick-slider .slick-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slick-slide {

@@ -510,6 +510,7 @@ export class I18nDeDe implements I18nInterface {
       OFFER: 'Angebot',
       OFFER_DETAILS: 'Angebotdetails',
       PRICE_FROM: 'ab',
+      PRICE_HISTORY: 'Preisverlauf',
       PRIVATSPHERE_OPTIONS: 'Privatsphäre Einstellungen',
       PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES: 'Es ist zusätzlich auch in den Größen',
       PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES_SUFFIX: 'erhältlich',

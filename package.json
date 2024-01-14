@@ -36,6 +36,7 @@
     "@nguniversal/express-engine": "^14.0.0",
     "@types/uuid": "^8.3.4",
     "bootstrap": "^5.2.1",
+    "chart.js": "^4.0.0",
     "express": "^4.15.2",
     "ngx-cookie-service": "^14.0.0",
     "rxjs": "~7.5.0",

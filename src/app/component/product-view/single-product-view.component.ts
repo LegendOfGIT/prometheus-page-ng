@@ -1,7 +1,17 @@
-import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {DomSanitizer, makeStateKey, Meta, SafeHtml, Title, TransferState} from '@angular/platform-browser';
 import {DOCUMENT, isPlatformServer} from '@angular/common';
+import {
+  Chart,
+  CategoryScale,
+  LinearScale,
+  LineController,
+  LineElement,
+  PointElement,
+  Tooltip,
+  ScriptableContext
+} from 'chart.js';
 
 import {Module, NavigationService} from '../../service/navigation.service';
 import {ItemsApiService} from '../../service/items-api.service';
@@ -15,6 +25,7 @@ import {TrackingService} from '../../service/tracking.service';
 import {TrackingActivityItem} from '../../model/tracking-activity-item';
 import {TrackingInterestLevel} from '../../model/tracking-interest-level';
 import {HyphenationPipe} from "../../pipes/web.pipe";
+import {PriceHistoryItem} from "../../model/price-history-item";
 
 @Component({
   selector: 'single-product-view',
@@ -29,7 +40,8 @@ export class SingleProductViewComponent implements OnInit {
 
   public safeWhatsAppUri: SafeHtml | null = null;
   public safePinterestUri: SafeHtml | null = null;
-
+  public priceHistoryChartA: Chart | ElementRef | null = null;
+  public priceHistoryChartB: Chart | ElementRef | null = null;
   public showFullDescription = false;
 
   constructor(
@@ -71,6 +83,8 @@ export class SingleProductViewComponent implements OnInit {
       '&description=',
       encodeURIComponent(this.item?.title || '')
     ]);
+
+    Chart.register(CategoryScale, LinearScale, LineController, LineElement, PointElement, Tooltip);
   }
 
   private initialiseItem(): void {
@@ -165,6 +179,125 @@ export class SingleProductViewComponent implements OnInit {
     const script: HTMLScriptElement = this.doc.createElement('script');
     script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ "autoplay": true, centerMode: true, centerPadding: "20px", "autoplaySpeed": 7000, "arrows": false}); });';
     this.doc.body.appendChild(script);
+
+    this.renderPriceHistory();
+  }
+
+  private getPriceHistoryTimeSpanInMonths(): number {
+    const oldestDateInPriceHistory: Date | undefined = this.getOldestDateInPriceHistory();
+
+    const threeMonthAgo: Date = new Date();
+    threeMonthAgo.setMonth(threeMonthAgo.getMonth() - 3);
+    threeMonthAgo.setHours(0, 0, 0, 0);
+
+    const sixMonthAgo: Date = new Date();
+    sixMonthAgo.setMonth(sixMonthAgo.getMonth() - 6);
+    sixMonthAgo.setHours(0, 0, 0, 0);
+
+    return undefined === oldestDateInPriceHistory ?
+      1 :
+      oldestDateInPriceHistory <= sixMonthAgo ? 6 :
+      oldestDateInPriceHistory <= threeMonthAgo ? 3 :
+      1;
+  }
+
+  private renderPriceHistory(): void {
+    if (isPlatformServer(this.platformId)) {
+      return;
+    }
+
+    if (!this.item?.priceHistory?.length) {
+      return;
+    }
+
+    let aMonthAgo: Date = new Date();
+    aMonthAgo.setMonth(aMonthAgo.getMonth() - this.getPriceHistoryTimeSpanInMonths());
+    aMonthAgo.setHours(0, 0, 0, 0);
+
+    const tommorow: Date = new Date();
+    tommorow.setDate(tommorow.getDate() + 1);
+    tommorow.setHours(0, 0, 0, 0);
+
+    const data: Array<any> = [];
+    const firstLowestCurrentPrice: PriceHistoryItem = (this.item?.priceHistory || [{}])[0];
+    let lastKnownLowestPrice: number = firstLowestCurrentPrice?.lowestCurrentPrice || 0;
+
+    data.push({
+      color: '#DE5935',
+      day: `${aMonthAgo.getDate().toString().padStart(2, '0')}.${(aMonthAgo.getMonth() + 1).toString().padStart(2, '0')}.`,
+      lowestPrice: lastKnownLowestPrice
+    });
+    aMonthAgo.setDate(aMonthAgo.getDate() + 1);
+
+    while (aMonthAgo.toDateString() !== tommorow.toDateString()) {
+      const lowestPriceItem: PriceHistoryItem | undefined = (this.item?.priceHistory || []).find((item: PriceHistoryItem): boolean => {
+        const itemDate = new Date(item.date);
+        itemDate.setHours(0, 0, 0, 0);
+
+        return aMonthAgo.toDateString() === itemDate.toDateString();
+      });
+      lastKnownLowestPrice = lowestPriceItem?.lowestCurrentPrice || lastKnownLowestPrice;
+
+      data.push({
+        color: lowestPriceItem ? '#DE5935' : 'rgba(0,0,0,0)',
+        day: `${aMonthAgo.getDate().toString().padStart(2, '0')}.${(aMonthAgo.getMonth() + 1).toString().padStart(2, '0')}.`,
+        lowestPrice: lastKnownLowestPrice
+      });
+
+      aMonthAgo.setDate(aMonthAgo.getDate() + 1);
+    }
+
+    this.priceHistoryChartA = this.priceHistoryChartA || this.initializePriceHistoryChart('priceHistoryChartA', data);
+    this.priceHistoryChartB = this.priceHistoryChartB || this.initializePriceHistoryChart('priceHistoryChartB', data);
+  }
+
+  private initializePriceHistoryChart(chartId: string, data: Array<any>): Chart {
+    return new Chart(chartId, {
+      type: 'line',
+      data: {
+        labels: data.map(row => row.day),
+        datasets: [
+          {
+            label: 'Niedrigster Preis',
+            data: data.map(row => row.lowestPrice),
+            pointBackgroundColor: (context: ScriptableContext<'line'>) => data[context.dataIndex]?.color,
+            pointBorderColor: (context: ScriptableContext<'line'>) => data[context.dataIndex]?.color
+          }
+        ]
+      },
+      options: {
+        elements: {
+          line: {
+            borderColor: '#DE5935',
+            borderWidth: 2
+          }
+        },
+        responsive: false,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              callback: (value: string | number): string =>
+                'string' === typeof value
+                  ? value
+                  : `${value.toFixed(value < 1000 ? 2 : 0).replace('.', ',')} €`
+            }
+          }
+        }
+      }
+    });
+  }
+
+  private getOldestDateInPriceHistory() : Date | undefined {
+    const dates: Array<Date> = (this.item?.priceHistory || []).map(item => new Date(item.date));
+    if (!dates.length) {
+      return;
+    }
+
+    return dates.reduce(function (a, b) { return a < b ? a : b; });
   }
 
   public pickedOffer(): void {
