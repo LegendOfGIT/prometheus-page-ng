@@ -80,7 +80,7 @@ export class StartPageComponent implements OnInit {
     const pageUri: string = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
     link.setAttribute('href', pageUri);
   }
-s
+
   private showNextHero(): void {
     let currentHeroIndex: number = this.heroes.indexOf(this.currentHero || new Hero());
     currentHeroIndex = this.heroes.length -1 === currentHeroIndex ? 0 : currentHeroIndex + 1;
