@@ -158,6 +158,11 @@ export class Navigation {
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_CAMERAS',
+      'ELECTRONICS_AND_COMPUTERS_CAMERAS_CAMERASUPPLEMENTS',
+      ['electronics-and-computers', 'cameras', 'camera-supplements']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_CAMERAS',
       'ELECTRONICS_AND_COMPUTERS_CAMERAS_SLRCAMERAS',
       ['electronics-and-computers', 'cameras', 'slr-cameras']
     ),

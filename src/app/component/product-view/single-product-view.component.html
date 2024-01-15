@@ -128,15 +128,19 @@
 
   <div class="row">
     <div class="col-12 productDetails">
-      <section class="productInformation {{item?.teaserTexts?.length ? '' : 'productInformation--last'}} productInformation__header productDetails__wrapper">
+      <section class="productInformation {{item?.teaserTexts?.length ? '' : 'productInformation--last'}} productInformation__heade productDetails__wrappe">
         <div *ngIf="getItemDetails(item)?.length">
           <div class="productInformation__header">
             <h2 class="singleProductView__sectionHeader">{{'PRODUCT_DETAILS' | translate}}</h2>
           </div>
-          <div *ngFor="let detail of getItemDetails(item)" class="productDetails__content">
-            <div class="productDetails__label">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</div>
-            <div>{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate : '' : ' ' }}</div>
+
+          <div *ngFor="let detail of getItemDetails(item)" class="row mt-2">
+            <div class="col-12">
+              <div class="productDetails__label">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</div>
+              <div>{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate : '' : ' ' }}</div>
+            </div>
           </div>
+
         </div>
         &nbsp;
       </section>

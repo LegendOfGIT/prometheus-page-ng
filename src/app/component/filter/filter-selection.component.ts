@@ -271,7 +271,7 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
         this.route.snapshot?.queryParamMap?.get('search') || '',
         this.route.snapshot?.queryParamMap?.get('p_min') || '',
         this.route.snapshot?.queryParamMap?.get('p_max') || ''
-      ).subscribe(filters => {
+      ).subscribe((filters: Array<AvailableFilterItem | null>): void => {
         this.availableFilters = filters;
 
         this.brandsFilters = this.brandsFilters.filter(f => filters.find(af => f.id === af?.filterId));
