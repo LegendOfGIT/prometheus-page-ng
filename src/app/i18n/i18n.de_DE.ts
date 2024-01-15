@@ -280,6 +280,9 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_HOME_WELLNESS_SAUNAS: 'Saunen',
       NAVIGATION_HOME_WELLNESS_WHIRLPOOLS: 'Whirlpools',
       NAVIGATION_KIDS: 'Kinder & Familie',
+      NAVIGATION_KIDS_BABIES: 'Babys',
+      NAVIGATION_KIDS_BABIES_DIAPERS: 'Baby Windeln',
+      NAVIGATION_KIDS_BABIES_FOOD: 'Baby Nahrung',
       NAVIGATION_KIDS_BOOKS: 'Kinderbücher',
       NAVIGATION_KIDS_BOOKS_AUDIOBOOKS: 'Kinder Hörbücher',
       NAVIGATION_KIDS_BOOKS_LEARNINGBOOKS: 'Kinder Lernbücher',
@@ -341,11 +344,12 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_MULTIMEDIA_MOVIES_ANIME: 'Anime Filme',
       NAVIGATION_MULTIMEDIA_MOVIES_FANTASY: 'Fantasy Filme',
       NAVIGATION_MUSIC: 'Musik',
-      NAVIGATION_MUSIC_CD: 'CDs',
-      NAVIGATION_MUSIC_CD_ALTERNATIVE: 'Alternative CDs',
-      NAVIGATION_MUSIC_CD_GERMANFOLK: 'Volksmusik CDs',
-      NAVIGATION_MUSIC_CD_POP: 'Pop CDs',
-      NAVIGATION_MUSIC_CD_ROCK: 'Rock CDs',
+      NAVIGATION_MUSIC_CD: 'CDs / Vinyl',
+      NAVIGATION_MUSIC_CD_ALTERNATIVE: 'Alternative Musik',
+      NAVIGATION_MUSIC_CD_GERMANFOLK: 'Volksmusik',
+      NAVIGATION_MUSIC_CD_POP: 'Pop Musik',
+      NAVIGATION_MUSIC_CD_ROCK: 'Rock Musik',
+      NAVIGATION_MUSIC_CD_ROCKANDROLL: 'Rock and Roll Musik',
       NAVIGATION_MUSIC_INSTRUMENTS: 'Musikinstrumente',
       NAVIGATION_MUSIC_INSTRUMENTS_GUITARS: 'Gitarren',
       NAVIGATION_MUSIC_INSTRUMENTS_MIXINGPANELS: 'Mischpulte',
@@ -613,37 +617,7 @@ export class I18nDeDe implements I18nInterface {
       TITLE_WE_WORD_SUFFIX: 'ir ',
       TOP_OFFER: 'Top-Angebot',
       UPDATED_ON: 'aktualisiert am',
-      profileLogout: 'ausloggen',
-      WHY_WEWANNA: 'Was hast du von WeWanna?',
-      WHY_WEWANNA_WHAT_WE_KNOW: '<h4>Was wissen wir über dich?</h4>' +
-        '<p>' +
-        '    Viel wichtiger ist, was wir nicht über dich wissen und auch nicht wissen wollen.' +
-        '</p>' +
-        '<p>' +
-        '    Wir wissen nicht ... <br/>' +
-        '    ... wie du heißt.<br/>' +
-        '    ... wo du wohnst.<br/>' +
-        '    ... auf welchen Seiten du bereits was getan hast<br/>' +
-        '    ... auf welchen Seiten du weiter unterwegs sein wirst.' +
-        '</p>' +
-        '<p>' +
-        '    All diese Informationen über dich brauchen wir nicht, um unter tausenden Produkten da draußen<br/>' +
-        '    die zu finden die du, deine Familie, deine Freunde, Kollegen, ... brauchen<br/>' +
-        '    um das Leben ein klein wenig schöner zu machen.' +
-        '</p>' +
-        '<p>' +
-        '    Viel Spaß beim stöbern!' +
-        '    Du kannst jederzeit gerne wiederkommen :)' +
-        '</p>',
-      WHY_WEWANNA_WHAT_IS_IN_FOR_YOU: '<h4>Was hat WeWanna davon?</h4>' +
-        '<p>' +
-        '    Sobald du dich für den Besuch einer der angeschlossenen Shop-Seiten (mytoys, amazon, dress-for-less, ...) entscheidest<br/>' +
-        '    und dort eines der hier gezeigten Produkte kaufst, erhalten wir als Vermittler dieses Kaufes eine kleine Provision.' +
-        '</p>' +
-        '<p>' +
-        '    Wir wissen in diesem Fall ausschließlich das die Shop-Seite besucht und welches Produkt dort zu welcher Zeit gekauft wurde.<br/>' +
-        '    Rückschlüsse auf dich als Person und deine persönlichen Daten sind damit nicht möglich.' +
-        '</p>'
-    }
+      profileLogout: 'ausloggen'
+    };
   }
 }

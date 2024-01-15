@@ -65,6 +65,9 @@ export class Navigation {
     new NavigationItem('ALL', 'KIDS', ['kids', '', ''], 5)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('KIDS', 'KIDS_BABIES', ['kids', 'babies', '']),
+    new NavigationItem('KIDS_BABIES', 'KIDS_BABIES_DIAPERS', ['kids', 'babies', 'baby-diapers']),
+    new NavigationItem('KIDS_BABIES', 'KIDS_BABIES_FOOD', ['kids', 'babies', 'baby-food']),
     new NavigationItem('KIDS', 'KIDS_BOOKS', ['kids', 'books', '']),
     new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_AUDIOBOOKS', ['kids', 'books', 'audio-books']),
     new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_LEARNINGBOOKS', ['kids', 'books', 'learning-books']),
@@ -317,6 +320,7 @@ export class Navigation {
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_GERMANFOLK', ['music', 'cd', 'german-folk-music']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_POP', ['music', 'cd', 'pop']),
     new NavigationItem('MUSIC_CD', 'MUSIC_CD_ROCK', ['music', 'cd', 'rock']),
+    new NavigationItem('MUSIC_CD', 'MUSIC_CD_ROCKANDROLL', ['music', 'cd', 'rock-and-roll']),
     new NavigationItem('MUSIC', 'MUSIC_INSTRUMENTS', ['music', 'instruments', '']),
     new NavigationItem('MUSIC_INSTRUMENTS', 'MUSIC_INSTRUMENTS_GUITARS', ['music', 'instruments', 'guitars']),
     new NavigationItem('MUSIC_INSTRUMENTS', 'MUSIC_INSTRUMENTS_MIXINGPANELS', ['music', 'instruments', 'mixing-panels']),

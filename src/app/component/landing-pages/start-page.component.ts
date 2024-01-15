@@ -77,22 +77,15 @@ export class StartPageComponent implements OnInit {
     const link: HTMLLinkElement = this.doc.createElement('link');
     this.doc.head.appendChild(link);
     link.setAttribute('rel', 'canonical');
-    const pageUri = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
+    const pageUri: string = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
     link.setAttribute('href', pageUri);
   }
-
+s
   private showNextHero(): void {
     let currentHeroIndex: number = this.heroes.indexOf(this.currentHero || new Hero());
     currentHeroIndex = this.heroes.length -1 === currentHeroIndex ? 0 : currentHeroIndex + 1;
 
     this.currentHero = this.heroes[currentHeroIndex];
-  }
-
-  get whatWeKnow(): string {
-    return this.translationService.getTranslations().WHY_WEWANNA_WHAT_WE_KNOW;
-  }
-  get whatIsInForYou(): string {
-    return this.translationService.getTranslations().WHY_WEWANNA_WHAT_IS_IN_FOR_YOU;
   }
 }
 

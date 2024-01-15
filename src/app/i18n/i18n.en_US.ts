@@ -279,6 +279,9 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_HOME_WELLNESS_SAUNAS: 'saunas',
       NAVIGATION_HOME_WELLNESS_WHIRLPOOLS: 'whirlpools',
       NAVIGATION_KIDS: 'kids and family',
+      NAVIGATION_KIDS_BABIES: 'babies',
+      NAVIGATION_KIDS_BABIES_DIAPERS: 'baby diapers',
+      NAVIGATION_KIDS_BABIES_FOOD: 'baby food',
       NAVIGATION_KIDS_BOOKS: 'kids books',
       NAVIGATION_KIDS_BOOKS_AUDIOBOOKS: 'kids audio books',
       NAVIGATION_KIDS_BOOKS_LEARNINGBOOKS: 'kids learning books',
@@ -340,11 +343,12 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_MULTIMEDIA_MOVIES_ANIME: 'anime movies',
       NAVIGATION_MULTIMEDIA_MOVIES_FANTASY: 'fantasy movies',
       NAVIGATION_MUSIC: 'music',
-      NAVIGATION_MUSIC_CD: 'cd',
-      NAVIGATION_MUSIC_CD_ALTERNATIVE: 'alternative cds',
-      NAVIGATION_MUSIC_CD_GERMANFOLK: 'german folk music cds',
-      NAVIGATION_MUSIC_CD_POP: 'pop cds',
-      NAVIGATION_MUSIC_CD_ROCK: 'rock cds',
+      NAVIGATION_MUSIC_CD: 'cd / vinyl',
+      NAVIGATION_MUSIC_CD_ALTERNATIVE: 'alternative music',
+      NAVIGATION_MUSIC_CD_GERMANFOLK: 'german folk music',
+      NAVIGATION_MUSIC_CD_POP: 'pop music',
+      NAVIGATION_MUSIC_CD_ROCK: 'rock music',
+      NAVIGATION_MUSIC_CD_ROCKANDROLL: 'rock and roll music',
       NAVIGATION_MUSIC_INSTRUMENTS: 'musical instruments',
       NAVIGATION_MUSIC_INSTRUMENTS_GUITARS: 'guitars',
       NAVIGATION_MUSIC_INSTRUMENTS_MIXINGPANELS: 'mixing panels',
@@ -619,36 +623,7 @@ export class I18nEnUs implements I18nInterface {
       TITLE_WE_WORD_SUFFIX: 'e',
       TOP_OFFER: 'Best offer',
       profileLogout: 'logout',
-      UPDATED_ON: 'updated on',
-      WHY_WEWANNA: 'Why WeWanna?',
-      WHY_WEWANNA_WHAT_WE_KNOW: '<h4>What do we know about you?</h4>' +
-        '<p>' +
-        '   Much more important is what we don\'t know about you and don\'t want to know.' +
-        '</p>' +
-        '<p>' +
-        '   We do not know ...<br/>' +
-        '   ... your name<br/>' +
-        '   ... where you live<br/>' +
-        '   ... what you have done on which pages<br/>' +
-        '   ... which pages you will visit in the future<br/><br/>' +
-        '   We don´t need all this information to know that you are here to find<br/>' +
-        '   the products you, your family, your friends, colleagues, ... need<br/>' +
-        '   to make life a little nicer.' +
-        '</p>' +
-        '<p>' +
-        '   Enjoy your day!' +
-        '   You´re welcome to come back anytime :)' +
-        '</p>',
-      WHY_WEWANNA_WHAT_IS_IN_FOR_YOU: '<h4>What´s in for WeWanna?</h4>' +
-        '<p>' +
-        '   As soon as you decide to visit one of the connected shop pages (mytoys, amazon, dress-for-less, ...)<br/>' +
-        '   and also buy one of the products shown here, we receive a small intermediary commission.' +
-        '</p>' +
-        '<p>' +
-        '   In this case, we only know that the shop page was visited and which product was bought<br/> ' +
-        '   at which point in time.<br/>' +
-        '   We are not able to draw any conclusion about you as a person and your personal data.' +
-        '</p>'
-    }
+      UPDATED_ON: 'updated on'
+    };
   }
 }
