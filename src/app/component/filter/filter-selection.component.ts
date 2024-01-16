@@ -91,6 +91,7 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
   public brandsFilters: Array<FilterItem> = [
     new FilterItem('1000109', 'Activision'),
     new FilterItem('1000088', 'Adidas'),
+    new FilterItem('1000206', 'Affenzahn'),
     new FilterItem('1000087', 'Apple'),
     new FilterItem('1000145', 'Bench'),
     new FilterItem('1000179', 'Braun'),
@@ -129,7 +130,8 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     new FilterItem('1000169', 'Spin Master'),
     new FilterItem('1000092', 'Sony'),
     new FilterItem('1000094', 'Vivanco'),
-    new FilterItem('1000108', 'Vtech')
+    new FilterItem('1000108', 'Vtech'),
+    new FilterItem('1000207', 'Wildling')
   ];
 
   public fitFilters: Array<FilterItem> = [
@@ -137,9 +139,27 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     new FilterItem('1000003', 'skinny fit')
   ];
 
+  public genreFilters: Array<FilterItem> = [
+    new FilterItem('1000192', 'FILTERS_GENRE_PARTY'),
+    new FilterItem('1000193', 'FILTERS_GENRE_ROLEPLAY'),
+    new FilterItem('1000194', 'FILTERS_GENRE_ACTION'),
+    new FilterItem('1000195', 'FILTERS_GENRE_SPORT'),
+    new FilterItem('1000196', 'FILTERS_GENRE_RACING'),
+    new FilterItem('1000197', 'FILTERS_GENRE_SIMULATION'),
+    new FilterItem('1000198', 'FILTERS_GENRE_ARCADE'),
+    new FilterItem('1000199', 'FILTERS_GENRE_ADVENTURE'),
+    new FilterItem('1000200', 'FILTERS_GENRE_PUZZLE'),
+    new FilterItem('1000201', 'FILTERS_GENRE_HORROR'),
+    new FilterItem('1000202', 'FILTERS_GENRE_SURVIVAL'),
+    new FilterItem('1000203', 'FILTERS_GENRE_STRATEGY'),
+    new FilterItem('1000204', 'FILTERS_GENRE_FLIGHT'),
+    new FilterItem('1000205', 'FILTERS_GENRE_SHOOTER')
+  ];
+
   public sustainabilityFilters: Array<FilterItem> = [
     new FilterItem('1000111', 'bio'),
-    new FilterItem('1000178', 'FILTERS_SUSTAINABILITY_SUSTAINABLE')
+    new FilterItem('1000178', 'FILTERS_SUSTAINABILITY_SUSTAINABLE'),
+    new FilterItem('1000191', 'vegan'),
   ];
 
   public storageSizeFilters: Array<FilterItem> = [
@@ -279,6 +299,7 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
         this.sizesFilter = this.sizesFilter.filter(f => filters.find(af => f.id === af?.filterId));
         this.ageFilter = this.ageFilter.filter(f => filters.find(af => f.id === af?.filterId));
         this.fitFilters = this.fitFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.genreFilters = this.genreFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.productTypeFilters = this.productTypeFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.shopsFilters = this.shopsFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.storageSizeFilters = this.storageSizeFilters.filter(f => filters.find(af => f.id === af?.filterId));
