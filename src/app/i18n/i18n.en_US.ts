@@ -607,7 +607,7 @@ export class I18nEnUs implements I18nInterface {
       SELECT_LANGUAGE: 'Select a language',
       SEO_PAGE_KEYWORDS: 'Buy online|No Cookies|Favorite Products|Onlineshopping|Gift Ideas|Interesting Products|Exciting Products',
       SEO_PAGE_TITLE: 'Your favorite products at WeWanna.shop!',
-      SEO_CATEGORY_PAGE_TITLE: 'Buy {category} at WeWanna.shop!',
+      SEO_CATEGORY_PAGE_TITLE: 'Buy from {category} at WeWanna.shop!',
       SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE: '{product-name} | Buy online at WeWanna.shop',
       SEO_STARTPAGE_TEASER: 'In the fast-paced world of online shopping, your privacy is important, but is often not respected enough. Immerse yourself with us in the ease of anonymous shopping, designed for each of you. Imagine discovering and purchasing your favorite products without constant advertising or data tracking. Enjoy buying online on your terms, free from unwanted analysis of your personal information. Take control, find your favorite products anonymously with us and enjoy comfort without compromise. It is time to make online shopping work for you without giving anything away along the way! A first step towards carefree use of the Internet.',
       SHARE: 'Share',
