@@ -201,6 +201,11 @@ export class ItemsComponent implements OnInit {
               content: this.translationService.getTranslations()[teaserId].replace('{hashtags}', hashtags.join(' '))
             });
           }
+
+          this.metaService.updateTag({
+            name: 'keywords',
+            content: this.translationService.getTranslations()['SEO_PAGE_KEYWORDS']
+          });
         }
     }
 
