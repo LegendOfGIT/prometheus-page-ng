@@ -428,6 +428,7 @@ export class Navigation {
     new NavigationItem('SPORTS_CLIMBING', 'SPORTS_CLIMBING_SUNGLASSES', ['sports', 'climbing', 'sunglasses']),
     new NavigationItem('SPORTS', 'SPORTS_EXERCISE', ['sports', 'exercise', '']),
     new NavigationItem('SPORTS_EXERCISE', 'SPORTS_EXERCISE_EQUIPMENT', ['sports', 'exercise', 'equipment']),
+    new NavigationItem('SPORTS_EXERCISE', 'SPORTS_EXERCISE_MULTIGYMS', ['sports', 'exercise', 'multi-gyms']),
     new NavigationItem('SPORTS', 'SPORTS_TABLESPORTS', ['sports', 'tablesports', '']),
     new NavigationItem('SPORTS_TABLESPORTS', 'SPORTS_TABLESPORTS_BILLARD', ['sports', 'tablesports', 'billard']),
     new NavigationItem('SPORTS_TABLESPORTS', 'SPORTS_TABLESPORTS_TABLESOCCER', ['sports', 'tablesports', 'tablesoccer']),
