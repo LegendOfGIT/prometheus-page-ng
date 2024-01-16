@@ -127,7 +127,7 @@
             value="{{filter.id}}"
             (change)="toggleFilter(filter.id)"
             [defaultChecked]="isFilterSelected(filter.id)"/>
-          <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId}}</label>
+          <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId | translate}}</label>
         </div>
       </div>
     </div>
