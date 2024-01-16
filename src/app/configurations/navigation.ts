@@ -462,10 +462,12 @@ export class Navigation {
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('DIY', 'DIY_BUILDANDRENOVATE', ['diy', 'build-and-renovate', '']),
+    new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_BATHROOM', ['diy', 'build-and-renovate', 'bathroom']),
     new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_DOORS', ['diy', 'build-and-renovate', 'doors']),
     new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_FLOORACCESSOIRES', ['diy', 'build-and-renovate', 'floor-accessoires']),
     new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_LAMINATEFLOOR', ['diy', 'build-and-renovate', 'laminate-floor']),
     new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_PARQUETFLOOR', ['diy', 'build-and-renovate', 'parquet-floor']),
+    new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_RADIATORS', ['diy', 'build-and-renovate', 'radiators']),
     new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_TILES', ['diy', 'build-and-renovate', 'tiles']),
     new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_VINYLFLOOR', ['diy', 'build-and-renovate', 'vinyl-floor']),
     new NavigationItem('DIY_BUILDANDRENOVATE', 'DIY_BUILDANDRENOVATE_WALLPAINT', ['diy', 'build-and-renovate', 'wallpaint']),
