@@ -131,52 +131,52 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div *ngIf="sustainabilityFilters.length">
-    <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_SUSTAINABILITY' | translate }}</h5>
-    <div class="filters filters__items">
-      <div *ngFor="let filter of sustainabilityFilters" class="form-check filters__item">
-        <input
-          type="checkbox"
-          class="form-check-input"
-          id="{{filter.id}}"
-          value="{{filter.id}}"
-          (change)="toggleFilter(filter.id)"
-          [defaultChecked]="isFilterSelected(filter.id)"/>
-        <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId | translate}}</label>
+    <div *ngIf="sustainabilityFilters.length">
+      <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_SUSTAINABILITY' | translate }}</h5>
+      <div class="filters filters__items">
+        <div *ngFor="let filter of sustainabilityFilters" class="form-check filters__item">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="{{filter.id}}"
+            value="{{filter.id}}"
+            (change)="toggleFilter(filter.id)"
+            [defaultChecked]="isFilterSelected(filter.id)"/>
+          <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId | translate}}</label>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div *ngIf="fitFilters.length">
-    <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_FITS' | translate }}</h5>
-    <div class="filters filters__items">
-      <div *ngFor="let filter of fitFilters" class="form-check filters__item">
-        <input
-          type="checkbox"
-          class="form-check-input"
-          id="{{filter.id}}"
-          value="{{filter.id}}"
-          (change)="toggleFilter(filter.id)"
-          [defaultChecked]="isFilterSelected(filter.id)"/>
-        <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId}}</label>
+    <div *ngIf="fitFilters.length">
+      <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_FITS' | translate }}</h5>
+      <div class="filters filters__items">
+        <div *ngFor="let filter of fitFilters" class="form-check filters__item">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="{{filter.id}}"
+            value="{{filter.id}}"
+            (change)="toggleFilter(filter.id)"
+            [defaultChecked]="isFilterSelected(filter.id)"/>
+          <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId}}</label>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div *ngIf="storageSizeFilters.length">
-    <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_STORAGE_SIZE' | translate }}</h5>
-    <div class="filters filters__items">
-      <div *ngFor="let filter of storageSizeFilters" class="form-check filters__item">
-        <input
-          type="checkbox"
-          class="form-check-input"
-          id="{{filter.id}}"
-          value="{{filter.id}}"
-          (change)="toggleFilter(filter.id)"
-          [defaultChecked]="isFilterSelected(filter.id)"/>
-        <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId}}</label>
+    <div *ngIf="storageSizeFilters.length">
+      <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_STORAGE_SIZE' | translate }}</h5>
+      <div class="filters filters__items">
+        <div *ngFor="let filter of storageSizeFilters" class="form-check filters__item">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="{{filter.id}}"
+            value="{{filter.id}}"
+            (change)="toggleFilter(filter.id)"
+            [defaultChecked]="isFilterSelected(filter.id)"/>
+          <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId}}</label>
+        </div>
       </div>
     </div>
   </div>

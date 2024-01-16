@@ -135,6 +135,11 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
   ];
 
   public fitFilters: Array<FilterItem> = [
+    new FilterItem('1000002', 'flare fit'),
+    new FilterItem('1000003', 'skinny fit')
+  ];
+
+  public genreFilters: Array<FilterItem> = [
     new FilterItem('1000192', 'FILTERS_GENRE_PARTY'),
     new FilterItem('1000193', 'FILTERS_GENRE_ROLEPLAY'),
     new FilterItem('1000194', 'FILTERS_GENRE_ACTION'),
@@ -149,12 +154,6 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     new FilterItem('1000203', 'FILTERS_GENRE_STRATEGY'),
     new FilterItem('1000204', 'FILTERS_GENRE_FLIGHT'),
     new FilterItem('1000205', 'FILTERS_GENRE_SHOOTER')
-  ];
-
-  public genreFilters: Array<FilterItem> = [
-    new FilterItem('1000111', 'bio'),
-    new FilterItem('1000178', 'FILTERS_SUSTAINABILITY_SUSTAINABLE'),
-    new FilterItem('1000191', 'vegan'),
   ];
 
   public sustainabilityFilters: Array<FilterItem> = [
