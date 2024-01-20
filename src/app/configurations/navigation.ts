@@ -20,11 +20,20 @@ export class Navigation {
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SHOES', ['fashion', 'girls', 'shoes']),
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SWEATERS_AND_KNITWEAR', ['fashion', 'girls', 'sweaters-and-knitwear']),
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SWIMWEAR', ['fashion', 'girls', 'swimwear']),
-    new NavigationItem('FASHION', 'FASHION_WOMEN', ['fashion', 'women', '']).setHasSlogan(true),
+    new NavigationItem('FASHION', 'FASHION_WOMEN', ['fashion', 'women', ''])
+      .setHasSlogan(true),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_BAGS', ['fashion', 'women', 'bags']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES', ['fashion', 'women', 'disguises']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JACKETS', ['fashion', 'women', 'jackets']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['fashion', 'women', 'jeans']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['schwarze-damen-jeans', '', ''])
+      .setPathPartsForNavigation(['fashion', 'women', 'jeans'])
+      .setFilters(['1000014'])
+      .setSEOId('BLACKWOMENJEANS'),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['weisse-damen-jeans', '', ''])
+      .setPathPartsForNavigation(['fashion', 'women', 'jeans'])
+      .setFilters(['1000016'])
+      .setSEOId('WHITEWOMENJEANS'),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELRY', ['fashion', 'women', 'jewelry']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_MATERNITYWEAR', ['fashion', 'women', 'maternity-wear']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_NIGHTWEAR', ['fashion', 'women', 'nightwear']),
@@ -113,6 +122,14 @@ export class Navigation {
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_NINTENDO_SWITCH', ['multimedia', 'games', 'nintendo-switch']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_PC', ['multimedia', 'games', 'pc']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_PLAYSTATION_5', ['multimedia', 'games', 'playstation-5']),
+    new NavigationItem(
+      'MULTIMEDIA_GAMES',
+      'MULTIMEDIA_GAMES_PLAYSTATION_5',
+      ['playstation-5-shooter', '', '']
+    )
+      .setFilters(['1000205'])
+      .setPathPartsForNavigation(['multimedia', 'games', 'playstation-5'])
+      .setSEOId('PLAYSTATION5SHOOTER'),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_PLAYSTATION_4', ['multimedia', 'games', 'playstation-4']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_XBOX_ONE', ['multimedia', 'games', 'xbox-one']),
     new NavigationItem('MULTIMEDIA_GAMES', 'MULTIMEDIA_GAMES_XBOX_360', ['multimedia', 'games', 'xbox-360']),
@@ -295,6 +312,15 @@ export class Navigation {
       ['electronics-and-computers', 'phones', 'smartphones-and-cellphones']
     ),
     new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_PHONES',
+      'ELECTRONICS_AND_COMPUTERS_PHONES_SMARTPHONESCELLPHONES',
+      ['apple-iphones', '', '']
+    )
+      .setPathPartsForNavigation(['electronics-and-computers', 'phones', 'smartphones-and-cellphones'])
+      .setFilters(['1000087'])
+      .setSEOId('APPLEIPHONES'),
+
+    new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_WEARABLES',
       ['electronics-and-computers', 'wearables', '']
@@ -448,6 +474,10 @@ export class Navigation {
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_TEA', ['groceries', 'drinks', 'tea']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_WINE', ['groceries', 'drinks', 'wine']),
     new NavigationItem('GROCERIES', 'GROCERIES_FOOD', ['groceries', 'food', '']),
+    new NavigationItem('GROCERIES', 'GROCERIES_FOOD', ['senor-lopez', '', ''])
+      .setPathPartsForNavigation(['groceries', 'food', ''])
+      .setFilters(['1000188'])
+      .setSEOId('SENORLOPEZ'),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_DESSERTS', ['groceries', 'food', 'desserts']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_DRYFRUITS', ['groceries', 'food', 'dry-fruits']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_MEATSUBSTITUTES', ['groceries', 'food', 'meat-substitutes']),
@@ -493,7 +523,7 @@ export class Navigation {
   }
 
   public static getNavigationItemByToId(toId: string): NavigationItem | undefined {
-    const items = this.ITEMS.filter(item => toId === item.toId);
+    const items: Array<NavigationItem> = this.ITEMS.filter(item => toId === item.toId);
     return items && items.length ? items[0] : undefined;
   }
 
@@ -503,7 +533,7 @@ export class Navigation {
     }
 
     return this.ITEMS
-      .filter(navigationItem => item.toId === navigationItem.fromId);
+      .filter((navigationItem: NavigationItem): boolean => !navigationItem.pathPartsForNavigation?.length && item.toId === navigationItem.fromId);
   }
 
   public static getAllSupersequentNavigationIdsByItem(item: NavigationItem | undefined): Array<string> {

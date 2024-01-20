@@ -27,8 +27,8 @@ export class NavigationService {
       return;
     }
 
-    const activeItems = Navigation.ITEMS
-      .filter((item: NavigationItem) => JSON.stringify(item.pathParts) == JSON.stringify(this.activeNavigationLevelIds));
+    const activeItems: Array<NavigationItem> = Navigation.ITEMS
+      .filter((item: NavigationItem): boolean => JSON.stringify(item.pathParts) == JSON.stringify(this.activeNavigationLevelIds));
 
     return activeItems && activeItems.length
       ? activeItems[0]

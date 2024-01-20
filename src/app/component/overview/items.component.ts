@@ -53,7 +53,6 @@ export class ItemsComponent implements OnInit {
       @Inject(PLATFORM_ID) private platformId: Object,
       @Optional() @Inject(REQUEST) private request: Request
     ) {
-
       route.paramMap.subscribe((params: ParamMap): void => {
         const navigationIdLevelA: string = params.get('navigationIdLevelA') || '';
         const navigationIdLevelB: string = params.get('navigationIdLevelB') || '';
@@ -73,12 +72,15 @@ export class ItemsComponent implements OnInit {
       });
 
       const translations = translationService.getTranslations();
+      const categoryName = this.isCategoryHashtags
+        ? this.getActiveHashtags().join(' ')
+        : translations['NAVIGATION_' + this.navigationService.activeNavigationItem?.toId] || '';
+
+      const SEOPageTitle = translations[`SEO_PAGE_TITLE_${this.navigationService.activeNavigationItem?.SEOId || ''}`] || '';
       titleService.setTitle(
-        translations.SEO_CATEGORY_PAGE_TITLE.replace(
+        SEOPageTitle || (categoryName ? translations.SEO_CATEGORY_PAGE_TITLE : translations.SEO_UNKNOWN_CATEGORY_PAGE_TITLE).replace(
           '{category}',
-          this.isCategoryHashtags
-            ? this.getActiveHashtags().join(' ')
-            : translations['NAVIGATION_' + this.navigationService.activeNavigationItem?.toId]));
+          categoryName));
     }
 
     private getActiveHashtags(): Array<string> {
@@ -102,10 +104,14 @@ export class ItemsComponent implements OnInit {
         return;
       }
 
-      const filterIds: string = this.route.snapshot?.queryParamMap?.get('filters') as string;
+      let filterIds: string = (this.navigationService.activeNavigationItem?.getFilters() || []).join('-');
+      filterIds = filterIds || this.route.snapshot?.queryParamMap?.get('filters') as string;
       const maximumPrice: string = this.route.snapshot?.queryParamMap?.get('p_max') as string;
       const minimumPrice: string = this.route.snapshot?.queryParamMap?.get('p_min') as string;
       const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
+      if (isPlatformServer(this.platformId)) {
+        console.log(filterIds);
+      }
 
       this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map((navigationItem: NavigationItem) => navigationItem.toId))
         .pipe(takeUntil(this.destroyedService$))

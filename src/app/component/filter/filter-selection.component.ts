@@ -274,7 +274,8 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
   };
 
   ngOnInit(): void {
-    const filterIds: string = this.route.snapshot?.queryParamMap?.get('filters') as string || '';
+    let filterIds: string = (this.navigationService.activeNavigationItem?.filters || []).join('-');
+    filterIds = filterIds || this.route.snapshot?.queryParamMap?.get('filters') as string || '';
     this.selectedFilterIds = filterIds.split('-').filter(id => id);
 
     let val: string | null = this.route.snapshot?.queryParamMap?.get('p_min');
@@ -323,8 +324,17 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     this.selectedFilterIds = this.selectedFilterIds.filter((id: string): boolean => filterId !== id);
   }
 
+  private getUrlToNavigateTo(): string {
+
+    if (!this.navigationService.activeNavigationItem?.pathPartsForNavigation?.length) {
+      return this.router.url;
+    }
+
+    return `/${this.navigationService.activeNavigationItem.pathPartsForNavigation.join('/')}`;
+  }
+
   public applyFilters(): void {
-    let urlTree: UrlTree = this.router.parseUrl(this.router.url);
+    let urlTree: UrlTree = this.router.parseUrl(this.getUrlToNavigateTo());
 
     urlTree.queryParams['p_min'] = this.minimumPrice;
     urlTree.queryParams['p_max'] = this.maximumPrice;
