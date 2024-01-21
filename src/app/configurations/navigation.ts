@@ -53,6 +53,12 @@ export class Navigation {
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_WATCHES', ['fashion', 'women', 'watches']),
     new NavigationItem('FASHION', 'FASHION_MEN', ['fashion', 'men', '']).setHasSlogan(true),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_DISGUISES', ['fashion', 'men', 'disguises']),
+    new NavigationItem(
+      'FASHION_MEN', 'FASHION_MEN_DISGUISES', 
+      ['aussergewöhnliche-kostüme-herren', '', '']
+    )
+      .setPathPartsForNavigation(['fashion', 'men', 'disguises'])
+      .setSEOId('EXTRAORDINARYMENDISGUISES'),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_EROTICUNDERWEAR', ['fashion', 'men', 'erotic-underwear']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_JACKETS', ['fashion', 'men', 'jackets']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEANS', ['fashion', 'men', 'jeans']),
