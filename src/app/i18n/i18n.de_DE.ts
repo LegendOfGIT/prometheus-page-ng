@@ -613,6 +613,8 @@ export class I18nDeDe implements I18nInterface {
       SEO_PAGE_TITLE: 'Deine Lieblingsprodukte auf WeWanna.shop',
       SEO_PAGE_TITLE_APPLEIPHONES: 'iPhones online kaufen',
       SEO_PAGE_TITLE_BLACKWOMENJEANS: 'Schwarze Damenjeans online kaufen',
+      SEO_PAGE_TITLE_EXTRAORDINARYMENDISGUISES: 'Außergewöhnliche Kostüme Herren',
+      SEO_PAGE_TITLE_EXTRAORDINARYWOMENDISGUISES: 'Außergewöhnliche Kostüme Damen',
       SEO_PAGE_TITLE_PLAYSTATION5SHOOTER: 'Playstation 5 Shooter online kaufen',
       SEO_PAGE_TITLE_SENORLOPEZ: 'Entdecke Gewürze von Senor Lopez',
       SEO_PAGE_TITLE_WHITEWOMENJEANS: 'Weiße Damenjeans online kaufen',
