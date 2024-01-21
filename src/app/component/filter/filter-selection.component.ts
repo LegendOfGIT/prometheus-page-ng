@@ -199,7 +199,9 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     new FilterItem('1000077', 'FILTERS_PRODUCTTYPES_OVENS'),
     new FilterItem('1000078', 'FILTERS_PRODUCTTYPES_WASHING_MACHINES'),
     new FilterItem('1000079', 'FILTERS_PRODUCTTYPES_SMARTPHONESCELLPHONES'),
-    new FilterItem('1000080', 'FILTERS_PRODUCTTYPES_SMARTWATCHES')
+    new FilterItem('1000080', 'FILTERS_PRODUCTTYPES_SMARTWATCHES'),
+    new FilterItem('1000209', 'FILTERS_PRODUCTTYPES_COFFEE'),
+    new FilterItem('1000210', 'FILTERS_PRODUCTTYPES_COFFEEACCESSORIES')
   ];
 
   public shopsFilters: Array<FilterItem> = [

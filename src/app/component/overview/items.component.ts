@@ -109,9 +109,6 @@ export class ItemsComponent implements OnInit {
       const maximumPrice: string = this.route.snapshot?.queryParamMap?.get('p_max') as string;
       const minimumPrice: string = this.route.snapshot?.queryParamMap?.get('p_min') as string;
       const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
-      if (isPlatformServer(this.platformId)) {
-        console.log(filterIds);
-      }
 
       this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map((navigationItem: NavigationItem) => navigationItem.toId))
         .pipe(takeUntil(this.destroyedService$))
@@ -201,10 +198,11 @@ export class ItemsComponent implements OnInit {
             ? hashtags.length > 1 ? 'NAVIGATION_TEASER_HASHTAGS' : 'NAVIGATION_TEASER_HASHTAG'
             : Navigation.getTeaserIdForNavigationItem(this.navigationService.activeNavigationItem);
 
-          if (teaserId) {
+          const SEODescription = this.translationService.getTranslations()[`SEO_DESCRIPTION_${this.navigationService.activeNavigationItem?.SEOId || ''}`] || '';
+          if (teaserId || SEODescription) {
             this.metaService.updateTag({
               name: 'description',
-              content: this.translationService.getTranslations()[teaserId].replace('{hashtags}', hashtags.join(' '))
+              content: SEODescription || this.translationService.getTranslations()[teaserId].replace('{hashtags}', hashtags.join(' '))
             });
           }
 

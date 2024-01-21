@@ -25,7 +25,7 @@ export class Navigation {
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_BAGS', ['fashion', 'women', 'bags']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES', ['fashion', 'women', 'disguises']),
     new NavigationItem(
-      'FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES', 
+      'FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES',
       ['aussergewöhnliche-kostüme-damen', '', '']
     )
       .setPathPartsForNavigation(['fashion', 'women', 'disguises'])
@@ -54,7 +54,7 @@ export class Navigation {
     new NavigationItem('FASHION', 'FASHION_MEN', ['fashion', 'men', '']).setHasSlogan(true),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_DISGUISES', ['fashion', 'men', 'disguises']),
     new NavigationItem(
-      'FASHION_MEN', 'FASHION_MEN_DISGUISES', 
+      'FASHION_MEN', 'FASHION_MEN_DISGUISES',
       ['aussergewöhnliche-kostüme-herren', '', '']
     )
       .setPathPartsForNavigation(['fashion', 'men', 'disguises'])
@@ -477,6 +477,10 @@ export class Navigation {
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('GROCERIES', 'GROCERIES_DRINKS', ['groceries', 'drinks', '']),
+    new NavigationItem('GROCERIES', 'GROCERIES_DRINKS', ['geschenke-für-kaffeeliebhaber', '', ''])
+      .setFilters(['1000209', '1000210'])
+      .setPathPartsForNavigation(['groceries', 'drinks', ''])
+      .setSEOId('GIFTSFORCOFFELOVERS'),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_BEER', ['groceries', 'drinks', 'beer']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_CHAMPAIGN', ['groceries', 'drinks', 'champaign']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_COFFEE', ['groceries', 'drinks', 'coffee']),

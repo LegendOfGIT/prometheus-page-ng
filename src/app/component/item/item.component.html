@@ -63,31 +63,33 @@
     <i class="fa fa-times-circle"></i>
   </div>
 
-  <div>
-    {{discountItem?.teaser || '' | translate}} <span *ngIf="discountItem?.conditions">*</span>
-  </div>
-  <div class="mb-2 mt-2">
-    <b>CODE: </b>
-    <b *ngIf="discountItem?.code">{{discountItem?.code || ''}}</b>
-    <span *ngIf="!discountItem?.code">{{ 'DISCOUNT_NO_CODE_REQUIRED' | translate }}</span>
-  </div>
-  <div *ngIf="discountItem?.maximumDate">
-    {{ 'DISCOUNT_UNTIL' | translate }} {{ discountItem?.maximumDate | date: 'dd.MM.yyyy' }}
-  </div>
+  <div *ngIf="discountItem">
+    <div>
+      {{discountItem.teaser || '' | translate}} <span *ngIf="discountItem.conditions">*</span>
+    </div>
+    <div class="mb-2 mt-2">
+      <b>CODE: </b>
+      <b *ngIf="discountItem.code">{{discountItem.code || ''}}</b>
+      <span *ngIf="!discountItem.code">{{ 'DISCOUNT_NO_CODE_REQUIRED' | translate }}</span>
+    </div>
+    <div *ngIf="discountItem.maximumDate">
+      {{ 'DISCOUNT_UNTIL' | translate }} {{ discountItem.maximumDate | date: 'dd.MM.yyyy' }}
+    </div>
 
-  <div *ngIf="item" class="informationItem__discountDialogLinkWrapper">
-    <a href="{{itemUrl}}" class="button informationItem__priceWrapper informationItem__price informationItem__discountDialogLink" (click)="pickedInformation(item)" target="{{linkTarget}}">
-      {{ 'DISCOUNT_GET_IT_NOW' | translate }}
-    </a>
-  </div>
+    <div *ngIf="item" class="informationItem__discountDialogLinkWrapper">
+      <a href="{{itemUrl}}" class="button informationItem__priceWrapper informationItem__price informationItem__discountDialogLink" (click)="pickedInformation(item)" target="{{linkTarget}}">
+        {{ 'DISCOUNT_GET_IT_NOW' | translate }}
+      </a>
+    </div>
 
-  <div *ngIf="discountItem?.conditions">
-    * {{discountItem?.conditions || '' | translate}}
-  </div>
+    <div *ngIf="discountItem.conditions">
+      * {{discountItem.conditions || '' | translate}}
+    </div>
 
-  <div class="container mt-2">
-    <div class="col-12">
-      {{ 'PROVISION_DISCLAIMER' | translate }}
+    <div class="container mt-2">
+      <div class="col-12">
+        {{ 'PROVISION_DISCLAIMER' | translate }}
+      </div>
     </div>
   </div>
 </dialog>
