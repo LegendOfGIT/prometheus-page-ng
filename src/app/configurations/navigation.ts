@@ -24,6 +24,12 @@ export class Navigation {
       .setHasSlogan(true),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_BAGS', ['fashion', 'women', 'bags']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES', ['fashion', 'women', 'disguises']),
+    new NavigationItem(
+      'FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES', 
+      ['aussergewöhnliche-kostüme-damen', '', '']
+    )
+      .setPathPartsForNavigation(['fashion', 'women', 'disguises'])
+      .setSEOId('EXTRAORDINARYWOMENDISGUISES'),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JACKETS', ['fashion', 'women', 'jackets']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['fashion', 'women', 'jeans']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['schwarze-damen-jeans', '', ''])
