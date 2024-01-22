@@ -524,7 +524,16 @@ export class Navigation {
     new NavigationItem('DIY', 'DIY_SEW', ['diy', 'sew', '']),
     new NavigationItem('DIY_SEW', 'DIY_SEW_FABRICS', ['diy', 'sew', 'fabrics']),
     new NavigationItem('DIY', 'DIY_TOOLS', ['diy', 'tools', '']),
+    new NavigationItem('DIY', 'DIY_TOOLS', ['die-besten-einhell-akku-geräte', '', ''])
+      .setPathPartsForNavigation(['diy', 'tools', ''])
+      .setFilters(['1000212'])
+      .setSEOId('BESTEINHELLACCUTOOLS'),
     new NavigationItem('DIY_TOOLS', 'DIY_TOOLS_DRILLINGMACHINES', ['diy', 'tools', 'drilling-machines']),
+    new NavigationItem('DIY_TOOLS', 'DIY_TOOLS_DRILLINGMACHINES', ['der-beste-bosch-akkuschrauber', '', ''])
+      .setPathPartsForNavigation(['diy', 'tools', 'drilling-machines'])
+      .setFilters(['1000216'])
+      .setSEOId('BESTBOSCHACCUDRILLINGMACHINE'),
+
     new NavigationItem('DIY_TOOLS', 'DIY_TOOLS_ELECTRICSAWS', ['diy', 'tools', 'electric-saws'])
   ];
 
