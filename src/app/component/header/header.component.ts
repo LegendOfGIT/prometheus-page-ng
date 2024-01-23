@@ -14,7 +14,7 @@ import {HashTagsApiService} from '../../service/hashtags-api.service';
 import {SuggestionsApiService} from "../../service/suggestions-api.service";
 
 @Component({
-  selector: 'header',
+  selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

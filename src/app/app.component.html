@@ -1,5 +1,5 @@
 <div class="app">
-  <header></header>
+  <app-header></app-header>
   <div class="app-content">
     <dialog #gdprDialog id="gdprDialog" class="gdpr__dialog">
       <general-data-protection-regulation [gdprDialog]="gdprDialog"></general-data-protection-regulation>
@@ -12,6 +12,6 @@
       {{ 'NAVIGATION_' + deepestNavigationItem.toId | translate: 'de_DE' }} / {{ 'NAVIGATION_' + deepestNavigationItem.toId | translate: 'en_US' }}
     </a>
   </div>
-  <footer></footer>
+  <app-footer></app-footer>
 </div>
 

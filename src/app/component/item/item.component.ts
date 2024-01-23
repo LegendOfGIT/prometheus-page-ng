@@ -74,7 +74,9 @@ export class ItemComponent implements OnInit, AfterViewInit {
     }
 
     private toggleImage(): void {
-      const imagesBig: Array<string> = this.item?.imagesBig || [];
+      let imagesBig: Array<string> | string = this.item?.imagesBig || [];
+      imagesBig = Array.isArray(imagesBig) ? imagesBig : [imagesBig];
+
       if (!imagesBig.length) {
         this.imageUrl = this.item?.titleImage || '';
         return;

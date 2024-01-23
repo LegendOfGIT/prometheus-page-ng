@@ -472,6 +472,34 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_SEO_KIDS_TOYS_HEADER_A: 'Discover and Collect: Your Ultimate Guide to Pokémon Merchandise Wonderland',
       NAVIGATION_SEO_KIDS_TOYS_CONTENT_A: 'Embark on a magical shopping journey through our extensive collection of <a href="/hashtags/Highlights?search=pokemon">Pokémon products</a>! Unleash the nostalgia and excitement as you explore a treasure trove containing everything a Pokémon fan could dream of. From plush Pikachu companions to exclusive trading cards, immerse yourself in a world of collectibles that bring the Pokémon universe to life. Whether you\'re an experienced trainer or a fan discovering the charm for the first time, our extensive selection offers something for everyone. Enhance your Pokémon experience with high-quality merchandise that captures everything that defines the popular franchise. Got a shop em all! – because every Pokémon deserves a place in your collection! Discover, choose and let the adventure begin.',
 
+      NAVIGATION_SEO_MULTIMEDIA_GAMES_NINTENDO_SWITCH_HEADER_A: 'The Gaming Revolution: Discover the wonders of the Nintendo Switch and its games',
+      NAVIGATION_SEO_MULTIMEDIA_GAMES_NINTENDO_SWITCH_CONTENT_A: 'In the world of gaming, the Nintendo Switch has sparked a revolution by redefining how we experience interactive entertainment. This versatile console can effortlessly switch between handheld and traditional modes, providing a level of flexibility that gamers love. Let us take a closer look at the Nintendo Switchs unique features and take a look at some of its standout games that have contributed significantly to its fame.' +
+        '<br/><br/>' +
+        '<h3><b>The versatile Nintendo Switch console</b></h3>' +
+        'The Nintendo Switch cleverly blurs the lines between home and on-the-go gaming.Its clever design allows users to easily switch between handheld and TV modes, creating a gaming experience that adapts to any lifestyle.' +
+        '<br/><br/>' +
+        '<h3><b>A joyful gaming experience with the Joy-Con controllers</b></h3>' +
+        'At the heart of the Nintendo Switch experience are the Joy-Con controllers. Small but powerful in their functionality. These detachable controllers offer an immersive and interactive gaming experience, whether solo or in multiplayer mode.' +
+        '<br/><br/>' +
+        '<h3><b>Innovative gameplay with Labo</b></h3>' +
+        'Nintendos spirit of innovation is evident in the Labo kits. These DIY cardboard creations transform the Switch into unique gaming peripherals, encouraging creativity and a hands-on approach to gaming.' +
+        '<br/><br/>' +
+        '<h3><b>Extensive game library</b></h3>' +
+        'The Nintendo Switch offers a diverse and ever-growing library of games that has something for players of all tastes. From legendary franchises like The Legend of Zelda and Super Mario to indie gems and third-party blockbusters, the console presents an eclectic mix of gaming experiences.' +
+        '<br/><br/>' +
+        '<h3><b>Seamless Multiplayer Adventures</b></h3>' +
+        'The Switch excels at fostering social gaming experiences. Its portability combined with local multiplayer options allows friends to join in the fun anytime, anywhere. From spontaneous Mario Kart races to cooperative quests in Splatoon 2, the possibilities are endless.' +
+        '<br/><br/>' +
+        '<h3><b>Innovative game design with Ring Fit Adventure</b></h3>' +
+        'The Nintendo Switch goes beyond traditional gaming with titles like Ring Fit Adventure. This fitness-focused game leverages the consoles unique capabilities and physical activity while providing an entertaining gaming experience.' +
+        '<br/><br/>' +
+        '<h3><b>Immerse yourself in stories with Breath of the Wild</b></h3>' +
+        'The Legend of Zelda: Breath of the Wild stands as the pinnacle of immersive storytelling. Its vast open world and innovative gameplay have set a new standard in the action-adventure genre and showcased the capabilities of the Switch.' +
+        '<br/><br/>' +
+        '<h3><b>Ongoing support and updates</b></h3>' +
+        'Nintendos commitment to its users is demonstrated by regular system updates and continued releases of new games. The Switch continues to evolve and introduce new features to improve the overall gaming experience.' +
+        '<br/><br/>' +
+        'Essentially, the Nintendo Switch is more than a console; It is a gaming revolution. With its innovative design, diverse library of games and commitment to user enjoyment, the Switch has established itself as a crucial player in the gaming industry, offering an experience that transcends traditional boundaries.',
       NAVIGATION_SEO_MULTIMEDIA_GAMES_PLAYSTATION_5_HEADER_A: 'Playful Discoveries: Surprising and Fun Facts About PlayStation',
       NAVIGATION_SEO_MULTIMEDIA_GAMES_PLAYSTATION_5_CONTENT_A: 'Get ready to expand your PlayStation knowledge with these fun facts. Whether you\'re a gaming nerd or just starting out, this information will add a new dimension to your PlayStation experience.' +
         '<br/><br/>' +
@@ -625,7 +653,7 @@ export class I18nEnUs implements I18nInterface {
       SEO_DESCRIPTION_EXTRAORDINARYMENDISGUISES: 'Spice up your party style with extraordinary costumes for men. Stand out and leave a lasting impression at every celebration. Shop unique and attention-grabbing party looks now!',
       SEO_DESCRIPTION_EXTRAORDINARYWOMENDISGUISES: 'Spice up your party style with extraordinary costumes for men. Stand out and leave a lasting impression at every celebration. Shop unique and attention-grabbing party looks now!',
       SEO_DESCRIPTION_PLAYSTATION5SHOOTER: 'Immerse yourself in exciting battles with our selection of PlayStation 5 shooters. Enhance your gaming experience with cutting-edge graphics and intense action. Discover the adrenaline-pumping fun now and dominate the virtual battlefield!',
-      SEO_DESCRIPTION_SENORLOPEZ: 'Señor López works with a lot of heart and passion to produce authentic Mexican spices for you according to old traditions. The goal is to give each of your dishes the unique fire and unmistakable flavor of Mexico.',
+      SEO_DESCRIPTION_SENORLOPEZ: 'Señor López works with a lot of heart and passion to produce authentic Mexican spices for you. The goal is to give each of your dishes the unique fire and unmistakable flavor of Mexico.',
       SEO_DESCRIPTION_WHITEWOMENJEANS: 'Discover comfy and stylish white jeans for women - from classic to trendy fits. Perfect for a laid-back look or a touch of class. Find your new go-to pair now.',
       SEO_PAGE_KEYWORDS: 'Buy online|No Cookies|Favorite Products|Onlineshopping|Gift Ideas|Interesting Products|Exciting Products',
       SEO_PAGE_TITLE: 'Your favorite products at WeWanna.shop',

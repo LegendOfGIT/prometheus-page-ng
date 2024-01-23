@@ -425,13 +425,13 @@ export class I18nDeDe implements I18nInterface {
         'Dabei handelt es sich um Stoffe, die in konventionellen Kosmetika häufig als Schaumbildner oder Emulgatoren eingesetzt werden.',
 
       NAVIGATION_SEO_GROCERIES_FOOD_HEADER_A: 'Die 3 wichtigsten Schritte, um deine vegane Reise zu beginnen',
-      NAVIGATION_SEO_GROCERIES_FOOD_CONTENT_A: '<h4><b>1. Informiere dich</b></h4>' +
+      NAVIGATION_SEO_GROCERIES_FOOD_CONTENT_A: '<h3><b>1. Informiere dich</b></h3>' +
         'Beginne damit, die Grundprinzipien des Veganismus zu verstehen. Entdecke Dokumentationen, Bücher und Online-Ressourcen, um mehr über die gesundheitlichen Vorteile, die Auswirkungen auf die Umwelt und ethische Überlegungen zu erfahren. Wissen ist der Schlüssel, um fundierte Entscheidungen zu treffen.' +
         '<br/><br/>' +
-        '<h4><b>2. Allmählicher Übergang</b></h4>' +
+        '<h3><b>2. Allmählicher Übergang</b></h3>' +
         'Gehe schrittweise vor, um vegan zu werden. Ersetze zunächst tierische Produkte durch pflanzliche Alternativen und integriere mehr Obst, Gemüse, Hülsenfrüchte und Vollkornprodukte in deine Ernährung. Unsere <a href="/groceries/food?search=vegan">veganen Lebensmittel</a> können dir dabei helfen. Experimentiere mit neuen Rezepten, um den Übergang angenehm zu gestalten.' +
         '<br/><br/>' +
-        '<h4><b>3. Vernetze dich mit der Vegan-Community</b></h4>' +
+        '<h3><b>3. Vernetze dich mit der Vegan-Community</b></h3>' +
         'Trete lokalen oder Online-Vegan-Communitys bei, um Unterstützung und Anleitung zu erhalten. Tausche dich mit Gleichgesinnten aus, tausche Erfahrungen aus und lerne von anderen, die erfolgreich einen veganen Lebensstil angenommen haben. Die Unterstützung der Gemeinschaft kann die Reise nachhaltiger und erfüllender machen.',
 
       NAVIGATION_SEO_HOME_FURNITURE_BEDS_HEADER_A: 'Worauf musst du bei der Auswahl der richtigen Bettengröße achten?',
@@ -467,34 +467,63 @@ export class I18nDeDe implements I18nInterface {
       NAVIGATION_SEO_KIDS_TOYS_HEADER_A: 'Entdecke und sammele: Dein ultimativer Leitfaden für das Pokémon-Merchandise-Wunderland',
       NAVIGATION_SEO_KIDS_TOYS_CONTENT_A: 'Begib dich auf eine magische Einkaufsreise durch unsere umfangreiche Sammlung an <a href="/hashtags/Highlights?search=pokemon">Pokémon-Produkten</a>! Lass der Nostalgie und Spannung freien Lauf, während du eine Schatzkammer erkundest, die alles enthält, wovon ein Pokémon-Fan nur träumen kann. Von plüschigen Pikachu-Gefährten bis hin zu exklusiven Sammelkarten – tauche ein in eine Welt voller Sammlerstücke, die das Pokémon-Universum zum Leben erwecken. Egal, ob du ein erfahrener Trainer oder ein Fan bist, der den Charme zum ersten Mal entdeckt, unsere reichhaltige Auswahl bietet für jeden etwas. Werten dein Pokémon-Erlebnis mit hochwertigen Merchandise-Artikeln auf, alles einfängt was das beliebte Franchise ausmacht. Got a shop em all! – denn jedes Pokémon verdient einen Platz in deiner Sammlung! Entdecke, wähle und lasse das Abenteuer beginnen.',
 
+      NAVIGATION_SEO_MULTIMEDIA_GAMES_NINTENDO_SWITCH_HEADER_A: 'Die Gaming-Revolution: Entdecke die Wunder der Nintendo Switch und ihrer Spiele',
+      NAVIGATION_SEO_MULTIMEDIA_GAMES_NINTENDO_SWITCH_CONTENT_A: 'In der Welt des Gamings hat die Nintendo Switch eine regelrechte Revolution ausgelöst, indem sie neu definiert, wie wir interaktive Unterhaltung erleben. Diese vielseitige Konsole kann mühelos zwischen Handheld- und traditionellen Modi wechseln und bietet damit eine Flexibilität, die Spieler begeistert. Schauen wir uns die einzigartigen Features der Nintendo Switch genauer an und werfen einen Blick auf einige ihrer herausragenden Spiele, die maßgeblich zu ihrem Ruhm beigetragen haben.' +
+        '<br/><br/>' +
+        '<h3><b>Die Vielseitige Nintendo Switch-Konsole</b></h3>' +
+        'Die Nintendo Switch verschwimmt geschickt die Grenzen zwischen Heim- und Unterwegs-Gaming. Ihr cleveres Design ermöglicht es Benutzern, problemlos zwischen Handheld- und TV-Modus zu wechseln und so ein Spielerlebnis zu schaffen, das sich jedem Lifestyle anpasst.' +
+        '<br/><br/>' +
+        '<h3><b>Ein Freudiges Spielerlebnis mit den Joy-Con-Controllern</b></h3>' +
+        'Im Mittelpunkt des Nintendo Switch-Erlebnisses stehen die Joy-Con-Controller. Klein, aber kraftvoll in ihrer Funktionalität. Diese abnehmbaren Controller bieten ein immersives und interaktives Spielerlebnis, egal ob allein oder im Multiplayer-Modus.' +
+        '<br/><br/>' +
+        '<h3><b>Innovatives Gameplay mit Labo</b></h3>' +
+        'Nintendos Innovationsgeist zeigt sich in den Labo-Kits. Diese DIY-Pappkreationen verwandeln die Switch in einzigartige Gaming-Peripheriegeräte und fördern Kreativität sowie einen praktischen Ansatz zum Spielen.' +
+        '<br/><br/>' +
+        '<h3><b>Umfangreiche Spielebibliothek</b></h3>' +
+        'Die Nintendo Switch bietet eine vielfältige und ständig wachsende Spielebibliothek, die für Spieler aller Geschmäcker etwas bereithält. Von legendären Franchises wie The Legend of Zelda und Super Mario bis hin zu Indie-Perlen und Blockbustern von Drittanbietern – die Konsole präsentiert eine eklektische Mischung von Spielerlebnissen.' +
+        '<br/><br/>' +
+        '<h3><b>Nahtlose Multiplayer-Abenteuer</b></h3>' +
+        'Die Switch brilliert darin, soziale Spielerlebnisse zu fördern. Ihre Portabilität in Kombination mit lokalen Multiplayer-Optionen ermöglicht es Freunden, jederzeit und überall am Spaß teilzuhaben. Von spontanen Mario Kart-Rennen bis zu kooperativen Quests in Splatoon 2 – die Möglichkeiten sind endlos.' +
+        '<br/><br/>' +
+        '<h3><b>Innovatives Spiel-Design mit Ring Fit Adventure</b></h3>' +
+        'Die Nintendo Switch geht über herkömmliches Gaming hinaus mit Titeln wie Ring Fit Adventure. Dieses fitnessorientierte Spiel nutzt die einzigartigen Fähigkeiten der Konsole und fördert körperliche Aktivität bei gleichzeitig unterhaltsamem Spielerlebnis.' +
+        '<br/><br/>' +
+        '<h3><b>Eintauchen in Geschichten mit Breath of the Wild</b></h3>' +
+        'The Legend of Zelda: Breath of the Wild steht als Höhepunkt immersiver Erzählkunst. Seine weite offene Welt und innovatives Gameplay haben einen neuen Standard im Action-Adventure-Genre gesetzt und die Fähigkeiten der Switch präsentiert.' +
+        '<br/><br/>' +
+        '<h3><b>Fortlaufende Unterstützung und Aktualisierungen</b></h3>' +
+        'Nintendos Einsatz für seine Benutzer zeigt sich in regelmäßigen Systemaktualisierungen und fortlaufenden Veröffentlichungen neuer Spiele. Die Switch entwickelt sich kontinuierlich weiter und führt neue Funktionen ein, um das gesamte Spielerlebnis zu verbessern.' +
+        '<br/><br/>' +
+        'Im Wesentlichen ist die Nintendo Switch mehr als eine Konsole; sie ist eine Gaming-Revolution. Mit ihrem innovativen Design, ihrer vielfältigen Spielebibliothek und ihrem Engagement für die Freude der Benutzer hat sich die Switch als entscheidender Akteur in der Gaming-Branche etabliert und bietet ein Erlebnis, das über traditionelle Grenzen hinausgeht.',
+
       NAVIGATION_SEO_MULTIMEDIA_GAMES_PLAYSTATION_5_HEADER_A: 'Spielerische Entdeckungen: Überraschende und unterhaltsame Fakten über PlayStation',
       NAVIGATION_SEO_MULTIMEDIA_GAMES_PLAYSTATION_5_CONTENT_A: 'Mach dich bereit, dein Wissen über PlayStation mit diesen unterhaltsamen Fakten zu erweitern. Ganz gleich, ob du ein Gaming-Nerd bist oder gerade erst damit anfängst: Diese Informationen werden deinem PlayStation-Erlebnis eine neue Dimension verleihen.' +
         '<br/><br/>' +
-        '<h4><b>Super Marios Einfluß auf PlayStation</b></h4>' +
+        '<h3><b>Super Marios Einfluß auf PlayStation</b></h3>' +
         'Wusstest du, dass die Ursprünge der <a href="/multimedia/games/playstation-5">PlayStation</a> eine Verbindung zu <a href="/multimedia/games/nintendo-switch">Nintendos</a> berühmtem Klempner <a href="/hashtags/Highlights?search=super%20mario">Mario</a> haben? Ursprünglich wollten Sony und Nintendo an einem CD-ROM-Add-on für den Super Nintendo zusammenarbeiten, doch als der Deal scheiterte, nutzte Sony die Technologie, um die erste PlayStation zu entwickeln.' +
         '<br/><br/>' +
-        '<h4><b>PlayStations geheimer Codename</b></h4>' +
+        '<h3><b>PlayStations geheimer Codename</b></h3>' +
         'Vor der großen Enthüllung wurde PlayStation unter dem geheimen Codenamen „Project Reality“ entwickelt. Es verleiht den frühen Tagen von PlayStation einen Hauch von Geheimnis, nicht wahr?' +
         '<br/><br/>' +
-        '<h4><b>Entwicklung des ikonischen Controllers</b></h4>' +
+        '<h3><b>Entwicklung des ikonischen Controllers</b></h3>' +
         'Das ikonische Design des <a href="/hashtags/LetsPlay?search=ps5%20controller">PlayStation-Controllers</a> war kein Zufall. Seine Form und Tastenanordnung wurden von der menschlichen Hand inspiriert und sorgen für ein komfortables und intuitives Spielerlebnis. Im Laufe der Jahre wurde der Controller weiterentwickelt und bietet Funktionen wie Rumble-Feedback und Bewegungserkennung.' +
         '<br/><br/>' +
-        '<h4><b>Die „Matrix“-Verbindung der PlayStation 2</b></h4>' +
+        '<h3><b>Die „Matrix“-Verbindung der PlayStation 2</b></h3>' +
         'Wenn du ein Fan von <a href="/multimedia?search=Matrix">„Matrix“</a> bist, wirst du vielleicht die Tatsache zu schätzen wissen, dass die ikonischen grünen Symbole und Grafiken aus dem Film das Design der PlayStation 2-Konsole beeinflusst haben. Es ist eine subtile Anspielung auf den Science-Fiction-Klassiker, die Ihnen vielleicht einen neuen Blick auf Ihre PS2 verschafft.' +
         '<br/><br/>' +
-        '<h4><b>Ein wahnsinniger Rekord!</b></h4>' +
+        '<h3><b>Ein wahnsinniger Rekord!</b></h3>' +
         'PlayStation ist nicht nur ein Gaming-Riese; es hält auch beeindruckende Rekorde. Mit über 155 Millionen verkauften Einheiten hält die PlayStation 2 den Titel der meistverkauften Spielekonsole aller Zeiten!',
 
       NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_HEADER_A: 'Entdecke die Welt des Anime!',
       NAVIGATION_SEO_MULTIMEDIA_MOVIES_ANIME_CONTENT_A: 'Anime ist zu einem globalen Phänomen geworden und fasziniert das Publikum mit seinem einzigartigen Geschichtenerzählen, lebendigen Charakteren und fantasievollen Welten. <a href="/multimedia/movies/anime">Tauche ein in das Reich der großen Anime-Marken</a>, die einen unauslöschlichen Eindruck in der Branche hinterlassen haben:' +
         '<br/><br/>' +
-        '<h4><b>Studio Ghibli</b></h4>' +
+        '<h3><b>Studio Ghibli</b></h3>' +
         'Studio Ghibli ist bekannt für bezaubernde Meisterwerke wie „<a href="/hashtags/WorldOfAnime?search=chihiro">Chihiros Reise ins Zauberland</a>“, „<a href="/hashtags/WorldOfAnime?search=totoro">Mein Nachbar Totoro</a>“ und „<a href="/hashtags/WorldOfAnime?search=mononoke">Prinzessin Mononoke</a>“ und ein legendäres Anime-Studio, das Maßstäbe für künstlerische Exzellenz und emotionales Geschichtenerzählen gesetzt hat.' +
         '<br/><br/>' +
-        '<h4><b>Toei-Animation</b></h4>' +
+        '<h3><b>Toei-Animation</b></h3>' +
         'Als eines der ältesten und produktivsten Animationsstudios in Japan hat Toei Animation ikonische Serien wie „<a href="/hashtags/WorldOfAnime?search=dragon%20ball">Dragon Ball</a>“, „<a href="/hashtags/WorldOfAnime?search=one%20piece">One Piece</a>“ und „<a href="/hashtags/WorldOfAnime?search=sailor%20moon">Sailor Moon</a>“ ins Leben gerufen. Ihr vielfältiges Portfolio erstreckt sich über alle Genres und erobert die Herzen des Publikums weltweit.' +
         '<br/><br/>' +
-        '<h4><b>Kyoto Animation</b></h4>' +
+        '<h3><b>Kyoto Animation</b></h3>' +
         'Kyoto Animation ist bekannt für seine atemberaubenden Bilder und herzerwärmenden Erzählungen und hat Hits wie „Clannad“, „K-On!“ und „<a href="/hashtags/WorldOfAnime?search=violet%20evergarden">Violet Evergarden</a>“ hervorgebracht. Ihr Engagement für hochwertige Animationen und emotionales Geschichtenerzählen hat eine treue Fangemeinde gewonnen.',
 
       NAVIGATION_SLOGAN_ALL: 'shop',
@@ -619,7 +648,7 @@ export class I18nDeDe implements I18nInterface {
       SEO_DESCRIPTION_EXTRAORDINARYMENDISGUISES: 'Peppe deinen Party-Style mit einer außergewöhnlichen Verkleidung auf. Hebe dich ab und hinterlasse bei jeder Feier einen bleibenden Eindruck. Kaufe jetzt einen einzigartigen und auftrittstarken Party-Look!',
       SEO_DESCRIPTION_EXTRAORDINARYWOMENDISGUISES: 'Peppe deinen Party-Style mit einer außergewöhnlichen Verkleidung auf. Hebe dich ab und hinterlasse bei jeder Feier einen bleibenden Eindruck. Kaufe jetzt einen einzigartigen und auftrittstarken Party-Look!',
       SEO_DESCRIPTION_PLAYSTATION5SHOOTER: 'Tauche ein in spannende Gefechte mit unserer Auswahl an PlayStation 5-Shootern. Verbessere dein Spielerlebnis mit modernster Grafik und intensiver Action. Entdecke jetzt den adrenalingeladenen Spaß und dominiere das virtuelle Schlachtfeld!',
-      SEO_DESCRIPTION_SENORLOPEZ: 'Señor López arbeitet mit viel Herz und Leidenschaft daran, authentische mexikanische Gewürze nach alter Tradition für dich herzustellen. Das Ziel ist es, jedem deiner Gerichte das einzigartige Feuer und den unverkennbaren Geschmack Mexikos zu verleihen.',
+      SEO_DESCRIPTION_SENORLOPEZ: 'Señor López arbeitet mit viel Herz und Leidenschaft daran, authentische mexikanische Gewürze für dich herzustellen. Das Ziel ist es, jedem deiner Gerichte das einzigartige Feuer und den unverkennbaren Geschmack Mexikos zu verleihen.',
       SEO_DESCRIPTION_WHITEWOMENJEANS: 'Entdecke bequeme und stilvolle weiße Jeans – von klassischen bis zu trendigen Passformen. Perfekt für einen lässigen Look oder einen Hauch von Klasse. Find jetzt dein neues Lieblingspaar.',
       SEO_PAGE_KEYWORDS: 'Online kaufen|Keine Cookies|Lieblingsprodukte|Onlineshopping|Geschenkideen|Interessante Produkte|Spannende Produkte',
       SEO_PAGE_TITLE: 'Deine Lieblingsprodukte auf WeWanna.shop',

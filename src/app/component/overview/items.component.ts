@@ -198,11 +198,10 @@ export class ItemsComponent implements OnInit {
             ? hashtags.length > 1 ? 'NAVIGATION_TEASER_HASHTAGS' : 'NAVIGATION_TEASER_HASHTAG'
             : Navigation.getTeaserIdForNavigationItem(this.navigationService.activeNavigationItem);
 
-          const SEODescription = this.translationService.getTranslations()[`SEO_DESCRIPTION_${this.navigationService.activeNavigationItem?.SEOId || ''}`] || '';
-          if (teaserId || SEODescription) {
+          if (teaserId || this.SEODescription) {
             this.metaService.updateTag({
               name: 'description',
-              content: SEODescription || this.translationService.getTranslations()[teaserId].replace('{hashtags}', hashtags.join(' '))
+              content: this.SEODescription || this.translationService.getTranslations()[teaserId].replace('{hashtags}', hashtags.join(' '))
             });
           }
 
@@ -270,5 +269,9 @@ export class ItemsComponent implements OnInit {
     get activeNavigationItemPathParts(): Array<string> | undefined {
       return Navigation.getAllSupersequentNavigationIdsByItem(this.navigationService.activeNavigationItem)
         .concat(this.navigationService.activeNavigationItem?.toId || '');
+    }
+
+    get SEODescription(): string {
+      return this.translationService.getTranslations()[`SEO_DESCRIPTION_${this.navigationService.activeNavigationItem?.SEOId || ''}`] || '';
     }
 }

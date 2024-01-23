@@ -2,7 +2,7 @@ import {Component, HostListener, ViewChild} from '@angular/core';
 import { Module, NavigationService } from '../../service/navigation.service';
 
 @Component({
-  selector: 'footer',
+  selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })

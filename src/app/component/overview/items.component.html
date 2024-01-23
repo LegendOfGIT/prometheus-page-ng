@@ -83,16 +83,24 @@
   </div>
 </div>
 
-<div *ngFor="let seoNavigationId of seoNavigationIds">
-  <div *ngFor="let seoKey of ['A', 'B', 'C', 'D', 'E']">
-    <div *ngIf="seoHeader(seoNavigationId, seoKey)" class="container informationItems__content">
-      <div class="col-12">
-        <h2>{{ seoHeader(seoNavigationId, seoKey) }}</h2>
-        <p [innerHTML]="seoContent(seoNavigationId, seoKey)"></p>
-      </div>
+<section>
+  <article *ngIf="SEODescription" class="container informationItems__content">
+    <div class="col-12">
+      <p [innerHTML]="SEODescription"></p>
+    </div>
+  </article>
+
+  <div *ngFor="let seoNavigationId of seoNavigationIds">
+    <div *ngFor="let seoKey of ['A', 'B', 'C', 'D', 'E']">
+      <article *ngIf="seoHeader(seoNavigationId, seoKey)" class="container informationItems__content">
+        <div class="col-12">
+          <h2>{{ seoHeader(seoNavigationId, seoKey) }}</h2>
+          <p [innerHTML]="seoContent(seoNavigationId, seoKey)"></p>
+        </div>
+      </article>
     </div>
   </div>
-</div>
+</section>
 
 <dialog #filterSelectionDialog id="filterSelectionDialog">
   <app-filter-selection [dialog]="filterSelectionDialog"></app-filter-selection>
