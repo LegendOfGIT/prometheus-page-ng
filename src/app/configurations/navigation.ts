@@ -320,6 +320,11 @@ export class Navigation {
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_PHONES',
+      'ELECTRONICS_AND_COMPUTERS_PHONES_SMARTPHONEACCESSORIES',
+      ['electronics-and-computers', 'phones', 'smartphone-accessories']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_PHONES',
       'ELECTRONICS_AND_COMPUTERS_PHONES_SMARTPHONESCELLPHONES',
       ['electronics-and-computers', 'phones', 'smartphones-and-cellphones']
     ),
