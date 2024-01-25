@@ -205,10 +205,7 @@ export class ItemsComponent implements OnInit {
             });
           }
 
-          this.metaService.updateTag({
-            name: 'keywords',
-            content: this.translationService.getTranslations()['SEO_PAGE_KEYWORDS']
-          });
+          // this.metaService.updateTag({ name: 'keywords', content: this.translationService.getTranslations()['SEO_PAGE_KEYWORDS'] });
         }
     }
 

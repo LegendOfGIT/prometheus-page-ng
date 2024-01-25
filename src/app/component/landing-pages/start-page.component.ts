@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DOCUMENT, isPlatformServer } from '@angular/common';
 
 import { Module, NavigationService } from '../../service/navigation.service';
-import { Meta, Title } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import { TranslationService } from '../../service/translation.service';
 import { Startpage } from "../../configurations/startpage";
 import { TeaserItem } from "../../model/teaser-item";
@@ -19,9 +19,8 @@ export class StartPageComponent implements OnInit {
   constructor(
     route: ActivatedRoute,
     private navigationService: NavigationService,
-    private translationService: TranslationService,
+    translationService: TranslationService,
     titleService: Title,
-    metaService: Meta,
     @Inject(DOCUMENT) private doc: Document,
     @Inject(PLATFORM_ID) private platformId: Object) {
 
@@ -29,9 +28,9 @@ export class StartPageComponent implements OnInit {
       this.navigationService.activeModule = Module.HOME;
     });
 
-    const { SEO_PAGE_KEYWORDS, SEO_PAGE_TITLE } = translationService.getTranslations();
+    const { SEO_PAGE_TITLE } = translationService.getTranslations();
     titleService.setTitle(SEO_PAGE_TITLE);
-    metaService.updateTag({ name: 'keywords', content: SEO_PAGE_KEYWORDS })
+    // metaService.updateTag({ name: 'keywords', content: SEO_PAGE_KEYWORDS })
   }
 
   private heroes: Array<Hero> = [
