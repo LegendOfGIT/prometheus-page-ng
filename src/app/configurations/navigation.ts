@@ -232,6 +232,22 @@ export class Navigation {
       ['electronics-and-computers', 'erotic', 'vibrators']
     ),
     new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_EROTIC',
+      'ELECTRONICS_AND_COMPUTERS_EROTIC_VIBRATORS',
+      ['toys-für-frauen', '', '']
+    )
+      .setPathPartsForNavigation(['electronics-and-computers', 'erotic', 'vibrators'])
+      .setFilters(['1000255'])
+      .setSEOId('TOYSFORHER'),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_EROTIC',
+      'ELECTRONICS_AND_COMPUTERS_EROTIC_VIBRATORS',
+      ['toys-für-paare', '', '']
+    )
+      .setPathPartsForNavigation(['electronics-and-computers', 'erotic', 'vibrators'])
+      .setFilters(['1000255'])
+      .setSEOId('TOYSFORCOUPLES'),
+    new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_HOME',
       ['electronics-and-computers', 'home', '']

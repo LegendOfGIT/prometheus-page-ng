@@ -52,6 +52,38 @@
       </div>
     </div>
 
+    <div *ngIf="countriesOfOriginFilters.length">
+      <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_COOS' | translate }}</h5>
+      <div class="filters filters__items">
+        <div *ngFor="let filter of countriesOfOriginFilters" class="form-check filters__item">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="{{filter.id}}"
+            value="{{filter.id}}"
+            (change)="toggleFilter(filter.id)"
+            [defaultChecked]="isFilterSelected(filter.id)"/>
+          <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId | translate}}</label>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="tasteTypeFilters.length">
+      <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_TASTETYPES' | translate }}</h5>
+      <div class="filters filters__items">
+        <div *ngFor="let filter of tasteTypeFilters" class="form-check filters__item">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="{{filter.id}}"
+            value="{{filter.id}}"
+            (change)="toggleFilter(filter.id)"
+            [defaultChecked]="isFilterSelected(filter.id)"/>
+          <label for="{{filter.id}}" class="form-check-label">{{filter.filterLabelId | translate}}</label>
+        </div>
+      </div>
+    </div>
+
     <div *ngIf="colorFilters.length">
       <h5 class="filter filter__title filter__title--gap">{{ 'FILTERS_COLORS' | translate }}</h5>
       <div class="filters filters__items">

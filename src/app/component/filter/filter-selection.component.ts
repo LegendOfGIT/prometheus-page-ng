@@ -46,6 +46,46 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     new FilterItem('1000016', 'FILTERS_COLORS_WHITE')
   ];
 
+  public countriesOfOriginFilters: Array<FilterItem> = [
+    new FilterItem('1000252', 'FILTERS_COO_AFRICA'),
+    new FilterItem('1000237', 'FILTERS_COO_ARGENTINA'),
+    new FilterItem('1000239', 'FILTERS_COO_AUSTRALIA'),
+    new FilterItem('1000230', 'FILTERS_COO_BRAZIL'),
+    new FilterItem('1000231', 'FILTERS_COO_CHINA'),
+    new FilterItem('1000249', 'FILTERS_COO_DENMARK'),
+    new FilterItem('1000235', 'FILTERS_COO_GERMANY'),
+    new FilterItem('1000228', 'FILTERS_COO_FRANCE'),
+    new FilterItem('1000227', 'FILTERS_COO_GREECE'),
+    new FilterItem('1000232', 'FILTERS_COO_INDIA'),
+    new FilterItem('1000229', 'FILTERS_COO_IRELAND'),
+    new FilterItem('1000247', 'FILTERS_COO_ISRAEL'),
+    new FilterItem('1000244', 'FILTERS_COO_ITALY'),
+    new FilterItem('1000234', 'FILTERS_COO_JAPAN'),
+    new FilterItem('1000251', 'FILTERS_COO_CANADA'),
+    new FilterItem('1000243', 'FILTERS_COO_KOREA'),
+    new FilterItem('1000245', 'FILTERS_COO_MEXICO'),
+    new FilterItem('1000250', 'FILTERS_COO_NETHERLANDS'),
+    new FilterItem('1000246', 'FILTERS_COO_AUSTRIA'),
+    new FilterItem('1000233', 'FILTERS_COO_PORTUGAL'),
+    new FilterItem('1000248', 'FILTERS_COO_SCOTLAND'),
+    new FilterItem('1000242', 'FILTERS_COO_SWEDEN'),
+    new FilterItem('1000238', 'FILTERS_COO_SPAIN'),
+    new FilterItem('1000241', 'FILTERS_COO_HUNGARY'),
+    new FilterItem('1000253', 'FILTERS_COO_USA'),
+    new FilterItem('1000240', 'FILTERS_COO_VENEZUELA'),
+    new FilterItem('1000236', 'FILTERS_COO_UNITEDKINGDOM')
+  ];
+
+  public tasteTypeFilters: Array<FilterItem> = [
+    new FilterItem('1000223', 'FILTERS_TASTETYPES_FLOWERY'),
+    new FilterItem('1000222', 'FILTERS_TASTETYPES_FRESH'),
+    new FilterItem('1000224', 'FILTERS_TASTETYPES_FRUITY'),
+    new FilterItem('1000225', 'FILTERS_TASTETYPES_STRONG'),
+    new FilterItem('1000221', 'FILTERS_TASTETYPES_SWEET'),
+    new FilterItem('1000220', 'FILTERS_TASTETYPES_DRY'),
+    new FilterItem('1000226', 'FILTERS_TASTETYPES_SPICY'),
+  ];
+
   public sizesFilter: Array<FilterItem> = [
     new FilterItem('1000134', 'XXS'),
     new FilterItem('1000135', 'XS'),
@@ -209,7 +249,10 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     new FilterItem('1000079', 'FILTERS_PRODUCTTYPES_SMARTPHONESCELLPHONES'),
     new FilterItem('1000080', 'FILTERS_PRODUCTTYPES_SMARTWATCHES'),
     new FilterItem('1000209', 'FILTERS_PRODUCTTYPES_COFFEE'),
-    new FilterItem('1000210', 'FILTERS_PRODUCTTYPES_COFFEEACCESSORIES')
+    new FilterItem('1000210', 'FILTERS_PRODUCTTYPES_COFFEEACCESSORIES'),
+    new FilterItem('1000254', 'NAVIGATION_BEAUTY_CARE_EROTIC_MASSAGES'),
+    new FilterItem('1000255', 'NAVIGATION_ELECTRONICS_AND_COMPUTERS_EROTIC_VIBRATORS'),
+    new FilterItem('1000256', 'FILTERS_PRODUCTTYPES_EROTICUNDERWEAR'),
   ];
 
   public shopsFilters: Array<FilterItem> = [
@@ -295,7 +338,7 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     this.maximumPrice = val ? Number.parseInt(val) : this.maximumPrice;
   }
 
-  public ngAfterViewChecked() {
+  public ngAfterViewChecked(): void {
     if (this.isClientSide && this.dialog?.open && !this.availableFilters.length && !this.isLoading) {
       this.isLoading = true;
       this.filtersService.getAvailableFilters(
@@ -315,6 +358,8 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
         this.productTypeFilters = this.productTypeFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.shopsFilters = this.shopsFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.storageSizeFilters = this.storageSizeFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.tasteTypeFilters = this.tasteTypeFilters.filter(f => filters.find(af => f.id === af?.filterId));
+        this.countriesOfOriginFilters = this.countriesOfOriginFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.sustainabilityFilters = this.sustainabilityFilters.filter(f => filters.find(af => f.id === af?.filterId));
         this.isLoading = false;
       });
