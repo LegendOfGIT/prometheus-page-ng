@@ -2,24 +2,26 @@ import {TeaserItem} from '../model/teaser-item';
 
 export class Startpage {
   public static TEASER_ITEMS: TeaserItem[] = [
+    new TeaserItem('/hashtags/Valentinstag', '', '', 'TEASER_TITLE_VALENTINESDAY')
+      .setHashtags(['Valentinstag'])
+      .setSsrRendering(true),
     new TeaserItem('/hashtags/Highlights?search=vegan', '', 'vegan', 'VEGANuary')
       .setHashtags(['Highlights']),
     new TeaserItem('', 'GROCERIES_FOOD_MEATSUBSTITUTES', 'vegan', ''),
 
-    new TeaserItem('/sports', 'SPORTS', '', 'TEASER_TITLE_GOOD_INTENTION_MORE_SPORTS')
+    /*new TeaserItem('/sports', 'SPORTS', '', 'TEASER_TITLE_GOOD_INTENTION_MORE_SPORTS')
       .setSsrRendering(true),
     new TeaserItem('/beauty-and-care/health', 'BEAUTY_CARE_HEALTH', '', 'TEASER_TITLE_GOOD_INTENTION_LIVE_HEALTHY'),
     new TeaserItem('', '', 'Yoga', '')
       .setHashtags(['Highlights']),
     new TeaserItem('', 'GROCERIES_FOOD', 'Bio', ''),
 
-    //new TeaserItem('/kids?search=geschenk', 'KIDS', 'geschenk', 'TEASER_TITLE_CHRISTMAS_KIDS_GIFT_IDEAS'),
+    //new TeaserItem('/kids?search=geschenk', 'KIDS', 'geschenk', 'TEASER_TITLE_CHRISTMAS_KIDS_GIFT_IDEAS'),*/
 
     new TeaserItem('/kids?search=tonies', 'KIDS', 'tonies', 'TEASER_TITLE_TONIES'),
 
     new TeaserItem('/kids?hashtags=LetsPlay', 'KIDS', '', 'TEASER_TITLE_HASHTAG_LETSPLAY')
-      .setHashtags(['LetsPlay'])
-      .setSsrRendering(true),
+      .setHashtags(['LetsPlay']),
 
     new TeaserItem('/beauty-and-care', 'BEAUTY_CARE', '', 'TEASER_TITLE_BEAUTY_CARE')
       .setSsrRendering(true),
@@ -43,8 +45,7 @@ export class Startpage {
       .setHashtags(['Schnäppchen']),
 
     new TeaserItem('/electronics-and-computers', 'ELECTRONICS_AND_COMPUTERS', '', 'TEASER_TITLE_HASHTAG_KEEPCOOL')
-      .setHashtags(['KeepCool'])
-      .setSsrRendering(true),
+      .setHashtags(['KeepCool']),
     new TeaserItem('/electronics-and-computers/home/fully-automatic-coffee-machines', 'ELECTRONICS_AND_COMPUTERS_HOME_FULLYAUTOMATICCOFFEEMACHINES', '', 'TEASER_TITLE_COFFEE_MACHINES'),
 
     new TeaserItem('/kids?filters=1000049', 'FASHION', '', 'Waschbär Shop')

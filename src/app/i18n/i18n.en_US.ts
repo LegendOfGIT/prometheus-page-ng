@@ -741,6 +741,7 @@ export class I18nEnUs implements I18nInterface {
       TEASER_TITLE_MATERNITY: 'We become parents!',
       TEASER_TITLE_POKEMON: "Catch 'em all!",
       TEASER_TITLE_TONIES: 'New worlds with Tonie figures!',
+      TEASER_TITLE_VALENTINESDAY: 'Gifts for Valentines Day',
       TEASER_TITLE_VEGAN_COSMETICS: 'Vegan cosmetics',
       TEASER_TITLE_VIDEOGAMES: 'Nintendo, Playstation, Xbox, ...',
       TITLE_WANNA_WORD_PREFIX: 'W',

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, PLATFORM_ID, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, PLATFORM_ID, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -12,6 +12,7 @@ import { NavigationItem } from './model/navigation-item';
 import { Navigation } from './configurations/navigation';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request } from 'express';
+import {Item} from './model/item';
 
 @Component({
   selector: 'app-root',
@@ -53,19 +54,27 @@ export class AppComponent implements AfterViewInit, OnInit  {
       return;
     }
 
+    if (UserService.isBotRequest(this.request)) {
+      return;
+    }
+
     setTimeout(
       () => this.gdpr?.nativeElement.click(),
       5000);
   }
 
   private initialiseWishlist(): void {
+    if (UserService.isBotRequest(this.request)) {
+      return;
+    }
+
     if (this.wishlistItemsService.items?.length) {
       return;
     }
 
     this.wishlistItemsService.getItems(this.userService.activeUser?.id || '')
       .pipe(takeUntil(this.destroyedService$))
-      .subscribe((items) => { this.wishlistItemsService.items = items || []; });
+      .subscribe((items: Array<Item | null>): void => { this.wishlistItemsService.items = items || []; });
   }
 
   get deepestLevelNavigationItems(): Array<NavigationItem> {
