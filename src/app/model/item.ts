@@ -144,9 +144,10 @@ export class Item extends BaseModel {
         return '';
       }
 
-      const reductionInPercent = 100 - Math.floor((itemWithLowestPrice?.priceCurrent || 0) * 100 / (itemWithLowestPrice?.priceInitial || 1));
+      const lowestPrice = (itemWithLowestPrice?.priceCurrent || 0);
+      const reductionInPercent = 100 - Math.floor(lowestPrice * 100 / (itemWithLowestPrice?.priceInitial || 1));
 
-      if (reductionInPercent < 20) {
+      if (reductionInPercent < (lowestPrice >= 100 ? 10 : 20)) {
         return '';
       }
 
