@@ -619,7 +619,7 @@ export class I18nDeDe implements I18nInterface {
       PRODUCT_DESCRIPTION_SHOWN_PRODUCT_SIZE: 'Das gezeigte Produkt hat die Größe',
       PRODUCT_DESCRIPTION_SHOWN_PRODUCT_SIZES: 'Das Produkt ist in folgenden Größen erhältlich',
 
-      PRODUCT_DETAILS: 'Produkt-Details',
+      PRODUCT_DETAILS: 'Produktdetails',
       PRODUCT_DETAILS_CONTENTSOFDELIVERY: 'Lieferumfang',
       PRODUCT_DETAILS_MAKE: 'Marke',
       PRODUCT_DETAILS_GENRE: 'Genre',

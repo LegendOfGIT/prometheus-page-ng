@@ -1,12 +1,11 @@
-<div class="container singleProductView__content">
-
-  <div class="content__backToOverview">
+<div class="container text-center pt-5">
+  <div class="mb-3 pt-2">
     <app-breadcrumbs [navigationIds]="item?.navigationPath"></app-breadcrumbs>
   </div>
 
   <div class="row">
     <div class="col-12 col-md-6">
-      <div class="carousel__viewport">
+      <div class="bg-white pb-2 pt-2 carousel__viewport">
           <div *ngFor="let imageBigUrl of slideImageUrls; let i = index;">
             <img
               #img
@@ -18,7 +17,7 @@
           </div>
       </div>
 
-      <div class="d-none {{item?.priceHistory?.length ? 'd-lg-block' : ''}} mt-2">
+      <div class="d-none {{item?.priceHistory?.length ? 'd-lg-block' : ''}} mt-3">
         <h2 class="singleProductView__sectionHeader text-start">{{ 'PRICE_HISTORY' | translate }}</h2>
         <canvas id="priceHistoryChartA" width="400" height="150">
           {{priceHistoryChartA}}
@@ -49,7 +48,7 @@
             </canvas>
           </div>
 
-          <div class="productInformation__header">
+          <div class="pt-2 justify-content-start">
             <h2 class="singleProductView__sectionHeader">{{( areThereMorePrices ? 'TOP_OFFER' : 'OFFER') | translate }}</h2>
           </div>
 
@@ -77,7 +76,7 @@
           <span *ngIf="!itemWithLowestPrice">{{ 'NO_OFFER_AVAilABLE' | translate }}</span>
 
           <div *ngIf="areThereMorePrices">
-            <div class="productInformation__header">
+            <div class="pt-2 justify-content-start">
               <h2 class="singleProductView__sectionHeader">{{ 'MORE_OFFERS' | translate }}</h2>
             </div>
             <div class="productInformation__offers">
@@ -111,8 +110,8 @@
   </div>
 
   <div *ngIf="item?.size || item?.sizes" class="row">
-    <div  class="col-12 productDetails productDetails--left">
-      <div class="productInformation productInformation--p">
+    <div class="col-12 justify-content-start productDetails">
+      <div class="pt-3 productInformation">
         <span *ngIf="item?.size">
           {{ 'PRODUCT_DESCRIPTION_SHOWN_PRODUCT_SIZE' | translate }} {{item?.size}}.<br/>
         </span>
@@ -128,19 +127,18 @@
 
   <div class="row">
     <div class="col-12 productDetails">
-      <section class="productInformation {{item?.teaserTexts?.length ? '' : 'productInformation--last'}} productInformation__header productDetails__wrapper">
+      <section class="w-100 pt-2 justify-content-start productInformation {{item?.teaserTexts?.length ? '' : 'pb-5'}}">
         <div *ngIf="getItemDetails(item)?.length">
-          <div class="productInformation__header">
+          <div class="pt-2 justify-content-start">
             <h2 class="singleProductView__sectionHeader">{{'PRODUCT_DETAILS' | translate}}</h2>
           </div>
 
-          <div *ngFor="let detail of getItemDetails(item)" class="row mt-2">
-            <div class="col-12">
-              <div class="productDetails__label">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</div>
-              <div>{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate : '' : ' ' }}</div>
-            </div>
-          </div>
-
+          <dl class="summary-items">
+            <ng-container *ngFor="let detail of getItemDetails(item)">
+              <dt class="fw-bold">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</dt>
+              <dd>{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate : '' : ' ' }}</dd>
+            </ng-container>
+          </dl>
         </div>
         &nbsp;
       </section>
@@ -149,12 +147,12 @@
 
   <div *ngIf="item?.teaserTexts?.length" class="row">
     <div class="col-12 productDetails">
-      <section class="productInformation productInformation--last productInformation__header productDetails__wrapper">
-        <div class="productInformation__header">
+      <section class="w-100 pb-5 pt-2 justify-content-start productInformation">
+        <div class="pt-2">
           <h2 class="singleProductView__sectionHeader">Highlights</h2>
         </div>
         <ul>
-          <li class="highlights__item" *ngFor="let teaserText of item?.teaserTexts">
+          <li class="mt-2" *ngFor="let teaserText of item?.teaserTexts">
             {{teaserText}}
           </li>
         </ul>
@@ -162,7 +160,7 @@
     </div>
   </div>
 
-  <div class="row productInformation__share">
+  <div class="row mb-4">
     <div class="col-12 productDetails">
       <div class="productInformation">
         <h2 class="singleProductView__sectionHeader">{{'SHARE' | translate}}</h2>
