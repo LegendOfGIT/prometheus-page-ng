@@ -2,11 +2,11 @@
   <div class="mb-3 pt-2">
     <app-breadcrumbs [navigationIds]="item?.navigationPath"></app-breadcrumbs>
   </div>
-
+f
   <div class="row">
     <div class="col-12 col-md-6">
       <div class="bg-white pb-2 pt-2 carousel__viewport">
-          <div *ngFor="let imageBigUrl of slideImageUrls; let i = index;">
+          <div *ngFor="let imageBigUrl of slideImageUrls(); let i = index;">
             <img
               #img
               src="{{imageBigUrl}}"
@@ -49,7 +49,7 @@
           </div>
 
           <div class="pt-2 justify-content-start">
-            <h2 class="singleProductView__sectionHeader">{{( areThereMorePrices ? 'TOP_OFFER' : 'OFFER') | translate }}</h2>
+            <h2 class="singleProductView__sectionHeader">{{( areThereMorePrices() ? 'TOP_OFFER' : 'OFFER') | translate }}</h2>
           </div>
 
           <div class="productInformation__disclaimer mb-2">{{'PROVISION_DISCLAIMER' | translate}}</div>
@@ -67,7 +67,7 @@
                   {{itemWithLowestPrice.productCondition}}
                 </div>
                 <div *ngIf="itemWithLowestPrice.updatedOn" class="productInformation__offer--updatedOn">
-                  aktualisiert am:
+                  {{ 'UPDATED_ON' | translate }}:
                   {{itemWithLowestPrice.updatedOn | date:'dd.MM.yyyy' }}
                 </div>
               </div>
@@ -75,12 +75,12 @@
           </div>
           <span *ngIf="!itemWithLowestPrice">{{ 'NO_OFFER_AVAilABLE' | translate }}</span>
 
-          <div *ngIf="areThereMorePrices">
+          <div *ngIf="areThereMorePrices()">
             <div class="pt-2 justify-content-start">
               <h2 class="singleProductView__sectionHeader">{{ 'MORE_OFFERS' | translate }}</h2>
             </div>
             <div class="productInformation__offers">
-              <a *ngFor="let offer of moreExpensiveOfferItems" href="{{offer?.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
+              <a *ngFor="let offer of moreExpensiveOfferItems()" href="{{offer?.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
                 <div class="button productInformation__offer">
                   <div>
                     {{getShopNameFromUrl(offer?.link)}}: <span *ngIf="renderPrice(offer)" class="productInformation__offer--price">{{renderPrice(offer)}}</span>
@@ -97,7 +97,7 @@
                   </div>
                 </div>
               </a>
-              <a *ngFor="let offer of offerItemsWithoutPrice" href="{{offer?.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
+              <a *ngFor="let offer of offerItemsWithoutPrice()" href="{{offer?.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
                 <div class="button productInformation__offer">
                       {{getShopNameFromUrl(offer?.link)}}: <span *ngIf="renderPrice(offer)" class="productInformation__offer--price">{{renderPrice(offer)}}</span>
                 </div>
@@ -115,16 +115,16 @@
         <span *ngIf="item?.size">
           {{ 'PRODUCT_DESCRIPTION_SHOWN_PRODUCT_SIZE' | translate }} {{item?.size}}.<br/>
         </span>
-        <span *ngIf="productSizes">
-          <span *ngIf="!item?.size">{{ 'PRODUCT_DESCRIPTION_SHOWN_PRODUCT_SIZES' | translate }}:<br/> {{productSizes}}</span>
+        <span *ngIf="productSizes()">
+          <span *ngIf="!item?.size">{{ 'PRODUCT_DESCRIPTION_SHOWN_PRODUCT_SIZES' | translate }}:<br/> {{productSizes()}}</span>
           <span *ngIf="item?.size">
-            {{ 'PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES' | translate }} {{productSizes}} {{ 'PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES_SUFFIX' | translate }}.
+            {{ 'PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES' | translate }} {{productSizes()}} {{ 'PRODUCT_DESCRIPTION_PRODUCT_ADDITIONAL_SIZES_SUFFIX' | translate }}.
           </span>
         </span>
       </div>
     </div>
   </div>
-
+f
   <div class="row">
     <div class="col-12 productDetails">
       <section class="w-100 pt-2 justify-content-start productInformation {{item?.teaserTexts?.length ? '' : 'pb-5'}}">
@@ -160,7 +160,15 @@
     </div>
   </div>
 
-  <div class="row mb-4">
+  <div *ngIf="item?.youtubeLinks?.length" class="row">
+    <div class="col-12 d-flex flex-wrap flex-xl-nowrap justify-content-center">
+      <div class="m-1 ratio ratio-16x9" *ngFor="let youtubeLink of item?.youtubeLinks" style="min-width:23em; max-width: 40em">
+        <iframe [src]="getSanitizedResourceUri(youtubeLink)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4 mb-4">
     <div class="col-12 productDetails">
       <div class="productInformation">
         <h2 class="singleProductView__sectionHeader">{{'SHARE' | translate}}</h2>
@@ -181,11 +189,11 @@
     </div>
   </div>
 
-  <section *ngIf="activeNavigationItem" class="row">
+  <section *ngIf="getActiveNavigationItem()" class="row">
     <div class="col-12">
       <h2 class="singleProductView__sectionHeader">{{'FURTHER_PRODUCTS_OF_CATEGORY' | translate}}</h2>
       <category-teaser
-        [navigationItem]="activeNavigationItem"
+        [navigationItem]="getActiveNavigationItem()"
         [showHeader]="false"
         [randomItems]="true"
         [numberOfItems]="8"

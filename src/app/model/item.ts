@@ -4,6 +4,7 @@ import { CorrespondingItem } from './corresponding-item';
 import { ItemDetails } from './item-details';
 import {ItemDescription} from "./item-description";
 import {PriceHistoryItem} from "./price-history-item";
+import {ItemDescriptionDto} from './dto/item-description';
 
 export class Item extends BaseModel {
     id: string = '';
@@ -67,6 +68,7 @@ export class Item extends BaseModel {
     descriptions: Array<ItemDescription | null> = [];
     providers: Array<CorrespondingItem | null> = [];
     priceHistory: Array<PriceHistoryItem> = [];
+    youtubeLinks: Array<string> = [];
 
     static override fromModel(data: ItemDto): Item | null {
         const item: Item | null = this.bindFrom<ItemDto, Item>(Item, data);
@@ -79,14 +81,15 @@ export class Item extends BaseModel {
           item.titleImage = (data as any)['title-image'];
           item.teaserTexts = (data as any)['teaser-texts'];
           item.widthInCm = (data as any)['width-in-cm'];
+          item.youtubeLinks = (data as any)['youtubeLinks'];
 
           item.descriptions = (data.descriptions || [])
-            .map(description => ItemDescription.fromModel(description))
-            .filter(description => description.content);
+            .map((description: ItemDescriptionDto) => ItemDescription.fromModel(description))
+            .filter((description: ItemDescription) => description.content);
           item.providers = (data.providers || []).map(provider => CorrespondingItem.fromModel(provider));
           item.priceHistory = (data.priceHistory || []).map(historyItem => PriceHistoryItem.fromModel(historyItem));
 
-          const hashtagsToIgnore = ['', 'noprofile', 'WeWannaShop'];
+          const hashtagsToIgnore: Array<string> = ['', 'noprofile', 'WeWannaShop'];
           item.hashtags = Object.keys(data.scoring || {})
             .filter(key => -1 === hashtagsToIgnore.indexOf(key))
             .map(key => ({ key, value: data.scoring[key] }))

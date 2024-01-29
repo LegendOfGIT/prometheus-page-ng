@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {DomSanitizer, makeStateKey, Meta, SafeHtml, Title, TransferState} from '@angular/platform-browser';
 import {DOCUMENT, isPlatformServer} from '@angular/common';
@@ -29,14 +29,17 @@ import {PriceHistoryItem} from "../../model/price-history-item";
 
 @Component({
   selector: 'single-product-view',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './single-product-view.component.html',
   styleUrls: ['./single-product-view.component.scss']
 })
 export class SingleProductViewComponent implements OnInit {
+  protected readonly CorrespondingItem = CorrespondingItem;
 
   public itemId: string = '';
 
   public item: Item | null = null;
+  public itemWithLowestPrice: CorrespondingItem | null = null;
 
   public safeWhatsAppUri: SafeHtml | null = null;
   public safePinterestUri: SafeHtml | null = null;
@@ -100,6 +103,7 @@ export class SingleProductViewComponent implements OnInit {
       }
 
       this.item = items[0];
+
       if (isPlatformServer(this.platformId)) {
         this.transferState.set<Item | null>(makeStateKey('productItem'), this.item);
         this.renderSEOInformation();
@@ -175,6 +179,8 @@ export class SingleProductViewComponent implements OnInit {
     if (!this.item) {
       return;
     }
+
+    this.itemWithLowestPrice = Item.getProviderItemWithLowestPrice(this.item);
 
     const script: HTMLScriptElement = this.doc.createElement('script');
     script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ "autoplay": true, centerMode: true, centerPadding: "20px", "autoplaySpeed": 7000, "arrows": false}); });';
@@ -320,6 +326,10 @@ export class SingleProductViewComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustUrl(uriTokens.join(''));
   }
 
+  public getSanitizedResourceUri(uri: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(uri);
+  }
+
   public renderPrice(item: CorrespondingItem | null): string | undefined {
     return CorrespondingItem.renderPrice(item);
   }
@@ -333,26 +343,18 @@ export class SingleProductViewComponent implements OnInit {
   }
 
   public seoHeader(numberKey: string): string {
-    return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.activeNavigationItem?.toId || ''}_HEADER_${numberKey}`] || '';
+    return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.getActiveNavigationItem()?.toId || ''}_HEADER_${numberKey}`] || '';
   }
 
   public seoContent(numberKey: string): string {
-    return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.activeNavigationItem?.toId || ''}_CONTENT_${numberKey}`] || '';
+    return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.getActiveNavigationItem()?.toId || ''}_CONTENT_${numberKey}`] || '';
   }
 
-  get itemWithLowestPrice(): CorrespondingItem | null {
-    if (!this.item) {
-      return null;
-    }
-
-    return Item.getProviderItemWithLowestPrice(this.item);
-  }
-
-  get areThereMorePrices(): boolean {
+  public areThereMorePrices(): boolean {
     return (this.item?.providers || []).length > 1;
   }
 
-  get moreExpensiveOfferItems(): Array<CorrespondingItem | null> {
+  public moreExpensiveOfferItems(): Array<CorrespondingItem | null> {
     if (!this.areThereMorePrices) {
       return [];
     }
@@ -363,7 +365,7 @@ export class SingleProductViewComponent implements OnInit {
       .sort((a, b) => (a?.priceCurrent || 0) - (b?.priceCurrent || 0));
   }
 
-  get offerItemsWithoutPrice(): Array<CorrespondingItem | null> {
+  public offerItemsWithoutPrice(): Array<CorrespondingItem | null> {
     if (!this.areThereMorePrices) {
       return [];
     }
@@ -373,23 +375,21 @@ export class SingleProductViewComponent implements OnInit {
       .filter((item: CorrespondingItem | null): boolean => 0 === (item?.priceCurrent || 0));
   }
 
-  get activeNavigationItem(): NavigationItem | undefined {
+  public getActiveNavigationItem(): NavigationItem | undefined {
     return Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
   }
 
-  get slideImageUrls(): Array<string> {
+  public slideImageUrls(): Array<string> {
     return [this.item?.titleImage || '']
       .concat(this.item?.imagesBig || [])
-      .filter((value, index, array) => array.indexOf(value) === index);
+      .filter((value: string, index: number, array: Array<string>): boolean => array.indexOf(value) === index);
   }
 
-  get productSizes(): string {
+  public productSizes(): string {
     if (!(this.item?.sizes || []).length) {
       return '';
     }
 
-    return (this.item?.sizes || '').split(',').filter(size => this.item?.size !== size as string).join(', ');
+    return (this.item?.sizes || '').split(',').filter((size: string): boolean => this.item?.size !== size as string).join(', ');
   }
-
-  protected readonly CorrespondingItem = CorrespondingItem;
 }
