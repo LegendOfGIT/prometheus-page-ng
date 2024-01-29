@@ -477,6 +477,7 @@ export class Navigation {
     new NavigationItem('VEHICLES_MOTORCYCLES', 'VEHICLES_MOTORCYCLES_QUADS', ['vehicles', 'motorcycles', 'quads']),
     new NavigationItem('VEHICLES', 'VEHICLES_SCOOTERS', ['vehicles', 'scooters', '']),
     new NavigationItem('VEHICLES_SCOOTERS', 'VEHICLES_SCOOTERS_ELECTRICALSCOOTERS', ['vehicles', 'scooters', 'e-scooters']),
+    new NavigationItem('VEHICLES_SCOOTERS', 'VEHICLES_SCOOTERS_SELFBALANCINGSCOOTERS', ['vehicles', 'scooters', 'self-balancing-scooters']),
 
     new NavigationItem('ALL', 'SPORTS', ['sports', '', ''], 12)
       .setHasSlogan(true)

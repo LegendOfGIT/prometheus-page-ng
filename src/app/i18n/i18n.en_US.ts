@@ -453,6 +453,7 @@ export class I18nEnUs implements I18nInterface {
       NAVIGATION_VEHICLES_MOTORCYCLES_QUADS: 'quads',
       NAVIGATION_VEHICLES_SCOOTERS: 'scooters',
       NAVIGATION_VEHICLES_SCOOTERS_ELECTRICALSCOOTERS: 'e-scooters',
+      NAVIGATION_VEHICLES_SCOOTERS_SELFBALANCINGSCOOTERS: 'self-balancing scooters',
 
       NAVIGATION_SEO_BEAUTY_CARE_MAKEUP_LIPS_HEADER_A: 'Are there vegan lipsticks?',
       NAVIGATION_SEO_BEAUTY_CARE_MAKEUP_LIPS_CONTENT_A: 'Yes! There is now a well-stocked range of ' +
