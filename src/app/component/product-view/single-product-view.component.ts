@@ -29,7 +29,7 @@ import {PriceHistoryItem} from "../../model/price-history-item";
 
 @Component({
   selector: 'single-product-view',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
   templateUrl: './single-product-view.component.html',
   styleUrls: ['./single-product-view.component.scss']
 })
@@ -40,9 +40,11 @@ export class SingleProductViewComponent implements OnInit {
 
   public item: Item | null = null;
   public itemWithLowestPrice: CorrespondingItem | null = null;
+  public activeNavigationItem:  NavigationItem | undefined;
 
   public safeWhatsAppUri: SafeHtml | null = null;
   public safePinterestUri: SafeHtml | null = null;
+  public safeVideoUris: Array<SafeHtml | null> = [];
   public priceHistoryChartA: Chart | ElementRef | null = null;
   public priceHistoryChartB: Chart | ElementRef | null = null;
   public showFullDescription = false;
@@ -181,6 +183,8 @@ export class SingleProductViewComponent implements OnInit {
     }
 
     this.itemWithLowestPrice = Item.getProviderItemWithLowestPrice(this.item);
+    this.activeNavigationItem = Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
+    this.safeVideoUris = (this.item.youtubeLinks || []).map((link) => this.getSanitizedResourceUri(link));
 
     const script: HTMLScriptElement = this.doc.createElement('script');
     script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ "autoplay": true, centerMode: true, centerPadding: "20px", "autoplaySpeed": 7000, "arrows": false}); });';
@@ -343,11 +347,11 @@ export class SingleProductViewComponent implements OnInit {
   }
 
   public seoHeader(numberKey: string): string {
-    return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.getActiveNavigationItem()?.toId || ''}_HEADER_${numberKey}`] || '';
+    return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.activeNavigationItem?.toId || ''}_HEADER_${numberKey}`] || '';
   }
 
   public seoContent(numberKey: string): string {
-    return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.getActiveNavigationItem()?.toId || ''}_CONTENT_${numberKey}`] || '';
+    return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.activeNavigationItem?.toId || ''}_CONTENT_${numberKey}`] || '';
   }
 
   public areThereMorePrices(): boolean {
@@ -373,10 +377,6 @@ export class SingleProductViewComponent implements OnInit {
     return (this.item?.providers || [])
       .filter((providerItem: CorrespondingItem | null): boolean => providerItem !== Item.getProviderItemWithLowestPrice(this.item))
       .filter((item: CorrespondingItem | null): boolean => 0 === (item?.priceCurrent || 0));
-  }
-
-  public getActiveNavigationItem(): NavigationItem | undefined {
-    return Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
   }
 
   public slideImageUrls(): Array<string> {

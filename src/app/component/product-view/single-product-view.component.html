@@ -127,16 +127,12 @@ f
 f
   <div class="row">
     <div class="col-12 productDetails">
-      <section class="w-100 pt-2 justify-content-start productInformation {{item?.teaserTexts?.length ? '' : 'pb-5'}}">
+      <section class="w-100 pt-2 justify-content-start productInformation {{item?.teaserTexts?.length || safeVideoUris.length ? '' : 'pb-5'}}">
         <div *ngIf="getItemDetails(item)?.length">
-          <div class="pt-2 justify-content-start">
-            <h2 class="singleProductView__sectionHeader">{{'PRODUCT_DETAILS' | translate}}</h2>
-          </div>
-
-          <dl class="summary-items">
+          <dl class="dl-horizontal d-flex flex-wrap">
             <ng-container *ngFor="let detail of getItemDetails(item)">
-              <dt class="fw-bold">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</dt>
-              <dd>{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate : '' : ' ' }}</dd>
+              <dt class="col-4 fw-bold">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</dt>
+              <dd class="col-8">{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate : '' : ' ' }}</dd>
             </ng-container>
           </dl>
         </div>
@@ -160,10 +156,10 @@ f
     </div>
   </div>
 
-  <div *ngIf="item?.youtubeLinks?.length" class="row">
+  <div *ngIf="safeVideoUris?.length" class="row">
     <div class="col-12 d-flex flex-wrap flex-xl-nowrap justify-content-center">
-      <div class="m-1 ratio ratio-16x9" *ngFor="let youtubeLink of item?.youtubeLinks" style="min-width:23em; max-width: 40em">
-        <iframe [src]="getSanitizedResourceUri(youtubeLink)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="m-1 ratio ratio-16x9" *ngFor="let safeVideoUri of safeVideoUris" style="min-width:23em; max-width: 40em">
+        <iframe [src]="safeVideoUri" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </div>
   </div>
@@ -189,11 +185,11 @@ f
     </div>
   </div>
 
-  <section *ngIf="getActiveNavigationItem()" class="row">
+  <section *ngIf="activeNavigationItem" class="row">
     <div class="col-12">
       <h2 class="singleProductView__sectionHeader">{{'FURTHER_PRODUCTS_OF_CATEGORY' | translate}}</h2>
       <category-teaser
-        [navigationItem]="getActiveNavigationItem()"
+        [navigationItem]="activeNavigationItem"
         [showHeader]="false"
         [randomItems]="true"
         [numberOfItems]="8"
