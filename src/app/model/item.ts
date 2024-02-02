@@ -165,7 +165,7 @@ export class Item extends BaseModel {
       const itemDetails: Array<ItemDetails> = [new ItemDetails('MAKE', item.make || item.brand)];
 
       const prependedPropertyKeys: Array<string> = [ 'importantHints' ];
-      let propertyKeys: Array<string> = Object.keys(item).filter((key: string): boolean => -1 === prependedPropertyKeys.indexOf(key));
+      let propertyKeys: Array<string> = Object.keys(item).filter((key: string): boolean => 'make' !== key && -1 === prependedPropertyKeys.indexOf(key));
       propertyKeys = propertyKeys.concat(prependedPropertyKeys);
 
       propertyKeys.forEach((key: string): void => {

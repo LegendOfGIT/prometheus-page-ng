@@ -1,5 +1,4 @@
 import { I18nInterface } from './i18n.interface';
-import {FilterItem} from '../model/filter-item';
 
 export class I18nDeDe implements I18nInterface {
   public getTranslations(): any {
@@ -8,6 +7,7 @@ export class I18nDeDe implements I18nInterface {
       languageDeDe: 'deutsch (DE)',
       languageEnUs: 'englisch (US)',
       BACK: 'Zurück',
+      BACK_TO_STARTPAGE: 'Zurück zur Startseite',
       CATEGORIES: 'Kategorien',
       CREATE_HASHTAG_PREFIX: 'Hashtag ',
       CREATE_HASHTAG_SUFFIX: ' erstellen',
@@ -612,6 +612,8 @@ export class I18nDeDe implements I18nInterface {
       NO_PRODUCTS_FOUND: "Deine Suche hat leider keinen Treffer ergeben. Lass' dich von ein paar unserer anderen Produkte inspirieren!",
       OFFER: 'Angebot',
       OFFER_DETAILS: 'Angebotdetails',
+      PAGE_NOT_FOUND: 'Die Seite wurde nicht gefunden',
+      PAGE_NOT_FOUND_MESSAGE: 'Die gewünschte Seite konnte nicht gefunden werden.',
       PRICE_FROM: 'ab',
       PRICE_HISTORY: 'Preisverlauf',
       PRIVATSPHERE_OPTIONS: 'Privatsphäre Einstellungen',

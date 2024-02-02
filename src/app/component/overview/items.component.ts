@@ -150,6 +150,13 @@ export class ItemsComponent implements OnInit {
           ? this.navigationService.activeNavigationItem.toId
           : '';
 
+      if (!activeNavigationId) {
+        this.router.navigate(['404']).then((): void => {
+          window.location.reload();
+        });
+        return;
+      }
+
       this.itemsService.getItems(
         activeNavigationId,
         searchPattern,

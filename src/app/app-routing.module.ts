@@ -5,8 +5,10 @@ import { WishlistItemsComponent } from './component/wishlist/wishlist-items.comp
 import { ImprintComponent } from './component/legal/imprint.component';
 import { StartPageComponent } from './component/landing-pages/start-page.component';
 import { DataProtectionComponent } from './component/legal/data-protection.component';
+import { NotFoundComponent } from './component/landing-pages/not-found.component';
 
 const routes: Routes = [
+  { path: '404', component: NotFoundComponent },
   { path: 'data-protection', component: DataProtectionComponent },
   { path: 'imprint', component: ImprintComponent },
   { path: 'wishlist', component: WishlistItemsComponent },
@@ -18,7 +20,8 @@ const routes: Routes = [
     path: ':navigationIdLevelA',
     loadChildren: () => import('./component/overview/product-overview.module').then(m => m.ProductOverviewModule)
   },
-  { path: '', component: StartPageComponent }
+  { path: '', component: StartPageComponent },
+  { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({

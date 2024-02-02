@@ -142,10 +142,10 @@ export class ItemComponent implements OnInit, AfterViewInit {
 
     get itemUrl(): string {
         if (this.isCategoryItem()) {
-          const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
-          const navigationItem = this.getNextNavigationItem();
+          const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
+          const navigationItem: NavigationItem | undefined = this.getNextNavigationItem();
           return '/' +
-            (navigationItem?.pathParts || []).filter(pathPart => pathPart).join('/') +
+            (navigationItem?.pathParts || []).filter((pathPart: string) => pathPart).join('/') +
             (searchPattern ? `?search=${searchPattern}` : '');
         }
 

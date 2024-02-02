@@ -16,6 +16,7 @@ import { GeneralDataProtectionRegulationComponent } from './component/legal/gene
 import { DataProtectionComponent } from './component/legal/data-protection.component';
 import { SharedComponentsModule } from './component/shared-components.module';
 import { PipesModule } from './pipes/pipes.module';
+import { NotFoundComponent } from './component/landing-pages/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PipesModule } from './pipes/pipes.module';
     HeaderComponent, FooterComponent,
     DataProtectionComponent,
     ImprintComponent,
+    NotFoundComponent,
     StartPageComponent,
     WishlistItemsComponent
   ],

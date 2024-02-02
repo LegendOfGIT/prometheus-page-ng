@@ -1,0 +1,33 @@
+@import "src/styles/controls";
+@import 'src/app/variables';
+
+.content {
+  &__wrapper {
+    color: $content-color;
+    font-size: x-large;
+    justify-content: center;
+    padding-top: 4.5em;
+    text-align: center;
+  }
+}
+
+.button {
+  margin-left: 10%;
+  margin-right: 10%;
+
+  @media screen and (min-width: 786px) {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-left: 35%;
+    margin-right: 35%;
+  }
+}
+
+.logo {
+  background-color: $logo-capital-letter-color;
+  color: $logo-capital-letter-color;
+  max-width: 15em;
+}

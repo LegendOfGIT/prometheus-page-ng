@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, PLATFORM_ID} from '@angular/core';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {DomSanitizer, makeStateKey, Meta, SafeHtml, Title, TransferState} from '@angular/platform-browser';
 import {DOCUMENT, isPlatformServer} from '@angular/common';
 import {
@@ -26,6 +26,7 @@ import {TrackingActivityItem} from '../../model/tracking-activity-item';
 import {TrackingInterestLevel} from '../../model/tracking-interest-level';
 import {HyphenationPipe} from "../../pipes/web.pipe";
 import {PriceHistoryItem} from "../../model/price-history-item";
+import {catchError, of} from "rxjs";
 
 @Component({
   selector: 'single-product-view',
@@ -61,6 +62,7 @@ export class SingleProductViewComponent implements OnInit {
     private transferState: TransferState,
     private trackingService: TrackingService,
     private hyphenationPipe : HyphenationPipe,
+    private router: Router,
     @Inject(DOCUMENT) private doc: Document,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
@@ -98,19 +100,28 @@ export class SingleProductViewComponent implements OnInit {
       return;
     }
 
-    this.itemsService.getItemsById(this.itemId).subscribe((items: Array<Item | null>): void => {
-      if (!items?.length) {
-        this.item = null;
-        return;
-      }
+    this.itemsService.getItemsById(this.itemId)
+      .pipe(
+        catchError(() => {
+          this.router.navigate(['404']).then((): void => {
+            window.location.reload();
+          });
+          return of([]);
+        })
+      )
+      .subscribe((items: Array<Item | null>): void => {
+        if (!items?.length) {
+          this.item = null;
+          return;
+        }
 
-      this.item = items[0];
+        this.item = items[0];
 
-      if (isPlatformServer(this.platformId)) {
-        this.transferState.set<Item | null>(makeStateKey('productItem'), this.item);
-        this.renderSEOInformation();
-      }
-    });
+        if (isPlatformServer(this.platformId)) {
+          this.transferState.set<Item | null>(makeStateKey('productItem'), this.item);
+          this.renderSEOInformation();
+        }
+      });
   }
 
   private getOffersObject(productUri: string): any {
