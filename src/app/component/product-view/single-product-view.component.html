@@ -131,8 +131,8 @@ f
         <div *ngIf="getItemDetails(item)?.length">
           <dl class="dl-horizontal d-flex flex-wrap">
             <ng-container *ngFor="let detail of getItemDetails(item)">
-              <dt class="col-4 fw-bold">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</dt>
-              <dd class="col-8">{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate : '' : ' ' }}</dd>
+              <dt class="col-12 col-sm-5 fw-bold">{{ 'PRODUCT_DETAILS_' + detail.label | translate }}</dt>
+              <dd class="col-12 col-sm-7">{{detail.value}} {{'PRODUCT_DETAILS_SUFFIX_' + detail.label | translate : '' : ' ' }}</dd>
             </ng-container>
           </dl>
         </div>

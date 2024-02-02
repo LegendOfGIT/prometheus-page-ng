@@ -2,19 +2,10 @@
 @import 'src/app/variables';
 
 .category {
-  &__actions {
-    padding: 1em;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-
   &__title {
     font-size: 1.5em;
-    padding-bottom: 0.5em;
     text-align: left;
     text-align: -webkit-left;
-    width: 100%;
   }
 }
 
@@ -45,22 +36,6 @@
       font-size: 1.5em;
     }
   }
-
-  &__titleCapitalLetter {
-    color: $logo-capital-letter-color;
-  }
-
-  &__titleSlogan {
-    color: $logo-slogan-color;
-  }
-
-  &__titleTeaser {
-    color: $container-color;
-    font-family: $font-family;
-    font-size: 0.75em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
 }
 
 .informationItems {
@@ -74,26 +49,5 @@
   &__containerWrapper {
     position: relative;
     z-index: 1;
-
-    &--topGap {
-      padding-top: 1em;
-    }
-  }
-
-  &__content {
-    display: flex;
-    padding-top: 4.5em;
-  }
-}
-
-.startPage {
-  &__container {
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  &__content {
-    text-align: center;
   }
 }
