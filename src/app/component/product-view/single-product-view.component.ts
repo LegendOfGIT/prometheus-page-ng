@@ -27,6 +27,9 @@ import {TrackingInterestLevel} from '../../model/tracking-interest-level';
 import {HyphenationPipe} from "../../pipes/web.pipe";
 import {PriceHistoryItem} from "../../model/price-history-item";
 import {catchError, of} from "rxjs";
+import {FilterSelectionComponent} from "../filter/filter-selection.component";
+import {Filters} from "../../configurations/filters";
+import {FilterItem} from "../../model/filter-item";
 
 @Component({
   selector: 'single-product-view',
@@ -49,6 +52,7 @@ export class SingleProductViewComponent implements OnInit {
   public priceHistoryChartA: Chart | ElementRef | null = null;
   public priceHistoryChartB: Chart | ElementRef | null = null;
   public showFullDescription = false;
+  public moreOfBrandFilter = '';
 
   constructor(
     route: ActivatedRoute,
@@ -196,6 +200,8 @@ export class SingleProductViewComponent implements OnInit {
     this.itemWithLowestPrice = Item.getProviderItemWithLowestPrice(this.item);
     this.activeNavigationItem = Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
     this.safeVideoUris = (this.item.youtubeLinks || []).map((link) => this.getSanitizedResourceUri(link));
+    const brandFilterForItem = Filters.FILTERS.brands.find((filterItem: FilterItem): boolean =>  -1 !== (this.item?.brand || this.item?.make || '').toLowerCase().indexOf(filterItem.filterLabelId.toLowerCase()));
+    this.moreOfBrandFilter = brandFilterForItem?.id || '';
 
     const script: HTMLScriptElement = this.doc.createElement('script');
     script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ "autoplay": true, centerMode: true, centerPadding: "20px", "autoplaySpeed": 7000, "arrows": false}); });';

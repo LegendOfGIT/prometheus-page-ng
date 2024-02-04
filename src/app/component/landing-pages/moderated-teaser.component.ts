@@ -13,7 +13,6 @@ import { Item } from '../../model/item';
 import { ItemsApiService } from '../../service/items-api.service';
 import { NavigationItem } from '../../model/navigation-item';
 import { isPlatformServer } from '@angular/common';
-import { makeStateKey,  TransferState } from '@angular/platform-browser';
 import { UserService } from '../../service/user.service';
 import { ItemDisplayMode } from '../item/item.component';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
@@ -61,7 +60,6 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
 
   constructor(
     private itemsService: ItemsApiService,
-    private transferState: TransferState,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() @Inject(REQUEST) private request: Request
   ) {
@@ -99,10 +97,6 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
     this.initialiseItems();
   }
 
-  private getItemsKey(): string {
-    return 'productItems-' + (this.linkUri);
-  }
-
   private initialiseItems(): void {
     if (isPlatformServer(this.platformId) && !this.ssrRendering) {
       return;
@@ -122,9 +116,6 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
       this.hashtags).subscribe((itemsResponse: ItemsResponse): void => {
       if (itemsResponse?.items?.length) {
         this.items = itemsResponse.items;
-        if (isPlatformServer(this.platformId)) {
-          this.transferState.set<Array<Item | null>>(makeStateKey(this.getItemsKey()), this.items);
-        }
       }
     });
   }

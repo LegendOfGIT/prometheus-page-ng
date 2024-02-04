@@ -11,7 +11,6 @@ import { FooterComponent } from './component/footer/footer.component';
 import { WishlistItemsComponent } from './component/wishlist/wishlist-items.component';
 import { ImprintComponent } from './component/legal/imprint.component';
 import { StartPageComponent } from './component/landing-pages/start-page.component';
-import { ModeratedTeaserComponent } from './component/landing-pages/moderated-teaser.component';
 import { GeneralDataProtectionRegulationComponent } from './component/legal/general-data-protection-regulation.component';
 import { DataProtectionComponent } from './component/legal/data-protection.component';
 import { SharedComponentsModule } from './component/shared-components.module';
@@ -19,29 +18,28 @@ import { PipesModule } from './pipes/pipes.module';
 import { NotFoundComponent } from './component/landing-pages/not-found.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
+    declarations: [
+        AppComponent,
 
-    ModeratedTeaserComponent,
-    GeneralDataProtectionRegulationComponent,
-    HeaderComponent, FooterComponent,
-    DataProtectionComponent,
-    ImprintComponent,
-    NotFoundComponent,
-    StartPageComponent,
-    WishlistItemsComponent
-  ],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
+        GeneralDataProtectionRegulationComponent,
+        HeaderComponent, FooterComponent,
+        DataProtectionComponent,
+        ImprintComponent,
+        NotFoundComponent,
+        StartPageComponent,
+        WishlistItemsComponent
+    ],
+    imports: [
+        BrowserModule.withServerTransition({appId: 'serverApp'}),
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
 
-    SharedComponentsModule,
-    PipesModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+        SharedComponentsModule,
+        PipesModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

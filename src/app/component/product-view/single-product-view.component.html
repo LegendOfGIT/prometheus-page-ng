@@ -156,7 +156,7 @@ f
     </div>
   </div>
 
-  <div *ngIf="safeVideoUris?.length" class="row">
+  <div *ngIf="safeVideoUris?.length" class="row mb-4">
     <div class="col-12 d-flex flex-wrap flex-xl-nowrap justify-content-center">
       <div class="m-1 ratio ratio-16x9" *ngFor="let safeVideoUri of safeVideoUris" style="min-width:23em; max-width: 40em">
         <iframe [src]="safeVideoUri" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -164,7 +164,7 @@ f
     </div>
   </div>
 
-  <div class="row mt-4 mb-4">
+  <div class="row mb-4">
     <div class="col-12 productDetails">
       <div class="productInformation">
         <h2 class="singleProductView__sectionHeader">{{'SHARE' | translate}}</h2>
@@ -183,6 +183,13 @@ f
         </a>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="moreOfBrandFilter" class="col-12 mb-4">
+    <h2 class="singleProductView__sectionHeader">Mehr von dieser Marke</h2>
+    <moderated-teaser
+      [filters]="[moreOfBrandFilter]"
+    ></moderated-teaser>
   </div>
 
   <section *ngIf="activeNavigationItem" class="row">

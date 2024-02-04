@@ -6,6 +6,7 @@ import {LabelType} from '@angular-slider/ngx-slider';
 import {FiltersApiService} from '../../service/filters-api.service';
 import {NavigationService} from '../../service/navigation.service';
 import {AvailableFilterItem} from '../../model/available-filter-item';
+import {Filters} from "../../configurations/filters";
 
 @Component({
   selector: 'app-filter-selection',
@@ -27,6 +28,8 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
   public maximumPrice: number = 30000;
   public minimumPrice: number = 0;
   public isLoading = false;
+
+  public brandsFilters: Array<FilterItem> = Filters.FILTERS.brands;
 
   public colorFilters: Array<FilterItem> = [
     new FilterItem('1000008', 'FILTERS_COLORS_BLUE'),
@@ -126,60 +129,6 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     new FilterItem('1000161', 'FILTERS_AGE_FROM_12_YEARS'),
     new FilterItem('1000162', 'FILTERS_AGE_FROM_16_YEARS'),
     new FilterItem('1000163', 'FILTERS_AGE_FROM_18_YEARS')
-  ];
-
-  public brandsFilters: Array<FilterItem> = [
-    new FilterItem('1000109', 'Activision'),
-    new FilterItem('1000088', 'Adidas'),
-    new FilterItem('1000206', 'Affenzahn'),
-    new FilterItem('1000087', 'Apple'),
-    new FilterItem('1000145', 'Bench'),
-    new FilterItem('1000217', 'Black + Decker'),
-    new FilterItem('1000216', 'Bosch'),
-    new FilterItem('1000179', 'Braun'),
-    new FilterItem('1000098', 'Bruno Banani'),
-    new FilterItem('1000101', 'Bugatti'),
-    new FilterItem('1000103', 'Calvin Klein'),
-    new FilterItem('1000110', 'Chanel'),
-    new FilterItem('1000115', 'Charlsten'),
-    new FilterItem('1000116', 'Cougar'),
-    new FilterItem('1000173', 'Costway'),
-    new FilterItem('1000099', 'Desigual'),
-    new FilterItem('1000215', 'DeWalt'),
-    new FilterItem('1000212', 'Einhell'),
-    new FilterItem('1000107', 'Electronic Arts'),
-    new FilterItem('1000105', 'Esprit'),
-    new FilterItem('1000172', 'Fisher-Price'),
-    new FilterItem('1000102', 'Fossil'),
-    new FilterItem('1000165', 'Funzy'),
-    new FilterItem('1000100', 'Gabor'),
-    new FilterItem('1000091', 'Google'),
-    new FilterItem('1000096', 'Guess'),
-    new FilterItem('1000170', 'Hasbro'),
-    new FilterItem('1000106', 'Hudora'),
-    new FilterItem('1000097', 'Lascara'),
-    new FilterItem('1000093', 'LEGO'),
-    new FilterItem('1000213', 'Makita'),
-    new FilterItem('1000219', 'Mannesmann'),
-    new FilterItem('1000166', 'Mattel'),
-    new FilterItem('1000214', 'Metabo'),
-    new FilterItem('1000104', 'Nike'),
-    new FilterItem('1000095', 'Nintendo'),
-    new FilterItem('1000113', 'Nokia'),
-    new FilterItem('1000142', 'Pandora'),
-    new FilterItem('1000167', 'Playmobil'),
-    new FilterItem('1000090', 'Puma'),
-    new FilterItem('1000171', 'Relaxdays'),
-    new FilterItem('1000089', 'Samsung'),
-    new FilterItem('1000218', 'Scheppach'),
-    new FilterItem('1000118', 'Schleich'),
-    new FilterItem('1000174', 'Schmidt Spiele'),
-    new FilterItem('1000168', 'Schöner Wohnen'),
-    new FilterItem('1000169', 'Spin Master'),
-    new FilterItem('1000092', 'Sony'),
-    new FilterItem('1000094', 'Vivanco'),
-    new FilterItem('1000108', 'Vtech'),
-    new FilterItem('1000207', 'Wildling')
   ];
 
   public fitFilters: Array<FilterItem> = [

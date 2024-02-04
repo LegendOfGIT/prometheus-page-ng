@@ -1,5 +1,5 @@
 <div class="container informationItems__content informationItems__content--categories">
-  <div *ngIf="showCategoryNavigation" class="col-12 informationItems__container informationItems__container--categories carousel__viewport">
+  <div *ngIf="showCategoryNavigation" class="col-12 pt-2 d-inline-flex justify-content-center informationItems__container informationItems__container--categories carousel__viewport">
     <app-item
       *ngFor="let subNavigationItem of subNavigationItems"
       [item]="itemOfCategory(subNavigationItem?.toId || '')"
@@ -12,8 +12,8 @@
   <div class="container">
     <div class="row">
       <div class="col-5"></div>
-      <div class="col-2 filters__buttonWrapper">
-        <div class="button button--highlighted filters filters__button fa fa-sliders-h" (click)="filterSelectionDialog.showModal();">
+      <div class="col-2 mb-2 mt-2 d-inline-flex justify-content-center">
+        <div class="button justify-content-center button--highlighted filters filters__button fa fa-sliders-h" (click)="filterSelectionDialog.showModal();">
       </div>
       </div>
       <div class="col-5"></div>
@@ -29,19 +29,19 @@
   </div>
 
   <div *ngIf="noResults" class="container">
-    <div class="col-12 noResults__container">
+    <div class="col-12 d-flex mt-1 p-1 noResults__container">
       {{ 'NO_PRODUCTS_FOUND' | translate }}
     </div>
   </div>
 
   <div *ngIf="items?.length" class="container informationItems__content">
-    <div class="col-12 informationItems__container">
+    <div class="col-12 pt-2 d-inline-flex justify-content-center informationItems__container">
       <app-item *ngFor="let item of items" [item]="item">
       </app-item>
     </div>
   </div>
 
-  <div class="container informationItems__disclaimer informationItems__content">
+  <div class="container fst-italic informationItems__disclaimer informationItems__content">
     <div class="col-12">
       {{ 'PROVISION_DISCLAIMER' | translate }}
     </div>
@@ -49,8 +49,8 @@
 </div>
 
 <div class="container">
-  <div class="col-12 pages__container">
-    <div class="pages__wrapper">
+  <div class="col-12 d-flex pt-4 justify-content-center pages__container">
+    <div class="d-flex pages__wrapper">
       <a *ngIf="currentPage > 1; else leftDisabled" href="{{linkToPage(currentPage - 1)}}" class="pages__page pages__page--previous">
           &laquo; {{'BACK' | translate}}
       </a>
@@ -60,7 +60,7 @@
         </div>
       </ng-template>
 
-      <div *ngFor="let page of availablePages" class="pages__page {{currentPage === page ? 'pages__page--active' : ''}}">
+      <div *ngFor="let page of availablePages" class="pages__page {{currentPage === page ? 'fw-bold' : ''}}">
 
         <a *ngIf="0 !== page; else dots" href="{{linkToPage(page)}}">
           {{page}}
