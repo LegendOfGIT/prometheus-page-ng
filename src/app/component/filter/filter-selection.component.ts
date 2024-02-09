@@ -230,6 +230,7 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     new FilterItem('1000026', 'Fussmattenwelt'),
     new FilterItem('1000143', 'Galapel'),
     new FilterItem('1000146', 'Gewürzland'),
+    new FilterItem('1000258', 'Hairburst'),
     new FilterItem('1000027', 'Hayman Coffee'),
     new FilterItem('1000028', 'Hörner'),
     new FilterItem('1000029', 'Idee'),

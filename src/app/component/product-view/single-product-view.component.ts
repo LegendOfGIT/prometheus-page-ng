@@ -199,7 +199,7 @@ export class SingleProductViewComponent implements OnInit {
 
     this.itemWithLowestPrice = Item.getProviderItemWithLowestPrice(this.item);
     this.activeNavigationItem = Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
-    this.safeVideoUris = (this.item.youtubeLinks || []).map((link) => this.getSanitizedResourceUri(link));
+    this.safeVideoUris = (this.item.videoLinks || []).map((link) => this.getSanitizedResourceUri(link));
     const brandFilterForItem = Filters.FILTERS.brands.find((filterItem: FilterItem): boolean =>  -1 !== (this.item?.brand || this.item?.make || '').toLowerCase().indexOf(filterItem.filterLabelId.toLowerCase()));
     this.moreOfBrandFilter = brandFilterForItem?.id || '';
 

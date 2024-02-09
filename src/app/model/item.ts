@@ -49,26 +49,18 @@ export class Item extends BaseModel {
     resolution: string = '';
     size: string = '';
     sizes: string = '';
-    storageSize: string = '';
-    subgenre: string = '';
-    scent: string = '';
     seoDescription: string = '';
-    seoKeywords: string = '';
-    speedKey: string = '';
-    tasteType: string = '';
     teaserTexts: Array<string> = [];
     type: string = '';
     types: string = '';
-    tyreType: string = '';
     widthInCm: number = 0;
-    weightInKG: number = 0;
-    weightInG: number = 0;
 
     imagesBig: Array<string> = [];
     descriptions: Array<ItemDescription | null> = [];
     providers: Array<CorrespondingItem | null> = [];
     priceHistory: Array<PriceHistoryItem> = [];
     youtubeLinks: Array<string> = [];
+    videoLinks: Array<string> = [];
 
     static override fromModel(data: ItemDto): Item | null {
         const item: Item | null = this.bindFrom<ItemDto, Item>(Item, data);
@@ -82,6 +74,9 @@ export class Item extends BaseModel {
           item.teaserTexts = (data as any)['teaser-texts'];
           item.widthInCm = (data as any)['width-in-cm'];
           item.youtubeLinks = (data as any)['youtubeLinks'];
+          item.videoLinks = (data as any)['videoLinks'];
+
+          item.videoLinks = item.videoLinks?.length ? item.videoLinks : item.youtubeLinks;
 
           item.descriptions = (data.descriptions || [])
             .map((description: ItemDescriptionDto) => ItemDescription.fromModel(description))
