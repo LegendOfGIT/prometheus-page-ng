@@ -122,7 +122,7 @@ export class ItemComponent implements OnInit, AfterViewInit {
         return '';
       }
 
-      const url: string | undefined = this.item?.providers[0]?.link || '';
+      const url: string = (this.item?.providers[0]?.link || '').replace(/\/[a-zA-Z]{2}\./, '/');
       const match: RegExpMatchArray | null = (url || '').match(/\/\/(www.)?(.*?)\//);
       return match && match.length > 2 ? match[2].toUpperCase().replace(/\..*/, '') : '';
     }

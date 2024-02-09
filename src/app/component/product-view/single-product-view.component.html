@@ -143,7 +143,7 @@ f
 
   <div *ngIf="item?.teaserTexts?.length" class="row">
     <div class="col-12 productDetails">
-      <section class="w-100 pb-5 pt-2 justify-content-start productInformation">
+      <section class="w-100 pb-4 pt-2 justify-content-start productInformation">
         <div class="pt-2">
           <h2 class="singleProductView__sectionHeader">Highlights</h2>
         </div>
@@ -152,6 +152,19 @@ f
             {{teaserText}}
           </li>
         </ul>
+      </section>
+    </div>
+  </div>
+
+  <div *ngIf="item?.applicationInstructions" class="row">
+    <div class="col-12 productDetails">
+      <section class="w-100 pb-4 pt-2 justify-content-start productInformation">
+        <div class="pt-2">
+          <h2 class="singleProductView__sectionHeader">{{ 'APPLICATION_INSTRUCTIONS' | translate }}</h2>
+        </div>
+        <div>
+          {{item?.applicationInstructions}}
+        </div>
       </section>
     </div>
   </div>
@@ -186,7 +199,7 @@ f
   </div>
 
   <div *ngIf="moreOfBrandFilter" class="col-12 mb-4">
-    <h2 class="singleProductView__sectionHeader">Mehr von dieser Marke</h2>
+    <h2 class="singleProductView__sectionHeader">{{ 'MORE_OF_THIS_BRAND' | translate }}</h2>
     <moderated-teaser
       [filters]="[moreOfBrandFilter]"
     ></moderated-teaser>
