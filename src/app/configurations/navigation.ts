@@ -10,6 +10,7 @@ export class Navigation {
       .setHasTeaser(true),
     new NavigationItem('FASHION', 'FASHION_BOYS', ['fashion', 'boys', '']),
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_DISGUISES', ['fashion', 'boys', 'disguises']),
+    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_HATS', ['fashion', 'boys', 'hats']),
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_RAINWEAR', ['fashion', 'boys', 'rainwear']),
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SHOES', ['fashion', 'boys', 'shoes']),
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SWEATERS_AND_KNITWEAR', ['fashion', 'boys', 'sweaters-and-knitwear']),
@@ -60,6 +61,7 @@ export class Navigation {
       .setPathPartsForNavigation(['fashion', 'men', 'disguises'])
       .setSEOId('EXTRAORDINARYMENDISGUISES'),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_EROTICUNDERWEAR', ['fashion', 'men', 'erotic-underwear']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_HATS', ['fashion', 'men', 'hats']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_JACKETS', ['fashion', 'men', 'jackets']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEANS', ['fashion', 'men', 'jeans']),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEWELRY', ['fashion', 'men', 'jewelry']),
