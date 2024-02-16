@@ -13,8 +13,6 @@ a  {
   box-shadow: 0.1em 0.1em 0.8em lightgray;
   color: $header-footer-content-color;
   padding: 0.5em 0.5em 0.7em 0.5em;
-  position: fixed;
-  width: 100%;
   z-index: 4;
 
   &__content {
@@ -28,7 +26,6 @@ a  {
 
     &--active {
       color: $content-color--active;
-      font-weight: bold;
     }
 
     &--activeEmpty {
@@ -46,8 +43,6 @@ a  {
   }
 
   &__icons {
-    display: inline-flex;
-    position: absolute;
     right: 1.6em;
     top: 0.8em;
   }
@@ -65,7 +60,6 @@ a  {
     border: 1px solid $content-color;
     border-radius: 0.5em;
     left: 1em;
-    position: absolute;
     text-align: center;
     top: 2.5em;
     width: 20em;
@@ -78,7 +72,6 @@ a  {
       color: $container-color;
       cursor: pointer;
       padding: 0.5em;
-      position: absolute;
       right: 0;
       top: 0;
     }
@@ -103,14 +96,12 @@ a  {
 
   &__menuHeader {
     color: $container-color;
-    font-weight: bold;
   }
 
   &__menuIcon {
     cursor: pointer;
     font-size:1.5em;
     left: 1em;
-    position: absolute;
     top: 0.3em;
   }
 
@@ -124,7 +115,6 @@ a  {
 
   &__titleCapitalLetter {
     color: $logo-capital-letter-color;
-    font-weight: bold;
   }
 
   &__titleSlogan {
@@ -132,16 +122,9 @@ a  {
   }
 }
 
-.headerbar {
-  &__content {
-    display: inline-flex;
-  }
-}
-
 .socialMedia {
   &__icons {
     height: 1.8em;
-    position: absolute;
     top: 6.5em;
     width: 1.8em;
     z-index: 4;
@@ -180,7 +163,6 @@ a  {
     height: 1.8em;
     outline: 0;
     padding-left: 1.2em;
-    width: 100%;
 
     &:focus {
       border: 2px solid $content-color--active;
@@ -195,7 +177,6 @@ a  {
     cursor: pointer;
     font-size: 1.2em;
     line-height: 1px;
-    position: absolute;
     right: 1.3em;
   }
 
@@ -210,10 +191,7 @@ a  {
 }
 
 .searchbar {
-  padding-top: 0.5em;
-
   &__content {
-    display:inline-flex;
     padding-left: 0.8em;
     padding-right: 1em;
   }
@@ -222,23 +200,17 @@ a  {
 .suggestion {
   &__item {
     border-top: 1px solid lightgray;
-    display: inline-flex;
-    padding-bottom: 0.50em;
-    padding-top: 0.50em;
 
     &--column {
-      align-content: center;
       display: inline-grid;
     }
 
     &--first {
       border-top: unset;
-      padding-top: 1em;
     }
 
     &--go {
       color: $content-color--active;
-      justify-content: center;
     }
 
     &--last {

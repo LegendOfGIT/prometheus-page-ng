@@ -10,9 +10,6 @@ $circle-margin: 0.4em;
     height: $circle-size;
     border-radius: 50%;
     margin: $circle-margin;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     &:before {
       content: "";
@@ -37,9 +34,6 @@ $circle-margin: 0.4em;
 
   &__container {
     border-radius: 0.5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 10em;
     overflow: hidden;
   }

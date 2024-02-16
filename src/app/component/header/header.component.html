@@ -1,15 +1,15 @@
-<header class="header">
+<header class="w-100 position-fixed header">
   <div class="container">
     <div class="row header__content">
       <div class="col-12 header__title">
-        <div class="header__menuIcon">
+        <div class="position-absolute header__menuIcon">
           <i class="fa fa-regular fa-bars" (click)="categorySelection.showModal()"></i>
         </div>
 
         <h1 class="header__logo" style="cursor: pointer;">
           <a href="/">
-            <span class="header__titleCapitalLetter">W</span><span class="header__title">e</span>
-            <span class="header__titleCapitalLetter">W</span><span class="header__title">anna</span>
+            <span class="fw-bold header__titleCapitalLetter">W</span><span class="header__title">e</span>
+            <span class="fw-bold header__titleCapitalLetter">W</span><span class="header__title">anna</span>
 
             <span *ngIf="!isHashtagsModule">
               <span class="header__titleSlogan"> {{'NAVIGATION_SLOGAN_' + (activeNavigationItem?.hasSlogan ? activeNavigationItem?.toId || 'ALL' : 'ALL') | translate: 'en_US' }}!</span>
@@ -21,16 +21,16 @@
           </a>
         </h1>
 
-        <div class="header__icons">
+        <div class="d-inline-flex position-absolute header__icons">
           <div class="header__iconWrapper">
             <i
-              class="fa fa-heart {{userHasAtLeastOneWishlistItem ? '' : isModuleActive(Module.WISHLIST) ? 'header__icon--activeEmpty' : 'header__icon--empty'}} header__icon {{isModuleActive(Module.WISHLIST) ? 'header__icon--active' : ''}}"
+              class="fa fa-heart {{userHasAtLeastOneWishlistItem ? '' : isModuleActive(Module.WISHLIST) ? 'header__icon--activeEmpty' : 'header__icon--empty'}} header__icon {{isModuleActive(Module.WISHLIST) ? 'fw-bold header__icon--active' : ''}}"
               [routerLink]="['/wishlist']"
             ></i>
           </div>
           <div class="header__iconWrapper">
             <i
-              [ngClass]="['fa', 'header__icon', 'fa-globe', isLanguageSelectionOpen ? 'header__icon--active' : 'header__icon--activeEmpty']"
+              [ngClass]="['fa', 'header__icon', 'fa-globe', isLanguageSelectionOpen ? 'fw-bold header__icon--active' : 'header__icon--activeEmpty']"
               (click)="isLanguageSelectionOpen = true; languageSelection.showModal()"
             ></i>
           </div>
@@ -38,8 +38,8 @@
       </div>
     </div>
   </div>
-  <div *ngIf="showSearchBar" class="searchbar">
-    <div class="col-12 searchbar__content">
+  <div *ngIf="showSearchBar" class="pt-2 searchbar">
+    <div class="col-12 d-inline-flex searchbar__content">
       <input
         #searchPattern
         autocomplete="off"
@@ -47,12 +47,12 @@
         tabIndex="0"
         type="search"
         (search)="searchNow()"
-        class="searchbar__input"
+        class="w-100 searchbar__input"
         placeholder="{{'iAmSearchingFor'|translate}}"
         [formControl]="searchPatternControl"
       />
 
-      <div class="searchbar__inputBox">
+      <div class="position-absolute searchbar__inputBox">
         <div class="searchbar__inputButton">
           <i class="fa fa-search" (click)="searchNow()"></i>
         </div>
@@ -63,40 +63,40 @@
       <a
         href="{{getSuggestionLink(suggestion)}}"
         *ngFor="let suggestion of suggestions; let i = index;"
-        class="col-12 searchbar__content"
+        class="col-12 d-inline-flex searchbar__content"
         (click)="loadingDialog.showModal();"
       >
-        <div [ngClass]="['col-12', 'suggestion__item', 0 === i ? 'suggestion__item--first' : suggestions.length-1 === i ? 'suggestion__item--last' : '']">
+        <div [ngClass]="['col-12', 'd-inline-flex pb-1 pt-1 suggestion__item', 0 === i ? 'pt-2 suggestion__item--first' : suggestions.length-1 === i ? 'suggestion__item--last' : '']">
           <div class="col-11">
-            <div [ngClass]="[ 'suggestion__item--column', 'suggestion__item--trend', 'fa', suggestion.isNewItem() ? 'fa-plus' : suggestion.isSearchItem() ? 'fa-search' : 'fa-chart-line']"></div>
-            <div class="suggestion__item--column">
+            <div [ngClass]="[ 'align-content-center suggestion__item--column', 'suggestion__item--trend', 'fa', suggestion.isNewItem() ? 'fa-plus' : suggestion.isSearchItem() ? 'fa-search' : 'fa-chart-line']"></div>
+            <div class="align-content-center suggestion__item--column">
               {{getSuggestionItemPrefix(suggestion) | translate }}{{suggestion.isSearchItem() ? '' : '#'}}{{suggestion.label}}{{getSuggestionItemSuffix(suggestion) | translate }}
             </div>
           </div>
-          <div class="col-1 suggestion__item--column suggestion__item--go fa fa-chevron-right"></div>
+          <div class="col-1 align-content-center justify-content-center suggestion__item--column suggestion__item--go fa fa-chevron-right"></div>
         </div>
       </a>
     </div>
   </div>
 
   <a href="https://www.instagram.com/wewannashop2023" title="follow us on instagram" target="ww-instagram">
-    <img src="assets/images/instagram-icon.webp" class="socialMedia__icons{{showSearchBar ? '' : ' socialMedia__icons--thinHeader'}} socialMedia__icons--instagram"/>
+    <img src="assets/images/instagram-icon.webp" class="position-absolute socialMedia__icons{{showSearchBar ? '' : ' socialMedia__icons--thinHeader'}} socialMedia__icons--instagram"/>
   </a>
   <a href="https://www.facebook.com/profile.php?id=100095214000161" title="follow us on facebook" target="ww-facebook">
-    <img src="assets/images/facebook_icon.png" class="socialMedia__icons{{showSearchBar ? '' : ' socialMedia__icons--thinHeader'}} socialMedia__icons--facebook"/>
+    <img src="assets/images/facebook_icon.png" class="position-absolute socialMedia__icons{{showSearchBar ? '' : ' socialMedia__icons--thinHeader'}} socialMedia__icons--facebook"/>
   </a>
   <a href="https://www.pinterest.de/wewannashop" title="follow us on pinterest" target="ww-pinterest">
-    <img src="assets/images/pinterest.png" class="socialMedia__icons{{showSearchBar ? '' : ' socialMedia__icons--thinHeader'}} socialMedia__icons--pinterest"/>
+    <img src="assets/images/pinterest.png" class="position-absolute socialMedia__icons{{showSearchBar ? '' : ' socialMedia__icons--thinHeader'}} socialMedia__icons--pinterest"/>
   </a>
 </header>
 
 
 
-<dialog #categorySelection class="header__menu">
-  <div class="header__menuClose" (click)="categorySelection.close()">
+<dialog #categorySelection class="position-absolute header__menu">
+  <div class="position-absolute header__menuClose" (click)="categorySelection.close()">
     <i class="fa fa-times-circle"></i>
   </div>
-  <div class="header__menuHeader">
+  <div class="fw-bold header__menuHeader">
     <h4>{{'CATEGORIES' | translate }}</h4>
   </div>
   <div
@@ -112,12 +112,12 @@
   <app-loading></app-loading>
 </dialog>
 
-<dialog #languageSelection id="languageSelection" class="header__menu">
-  <div class="header__menuClose" (click)="isLanguageSelectionOpen = false; languageSelection.close()">
+<dialog #languageSelection id="languageSelection" class="position-absolute header__menu">
+  <div class="position-absolute header__menuClose" (click)="isLanguageSelectionOpen = false; languageSelection.close()">
     <i class="fa fa-times-circle"></i>
   </div>
 
-  <div class="header__menuHeader">
+  <div class="fw-bold header__menuHeader">
     <h4>{{'SELECT_LANGUAGE' | translate }}</h4>
   </div>
 
