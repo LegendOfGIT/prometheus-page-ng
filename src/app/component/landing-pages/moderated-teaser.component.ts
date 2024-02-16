@@ -54,6 +54,9 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
   @Input()
   public ssrRendering = false;
 
+  @Input()
+  public createdToday = false;
+
   public DISPLAY_MODE_TEASER: ItemDisplayMode = ItemDisplayMode.TEASER;
 
   public items: Array<Item | null> = [];
@@ -113,7 +116,8 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
       undefined,
       undefined,
       undefined,
-      this.hashtags).subscribe((itemsResponse: ItemsResponse): void => {
+      this.hashtags,
+      this.createdToday).subscribe((itemsResponse: ItemsResponse): void => {
       if (itemsResponse?.items?.length) {
         this.items = itemsResponse.items;
       }

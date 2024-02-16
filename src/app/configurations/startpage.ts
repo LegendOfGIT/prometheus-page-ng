@@ -2,8 +2,12 @@ import {TeaserItem} from '../model/teaser-item';
 
 export class Startpage {
   public static TEASER_ITEMS: TeaserItem[] = [
-    new TeaserItem('/hashtags/Valentinstag', '', '', 'TEASER_TITLE_VALENTINESDAY')
-      .setHashtags(['Valentinstag'])
+    new TeaserItem('/home/garden', 'HOME_GARDEN', 'grill', 'TEASER_TITLE_INTO_THE_GARDEN'),
+    new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', ''),
+
+    new TeaserItem('', '', '', 'TEASER_TITLE_DEALS_DISCOVERED_TODAY')
+      .setHashtags(['Schnäppchen'])
+      .setCreatedToday(true)
       .setSsrRendering(true),
     /*new TeaserItem('/hashtags/Highlights?search=vegan', '', 'vegan', 'VEGANuary')
       .setHashtags(['Highlights']),
@@ -62,15 +66,11 @@ export class Startpage {
     new TeaserItem('', 'KIDS_TOYS_BABIES', '', ''),
 
     new TeaserItem('/hashtags/Gold', '', '', 'TEASER_TITLE_HASHTAG_GOLD')
-      .setHashtags(['Gold'])
-      .setSsrRendering(true),
+      .setHashtags(['Gold']),
 
     new TeaserItem('/multimedia/games', 'MULTIMEDIA_GAMES', '', 'TEASER_TITLE_VIDEOGAMES')
       .setSsrRendering(true),
     new TeaserItem('/multimedia/movies/anime', 'MULTIMEDIA_MOVIES_ANIME', '', 'TEASER_TITLE_ANIMES'),
-
-    /*new TeaserItem('/home/garden', 'HOME_GARDEN', 'grill', 'TEASER_TITLE_INTO_THE_GARDEN'),
-    new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', ''),*/
 
     new TeaserItem('/home/wellness', 'HOME_WELLNESS_SAUNAS', '', 'TEASER_TITLE_HOME_WELLNESS'),
     new TeaserItem('', 'HOME_WELLNESS_WHIRLPOOLS', '', ''),

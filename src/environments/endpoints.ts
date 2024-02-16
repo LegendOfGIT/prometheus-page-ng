@@ -1,7 +1,7 @@
 
 export const endpoints = {
   availableFilters: '/available-filters?navigationId={navigationId}&searchPattern={searchPattern}&priceFrom={priceFrom}&priceTo={priceTo}',
-  items: '/information-items?navigationId={navigationId}&hashtags={hashtags}&id=&searchPattern={searchPattern}&numberOfResults={numberOfResults}&randomItems={randomItems}&page={page}&isBot={isBot}&filters={filterIds}&priceFrom={priceFrom}&priceTo={priceTo}',
+  items: '/information-items?navigationId={navigationId}&hashtags={hashtags}&id=&searchPattern={searchPattern}&numberOfResults={numberOfResults}&randomItems={randomItems}&page={page}&isBot={isBot}&filters={filterIds}&priceFrom={priceFrom}&priceTo={priceTo}&createdToday={createdToday}',
   itemsByCategories: '/information-items/by-categories?navigationIds={navigationIds}&numberOfResults={numberOfResults}&randomItems={randomItems}',
   hashtags: '/hashtags?hashtagPattern={hashtagsPattern}',
   hashtagsItems: '/information-items?numberOfResults={numberOfResults}&page={page}&isBot={isBot}&hashtags={hashtags}&searchPattern={searchPattern}&filters={filterIds}&priceFrom={priceFrom}&priceTo={priceTo}',

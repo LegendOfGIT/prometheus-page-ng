@@ -1,4 +1,5 @@
 export class TeaserItem {
+  createdToday: boolean = false;
   filters: Array<string> | undefined;
   hashtags: Array<string> | undefined;
   headerTitle: string = '';
@@ -26,6 +27,11 @@ export class TeaserItem {
 
   public setSsrRendering(ssrRendering: boolean): TeaserItem {
     this.ssrRendering = ssrRendering;
+    return this;
+  }
+
+  public setCreatedToday(createdToday: boolean): TeaserItem {
+    this.createdToday = createdToday;
     return this;
   }
 }
