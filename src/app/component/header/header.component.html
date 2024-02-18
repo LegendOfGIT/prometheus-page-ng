@@ -22,13 +22,13 @@
         </h1>
 
         <div class="d-inline-flex position-absolute header__icons">
-          <div class="header__iconWrapper">
+          <div class="ps-1 header__iconWrapper">
             <i
               class="fa fa-heart {{userHasAtLeastOneWishlistItem ? '' : isModuleActive(Module.WISHLIST) ? 'header__icon--activeEmpty' : 'header__icon--empty'}} header__icon {{isModuleActive(Module.WISHLIST) ? 'fw-bold header__icon--active' : ''}}"
               [routerLink]="['/wishlist']"
             ></i>
           </div>
-          <div class="header__iconWrapper">
+          <div class="ps-1 header__iconWrapper">
             <i
               [ngClass]="['fa', 'header__icon', 'fa-globe', isLanguageSelectionOpen ? 'fw-bold header__icon--active' : 'header__icon--activeEmpty']"
               (click)="isLanguageSelectionOpen = true; languageSelection.showModal()"
@@ -93,7 +93,7 @@
 
 
 <dialog #categorySelection class="position-absolute header__menu">
-  <div class="position-absolute header__menuClose" (click)="categorySelection.close()">
+  <div class="position-absolute p-1 header__menuClose" (click)="categorySelection.close()">
     <i class="fa fa-times-circle"></i>
   </div>
   <div class="fw-bold header__menuHeader">
@@ -113,7 +113,7 @@
 </dialog>
 
 <dialog #languageSelection id="languageSelection" class="position-absolute header__menu">
-  <div class="position-absolute header__menuClose" (click)="isLanguageSelectionOpen = false; languageSelection.close()">
+  <div class="position-absolute p-1 header__menuClose" (click)="isLanguageSelectionOpen = false; languageSelection.close()">
     <i class="fa fa-times-circle"></i>
   </div>
 

@@ -4,7 +4,6 @@
 .informationItem {
   font-size: 0.85em;
   padding: 1.5em 0.5em 1.5em 0.5em;
-  margin: 0.5em;
   text-align: center;
   text-align: -webkit-center;
   width: 11em;
@@ -35,8 +34,6 @@
   }
 
   &__contentContainer {
-    margin-top: 0.5em;
-
     &--category {
       margin-top: unset;
       padding-bottom: 0.5em;
@@ -47,10 +44,8 @@
   &__details {
     &--link {
       color: $content-color;
-      display: block;
       font-family: $font-family;
       letter-spacing: 0.02em;
-      margin-bottom: 0.5em;
       text-decoration: underline;
     }
   }
@@ -61,7 +56,6 @@
     border-style: dotted;
     cursor: pointer;
     font-size: 1.25em;
-    margin-bottom: 1em;
     padding: 0.75em;
 
     b {
@@ -78,21 +72,11 @@
     width: 20em;
   }
 
-  &__discountDialogLinkWrapper {
-    display: flex;
-    justify-content: center;
-  }
-
   &__hashtag {
     margin-right: 0.25em;
     padding-bottom: 0.25em;
     padding-top: 0.25em;
     width: unset;
-  }
-
-  &__hashtagsWrapper {
-    display: inline-flex;
-    flex-wrap: wrap;
   }
 
   &__image {
@@ -127,11 +111,7 @@
   &__imageContainer {
     align-items: center;
     border-radius: 0.5em;
-    display: flex;
-    justify-content: center;
     min-height: 15em;
-    padding: 0.5em;
-    position: relative;
     width: 10em;
 
     &--big {
@@ -180,9 +160,6 @@
     align-items: baseline;
     background-color: $container-background-color;
     border-radius: 15px;
-    font-weight: bold;
-    justify-content: center;
-    margin-bottom: 1em;
     padding: 0.3em;
 
     &--hidden {
@@ -191,14 +168,10 @@
   }
 
   &__stamp {
-    align-items: center;
     background-color: $logo-capital-letter-color;
     bottom: 0;
     color: #fff;
-    display: inline-flex;
-    font-weight: bold;
     height: 2em;
-    justify-content: center;
     position: absolute;
     right: -1em;
     width: 4em;

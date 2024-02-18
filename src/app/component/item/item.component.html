@@ -1,6 +1,6 @@
 <div #itemSection>
-  <div *ngIf="item" [ngClass]="['informationItem', item.itemId ? '' : 'informationItem--loading', showBig ? 'informationItem--big' : '', cssModifier ? 'informationItem' + cssModifier : '', additionalCssClasses]">
-    <div [ngClass]="['informationItem__imageContainer', cssModifier ? 'informationItem__imageContainer' + cssModifier : '', item.itemId ? '' : 'informationItem__imageContainer--loading']">
+  <div *ngIf="item" [ngClass]="['m-2', 'informationItem', item.itemId ? '' : 'informationItem--loading', showBig ? 'informationItem--big' : '', cssModifier ? 'informationItem' + cssModifier : '', additionalCssClasses]">
+    <div [ngClass]="['d-flex justify-content-center position-relative p-2 informationItem__imageContainer', cssModifier ? 'informationItem__imageContainer' + cssModifier : '', item.itemId ? '' : 'informationItem__imageContainer--loading']">
       <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item)" target="{{linkTarget}}">
         <img *ngIf="item.itemId"
              class="informationItem__image{{showBig ? ' informationItem__image--big' : ''}}{{cssModifier ? ' informationItem__image' + cssModifier : ''}}"
@@ -10,15 +10,15 @@
              (error)="imageUrl = 'assets/images/broken-image.png'"
              loading="lazy"
         />
-        <div class="informationItem__stamp{{showBig ? ' informationItem__stamp--big' : ''}}" *ngIf="renderedReduction">{{renderedReduction}}</div>
+        <div class="d-inline-flex justify-content-center fw-bold align-items-center mb-1 informationItem__stamp{{showBig ? ' informationItem__stamp--big' : ''}}" *ngIf="renderedReduction">{{renderedReduction}}</div>
       </a>
       <app-add-to-wishlist [item]="item" *ngIf="showWishlistIcon"></app-add-to-wishlist>
     </div>
 
     <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item)" target="{{linkTarget}}" >
-      <div class="informationItem__contentContainer{{cssModifier ? ' informationItem__contentContainer' + cssModifier : ''}}">
+      <div class="mt-1 informationItem__contentContainer{{cssModifier ? ' informationItem__contentContainer' + cssModifier : ''}}">
         <div *ngIf="showPrice">
-          <div *ngIf="renderLowestPrice(item); else noPrice" [ngClass]="['button', 'informationItem__priceWrapper']">
+          <div *ngIf="renderLowestPrice(item); else noPrice" [ngClass]="['button', 'fw-bold', 'justify-content-center', 'mb-3', 'informationItem__priceWrapper']">
             <span *ngIf="!hasOnlyOneOffer">{{ 'PRICE_FROM' | translate }}</span>
             <span class="informationItem__price{{showBig ? ' informationItem__price--big' : ''}}">&nbsp;{{renderLowestPrice(item) || ''}}</span>
           </div>
@@ -31,7 +31,7 @@
       </div>
     </a>
 
-    <div *ngIf="discountItem" class="informationItem__discount" (click)="discountDialog.showModal()">
+    <div *ngIf="discountItem" class="mb-2 informationItem__discount" (click)="discountDialog.showModal()">
       {{discountItem.teaser | translate}} *
       <div>
         <b>{{ 'DISCOUNT_SHOW_MORE' | translate }}</b>
@@ -41,7 +41,7 @@
     <a href="{{itemUrl}}" class="informationItem--link" *ngIf="showOfferDetailsLink" (click)="pickedInformation(item)" target="{{linkTarget}}">
       <span>{{getShopNameOfItem()}}</span>
     </a>
-    <a href="{{singleProductViewUrl}}" class="informationItem__details--link" *ngIf="showOfferDetailsLink" (click)="pickedInformation(item)">
+    <a href="{{singleProductViewUrl}}" class="mb-1 d-block informationItem__details--link" *ngIf="showOfferDetailsLink" (click)="pickedInformation(item)">
       <div>{{ 'OFFER_DETAILS' | translate }}</div>
     </a>
     <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item)" target="{{linkTarget}}">
@@ -49,7 +49,7 @@
     </a>
 
     <a *ngFor="let hashtag of item.hashtags" href="/hashtags/{{hashtag}}">
-      <div *ngIf="showHashtags" class="informationItem__hashtagsWrapper">
+      <div *ngIf="showHashtags" class="d-inline-flex flex-wrap">
         <div class="button informationItem__hashtag">
             #{{hashtag}}
         </div>
@@ -76,8 +76,8 @@
       {{ 'DISCOUNT_UNTIL' | translate }} {{ discountItem.maximumDate | date: 'dd.MM.yyyy' }}
     </div>
 
-    <div *ngIf="item" class="informationItem__discountDialogLinkWrapper">
-      <a href="{{itemUrl}}" class="button informationItem__priceWrapper informationItem__price informationItem__discountDialogLink" (click)="pickedInformation(item)" target="{{linkTarget}}">
+    <div *ngIf="item" class="d-flex justify-content-center">
+      <a href="{{itemUrl}}" class="button fw-bold justify-content-center mb-2 informationItem__priceWrapper informationItem__price informationItem__discountDialogLink" (click)="pickedInformation(item)" target="{{linkTarget}}">
         {{ 'DISCOUNT_GET_IT_NOW' | translate }}
       </a>
     </div>
