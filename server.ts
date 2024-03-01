@@ -1,12 +1,12 @@
 import 'zone.js/node';
 
 import { APP_BASE_HREF } from '@angular/common';
-import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
 import { existsSync } from 'fs';
 import { join } from 'path';
 
 import { AppServerModule } from './src/main.server';
+import {CommonEngine} from "@angular/ssr";
 const compression = require('compression');
 
 // The Express app is exported so that it can be used by serverless Functions.
@@ -14,11 +14,6 @@ export function app(): express.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/prometheus-page/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
-
-  // Our Universal express-engine (found @ https://github.com/angular/universal/tree/main/modules/express-engine)
-  server.engine('html', ngExpressEngine({
-    bootstrap: AppServerModule,
-  }));
 
   server.use(compression());
   server.set('view engine', 'html');
@@ -39,6 +34,26 @@ export function app(): express.Express {
 
     res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
   });
+  server.get('*', (req, res, next) => {
+    const { protocol, originalUrl, baseUrl, headers } = req;
+    new CommonEngine()
+      .render({
+        bootstrap: AppServerModule,
+        documentFilePath: indexHtml,
+        url: `${protocol}://${headers.host}${originalUrl}`,
+        publicPath: distFolder,
+        providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }],
+      })
+      .then((html: string): void => {
+        if (-1 === req.url.indexOf('hashtags')) {
+          res.header({'Cache-Control': 'max-age=300'});
+        }
+
+        res.send(html);
+      })
+      .catch((err) => next(err));
+  });
+
 
   return server;
 }
