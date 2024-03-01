@@ -20,7 +20,7 @@
     ></app-item>
   </div>
   <div class="category__actions">
-    <a href="{{moreLink}}" class="button">
+    <a href="{{moreLink}}" (click)="navigateToMore($event)" class="button">
         {{'SHOW_MORE_PREFIX' | translate }} "{{ showHashtags ? activeHashtags.join(' ') : navigationTranslationId | translate }}" {{'SHOW_MORE_SUFFIX' | translate }}
     </a>
   </div>

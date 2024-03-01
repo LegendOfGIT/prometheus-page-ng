@@ -1,6 +1,6 @@
-import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
+import {Component, Inject, Input, OnInit, Optional, PLATFORM_ID} from '@angular/core';
 import { Item } from '../../model/item';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { ItemsApiService } from '../../service/items-api.service';
 import { Subject } from 'rxjs';
 import { NavigationItem } from '../../model/navigation-item';
@@ -9,6 +9,8 @@ import { makeStateKey,  TransferState } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs/operators';
 import { UserService } from '../../service/user.service';
 import {ItemsResponse} from "../../model/items-response";
+import {REQUEST} from "@nguniversal/express-engine/tokens";
+import {Request} from "express";
 
 @Component({
   selector: 'category-teaser',
@@ -42,10 +44,12 @@ export class CategoryTeaserComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private itemsService: ItemsApiService,
     private transferState: TransferState,
     private userService: UserService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Optional() @Inject(REQUEST) private request: Request
   ) {
   }
 
@@ -54,7 +58,6 @@ export class CategoryTeaserComponent implements OnInit {
   }
 
   private initialiseItems(): void {
-
     const filterIds = this.route.snapshot?.queryParamMap?.get('filters') as string;
     const searchPattern = this.route.snapshot?.queryParamMap?.get('search') as string;
     const minimumPrice = this.route.snapshot?.queryParamMap?.get('p_min') as string;
@@ -182,6 +185,16 @@ export class CategoryTeaserComponent implements OnInit {
 
   public getItemsOfCategory(): (Item | null)[] {
     return this.categoryItems;
+  }
+
+  public navigateToMore(event: Event): void {
+    if (UserService.isBotRequest(this.request)) {
+      return;
+    }
+
+    event.preventDefault();
+    this.router.navigateByUrl(this.moreLink);
+    return;
   }
 
   get moreLink(): string {

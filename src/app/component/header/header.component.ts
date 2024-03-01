@@ -1,4 +1,4 @@
-import {Component, Inject, PLATFORM_ID} from '@angular/core';
+import {Component, Inject, Optional, PLATFORM_ID} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import {debounceTime} from 'rxjs/operators';
@@ -12,6 +12,8 @@ import {isPlatformBrowser} from '@angular/common';
 import {SuggestionItem, SuggestionItemMode} from '../../model/suggestion-item';
 import {HashTagsApiService} from '../../service/hashtags-api.service';
 import {SuggestionsApiService} from "../../service/suggestions-api.service";
+import {REQUEST} from "@nguniversal/express-engine/tokens";
+import {Request} from "express";
 
 @Component({
   selector: 'app-header',
@@ -32,7 +34,8 @@ export class HeaderComponent {
     private wishlistService: WishlistItemsApiService,
     private hashtagsService: HashTagsApiService,
     private suggestionsApiService : SuggestionsApiService,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Optional() @Inject(REQUEST) private request: Request
   ) {
     this.subscribeSearchPatternChanges();
     const searchPattern: string | null = this.getParameterFromUrl('search');
@@ -141,6 +144,16 @@ export class HeaderComponent {
     }
 
     return url.toString();
+  }
+
+  public visitStartPage(event: Event): void {
+    if (UserService.isBotRequest(this.request)) {
+      return;
+    }
+
+    event.preventDefault();
+    this.router.navigate(['/']);
+    return;
   }
 
   public getSuggestionItemPrefix(item: SuggestionItem): string {

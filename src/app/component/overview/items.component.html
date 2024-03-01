@@ -51,7 +51,12 @@
 <div class="container">
   <div class="col-12 d-flex pt-4 justify-content-center pages__container">
     <div class="d-flex pages__wrapper">
-      <a *ngIf="currentPage > 1; else leftDisabled" href="{{linkToPage(currentPage - 1)}}" class="pages__page pages__page--previous">
+      <a
+        *ngIf="currentPage > 1; else leftDisabled"
+        href="{{linkToPage(currentPage - 1)}}"
+        (click)="visitPage(currentPage - 1, $event)"
+        class="pages__page pages__page--previous"
+      >
           &laquo; {{'BACK' | translate}}
       </a>
       <ng-template #leftDisabled>
@@ -62,7 +67,7 @@
 
       <div *ngFor="let page of availablePages" class="pages__page {{currentPage === page ? 'fw-bold' : ''}}">
 
-        <a *ngIf="0 !== page; else dots" href="{{linkToPage(page)}}">
+        <a *ngIf="0 !== page; else dots" href="{{linkToPage(page)}}" (click)="visitPage(page, $event)">
           {{page}}
         </a>
 
@@ -71,7 +76,11 @@
         </ng-template>
       </div>
 
-      <a *ngIf="isNextPageNotLastPage; else rightDisabled" href="{{linkToPage(currentPage + 1)}}" class="pages__page pages__page--next">
+      <a
+        *ngIf="isNextPageNotLastPage; else rightDisabled"
+        href="{{linkToPage(currentPage + 1)}}"
+        (click)="visitPage(currentPage + 1, $event)"
+        class="pages__page pages__page--next">
         {{'NEXT' | translate}} &raquo;
       </a>
       <ng-template #rightDisabled>

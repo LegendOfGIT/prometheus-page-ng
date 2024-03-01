@@ -216,6 +216,19 @@ export class ItemsComponent implements OnInit {
         }
     }
 
+    public visitPage(pageNumber: number, event: Event): void {
+      if (UserService.isBotRequest(this.request)) {
+        return;
+      }
+
+      event.preventDefault();
+      const pageUrl = this.linkToPage(pageNumber);
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then((): void => {
+        this.router.navigateByUrl(pageUrl);
+      })
+      return;
+    }
+
     public linkToPage(page: number): string {
       let urlTree: UrlTree = this.router.parseUrl(this.router.url);
       urlTree.queryParams['page'] = page;

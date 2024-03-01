@@ -133,6 +133,16 @@ export class ItemComponent implements OnInit, AfterViewInit {
       }
     }
 
+    public exploreHashtag(hashtag: string, event: Event) {
+      if (UserService.isBotRequest(this.request)) {
+        return;
+      }
+
+      event.preventDefault();
+      this.router.navigate(['/', 'hashtags', hashtag]);
+      return;
+    }
+
     public getSeoFriendlySingleProductViewUrl(item: Item | null): string {
       if (!item) {
         return '';

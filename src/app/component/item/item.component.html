@@ -48,7 +48,7 @@
         <div class="informationItem__title{{cssModifier ? ' informationItem__title' + cssModifier : ''}}">{{ itemTitle | translate }}</div>
     </a>
 
-    <a *ngFor="let hashtag of item.hashtags" href="/hashtags/{{hashtag}}">
+    <a *ngFor="let hashtag of item.hashtags" href="/hashtags/{{hashtag}}" (click)="exploreHashtag(hashtag, $event)">
       <div *ngIf="showHashtags" class="d-inline-flex flex-wrap">
         <div class="button informationItem__hashtag">
             #{{hashtag}}

@@ -18,6 +18,7 @@ import { ItemDisplayMode } from '../item/item.component';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request } from 'express';
 import {ItemsResponse} from "../../model/items-response";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'moderated-teaser',
@@ -63,6 +64,7 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
 
   constructor(
     private itemsService: ItemsApiService,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() @Inject(REQUEST) private request: Request
   ) {
@@ -98,6 +100,16 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
 
     if (!this.ssrRendering) { return; }
     this.initialiseItems();
+  }
+
+  public navigateToMore(event: Event): void {
+    if (UserService.isBotRequest(this.request)) {
+      return;
+    }
+
+    event.preventDefault();
+    this.router.navigateByUrl(this.linkUri);
+    return;
   }
 
   private initialiseItems(): void {
