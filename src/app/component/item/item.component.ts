@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, ElementRef, inject, Input, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef, Inject,
+  inject,
+  Input,
+  OnInit,
+  Optional,
+  PLATFORM_ID,
+  ViewChild
+} from '@angular/core';
 
 import {Item} from 'src/app/model/item';
 import {TrackingService} from 'src/app/service/tracking.service';
@@ -6,12 +16,15 @@ import {TrackingActivityItem} from 'src/app/model/tracking-activity-item';
 import {TrackingInterestLevel} from 'src/app/model/tracking-interest-level';
 import {NavigationService} from '../../service/navigation.service';
 import {NavigationItem} from '../../model/navigation-item';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {isPlatformBrowser} from '@angular/common';
 import {Navigation} from '../../configurations/navigation';
 import {HyphenationPipe} from "../../pipes/web.pipe";
 import {DiscountItem} from '../../model/discount-item';
 import {Discounts} from '../../configurations/discounts';
+import {UserService} from "../../service/user.service";
+import {REQUEST} from "@nguniversal/express-engine/tokens";
+import {Request} from "express";
 
 @Component({
   selector: 'app-item',
@@ -23,9 +36,15 @@ export class ItemComponent implements OnInit, AfterViewInit {
     private navigationService: NavigationService = inject(NavigationService);
     private platformId: Object = inject(PLATFORM_ID);
     private route: ActivatedRoute = inject(ActivatedRoute);
+    private router: Router = inject(Router);
     private trackingService: TrackingService = inject(TrackingService);
     public currentImageIndex = 0;
     public imageUrl = '';
+
+    constructor(
+      @Optional() @Inject(REQUEST) private request: Request
+    ) {
+    }
 
     @ViewChild('itemSection') itemSection: ElementRef | undefined;
 
@@ -94,7 +113,7 @@ export class ItemComponent implements OnInit, AfterViewInit {
       return this.isOnClientSide() ? new URL(window.location.href).searchParams.get(parameterKey) : '';
     }
 
-    public pickedInformation(item: Item): void {
+    public pickedInformation(item: Item, linkUrl: string, event: Event): void {
       this.trackingService.addActivity(
         TrackingActivityItem.create()
           .setInformationItemId(item.itemId)
@@ -103,6 +122,15 @@ export class ItemComponent implements OnInit, AfterViewInit {
           .setSearchPattern(this.getParameterFromUrl('search') || '')
           .setFilters(this.getParameterFromUrl('filters') || '')
           .setTrackingId('item.clicked'));
+
+      if (!UserService.isBotRequest(this.request) && !this.isCategoryItem() && !linkUrl.startsWith('https:')) {
+        event.preventDefault();
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then((): void => {
+          this.router.navigateByUrl(linkUrl);
+        });
+
+        return;
+      }
     }
 
     public getSeoFriendlySingleProductViewUrl(item: Item | null): string {
@@ -140,13 +168,17 @@ export class ItemComponent implements OnInit, AfterViewInit {
       return ItemDisplayMode.CATEGORY === this.displayMode;
     }
 
+    private getCategoryUrl(): string {
+      const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
+      const navigationItem: NavigationItem | undefined = this.getNextNavigationItem();
+      return '/' +
+        (navigationItem?.pathParts || []).filter((pathPart: string) => pathPart).join('/') +
+        (searchPattern ? `?search=${searchPattern}` : '');
+    }
+
     get itemUrl(): string {
         if (this.isCategoryItem()) {
-          const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
-          const navigationItem: NavigationItem | undefined = this.getNextNavigationItem();
-          return '/' +
-            (navigationItem?.pathParts || []).filter((pathPart: string) => pathPart).join('/') +
-            (searchPattern ? `?search=${searchPattern}` : '');
+          return this.getCategoryUrl();
         }
 
         if (this.hasOnlyOneOffer) {

@@ -1,6 +1,10 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, Inject, inject, Input, Optional} from '@angular/core';
 import {Navigation} from '../../configurations/navigation';
 import {TranslationService} from "../../service/translation.service";
+import {REQUEST} from "@nguniversal/express-engine/tokens";
+import {Request} from "express";
+import {UserService} from "../../service/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -13,8 +17,26 @@ export class BreadcrumbsComponent {
 
   private translationService: TranslationService = inject(TranslationService);
 
+  constructor(
+    @Optional() @Inject(REQUEST) private request: Request,
+    private router: Router
+  ) {
+  }
+
   public getUriOfNavigationId(navigationId: string): string {
     return `/${(Navigation.getNavigationItemByToId(navigationId)?.pathParts || []).filter(part => part).join('/')}`;
+  }
+
+  public navigateToCategory(navigationId: string, event: Event): void {
+    if (!UserService.isBotRequest(this.request)) {
+      event.preventDefault();
+
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then((): void => {
+        this.router.navigateByUrl(this.getUriOfNavigationId(navigationId));
+      });
+
+      return;
+    }
   }
 
   private numberOfTotalBreadcrumbsCharacters(): number {

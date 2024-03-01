@@ -101,6 +101,8 @@ export class SingleProductViewComponent implements OnInit {
   private initialiseItem(): void {
     if (this.transferState.hasKey(makeStateKey('productItem'))) {
       this.item = this.transferState.get(makeStateKey('productItem'), null);
+      this.renderItem();
+      this.initializeSlider();
       return;
     }
 
@@ -120,11 +122,15 @@ export class SingleProductViewComponent implements OnInit {
         }
 
         this.item = items[0];
+        this.renderItem();
 
-        if (isPlatformServer(this.platformId)) {
-          this.transferState.set<Item | null>(makeStateKey('productItem'), this.item);
-          this.renderSEOInformation();
+        if (!isPlatformServer(this.platformId)) {
+          this.initializeSlider();
+          return;
         }
+
+        this.transferState.set<Item | null>(makeStateKey('productItem'), this.item);
+        this.renderSEOInformation();
       });
   }
 
@@ -192,22 +198,22 @@ export class SingleProductViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.initialiseItem();
+  }
 
-    if (!this.item) {
-      return;
-    }
-
+  private renderItem(): void {
     this.itemWithLowestPrice = Item.getProviderItemWithLowestPrice(this.item);
     this.activeNavigationItem = Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
-    this.safeVideoUris = (this.item.videoLinks || []).map((link) => this.getSanitizedResourceUri(link));
+    this.safeVideoUris = (this.item?.videoLinks || []).map((link) => this.getSanitizedResourceUri(link));
     const brandFilterForItem = Filters.FILTERS.brands.find((filterItem: FilterItem): boolean =>  -1 !== (this.item?.brand || this.item?.make || '').toLowerCase().indexOf(filterItem.filterLabelId.toLowerCase()));
     this.moreOfBrandFilter = brandFilterForItem?.id || '';
 
+    this.renderPriceHistory();
+  }
+
+  private initializeSlider(): void {
     const script: HTMLScriptElement = this.doc.createElement('script');
     script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").slick({ "autoplay": true, centerMode: true, centerPadding: "20px", "autoplaySpeed": 7000, "arrows": false}); });';
     this.doc.body.appendChild(script);
-
-    this.renderPriceHistory();
   }
 
   private getPriceHistoryTimeSpanInMonths(): number {

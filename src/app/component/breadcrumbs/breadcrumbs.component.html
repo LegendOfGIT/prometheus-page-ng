@@ -2,7 +2,13 @@
   <div class="col-12 breadcrumbs">
     <div *ngFor="let navigationId of navigationIds; let ix=index">
       <span *ngIf="ix > 0" class="{{breadcrumbItemModifier}}">&raquo;&nbsp;</span>
-      <a href="{{getUriOfNavigationId(navigationId)}}" class="breadcrumbs__item{{breadcrumbItemModifier}}">{{ 'NAVIGATION_' + navigationId | translate }}</a>
+      <a
+        (click)="navigateToCategory(navigationId, $event)"
+        href="{{getUriOfNavigationId(navigationId)}}"
+        class="breadcrumbs__item{{breadcrumbItemModifier}}"
+      >
+        {{ 'NAVIGATION_' + navigationId | translate }}
+      </a>
     </div>
   </div>
 </nav>
