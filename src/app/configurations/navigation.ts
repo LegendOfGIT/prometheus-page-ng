@@ -276,6 +276,11 @@ export class Navigation {
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_HEADPHONES',
+      ['electronics-and-computers', 'home', 'headphones']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_HOMECINEMA',
       ['electronics-and-computers', 'home', 'home-cinema']
     ),
@@ -293,6 +298,11 @@ export class Navigation {
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_SOLARSYSTEMS',
       ['electronics-and-computers', 'home', 'solar-systems']
+    ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_SPEAKERS',
+      ['electronics-and-computers', 'home', 'speakers']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
@@ -517,10 +527,6 @@ export class Navigation {
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_TEA', ['groceries', 'drinks', 'tea']),
     new NavigationItem('GROCERIES_DRINKS', 'GROCERIES_DRINKS_WINE', ['groceries', 'drinks', 'wine']),
     new NavigationItem('GROCERIES', 'GROCERIES_FOOD', ['groceries', 'food', '']),
-    new NavigationItem('GROCERIES', 'GROCERIES_FOOD', ['senor-lopez', '', ''])
-      .setPathPartsForNavigation(['groceries', 'food', ''])
-      .setFilters(['1000188'])
-      .setSEOId('SENORLOPEZ'),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_DESSERTS', ['groceries', 'food', 'desserts']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_DRYFRUITS', ['groceries', 'food', 'dry-fruits']),
     new NavigationItem('GROCERIES_FOOD', 'GROCERIES_FOOD_MEATSUBSTITUTES', ['groceries', 'food', 'meat-substitutes']),

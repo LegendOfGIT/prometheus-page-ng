@@ -41,14 +41,6 @@ export class StartPageComponent implements OnInit {
       heroUrl: '/kids?search=tonie'
     },
     {
-      backgroundImage: 'url("/assets/heroes/senor-lopez.png"), linear-gradient(180deg, rgba(249,174,193,1) 71%, rgba(255,208,204,1) 95%, rgba(243,244,242,1) 100%)',
-      backgroundPositionX: 'center',
-      backgroundPositionY: '2%',
-      backgroundSize: 'initial',
-      heroText: 'HERO_DISCOVER_SENORLOPEZ',
-      heroUrl: '/groceries?filters=1000188'
-    },
-    {
       backgroundImage: 'url("/assets/heroes/dunleath.jpg"), linear-gradient(180deg, rgba(255,250,239,1) 0%, rgba(255,250,239,1) 27%, rgba(243,244,242,1) 100%)',
       heroText: 'HERO_DISCOVER_DUNLEATH',
       heroUrl: '/beauty-and-care?filters=1000119'
