@@ -728,6 +728,7 @@ export class I18nDeDe implements I18nInterface {
       TEASER_TITLE_COFFEE_MACHINES: 'Für einen guten Start in den Tag',
       TEASER_TITLE_BEAUTY_CARE: 'Bleib schön und gesund',
       TEASER_TITLE_DEALS_DISCOVERED_TODAY: 'Heute entdeckte Deals für dich',
+      TEASER_TITLE_EASTERN: 'Osterschnäppchen',
       TEASER_TITLE_FASHION_BRANDS: 'Große Fashion Marken für dich',
       TEASER_TITLE_FASHION_SUMMER2023: 'Mode für deinen Sommer',
       TEASER_TITLE_FRAGRANCES: 'Willkommen in der Welt der Düfte',

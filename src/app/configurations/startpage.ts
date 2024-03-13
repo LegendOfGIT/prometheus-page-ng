@@ -2,6 +2,9 @@ import {TeaserItem} from '../model/teaser-item';
 
 export class Startpage {
   public static TEASER_ITEMS: TeaserItem[] = [
+    new TeaserItem('/hashtags/Schnäppchen?search=Ostern', '', 'Ostern', 'TEASER_TITLE_EASTERN')
+      .setHashtags(['Schnäppchen'])
+      .setSsrRendering(true),
     new TeaserItem('/home/garden', 'HOME_GARDEN', 'grill', 'TEASER_TITLE_INTO_THE_GARDEN'),
     new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', ''),
 
