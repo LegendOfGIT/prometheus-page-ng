@@ -41,11 +41,6 @@ export class StartPageComponent implements OnInit {
       heroUrl: '/kids?search=tonie'
     },
     {
-      backgroundImage: 'url("/assets/heroes/dunleath.jpg"), linear-gradient(180deg, rgba(255,250,239,1) 0%, rgba(255,250,239,1) 27%, rgba(243,244,242,1) 100%)',
-      heroText: 'HERO_DISCOVER_DUNLEATH',
-      heroUrl: '/beauty-and-care?filters=1000119'
-    },
-    {
       backgroundImage: 'url("/assets/heroes/100pp.jpg"), linear-gradient(180deg, rgba(255,133,130,1) 0%, rgba(255,208,204,1) 69%, rgba(243,244,242,1) 100%)',
       heroText: '',
       heroUrl: '/beauty-and-care?filters=1000018'

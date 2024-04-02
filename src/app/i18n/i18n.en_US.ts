@@ -148,7 +148,6 @@ export class I18nEnUs implements I18nInterface {
       FILTERS_TASTETYPES_SWEET: 'sweet',
       FILTERS_TASTETYPES_DRY: 'dry',
       FILTERS_TASTETYPES_SPICY: 'spicy',
-      HERO_DISCOVER_DUNLEATH: 'DISCOVER DUNLEATH',
       HERO_DISCOVER_TONIES: "HERE YOU CAN FIND TONIES !",
       IMAGE_OF: 'Image of',
       IMPRINT: 'Imprint',

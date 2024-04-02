@@ -148,7 +148,6 @@ export class I18nDeDe implements I18nInterface {
       FILTERS_TASTETYPES_SWEET: 'lieblich / süss',
       FILTERS_TASTETYPES_DRY: 'trocken',
       FILTERS_TASTETYPES_SPICY: 'würzig',
-      HERO_DISCOVER_DUNLEATH: 'ENTDECKE DUNLEATH',
       HERO_DISCOVER_TONIES: "HIER GEHT'S ZU DEN TONIES !",
       IMAGE_OF: 'Bild von',
       IMPRINT: 'Impressum',
