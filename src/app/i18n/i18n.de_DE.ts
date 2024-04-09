@@ -741,6 +741,7 @@ export class I18nDeDe implements I18nInterface {
       TEASER_TITLE_INTO_THE_GARDEN: 'Ab in den Garten',
       TEASER_TITLE_MATERNITY: 'Wir werden Eltern!',
       TEASER_TITLE_POKEMON: "Komm' und schnapp' sie dir!",
+      TEASER_TITLE_SUN_THE_RIGHT_WAY: 'Sonnen. Aber richtig!',
       TEASER_TITLE_TONIES: 'Neue Welten mit den Tonies',
       TEASER_TITLE_VEGAN_COSMETICS: 'Vegane Kosmetik',
       TEASER_TITLE_VIDEOGAMES: 'Nintendo, Playstation, Xbox, ...',

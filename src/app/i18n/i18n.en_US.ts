@@ -746,6 +746,7 @@ export class I18nEnUs implements I18nInterface {
       TEASER_TITLE_INTO_THE_GARDEN: 'Off to the garden',
       TEASER_TITLE_MATERNITY: 'We become parents!',
       TEASER_TITLE_POKEMON: "Catch 'em all!",
+      TEASER_TITLE_SUN_THE_RIGHT_WAY: 'Sun, the right way!',
       TEASER_TITLE_TONIES: 'New worlds with Tonie figures!',
       TEASER_TITLE_VEGAN_COSMETICS: 'Vegan cosmetics',
       TEASER_TITLE_VIDEOGAMES: 'Nintendo, Playstation, Xbox, ...',
