@@ -243,6 +243,7 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     new FilterItem('1000122', 'Medimops'),
     new FilterItem('1000052', 'Meßmer'),
     new FilterItem('1000185', 'Metabrew Society'),
+    new FilterItem('1000261', 'MLILY'),
     new FilterItem('1000034', 'Natural Food'),
     new FilterItem('1000121', 'Natures Way'),
     new FilterItem('1000114', 'Oh my fantasy'),
