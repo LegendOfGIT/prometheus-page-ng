@@ -249,6 +249,7 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     new FilterItem('1000114', 'Oh my fantasy'),
     new FilterItem('1000035', 'Otto'),
     new FilterItem('1000036', 'Pakama'),
+    new FilterItem('1000262', 'Paper & Sons'),
     new FilterItem('1000037', 'PlantLife'),
     new FilterItem('1000038', 'Quelle'),
     new FilterItem('1000039', 'Reifen.de'),

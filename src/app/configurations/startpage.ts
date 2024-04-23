@@ -2,7 +2,8 @@ import {TeaserItem} from '../model/teaser-item';
 
 export class Startpage {
   public static TEASER_ITEMS: TeaserItem[] = [
-    new TeaserItem('/beauty-and-care?search=Sonne', 'BEAUTY_CARE', 'Sonne', 'TEASER_TITLE_SUN_THE_RIGHT_WAY')
+    new TeaserItem('/hashtags/Highlights?search=Muttertag', '', 'Muttertag', 'TEASER_TITLE_MOTHERS_DAY')
+      .setHashtags(['Highlights'])
       .setSsrRendering(true),
     /*new TeaserItem('/hashtags/Schnäppchen?search=Ostern', '', 'Ostern', 'TEASER_TITLE_EASTERN')
       .setHashtags(['Schnäppchen'])
