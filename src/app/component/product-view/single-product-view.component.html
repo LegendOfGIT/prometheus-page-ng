@@ -183,7 +183,7 @@ f
         <h2 class="singleProductView__sectionHeader">{{'SHARE' | translate}}</h2>
         <a [href]="safePinterestUri" target="pinterest" class="button__wrapper">
           <div class="button singleProductView__shareButton">
-            <img src="assets/images/pinterest.png" class="singleProductView__shareIcon"/>
+            <img src="assets/images/pinterest.png" class="singleProductView__shareIcon" />
             {{'SHARE_ON_PINTEREST' | translate}}
           </div>
         </a>
@@ -226,4 +226,9 @@ f
     </div>
   </div>
 
+  <div class="container seo__wrapper">
+    <div class="col-12 seo__content mt-4 pb-5 mb-5" [innerHTML]="seoWinWinTeaser()">
+
+    </div>
+  </div>
 </div>

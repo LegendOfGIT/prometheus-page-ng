@@ -749,6 +749,21 @@ export class I18nDeDe implements I18nInterface {
       TITLE_WANNA_WORD_PREFIX: 'w',
       TITLE_WANNA_WORD_SUFFIX: 'ollen',
       TITLE_WE_WORD_SUFFIX: 'ir ',
+      SEO_WIN_WIN_TEASER: '<h4>Ein SEO Win-Win für alle!</h4>' +
+        '<p>' +
+        '  Du hast einen Shop, einen Blog oder eine Website mit der du vor kurzem online gegangen bist?<br/>' +
+        '  Dann bist du bestimmt auf der Suche nach einer Möglichkeit kostenlose Backlinks auf deine Site aufzubauen!' +
+        '</p>' +
+        '<p>' +
+        '  Die Wahrheit ist, uns geht es wie dir ;)<br/>' +
+        '  Um gemeinsam im Suchmaschinen-Ranking abzuschneiden, bieten wir dir die Möglichkeit kostenlos<br/>' +
+        '  in unseren mehr als 1.000 auf Google indexierten Produktseiten einen Link auf deine Webseite hinzuzufügen.' +
+        '</p>' +
+        '<p>' +
+        '  Um gleich loszulegen, sende uns einfach eine E-Mail an <a href="mailto:kontakt@wewanna.shop">kontakt(at)wewanna.shop</a> mit deinen pages zu, auf der unsere Website verlinkt ist.<br/>' +
+        '  Nach unserer Prüfung der Links, fügen wir die Links die du uns gesendet hast, in unseren Produktseiten hinzu.' +
+        '</p>' +
+        '<p>Lass uns gemeinsam durchstarten!</p>',
       TOP_OFFER: 'Top-Angebot',
       UPDATED_ON: 'aktualisiert am',
       profileLogout: 'ausloggen'
