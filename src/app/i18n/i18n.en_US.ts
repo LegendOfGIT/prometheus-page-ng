@@ -732,6 +732,7 @@ export class I18nEnUs implements I18nInterface {
       TEASER_TITLE_BEAUTY_CARE: 'Stay beautiful and healthy',
       TEASER_TITLE_DEALS_DISCOVERED_TODAY: 'Todays deals for you',
       TEASER_TITLE_EASTERN: 'Easter-Deals',
+      TEASER_TITLE_FAMILY_TRIP: 'For the next family trip',
       TEASER_TITLE_FASHION_BRANDS: 'Best fashion brands for you',
       TEASER_TITLE_FRAGRANCES: 'Welcome to the world of fragrances',
       TEASER_TITLE_COFFEE_MACHINES: 'For a days good start',
