@@ -720,6 +720,21 @@ export class I18nEnUs implements I18nInterface {
       SEO_SINGLE_PRODUCT_VIEW_PAGE_TITLE: 'Buy {product-name} online',
       SEO_STARTPAGE_TEASER: 'In the fast-paced world of online shopping, your privacy is important, but is often not respected enough. Immerse yourself with us in the ease of anonymous shopping, designed for each of you. Imagine discovering and purchasing your favorite products without constant advertising or data tracking. Enjoy buying online on your terms, free from unwanted analysis of your personal information. Take control, find your favorite products anonymously with us and enjoy comfort without compromise. It is time to make online shopping work for you without giving anything away along the way! A first step towards carefree use of the Internet.',
       SEO_UNKNOWN_CATEGORY_PAGE_TITLE: 'Buy at WeWanna.shop',
+      SEO_WIN_WIN_TEASER: '<h4>A SEO win-win for everyone!</h4>' +
+        '<p>' +
+        '  Do you have a shop, blog or website that you recently launched?<br/>' +
+        '  Then you are definitely looking for a way to build free backlinks to your site!' +
+        '</p>' +
+        '<p>' +
+        '  The truth is, it is the same for us ;)<br/>' +
+        '  In order to perform better together in the search engine ranking, we offer you the opportunity for free<br/>' +
+        '  We will add links to your website in our 1,000+ product pages indexed on Google.' +
+        '</p>' +
+        '<p>' +
+        '  To get started right away, simply send us an email to <a href="mailto:kontakt@wewanna.shop">kontakt(at)wewanna.shop</a> with your pages on which our website is linked.<br/>' +
+        '  After our review of these links, we will add the links to the pages you sent us, on our product pages.' +
+        '</p>' +
+        '<p>Let us get started together!</p>',
       SHARE: 'Share',
       SHARE_FOUND_AT_WE_WANNA: 'found on WeWanna',
       SHARE_ON_PINTEREST: 'share on Pinterest',

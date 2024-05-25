@@ -377,6 +377,10 @@ export class SingleProductViewComponent implements OnInit {
     return this.translationService.getTranslations('')[`NAVIGATION_SEO_${this.activeNavigationItem?.toId || ''}_CONTENT_${numberKey}`] || '';
   }
 
+  public seoWinWinTeaser(): string {
+    return this.translationService.getTranslations('')['SEO_WIN_WIN_TEASER'] || '';
+  }
+
   public areThereMorePrices(): boolean {
     return (this.item?.providers || []).length > 1;
   }
