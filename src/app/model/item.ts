@@ -58,7 +58,6 @@ export class Item extends BaseModel {
             .map((description: ItemDescriptionDto) => ItemDescription.fromModel(description))
             .filter((description: ItemDescription) => description.content);
           item.providers = (data.providers || []).map(provider => CorrespondingItem.fromModel(provider));
-          item.priceHistory = (data.priceHistory || []).map(historyItem => PriceHistoryItem.fromModel(historyItem));
 
           const hashtagsToIgnore: Array<string> = ['', 'noprofile', 'WeWannaShop'];
           item.hashtags = Object.keys(data.scoring || {})

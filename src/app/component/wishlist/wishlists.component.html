@@ -1,0 +1,15 @@
+<div class="container wishlists__content">
+  <div class="row w-100">
+    <div *ngFor="let wishlist of Wishlists" class="d-flex justify-content-center mt-5 col-md-4 col-12">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center"><h4>{{ wishlist.title }}</h4></div>
+        <div class="col-12 d-flex justify-content-center">{{ wishlist.description || 'Beschreibe deine Wunschliste näher' }}</div>
+        <div class="col-12 d-flex justify-content-center">
+          <a class="button__wrapper mt-2" [routerLink]="['/', 'wishlist', wishlist.id ]">
+            <div class="button">zum Wunschzettel</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

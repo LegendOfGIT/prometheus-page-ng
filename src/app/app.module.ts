@@ -16,6 +16,7 @@ import { DataProtectionComponent } from './component/legal/data-protection.compo
 import { SharedComponentsModule } from './component/shared-components.module';
 import { PipesModule } from './pipes/pipes.module';
 import { NotFoundComponent } from './component/landing-pages/not-found.component';
+import { WishlistsComponent } from './component/wishlist/wishlists.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { NotFoundComponent } from './component/landing-pages/not-found.component
         ImprintComponent,
         NotFoundComponent,
         StartPageComponent,
-        WishlistItemsComponent
+        WishlistItemsComponent,
+        WishlistsComponent
     ],
     imports: [
         BrowserModule.withServerTransition({appId: 'serverApp'}),

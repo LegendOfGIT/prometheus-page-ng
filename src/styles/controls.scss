@@ -24,13 +24,13 @@ button:hover {
   align-items: center;
   background-color: $container-background-color;
   border: 1px solid $container-color;
-  border-radius: 0.25em;
+  border-radius: 1.5em;
   color: $container-color;
   cursor: pointer;
   display: flex;
   transition: background-color 200ms linear;
   outline: 0;
-  padding: 0.5em;
+  padding: 0.5em 1em;
   text-decoration: none;
   z-index: 1;
 

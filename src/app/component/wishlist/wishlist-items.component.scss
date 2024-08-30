@@ -1,5 +1,5 @@
-@import "../../../styles";
-@import "../../variables";
+@import '../../../styles';
+@import '../../variables';
 
 .informationItems {
   &__container {
@@ -27,5 +27,11 @@
     color: $content-color;
     font-size: 0.8em;
     font-style: italic;
+  }
+}
+
+.wishlist {
+  &__title {
+    color: $content-color;
   }
 }

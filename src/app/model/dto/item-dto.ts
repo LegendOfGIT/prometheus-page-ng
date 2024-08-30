@@ -1,6 +1,6 @@
 import { CorrespondingItemDto } from './corresponding-item-dto';
 import { ItemDescriptionDto } from './item-description';
-import {PriceHistoryItemDto} from "./price-history-item-dto";
+import {PriceHistoryItem} from "../price-history-item";
 
 export interface ItemDto {
     itemId: string;
@@ -10,5 +10,5 @@ export interface ItemDto {
 
     descriptions: Array<ItemDescriptionDto>;
     providers: Array<CorrespondingItemDto>;
-    priceHistory: Array<PriceHistoryItemDto>;
+    priceHistory: Array<PriceHistoryItem>;
 }

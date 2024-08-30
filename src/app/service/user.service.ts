@@ -1,14 +1,13 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Request } from 'express';
 
 import { v4 as uuidV4 } from 'uuid';
 import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
 
-import {DEFAULT_HASHTAGS, User} from 'src/app/model/user';
+import { DEFAULT_HASHTAGS, User } from 'src/app/model/user';
 import { StorageService } from './storage.service';
-import {isPlatformBrowser, isPlatformServer} from '@angular/common';
-import {Request} from "express";
 
 @Injectable({
     providedIn: 'root'
@@ -17,13 +16,11 @@ export class UserService {
     private static STORAGE_ID_ACTIVE_USER: string = 'active_user';
     private static STORAGE_ID_ANONYMOUS_USER: string = 'anonymous_user';
 
-    private destroyedService$ = new Subject();
     private _anonymousUser: User | null = null;
     private _activeUser: User | null = null;
     private _activeHashtags: Array<string> | undefined;
 
-    constructor(private wishlistItemsService: WishlistItemsApiService,
-                private storageService: StorageService,
+    constructor(private storageService: StorageService,
                 @Inject(PLATFORM_ID) private platformId: Object) {
 
       if (isPlatformServer(platformId)) {
@@ -33,7 +30,7 @@ export class UserService {
       this.initializeAnonymousUser();
       this.initializeActiveUser();
 
-      const hashtagsFromUrl = this.getParameterFromUrl('hashtags');
+      const hashtagsFromUrl: string | null = this.getParameterFromUrl('hashtags');
       if (this.activeUser) {
         this.activeUser.activeHashtags = hashtagsFromUrl ? hashtagsFromUrl.split(',') : this.activeUser.activeHashtags || DEFAULT_HASHTAGS;
         this.activeUser.activeHashtags = this.activeUser.activeHashtags.map(hashtag => hashtag.substring(0, 20));
@@ -43,14 +40,6 @@ export class UserService {
 
     private getParameterFromUrl(parameterKey: string): string | null {
       return isPlatformBrowser(this.platformId) ? new URL(window.location.href).searchParams.get(parameterKey) : '';
-    }
-
-    private updateWishlist(userId: string): void {
-      this.wishlistItemsService.getItems(userId)
-        .pipe(takeUntil(this.destroyedService$))
-        .subscribe((items) => {
-          this.wishlistItemsService.items = items || [];
-        });
     }
 
     private getUserFromStorageById(storageId: string): User | null {
@@ -65,17 +54,18 @@ export class UserService {
       this.storageService.storeWithId(storageId, user);
     }
 
-    private removeUserFromStorageById(storageId: string): void {
-      localStorage.removeItem(storageId);
-    }
-
     private initializeActiveUser(): void {
       this._activeUser = this.getUserFromStorageById(UserService.STORAGE_ID_ACTIVE_USER);
+      if (this._activeUser && this.synchronizeUserWithUserStructure(this._activeUser)) {
+        this.storeUserWithId(UserService.STORAGE_ID_ACTIVE_USER, this._activeUser);
+      }
     }
     private initializeAnonymousUser(): void {
       this._anonymousUser = this.getUserFromStorageById(UserService.STORAGE_ID_ANONYMOUS_USER);
-
       if (this._anonymousUser) {
+        if (this.synchronizeUserWithUserStructure(this._anonymousUser)) {
+          this.storeUserWithId(UserService.STORAGE_ID_ANONYMOUS_USER, this._anonymousUser);
+        }
         return;
       }
 
@@ -83,15 +73,25 @@ export class UserService {
       this.storeUserWithId(UserService.STORAGE_ID_ANONYMOUS_USER, this._anonymousUser);
     }
 
+    private synchronizeUserWithUserStructure(userEntity: User): boolean {
+      const userStructure: User = new User();
+      const keysOfEntity: string[] = Object.keys(userEntity);
+      const keysOfStructure: string[] = Object.keys(userStructure);
+
+      const propertiesToAdd: string[] = keysOfStructure.filter((key: string): boolean => -1 === keysOfEntity.indexOf(key));
+      propertiesToAdd.forEach((property: string): void => { // @ts-ignore
+        userEntity[property] = userStructure[property]; });
+
+      const propertiesToRemove: string[] = keysOfEntity.filter((key: string): boolean => -1 === keysOfStructure.indexOf(key));
+      propertiesToRemove.forEach((property: string): void => { // @ts-ignore
+        delete userEntity[property]; });
+
+      return propertiesToAdd.length > 0 || propertiesToRemove.length > 0;
+    }
+
     private storeAllUsers(): void {
       this.storeUserWithId(UserService.STORAGE_ID_ANONYMOUS_USER, this._anonymousUser);
       this.storeUserWithId(UserService.STORAGE_ID_ACTIVE_USER, this._activeUser);
-    }
-
-    public logout(): void {
-      this._activeUser = null;
-      this.removeUserFromStorageById(UserService.STORAGE_ID_ACTIVE_USER);
-      this.updateWishlist(this._anonymousUser?.id || '');
     }
 
     public setDisplayLocaleOfActiveUser(locale: string): void {
@@ -99,7 +99,12 @@ export class UserService {
       this.storeAllUsers();
     }
 
-    public setHashTags(hashtags: Array<string>) {
+    public setActiveWishlistId(activeWishlistId: string): void {
+      this.activeUser!.activeWishlistId = activeWishlistId;
+      this.storeAllUsers();
+    }
+
+    public setHashTags(hashtags: Array<string>): void {
       this._activeHashtags = hashtags;
 
       if (this.activeUser) {
@@ -107,6 +112,10 @@ export class UserService {
       }
 
       this.storeAllUsers();
+    }
+
+    public activeWishlistId(): string {
+      return this.activeUser?.activeWishlistId ?? '';
     }
 
     public getHashtags(): Array<string> {
@@ -127,23 +136,9 @@ export class UserService {
 
     public static isBotRequest(request: Request): boolean {
       const agent: string = this.getUserAgent(request).toLowerCase();
-      if (-1 !== agent.indexOf('googlebot')) {
-        return true;
-      }
 
-      if (-1 !== agent.indexOf('amazonbot')) {
-        return true;
-      }
-
-      if (-1 !== agent.indexOf('semrushbot')) {
-        return true;
-      }
-
-      if (-1 !== agent.indexOf('spider')) {
-        return true;
-      }
-
-      return -1 !== agent.indexOf('bingbot');
+      return ['amazonbot', 'bingbot', 'googlebot', 'semrushbot', 'spider']
+        .find((botPattern: string): boolean => -1 !== agent.indexOf(botPattern)) !== undefined;
     }
 
     get activeUser(): User | null {
@@ -152,9 +147,5 @@ export class UserService {
       }
 
       return this._activeUser;
-    }
-
-    get isLoggedIn() : boolean {
-      return !!this._activeUser;
     }
 }

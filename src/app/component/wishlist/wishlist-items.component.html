@@ -1,6 +1,8 @@
 <div *ngIf="items">
   <div class="container informationItems__content">
     <div class="col-12 informationItems__container">
+      <h3 *ngIf="WishlistTitle" class="wishlist__title">{{WishlistTitle}}</h3>
+
       <app-item *ngFor="let item of items" [item]="item"></app-item>
     </div>
   </div>

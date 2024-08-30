@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import { map } from 'rxjs/operators';
+import {map, takeUntil} from 'rxjs/operators';
 
 import { endpoints } from '../../environments/endpoints';
 import { Item } from '../model/item';
@@ -9,16 +9,48 @@ import { ItemDto } from '../model/dto/item-dto';
 import { ApiBase } from './api-base';
 import { ApplicationConfiguration } from '../configurations/app';
 import {isPlatformServer} from "@angular/common";
+import {UserService} from "./user.service";
+import {Wishlist} from "../model/wishlist";
 
 @Injectable({
     providedIn: 'root'
 })
 export class WishlistItemsApiService extends ApiBase {
-
     private _items: Array<Item | null> = [];
+    private _wishlists: Wishlist[] = [
+      {
+        isShared: false,
+        description: '',
+        itemsOnList: [],
+        title: 'Wunschliste',
+        id: 'abc-123'
+      },
+      {
+        isShared: false,
+        description: 'Die ultimative Wunschliste',
+        itemsOnList: [],
+        title: 'Jonathans Geburtstag',
+        id: 'bcd-234'
+      },
+      {
+        isShared: false,
+        description: 'Die mega Wunschliste',
+        itemsOnList: [],
+        title: 'Marlenes Geburtstag',
+        id: 'cde-345'
+      },
+      {
+        isShared: false,
+        description: 'Neue Wunschliste',
+        itemsOnList: [],
+        title: 'Für mich',
+        id: 'def-456'
+      }
+    ];
 
     constructor(
       private http: HttpClient,
+      private userService: UserService,
       @Inject(PLATFORM_ID) private platformId: Object
     ) {
         super(ApplicationConfiguration.API_BASE);
@@ -30,6 +62,22 @@ export class WishlistItemsApiService extends ApiBase {
 
     set items(items: Array<Item | null>) {
       this._items = items;
+    }
+
+    get wishlists(): Wishlist[] {
+      return this._wishlists;
+    }
+
+    set activeWishlistId(wishlistId: string) {
+      this.userService.setActiveWishlistId(wishlistId);
+    }
+
+    get activeWishlist(): Wishlist | undefined {
+      if (!this.userService.activeWishlistId) {
+        return;
+      }
+
+      return this._wishlists.find((wishlist: Wishlist): boolean => wishlist.id === this.userService.activeWishlistId());
     }
 
     private addItemToWishlist(userId: string, item: Item): void {
@@ -73,7 +121,14 @@ export class WishlistItemsApiService extends ApiBase {
 
     }
 
-    isItemOnWishlist(itemId: string): boolean {
+  private updateWishlist(userId: string): void {
+    this.getItems(userId)
+      .subscribe((items: (Item | null)[]): void => {
+        this.items = items || [];
+      });
+  }
+
+    public isItemOnWishlist(itemId: string): boolean {
       if(!this._items) {
         return false;
       }
@@ -81,7 +136,7 @@ export class WishlistItemsApiService extends ApiBase {
       return this._items.filter(item => itemId == item?.itemId).length > 0;
     }
 
-    toggleWishlistItem(userId: string, item: Item | undefined): void {
+    public toggleWishlistItem(userId: string, item: Item | undefined): void {
       if (!item) {
         return;
       }

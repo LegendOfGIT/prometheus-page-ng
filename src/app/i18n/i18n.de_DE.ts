@@ -766,8 +766,7 @@ export class I18nDeDe implements I18nInterface {
         '</p>' +
         '<p>Lass uns gemeinsam durchstarten!</p>',
       TOP_OFFER: 'Top-Angebot',
-      UPDATED_ON: 'aktualisiert am',
-      profileLogout: 'ausloggen'
+      UPDATED_ON: 'aktualisiert am'
     };
   }
 }

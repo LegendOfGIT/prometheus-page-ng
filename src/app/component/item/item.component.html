@@ -50,7 +50,7 @@
 
     <a *ngFor="let hashtag of item.hashtags" href="/hashtags/{{hashtag}}" (click)="exploreHashtag(hashtag, $event)">
       <div *ngIf="showHashtags" class="d-inline-flex flex-wrap">
-        <div class="button informationItem__hashtag">
+        <div class="button mt-2 informationItem__hashtag">
             #{{hashtag}}
         </div>
       </div>
