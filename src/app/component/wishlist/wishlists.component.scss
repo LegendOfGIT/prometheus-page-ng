@@ -4,7 +4,10 @@
 .wishlists {
   &__content {
     color: $content-color;
-    display: flex;
     padding-top: 4.5em;
+  }
+
+  &__new-list {
+    background-color: $container-background-color;
   }
 }

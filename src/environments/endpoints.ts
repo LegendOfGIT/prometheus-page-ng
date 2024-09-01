@@ -9,6 +9,9 @@ export const endpoints = {
   scoreItem: '/information-item/scoring',
   deleteWishlistItem: '/wishlist-item?userId={userId}&itemId={itemId}',
   getWishlistItems: '/wishlist-items?userId={userId}&searchPattern={searchPattern}',
+  createWishlist: '/wishlist',
+  deleteWishlist: '/wishlist',
+  getWishlists: '/wishlists?userId={userId}',
   rankedCategoriesByHashtags: '/ranked-categories?hashtags={hashtags}',
   saveWishlistItem: '/wishlist-item',
   searchSuggestions: '/search-suggestions?searchPattern={searchPattern}&navigationId={navigationId}'

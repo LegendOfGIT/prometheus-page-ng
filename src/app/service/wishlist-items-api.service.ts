@@ -1,52 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import { isPlatformServer } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Observable, of, tap} from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { endpoints } from '../../environments/endpoints';
 import { Item } from '../model/item';
 import { ItemDto } from '../model/dto/item-dto';
 import { ApiBase } from './api-base';
 import { ApplicationConfiguration } from '../configurations/app';
-import {isPlatformServer} from "@angular/common";
-import {UserService} from "./user.service";
-import {Wishlist} from "../model/wishlist";
+import { UserService } from './user.service';
+import { Wishlist } from '../model/wishlist';
 
 @Injectable({
     providedIn: 'root'
 })
 export class WishlistItemsApiService extends ApiBase {
     private _items: Array<Item | null> = [];
-    private _wishlists: Wishlist[] = [
-      {
-        isShared: false,
-        description: '',
-        itemsOnList: [],
-        title: 'Wunschliste',
-        id: 'abc-123'
-      },
-      {
-        isShared: false,
-        description: 'Die ultimative Wunschliste',
-        itemsOnList: [],
-        title: 'Jonathans Geburtstag',
-        id: 'bcd-234'
-      },
-      {
-        isShared: false,
-        description: 'Die mega Wunschliste',
-        itemsOnList: [],
-        title: 'Marlenes Geburtstag',
-        id: 'cde-345'
-      },
-      {
-        isShared: false,
-        description: 'Neue Wunschliste',
-        itemsOnList: [],
-        title: 'Für mich',
-        id: 'def-456'
-      }
-    ];
+    private _wishlists: Wishlist[] = [];
 
     constructor(
       private http: HttpClient,
@@ -66,6 +37,10 @@ export class WishlistItemsApiService extends ApiBase {
 
     get wishlists(): Wishlist[] {
       return this._wishlists;
+    }
+
+    set wishlists(wishlists: Wishlist[]) {
+      this._wishlists = wishlists;
     }
 
     set activeWishlistId(wishlistId: string) {
@@ -105,28 +80,87 @@ export class WishlistItemsApiService extends ApiBase {
       this._items = this._items.filter(wishlistItem => item.itemId !== wishlistItem?.itemId);
     }
 
-    public getItems(userId: string): Observable<Array<Item | null>> {
-        if (isPlatformServer(this.platformId)) {
-          return of([]);
-        }
+    public getWishlists(): Observable<Wishlist[]> {
+      if (isPlatformServer(this.platformId)) {
+        return of([]);
+      }
 
-        const url = this.get(endpoints.getWishlistItems, {
-          searchPattern: '',
-          userId
-        });
+      const url: string = this.get(endpoints.getWishlists, {
+        userId: this.userService.activeUser?.id ?? ''
+      });
 
-        return this.http
-           .get<ItemDto[]>(url)
-           .pipe(map(items => items.map((item: ItemDto) => Item.fromModel(item))));
-
+      return this.http
+        .get<Wishlist[]>(url)
+        .pipe(tap((wishlists: Wishlist[]): void => {
+          this._wishlists = wishlists;
+        }));
     }
 
-  private updateWishlist(userId: string): void {
-    this.getItems(userId)
-      .subscribe((items: (Item | null)[]): void => {
-        this.items = items || [];
-      });
+  public createWishlist(title: string): Observable<void> {
+    if (isPlatformServer(this.platformId)) {
+      return of();
+    }
+
+    if (title === '') {
+      return of();
+    }
+
+    return this.http
+      .post<void>(
+        this.get(endpoints.createWishlist),
+        {
+          userId: this.userService.activeUser?.id ?? '',
+          title
+        }
+      )
+      .pipe(tap((): void => {
+        this.getWishlists().subscribe((wishlists: Wishlist[]): void => {
+          this._wishlists = wishlists;
+        });
+      }));
   }
+
+    public deleteWishlist(id: string): Observable<void> {
+      if (isPlatformServer(this.platformId)) {
+        return of();
+      }
+
+      return this.http
+        .delete<void>(
+          this.get(endpoints.deleteWishlist),
+          {
+            body: {
+              id,
+              userId: this.userService.activeUser?.id ?? ''
+            }
+          }
+        )
+        .pipe(tap((): void => {
+          if (id === this.userService.activeWishlistId()) {
+            this.userService.setActiveWishlistId('');
+          }
+
+          this.getWishlists().subscribe((wishlists: Wishlist[]): void => {
+            this._wishlists = wishlists;
+          })
+        }));
+    }
+
+    public getItems(userId: string): Observable<Array<Item | null>> {
+          if (isPlatformServer(this.platformId)) {
+            return of([]);
+          }
+
+          const url = this.get(endpoints.getWishlistItems, {
+            searchPattern: '',
+            userId
+          });
+
+          return this.http
+             .get<ItemDto[]>(url)
+             .pipe(map(items => items.map((item: ItemDto) => Item.fromModel(item))));
+
+      }
 
     public isItemOnWishlist(itemId: string): boolean {
       if(!this._items) {

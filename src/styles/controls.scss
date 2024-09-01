@@ -55,21 +55,14 @@ button:hover {
 input[type='text'] {
     background-color: unset;
     border: 0;
-    border-bottom: 2px solid #4AA7EB;
+    border-bottom: 1px solid #000;
     display: block;
     position: relative;
     top: -0.5vh;
-    transition: all .4s ease;
     width: 100%;
 
     &:focus {
-
-      border: 0;
-      border-bottom: 2px solid #FFF;
-      caret-color: #FFF;
-      left: -2%;
+      caret-color: $content-color;
       outline: none;
-      width: 103%;
-
     }
 }
