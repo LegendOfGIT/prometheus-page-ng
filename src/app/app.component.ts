@@ -1,6 +1,4 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, PLATFORM_ID, ViewChild } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 import { UserService } from './service/user.service';
 import { WishlistItemsApiService } from './service/wishlist-items-api.service';
@@ -12,7 +10,6 @@ import { NavigationItem } from './model/navigation-item';
 import { Navigation } from './configurations/navigation';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request } from 'express';
-import {Item} from './model/item';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +17,6 @@ import {Item} from './model/item';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit, OnInit  {
-  private destroyedService$ = new Subject();
-
   @ViewChild('gdpr') gdpr: ElementRef | undefined;
 
   title = 'prometheus-page';
@@ -68,13 +63,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
       return;
     }
 
-    if (this.wishlistItemsService.items?.length) {
-      return;
-    }
-
-    this.wishlistItemsService.getItems(this.userService.activeUser?.id || '')
-      .pipe(takeUntil(this.destroyedService$))
-      .subscribe((items: Array<Item | null>): void => { this.wishlistItemsService.items = items || []; });
+    this.wishlistItemsService.getItems();
   }
 
   get deepestLevelNavigationItems(): Array<NavigationItem> {

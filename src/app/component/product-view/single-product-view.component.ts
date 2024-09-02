@@ -27,7 +27,6 @@ import {TrackingInterestLevel} from '../../model/tracking-interest-level';
 import {HyphenationPipe} from "../../pipes/web.pipe";
 import {PriceHistoryItem} from "../../model/price-history-item";
 import {catchError, of} from "rxjs";
-import {FilterSelectionComponent} from "../filter/filter-selection.component";
 import {Filters} from "../../configurations/filters";
 import {FilterItem} from "../../model/filter-item";
 

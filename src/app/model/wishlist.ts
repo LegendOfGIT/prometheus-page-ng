@@ -5,5 +5,5 @@ export class Wishlist {
   public isShared: boolean = false;
   public title: string = '';
   public description: string = '';
-  public itemsOnList: WishlistItem[] = [];
+  public items: WishlistItem[] = [];
 }

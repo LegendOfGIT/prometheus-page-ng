@@ -1,9 +1,33 @@
 <div *ngIf="items">
-  <div class="container informationItems__content">
-    <div class="col-12 informationItems__container">
-      <h3 *ngIf="WishlistTitle" class="wishlist__title">{{WishlistTitle}}</h3>
-
-      <app-item *ngFor="let item of items" [item]="item"></app-item>
+  <div class="container informationItems__container">
+    <div class="row d-flex justify-content-center">
+      <div class="wishlist__header-container p-4 col-10 col-md-7">
+        <h3 *ngIf="WishlistTitle" class="d-flex justify-content-center wishlist__title">{{WishlistTitle}}</h3>
+        <div class="d-flex justify-content-center">{{ WishlistDescription || 'Beschreibe deine Wunschliste näher' }}</div>
+      </div>
+    </div>
+    <div class="row" *ngFor="let item of items">
+      <div class="col-12">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-3 mt-3 d-flex justify-content-center align-items-center wishlist__item-image-container">
+              <a href="{{ item?.url ?? '' }}" target="wishlist-item-{{ item?.id ?? '' }}">
+                <img src="{{ item?.titleImage }}" class="wishlist__item-image" />
+              </a>
+            </div>
+            <div class="col-12 col-md-6 ms-2 mt-3">
+              <a class="wishlist__item-title text-decoration-none fw-bold" href="{{ item?.url ?? '' }}" target="wishlist-item-{{ item?.id ?? '' }}">
+                {{ item?.title }}
+              </a>
+              <div class="mt-2">{{ item?.description }}</div>
+            </div>
+        </div>
+      </div>
+      <div class="col-2 mt-3">
+        <a class="button__wrapper" (click)="removeItem(item)">
+          <div class="button d-flex justify-content-center">entfernen</div>
+        </a>
+      </div>
+      <div class="col-10"></div>
     </div>
   </div>
 </div>

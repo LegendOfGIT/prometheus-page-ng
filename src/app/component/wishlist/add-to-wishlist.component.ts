@@ -1,4 +1,5 @@
 import {Component, Inject, Input, PLATFORM_ID} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 import { Item } from '../../model/item';
 import { UserService } from '../../service/user.service';
@@ -6,8 +7,7 @@ import { WishlistItemsApiService } from '../../service/wishlist-items-api.servic
 import { TrackingService } from 'src/app/service/tracking.service';
 import { TrackingActivityItem } from 'src/app/model/tracking-activity-item';
 import { TrackingInterestLevel } from 'src/app/model/tracking-interest-level';
-import { isPlatformBrowser } from '@angular/common';
-import {HyphenationPipe} from "../../pipes/web.pipe";
+import { HyphenationPipe } from '../../pipes/web.pipe';
 
 @Component({
   selector: 'app-add-to-wishlist',
@@ -15,7 +15,6 @@ import {HyphenationPipe} from "../../pipes/web.pipe";
   styleUrls: ['./add-to-wishlist.component.scss']
 })
 export class AddToWishlistComponent {
-
   @Input() item: Item | undefined = undefined;
 
   constructor(
@@ -36,17 +35,17 @@ export class AddToWishlistComponent {
   }
 
   get isItemOnWishlist(): boolean {
-    return this.wishlistItemsService.isItemOnWishlist(this.item?.itemId || '');
+    return this.wishlistItemsService.isItemOnWishlist(this.item?.id ?? '');
   }
 
   toggleItem(): void {
-    this.wishlistItemsService.toggleWishlistItem(this.userService.activeUser?.id || '', this.item);
+    this.wishlistItemsService.toggleWishlistItem(this.item);
 
     if (!this.item?.itemId) {
       return;
     }
 
-    const isOnWishlist = this.wishlistItemsService.isItemOnWishlist(this.item?.itemId || '');
+    const isOnWishlist: boolean = this.wishlistItemsService.isItemOnWishlist(this.item?.id ?? '');
 
     this.trackingService.addActivity(
       TrackingActivityItem.create()

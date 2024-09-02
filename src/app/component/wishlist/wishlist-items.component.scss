@@ -1,13 +1,11 @@
 @import '../../../styles';
 @import '../../variables';
+@import 'src/styles/controls';
 
 .informationItems {
   &__container {
-    background-color: #fff;
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 1em;
+    color: $content-color;
+    padding-top: 4.5em;
   }
 
   &__containerWrapper {
@@ -18,11 +16,6 @@
     padding-top: 1em;
   }
 
-  &__content {
-    display: flex;
-    padding-top: 4.5em;
-  }
-
   &__disclaimer {
     color: $content-color;
     font-size: 0.8em;
@@ -31,6 +24,28 @@
 }
 
 .wishlist {
+  &__header-container {
+    background-color: $container-background-color;
+  }
+
+  &__item {
+    &-image {
+      max-height: 10em;
+      max-width: 12em;
+      object-fit: contain;
+    }
+
+    &-image-container {
+      background-color: $container-background-color;
+      height: 13em;
+      width: 16em;
+    }
+
+    &-title {
+      color: $content-color;
+    }
+  }
+
   &__title {
     color: $content-color;
   }

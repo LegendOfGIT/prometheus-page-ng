@@ -11,12 +11,14 @@ import { ApiBase } from './api-base';
 import { ApplicationConfiguration } from '../configurations/app';
 import { UserService } from './user.service';
 import { Wishlist } from '../model/wishlist';
+import { WishlistItem } from '../model/wishlist-item';
+import {CorrespondingItem} from "../model/corresponding-item";
 
 @Injectable({
     providedIn: 'root'
 })
 export class WishlistItemsApiService extends ApiBase {
-    private _items: Array<Item | null> = [];
+    private _items: Array<WishlistItem | null> = [];
     private _wishlists: Wishlist[] = [];
 
     constructor(
@@ -27,11 +29,11 @@ export class WishlistItemsApiService extends ApiBase {
         super(ApplicationConfiguration.API_BASE);
     }
 
-    get items(): Array<Item | null> {
+    get items(): Array<WishlistItem | null> {
       return this._items;
     }
 
-    set items(items: Array<Item | null>) {
+    set items(items: Array<WishlistItem | null>) {
       this._items = items;
     }
 
@@ -55,29 +57,28 @@ export class WishlistItemsApiService extends ApiBase {
       return this._wishlists.find((wishlist: Wishlist): boolean => wishlist.id === this.userService.activeWishlistId());
     }
 
-    private addItemToWishlist(userId: string, item: Item): void {
-      if (!this._items) {
-        return;
-      }
-
+    private addItemToWishlist(item: WishlistItem): void {
       this.http.put(
         this.get(endpoints.saveWishlistItem),
-        { itemId: item.itemId, userId }
-      ).subscribe();
-
-      this._items.push(item);
+        {
+          wishlistId: this.userService.activeUser?.activeWishlistId ?? '',
+          userId: this.userService.activeUser?.id ?? '',
+          ... item
+        }
+      ).subscribe(() => this.getItems());
     }
 
-    private removeItemFromWishlist(userId: string, item: Item): void {
-      if (!this._items) {
-        return;
-      }
-
+    public removeItemFromWishlist(itemId: string): void {
       this.http.delete(
-        this.get(endpoints.deleteWishlistItem, { itemId: item.itemId, userId }),
-      ).subscribe();
-
-      this._items = this._items.filter(wishlistItem => item.itemId !== wishlistItem?.itemId);
+        this.get(endpoints.deleteWishlistItem),
+        {
+          body: {
+            userId: this.userService.activeUser?.id ?? '',
+            wishlistId: this.userService.activeWishlistId(),
+            itemId
+          }
+        }
+      ).subscribe(() => this.getItems());
     }
 
     public getWishlists(): Observable<Wishlist[]> {
@@ -146,41 +147,47 @@ export class WishlistItemsApiService extends ApiBase {
         }));
     }
 
-    public getItems(userId: string): Observable<Array<Item | null>> {
+    public getItems(): void {
           if (isPlatformServer(this.platformId)) {
-            return of([]);
+            return;
           }
 
-          const url = this.get(endpoints.getWishlistItems, {
-            searchPattern: '',
-            userId
+          this.getWishlists().subscribe((wishlists: Wishlist[]): void => {
+            const activeWishlist: Wishlist | undefined = wishlists.find((wishlist: Wishlist) => this.userService.activeUser?.activeWishlistId === wishlist.id);
+            this._items = (activeWishlist?.items ?? []).sort((a, b): number => (a.lastUpdatedOn ?? new Date()) > (b.lastUpdatedOn ?? new Date()) ? -1 : 1);
           });
-
-          return this.http
-             .get<ItemDto[]>(url)
-             .pipe(map(items => items.map((item: ItemDto) => Item.fromModel(item))));
-
       }
 
     public isItemOnWishlist(itemId: string): boolean {
-      if(!this._items) {
-        return false;
-      }
-
-      return this._items.filter(item => itemId == item?.itemId).length > 0;
+      return (this._items ?? []).filter((item: WishlistItem | null): boolean => itemId == item?.id).length > 0;
     }
 
-    public toggleWishlistItem(userId: string, item: Item | undefined): void {
+    public toggleWishlistItem(item: Item | undefined): void {
       if (!item) {
         return;
       }
 
-      if (!this.isItemOnWishlist(item.itemId)) {
-        this.addItemToWishlist(userId, item);
+      const providerWithLowestPrice: CorrespondingItem | null = Item.getProviderItemWithLowestPrice(item);
+      if (!providerWithLowestPrice) {
         return;
       }
 
-      this.removeItemFromWishlist(userId, item);
-    }
+      const { id, description, title, titleImage } = item;
+      const { link } = providerWithLowestPrice;
 
+      if (!this.isItemOnWishlist(item.id)) {
+        this.addItemToWishlist({
+          description,
+          title,
+          url: link,
+          titleImage,
+          itemWasBought: false,
+          id,
+          lastUpdatedOn: undefined
+        });
+        return;
+      }
+
+      this.removeItemFromWishlist(item.id);
+    }
 }

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
 
-import {Item} from 'src/app/model/item';
 import {WishlistItemsApiService} from 'src/app/service/wishlist-items-api.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
-import {ActivatedRoute, Params} from "@angular/router";
+import {WishlistItem} from '../../model/wishlist-item';
 
 @Component({
   selector: 'app-wishlist-items',
@@ -23,12 +23,21 @@ export class WishlistItemsComponent implements OnInit {
         this.activatedRoute.params.subscribe((params: Params): void => {
           if (params['wishlistId']) {
             this.itemsService.activeWishlistId = params['wishlistId'];
+            this.itemsService.getItems();
           }
         });
     }
 
-    get items(): Array<Item | null> {
+    public removeItem(item: WishlistItem | null): void {
+      this.itemsService.removeItemFromWishlist(item?.id ?? '');
+    }
+
+    get items(): Array<WishlistItem | null> {
       return this.itemsService.items;
+    }
+
+    get WishlistDescription(): string {
+      return this.itemsService.activeWishlist?.description ?? '';
     }
 
     get WishlistTitle(): string {
