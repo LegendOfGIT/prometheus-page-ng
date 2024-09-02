@@ -151,6 +151,11 @@ export class I18nDeDe implements I18nInterface {
       HERO_DISCOVER_TONIES: "HIER GEHT'S ZU DEN TONIES !",
       IMAGE_OF: 'Bild von',
       IMPRINT: 'Impressum',
+      MESSAGE_TITLE_WISHLIST: 'Wunschliste',
+      MESSAGE_WISHLIST_ADDED_TO_WISHLIST: 'Zu "{wishlistName}" hinzugefügt.',
+      MESSAGE_WISHLIST_CREATED_WISHLIST: 'Wunschliste "{wishlistName}" erstellt.',
+      MESSAGE_WISHLIST_DELETED_WISHLIST: 'Wunschliste "{wishlistName}" gelöscht.',
+      MESSAGE_WISHLIST_REMOVED_FROM_WISHLIST: 'Von "{wishlistName}" entfernt.',
       MORE_OFFERS: 'Weitere Angebote',
       MORE_OF_THIS_BRAND: 'Mehr von dieser Marke',
       NAVIGATION_ALL: 'Alle Produkte',
@@ -766,7 +771,12 @@ export class I18nDeDe implements I18nInterface {
         '</p>' +
         '<p>Lass uns gemeinsam durchstarten!</p>',
       TOP_OFFER: 'Top-Angebot',
-      UPDATED_ON: 'aktualisiert am'
+      UPDATED_ON: 'aktualisiert am',
+      WISHLIST_ACTION_CREATE_WISHLIST: 'Wunschliste anlegen',
+      WISHLIST_ACTION_GO_TO_WISHLIST: 'Zum Wunschzettel',
+      WISHLIST_NAME_OF_WISHLIST: 'Name der Wunschliste',
+      WISHLIST_NEW_WISHLIST: 'Neue Wunschliste',
+      WISHLIST_PROVIDE_A_DESCRIPTION: 'Beschreibe deine Wunschliste näher'
     };
   }
 }

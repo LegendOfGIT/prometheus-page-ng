@@ -151,6 +151,11 @@ export class I18nEnUs implements I18nInterface {
       HERO_DISCOVER_TONIES: "HERE YOU CAN FIND TONIES !",
       IMAGE_OF: 'Image of',
       IMPRINT: 'Imprint',
+      MESSAGE_TITLE_WISHLIST: 'Wishlist',
+      MESSAGE_WISHLIST_ADDED_TO_WISHLIST: 'Added to "{wishlistName}".',
+      MESSAGE_WISHLIST_CREATED_WISHLIST: 'Created new wishlist "{wishlistName}".',
+      MESSAGE_WISHLIST_DELETED_WISHLIST: 'Deleted wishlist "{wishlistName}".',
+      MESSAGE_WISHLIST_REMOVED_FROM_WISHLIST: 'Removed from "{wishlistName}".',
       MORE_OFFERS: 'More offers',
       MORE_OF_THIS_BRAND: 'More of this brand',
       NAVIGATION_ALL: 'all products',
@@ -771,7 +776,12 @@ export class I18nEnUs implements I18nInterface {
       TITLE_WANNA_WORD_SUFFIX: 'anna',
       TITLE_WE_WORD_SUFFIX: 'e',
       TOP_OFFER: 'Best offer',
-      UPDATED_ON: 'updated on'
+      UPDATED_ON: 'updated on',
+      WISHLIST_ACTION_CREATE_WISHLIST: 'Create wishlist',
+      WISHLIST_ACTION_GO_TO_WISHLIST: 'Go to wishlist',
+      WISHLIST_NAME_OF_WISHLIST: 'Name of wishlist',
+      WISHLIST_NEW_WISHLIST: 'New wishlist',
+      WISHLIST_PROVIDE_A_DESCRIPTION: 'Provide a description'
     };
   }
 }

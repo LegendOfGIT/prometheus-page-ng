@@ -6,4 +6,5 @@ export class Wishlist {
   public title: string = '';
   public description: string = '';
   public items: WishlistItem[] = [];
+  public lastUpdatedOn: Date | undefined;
 }

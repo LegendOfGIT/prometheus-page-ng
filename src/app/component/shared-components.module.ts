@@ -7,6 +7,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { CategoryTeaserComponent } from './landing-pages/category-teaser.component';
 import { LoadingComponent } from './loading/loading.component';
 import { ModeratedTeaserComponent } from './landing-pages/moderated-teaser.component';
+import {MessagesComponent} from "./messages/messages.component";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ModeratedTeaserComponent } from './landing-pages/moderated-teaser.compo
     CategoryTeaserComponent,
     ModeratedTeaserComponent,
     ItemComponent,
-    LoadingComponent
+    LoadingComponent,
+    MessagesComponent
   ],
   exports: [
     AddToWishlistComponent,
@@ -23,7 +25,8 @@ import { ModeratedTeaserComponent } from './landing-pages/moderated-teaser.compo
     CategoryTeaserComponent,
     ModeratedTeaserComponent,
     ItemComponent,
-    LoadingComponent
+    LoadingComponent,
+    MessagesComponent
   ],
   imports: [
     CommonModule,

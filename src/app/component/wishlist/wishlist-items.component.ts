@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 import {WishlistItemsApiService} from 'src/app/service/wishlist-items-api.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {WishlistItem} from '../../model/wishlist-item';
+import {MessagesService} from '../../service/messages.service';
 
 @Component({
   selector: 'app-wishlist-items',
@@ -14,6 +15,7 @@ export class WishlistItemsComponent implements OnInit {
     constructor(
       private itemsService: WishlistItemsApiService,
       private activatedRoute: ActivatedRoute,
+      private router: Router,
       navigationService: NavigationService
     ) {
       navigationService.activeModule = Module.WISHLIST;
@@ -30,6 +32,10 @@ export class WishlistItemsComponent implements OnInit {
 
     public removeItem(item: WishlistItem | null): void {
       this.itemsService.removeItemFromWishlist(item?.id ?? '');
+    }
+
+    public deleteWishlist(): void {
+      this.itemsService.deleteWishlist().subscribe(() => this.router.navigate(['/', 'wishlists']));
     }
 
     get items(): Array<WishlistItem | null> {

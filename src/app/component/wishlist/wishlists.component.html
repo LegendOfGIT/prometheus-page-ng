@@ -3,16 +3,16 @@
     <div class="col-12 mt-4 mt-xl-3 p-3 wishlists__new-list" [formGroup]="form">
       <div class="row d-flex">
         <div class="col-12">
-          <h5 class="text-uppercase">Neue Wunschliste</h5>
+          <h5 class="text-uppercase">{{ 'WISHLIST_NEW_WISHLIST' | translate }}</h5>
         </div>
       </div>
       <div class="row d-flex">
         <div class="col-12 col-xl-8 d-flex mt-2 mt-xl-0">
-          <input type="text" placeholder="Name der Wunschliste" formControlName="wishlistTitle" />
+          <input type="text" placeholder="{{ 'WISHLIST_NAME_OF_WISHLIST' | translate }}" formControlName="wishlistTitle" />
         </div>
         <div class="col-12 col-xl-2 mt-2 mt-xl-0">
           <a class="button__wrapper" (click)="createWishlist()">
-            <div class="button d-flex w-100 justify-content-center">Wunschliste anlegen</div>
+            <div class="button d-flex w-100 justify-content-center">{{ 'WISHLIST_ACTION_CREATE_WISHLIST' | translate }}</div>
           </a>
         </div>
       </div>
@@ -24,10 +24,10 @@
     <div *ngFor="let wishlist of Wishlists" class="d-flex justify-content-center mt-5 col-md-4 col-12">
       <div class="row">
         <div class="col-12 d-flex justify-content-center"><h4>{{ wishlist.title }}</h4></div>
-        <div class="col-12 d-flex justify-content-center">{{ wishlist.description || 'Beschreibe deine Wunschliste näher' }}</div>
+        <div class="col-12 d-flex justify-content-center">{{ wishlist.description || ('WISHLIST_PROVIDE_A_DESCRIPTION' | translate) }}</div>
         <div class="col-12 d-flex justify-content-center">
           <a class="button__wrapper mt-2" [routerLink]="['/', 'wishlist', wishlist.id ]">
-            <div class="button">zum Wunschzettel</div>
+            <div class="button">{{ 'WISHLIST_ACTION_GO_TO_WISHLIST' | translate }}</div>
           </a>
         </div>
       </div>

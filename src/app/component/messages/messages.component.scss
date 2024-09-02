@@ -1,0 +1,35 @@
+@import 'src/app/variables';
+
+.footer {
+  backdrop-filter: blur(3px);
+  background: $container-background-color-as-rgba;
+  border-top: 1px solid lightgray;
+  bottom: 0;
+  font-size: 0.85em;
+  height: 2.3em;
+  padding-top: 0.3em;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  z-index: 3;
+
+  &__link {
+    color: $header-footer-content-color;
+    cursor: pointer;
+    padding-left: 1em;
+
+    &--active {
+      color: $content-color--active;
+      font-weight: bold;
+    }
+  }
+
+  &__links {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @media screen and (min-width: 576px) {
+    text-align: right;
+  }
+}
