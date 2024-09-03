@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'imprint', component: ImprintComponent },
   { path: 'wishlist', component: WishlistItemsComponent },
   { path: 'wishlist/:wishlistId', component: WishlistItemsComponent },
+  { path: 'wishlist/shared/:wishlistHash', component: WishlistItemsComponent },
   { path: 'wishlists', component: WishlistsComponent },
   {
     path: 'p',

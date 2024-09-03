@@ -155,7 +155,9 @@ export class I18nEnUs implements I18nInterface {
       MESSAGE_WISHLIST_ADDED_TO_WISHLIST: 'Added to "{wishlistName}".',
       MESSAGE_WISHLIST_CREATED_WISHLIST: 'Created new wishlist "{wishlistName}".',
       MESSAGE_WISHLIST_DELETED_WISHLIST: 'Deleted wishlist "{wishlistName}".',
+      MESSAGE_WISHLIST_NO_LONGER_SHARED: 'Wishlist "{wishlistName}" is no longer shared.',
       MESSAGE_WISHLIST_REMOVED_FROM_WISHLIST: 'Removed from "{wishlistName}".',
+      MESSAGE_WISHLIST_SHARED: 'Wishlist "{wishlistName}" is now shared.',
       MORE_OFFERS: 'More offers',
       MORE_OF_THIS_BRAND: 'More of this brand',
       NAVIGATION_ALL: 'all products',
@@ -782,6 +784,8 @@ export class I18nEnUs implements I18nInterface {
       WISHLIST_ACTION_DELETE_ITEM_FROM_WISHLIST: 'delete wish',
       WISHLIST_ACTION_DELETE_WISHLIST: 'Delete wishlist',
       WISHLIST_ACTION_GO_TO_WISHLIST: 'Go to wishlist',
+      WISHLIST_ACTION_SHARE_WISHLIST: 'Share wishlist',
+      WISHLIST_ACTION_STOP_SHARING_WISHLIST: 'Stop sharing',
       WISHLIST_NAME_OF_WISHLIST: 'Name of wishlist',
       WISHLIST_NEW_WISHLIST: 'New wishlist',
       WISHLIST_PROVIDE_A_DESCRIPTION: 'Provide a description'

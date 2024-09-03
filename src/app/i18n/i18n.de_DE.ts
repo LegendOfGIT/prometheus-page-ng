@@ -155,7 +155,9 @@ export class I18nDeDe implements I18nInterface {
       MESSAGE_WISHLIST_ADDED_TO_WISHLIST: 'Zu "{wishlistName}" hinzugefügt.',
       MESSAGE_WISHLIST_CREATED_WISHLIST: 'Wunschliste "{wishlistName}" erstellt.',
       MESSAGE_WISHLIST_DELETED_WISHLIST: 'Wunschliste "{wishlistName}" gelöscht.',
+      MESSAGE_WISHLIST_NO_LONGER_SHARED: 'Wunschliste "{wishlistName}" wird nicht länger geteilt.',
       MESSAGE_WISHLIST_REMOVED_FROM_WISHLIST: 'Von "{wishlistName}" entfernt.',
+      MESSAGE_WISHLIST_SHARED: 'Wunschliste "{wishlistName}" wird jetzt geteilt',
       MORE_OFFERS: 'Weitere Angebote',
       MORE_OF_THIS_BRAND: 'Mehr von dieser Marke',
       NAVIGATION_ALL: 'Alle Produkte',
@@ -777,6 +779,8 @@ export class I18nDeDe implements I18nInterface {
       WISHLIST_ACTION_DELETE_ITEM_FROM_WISHLIST: 'Wunsch entfernen',
       WISHLIST_ACTION_DELETE_WISHLIST: 'Wuschliste löschen',
       WISHLIST_ACTION_GO_TO_WISHLIST: 'Zum Wunschzettel',
+      WISHLIST_ACTION_SHARE_WISHLIST: 'Wunschliste teilen',
+      WISHLIST_ACTION_STOP_SHARING_WISHLIST: 'Teilen beenden',
       WISHLIST_NAME_OF_WISHLIST: 'Name der Wunschliste',
       WISHLIST_NEW_WISHLIST: 'Neue Wunschliste',
       WISHLIST_PROVIDE_A_DESCRIPTION: 'Beschreibe deine Wunschliste näher'

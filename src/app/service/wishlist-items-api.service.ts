@@ -10,16 +10,18 @@ import { ApplicationConfiguration } from '../configurations/app';
 import { UserService } from './user.service';
 import { Wishlist } from '../model/wishlist';
 import { WishlistItem } from '../model/wishlist-item';
-import {CorrespondingItem} from "../model/corresponding-item";
-import {MessagesService} from "./messages.service";
-import {TranslationService} from "./translation.service";
+import { CorrespondingItem } from "../model/corresponding-item";
+import { MessagesService } from "./messages.service";
+import { TranslationService } from "./translation.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class WishlistItemsApiService extends ApiBase {
     private _items: Array<WishlistItem | null> = [];
+    private _activeWishlist: Wishlist | undefined;
     private _wishlists: Wishlist[] = [];
+    private _wishlistHash: string = '';
 
     constructor(
       private http: HttpClient,
@@ -43,10 +45,6 @@ export class WishlistItemsApiService extends ApiBase {
       return this._wishlists;
     }
 
-    set wishlists(wishlists: Wishlist[]) {
-      this._wishlists = wishlists;
-    }
-
     set activeWishlistId(wishlistId: string) {
       this.userService.setActiveWishlistId(wishlistId);
     }
@@ -56,7 +54,11 @@ export class WishlistItemsApiService extends ApiBase {
         return;
       }
 
-      return this._wishlists.find((wishlist: Wishlist): boolean => wishlist.id === this.userService.activeWishlistId());
+      return this._activeWishlist;
+    }
+
+    set wishlistHash(wishlistHashtag: string) {
+      this._wishlistHash = wishlistHashtag;
     }
 
     private addItemToWishlist(item: WishlistItem): void {
@@ -95,6 +97,20 @@ export class WishlistItemsApiService extends ApiBase {
         };
         this.getItems();
       });
+    }
+
+    private getWishlist(): Observable<Wishlist> {
+      if (isPlatformServer(this.platformId)) {
+        return of();
+      }
+
+      const url: string = this.get(endpoints.getWishlist, {
+        userId: this.userService.activeUser?.id ?? '',
+        id: this._wishlistHash ? '' : this.userService.activeWishlistId(),
+        sharedWithHash: this._wishlistHash
+      });
+
+      return this.http.get<Wishlist>(url);
     }
 
     public getWishlists(): Observable<Wishlist[]> {
@@ -172,15 +188,15 @@ export class WishlistItemsApiService extends ApiBase {
     }
 
     public getItems(): void {
-          if (isPlatformServer(this.platformId)) {
-            return;
-          }
+        if (isPlatformServer(this.platformId)) {
+          return;
+        }
 
-          this.getWishlists().subscribe((wishlists: Wishlist[]): void => {
-            const activeWishlist: Wishlist | undefined = wishlists.find((wishlist: Wishlist) => this.userService.activeUser?.activeWishlistId === wishlist.id);
-            this._items = (activeWishlist?.items ?? []).sort((a, b): number => (a.lastUpdatedOn ?? new Date()) > (b.lastUpdatedOn ?? new Date()) ? -1 : 1);
-          });
-      }
+        this.getWishlist().subscribe((wishlist: Wishlist): void => {
+          this._activeWishlist = wishlist;
+          this._items = (wishlist?.items ?? []).sort((a, b): number => (a.lastUpdatedOn ?? new Date()) > (b.lastUpdatedOn ?? new Date()) ? -1 : 1);
+        });
+    }
 
     public isItemOnWishlist(itemId: string): boolean {
       return (this._items ?? []).filter((item: WishlistItem | null): boolean => itemId == item?.id).length > 0;
@@ -213,5 +229,43 @@ export class WishlistItemsApiService extends ApiBase {
       }
 
       this.removeItemFromWishlist(item.id);
+    }
+
+    public shareWithHash(): void {
+      const sharedWithHash: string = '' + Array.from(`${this.userService.activeUser?.id ?? ''}|${this.activeWishlist?.id ?? ''}`)
+        .reduce((s: number, c: string) => Math.imul(31, s) + c.charCodeAt(0) | 0, 0);
+
+      this.http
+        .post<void>(
+          this.get(endpoints.shareWishlist),
+          {
+            userId: this.userService.activeUser?.id ?? '',
+            id: this.userService.activeWishlistId(),
+            sharedWithHash
+          }
+        ).subscribe((): void => {
+          this.messagesService.message = {
+            title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
+            message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_SHARED'] ?? '')
+              .replace('{wishlistName}', this.activeWishlist?.title ?? '')
+          };
+        });
+    }
+
+    public cancelShareWithHash(): void {
+      this.http
+        .post<void>(
+          this.get(endpoints.cancelShareWishlist),
+          {
+            userId: this.userService.activeUser?.id ?? '',
+            id: this.userService.activeWishlistId()
+          }
+        ).subscribe((): void => {
+        this.messagesService.message = {
+          title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
+          message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_NO_LONGER_SHARED'] ?? '')
+            .replace('{wishlistName}', this.activeWishlist?.title ?? '')
+        };
+      });
     }
 }

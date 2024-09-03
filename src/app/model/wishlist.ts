@@ -2,7 +2,7 @@ import {WishlistItem} from './wishlist-item';
 
 export class Wishlist {
   public id: string = '';
-  public isShared: boolean = false;
+  public sharedWithHash: string = '';
   public title: string = '';
   public description: string = '';
   public items: WishlistItem[] = [];

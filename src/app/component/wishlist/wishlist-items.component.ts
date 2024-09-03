@@ -1,18 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
 import {WishlistItemsApiService} from 'src/app/service/wishlist-items-api.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {WishlistItem} from '../../model/wishlist-item';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-wishlist-items',
   templateUrl: './wishlist-items.component.html',
   styleUrls: ['./wishlist-items.component.scss']
 })
-export class WishlistItemsComponent implements OnInit {
+export class WishlistItemsComponent implements OnInit, OnDestroy {
     private deleteTimers: DeleteItemTimer[] = [];
     private deleteWishlistTimerHandle: any;
+    private subscriptions: Subscription[] = [];
+    public showAdministrativeControls: boolean = false;
 
     constructor(
       private itemsService: WishlistItemsApiService,
@@ -23,13 +26,24 @@ export class WishlistItemsComponent implements OnInit {
       navigationService.activeModule = Module.WISHLIST;
     }
 
+    ngOnDestroy(): void {
+        this.subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
+    }
+
     ngOnInit(): void {
-        this.activatedRoute.params.subscribe((params: Params): void => {
-          if (params['wishlistId']) {
-            this.itemsService.activeWishlistId = params['wishlistId'];
-            this.itemsService.getItems();
-          }
-        });
+      this.subscriptions.push(this.activatedRoute.params.subscribe((params: Params): void => {
+        if (params['wishlistId']) {
+          this.itemsService.activeWishlistId = params['wishlistId'];
+          this.showAdministrativeControls = true;
+        }
+
+        if (params['wishlistHash']) {
+          this.itemsService.wishlistHash = params['wishlistHash'];
+          this.showAdministrativeControls = false;
+        }
+
+        this.itemsService.getItems();
+      }));
     }
 
     public removeItemOrCancelRemove(item: WishlistItem | null): void {
@@ -58,11 +72,20 @@ export class WishlistItemsComponent implements OnInit {
       }
 
       this.deleteWishlistTimerHandle = setTimeout(
-        () => this.itemsService
+        () => this.subscriptions.push(this.itemsService
           .deleteWishlist()
-          .subscribe(() => this.router.navigate(['/', 'wishlists'])),
+          .subscribe(() => this.router.navigate(['/', 'wishlists']))),
         5000
       );
+    }
+
+    public shareWishlistOrStopSharing(): void {
+      if (this.WishlistIsShared) {
+        this.itemsService.cancelShareWithHash();
+        return;
+      }
+
+      this.itemsService.shareWithHash();
     }
 
     public isDeletionTimerActive(item: WishlistItem | null): boolean {
@@ -84,6 +107,10 @@ export class WishlistItemsComponent implements OnInit {
 
     get WishlistTitle(): string {
       return this.itemsService.activeWishlist?.title ?? '';
+    }
+
+    get WishlistIsShared(): boolean {
+      return (this.itemsService.activeWishlist?.sharedWithHash ?? '') !== '';
     }
 }
 
