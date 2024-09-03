@@ -29,6 +29,31 @@
   }
 
   &__item {
+    &-delete-timer {
+      margin: 1rem;
+      overflow: hidden;
+
+      div {
+        height: 5px;
+        animation: roundtime calc(5s) linear forwards;
+        transform-origin: left center;
+        background-color: $content-color--active;
+      }
+    }
+
+    &-description {
+      display: -webkit-box;
+      line-clamp: 5;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+
+      a {
+        color: $content-color;
+      }
+    }
+
     &-image {
       max-height: 10em;
       max-width: 12em;
@@ -43,6 +68,12 @@
 
     &-title {
       color: $content-color;
+      display: -webkit-box;
+      line-clamp: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
     }
   }
 
@@ -53,4 +84,14 @@
 
 .toast-container {
   margin-top: 4.5em;
+}
+
+
+
+
+@keyframes roundtime {
+  to {
+    /* More performant than `width` */
+    transform: scaleX(0);
+  }
 }
