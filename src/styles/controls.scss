@@ -34,6 +34,12 @@ button:hover {
   text-decoration: none;
   z-index: 1;
 
+  &--critical {
+    &:hover {
+      background-color: red !important;
+    }
+  }
+
   &--highlighted {
     border: 1px solid $container-background-color;
     background-color: $logo-capital-letter-color;

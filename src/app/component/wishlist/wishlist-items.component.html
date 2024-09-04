@@ -7,7 +7,7 @@
         <ng-container *ngIf="showAdministrativeControls">
           <div class="d-flex justify-content-center mt-3">
             <a class="button__wrapper" (click)="shareWishlistOrStopSharing()">
-              <div class="button d-flex justify-content-center">
+              <div [class.button--highlighted]="!WishlistIsShared" class="button d-flex justify-content-center">
                 {{ (WishlistIsShared ? 'WISHLIST_ACTION_STOP_SHARING_WISHLIST' : 'WISHLIST_ACTION_SHARE_WISHLIST') | translate }}
               </div>
             </a>
@@ -23,7 +23,7 @@
           </ng-container>
           <div class="d-flex justify-content-center mt-3">
             <a class="button__wrapper" (click)="deleteWishlistOrCancelDelete()">
-              <div class="button d-flex justify-content-center">
+              <div class="button button--critical d-flex justify-content-center">
                 {{ (WishlistDeletionTimerActive ? 'WISHLIST_ACTION_CANCEL_DELETION' : 'WISHLIST_ACTION_DELETE_WISHLIST') | translate }}
               </div>
             </a>
@@ -57,7 +57,7 @@
               <ng-container *ngIf="showAdministrativeControls">
                 <div class="d-flex justify-content-center mt-2">
                   <a class="button__wrapper" (click)="removeItemOrCancelRemove(item)">
-                    <div class="button d-flex justify-content-center">
+                    <div class="button button--critical d-flex justify-content-center">
                       {{ (isDeletionTimerActive(item) ? 'WISHLIST_ACTION_CANCEL_DELETION' : 'WISHLIST_ACTION_DELETE_ITEM_FROM_WISHLIST') | translate }}
                     </div>
                   </a>
