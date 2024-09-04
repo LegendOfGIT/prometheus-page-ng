@@ -157,6 +157,7 @@ export class I18nDeDe implements I18nInterface {
       MESSAGE_WISHLIST_DELETED_WISHLIST: 'Wunschliste "{wishlistName}" gelöscht.',
       MESSAGE_WISHLIST_NO_LONGER_SHARED: 'Wunschliste "{wishlistName}" wird nicht länger geteilt.',
       MESSAGE_WISHLIST_REMOVED_FROM_WISHLIST: 'Von "{wishlistName}" entfernt.',
+      MESSAGE_WISHLIST_SHARE_LINK_WAS_COPIED: 'Teilen-Link wurde in die Zwischenablage kopiert',
       MESSAGE_WISHLIST_SHARED: 'Wunschliste "{wishlistName}" wird jetzt geteilt',
       MORE_OFFERS: 'Weitere Angebote',
       MORE_OF_THIS_BRAND: 'Mehr von dieser Marke',
@@ -783,7 +784,8 @@ export class I18nDeDe implements I18nInterface {
       WISHLIST_ACTION_STOP_SHARING_WISHLIST: 'Teilen beenden',
       WISHLIST_NAME_OF_WISHLIST: 'Name der Wunschliste',
       WISHLIST_NEW_WISHLIST: 'Neue Wunschliste',
-      WISHLIST_PROVIDE_A_DESCRIPTION: 'Beschreibe deine Wunschliste näher'
+      WISHLIST_PROVIDE_A_DESCRIPTION: 'Beschreibe deine Wunschliste näher',
+      WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY: 'Für Freunde und Familie'
     };
   }
 }

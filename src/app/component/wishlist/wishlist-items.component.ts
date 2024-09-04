@@ -1,10 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 import {WishlistItemsApiService} from 'src/app/service/wishlist-items-api.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {WishlistItem} from '../../model/wishlist-item';
-import {Subscription} from 'rxjs';
+import {MessagesService} from '../../service/messages.service';
+import {TranslationService} from "../../service/translation.service";
 
 @Component({
   selector: 'app-wishlist-items',
@@ -21,6 +23,8 @@ export class WishlistItemsComponent implements OnInit, OnDestroy {
       private itemsService: WishlistItemsApiService,
       private activatedRoute: ActivatedRoute,
       private router: Router,
+      private messagesService: MessagesService,
+      private translationService: TranslationService,
       navigationService: NavigationService
     ) {
       navigationService.activeModule = Module.WISHLIST;
@@ -93,6 +97,17 @@ export class WishlistItemsComponent implements OnInit, OnDestroy {
         .find((deleteTimer: DeleteItemTimer): boolean => deleteTimer.item === item) !== undefined;
     }
 
+    public copyShareLinkToClipboard(inputElement: HTMLInputElement): void {
+      inputElement.select();
+      document.execCommand('copy');
+      inputElement.setSelectionRange(0, 0);
+
+      this.messagesService.message = {
+        title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
+        message: this.translationService.getTranslations()['MESSAGE_WISHLIST_SHARE_LINK_WAS_COPIED'] ?? ''
+      };
+    }
+
     get WishlistDeletionTimerActive(): boolean {
       return this.deleteWishlistTimerHandle !== undefined;
     }
@@ -111,6 +126,10 @@ export class WishlistItemsComponent implements OnInit, OnDestroy {
 
     get WishlistIsShared(): boolean {
       return (this.itemsService.activeWishlist?.sharedWithHash ?? '') !== '';
+    }
+
+    get ShareLink(): string {
+      return `https://www.wewanna.shop/wishlist/shared/${this.itemsService.activeWishlist?.sharedWithHash ?? ''}`;
     }
 }
 

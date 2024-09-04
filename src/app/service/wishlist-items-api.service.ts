@@ -249,6 +249,8 @@ export class WishlistItemsApiService extends ApiBase {
             message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_SHARED'] ?? '')
               .replace('{wishlistName}', this.activeWishlist?.title ?? '')
           };
+
+          this.getWishlist().subscribe((wishlist: Wishlist): Wishlist => this._activeWishlist = wishlist);
         });
     }
 
@@ -261,11 +263,13 @@ export class WishlistItemsApiService extends ApiBase {
             id: this.userService.activeWishlistId()
           }
         ).subscribe((): void => {
-        this.messagesService.message = {
-          title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
-          message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_NO_LONGER_SHARED'] ?? '')
-            .replace('{wishlistName}', this.activeWishlist?.title ?? '')
-        };
-      });
+          this.messagesService.message = {
+            title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
+            message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_NO_LONGER_SHARED'] ?? '')
+              .replace('{wishlistName}', this.activeWishlist?.title ?? '')
+          };
+
+          this.getWishlist().subscribe((wishlist: Wishlist): Wishlist => this._activeWishlist = wishlist);
+        });
     }
 }

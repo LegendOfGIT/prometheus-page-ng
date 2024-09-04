@@ -12,6 +12,15 @@
               </div>
             </a>
           </div>
+          <ng-container *ngIf="WishlistIsShared">
+            <div class="mt-2">
+              {{'WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY' | translate }}:
+            </div>
+            <div class="d-flex mt-1">
+              <input type="text" value="{{ShareLink}}" #shareLink>
+              <i class="fa fa-copy fw-light ms-2" role="button" (click)="copyShareLinkToClipboard(shareLink)"></i>
+            </div>
+          </ng-container>
           <div class="d-flex justify-content-center mt-3">
             <a class="button__wrapper" (click)="deleteWishlistOrCancelDelete()">
               <div class="button d-flex justify-content-center">

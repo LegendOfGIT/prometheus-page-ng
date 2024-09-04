@@ -157,6 +157,7 @@ export class I18nEnUs implements I18nInterface {
       MESSAGE_WISHLIST_DELETED_WISHLIST: 'Deleted wishlist "{wishlistName}".',
       MESSAGE_WISHLIST_NO_LONGER_SHARED: 'Wishlist "{wishlistName}" is no longer shared.',
       MESSAGE_WISHLIST_REMOVED_FROM_WISHLIST: 'Removed from "{wishlistName}".',
+      MESSAGE_WISHLIST_SHARE_LINK_WAS_COPIED: 'Share link was copied to clipboard',
       MESSAGE_WISHLIST_SHARED: 'Wishlist "{wishlistName}" is now shared.',
       MORE_OFFERS: 'More offers',
       MORE_OF_THIS_BRAND: 'More of this brand',
@@ -788,7 +789,8 @@ export class I18nEnUs implements I18nInterface {
       WISHLIST_ACTION_STOP_SHARING_WISHLIST: 'Stop sharing',
       WISHLIST_NAME_OF_WISHLIST: 'Name of wishlist',
       WISHLIST_NEW_WISHLIST: 'New wishlist',
-      WISHLIST_PROVIDE_A_DESCRIPTION: 'Provide a description'
+      WISHLIST_PROVIDE_A_DESCRIPTION: 'Provide a description',
+      WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY: 'For friends and family'
     };
   }
 }
