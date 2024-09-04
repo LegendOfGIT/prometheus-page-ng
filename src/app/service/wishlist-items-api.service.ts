@@ -37,10 +37,6 @@ export class WishlistItemsApiService extends ApiBase {
       return this._items;
     }
 
-    set items(items: Array<WishlistItem | null>) {
-      this._items = items;
-    }
-
     get wishlists(): Wishlist[] {
       return this._wishlists;
     }
@@ -61,21 +57,38 @@ export class WishlistItemsApiService extends ApiBase {
       this._wishlistHash = wishlistHashtag;
     }
 
+    private async createWishlistWhenNecessary(): Promise<void> {
+      if (this.userService.activeUser?.activeWishlistId) {
+        return;
+      }
+
+      await this.createWishlist('Wunschliste').toPromise();
+      const wishlists: Wishlist[] = await this.getWishlists().toPromise() ?? [];
+
+      const wishlist: Wishlist | undefined = wishlists.length ? wishlists[0] : undefined;
+      if (wishlist) {
+        this.userService.setActiveWishlistId(wishlist.id);
+        this._activeWishlist = wishlist;
+      }
+    }
+
     private addItemToWishlist(item: WishlistItem): void {
-      this.http.put(
-        this.get(endpoints.saveWishlistItem),
-        {
-          wishlistId: this.userService.activeUser?.activeWishlistId ?? '',
-          userId: this.userService.activeUser?.id ?? '',
-          ... item
-        }
-      ).subscribe((): void => {
-        this.messagesService.message = {
-          title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
-          message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_ADDED_TO_WISHLIST'] ?? '')
-            .replace('{wishlistName}', this.activeWishlist?.title)
-        };
-        this.getItems();
+      this.createWishlistWhenNecessary().then((): void => {
+        this.http.put(
+          this.get(endpoints.saveWishlistItem),
+          {
+            wishlistId: this.userService.activeUser?.activeWishlistId ?? '',
+            userId: this.userService.activeUser?.id ?? '',
+            ... item
+          }
+        ).subscribe((): void => {
+          this.messagesService.message = {
+            title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
+            message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_ADDED_TO_WISHLIST'] ?? '')
+              .replace('{wishlistName}', this.activeWishlist?.title)
+          };
+          this.getItems();
+        });
       });
     }
 
@@ -176,6 +189,8 @@ export class WishlistItemsApiService extends ApiBase {
         )
         .pipe(tap((): void => {
           this.userService.setActiveWishlistId('');
+          this._activeWishlist = undefined;
+          this._items = [];
 
           this.getWishlists().subscribe((): void => {
             this.messagesService.message = {
@@ -270,6 +285,33 @@ export class WishlistItemsApiService extends ApiBase {
           };
 
           this.getWishlist().subscribe((wishlist: Wishlist): Wishlist => this._activeWishlist = wishlist);
+        });
+    }
+
+    public toggleItemWasBought(item: WishlistItem | undefined | null): void {
+      if (!item) {
+        return;
+      }
+
+      const itemWasBought = !(item.itemWasBought ?? false);
+      this.http
+        .post<void>(
+          this.get(endpoints.wishlistItemBought),
+          {
+            userId: this.userService.activeUser?.id ?? '',
+            wishlistId: this.userService.activeWishlistId(),
+            itemId: item.id ?? '',
+            itemWasBought
+          }
+        ).subscribe((): void => {
+          this.messagesService.message = {
+            title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
+            message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_BOUGHT_MARKED_AS'] ?? '')
+              .replace('{itemBought}',
+                this.translationService.getTranslations()[itemWasBought ? 'WISHLIST_ACTION_I_BUY_IT' : 'WISHLIST_ACTION_I_DO_NOT_BUY_IT'])
+          };
+
+          this.getItems();
         });
     }
 }

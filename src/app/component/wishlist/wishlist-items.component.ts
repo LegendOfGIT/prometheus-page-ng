@@ -6,7 +6,7 @@ import {WishlistItemsApiService} from 'src/app/service/wishlist-items-api.servic
 import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {WishlistItem} from '../../model/wishlist-item';
 import {MessagesService} from '../../service/messages.service';
-import {TranslationService} from "../../service/translation.service";
+import {TranslationService} from '../../service/translation.service';
 
 @Component({
   selector: 'app-wishlist-items',
@@ -14,7 +14,6 @@ import {TranslationService} from "../../service/translation.service";
   styleUrls: ['./wishlist-items.component.scss']
 })
 export class WishlistItemsComponent implements OnInit, OnDestroy {
-    private deleteTimers: DeleteItemTimer[] = [];
     private deleteWishlistTimerHandle: any;
     private subscriptions: Subscription[] = [];
     public showAdministrativeControls: boolean = false;
@@ -50,24 +49,6 @@ export class WishlistItemsComponent implements OnInit, OnDestroy {
       }));
     }
 
-    public removeItemOrCancelRemove(item: WishlistItem | null): void {
-      const deleteTimer: DeleteItemTimer | undefined = this.deleteTimers
-        .find((deleteTimer: DeleteItemTimer): boolean => deleteTimer.item === item);
-
-      if (deleteTimer) {
-        clearTimeout(deleteTimer.deleteTimerHandle);
-        this.deleteTimers = this.deleteTimers.filter((deleteTimer: DeleteItemTimer): boolean => deleteTimer.item !== item)
-        return;
-      }
-
-      this.deleteTimers.push({
-        deleteTimerHandle: setTimeout(
-          () => this.itemsService.removeItemFromWishlist(item?.id ?? ''),
-          5000),
-        item
-      });
-    }
-
     public deleteWishlistOrCancelDelete(): void {
       if (this.deleteWishlistTimerHandle) {
         clearTimeout(this.deleteWishlistTimerHandle);
@@ -92,11 +73,6 @@ export class WishlistItemsComponent implements OnInit, OnDestroy {
       this.itemsService.shareWithHash();
     }
 
-    public isDeletionTimerActive(item: WishlistItem | null): boolean {
-      return this.deleteTimers
-        .find((deleteTimer: DeleteItemTimer): boolean => deleteTimer.item === item) !== undefined;
-    }
-
     public copyShareLinkToClipboard(inputElement: HTMLInputElement): void {
       inputElement.select();
       document.execCommand('copy');
@@ -113,7 +89,11 @@ export class WishlistItemsComponent implements OnInit, OnDestroy {
     }
 
     get items(): Array<WishlistItem | null> {
-      return this.itemsService.items;
+      return this.itemsService.items.filter((item: WishlistItem | null): boolean => !item?.itemWasBought ?? false);
+    }
+
+    get boughtItems(): Array<WishlistItem | null> {
+      return this.itemsService.items.filter((item: WishlistItem | null): boolean => item?.itemWasBought ?? false);
     }
 
     get WishlistDescription(): string {
@@ -131,9 +111,4 @@ export class WishlistItemsComponent implements OnInit, OnDestroy {
     get ShareLink(): string {
       return `https://www.wewanna.shop/wishlist/shared/${this.itemsService.activeWishlist?.sharedWithHash ?? ''}`;
     }
-}
-
-interface DeleteItemTimer {
-  deleteTimerHandle: any;
-  item: WishlistItem | null;
 }

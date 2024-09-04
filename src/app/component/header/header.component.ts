@@ -2,18 +2,18 @@ import {Component, Inject, Optional, PLATFORM_ID} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import {debounceTime} from 'rxjs/operators';
+import {REQUEST} from "@nguniversal/express-engine/tokens";
+import {Request} from "express";
+import {isPlatformBrowser} from '@angular/common';
 
 import {UserService} from 'src/app/service/user.service';
 import {WishlistItemsApiService} from 'src/app/service/wishlist-items-api.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {NavigationItem} from '../../model/navigation-item';
 import {Navigation} from '../../configurations/navigation';
-import {isPlatformBrowser} from '@angular/common';
 import {SuggestionItem, SuggestionItemMode} from '../../model/suggestion-item';
 import {HashTagsApiService} from '../../service/hashtags-api.service';
-import {SuggestionsApiService} from "../../service/suggestions-api.service";
-import {REQUEST} from "@nguniversal/express-engine/tokens";
-import {Request} from "express";
+import {SuggestionsApiService} from '../../service/suggestions-api.service';
 
 @Component({
   selector: 'app-header',
@@ -217,5 +217,17 @@ export class HeaderComponent {
 
   get activeHashtags(): Array<string> {
     return this.userService.activeUser?.activeHashtags.map((hashtag: string): string => `#${hashtag}`) || [];
+  }
+
+  get WishlistLink(): string[] {
+    if (this.navigationService.activeModule === Module.WISHLIST) {
+      return [ '/wishlists' ];
+    }
+
+    if (this.wishlistService.activeWishlist?.id) {
+      return [ '/wishlist', this.wishlistService.activeWishlist?.id ];
+    }
+
+    return [ '/wishlists' ];
   }
 }

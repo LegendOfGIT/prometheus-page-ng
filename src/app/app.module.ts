@@ -17,6 +17,7 @@ import { SharedComponentsModule } from './component/shared-components.module';
 import { PipesModule } from './pipes/pipes.module';
 import { NotFoundComponent } from './component/landing-pages/not-found.component';
 import { WishlistsComponent } from './component/wishlist/wishlists.component';
+import {WishlistItemComponent} from './component/wishlist/wishlist-item.component';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { WishlistsComponent } from './component/wishlist/wishlists.component';
         NotFoundComponent,
         StartPageComponent,
         WishlistItemsComponent,
+        WishlistItemComponent,
         WishlistsComponent
     ],
     imports: [

@@ -34,42 +34,19 @@
         </ng-container>
       </div>
     </div>
-    <div class="row" *ngFor="let item of items">
-      <div class="col-12">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 col-md-3 mt-3 d-flex justify-content-center align-items-center wishlist__item-image-container">
-              <a href="{{ item?.url ?? '' }}" target="wishlist-item-{{ item?.id ?? '' }}">
-                <img src="{{ item?.titleImage }}" class="wishlist__item-image" />
-              </a>
-            </div>
-            <div class="col-12 col-md-6 ms-2 mt-3">
-              <a class="wishlist__item-title text-decoration-none fw-bold" href="{{ item?.url ?? '' }}" target="wishlist-item-{{ item?.id ?? '' }}">
-                {{ item?.title }}
-              </a>
-              <div class="mt-2 wishlist__item-description">
-                <a class="text-decoration-none" href="{{ item?.url ?? '' }}" target="wishlist-item-{{ item?.id ?? '' }}">
-                  {{ item?.description }}
-                </a>
-              </div>
-              <div class="informationItems__disclaimer mt-2">
-                {{ 'PROVISION_DISCLAIMER' | translate }}
-              </div>
-              <ng-container *ngIf="showAdministrativeControls">
-                <div class="d-flex justify-content-center mt-2">
-                  <a class="button__wrapper" (click)="removeItemOrCancelRemove(item)">
-                    <div class="button button--critical d-flex justify-content-center">
-                      {{ (isDeletionTimerActive(item) ? 'WISHLIST_ACTION_CANCEL_DELETION' : 'WISHLIST_ACTION_DELETE_ITEM_FROM_WISHLIST') | translate }}
-                    </div>
-                  </a>
-                </div>
-                <div *ngIf="isDeletionTimerActive(item)" class="wishlist__item-delete-timer">
-                  <div></div>
-                </div>
-              </ng-container>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+    <h4 *ngIf="items.length" class="d-flex justify-content-center text-uppercase wishlist__title">Wünsche ({{items.length}})</h4>
+    <app-wishlist-item
+      *ngFor="let item of items"
+      [item]="item"
+      [showAdministrativeControls]="showAdministrativeControls"
+    ></app-wishlist-item>
+
+    <h4 *ngIf="boughtItems.length" class="d-flex text-uppercase justify-content-center mt-5 wishlist__title">Erfüllte Wünsche ({{boughtItems.length}})</h4>
+    <app-wishlist-item
+      *ngFor="let item of boughtItems"
+      [item]="item"
+      [showAdministrativeControls]="showAdministrativeControls"
+    ></app-wishlist-item>
 </div>
 <div class="mt-5">&nbsp;</div>

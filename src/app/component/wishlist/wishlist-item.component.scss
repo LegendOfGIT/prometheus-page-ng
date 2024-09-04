@@ -3,17 +3,10 @@
 @import 'src/styles/controls';
 
 .informationItems {
-  &__container {
+  &__disclaimer {
     color: $content-color;
-    padding-top: 4.5em;
-  }
-
-  &__containerWrapper {
-    background-color: $container-background-color-as-rgba;
-    border: 1px solid lightgray;
-    border-radius: 0.5em;
-    margin-bottom: 2em;
-    padding-top: 1em;
+    font-size: 0.8em;
+    font-style: italic;
   }
 }
 
