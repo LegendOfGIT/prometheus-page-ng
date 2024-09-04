@@ -9,7 +9,6 @@ export const endpoints = {
   scoreItem: '/information-item/scoring',
   deleteWishlistItem: '/wishlist/item',
   wishlistItemBought: '/wishlist/item/bought',
-  getWishlistItems: '/wishlist-items?userId={userId}&searchPattern={searchPattern}',
   createWishlist: '/wishlist',
   shareWishlist: '/wishlist/share',
   cancelShareWishlist: '/wishlist/cancel-share',

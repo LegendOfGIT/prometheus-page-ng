@@ -22,6 +22,11 @@
     background-color: $container-background-color;
   }
 
+  &__divider {
+    border-bottom: 1px solid gray;
+    height: 1px;
+  }
+
   &__item {
     &-delete-timer {
       margin: 1rem;
@@ -33,41 +38,6 @@
         transform-origin: left center;
         background-color: $content-color--active;
       }
-    }
-
-    &-description {
-      display: -webkit-box;
-      line-clamp: 5;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 5;
-
-      a {
-        color: $content-color;
-      }
-    }
-
-    &-image {
-      max-height: 10em;
-      max-width: 12em;
-      object-fit: contain;
-    }
-
-    &-image-container {
-      background-color: $container-background-color;
-      height: 13em;
-      width: 16em;
-    }
-
-    &-title {
-      color: $content-color;
-      display: -webkit-box;
-      line-clamp: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
     }
   }
 

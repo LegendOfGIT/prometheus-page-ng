@@ -785,10 +785,12 @@ export class I18nDeDe implements I18nInterface {
       WISHLIST_ACTION_I_DO_NOT_BUY_IT: 'Doch nicht gekauft!',
       WISHLIST_ACTION_SHARE_WISHLIST: 'Wunschliste teilen',
       WISHLIST_ACTION_STOP_SHARING_WISHLIST: 'Teilen beenden',
+      WISHLIST_FULFILLED_WISHES: 'Erfüllte Wünsche',
       WISHLIST_NAME_OF_WISHLIST: 'Name der Wunschliste',
       WISHLIST_NEW_WISHLIST: 'Neue Wunschliste',
       WISHLIST_PROVIDE_A_DESCRIPTION: 'Beschreibe deine Wunschliste näher',
-      WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY: 'Für Freunde und Familie'
+      WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY: 'Für Freunde und Familie',
+      WISHLIST_WISHES: 'Wünsche'
     };
   }
 }

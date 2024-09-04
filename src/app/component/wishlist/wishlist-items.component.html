@@ -1,6 +1,6 @@
 <div *ngIf="items">
   <div class="container informationItems__container">
-    <div class="row d-flex justify-content-center mb-3">
+    <div class="row d-flex justify-content-center mb-4">
       <div class="wishlist__header-container p-4 col-10 col-md-7">
         <h3 *ngIf="WishlistTitle" class="d-flex justify-content-center wishlist__title">{{WishlistTitle}}</h3>
         <div class="d-flex justify-content-center">{{ WishlistDescription || ('WISHLIST_PROVIDE_A_DESCRIPTION' | translate) }}</div>
@@ -35,14 +35,18 @@
       </div>
     </div>
 
-    <h4 *ngIf="items.length" class="d-flex justify-content-center text-uppercase wishlist__title">Wünsche ({{items.length}})</h4>
+    <h4 *ngIf="items.length" class="d-flex justify-content-center align-items-center text-uppercase wishlist__title">
+      <div class="col me-2 wishlist__divider"></div> {{ 'WISHLIST_WISHES' | translate }} ({{items.length}}) <div class="col ms-2 wishlist__divider"></div>
+    </h4>
     <app-wishlist-item
       *ngFor="let item of items"
       [item]="item"
       [showAdministrativeControls]="showAdministrativeControls"
     ></app-wishlist-item>
 
-    <h4 *ngIf="boughtItems.length" class="d-flex text-uppercase justify-content-center mt-5 wishlist__title">Erfüllte Wünsche ({{boughtItems.length}})</h4>
+    <h4 *ngIf="boughtItems.length" class="d-flex text-uppercase align-items-center justify-content-center mt-5 wishlist__title">
+      <div class="col me-2 wishlist__divider"></div> {{ 'WISHLIST_FULFILLED_WISHES' | translate }} ({{boughtItems.length}}) <div class="col ms-2 wishlist__divider"></div>
+    </h4>
     <app-wishlist-item
       *ngFor="let item of boughtItems"
       [item]="item"

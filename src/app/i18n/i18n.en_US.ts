@@ -790,10 +790,12 @@ export class I18nEnUs implements I18nInterface {
       WISHLIST_ACTION_I_DO_NOT_BUY_IT: 'Did not buy it!',
       WISHLIST_ACTION_SHARE_WISHLIST: 'Share wishlist',
       WISHLIST_ACTION_STOP_SHARING_WISHLIST: 'Stop sharing',
+      WISHLIST_FULFILLED_WISHES: 'Fulfilled wishes',
       WISHLIST_NAME_OF_WISHLIST: 'Name of wishlist',
       WISHLIST_NEW_WISHLIST: 'New wishlist',
       WISHLIST_PROVIDE_A_DESCRIPTION: 'Provide a description',
-      WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY: 'For friends and family'
+      WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY: 'For friends and family',
+      WISHLIST_WISHES: 'Wishes'
     };
   }
 }
