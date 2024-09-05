@@ -5,13 +5,25 @@
         <h3 *ngIf="WishlistTitle" class="d-flex justify-content-center wishlist__title">{{WishlistTitle}}</h3>
         <div class="d-flex justify-content-center">{{ WishlistDescription || ('WISHLIST_PROVIDE_A_DESCRIPTION' | translate) }}</div>
         <ng-container *ngIf="showAdministrativeControls">
-          <div class="d-flex justify-content-center mt-3">
-            <a class="button__wrapper" (click)="shareWishlistOrStopSharing()">
-              <div [class.button--highlighted]="!WishlistIsShared" class="button d-flex justify-content-center">
-                {{ (WishlistIsShared ? 'WISHLIST_ACTION_STOP_SHARING_WISHLIST' : 'WISHLIST_ACTION_SHARE_WISHLIST') | translate }}
-              </div>
-            </a>
-          </div>
+          <ng-container *ngIf="!itemDiscoveryInProgress">
+            <div class="d-flex mt-3">
+              <input type="text" placeholder="{{ 'WISHLIST_LINK_OF_DESIRED_PRODUCT' | translate }}" [value]="productDiscoveryUrl" #productUrl />
+            </div>
+            <div class="d-flex justify-content-center mt-1">
+              <a class="button__wrapper" (click)="discoverAndAddItemByUrl(productUrl)">
+                <div class="button button--highlighted d-flex justify-content-center">
+                  {{ 'WISHLIST_ACTION_ADD_WISH' | translate }}
+                </div>
+              </a>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="itemDiscoveryInProgress">
+            <app-loading></app-loading>
+            <div class="d-flex justify-content-center mt-1">
+              {{ 'WISHLIST_WISH_IS_LOADING' | translate }}
+            </div>
+          </ng-container>
+
           <ng-container *ngIf="WishlistIsShared">
             <div class="mt-2">
               {{'WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY' | translate }}:
@@ -21,6 +33,13 @@
               <i class="fa fa-copy fw-light ms-2" role="button" (click)="copyShareLinkToClipboard(shareLink)"></i>
             </div>
           </ng-container>
+          <div class="d-flex justify-content-center mt-3">
+            <a class="button__wrapper" (click)="shareWishlistOrStopSharing()">
+              <div [class.button--highlighted]="!WishlistIsShared" class="button d-flex justify-content-center">
+                {{ (WishlistIsShared ? 'WISHLIST_ACTION_STOP_SHARING_WISHLIST' : 'WISHLIST_ACTION_SHARE_WISHLIST') | translate }}
+              </div>
+            </a>
+          </div>
           <div class="d-flex justify-content-center mt-3">
             <a class="button__wrapper" (click)="deleteWishlistOrCancelDelete()">
               <div class="button button--critical d-flex justify-content-center">

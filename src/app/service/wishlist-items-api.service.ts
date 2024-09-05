@@ -1,18 +1,19 @@
-import { HttpClient } from '@angular/common/http';
-import { isPlatformServer } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { Observable, of, tap} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {isPlatformServer} from '@angular/common';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {Observable, of, tap} from 'rxjs';
 
-import { endpoints } from '../../environments/endpoints';
-import { Item } from '../model/item';
-import { ApiBase } from './api-base';
-import { ApplicationConfiguration } from '../configurations/app';
-import { UserService } from './user.service';
-import { Wishlist } from '../model/wishlist';
-import { WishlistItem } from '../model/wishlist-item';
-import { CorrespondingItem } from "../model/corresponding-item";
-import { MessagesService } from "./messages.service";
-import { TranslationService } from "./translation.service";
+import {endpoints} from '../../environments/endpoints';
+import {Item} from '../model/item';
+import {ApiBase} from './api-base';
+import {ApplicationConfiguration} from '../configurations/app';
+import {UserService} from './user.service';
+import {Wishlist} from '../model/wishlist';
+import {WishlistItem} from '../model/wishlist-item';
+import {CorrespondingItem} from "../model/corresponding-item";
+import {MessagesService} from "./messages.service";
+import {TranslationService} from "./translation.service";
+import {MessageType} from "../model/message";
 
 @Injectable({
     providedIn: 'root'
@@ -85,7 +86,8 @@ export class WishlistItemsApiService extends ApiBase {
           this.messagesService.message = {
             title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
             message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_ADDED_TO_WISHLIST'] ?? '')
-              .replace('{wishlistName}', this.activeWishlist?.title)
+              .replace('{wishlistName}', this.activeWishlist?.title),
+            type: MessageType.SUCCESS
           };
           this.getItems();
         });
@@ -106,7 +108,8 @@ export class WishlistItemsApiService extends ApiBase {
         this.messagesService.message = {
           title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
           message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_REMOVED_FROM_WISHLIST'] ?? '')
-            .replace('{wishlistName}', this.activeWishlist?.title)
+            .replace('{wishlistName}', this.activeWishlist?.title),
+          type: MessageType.SUCCESS
         };
         this.getItems();
       });
@@ -164,7 +167,8 @@ export class WishlistItemsApiService extends ApiBase {
           this.messagesService.message = {
             title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
             message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_CREATED_WISHLIST'] ?? '')
-              .replace('{wishlistName}', title)
+              .replace('{wishlistName}', title),
+            type: MessageType.SUCCESS
           };
         });
       }));
@@ -196,7 +200,8 @@ export class WishlistItemsApiService extends ApiBase {
             this.messagesService.message = {
               title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
               message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_DELETED_WISHLIST'] ?? '')
-                .replace('{wishlistName}', wishlistName)
+                .replace('{wishlistName}', wishlistName),
+              type: MessageType.SUCCESS
             };
           })
         }));
@@ -262,7 +267,8 @@ export class WishlistItemsApiService extends ApiBase {
           this.messagesService.message = {
             title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
             message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_SHARED'] ?? '')
-              .replace('{wishlistName}', this.activeWishlist?.title ?? '')
+              .replace('{wishlistName}', this.activeWishlist?.title ?? ''),
+            type: MessageType.SUCCESS
           };
 
           this.getWishlist().subscribe((wishlist: Wishlist): Wishlist => this._activeWishlist = wishlist);
@@ -281,7 +287,8 @@ export class WishlistItemsApiService extends ApiBase {
           this.messagesService.message = {
             title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
             message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_NO_LONGER_SHARED'] ?? '')
-              .replace('{wishlistName}', this.activeWishlist?.title ?? '')
+              .replace('{wishlistName}', this.activeWishlist?.title ?? ''),
+            type: MessageType.SUCCESS
           };
 
           this.getWishlist().subscribe((wishlist: Wishlist): Wishlist => this._activeWishlist = wishlist);
@@ -308,10 +315,23 @@ export class WishlistItemsApiService extends ApiBase {
             title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
             message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_BOUGHT_MARKED_AS'] ?? '')
               .replace('{itemBought}',
-                this.translationService.getTranslations()[itemWasBought ? 'WISHLIST_ACTION_I_BUY_IT' : 'WISHLIST_ACTION_I_DO_NOT_BUY_IT'])
+                this.translationService.getTranslations()[itemWasBought ? 'WISHLIST_ACTION_I_BUY_IT' : 'WISHLIST_ACTION_I_DO_NOT_BUY_IT']),
+            type: MessageType.SUCCESS
           };
 
           this.getItems();
         });
+    }
+
+    public discoverAndAddItem(url: string): Observable<void> {
+      return this.http
+        .post<void>(
+          this.get(endpoints.discoverAndAddWishlistItem),
+          {
+            userId: this.userService.activeUser?.id ?? '',
+            wishlistId: this.userService.activeWishlistId(),
+            url
+          }
+        );
     }
 }

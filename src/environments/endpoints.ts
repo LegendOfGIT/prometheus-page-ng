@@ -8,6 +8,7 @@ export const endpoints = {
   singleItem: '/information-items?id={id}&hashtags={hashtags}&numberOfResults=1&isBot={isBot}',
   scoreItem: '/information-item/scoring',
   deleteWishlistItem: '/wishlist/item',
+  discoverAndAddWishlistItem: '/wishlist/item/discover-and-add',
   wishlistItemBought: '/wishlist/item/bought',
   createWishlist: '/wishlist',
   shareWishlist: '/wishlist/share',

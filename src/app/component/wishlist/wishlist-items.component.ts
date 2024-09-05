@@ -7,6 +7,7 @@ import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {WishlistItem} from '../../model/wishlist-item';
 import {MessagesService} from '../../service/messages.service';
 import {TranslationService} from '../../service/translation.service';
+import {MessageType} from '../../model/message';
 
 @Component({
   selector: 'app-wishlist-items',
@@ -17,6 +18,8 @@ export class WishlistItemsComponent implements OnInit, OnDestroy {
     private deleteWishlistTimerHandle: any;
     private subscriptions: Subscription[] = [];
     public showAdministrativeControls: boolean = false;
+    public itemDiscoveryInProgress: boolean = false;
+    public productDiscoveryUrl: string = '';
 
     constructor(
       private itemsService: WishlistItemsApiService,
@@ -73,6 +76,33 @@ export class WishlistItemsComponent implements OnInit, OnDestroy {
       this.itemsService.shareWithHash();
     }
 
+    public discoverAndAddItemByUrl(inputElement: HTMLInputElement): void {
+      this.productDiscoveryUrl = inputElement.value;
+      this.itemDiscoveryInProgress = true;
+      this.itemsService.discoverAndAddItem(this.productDiscoveryUrl).subscribe({
+        next: (): void => {
+          this.messagesService.message = {
+            title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
+            message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_ADDED_TO_WISHLIST'] ?? '')
+              .replace('{wishlistName}', this.itemsService.activeWishlist?.title),
+            type: MessageType.SUCCESS
+          };
+
+          this.itemsService.getItems();
+          this.itemDiscoveryInProgress = false;
+          this.productDiscoveryUrl = '';
+        },
+        error: (): void => {
+          this.messagesService.message = {
+            title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
+            message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_CAN_NOT_ADD_TO_WISHLIST'] ?? ''),
+            type: MessageType.ERROR
+          };
+          this.itemDiscoveryInProgress = false;
+        }
+      });
+    }
+
     public copyShareLinkToClipboard(inputElement: HTMLInputElement): void {
       inputElement.select();
       document.execCommand('copy');
@@ -80,7 +110,8 @@ export class WishlistItemsComponent implements OnInit, OnDestroy {
 
       this.messagesService.message = {
         title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
-        message: this.translationService.getTranslations()['MESSAGE_WISHLIST_SHARE_LINK_WAS_COPIED'] ?? ''
+        message: this.translationService.getTranslations()['MESSAGE_WISHLIST_SHARE_LINK_WAS_COPIED'] ?? '',
+        type: MessageType.SUCCESS
       };
     }
 

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {MessagesService} from '../../service/messages.service';
-import {Message} from '../../model/message';
+import {Message, MessageType} from '../../model/message';
 
 @Component({
   selector: 'app-messages',
@@ -33,5 +33,9 @@ export class MessagesComponent {
     }, 4000);
 
     return this.messageToShow;
+  }
+
+  get IsError(): boolean {
+    return this.messageToShow?.type === MessageType.ERROR;
   }
 }

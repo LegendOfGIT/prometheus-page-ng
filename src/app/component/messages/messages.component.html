@@ -1,10 +1,10 @@
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
-  <div [class.show]="showToast" class="toast bg-success text-white fade">
-    <div class="toast-header bg-success text-white">
+  <div [class.bg-success]="!IsError" [class.bg-danger]="IsError" [class.show]="showToast" class="toast text-white fade">
+    <div [class.bg-success]="!IsError" [class.bg-danger]="IsError" class="toast-header text-white">
       <strong class="me-auto">{{ Message?.title || '' }}</strong>
       <small>gerade eben</small>
     </div>
-    <div class="toast-body">
+    <div  class="toast-body">
       {{ Message?.message || '' }}
     </div>
   </div>

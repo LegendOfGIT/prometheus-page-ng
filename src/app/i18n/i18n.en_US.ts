@@ -154,6 +154,7 @@ export class I18nEnUs implements I18nInterface {
       MESSAGE_TITLE_WISHLIST: 'Wishlist',
       MESSAGE_WISHLIST_ADDED_TO_WISHLIST: 'Added to "{wishlistName}".',
       MESSAGE_WISHLIST_BOUGHT_MARKED_AS: 'Marked as "{itemBought}".',
+      MESSAGE_WISHLIST_CAN_NOT_ADD_TO_WISHLIST: 'Product could not be added.',
       MESSAGE_WISHLIST_CREATED_WISHLIST: 'Created new wishlist "{wishlistName}".',
       MESSAGE_WISHLIST_DELETED_WISHLIST: 'Deleted wishlist "{wishlistName}".',
       MESSAGE_WISHLIST_NO_LONGER_SHARED: 'Wishlist "{wishlistName}" is no longer shared.',
@@ -781,6 +782,7 @@ export class I18nEnUs implements I18nInterface {
       TITLE_WE_WORD_SUFFIX: 'e',
       TOP_OFFER: 'Best offer',
       UPDATED_ON: 'updated on',
+      WISHLIST_ACTION_ADD_WISH: 'Add wish',
       WISHLIST_ACTION_CANCEL_DELETION: 'Cancel deletion',
       WISHLIST_ACTION_CREATE_WISHLIST: 'Create wishlist',
       WISHLIST_ACTION_DELETE_ITEM_FROM_WISHLIST: 'delete wish',
@@ -791,11 +793,13 @@ export class I18nEnUs implements I18nInterface {
       WISHLIST_ACTION_SHARE_WISHLIST: 'Share wishlist',
       WISHLIST_ACTION_STOP_SHARING_WISHLIST: 'Stop sharing',
       WISHLIST_FULFILLED_WISHES: 'Fulfilled wishes',
+      WISHLIST_LINK_OF_DESIRED_PRODUCT: 'Link of desired product',
       WISHLIST_NAME_OF_WISHLIST: 'Name of wishlist',
       WISHLIST_NEW_WISHLIST: 'New wishlist',
       WISHLIST_PROVIDE_A_DESCRIPTION: 'Provide a description',
       WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY: 'For friends and family',
-      WISHLIST_WISHES: 'Wishes'
+      WISHLIST_WISHES: 'Wishes',
+      WISHLIST_WISH_IS_LOADING: 'Wish is loading ...'
     };
   }
 }

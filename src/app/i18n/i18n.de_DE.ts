@@ -153,6 +153,7 @@ export class I18nDeDe implements I18nInterface {
       IMPRINT: 'Impressum',
       MESSAGE_TITLE_WISHLIST: 'Wunschliste',
       MESSAGE_WISHLIST_ADDED_TO_WISHLIST: 'Zu "{wishlistName}" hinzugefügt.',
+      MESSAGE_WISHLIST_CAN_NOT_ADD_TO_WISHLIST: 'Das Produkt konnte nicht hinzugefügt werden.',
       MESSAGE_WISHLIST_CREATED_WISHLIST: 'Wunschliste "{wishlistName}" erstellt.',
       MESSAGE_WISHLIST_DELETED_WISHLIST: 'Wunschliste "{wishlistName}" gelöscht.',
       MESSAGE_WISHLIST_BOUGHT_MARKED_AS: 'Als "{itemBought}" markiert.',
@@ -776,6 +777,7 @@ export class I18nDeDe implements I18nInterface {
         '<p>Lass uns gemeinsam durchstarten!</p>',
       TOP_OFFER: 'Top-Angebot',
       UPDATED_ON: 'aktualisiert am',
+      WISHLIST_ACTION_ADD_WISH: 'Wunsch hinzufügen',
       WISHLIST_ACTION_CANCEL_DELETION: 'Löschen abbrechen',
       WISHLIST_ACTION_CREATE_WISHLIST: 'Wunschliste anlegen',
       WISHLIST_ACTION_DELETE_ITEM_FROM_WISHLIST: 'Wunsch entfernen',
@@ -786,11 +788,13 @@ export class I18nDeDe implements I18nInterface {
       WISHLIST_ACTION_SHARE_WISHLIST: 'Wunschliste teilen',
       WISHLIST_ACTION_STOP_SHARING_WISHLIST: 'Teilen beenden',
       WISHLIST_FULFILLED_WISHES: 'Erfüllte Wünsche',
+      WISHLIST_LINK_OF_DESIRED_PRODUCT: 'Link zum gewünschten Produkt',
       WISHLIST_NAME_OF_WISHLIST: 'Name der Wunschliste',
       WISHLIST_NEW_WISHLIST: 'Neue Wunschliste',
       WISHLIST_PROVIDE_A_DESCRIPTION: 'Beschreibe deine Wunschliste näher',
       WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY: 'Für Freunde und Familie',
-      WISHLIST_WISHES: 'Wünsche'
+      WISHLIST_WISHES: 'Wünsche',
+      WISHLIST_WISH_IS_LOADING: 'Wunsch wird geladen ...'
     };
   }
 }
