@@ -5,7 +5,11 @@
 .informationItems {
   &__container {
     color: $content-color;
-    padding-top: 4.5em;
+    padding-top: 10.5em;
+
+    @media screen and (min-width: 1400px) {
+      padding-top: 7.5em;
+    }
   }
 
   &__containerWrapper {
@@ -20,6 +24,27 @@
 .wishlist {
   &__header-container {
     background-color: $container-background-color;
+  }
+
+  &__header-image-container {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -120%);
+    display: flex;
+    justify-content: center;
+
+    @media screen and (min-width: 1400px) {
+      transform: translate(-50%, -110%);
+    }
+  }
+
+  &__image {
+    border: 2px solid $container-background-color;
+    max-width: 16em;
+
+    &--selected {
+      border: 2px solid $content-color--active;
+    }
   }
 
   &__divider {

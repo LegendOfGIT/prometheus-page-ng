@@ -4,6 +4,9 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 
 import {Wishlist} from '../../model/wishlist';
 import {WishlistItemsApiService} from '../../service/wishlist-items-api.service';
+import {MessagesService} from "../../service/messages.service";
+import {TranslationService} from "../../service/translation.service";
+import {MessageType} from "../../model/message";
 
 @Component({
   selector: 'app-wishlists',
@@ -17,6 +20,8 @@ export class WishlistsComponent implements OnDestroy {
   private subs: Subscription[] = [];
 
   constructor(private wishlistService: WishlistItemsApiService,
+              private messageService: MessagesService,
+              private translationService: TranslationService,
               private formBuilder: FormBuilder) {
     this.subs.push(this.wishlistService.getWishlists().subscribe(
       {
@@ -48,6 +53,11 @@ export class WishlistsComponent implements OnDestroy {
         },
         error: (): void => {
           this.isLoading = false;
+          this.messageService.message = {
+            title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
+            message: this.translationService.getTranslations()['MESSAGE_WISHLIST_CAN_NOT_CREATE_WISHLIST'] ?? '',
+            type: MessageType.ERROR
+          }
         }
       }));
   }

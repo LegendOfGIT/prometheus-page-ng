@@ -9,7 +9,7 @@
               </div>
             </a>
             <ng-container *ngIf="showAdministrativeControls">
-              <a class="col-12 mt-2 mt-md-0 d-flex justify-content-center button__wrapper" (click)="removeItemOrCancelRemove(item)">
+              <a class="col-12 mt-2 d-flex justify-content-center button__wrapper" (click)="removeItemOrCancelRemove(item)">
                 <div class="button button--critical d-flex justify-content-center" style="height: 2.5em; width: 15.5em;">
                   {{ (isDeletionTimerActive(item) ? 'WISHLIST_ACTION_CANCEL_DELETION' : 'WISHLIST_ACTION_DELETE_ITEM_FROM_WISHLIST') | translate }}
                 </div>

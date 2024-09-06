@@ -10,7 +10,7 @@ export const endpoints = {
   deleteWishlistItem: '/wishlist/item',
   discoverAndAddWishlistItem: '/wishlist/item/discover-and-add',
   wishlistItemBought: '/wishlist/item/bought',
-  createWishlist: '/wishlist',
+  createOrUpdateWishlist: '/wishlist',
   shareWishlist: '/wishlist/share',
   cancelShareWishlist: '/wishlist/cancel-share',
   deleteWishlist: '/wishlist',

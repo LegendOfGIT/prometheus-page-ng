@@ -1,12 +1,73 @@
 <div *ngIf="items">
   <div class="container informationItems__container">
     <div class="row d-flex justify-content-center mb-4">
-      <div class="wishlist__header-container p-4 col-10 col-md-7">
-        <h3 *ngIf="WishlistTitle" class="d-flex justify-content-center wishlist__title">{{WishlistTitle}}</h3>
-        <div class="d-flex justify-content-center">{{ WishlistDescription || ('WISHLIST_PROVIDE_A_DESCRIPTION' | translate) }}</div>
-        <ng-container *ngIf="showAdministrativeControls">
+      <div class="wishlist__header-container p-4 col-10 col-md-7" [formGroup]="form">
+        <div class="d-flex mt-2 mt-lg-0 justify-content-end">
+          <a (click)="toggleEditMode()" role="button">
+            {{ (editMode ? 'WISHLIST_ACTION_CANCEL_MANAGE_WISHLIST' : 'WISHLIST_ACTION_MANAGE_WISHLIST') | translate }}
+          </a>
+        </div>
+
+        <div class="w-50 wishlist__header-image-container">
+          <img
+            src="assets/images/wishlists/{{WishlistImageId.toLocaleLowerCase()}}.jpg"
+            class="w-100 wishlist__image"
+          />
+        </div>
+        <div *ngIf="!editMode">
+          <h3 *ngIf="WishlistTitle" class="d-flex justify-content-center wishlist__title">
+            {{WishlistTitle}}
+          </h3>
+        </div>
+        <div *ngIf="editMode">
+          <input
+            type="text"
+            formControlName="title"
+            maxlength="60"
+            placeholder="{{ 'WISHLIST_NAME_OF_WISHLIST' | translate }}"
+          />
+        </div>
+
+        <div *ngIf="!editMode && WishlistDescription" class="d-flex justify-content-center">
+          {{ WishlistDescription }}
+        </div>
+        <div *ngIf="editMode">
+          <textarea
+            formControlName="description"
+            placeholder="{{ 'WISHLIST_PROVIDE_A_DESCRIPTION' | translate }}"
+            rows="5"
+            maxlength="300"
+            class="w-100 mt-2"
+          >
+          </textarea>
+
+          <div class="col d-flex justify-content-center">
+            <div class="row">
+              <div
+                *ngFor="let selectableImageId of selectableImageIds"
+                class="col-6 col-lg-3 mt-2"
+              >
+                <img
+                  [class.wishlist__image--selected]="selectedImageId === selectableImageId"
+                  class="w-100 wishlist__image"
+                  role="button"
+                  src="assets/images/wishlists/{{selectableImageId.toLocaleLowerCase()}}.jpg"
+                  (click)="selectedImageId = selectableImageId"
+                />
+              </div>
+            </div>
+          </div>
+
+          <a class="button__wrapper d-flex justify-content-center mt-2" (click)="updateWishlist()">
+            <div class="button w-100 w-lg-50 d-flex justify-content-center">
+              {{ 'WISHLIST_ACTION_UPDATE_WISHLIST' | translate }}
+            </div>
+          </a>
+        </div>
+
+        <ng-container *ngIf="showAdministrativeControls && !editMode">
           <ng-container *ngIf="!itemDiscoveryInProgress">
-            <div class="d-flex mt-3">
+            <div class="d-flex mt-4">
               <input type="text" placeholder="{{ 'WISHLIST_LINK_OF_DESIRED_PRODUCT' | translate }}" [value]="productDiscoveryUrl" #productUrl />
             </div>
             <div class="d-flex justify-content-center mt-1">
@@ -25,8 +86,8 @@
           </ng-container>
 
           <ng-container *ngIf="WishlistIsShared">
-            <div class="mt-2">
-              {{'WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY' | translate }}:
+            <div class="mt-3">
+              {{'WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY' | translate }}
             </div>
             <div class="d-flex mt-1">
               <input type="text" value="{{ShareLink}}" #shareLink>
@@ -40,6 +101,8 @@
               </div>
             </a>
           </div>
+        </ng-container>
+        <ng-container *ngIf="showAdministrativeControls && editMode">
           <div class="d-flex justify-content-center mt-3">
             <a class="button__wrapper" (click)="deleteWishlistOrCancelDelete()">
               <div class="button button--critical d-flex justify-content-center">

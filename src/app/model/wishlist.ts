@@ -5,6 +5,7 @@ export class Wishlist {
   public sharedWithHash: string = '';
   public title: string = '';
   public description: string = '';
+  public imageId: string = '';
   public items: WishlistItem[] = [];
   public lastUpdatedOn: Date | undefined;
 }

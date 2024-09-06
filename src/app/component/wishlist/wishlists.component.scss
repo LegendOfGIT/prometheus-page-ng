@@ -10,4 +10,9 @@
   &__new-list {
     background-color: $container-background-color;
   }
+
+  &__wishlist-image {
+    border-radius: 1em;
+    width: 16em;
+  }
 }

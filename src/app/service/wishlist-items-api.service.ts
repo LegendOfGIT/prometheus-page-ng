@@ -145,34 +145,60 @@ export class WishlistItemsApiService extends ApiBase {
         }));
     }
 
-  public createWishlist(title: string): Observable<void> {
-    if (isPlatformServer(this.platformId)) {
-      return of();
+    public createWishlist(title: string): Observable<void> {
+      if (isPlatformServer(this.platformId)) {
+        return of();
+      }
+
+      if (title === '') {
+        return of();
+      }
+
+      return this.http
+        .post<void>(
+          this.get(endpoints.createOrUpdateWishlist),
+          {
+            userId: this.userService.activeUser?.id ?? '',
+            title
+          }
+        )
+        .pipe(tap((): void => {
+          this.getWishlists().subscribe((): void => {
+            this.messagesService.message = {
+              title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
+              message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_CREATED_WISHLIST'] ?? '')
+                .replace('{wishlistName}', title),
+              type: MessageType.SUCCESS
+            };
+          });
+        }));
     }
 
-    if (title === '') {
-      return of();
-    }
+    public updateWishlist(wishlist: Wishlist): Observable<void> {
+      if (isPlatformServer(this.platformId)) {
+        return of();
+      }
 
-    return this.http
-      .post<void>(
-        this.get(endpoints.createWishlist),
-        {
-          userId: this.userService.activeUser?.id ?? '',
-          title
-        }
-      )
-      .pipe(tap((): void => {
-        this.getWishlists().subscribe((): void => {
-          this.messagesService.message = {
-            title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
-            message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_CREATED_WISHLIST'] ?? '')
-              .replace('{wishlistName}', title),
-            type: MessageType.SUCCESS
-          };
-        });
-      }));
-  }
+      return this.http
+        .post<void>(
+          this.get(endpoints.createOrUpdateWishlist),
+          {
+            userId: this.userService.activeUser?.id ?? '',
+            ...wishlist
+          }
+        )
+        .pipe(tap((): void => {
+          this.getWishlist().subscribe((wishlist: Wishlist): void => {
+            this._activeWishlist = wishlist
+            this.messagesService.message = {
+              title: this.translationService.getTranslations()['MESSAGE_TITLE_WISHLIST'] ?? '',
+              message: (this.translationService.getTranslations()['MESSAGE_WISHLIST_UPDATED_WISHLIST'] ?? '')
+                .replace('{wishlistName}', wishlist.title),
+              type: MessageType.SUCCESS
+            };
+          });
+        }));
+    }
 
     public deleteWishlist(): Observable<void> {
       if (isPlatformServer(this.platformId)) {
@@ -252,8 +278,11 @@ export class WishlistItemsApiService extends ApiBase {
     }
 
     public shareWithHash(): void {
-      const sharedWithHash: string = '' + Array.from(`${this.userService.activeUser?.id ?? ''}|${this.activeWishlist?.id ?? ''}`)
+      let hash: number = Array.from(`${this.userService.activeUser?.id ?? ''}|${this.activeWishlist?.id ?? ''}`)
         .reduce((s: number, c: string) => Math.imul(31, s) + c.charCodeAt(0) | 0, 0);
+      hash = hash < 0 ? hash * -1 : hash;
+
+      const sharedWithHash: string = '' + hash;
 
       this.http
         .post<void>(
