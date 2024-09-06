@@ -220,14 +220,6 @@ export class HeaderComponent {
   }
 
   get WishlistLink(): string[] {
-    if (this.navigationService.activeModule === Module.WISHLIST) {
-      return [ '/wishlists' ];
-    }
-
-    if (this.wishlistService.activeWishlist?.id) {
-      return [ '/wishlist', this.wishlistService.activeWishlist?.id ];
-    }
-
     return [ '/wishlists' ];
   }
 }
