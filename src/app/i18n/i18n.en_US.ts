@@ -3,7 +3,7 @@ import { I18nInterface } from './i18n.interface';
 export class I18nEnUs implements I18nInterface {
   public getTranslations(): any {
     return {
-      iAmSearchingFor: 'I am looking for ...',
+      iAmSearchingFor: 'Search www.wewanna.shop ...',
       languageDeDe: 'german (DE)',
       languageEnUs: 'english (US)',
       APPLICATION_INSTRUCTIONS: 'Application instructions',

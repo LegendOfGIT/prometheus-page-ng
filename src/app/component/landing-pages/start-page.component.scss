@@ -3,7 +3,7 @@
 
 .startPage {
   &__content {
-    padding-top: 8.5em;
+    padding-top: 6.5em;
     text-align: center;
 
     @media screen and (min-width: 576px) {
@@ -24,7 +24,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     height: 20em;
-    top: 3.8em;
+    top: 0;
 
     @media screen and (min-width: 576px) {
       height: 80em;

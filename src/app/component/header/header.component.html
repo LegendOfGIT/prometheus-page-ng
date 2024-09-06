@@ -1,4 +1,4 @@
-<header class="w-100 position-fixed header">
+<header class="w-100 position-relative header">
   <div class="container">
     <div class="row header__content">
       <div class="col-12 header__title">
@@ -10,14 +10,7 @@
           <a href="/" (click)="visitStartPage($event)">
             <span class="fw-bold header__titleCapitalLetter">W</span><span class="header__title">e</span>
             <span class="fw-bold header__titleCapitalLetter">W</span><span class="header__title">anna</span>
-
-            <span *ngIf="!isHashtagsModule">
-              <span class="header__titleSlogan"> {{'NAVIGATION_SLOGAN_' + (activeNavigationItem?.hasSlogan ? activeNavigationItem?.toId || 'ALL' : 'ALL') | translate: 'en_US' }}!</span>
-            </span>
-            <div>
-              <span class="header__title"> {{ activeHashtags.join(' ') }}</span>
-            </div>
-
+            <span class="header__titleSlogan"> {{'NAVIGATION_SLOGAN_' + (activeNavigationItem?.hasSlogan ? activeNavigationItem?.toId || 'ALL' : 'ALL') | translate: 'en_US' }}!</span>
           </a>
         </h1>
 
@@ -28,7 +21,7 @@
               [routerLink]="WishlistLink"
             ></i>
           </div>
-          <div class="ps-1 header__iconWrapper">
+          <div class="ps-1 header__iconWrapper" style="margin-top: 0.03em">
             <i
               [ngClass]="['fa', 'header__icon', 'fa-globe', isLanguageSelectionOpen ? 'fw-bold header__icon--active' : 'header__icon--activeEmpty']"
               (click)="isLanguageSelectionOpen = true; languageSelection.showModal()"

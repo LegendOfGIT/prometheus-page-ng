@@ -8,8 +8,7 @@ a  {
 }
 
 .header {
-  backdrop-filter: blur(3px);
-  background: $container-background-color-as-rgba;
+  background: $container-background-color;
   box-shadow: 0.1em 0.1em 0.8em lightgray;
   color: $header-footer-content-color;
   padding: 0.5em 0.5em 0.7em 0.5em;
@@ -47,7 +46,7 @@ a  {
   }
 
   &__logo {
-    font-size: 1.1em;
+    font-size: 1.3em;
 
     a {
       text-decoration: none;
@@ -136,6 +135,8 @@ a  {
     }
 
     &--pinterest {
+      background-color: $container-background-color;
+      border-radius: 5em;
       right: 2em;
     }
 

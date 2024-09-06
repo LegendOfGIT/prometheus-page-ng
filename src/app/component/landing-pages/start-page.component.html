@@ -12,7 +12,6 @@
   </a>
 
   <div class="container">
-    TEASERS: {{STARTPAGE_TEASER_ITEMS.length}}
     <moderated-teaser
       *ngFor="let teaserItem of STARTPAGE_TEASER_ITEMS"
       [filters]="teaserItem.filters"
