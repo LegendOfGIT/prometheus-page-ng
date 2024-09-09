@@ -1,5 +1,5 @@
 <div class="container informationItems__content informationItems__content--categories">
-  <div *ngIf="showCategoryNavigation" class="col-12 pt-2 d-inline-flex justify-content-center informationItems__container informationItems__container--categories carousel__viewport">
+  <div *ngIf="showCategoryNavigation" class="col-12 pb-2 pt-2 d-inline-flex justify-content-center informationItems__container informationItems__container--categories carousel__viewport">
     <app-item
       *ngFor="let subNavigationItem of subNavigationItems"
       [item]="itemOfCategory(subNavigationItem?.toId || '')"

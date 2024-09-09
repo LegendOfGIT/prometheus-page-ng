@@ -1,10 +1,10 @@
-<section #teaserSection class="informationItems__containerWrapper{{headerTitle ? ' pt-3' : ''}}">
+<section #teaserSection class="position-relative informationItems__containerWrapper{{headerTitle ? ' pt-3' : ''}}">
   <a href="{{linkUri}}" (click)="navigateToMore($event)">
-    <div class="col-12 w-100 header header__title" *ngIf="headerTitle">
-      {{headerTitle | translate}} <span *ngIf="linkUri" class="header__more">mehr &raquo;</span>
+    <div class="col-12 w-100 d-inline-flex header header__title" *ngIf="headerTitle">
+      {{headerTitle | translate}} <span *ngIf="linkUri" class="ps-3 text-decoration-underline header__more">mehr &raquo;</span>
     </div>
   </a>
-  <div class="col-12 informationItems__container">
+  <div class="col-12 pb-3 d-inline-flex flex-wrap justify-content-center informationItems__container">
     <app-item
       *ngFor="let item of items; let i = index;"
       [item]="item"

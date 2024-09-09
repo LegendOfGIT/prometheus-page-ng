@@ -1,7 +1,7 @@
-<footer *ngIf="showFooter" class="footer">
+<footer class="footer w-100">
   <div class="container">
     <div class="row">
-      <div class="footer__links">
+      <div class="d-flex justify-content-end">
         <a [routerLink]="['/imprint']" class="footer__link footer__link{{isImprintActive ? '--active' : ''}}">{{'IMPRINT' | translate}}</a>
         <a (click)="showGdprDialog()" class="footer__link">{{'PRIVATSPHERE_OPTIONS' | translate}}</a>
         <a [routerLink]="['/data-protection']" class="footer__link footer__link{{isDataProtectionActive ? '--active' : ''}}">{{'DATA_PROTECTION' | translate}}</a>

@@ -1,24 +1,13 @@
 @import "src/styles/controls";
 @import 'src/app/variables';
 
-.category {
-  &__title {
-    font-size: 1.5em;
-    text-align: left;
-    text-align: -webkit-left;
-  }
-}
-
 .header {
-  background-color: #fff;
-  display: inline-flex;
+  background-color: $container-background-color;
 
   &__more {
     color: $content-color;
     font-size: 90%;
     font-weight: normal;
-    padding-left: 1em;
-    text-decoration: underline;
 
     @media screen and (min-width: 576px) {
       font-size: initial;
@@ -39,14 +28,10 @@
 
 .informationItems {
   &__container {
-    background-color: #fff;
-    display: inline-flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    background-color: $container-background-color;
   }
 
   &__containerWrapper {
-    position: relative;
     z-index: 1;
   }
 }

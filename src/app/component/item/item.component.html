@@ -1,5 +1,5 @@
 <div #itemSection>
-  <div *ngIf="item" [ngClass]="['m-2', 'informationItem', item.itemId ? '' : 'informationItem--loading', showBig ? 'informationItem--big' : '', cssModifier ? 'informationItem' + cssModifier : '', additionalCssClasses]">
+  <div *ngIf="item" [ngClass]="['me-2', 'ms-2', 'informationItem', item.itemId ? '' : 'informationItem--loading', showBig ? 'informationItem--big' : '', cssModifier ? 'informationItem' + cssModifier : '', additionalCssClasses]">
     <div [ngClass]="['d-flex justify-content-center position-relative p-2 informationItem__imageContainer', cssModifier ? 'informationItem__imageContainer' + cssModifier : '', item.itemId ? '' : 'informationItem__imageContainer--loading']">
       <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item, itemUrl, $event)" target="{{linkTarget}}">
         <img *ngIf="item.itemId"

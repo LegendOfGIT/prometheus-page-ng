@@ -1,4 +1,4 @@
-import {Component, HostListener, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { Module, NavigationService } from '../../service/navigation.service';
 
 @Component({
@@ -10,14 +10,7 @@ export class FooterComponent {
   @ViewChild('gdprDialog')
   public gdprDialog: HTMLDialogElement | undefined;
 
-  private wasLastScrollDirectionUp: boolean = false;
-
   public constructor(private navigationService: NavigationService){
-  }
-
-  @HostListener('document:mousewheel', ['$event'])
-  onScroll(e: WheelEvent): void {
-    this.wasLastScrollDirectionUp = (e?.deltaY || 0) > 0;
   }
 
   get isImprintActive(): boolean {
@@ -26,10 +19,6 @@ export class FooterComponent {
 
   get isDataProtectionActive(): boolean {
     return Module.DATA_PROTECTION === this.navigationService.activeModule;
-  }
-
-  get showFooter(): boolean {
-    return !this.wasLastScrollDirectionUp;
   }
 
   public showGdprDialog(): void {
