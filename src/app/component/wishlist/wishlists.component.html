@@ -15,7 +15,7 @@
         </div>
         <div class="col-12 col-xl-3 mt-2 mt-xl-0">
           <a class="button__wrapper" (click)="createWishlist()">
-            <div [class.button--highlighted]="(form?.value?.wishlistTitle || '') !== ''" class="button d-flex w-100 justify-content-center">
+            <div [class.button--highlighted]="(form.value?.wishlistTitle || '') !== ''" class="button d-flex w-100 justify-content-center">
               {{ 'WISHLIST_ACTION_CREATE_WISHLIST' | translate }}
             </div>
           </a>
