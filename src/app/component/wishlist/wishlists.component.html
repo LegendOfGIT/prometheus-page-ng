@@ -9,13 +9,15 @@
           </h6>
         </div>
       </div>
-      <div class="row d-flex">
+      <div class="row d-flex mt-0 mt-xl-2">
         <div class="col-12 col-xl-9 d-flex mt-2 mt-xl-0">
           <input type="text" placeholder="{{ 'WISHLIST_NAME_OF_WISHLIST' | translate }}" formControlName="wishlistTitle" />
         </div>
         <div class="col-12 col-xl-3 mt-2 mt-xl-0">
           <a class="button__wrapper" (click)="createWishlist()">
-            <div class="button d-flex w-100 justify-content-center">{{ 'WISHLIST_ACTION_CREATE_WISHLIST' | translate }}</div>
+            <div [class.button--highlighted]="(form?.value?.wishlistTitle || '') !== ''" class="button d-flex w-100 justify-content-center">
+              {{ 'WISHLIST_ACTION_CREATE_WISHLIST' | translate }}
+            </div>
           </a>
         </div>
       </div>
