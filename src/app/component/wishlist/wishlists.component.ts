@@ -7,6 +7,7 @@ import {WishlistItemsApiService} from '../../service/wishlist-items-api.service'
 import {MessagesService} from "../../service/messages.service";
 import {TranslationService} from "../../service/translation.service";
 import {MessageType} from "../../model/message";
+import {Module} from "../../service/navigation.service";
 
 @Component({
   selector: 'app-wishlists',
@@ -65,4 +66,6 @@ export class WishlistsComponent implements OnDestroy {
   get Wishlists(): Wishlist[] {
     return this.wishlistService.wishlists;
   }
+
+  protected readonly Module = Module;
 }

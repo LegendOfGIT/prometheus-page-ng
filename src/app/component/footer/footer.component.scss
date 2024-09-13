@@ -4,10 +4,15 @@
   background: $container-background-color;
   border-top: 1px solid lightgray;
   bottom: 0;
-  font-size: 0.85em;
+  font-size: 0.65em;
   height: 2.3em;
   padding-top: 0.3em;
   text-align: center;
+
+  @media screen and (min-width: 576px) {
+    font-size: 0.85em;
+    text-align: right;
+  }
 
   &__link {
     color: $header-footer-content-color;
@@ -18,9 +23,5 @@
       color: $content-color--active;
       font-weight: bold;
     }
-  }
-
-  @media screen and (min-width: 576px) {
-    text-align: right;
   }
 }
