@@ -7,7 +7,7 @@
              alt="{{'IMAGE_OF' | translate }} {{item.title}}"
              [src]="showAlternateImage ? imageUrl : item.titleImage || ''"
              (mouseenter)="imageUrl = item.titleImage || ''; currentImageIndex = 0"
-             (error)="imageUrl = 'assets/images/broken-image.png'"
+             (error)="imageErrorOccurred()"
              loading="lazy"
         />
         <div class="d-inline-flex justify-content-center fw-bold align-items-center mb-1 informationItem__stamp{{showBig ? ' informationItem__stamp--big' : ''}}" *ngIf="renderedReduction">{{renderedReduction}}</div>

@@ -9,22 +9,24 @@ import {
   PLATFORM_ID,
   ViewChild
 } from '@angular/core';
+import {REQUEST} from "@nguniversal/express-engine/tokens";
+import {Request} from "express";
+import {isPlatformBrowser} from '@angular/common';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {Item} from 'src/app/model/item';
 import {TrackingService} from 'src/app/service/tracking.service';
 import {TrackingActivityItem} from 'src/app/model/tracking-activity-item';
 import {TrackingInterestLevel} from 'src/app/model/tracking-interest-level';
-import {NavigationService} from '../../service/navigation.service';
-import {NavigationItem} from '../../model/navigation-item';
-import {ActivatedRoute, Router} from '@angular/router';
-import {isPlatformBrowser} from '@angular/common';
-import {Navigation} from '../../configurations/navigation';
-import {HyphenationPipe} from "../../pipes/web.pipe";
-import {DiscountItem} from '../../model/discount-item';
-import {Discounts} from '../../configurations/discounts';
-import {UserService} from "../../service/user.service";
-import {REQUEST} from "@nguniversal/express-engine/tokens";
-import {Request} from "express";
+import {NavigationService} from 'src/app/service/navigation.service';
+import {NavigationItem} from 'src/app/model/navigation-item';
+import {Navigation} from 'src/app/configurations/navigation';
+import {HyphenationPipe} from 'src/app/pipes/web.pipe';
+import {DiscountItem} from 'src/app/model/discount-item';
+import {Discounts} from 'src/app/configurations/discounts';
+import {UserService} from 'src/app/service/user.service';
+import {CorrespondingItem} from 'src/app/model/corresponding-item';
+import {ItemsApiService} from "../../service/items-api.service";
 
 @Component({
   selector: 'app-item',
@@ -34,6 +36,7 @@ import {Request} from "express";
 export class ItemComponent implements OnInit, AfterViewInit {
     private hyphenationPipe: HyphenationPipe = inject(HyphenationPipe);
     private navigationService: NavigationService = inject(NavigationService);
+    private itemsService: ItemsApiService = inject(ItemsApiService);
     private platformId: Object = inject(PLATFORM_ID);
     private route: ActivatedRoute = inject(ActivatedRoute);
     private router: Router = inject(Router);
@@ -155,14 +158,18 @@ export class ItemComponent implements OnInit, AfterViewInit {
         return Item.renderLowestPrice(item);
     }
 
+    private getShopNameFromUrl(url: string): string {
+      const match: RegExpMatchArray | null = (url || '').match(/\/\/(www.)?(.*?)\//);
+      return match && match.length > 2 ? match[2].toUpperCase().replace(/\..*/, '') : '';
+    }
+
     public getShopNameOfItem(): string {
       if (!(this.item?.providers || []).length) {
         return '';
       }
 
       const url: string = (this.item?.providers[0]?.link || '').replace(/\/[a-zA-Z]{2}\./, '/');
-      const match: RegExpMatchArray | null = (url || '').match(/\/\/(www.)?(.*?)\//);
-      return match && match.length > 2 ? match[2].toUpperCase().replace(/\..*/, '') : '';
+      return this.getShopNameFromUrl(url);
     }
 
     private getNextNavigationItem(): NavigationItem | undefined {
@@ -184,6 +191,15 @@ export class ItemComponent implements OnInit, AfterViewInit {
       return '/' +
         (navigationItem?.pathParts || []).filter((pathPart: string) => pathPart).join('/') +
         (searchPattern ? `?search=${searchPattern}` : '');
+    }
+
+    public imageErrorOccurred(): void {
+      this.imageUrl = 'assets/images/broken-image.png';
+      const meansToDelete: string[] = (this.item?.providers || [])
+        .filter((provider: CorrespondingItem | null): boolean => this.getShopNameOfItem() === this.getShopNameFromUrl(provider?.link || ''))
+        .map((provider: CorrespondingItem | null) => provider?.mean || '');
+
+      meansToDelete.forEach((meanToDelete: string): void => this.itemsService.removeProviderByMean(meanToDelete));
     }
 
     get itemUrl(): string {

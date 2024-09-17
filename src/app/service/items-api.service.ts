@@ -1,17 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { isPlatformServer } from '@angular/common';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { Request } from 'express';
+
 import { endpoints } from '../../environments/endpoints';
 import { Item } from '../model/item';
 import { ItemsResponseDto } from '../model/dto/items-response-dto';
 import { ApiBase } from './api-base';
 import { UserService } from './user.service';
-import { Observable } from 'rxjs';
 import { ApplicationConfiguration } from '../configurations/app';
-import { isPlatformServer } from '@angular/common';
 import { ItemsResponse } from '../model/items-response';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { Request } from 'express';
 import { DEFAULT_HASHTAGS } from '../model/user';
 
 @Injectable({
@@ -132,8 +133,8 @@ export class ItemsApiService extends ApiBase {
           hashtags: isPlatformServer(this.platformId) ? '' : this.getActiveHashtags().join(',')
         });
 
-      let headers = new HttpHeaders();
-      const userAgent = UserService.getUserAgent(this.request);
+      let headers: HttpHeaders = new HttpHeaders();
+      const userAgent: string = UserService.getUserAgent(this.request);
       if (userAgent) {
         headers = headers.set('user-agent', userAgent);
       }
@@ -143,4 +144,9 @@ export class ItemsApiService extends ApiBase {
         .pipe(map(dto => dto.items?.map(item => Item.fromModel(item))));
     }
 
+    public removeProviderByMean(mean: string): void {
+      this.http.delete(
+        this.get(endpoints.removeProviderByMean, { mean })
+      ).subscribe((): void => {});
+    }
 }
