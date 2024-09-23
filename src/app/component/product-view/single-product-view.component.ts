@@ -202,7 +202,7 @@ export class SingleProductViewComponent implements OnInit {
   private renderItem(): void {
     this.itemWithLowestPrice = Item.getProviderItemWithLowestPrice(this.item);
     this.activeNavigationItem = Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
-    this.safeVideoUris = (this.item?.videoLinks || []).map((link) => this.getSanitizedResourceUri(link));
+    this.safeVideoUris = (this.item?.videoLinks || []).map((link: string) => this.getSanitizedResourceUri(link));
     const brandFilterForItem = Filters.FILTERS.brands.find((filterItem: FilterItem): boolean =>  -1 !== (this.item?.brand || this.item?.make || '').toLowerCase().indexOf(filterItem.filterLabelId.toLowerCase()));
     this.moreOfBrandFilter = brandFilterForItem?.id || '';
 
@@ -348,11 +348,11 @@ export class SingleProductViewComponent implements OnInit {
     return match && match.length > 2 ? match[2] : '';
   }
 
-  public getSanitizedUri(uriTokens: Array<string>): SafeHtml {
+  private getSanitizedUri(uriTokens: Array<string>): SafeHtml {
     return this.sanitizer.bypassSecurityTrustUrl(uriTokens.join(''));
   }
 
-  public getSanitizedResourceUri(uri: string): SafeHtml {
+  private getSanitizedResourceUri(uri: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustResourceUrl(uri);
   }
 

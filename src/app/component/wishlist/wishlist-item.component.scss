@@ -4,7 +4,6 @@
 
 .informationItems {
   &__disclaimer {
-    color: $content-color;
     font-size: 0.8em;
     font-style: italic;
   }
@@ -62,10 +61,6 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 1;
     }
-  }
-
-  &__title {
-    color: $content-color;
   }
 }
 

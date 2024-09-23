@@ -10,6 +10,8 @@ import { NavigationItem } from './model/navigation-item';
 import { Navigation } from './configurations/navigation';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request } from 'express';
+import {Story} from "./model/story";
+import {Stories} from "./configurations/stories";
 
 @Component({
   selector: 'app-root',
@@ -68,5 +70,9 @@ export class AppComponent implements AfterViewInit, OnInit  {
 
   get deepestLevelNavigationItems(): Array<NavigationItem> {
     return UserService.isBotRequest(this.request) ? Navigation.getDeepestLevelItems() : [];
+  }
+
+  get StoryItems(): Story[] {
+    return Stories.ITEMS;
   }
 }

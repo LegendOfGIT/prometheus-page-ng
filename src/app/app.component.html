@@ -11,6 +11,10 @@
     <a *ngFor="let deepestNavigationItem of deepestLevelNavigationItems" href="/{{deepestNavigationItem.pathParts.join('/')}}" class="bot__link">
       {{ 'NAVIGATION_' + deepestNavigationItem.toId | translate: 'de_DE' }} / {{ 'NAVIGATION_' + deepestNavigationItem.toId | translate: 'en_US' }}
     </a>
+
+    <a *ngFor="let story of StoryItems" href="/story/{{story.canonical}}" class="bot__link">
+      Story: {{ story.title }}
+    </a>
   </div>
   <app-footer></app-footer>
 </div>

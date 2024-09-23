@@ -1,0 +1,15 @@
+@import 'src/app/variables';
+
+.story-element {
+  &__block {
+    margin-bottom: 1em;
+  }
+
+  &__image {
+    max-width: 10em;
+  }
+
+  &__title {
+    margin-bottom: 1em;
+  }
+}

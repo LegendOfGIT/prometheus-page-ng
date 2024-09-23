@@ -21,9 +21,14 @@ const routes: Routes = [
     loadChildren: () => import('./component/product-view/single-product-overview.module').then(m => m.SingleProductOverviewModule)
   },
   {
+    path: 'story',
+    loadChildren: () => import('./component/stories/stories.module').then(m => m.StoriesModule)
+  },
+  {
     path: ':navigationIdLevelA',
     loadChildren: () => import('./component/overview/product-overview.module').then(m => m.ProductOverviewModule)
   },
+
   { path: '', component: StartPageComponent },
   { path: '**', redirectTo: '/404' }
 ];

@@ -1,0 +1,23 @@
+<div *ngIf="story" class="mt-5">
+  <div class="row w-100">
+    <div class="col-1"></div>
+    <div class="col">
+      <div
+        *ngFor="let storyElement of story.elements"
+        class="fs-5"
+        [class.fw-bold]="storyElement.type === StoryElementType.Title"
+        [class.story-element__block]="storyElement.type === StoryElementType.Block"
+        [class.story-element__title]="storyElement.type === StoryElementType.Title"
+      >
+        <div *ngIf="storyElement.type === StoryElementType.Image">
+          <img class="story-element__image mb-2" [src]="storyElement.content" />
+        </div>
+        <div
+          *ngIf="storyElement.type !== StoryElementType.Image"
+          [innerHTML]="getSanitizedElementContent(storyElement)"
+        ></div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
