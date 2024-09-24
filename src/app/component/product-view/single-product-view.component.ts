@@ -168,7 +168,6 @@ export class SingleProductViewComponent implements OnInit {
         .replace('{product-name}', this.item?.title.substring(0, 50)));
 
     this.metaService.updateTag({ name: 'description', content: this.item?.seoDescription || (this.item?.description || '') });
-    // this.metaService.updateTag({ name: 'keywords', content: this.item?.seoKeywords || (this.item?.title || '') });
     this.metaService.updateTag({ name: 'og:title', content: this.item?.title || '' });
     this.metaService.updateTag({ name: 'og:image', content: this.item?.titleImage || '' });
     this.metaService.addTag({ name: 'og:image:height', content: '450' });

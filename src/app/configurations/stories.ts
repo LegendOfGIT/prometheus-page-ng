@@ -13,7 +13,7 @@ export class Stories {
         },
         {
           type: StoryElementType.Block,
-          content: 'Der HABA-Spieleklassiker „Obstgarten“ gehört einfach in jedes Kinderzimmer. Gemeinsam mit den Kleinen die leckeren Früchte ernten und dabei schneller sein als der freche Rabe Theo – ein riesen Spaß für die ganze Familie! 🎲'
+          content: 'Der <b>HABA-Spieleklassiker „Obstgarten“</b> gehört einfach in jedes Kinderzimmer. Gemeinsam mit den Kleinen die leckeren Früchte ernten und dabei schneller sein als der freche Rabe Theo – ein <b>riesen Spaß für die ganze Familie!</b> 🎲'
         },
         {
           type: StoryElementType.Image,

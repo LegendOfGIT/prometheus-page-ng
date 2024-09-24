@@ -1,11 +1,11 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
+import {DomSanitizer, Meta, SafeHtml, Title} from '@angular/platform-browser';
 
 import { Story } from 'src/app/model/story';
 import { Stories } from 'src/app/configurations/stories';
-import {StoryElement, StoryElementType} from "../../model/story-element";
-import {DomSanitizer, Meta, SafeHtml, Title} from "@angular/platform-browser";
+import { StoryElement, StoryElementType } from 'src/app/model/story-element';
 
 @Component({
   selector: 'story',
@@ -24,12 +24,21 @@ export class StoryComponent implements OnDestroy {
       this.story = Stories.ITEMS.find((storyItem: Story): boolean => storyItem.canonical === params['storyCanonical']);
       titleService.setTitle(this.story?.title ? `Story: "${this.story?.title}" auf we wanna shop!` : 'Story auf we wanna shop!');
 
-      const firstImageElement: StoryElement | undefined = (this.story?.elements || [])
+      let storyElement: StoryElement | undefined = (this.story?.elements || [])
         .find((storyElement: StoryElement): boolean => storyElement.type === StoryElementType.Image);
-      if (firstImageElement) {
-        metaService.updateTag({name: 'og:image', content: firstImageElement.content ?? ''});
+      if (storyElement) {
+        metaService.updateTag({name: 'og:image', content: storyElement.content ?? ''});
         metaService.addTag({name: 'og:image:height', content: '450'});
         metaService.addTag({name: 'og:image:width', content: '450'});
+      }
+
+      storyElement = (this.story?.elements || [])
+        .find((storyElement: StoryElement): boolean => storyElement.type === StoryElementType.Block);
+      if (storyElement) {
+        metaService.updateTag({
+          name: 'description',
+          content: storyElement.content
+        });
       }
     }))
   }
