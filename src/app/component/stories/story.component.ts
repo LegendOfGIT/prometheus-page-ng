@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { Story } from 'src/app/model/story';
 import { Stories } from 'src/app/configurations/stories';
 import {StoryElement, StoryElementType} from "../../model/story-element";
-import {DomSanitizer, SafeHtml, Title} from "@angular/platform-browser";
+import {DomSanitizer, Meta, SafeHtml, Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'story',
@@ -17,11 +17,20 @@ export class StoryComponent implements OnDestroy {
   public story: Story | undefined;
 
   public constructor(private sanitizer: DomSanitizer,
+                     metaService: Meta,
                      titleService: Title,
                      activatedRoute: ActivatedRoute) {
     this.subscriptions.push(activatedRoute.params.subscribe((params: Params): void => {
       this.story = Stories.ITEMS.find((storyItem: Story): boolean => storyItem.canonical === params['storyCanonical']);
       titleService.setTitle(this.story?.title ? `Story: "${this.story?.title}" auf we wanna shop!` : 'Story auf we wanna shop!');
+
+      const firstImageElement: StoryElement | undefined = (this.story?.elements || [])
+        .find((storyElement: StoryElement): boolean => storyElement.type === StoryElementType.Image);
+      if (firstImageElement) {
+        metaService.updateTag({name: 'og:image', content: firstImageElement.content ?? ''});
+        metaService.addTag({name: 'og:image:height', content: '450'});
+        metaService.addTag({name: 'og:image:width', content: '450'});
+      }
     }))
   }
 

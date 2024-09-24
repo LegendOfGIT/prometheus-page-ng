@@ -4,6 +4,36 @@ import {StoryElementType} from 'src/app/model/story-element';
 export class Stories {
   public static ITEMS: Story[] = [
     {
+      canonical: '25-jahre-spieleklassiker-haba-obstgarten',
+      title: '24 Jahre Spieleklassiker HABA Obstgarten',
+      elements: [
+        {
+          type: StoryElementType.Title,
+          content: 'Obstgarten - Seit 25 Jahren ein absoluter Spieleklassiker! 🍎🍐🍒🍑'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'Der HABA-Spieleklassiker „Obstgarten“ gehört einfach in jedes Kinderzimmer. Gemeinsam mit den Kleinen die leckeren Früchte ernten und dabei schneller sein als der freche Rabe Theo – ein riesen Spaß für die ganze Familie! 🎲'
+        },
+        {
+          type: StoryElementType.Image,
+          content: 'https://buch24.de/img/xl_pid_dyn/pid3050876.jpg'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'Hier geht es zum -> <a href="/hashtags/Highlights?search=obstgarten">HABA Obstgarten Spiel</a>'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'Wer kennt und liebt es auch? 😍'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'Schaut euch um und entdeckt weitere tolle <a href="/kids/toys/games">Gesellschaftsspiele</a> für Kinder und die ganze Familie! 💕'
+        }
+      ]
+    },
+    {
       canonical: '60-jahre-sophie-la-girafe',
       title: '60 Jahre SOPHIE LA GIRAFE',
       elements: [
