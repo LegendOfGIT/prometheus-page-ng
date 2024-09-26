@@ -7,7 +7,11 @@
       [style.background-position-y]="currentHero?.backgroundPositionY"
       [style.background-size]="currentHero?.backgroundSize || 'contain'"
     >
-      <div class="startPage__heroTitle" *ngIf="currentHero?.heroText">{{currentHero?.heroText || '' | translate}}</div>
+      <div
+        *ngIf="currentHero?.heroText"
+        class="startPage__heroTitle"
+        [style.margin-top]="currentHero?.heroTextMarginTop || '10%'"
+      >{{currentHero?.heroText || '' | translate}}</div>
     </div>
   </a>
 

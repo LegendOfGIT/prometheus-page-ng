@@ -30,22 +30,22 @@ export class StartPageComponent implements OnInit {
 
     const { SEO_PAGE_TITLE } = translationService.getTranslations();
     titleService.setTitle(SEO_PAGE_TITLE);
-    // metaService.updateTag({ name: 'keywords', content: SEO_PAGE_KEYWORDS })
   }
 
   private heroes: Array<Hero> = [
+    {
+      backgroundImage: 'url("/assets/heroes/halloween.jpg"), linear-gradient(180deg, rgba(255,136,0,1) 75%, rgba(255,136,0,0.5075280112044818) 90%, rgba(243,244,242,1) 100%)',
+      backgroundPositionY: '0%',
+      heroText: 'HALLOWEEN !',
+      heroTextMarginTop: '15%',
+      heroUrl: '/kids?search=tonie'
+    },
     {
       backgroundImage: 'url("/assets/heroes/tonies.png"), linear-gradient(180deg, rgba(211,0,15,1) 71%, rgba(255,208,204,1) 95%, rgba(243,244,242,1) 100%)',
       backgroundPositionY: '2%',
       heroText: 'HERO_DISCOVER_TONIES',
       heroUrl: '/kids?search=tonie'
-    },
-    {
-      backgroundImage: 'url("/assets/heroes/100pp.jpg"), linear-gradient(180deg, rgba(255,133,130,1) 0%, rgba(255,208,204,1) 69%, rgba(243,244,242,1) 100%)',
-      heroText: '',
-      heroUrl: '/beauty-and-care?filters=1000018'
     }
-
   ];
 
   public currentHero: Hero | undefined = undefined;
@@ -81,5 +81,6 @@ class Hero {
   backgroundImage: string = ''
   backgroundSize?: string = '';
   heroText: string = '';
+  heroTextMarginTop?: string = '';
   heroUrl: string = '';
 }
