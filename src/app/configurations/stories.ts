@@ -4,8 +4,104 @@ import {StoryElementType} from 'src/app/model/story-element';
 export class Stories {
   public static ITEMS: Story[] = [
     {
+      canonical: 'more-nutrition-protein-iced-coffee',
+      title: 'MORE NUTRITION Protein Iced Coffee – Der perfekte Start in den Tag',
+      navigationId: 'BEAUTY_CARE_HEALTH_NUTRITIALSUPPLEMENTS',
+      elements: [
+        {
+          type: StoryElementType.Title,
+          content: 'MORE NUTRITION Protein Iced Coffee – Der perfekte Start in den Tag'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'Du liebst Kaffee und möchtest gleichzeitig etwas für deinen Körper tun? Dann ist der <b>MORE NUTRITION Protein Iced Coffee</b> genau das Richtige für dich! Dieser erfrischende Protein-Kaffee ist nicht nur ein Genuss, sondern auch eine clevere Möglichkeit, deinen Körper mit wertvollem Eiweiß zu versorgen – ideal für alle, die auf ihre Fitness und Ernährung achten.'
+        },
+        {
+          type: StoryElementType.Image,
+          content: 'https://m.media-amazon.com/images/I/61cB4-op2bL._AC_SX425_.jpg'
+        },
+        {
+          type: StoryElementType.Title,
+          content: 'Was ist der MORE NUTRITION Protein Iced Coffee?'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'MORE NUTRITION Protein Iced Coffee vereint den Geschmack eines leckeren Eiskaffees mit hochwertigem Protein. Perfekt für alle, die morgens auf Kaffee nicht verzichten wollen, aber gleichzeitig nach einer proteinreichen Alternative suchen. Das Getränk enthält eine ideale Kombination aus Kaffeegenuss und wichtigen Nährstoffen, die dir Energie und Kraft für den Tag geben – egal, ob du Sport machst oder einfach einen aktiven Alltag hast.'
+        },
+        {
+          type: StoryElementType.Title,
+          content: 'Die Vorteile auf einen Blick:'
+        },
+        {
+          type: StoryElementType.Block,
+          content: '<b>1. Hochwertiges Eiweiß:</b> Mit rund 25 g Protein pro Portion unterstützt der MORE NUTRITION Protein Iced Coffee den Muskelaufbau und -erhalt. Besonders nach dem Training oder am Morgen versorgt er deinen Körper mit dem, was er braucht, um sich zu regenerieren.'
+        },
+        {
+          type: StoryElementType.Block,
+          content: '<b>2. Wenig Zucker:</b> Im Gegensatz zu vielen herkömmlichen Kaffeegetränken aus dem Supermarkt ist der MORE NUTRITION Protein Iced Coffee kalorienarm und enthält kaum Zucker. Du kannst ihn also ohne schlechtes Gewissen genießen, egal ob du auf deine Figur achtest oder einfach eine gesunde Alternative suchst.'
+        },
+        {
+          type: StoryElementType.Block,
+          content: '<b>3. Schnell und einfach:</b> Du musst kein Barista sein, um deinen Protein Iced Coffee zuzubereiten. Einfach Wasser oder Milch (je nach Geschmack) dazugeben, gut schütteln oder mixen, und schon hast du ein erfrischendes Getränk, das dich mit Energie versorgt.'
+        },
+        {
+          type: StoryElementType.Block,
+          content: '<b>4. Perfekter Geschmack:</b> Der MORE NUTRITION Protein Iced Coffee bietet dir das volle Kaffee-Aroma, das du liebst, kombiniert mit einer angenehmen Süße. Dabei bleibt er leicht und erfrischend, sodass du ihn auch an warmen Tagen perfekt genießen kannst.'
+        },
+        {
+          type: StoryElementType.Title,
+          content: 'Wer profitiert von MORE NUTRITION Protein Iced Coffee?'
+        },
+        {
+          type: StoryElementType.Block,
+          content: '<b>Sportler und Fitness-Enthusiasten:</b> Wenn du aktiv bist und deinem Körper nach dem Training schnell Eiweiß zuführen möchtest, ist der Protein Iced Coffee eine leckere und unkomplizierte Lösung.'
+        },
+        {
+          type: StoryElementType.Block,
+          content: '<b>Kaffeeliebhaber:</b> Wenn du deinen Tag gerne mit einem Kaffee startest, dabei aber auf deine Ernährung achten möchtest, ist dieses Produkt eine tolle Alternative zu zuckerhaltigen Iced Coffees.'
+        },
+        {
+          type: StoryElementType.Block,
+          content: '<b>Abnehmwillige:</b> Durch den niedrigen Zucker- und Kaloriengehalt passt der MORE NUTRITION Protein Iced Coffee perfekt in eine Diät oder kalorienbewusste Ernährung.'
+        },
+        {
+          type: StoryElementType.Title,
+          content: 'Anwendung und Verzehr:'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'Der MORE NUTRITION Protein Iced Coffee ist extrem einfach in der Anwendung. Du mischst einfach eine Portion (je nach Verpackungseinheit ca. 30 g Pulver) mit 300 ml kaltem Wasser oder Milch und schon hast du deinen proteinreichen Eiskaffee. Besonders an heißen Tagen ist er als erfrischender Snack ideal.'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'Wenn du ihn cremiger magst, kannst du pflanzliche Milch wie Mandel- oder Hafermilch verwenden. Viele Nutzer schwören auch darauf, den Iced Coffee mit ein paar Eiswürfeln im Mixer zu einem cremigen Shake zu verarbeiten.'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'Hier geht es zum -> <a target="offerLink" href="https://www.amazon.de/MORE-NUTRITION-Protein-Vanilla-Chocolate/dp/B0CJFFFGFG?tag=wewannashop08-21">MORE NUTRITION Protein Iced Coffee</a><br/><i><b>Als Partner der Shops werden wir an qualifizierten Verkäufen beteiligt.</b></i>'
+        },
+        {
+          type: StoryElementType.Title,
+          content: 'Fazit:'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'Der <b>MORE NUTRITION Protein Iced Coffee</b> ist die perfekte Wahl für alle, die den Genuss von Kaffee mit einer gesunden, proteinreichen Ernährung verbinden möchten. Er unterstützt dich dabei, deine Fitnessziele zu erreichen, ohne auf Geschmack verzichten zu müssen – und das ganz ohne unnötige Kalorien oder Zucker.'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'Probiere es aus und starte deinen Tag mit einem erfrischenden Kick aus Koffein und Protein – für mehr Energie und Genuss in deinem Alltag!'
+        },
+        {
+          type: StoryElementType.Block,
+          content: 'Schaut euch um und entdeckt weitere tolle <a href="/beauty-and-care/health/nutritional-supplements?hashtags=Highlights">Nahrungsergänzungsmittel</a> für dich und deine Familie! 💕'
+        }
+      ]
+    },
+    {
       canonical: 'bollerwagen-vergleich-sekey-xxl-vs-kesser-gt9000',
       title: 'Sekey XXL Plus VS Kesser GT-9000 Bollerwagenvergleich',
+      navigationId: 'VEHICLES_KIDS_HANDCARTS',
       elements: [
         {
           type: StoryElementType.Title,
@@ -56,6 +152,7 @@ export class Stories {
     {
       canonical: '25-jahre-spieleklassiker-haba-obstgarten',
       title: '25 Jahre Spieleklassiker HABA Obstgarten',
+      navigationId: 'KIDS_TOYS_GAMES',
       elements: [
         {
           type: StoryElementType.Title,
@@ -86,6 +183,7 @@ export class Stories {
     {
       canonical: '60-jahre-sophie-la-girafe',
       title: '60 Jahre SOPHIE LA GIRAFE',
+      navigationId: 'KIDS_TOYS_FIGURES',
       elements: [
         {
           type: StoryElementType.Title,

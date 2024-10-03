@@ -627,7 +627,7 @@ export class Navigation {
       return `NAVIGATION_TEASER_${item.toId}`;
     }
 
-    let levelItem = this.ITEMS.find(i => i.toId === item.fromId);
+    let levelItem: NavigationItem | undefined = this.ITEMS.find(i => i.toId === item.fromId);
     if (levelItem?.hasTeaser) {
       return `NAVIGATION_TEASER_${levelItem.toId}`;
     }

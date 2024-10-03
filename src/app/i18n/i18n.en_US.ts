@@ -754,6 +754,7 @@ export class I18nEnUs implements I18nInterface {
       SHARE_ON_WHATSAPP: 'share on WhatsApp',
       SHOW_MORE_PREFIX: 'Show more of',
       SHOW_MORE_SUFFIX: '...',
+      STORIES_MORE_STORIES: 'More Stories',
       TEASER_TITLE_ANIMES: 'Anime movies and series',
       TEASER_TITLE_CHRISTMAS_DECORATION: 'Christmas decoration',
       TEASER_TITLE_CHRISTMAS_KIDS_GIFT_IDEAS: 'Presents for kids',
@@ -806,7 +807,8 @@ export class I18nEnUs implements I18nInterface {
       WISHLIST_PROVIDE_A_DESCRIPTION: 'Provide a description',
       WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY: 'For friends and family',
       WISHLIST_WISHES: 'Wishes',
-      WISHLIST_WISH_IS_LOADING: 'Wish is loading ...'
+      WISHLIST_WISH_IS_LOADING: 'Wish is loading ...',
+      YOU_MAY_ALSO_LIKE: 'You may also like'
     };
   }
 }

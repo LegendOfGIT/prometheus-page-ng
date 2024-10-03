@@ -20,4 +20,34 @@
     </div>
     <div class="col-1"></div>
   </div>
+
+  <div class="row w-100">
+    <div class="col-1"></div>
+    <div class="col">
+      <div class="fs-5 fw-bold story-element__title">{{ 'YOU_MAY_ALSO_LIKE' | translate }}</div>
+
+      <category-teaser
+        [navigationItem]="getNavigationItemOfStory()"
+        [randomItems]="true"
+        [showHeader]="false"
+      >
+      </category-teaser>
+    </div>
+    <div class="col-1"></div>
+  </div>
+
+  <div *ngIf="furtherStories().length" class="row w-100">
+    <div class="col-1"></div>
+    <div class="col">
+      <div class="fs-5 fw-bold story-element__title">{{ 'STORIES_MORE_STORIES' | translate }}</div>
+
+      <a href="/story/{{story.canonical}}" *ngFor="let story of furtherStories()">
+        <div *ngIf="findFirstStoryImage(story)" class="mb-2 story-element__image">
+          <img class="story-element__image mb-2" [src]="findFirstStoryImage(story)?.content" />
+        </div>
+        {{story.title}}
+      </a>
+    </div>
+    <div class="col-1"></div>
+  </div>
 </div>

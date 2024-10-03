@@ -734,6 +734,7 @@ export class I18nDeDe implements I18nInterface {
       SHARE_ON_WHATSAPP: 'Auf WhatsApp teilen',
       SHOW_MORE_PREFIX: 'Zeige mehr aus',
       SHOW_MORE_SUFFIX: 'an',
+      STORIES_MORE_STORIES: 'Weitere Storys',
       TEASER_TITLE_ANIMES: 'Anime Filme und Serien',
       TEASER_TITLE_CHRISTMAS_DECORATION: 'Weihnachtsdekoration',
       TEASER_TITLE_CHRISTMAS_KIDS_GIFT_IDEAS: 'Geschenke für Kinder',
@@ -801,7 +802,8 @@ export class I18nDeDe implements I18nInterface {
       WISHLIST_PROVIDE_A_DESCRIPTION: 'Beschreibe deine Wunschliste näher',
       WISHLIST_SHARE_LINK_FOR_FRIENDS_AND_FAMILY: 'Für Freunde und Familie',
       WISHLIST_WISHES: 'Wünsche',
-      WISHLIST_WISH_IS_LOADING: 'Wunsch wird geladen ...'
+      WISHLIST_WISH_IS_LOADING: 'Wunsch wird geladen ...',
+      YOU_MAY_ALSO_LIKE: 'Das könnte dir gefallen'
     };
   }
 }
