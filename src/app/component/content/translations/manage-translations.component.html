@@ -1,0 +1,39 @@
+<div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center">
+    <div class="col-2">
+      <select (change)="switchLanguage($event)">
+        <option value="de_DE">Deutsch</option>
+        <option value="en_US">English</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-10 mt-3">
+    <div class="fw-bold">
+      Übersetzungsschlüssel
+    </div>
+    <div class="d-flex">
+      <input class="me-2" value="{{newTranslationKey}}" (keyup)="updateNewTranslationKey($event)"/>
+      <div class="col-2 d-flex justify-content-center button" (click)="saveNewTranslation()">Hinzufügen</div>
+    </div>
+  </div>
+
+  <div *ngFor="let translation of translations" class="col-10 mt-3">
+    <div class="fw-bold">
+      <i
+         class="fa fa-trash"
+         role="button"
+         (click)="removeTranslation(translation)"
+      ></i>
+      {{ translation.key }}
+    </div>
+    <div>
+      <textarea
+        class="w-100"
+        [disabled]="loading"
+        [rows]="4"
+        (keyup)="saveTranslation(translation, $event)"
+      >{{ translation.value }}</textarea>
+    </div>
+  </div>
+</div>

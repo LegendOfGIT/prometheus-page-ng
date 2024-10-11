@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('./component/product-view/single-product-overview.module').then(m => m.SingleProductOverviewModule)
   },
   {
+    path: 'content',
+    loadChildren: () => import('./component/content/content.module').then(m => m.ContentModule)
+  },
+  {
     path: 'story',
     loadChildren: () => import('./component/stories/stories.module').then(m => m.StoriesModule)
   },

@@ -76,7 +76,7 @@ export class ItemsApiService extends ApiBase {
 
     getRandomItemOfCategories(categoryIds: Array<string>): Observable<ItemsResponse> {
       const url: string = this.get(
-        endpoints.itemsByCategories,
+        endpoints.itemsItemsByCategories,
         {
           navigationIds: categoryIds.join(','),
           numberOfResults: '1',
@@ -101,7 +101,7 @@ export class ItemsApiService extends ApiBase {
                      priceFrom: string = '',
                      priceTo: string = ''): Observable<ItemsResponse> {
       const url: string = this.get(
-        endpoints.hashtagsItems,
+        endpoints.itemsHashtagsItems,
         {
           filterIds,
           hashtags: this.getActiveHashtags().join(','),
@@ -126,7 +126,7 @@ export class ItemsApiService extends ApiBase {
 
     getItemsById(id: string): Observable<Array<Item | null>> {
       const url: string = this.get(
-        endpoints.singleItem,
+        endpoints.itemsSingleItem,
         {
           id,
           isBot: UserService.isBotRequest(this.request) ? 'true': 'false',
@@ -146,7 +146,7 @@ export class ItemsApiService extends ApiBase {
 
     public removeProviderByMean(mean: string): void {
       this.http.delete(
-        this.get(endpoints.removeProviderByMean, { mean })
+        this.get(endpoints.itemsRemoveProviderByMean, { mean })
       ).subscribe((): void => {});
     }
 }

@@ -21,7 +21,7 @@ export class SuggestionsApiService extends ApiBase {
 
     getSearchSuggestions(searchPattern: string, navigationId: string): Observable<Array<SuggestionItem>> {
       const url: string = this.get(
-        endpoints.searchSuggestions,
+        endpoints.itemsSearchSuggestions,
         {
           navigationId,
           searchPattern

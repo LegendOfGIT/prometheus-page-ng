@@ -15,7 +15,6 @@ import { DEFAULT_HASHTAGS } from '../model/user';
     providedIn: 'root'
 })
 export class TrackingService extends ApiBase {
-
     private trackedActivities: Array<TrackingActivityItem> = [];
     private interestLevelToScoringMapping = [
       { level: TrackingInterestLevel.VERY_LOW, scoring: -1.0 },
@@ -56,7 +55,7 @@ export class TrackingService extends ApiBase {
             }
 
             this.http.put(
-              this.get(`${endpoints.scoreItem}?itemTitle=${trackedActivity.informationItemLabel || ''}`),
+              this.get(`${endpoints.itemsScoreItem}?itemTitle=${trackedActivity.informationItemLabel || ''}`),
               {
                 itemId: trackedActivity.informationItemId,
                 filters: trackedActivity.filters,

@@ -76,7 +76,7 @@ export class WishlistItemsApiService extends ApiBase {
     private addItemToWishlist(item: WishlistItem): void {
       this.createWishlistWhenNecessary().then((): void => {
         this.http.put(
-          this.get(endpoints.saveWishlistItem),
+          this.get(endpoints.wishlistSaveWishlistItem),
           {
             wishlistId: this.userService.activeUser?.activeWishlistId ?? '',
             userId: this.userService.activeUser?.id ?? '',
@@ -96,7 +96,7 @@ export class WishlistItemsApiService extends ApiBase {
 
     public removeItemFromWishlist(itemId: string): void {
       this.http.delete(
-        this.get(endpoints.deleteWishlistItem),
+        this.get(endpoints.wishlistDeleteWishlistItem),
         {
           body: {
             userId: this.userService.activeUser?.id ?? '',
@@ -120,7 +120,7 @@ export class WishlistItemsApiService extends ApiBase {
         return of();
       }
 
-      const url: string = this.get(endpoints.getWishlist, {
+      const url: string = this.get(endpoints.wishlistGetWishlist, {
         userId: this.userService.activeUser?.id ?? '',
         id: this._wishlistHash ? '' : this.userService.activeWishlistId(),
         sharedWithHash: this._wishlistHash
@@ -134,7 +134,7 @@ export class WishlistItemsApiService extends ApiBase {
         return of([]);
       }
 
-      const url: string = this.get(endpoints.getWishlists, {
+      const url: string = this.get(endpoints.wishlistGetWishlists, {
         userId: this.userService.activeUser?.id ?? ''
       });
 
@@ -156,7 +156,7 @@ export class WishlistItemsApiService extends ApiBase {
 
       return this.http
         .post<void>(
-          this.get(endpoints.createOrUpdateWishlist),
+          this.get(endpoints.wishlistCreateOrUpdateWishlist),
           {
             userId: this.userService.activeUser?.id ?? '',
             title
@@ -181,7 +181,7 @@ export class WishlistItemsApiService extends ApiBase {
 
       return this.http
         .post<void>(
-          this.get(endpoints.createOrUpdateWishlist),
+          this.get(endpoints.wishlistCreateOrUpdateWishlist),
           {
             userId: this.userService.activeUser?.id ?? '',
             ...wishlist
@@ -209,7 +209,7 @@ export class WishlistItemsApiService extends ApiBase {
 
       return this.http
         .delete<void>(
-          this.get(endpoints.deleteWishlist),
+          this.get(endpoints.wishlistDeleteWishlist),
           {
             body: {
               id: this.userService?.activeWishlistId(),
@@ -286,7 +286,7 @@ export class WishlistItemsApiService extends ApiBase {
 
       this.http
         .post<void>(
-          this.get(endpoints.shareWishlist),
+          this.get(endpoints.wishlistShareWishlist),
           {
             userId: this.userService.activeUser?.id ?? '',
             id: this.userService.activeWishlistId(),
@@ -307,7 +307,7 @@ export class WishlistItemsApiService extends ApiBase {
     public cancelShareWithHash(): void {
       this.http
         .post<void>(
-          this.get(endpoints.cancelShareWishlist),
+          this.get(endpoints.wishlistCancelShareWishlist),
           {
             userId: this.userService.activeUser?.id ?? '',
             id: this.userService.activeWishlistId()
@@ -332,7 +332,7 @@ export class WishlistItemsApiService extends ApiBase {
       const itemWasBought = !(item.itemWasBought ?? false);
       this.http
         .post<void>(
-          this.get(endpoints.wishlistItemBought),
+          this.get(endpoints.wishlistWishlistItemBought),
           {
             userId: this.userService.activeUser?.id ?? '',
             wishlistId: this.userService.activeWishlistId(),
@@ -355,7 +355,7 @@ export class WishlistItemsApiService extends ApiBase {
     public discoverAndAddItem(url: string): Observable<void> {
       return this.http
         .post<void>(
-          this.get(endpoints.discoverAndAddWishlistItem),
+          this.get(endpoints.wishlistDiscoverAndAddWishlistItem),
           {
             userId: this.userService.activeUser?.id ?? '',
             wishlistId: this.userService.activeWishlistId(),

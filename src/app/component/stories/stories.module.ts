@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CommonModule } from '@angular/common';
 
 import { SharedComponentsModule } from '../shared-components.module';
@@ -18,7 +17,6 @@ import { StoryComponent } from './story.component';
     StoriesRoutingModule,
 
     CommonModule,
-    NgxSliderModule,
 
     PipesModule,
     SharedComponentsModule

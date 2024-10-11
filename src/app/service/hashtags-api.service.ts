@@ -21,7 +21,7 @@ export class HashTagsApiService extends ApiBase {
 
     getHashtags(hashtagsPattern: string): Observable<Array<SuggestionItem>> {
       const url: string = this.get(
-        endpoints.hashtags,
+        endpoints.itemsHashtags,
         {
           hashtagsPattern
         });

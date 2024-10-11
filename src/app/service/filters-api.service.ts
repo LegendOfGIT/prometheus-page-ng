@@ -35,7 +35,7 @@ export class FiltersApiService extends ApiBase {
                         priceFrom: string = '',
                         priceTo: string = ''): Observable<Array<AvailableFilterItem | null>> {
       const url: string = this.get(
-        endpoints.availableFilters,
+        endpoints.itemsAvailableFilters,
         {
           navigationId,
           priceFrom,
