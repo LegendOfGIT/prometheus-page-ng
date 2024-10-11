@@ -1,4 +1,4 @@
-<div class="app">
+<div *ngIf="TranslationsLoaded" class="app">
   <app-header></app-header>
   <div class="min-vh-100 align-items-center position-relative app-content">
     <dialog #gdprDialog id="gdprDialog" class="gdpr__dialog">

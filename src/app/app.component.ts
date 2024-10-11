@@ -12,6 +12,7 @@ import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request } from 'express';
 import {Story} from "./model/story";
 import {Stories} from "./configurations/stories";
+import {TranslationService} from "./service/translation.service";
 
 @Component({
   selector: 'app-root',
@@ -24,10 +25,10 @@ export class AppComponent implements AfterViewInit, OnInit  {
   title = 'prometheus-page';
 
   constructor(
-    private userService: UserService,
     private wishlistItemsService: WishlistItemsApiService,
     private gdprService: GdprService,
     private consentService: ConsentService,
+    private translationService: TranslationService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() @Inject(REQUEST) private request: Request
   ) {
@@ -36,6 +37,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
 
   ngOnInit(): void {
     this.initialiseWishlist();
+    this.translationService.getTranslations();
 
     if (!isPlatformBrowser(this.platformId)) {
       return;
@@ -74,5 +76,9 @@ export class AppComponent implements AfterViewInit, OnInit  {
 
   get StoryItems(): Story[] {
     return Stories.ITEMS;
+  }
+
+  get TranslationsLoaded(): boolean {
+    return this.translationService.TranslationsLoaded;
   }
 }
