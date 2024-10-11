@@ -37,12 +37,13 @@ export class TranslationService extends ApiBase {
     )
   }
 
-  public saveTranslations(locale: string = '', translations: any): Observable<Object> {
+  public saveTranslations(locale: string = '', translations: any, secret: number): Observable<Object> {
     return this.httpClient.post(
       this.get(endpoints.contentUpdateTranslations, {}),
       {
         locale,
-        translations
+        translations,
+        secret
       }
     )
   }

@@ -10,10 +10,11 @@ import {ApplicationConfiguration} from '../configurations/app';
 import {UserService} from './user.service';
 import {Wishlist} from '../model/wishlist';
 import {WishlistItem} from '../model/wishlist-item';
-import {CorrespondingItem} from "../model/corresponding-item";
-import {MessagesService} from "./messages.service";
-import {TranslationService} from "./translation.service";
-import {MessageType} from "../model/message";
+import {CorrespondingItem} from '../model/corresponding-item';
+import {MessagesService} from './messages.service';
+import {TranslationService} from './translation.service';
+import {MessageType} from '../model/message';
+import {Secrets} from '../configurations/secrets';
 
 @Injectable({
     providedIn: 'root'
@@ -278,11 +279,7 @@ export class WishlistItemsApiService extends ApiBase {
     }
 
     public shareWithHash(): void {
-      let hash: number = Array.from(`${this.userService.activeUser?.id ?? ''}|${this.activeWishlist?.id ?? ''}`)
-        .reduce((s: number, c: string) => Math.imul(31, s) + c.charCodeAt(0) | 0, 0);
-      hash = hash < 0 ? hash * -1 : hash;
-
-      const sharedWithHash: string = '' + hash;
+      const sharedWithHash: string = '' + Secrets.stringToSecretHash(`${this.userService.activeUser?.id ?? ''}|${this.activeWishlist?.id ?? ''}`);
 
       this.http
         .post<void>(

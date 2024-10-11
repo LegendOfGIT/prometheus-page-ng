@@ -1,6 +1,8 @@
 import {Component, OnDestroy} from '@angular/core';
 import {TranslationService} from "../../../service/translation.service";
 import {Subscription} from "rxjs";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Secrets} from "../../../configurations/secrets";
 
 @Component({
   selector: 'manage-translations',
@@ -9,6 +11,7 @@ import {Subscription} from "rxjs";
 })
 export class ManageTranslationsComponent implements OnDestroy {
   private locale: string = 'de_DE';
+  private secret: number = 0;
   private subscriptions: Subscription[] = [];
   private translationSaveHandle: number = 0;
   private translationsSource: any = {};
@@ -17,10 +20,19 @@ export class ManageTranslationsComponent implements OnDestroy {
   public newTranslationKey: string = '';
   public translations: Translation[] = [];
 
-  public constructor(private translationService: TranslationService) {
-    this.subscriptions.push(translationService.getTranslationsFromApi(this.locale).subscribe((translations: any): void => {
-      this.translationsSource = translations;
-      this.updateTranslationItems();
+  public constructor(private translationService: TranslationService,
+                     activatedRoute: ActivatedRoute,
+                     router: Router) {
+    this.subscriptions.push(activatedRoute.queryParams.subscribe((parameters: Params): void => {
+      this.secret = Secrets.stringToSecretHash(parameters['secret'] || '');
+      if (this.secret !== Secrets.ITEMS.ADMIN_SECRET) {
+        router.navigate(['']);
+      }
+
+      this.subscriptions.push(translationService.getTranslationsFromApi(this.locale).subscribe((translations: any): void => {
+        this.translationsSource = translations;
+        this.updateTranslationItems();
+      }));
     }));
   }
 
@@ -45,7 +57,7 @@ export class ManageTranslationsComponent implements OnDestroy {
   public removeTranslation(translation: Translation): void {
     delete this.translationsSource[translation.key];
     this.loading = true;
-    this.subscriptions.push(this.translationService.saveTranslations(this.locale, this.translationsSource)
+    this.subscriptions.push(this.translationService.saveTranslations(this.locale, this.translationsSource, this.secret)
       .subscribe((): void => {
         this.loading = false;
         this.updateTranslationItems();
@@ -61,7 +73,7 @@ export class ManageTranslationsComponent implements OnDestroy {
 
     this.translationSaveHandle = window.setTimeout((): void => {
       this.loading = true;
-      this.subscriptions.push(this.translationService.saveTranslations(this.locale, this.translationsSource)
+      this.subscriptions.push(this.translationService.saveTranslations(this.locale, this.translationsSource, this.secret)
         .subscribe((): void => {
           this.loading = false;
         }));
@@ -72,7 +84,7 @@ export class ManageTranslationsComponent implements OnDestroy {
     this.translationsSource[this.newTranslationKey] = '';
 
     this.loading = true;
-    this.subscriptions.push(this.translationService.saveTranslations(this.locale, this.translationsSource)
+    this.subscriptions.push(this.translationService.saveTranslations(this.locale, this.translationsSource, this.secret)
       .subscribe((): void => {
         this.loading = false;
         this.newTranslationKey = '';
