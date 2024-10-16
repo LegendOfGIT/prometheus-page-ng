@@ -8,7 +8,8 @@ export class Startpage {
       .setHashtags(['Schnäppchen'])
       .setSsrRendering(true),*/
     new TeaserItem('/home/garden', 'HOME_GARDEN', 'grill', 'TEASER_TITLE_INTO_THE_GARDEN'),
-    new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', ''),
+    new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', '')
+      .setHashtags(['Schnäppchen']),
 
     new TeaserItem('', '', '', 'TEASER_TITLE_DEALS_DISCOVERED_TODAY')
       .setHashtags(['Schnäppchen'])

@@ -1,0 +1,12 @@
+<div class="row d-flex justify-content-center">
+  <div *ngFor="let story of stories" class="col-10 mt-3">
+    <div class="fw-bold">
+      <i
+         class="fa fa-trash"
+         role="button"
+         (click)="removeStory(story.id || '')"
+      ></i>
+      {{ story.title }}
+    </div>
+  </div>
+</div>

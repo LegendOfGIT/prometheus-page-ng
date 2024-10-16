@@ -34,7 +34,7 @@ export class TranslationService extends ApiBase {
 
     return this.httpClient.get(
       this.get(endpoints.contentGetTranslations, { locale })
-    )
+    );
   }
 
   public saveTranslations(locale: string = '', translations: any, secret: number): Observable<Object> {
