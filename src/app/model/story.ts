@@ -4,6 +4,6 @@ export class Story {
     id?: string = '';
     canonical: string = '';
     title: string = '';
-    elements: StoryElement[] = [];
+    elements?: StoryElement[] = [];
     navigationId?: string;
 }

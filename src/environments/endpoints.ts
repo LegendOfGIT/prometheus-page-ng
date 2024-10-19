@@ -1,7 +1,9 @@
 
 export const endpoints = {
   contentGetStories: '/stories',
+  contentGetSingleStory: '/story?id={id}',
   contentRemoveStory: '/story?id={id}',
+  contentSaveStory: '/story',
   contentGetTranslations: '/translations?locale={locale}',
   contentUpdateTranslations: '/translations',
   items: '/information-items?navigationId={navigationId}&hashtags={hashtags}&id=&searchPattern={searchPattern}&numberOfResults={numberOfResults}&randomItems={randomItems}&page={page}&isBot={isBot}&filters={filterIds}&priceFrom={priceFrom}&priceTo={priceTo}&createdToday={createdToday}',

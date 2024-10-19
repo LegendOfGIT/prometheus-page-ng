@@ -1,4 +1,18 @@
 <div class="row d-flex justify-content-center">
+  <div class="col-10 mt-3">
+    <div>
+      <div class="fw-bold">
+        Canonical:
+        <input class="w-100" (change)="updateNewStoryCanonical($event)" [value]="newStory.canonical || ''"/>
+      </div>
+      <div class="fw-bold">
+        Titel:
+        <input class="w-100" (change)="updateNewStoryTitle($event)" [value]="newStory.title || ''"/>
+      </div>
+      <button class="button" (click)="saveNewStory()">Story anlegen</button>
+    </div>
+  </div>
+
   <div *ngFor="let story of stories" class="col-10 mt-3">
     <div class="fw-bold">
       <i
@@ -6,7 +20,9 @@
          role="button"
          (click)="removeStory(story.id || '')"
       ></i>
-      {{ story.title }}
+      <a [routerLink]="['/', 'content', 'story', story.id]" [queryParams]="{ secret: secretParameter }">
+        {{ story.title }}
+      </a>
     </div>
   </div>
 </div>

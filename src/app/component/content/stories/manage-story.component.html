@@ -1,0 +1,65 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-8 mt-3">
+    <button class="button" [routerLink]="['/', 'content', 'stories']" [queryParams]="{ secret: secretParameter }">Alle Stories</button>
+
+    <div class="fw-bold">
+      Canonical:
+      <input class="w-100" (change)="updateStoryCanonical($event)" [value]="story?.canonical || ''"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Titel:
+      <input class="w-100" (change)="updateStoryTitle($event)" [value]="story?.title || ''"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Navigation-ID:
+      <input class="w-100" (change)="updateStoryNavigationId($event)" [value]="story?.navigationId || ''"/>
+    </div>
+
+    <ng-container *ngIf="story?.elements?.length">
+      <div class="mt-2 fw-bold">
+        Elemente:
+      </div>
+      <div class="mt-2" *ngFor="let element of story?.elements || []">
+        <div class="fw-bold" (change)="updateElementType(element, $event)">
+          Typ:
+          <select class="w-100">
+            <option value="Block" [selected]="element.type === StoryElementType.Block">Block</option>
+            <option value="Title" [selected]="element.type === StoryElementType.Title">Title</option>
+            <option value="Image" [selected]="element.type === StoryElementType.Image">Image</option>
+          </select>
+        </div>
+        <div class="fw-bold">
+          Inhalt:
+          <textarea
+            class="w-100"
+            rows="4"
+            (change)="updateElementContent(element, $event)"
+          >{{ element?.content || '' }}</textarea>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="mt-2 fw-bold">
+      Neues Element:
+    </div>
+    <div class="mt-2 fw-bold">
+      Typ:
+      <select class="w-100" (change)="updateNewElementType($event)">
+        <option value="Block">Block</option>
+        <option value="Title">Title</option>
+        <option value="Image">Image</option>
+      </select>
+    </div>
+    <div class="mt-2 fw-bold">
+      Inhalt:
+      <textarea
+        class="w-100"
+        rows="4"
+        (change)="updateNewElementContent($event)"
+      >{{ newElement.content || '' }}</textarea>
+    </div>
+    <div class="mt-2 fw-bold">
+      <button class="button" (click)="addNewElement()">Element hinzufügen</button>
+    </div>
+  </div>
+</div>
