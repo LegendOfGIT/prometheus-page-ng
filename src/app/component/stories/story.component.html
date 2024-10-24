@@ -41,7 +41,7 @@
     <div class="col">
       <div class="fs-5 fw-bold story-element__title">{{ 'STORIES_MORE_STORIES' | translate }}</div>
 
-      <a href="/story/{{story.canonical}}" *ngFor="let story of furtherStories()">
+      <a href="/story/{{story.canonical}}" *ngFor="let story of furtherStories()" class="d-block mb-2">
         <div *ngIf="findFirstStoryImage(story)" class="mb-2 story-element__image">
           <img class="story-element__image mb-2" [src]="findFirstStoryImage(story)?.content" />
         </div>

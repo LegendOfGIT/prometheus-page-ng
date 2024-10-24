@@ -102,7 +102,7 @@ export class ManageStoryComponent implements OnDestroy {
     }
 
     this.story.elements = this.story.elements || [];
-    this.story.elements.push(this.newElement);
+    this.story.elements.push(Object.assign({}, this.newElement));
     this.saveStory();
   }
 
@@ -115,7 +115,7 @@ export class ManageStoryComponent implements OnDestroy {
       return;
     }
 
-    this.subscriptions.push(this.contentService.saveStory(this.story, this.secret)
+    this.subscriptions.push(this.contentService.saveStory(this.story, this.secretParameter)
       .subscribe((): void => {}));
   }
 

@@ -27,7 +27,7 @@ export class ContentService extends ApiBase {
     );
   }
 
-  public saveStory(story: Story, secret: number): Observable<void> {
+  public saveStory(story: Story, secret: string): Observable<void> {
     return this.httpClient.post<void>(
       this.get(endpoints.contentSaveStory, {}),
       {
@@ -37,7 +37,7 @@ export class ContentService extends ApiBase {
     );
   }
 
-  public removeStoryById(id: string, secret: number): Observable<Story[]> {
+  public removeStoryById(id: string, secret: string): Observable<Story[]> {
     return this.httpClient.delete<Story[]>(
       this.get(endpoints.contentRemoveStory, { id }),
       {

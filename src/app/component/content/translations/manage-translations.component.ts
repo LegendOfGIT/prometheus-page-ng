@@ -11,7 +11,7 @@ import {Secrets} from "../../../configurations/secrets";
 })
 export class ManageTranslationsComponent implements OnDestroy {
   private locale: string = 'de_DE';
-  private secret: number = 0;
+  private secret: string = '';
   private subscriptions: Subscription[] = [];
   private translationSaveHandle: number = 0;
   private translationsSource: any = {};
@@ -24,8 +24,8 @@ export class ManageTranslationsComponent implements OnDestroy {
                      activatedRoute: ActivatedRoute,
                      router: Router) {
     this.subscriptions.push(activatedRoute.queryParams.subscribe((parameters: Params): void => {
-      this.secret = Secrets.stringToSecretHash(parameters['secret'] || '');
-      if (this.secret !== Secrets.ITEMS.ADMIN_SECRET) {
+      this.secret = parameters['secret'] || '';
+      if (Secrets.stringToSecretHash(this.secret) !== Secrets.ITEMS.ADMIN_SECRET) {
         router.navigate(['']);
       }
 

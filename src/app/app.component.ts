@@ -1,18 +1,20 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, PLATFORM_ID, ViewChild } from '@angular/core';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
+import { Request } from 'express';
+import { isPlatformBrowser } from '@angular/common';
 
 import { UserService } from './service/user.service';
 import { WishlistItemsApiService } from './service/wishlist-items-api.service';
 import { GdprService } from './service/gdpr.service';
 import { GdprDecision } from './model/gdpr-settings';
 import { ConsentService } from './service/consent-service';
-import { isPlatformBrowser } from '@angular/common';
+
 import { NavigationItem } from './model/navigation-item';
 import { Navigation } from './configurations/navigation';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { Request } from 'express';
-import {Story} from "./model/story";
-import {Stories} from "./configurations/stories";
-import {TranslationService} from "./service/translation.service";
+
+import {Story} from './model/story';
+import {TranslationService} from './service/translation.service';
+import {ContentService} from './service/content.service';
 
 @Component({
   selector: 'app-root',
@@ -23,16 +25,20 @@ export class AppComponent implements AfterViewInit, OnInit  {
   @ViewChild('gdpr') gdpr: ElementRef | undefined;
 
   title = 'prometheus-page';
+  private stories: Story[] = [];
 
   constructor(
     private wishlistItemsService: WishlistItemsApiService,
     private gdprService: GdprService,
     private consentService: ConsentService,
     private translationService: TranslationService,
+    contentService: ContentService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() @Inject(REQUEST) private request: Request
   ) {
-
+    contentService.getStories().subscribe((stories: Story[]):  void => {
+      this.stories = stories;
+    });
   }
 
   ngOnInit(): void {
@@ -75,7 +81,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
   }
 
   get StoryItems(): Story[] {
-    return Stories.ITEMS;
+    return this.stories;
   }
 
   get TranslationsLoaded(): boolean {

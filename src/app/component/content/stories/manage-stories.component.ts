@@ -43,7 +43,7 @@ export class ManageStoriesComponent implements OnDestroy {
   }
 
   public removeStory(id: string): void {
-    this.subscriptions.push(this.contentService.removeStoryById(id, this.secret).subscribe((): void => {
+    this.subscriptions.push(this.contentService.removeStoryById(id, this.secretParameter).subscribe((): void => {
       this.loadStories();
     }));
   }
@@ -61,7 +61,7 @@ export class ManageStoriesComponent implements OnDestroy {
       return;
     }
 
-    this.subscriptions.push(this.contentService.saveStory(this.newStory, this.secret)
+    this.subscriptions.push(this.contentService.saveStory(this.newStory, this.secretParameter)
       .subscribe((): void => {
         this.newStory = { canonical: '', title: '' };
         this.loadStories();
