@@ -2,14 +2,17 @@ import {TeaserItem} from '../model/teaser-item';
 
 export class Startpage {
   public static TEASER_ITEMS: TeaserItem[] = [
-    new TeaserItem('/fashion?search=kostüm', 'FASHION', 'kostüm', 'TEASER_HALLOWEEN_COSTUMES')
+    new TeaserItem('/electronics-and-computers/computers', 'ELECTRONICS_AND_COMPUTERS_COMPUTERS', '', 'TEASER_TECHNOLOGY_NOVEMBER')
       .setSsrRendering(true),
+    /*new TeaserItem('/fashion?search=kostüm', 'FASHION', 'kostüm', 'TEASER_HALLOWEEN_COSTUMES')
+      .setSsrRendering(true),*/
     /*new TeaserItem('/hashtags/Schnäppchen?search=Ostern', '', 'Ostern', 'TEASER_TITLE_EASTERN')
       .setHashtags(['Schnäppchen'])
       .setSsrRendering(true),*/
-    new TeaserItem('/home/garden', 'HOME_GARDEN', 'grill', 'TEASER_TITLE_INTO_THE_GARDEN'),
-    new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', '')
-      .setHashtags(['Schnäppchen']),
+    /*new TeaserItem('/home/garden', 'HOME_GARDEN', 'grill', 'TEASER_TITLE_INTO_THE_GARDEN'),*/
+    new TeaserItem('/hashtags/Highlights?search=winter', '', 'winter', 'TEASER_WINTER_IS_COMING'),
+    /*new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', '')
+      .setHashtags(['Schnäppchen']),*/
 
     new TeaserItem('', '', '', 'TEASER_TITLE_DEALS_DISCOVERED_TODAY')
       .setHashtags(['Schnäppchen'])

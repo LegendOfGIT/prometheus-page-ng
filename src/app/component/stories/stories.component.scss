@@ -1,0 +1,22 @@
+@import 'src/app/variables';
+
+.story-element {
+
+
+  &__block {
+    margin-bottom: 1em;
+  }
+
+  &__image {
+    border-radius: 5%;
+    max-width: 10em;
+  }
+
+  &__title {
+    color: $content-color--active;
+  }
+}
+
+a {
+  color: $content-color;
+}

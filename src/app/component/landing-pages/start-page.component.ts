@@ -34,13 +34,6 @@ export class StartPageComponent implements OnInit {
 
   private heroes: Array<Hero> = [
     {
-      backgroundImage: 'url("/assets/heroes/halloween.jpg"), linear-gradient(180deg, rgba(255,136,0,1) 75%, rgba(255,136,0,0.5075280112044818) 90%, rgba(243,244,242,1) 100%)',
-      backgroundPositionY: '0%',
-      heroText: 'HALLOWEEN !',
-      heroTextMarginTop: '15%',
-      heroUrl: '/kids?search=tonie'
-    },
-    {
       backgroundImage: 'url("/assets/heroes/tonies.png"), linear-gradient(180deg, rgba(211,0,15,1) 71%, rgba(255,208,204,1) 95%, rgba(243,244,242,1) 100%)',
       backgroundPositionY: '2%',
       heroText: 'HERO_DISCOVER_TONIES',

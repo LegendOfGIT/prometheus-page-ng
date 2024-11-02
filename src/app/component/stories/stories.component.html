@@ -1,0 +1,22 @@
+<div *ngIf="stories.length" class="mt-5">
+  <div class="row w-100">
+    <div class="col-1"></div>
+    <div class="col">
+      <a
+        *ngFor="let story of stories"
+        href="/story/{{story.canonical}}"
+        class="fs-5 text-decoration-none"
+      >
+        <div class="mt-5 mb-3 story-element__title">{{story.title}}</div>
+        <div class="d-md-flex">
+          <div *ngIf="story.titleImage">
+            <img class="story-element__image mb-2 me-md-3" [src]="story.titleImage" />
+          </div>
+          <div class="mt-2 mt-md-0" *ngIf="story.firstBlock" [innerHtml]="getSanitizedElementContent(story.firstBlock)">
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

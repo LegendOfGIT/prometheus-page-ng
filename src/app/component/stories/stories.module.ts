@@ -5,12 +5,15 @@ import { SharedComponentsModule } from '../shared-components.module';
 import { PipesModule } from '../../pipes/pipes.module';
 import { StoriesRoutingModule } from './stories-routing.module';
 import { StoryComponent } from './story.component';
+import {StoriesComponent} from "./stories.component";
 
 @NgModule({
   declarations: [
+    StoriesComponent,
     StoryComponent
   ],
   exports: [
+    StoriesComponent,
     StoryComponent
   ],
   imports: [

@@ -59,6 +59,14 @@
       >{{ newElement.content || '' }}</textarea>
     </div>
     <div class="mt-2 fw-bold">
+      Position (optional):
+      <input
+        class="w-25"
+        (change)="updateNewElementPosition($event)"
+        [value]="newElementPosition || ''"
+      />
+    </div>
+    <div class="mt-2 fw-bold">
       <button class="button" (click)="addNewElement()">Element hinzufügen</button>
     </div>
   </div>

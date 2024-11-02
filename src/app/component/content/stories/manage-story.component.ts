@@ -17,6 +17,7 @@ export class ManageStoryComponent implements OnDestroy {
   private storyId = '';
   private subscriptions: Subscription[] = [];
   public newElement: StoryElement = { type: StoryElementType.Block, content: '' };
+  public newElementPosition: number | undefined;
   public secretParameter = '';
   public story: Story | undefined;
 
@@ -84,6 +85,11 @@ export class ManageStoryComponent implements OnDestroy {
     this.newElement.type = StoryElementType[((event.target as HTMLInputElement).value)];
   }
 
+  public updateNewElementPosition(event: Event): void {
+    // @ts-ignore
+    this.newElementPosition = Number.parseInt((event.target as HTMLInputElement).value);
+  }
+
   public updateElementType(element: StoryElement, event: Event): void {
     // @ts-ignore
     element.type = StoryElementType[((event.target as HTMLInputElement).value)];
@@ -96,13 +102,33 @@ export class ManageStoryComponent implements OnDestroy {
     this.saveStory();
   }
 
+  private insert(arr: StoryElement[], index: number, newItem: StoryElement): StoryElement[] {
+    return [
+      // part of the array before the specified index
+      ...arr.slice(0, index),
+      // inserted item
+      newItem,
+      // part of the array after the specified index
+      ...arr.slice(index)
+    ]
+  }
+
   public addNewElement(): void {
     if (!this.story) {
       return;
     }
 
     this.story.elements = this.story.elements || [];
-    this.story.elements.push(Object.assign({}, this.newElement));
+
+
+    if (!Number.isNaN(this.newElementPosition)) {
+      const nep: number = (this.newElementPosition || 0) - 1;
+      this.story.elements = this.insert(this.story.elements, nep, Object.assign({}, this.newElement));
+    }
+    else {
+      this.story.elements.push(Object.assign({}, this.newElement));
+    }
+
     this.saveStory();
   }
 
