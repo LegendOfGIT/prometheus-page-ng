@@ -119,9 +119,7 @@ export class ManageStoryComponent implements OnDestroy {
     }
 
     this.story.elements = this.story.elements || [];
-
-
-    if (!Number.isNaN(this.newElementPosition)) {
+    if (this.newElementPosition !== undefined && !isNaN(this.newElementPosition)) {
       const nep: number = (this.newElementPosition || 0) - 1;
       this.story.elements = this.insert(this.story.elements, nep, Object.assign({}, this.newElement));
     }
