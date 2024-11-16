@@ -29,6 +29,10 @@ const routes: Routes = [
     loadChildren: () => import('./component/stories/stories.module').then(m => m.StoriesModule)
   },
   {
+    path: 'things-of-interest',
+    loadChildren: () => import('./component/things-of-interest/things-of-interest.module').then(m => m.ThingsOfInterestModule)
+  },
+  {
     path: ':navigationIdLevelA',
     loadChildren: () => import('./component/overview/product-overview.module').then(m => m.ProductOverviewModule)
   },

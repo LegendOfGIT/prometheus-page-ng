@@ -1,10 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { DomSanitizer, Meta, SafeHtml, Title } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { Story } from 'src/app/model/story';
-import { StoryElement, StoryElementType } from 'src/app/model/story-element';
 import { ContentService } from 'src/app/service/content.service';
+import {Module, NavigationService} from 'src/app/service/navigation.service';
 
 @Component({
   selector: 'stories',
@@ -16,7 +16,10 @@ export class StoriesComponent implements OnDestroy {
   public stories: Story[] = [];
 
   public constructor(private sanitizer: DomSanitizer,
-                     contentService: ContentService) {
+                     contentService: ContentService,
+                     navigationService: NavigationService) {
+    navigationService.activeModule = Module.STORIES;
+
     this.subscriptions.push(contentService.getStories().subscribe((stories: Story[]): void => {
       this.stories = stories;
     }));

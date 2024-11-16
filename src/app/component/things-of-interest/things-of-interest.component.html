@@ -1,0 +1,46 @@
+<div *ngIf="thingsOfInterests.length" class="mt-5">
+  <div class="row w-100">
+    <div class="col-1"></div>
+    <div class="col">
+      <div class="fs-5" *ngFor="let thingOfInterest of thingsOfInterests">
+        <div class="mt-5 mb-3">
+          <a class="thing-of-interest__title" [href]="linkTo(thingOfInterest)">
+            {{thingOfInterest.title}}
+          </a>
+        </div>
+        <div class="d-md-flex">
+          <div *ngIf="thingOfInterest.titleImage">
+            <a [href]="linkTo(thingOfInterest)">
+              <img class="thing-of-interest__image mb-2 me-md-3" [src]="thingOfInterest.titleImage" />
+            </a>
+          </div>
+          <div>
+            <a [href]="linkTo(thingOfInterest)">
+              <div class="mt-2 mt-md-0 thing-of-interest__description" *ngIf="thingOfInterest.description" [innerHtml]="getSanitizedElementContent(thingOfInterest.description)">
+              </div>
+            </a>
+            <div class="mt-2" *ngIf="addressOf(thingOfInterest)">
+              <h5 class="mb-0"><b>Adresse</b></h5>
+              {{ addressOf(thingOfInterest) }}
+            </div>
+            <div class="mt-2" *ngIf="thingOfInterest.links?.length">
+              <h5 class="mb-0"><b>Links</b></h5>
+              <div class="d-flex align-items-center">
+                <div *ngFor="let link of thingOfInterest.links">
+                  <a [href]="link.uri" target="{{thingOfInterest.id}}.{{link.typeOfLink}}">
+                    <i
+                      *ngIf="link.typeOfLink === LinkType.Website"
+                      [ngClass]="['fa', 'fa-globe', 'me-2']"
+                    ></i>
+                    <img *ngIf="link.typeOfLink !== LinkType.Website" class="thing-of-interest__link--icon me-1" src="assets/images/{{iconOfLink(link)}}"/>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

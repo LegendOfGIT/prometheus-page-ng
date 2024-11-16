@@ -1,0 +1,47 @@
+<div *ngIf="thingOfInterest" class="mt-5">
+  <div class="row w-100">
+    <div class="col-1"></div>
+    <div class="col">
+      <div class="fs-5 fw-bold thing-of-interest__title">
+        {{ thingOfInterest.title }}
+      </div>
+
+      <div *ngIf="thingOfInterest?.titleImage" class="fs-5 fw-bold thing-of-interest__image">
+        <img class="thing-of-interest__image mb-2" [src]="thingOfInterest.titleImage" />
+      </div>
+
+      <div class="mt-2 mb-2" *ngIf="thingOfInterest.links?.length">
+        <div class="d-flex align-items-center">
+          <div *ngFor="let link of thingOfInterest.links">
+            <a [href]="link.uri" target="{{thingOfInterest.id}}.{{link.typeOfLink}}">
+              <i
+                *ngIf="link.typeOfLink === LinkType.Website"
+                [ngClass]="['fa', 'fa-globe', 'me-2']"
+              ></i>
+              <img *ngIf="link.typeOfLink !== LinkType.Website" class="thing-of-interest__link--icon me-1" src="assets/images/{{iconOfLink(link)}}"/>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="fs-5 thing-of-interest__description" [innerHtml]="SanitizedDescription">
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+
+  <div class="row w-100 mt-3">
+    <div class="col-1"></div>
+    <div class="col">
+      <div class="fs-5 fw-bold story-element__title">{{ 'YOU_MAY_ALSO_LIKE' | translate }}</div>
+
+      <category-teaser
+        [navigationItem]="getNavigationItemOfThingOfInterest()"
+        [randomItems]="true"
+        [showHeader]="false"
+      >
+      </category-teaser>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

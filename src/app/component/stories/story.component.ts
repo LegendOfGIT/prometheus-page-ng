@@ -8,6 +8,7 @@ import { StoryElement, StoryElementType } from 'src/app/model/story-element';
 import {Navigation} from 'src/app/configurations/navigation';
 import {NavigationItem} from 'src/app/model/navigation-item';
 import {ContentService} from 'src/app/service/content.service';
+import {Module, NavigationService} from 'src/app/service/navigation.service';
 
 @Component({
   selector: 'story',
@@ -23,7 +24,10 @@ export class StoryComponent implements OnDestroy {
                      metaService: Meta,
                      titleService: Title,
                      activatedRoute: ActivatedRoute,
-                     contentService: ContentService) {
+                     contentService: ContentService,
+                     navigationService: NavigationService) {
+    navigationService.activeModule = Module.STORIES;
+
     this.subscriptions.push(activatedRoute.params.subscribe((params: Params): void => {
       this.subscriptions.push(contentService.getStories().subscribe((stories: Story[]): void => {
         this.stories = stories;

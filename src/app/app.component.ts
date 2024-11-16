@@ -1,20 +1,21 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, PLATFORM_ID, ViewChild } from '@angular/core';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { Request } from 'express';
-import { isPlatformBrowser } from '@angular/common';
+import {AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, PLATFORM_ID, ViewChild} from '@angular/core';
+import {REQUEST} from '@nguniversal/express-engine/tokens';
+import {Request} from 'express';
+import {isPlatformBrowser} from '@angular/common';
 
-import { UserService } from './service/user.service';
-import { WishlistItemsApiService } from './service/wishlist-items-api.service';
-import { GdprService } from './service/gdpr.service';
-import { GdprDecision } from './model/gdpr-settings';
-import { ConsentService } from './service/consent-service';
+import {UserService} from './service/user.service';
+import {WishlistItemsApiService} from './service/wishlist-items-api.service';
+import {GdprService} from './service/gdpr.service';
+import {GdprDecision} from './model/gdpr-settings';
+import {ConsentService} from './service/consent-service';
 
-import { NavigationItem } from './model/navigation-item';
-import { Navigation } from './configurations/navigation';
+import {NavigationItem} from './model/navigation-item';
+import {Navigation} from './configurations/navigation';
 
 import {Story} from './model/story';
 import {TranslationService} from './service/translation.service';
 import {ContentService} from './service/content.service';
+import {Module, NavigationService} from "./service/navigation.service";
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
     private gdprService: GdprService,
     private consentService: ConsentService,
     private translationService: TranslationService,
+    private navigationService: NavigationService,
     contentService: ContentService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() @Inject(REQUEST) private request: Request
@@ -81,7 +83,11 @@ export class AppComponent implements AfterViewInit, OnInit  {
   }
 
   get StoryItems(): Story[] {
-    return this.stories;
+    if (this.navigationService.activeModule === Module.HOME) {
+      return this.stories;
+    }
+
+    return [];
   }
 
   get TranslationsLoaded(): boolean {

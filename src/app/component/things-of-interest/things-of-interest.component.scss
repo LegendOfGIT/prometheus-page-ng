@@ -1,0 +1,42 @@
+@import 'src/app/variables';
+
+@import 'src/app/variables';
+
+.thing-of-interest {
+  &__description {
+    display: -webkit-box;
+    line-clamp: 5;
+    max-height: 9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+
+    @media screen and (min-width: 1400px) {
+      line-clamp: 3;
+      max-height: 5em;
+      -webkit-line-clamp: 3;
+    }
+  }
+
+  &__image {
+    border-radius: 5%;
+    width: 10em;
+  }
+
+  &__link {
+    &--icon {
+      height: 1.5em;
+      width: 1.5em;
+    }
+  }
+
+  &__title {
+    color: $content-color--active;
+  }
+}
+
+a {
+  color: $content-color;
+  text-decoration: none;
+}

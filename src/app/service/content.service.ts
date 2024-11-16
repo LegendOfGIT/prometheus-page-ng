@@ -6,6 +6,9 @@ import { ApiBase } from './api-base';
 import { ApplicationConfiguration } from 'src/app/configurations/app';
 import { endpoints } from 'src/environments/endpoints';
 import {Story} from 'src/app/model/story';
+import {ThingOfInterest} from "../model/thing-of-interest";
+import {ThingOfInterestComponent} from "../component/things-of-interest/thing-of-interest.component";
+import {map} from "rxjs/operators";
 
 @Injectable({
     providedIn: 'root'
@@ -44,5 +47,20 @@ export class ContentService extends ApiBase {
         body: { secret }
       }
     );
+  }
+
+  public getThingsOfInterest(): Observable<ThingOfInterest[]> {
+    return this.httpClient.get<ThingOfInterest[]>(
+      this.get(endpoints.contentGetThingsOfInterest, {})
+    );
+  }
+
+  public getThingOfInterest(id: string): Observable<ThingOfInterest | undefined> {
+    return this.httpClient.get<ThingOfInterest[]>(
+      this.get(endpoints.contentGetThingsOfInterest, {})
+    )
+      .pipe(map((thingsOfInterest: ThingOfInterest[]): ThingOfInterest | undefined => {
+          return thingsOfInterest.find((thingOfInterest: ThingOfInterest): boolean => thingOfInterest.id === id);
+      }));
   }
 }

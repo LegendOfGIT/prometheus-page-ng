@@ -1,0 +1,23 @@
+@import 'src/app/variables';
+
+.thing-of-interest {
+  &__description {
+    margin-bottom: 1em;
+  }
+
+  &__image {
+    border-radius: 5%;
+    max-width: 10em;
+  }
+
+  &__link {
+    &--icon {
+      height: 1.5em;
+      width: 1.5em;
+    }
+  }
+
+  &__title {
+    margin-bottom: 1em;
+  }
+}
