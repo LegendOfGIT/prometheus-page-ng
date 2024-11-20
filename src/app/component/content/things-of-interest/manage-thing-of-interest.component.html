@@ -1,0 +1,61 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-8 mt-3">
+    <button class="button" [routerLink]="['/', 'content', 'things-of-interest']" [queryParams]="{ secret: secretParameter }">Alle Dinge von Interesse</button>
+
+    <div class="mt-2 fw-bold">
+      Titel:
+      <input class="w-100" (change)="updateItemTitle($event)" [value]="item?.title || ''"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Titelbild:
+      <input class="w-100" (change)="updateItemTitleImage($event)" [value]="item?.titleImage || ''"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Navigation-ID:
+      <input class="w-100" (change)="updateItemNavigationId($event)" [value]="item?.navigationId || ''"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Strasse:
+      <input class="w-100" (change)="updateItemAddressStreet($event)" [value]="item?.address?.street || ''"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Postleitzahl:
+      <input class="w-100" (change)="updateItemAddressZipCode($event)" [value]="item?.address?.zipCode || ''"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Ort:
+      <input class="w-100" (change)="updateItemAddressCity($event)" [value]="item?.address?.city || ''"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Land:
+      <input class="w-100" (change)="updateItemAddressCountry($event)" [value]="item?.address?.country || ''"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Beschreibung:
+      <textarea
+        class="w-100"
+        rows="4"
+        (change)="updateItemDescription($event)"
+      >{{ item?.description || '' }}</textarea>
+    </div>
+    <div class="mt-2 fw-bold">
+      Website-Link:
+      <input class="w-100" (change)="updateItemLink($event, LinkType.Website)" [value]="getLinkOfType(LinkType.Website)"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      YouTube-Link:
+      <input class="w-100" (change)="updateItemLink($event, LinkType.YouTube)" [value]="getLinkOfType(LinkType.YouTube)"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Instagram-Link:
+      <input class="w-100" (change)="updateItemLink($event, LinkType.Instagram)" [value]="getLinkOfType(LinkType.Instagram)"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Facebook-Link:
+      <input class="w-100" (change)="updateItemLink($event, LinkType.Facebook)" [value]="getLinkOfType(LinkType.Facebook)"/>
+    </div>
+    <div class="mt-2 fw-bold">
+      Pinterest-Link:
+      <input class="w-100" (change)="updateItemLink($event, LinkType.Pinterest)" [value]="getLinkOfType(LinkType.Pinterest)"/>
+    </div>
+</div>

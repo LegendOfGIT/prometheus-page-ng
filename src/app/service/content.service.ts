@@ -63,4 +63,23 @@ export class ContentService extends ApiBase {
           return thingsOfInterest.find((thingOfInterest: ThingOfInterest): boolean => thingOfInterest.id === id);
       }));
   }
+
+  public saveThingOfInterest(item: ThingOfInterest, secret: string): Observable<void> {
+    return this.httpClient.post<void>(
+      this.get(endpoints.contentSaveThingOfInterest, {}),
+      {
+        secret,
+        ...item,
+      }
+    );
+  }
+
+  public removeThingOfInterestById(id: string, secret: string): Observable<Story[]> {
+    return this.httpClient.delete<Story[]>(
+      this.get(endpoints.contentRemoveThingOfInterest, { id }),
+      {
+        body: { secret }
+      }
+    );
+  }
 }

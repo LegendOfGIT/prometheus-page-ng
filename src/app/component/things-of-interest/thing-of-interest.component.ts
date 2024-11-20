@@ -9,6 +9,7 @@ import { ContentService } from 'src/app/service/content.service';
 import { ThingOfInterest } from 'src/app/model/thing-of-interest';
 import { Link, LinkType } from 'src/app/model/link';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
+import {Address} from "../../model/address";
 
 @Component({
   selector: 'thing-of-interest',
@@ -31,6 +32,7 @@ export class ThingOfInterestComponent implements OnDestroy {
       this.subscriptions.push(contentService.getThingOfInterest(params['thingOfInterestId']).subscribe((thingOfInterest: ThingOfInterest | undefined): void => {
         this.thingOfInterest = thingOfInterest;
         titleService.setTitle(this.thingOfInterest?.title ? `${this.thingOfInterest?.title}` : 'We wanna shop!');
+        metaService.addTag({name: 'og:title', content: titleService.getTitle()});
 
         if (this.thingOfInterest?.titleImage) {
           metaService.updateTag({name: 'og:image', content: this.thingOfInterest?.titleImage ?? ''});
@@ -54,6 +56,11 @@ export class ThingOfInterestComponent implements OnDestroy {
 
   public getNavigationItemOfThingOfInterest(): NavigationItem | undefined {
     return Navigation.getNavigationItemByToId(this.thingOfInterest?.navigationId ?? '');
+  }
+
+  public addressOf(thingOfInterest: ThingOfInterest): string {
+    const address: Address | undefined = thingOfInterest.address;
+    return address ? `${address.street}, ${address.zipCode} ${address.city}${address.country ? ` ${address.country}` : ''}` : '';
   }
 
   public iconOfLink(link: Link): string {

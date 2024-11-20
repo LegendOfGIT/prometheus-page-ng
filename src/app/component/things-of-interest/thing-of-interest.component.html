@@ -10,9 +10,14 @@
         <img class="thing-of-interest__image mb-2" [src]="thingOfInterest.titleImage" />
       </div>
 
+      <div class="mt-2 fs-5" *ngIf="addressOf(thingOfInterest)">
+        <h5 class="mb-0"><b>Adresse</b></h5>
+        {{ addressOf(thingOfInterest) }}
+      </div>
+
       <div class="mt-2 mb-2" *ngIf="thingOfInterest.links?.length">
         <div class="d-flex align-items-center">
-          <div *ngFor="let link of thingOfInterest.links">
+          <div *ngFor="let link of thingOfInterest.links" class="fs-5">
             <a [href]="link.uri" target="{{thingOfInterest.id}}.{{link.typeOfLink}}">
               <i
                 *ngIf="link.typeOfLink === LinkType.Website"

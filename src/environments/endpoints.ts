@@ -3,6 +3,7 @@ export const endpoints = {
   contentGetStories: '/stories',
   contentGetSingleStory: '/story?id={id}',
   contentGetThingsOfInterest: '/things-of-interest',
+  contentRemoveThingOfInterest: '/thing-of-interest?id={id}',
   contentRemoveStory: '/story?id={id}',
   contentSaveStory: '/story',
   contentSaveThingOfInterest: '/thing-of-interest',

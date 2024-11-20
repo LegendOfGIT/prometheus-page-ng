@@ -1,0 +1,24 @@
+<div class="row d-flex justify-content-center">
+  <div class="col-10 mt-3">
+    <div>
+      <div class="fw-bold">
+        Titel:
+        <input class="w-100" (change)="updateNewItemTitle($event)" [value]="newItem.title || ''"/>
+      </div>
+      <button class="button" (click)="saveNewItem()">Ding von Interesse anlegen</button>
+    </div>
+  </div>
+
+  <div *ngFor="let item of items" class="col-10 mt-3">
+    <div class="fw-bold">
+      <i
+         class="fa fa-trash"
+         role="button"
+         (click)="removeItem(item.id || '')"
+      ></i>
+      <a [routerLink]="['/', 'content', 'thing-of-interest', item.id]" [queryParams]="{ secret: secretParameter }">
+        {{ item.title }}
+      </a>
+    </div>
+  </div>
+</div>
