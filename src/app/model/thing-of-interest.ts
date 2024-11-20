@@ -3,6 +3,7 @@ import {Address} from './address';
 
 export class ThingOfInterest {
     id?: string = '';
+    createdOn?: string = '';
     title: string = '';
     titleImage?: string;
     navigationId?: string;

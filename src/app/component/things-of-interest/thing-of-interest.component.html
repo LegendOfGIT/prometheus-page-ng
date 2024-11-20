@@ -18,7 +18,7 @@
       <div class="mt-2 mb-2" *ngIf="thingOfInterest.links?.length">
         <div class="d-flex align-items-center">
           <div *ngFor="let link of thingOfInterest.links" class="fs-5">
-            <a [href]="link.uri" target="{{thingOfInterest.id}}.{{link.typeOfLink}}">
+            <a [href]="link.uri" target="{{thingOfInterest.id}}.{{link.typeOfLink}}" rel="nofollow">
               <i
                 *ngIf="link.typeOfLink === LinkType.Website"
                 [ngClass]="['fa', 'fa-globe', 'me-2']"

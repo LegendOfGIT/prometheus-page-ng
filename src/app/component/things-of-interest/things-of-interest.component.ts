@@ -27,7 +27,7 @@ export class ThingsOfInterestComponent implements OnDestroy {
     navigationService.activeModule = Module.THINGS_OF_INTEREST;
 
     this.subscriptions.push(contentService.getThingsOfInterest().subscribe((items: ThingOfInterest[]): void => {
-      this.thingsOfInterests = items;
+      this.thingsOfInterests = items.sort((a: ThingOfInterest, b: ThingOfInterest) => (b.createdOn || '').localeCompare(a.createdOn || ''));
     }));
   }
 
