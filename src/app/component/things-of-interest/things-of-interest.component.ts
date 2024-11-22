@@ -1,6 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer, SafeHtml, Title} from '@angular/platform-browser';
 
 import {ContentService} from 'src/app/service/content.service';
 import {ThingOfInterest} from 'src/app/model/thing-of-interest';
@@ -22,9 +22,11 @@ export class ThingsOfInterestComponent implements OnDestroy {
 
   public constructor(private sanitizer: DomSanitizer,
                      private hyphenationPipe: HyphenationPipe,
+                     titleService: Title,
                      navigationService: NavigationService,
                      contentService: ContentService) {
     navigationService.activeModule = Module.THINGS_OF_INTEREST;
+    titleService.setTitle('Shops in deiner Region');
 
     this.subscriptions.push(contentService.getThingsOfInterest().subscribe((items: ThingOfInterest[]): void => {
       this.thingsOfInterests = items.sort((a: ThingOfInterest, b: ThingOfInterest) => (b.createdOn || '').localeCompare(a.createdOn || ''));

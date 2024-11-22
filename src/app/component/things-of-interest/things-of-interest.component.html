@@ -21,7 +21,7 @@
             </a>
             <div class="mt-2" *ngIf="addressOf(thingOfInterest)">
               <h5 class="mb-0"><b>Adresse</b></h5>
-              {{ addressOf(thingOfInterest) }}
+              <address>{{ addressOf(thingOfInterest) }}</address>
             </div>
             <div class="mt-2" *ngIf="thingOfInterest.links?.length">
               <h5 class="mb-0"><b>Links</b></h5>
