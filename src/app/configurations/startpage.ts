@@ -2,7 +2,9 @@ import {TeaserItem} from '../model/teaser-item';
 
 export class Startpage {
   public static TEASER_ITEMS: TeaserItem[] = [
-    new TeaserItem('/electronics-and-computers/computers', 'ELECTRONICS_AND_COMPUTERS_COMPUTERS', '', 'TEASER_TECHNOLOGY_NOVEMBER')
+    new TeaserItem('/kids?search=geschenk', 'KIDS', 'geschenk', 'TEASER_TITLE_CHRISTMAS_KIDS_GIFT_IDEAS')
+      .setSsrRendering(true),
+    /*new TeaserItem('/electronics-and-computers/computers', 'ELECTRONICS_AND_COMPUTERS_COMPUTERS', '', 'TEASER_TECHNOLOGY_NOVEMBER')
       .setSsrRendering(true),
     /*new TeaserItem('/fashion?search=kostüm', 'FASHION', 'kostüm', 'TEASER_HALLOWEEN_COSTUMES')
       .setSsrRendering(true),*/
@@ -13,11 +15,6 @@ export class Startpage {
     new TeaserItem('/hashtags/Highlights?search=winter', '', 'winter', 'TEASER_WINTER_IS_COMING'),
     /*new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', '')
       .setHashtags(['Schnäppchen']),*/
-
-    new TeaserItem('', '', '', 'TEASER_TITLE_DEALS_DISCOVERED_TODAY')
-      .setHashtags(['Schnäppchen'])
-      .setCreatedToday(true)
-      .setSsrRendering(true),
     /*new TeaserItem('/hashtags/Highlights?search=vegan', '', 'vegan', 'VEGANuary')
       .setHashtags(['Highlights']),
     new TeaserItem('', 'GROCERIES_FOOD_MEATSUBSTITUTES', 'vegan', ''),*/
@@ -27,9 +24,7 @@ export class Startpage {
     new TeaserItem('/beauty-and-care/health', 'BEAUTY_CARE_HEALTH', '', 'TEASER_TITLE_GOOD_INTENTION_LIVE_HEALTHY'),
     new TeaserItem('', '', 'Yoga', '')
       .setHashtags(['Highlights']),
-    new TeaserItem('', 'GROCERIES_FOOD', 'Bio', ''),
-
-    //new TeaserItem('/kids?search=geschenk', 'KIDS', 'geschenk', 'TEASER_TITLE_CHRISTMAS_KIDS_GIFT_IDEAS'),*/
+    new TeaserItem('', 'GROCERIES_FOOD', 'Bio', ''),*/
 
     new TeaserItem('/kids?search=tonies', 'KIDS', 'tonies', 'TEASER_TITLE_TONIES'),
 
