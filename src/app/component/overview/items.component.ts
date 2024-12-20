@@ -100,10 +100,6 @@ export class ItemsComponent implements OnInit {
     }
 
     private initItems(page: string): void {
-      if (isPlatformServer(this.platformId) && !UserService.isBotRequest(this.request)) {
-        return;
-      }
-
       let filterIds: string = (this.navigationService.activeNavigationItem?.getFilters() || []).join('-');
       filterIds = filterIds || this.route.snapshot?.queryParamMap?.get('filters') as string;
       const maximumPrice: string = this.route.snapshot?.queryParamMap?.get('p_max') as string;
