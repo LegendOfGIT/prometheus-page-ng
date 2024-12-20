@@ -96,8 +96,6 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.ssrRendering = UserService.isBotRequest(this.request) ? this.ssrRendering : false;
-
     if (!this.ssrRendering) { return; }
     this.initialiseItems();
   }

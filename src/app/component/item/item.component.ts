@@ -279,6 +279,10 @@ export class ItemComponent implements OnInit, AfterViewInit {
     }
 
     get ShowDescriptionAndPrice(): boolean {
+      if (!this.isOnClientSide()) {
+        return true;
+      }
+
       return this.displayMode !== ItemDisplayMode.TEASER;
     }
 }
