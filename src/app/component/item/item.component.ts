@@ -80,7 +80,7 @@ export class ItemComponent implements OnInit, AfterViewInit {
             setTimeout((): void => {
                 this.toggleImage();
                 setInterval(() => this.toggleImage(),20000)
-            }, Math.floor(Math.random() * 10000))
+            }, 10000 + Math.floor(Math.random() * 20000))
 
             observer.disconnect();
           });
@@ -255,7 +255,7 @@ export class ItemComponent implements OnInit, AfterViewInit {
     }
 
     get renderedReduction(): string {
-      if (ItemDisplayMode.CATEGORY === this.displayMode) {
+      if (ItemDisplayMode.CATEGORY === this.displayMode || ItemDisplayMode.TEASER === this.displayMode) {
         return '';
       }
 
@@ -276,6 +276,10 @@ export class ItemComponent implements OnInit, AfterViewInit {
       }
 
       return Discounts.getDiscountForItem(this.item);
+    }
+
+    get ShowDescriptionAndPrice(): boolean {
+      return this.displayMode !== ItemDisplayMode.TEASER;
     }
 }
 

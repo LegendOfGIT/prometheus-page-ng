@@ -1,5 +1,16 @@
 <div class="startPage__content">
-  <a href="{{currentHero?.heroUrl}}">
+  <div
+    class="w-100 position-absolute startPage__hero"
+    [style.background]="'linear-gradient(180deg, rgba(222,89,53,1) 8%, rgba(255,136,0,0.5075280112044818) 88%, rgba(243,244,242,1) 100%)'"
+  >
+    <div class="parallax">
+      <div class="content">
+        <h1 class="animate__animated animate__fadeInDown">Willkommen auf WeWanna.shop</h1>
+        <p class="animate__animated animate__fadeInUp animate__delay-1s">Keine Cookies. Kein Tracking. Unser Versprechen an Dich!</p>
+      </div>
+    </div>
+  </div>
+  <a *ngIf="false" href="{{currentHero?.heroUrl}}">
     <div
       class="w-100 position-absolute startPage__hero"
       [style.background-image]="currentHero?.backgroundImage"

@@ -32,7 +32,7 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
   public navigationItem: NavigationItem | undefined = undefined;
 
   @Input()
-  public numberOfItems = 7;
+  public numberOfItems = 14;
 
   @Input()
   public navigationId = '';
@@ -117,7 +117,10 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    this.items = [new Item(), new Item(), new Item(), new Item(), new Item(), new Item(), new Item()];
+    this.items = [
+      new Item(), new Item(), new Item(), new Item(), new Item(), new Item(), new Item(),
+      new Item(), new Item(), new Item(), new Item(), new Item(), new Item(), new Item()
+    ];
 
     this.itemsService.getItems(
       this.navigationId,
