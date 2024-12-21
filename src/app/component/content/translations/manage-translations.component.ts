@@ -29,7 +29,7 @@ export class ManageTranslationsComponent implements OnDestroy {
         router.navigate(['']);
       }
 
-      this.subscriptions.push(translationService.getTranslationsFromApi(this.locale).subscribe((translations: any): void => {
+      this.subscriptions.push(translationService.getTranslationsFromApi(this.locale, this.secret).subscribe((translations: any): void => {
         this.translationsSource = translations;
         this.updateTranslationItems();
       }));
@@ -42,7 +42,7 @@ export class ManageTranslationsComponent implements OnDestroy {
 
   public switchLanguage(e: Event): void {
     this.locale = (e.target as HTMLInputElement).value;
-    this.subscriptions.push(this.translationService.getTranslationsFromApi(this.locale).subscribe((translations: any): void => {
+    this.subscriptions.push(this.translationService.getTranslationsFromApi(this.locale, this.secret).subscribe((translations: any): void => {
       this.translationsSource = translations;
       this.updateTranslationItems();
     }));

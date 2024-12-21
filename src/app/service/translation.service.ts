@@ -29,11 +29,13 @@ export class TranslationService extends ApiBase {
     return this.translations;
   }
 
-  public getTranslationsFromApi(locale: string = ''): Observable<any> {
+  public getTranslationsFromApi(locale: string = '', secret: string = ''): Observable<any> {
     locale = locale || 'de_DE';
 
     return this.httpClient.get(
-      this.get(endpoints.contentGetTranslations, { locale })
+      this.get(
+        secret ? endpoints.contentGetTranslationsWithSecret : endpoints.contentGetTranslations,
+        { locale, secret })
     );
   }
 

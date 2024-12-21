@@ -8,6 +8,7 @@ export const endpoints = {
   contentSaveStory: '/story',
   contentSaveThingOfInterest: '/thing-of-interest',
   contentGetTranslations: '/translations?locale={locale}',
+  contentGetTranslationsWithSecret: '/translations?locale={locale}&secret={secret}',
   contentUpdateTranslations: '/translations',
   items: '/information-items?navigationId={navigationId}&hashtags={hashtags}&id=&searchPattern={searchPattern}&numberOfResults={numberOfResults}&randomItems={randomItems}&page={page}&isBot={isBot}&filters={filterIds}&priceFrom={priceFrom}&priceTo={priceTo}&createdToday={createdToday}',
   itemsAvailableFilters: '/available-filters?navigationId={navigationId}&searchPattern={searchPattern}&priceFrom={priceFrom}&priceTo={priceTo}',
