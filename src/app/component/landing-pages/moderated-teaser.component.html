@@ -1,6 +1,6 @@
 <section #teaserSection class="position-relative informationItems__containerWrapper{{headerTitle ? ' pt-3' : ''}}">
   <a href="{{linkUri}}" (click)="navigateToMore($event)">
-    <div class="col-12 w-100 d-inline-flex header header__title" *ngIf="headerTitle">
+    <div class="col-12 w-100 d-inline-flex p-4 pb-0 pb-md-4 header header__title" *ngIf="headerTitle">
       {{headerTitle | translate}} <span *ngIf="linkUri" class="ps-3 text-decoration-underline header__more">{{ 'MODERATED_TEASER_MORE' | translate }} &raquo;</span>
     </div>
   </a>

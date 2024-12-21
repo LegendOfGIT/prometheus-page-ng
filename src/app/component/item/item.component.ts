@@ -203,6 +203,10 @@ export class ItemComponent implements OnInit, AfterViewInit {
     }
 
     get itemUrl(): string {
+        if (!this.ShowDescriptionAndPrice) {
+          return this.singleProductViewUrl;
+        }
+
         if (this.isCategoryItem()) {
           return this.getCategoryUrl();
         }
@@ -219,7 +223,12 @@ export class ItemComponent implements OnInit, AfterViewInit {
     }
 
     get linkTarget(): string {
-      return this.hasOnlyOneOffer && ItemDisplayMode.CATEGORY !== this.displayMode ? this.item?.id || '' : '_self';
+      const itemId: string = this.item?.id || '';
+      if (!this.ShowDescriptionAndPrice) {
+        return itemId;
+      }
+
+      return this.hasOnlyOneOffer && ItemDisplayMode.CATEGORY !== this.displayMode ? itemId : '_self';
     }
 
     get showHashtags(): boolean {
