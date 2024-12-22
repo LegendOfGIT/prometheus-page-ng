@@ -3,8 +3,6 @@
 
 a  {
   color: $content-color;
-  cursor: pointer;
-  text-decoration: none;
 }
 
 .header {
@@ -20,7 +18,6 @@ a  {
 
   &__icon {
     color: $content-color--active;
-    cursor: pointer;
     font-size: 1.35em;
 
     &--active {
@@ -47,10 +44,6 @@ a  {
 
   &__logo {
     font-size: 1.3em;
-
-    a {
-      text-decoration: none;
-    }
   }
 
   &__menu {
@@ -62,20 +55,14 @@ a  {
     top: 2.5em;
     width: 20em;
 
-    a {
-      text-decoration: none;
-    }
-
     &Close {
       color: $container-color;
-      cursor: pointer;
       right: 0;
       top: 0;
     }
 
     &Item {
       border-radius: 0.5em;
-      cursor: pointer;
       color: $container-color;
       margin-top: 0.2em;
 
@@ -96,7 +83,6 @@ a  {
   }
 
   &__menuIcon {
-    cursor: pointer;
     font-size:1.5em;
     left: 1em;
     top: 0.3em;
@@ -173,7 +159,6 @@ a  {
   }
 
   &__inputBox {
-    cursor: pointer;
     font-size: 1.2em;
     line-height: 1px;
     right: 1.3em;

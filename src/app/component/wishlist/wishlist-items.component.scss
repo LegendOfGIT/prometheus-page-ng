@@ -26,11 +26,8 @@
   }
 
   &__header-image-container {
-    position: absolute;
     left: 50%;
     transform: translate(-50%, -120%);
-    display: flex;
-    justify-content: center;
 
     @media screen and (min-width: 1400px) {
       transform: translate(-50%, -110%);
@@ -54,7 +51,6 @@
   &__item {
     &-delete-timer {
       margin: 1rem;
-      overflow: hidden;
 
       div {
         height: 5px;

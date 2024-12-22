@@ -5,7 +5,6 @@
 .informationItems {
   &__disclaimer {
     font-size: 0.8em;
-    font-style: italic;
   }
 }
 
@@ -17,7 +16,6 @@
   &__item {
     &-delete-timer {
       margin: 1rem;
-      overflow: hidden;
 
       div {
         height: 5px;
@@ -30,7 +28,6 @@
     &-description {
       display: -webkit-box;
       line-clamp: 5;
-      overflow: hidden;
       text-overflow: ellipsis;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 5;
@@ -56,7 +53,6 @@
       color: $content-color;
       display: -webkit-box;
       line-clamp: 1;
-      overflow: hidden;
       text-overflow: ellipsis;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 1;

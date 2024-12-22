@@ -2,12 +2,12 @@
   <div class="container">
     <div class="row header__content">
       <div class="col-12 header__title">
-        <div class="position-absolute header__menuIcon">
+        <div class="position-absolute header__menuIcon" role="button">
           <i class="fa fa-regular fa-bars" (click)="categorySelection.showModal()"></i>
         </div>
 
         <h1 class="header__logo" style="cursor: pointer;">
-          <a href="/" (click)="visitStartPage($event)">
+          <a class="text-decoration-none" role="button" href="/" (click)="visitStartPage($event)">
             <span class="fw-bold header__titleCapitalLetter">W</span><span class="header__title">e</span>
             <span class="fw-bold header__titleCapitalLetter">W</span><span class="header__title">anna</span>
             <span class="header__titleSlogan"> {{'NAVIGATION_SLOGAN_' + (activeNavigationItem?.hasSlogan ? activeNavigationItem?.toId || 'ALL' : 'ALL') | translate }}!</span>
@@ -18,12 +18,14 @@
           <div class="ps-1 header__iconWrapper">
             <i
               class="fa fa-gift {{userHasAtLeastOneWishlistItem ? '' : isModuleActive(Module.WISHLIST) ? 'header__icon--activeEmpty' : 'header__icon--empty'}} header__icon {{isModuleActive(Module.WISHLIST) ? 'fw-bold header__icon--active' : ''}}"
+              role="button"
               [routerLink]="WishlistLink"
             ></i>
           </div>
           <div class="ps-1 header__iconWrapper" style="margin-top: 0.03em">
             <i
               [ngClass]="['fa', 'header__icon', 'fa-globe', isLanguageSelectionOpen ? 'fw-bold header__icon--active' : 'header__icon--activeEmpty']"
+              role="button"
               (click)="isLanguageSelectionOpen = true; languageSelection.showModal()"
             ></i>
           </div>
@@ -45,7 +47,7 @@
         [formControl]="searchPatternControl"
       />
 
-      <div class="position-absolute searchbar__inputBox">
+      <div class="position-absolute searchbar__inputBox" role="button">
         <div class="searchbar__inputButton">
           <i class="fa fa-search" (click)="searchNow()"></i>
         </div>
@@ -56,7 +58,8 @@
       <a
         href="{{getSuggestionLink(suggestion)}}"
         *ngFor="let suggestion of suggestions; let i = index;"
-        class="col-12 d-inline-flex searchbar__content"
+        class="col-12 d-inline-flex text-decoration-none searchbar__content"
+        role="button"
         (click)="loadingDialog.showModal();"
       >
         <div [ngClass]="['col-12', 'd-inline-flex pb-1 pt-1 suggestion__item', 0 === i ? 'pt-2 suggestion__item--first' : suggestions.length-1 === i ? 'suggestion__item--last' : '']">
@@ -72,13 +75,13 @@
     </div>
   </div>
 
-  <a href="https://www.instagram.com/wewannashop2023" title="follow us on instagram" target="ww-instagram">
+  <a class="text-decoration-none" role="button" href="https://www.instagram.com/wewannashop2023" title="follow us on instagram" target="ww-instagram">
     <img src="assets/images/instagram-icon.webp" class="position-absolute socialMedia__icons{{showSearchBar ? '' : ' socialMedia__icons--thinHeader'}} socialMedia__icons--instagram"/>
   </a>
-  <a href="https://www.facebook.com/profile.php?id=100095214000161" title="follow us on facebook" target="ww-facebook">
+  <a class="text-decoration-none" role="button" href="https://www.facebook.com/profile.php?id=100095214000161" title="follow us on facebook" target="ww-facebook">
     <img src="assets/images/facebook_icon.png" class="position-absolute socialMedia__icons{{showSearchBar ? '' : ' socialMedia__icons--thinHeader'}} socialMedia__icons--facebook"/>
   </a>
-  <a href="https://www.pinterest.de/wewannashop" title="follow us on pinterest" target="ww-pinterest">
+  <a class="text-decoration-none" role="button" href="https://www.pinterest.de/wewannashop" title="follow us on pinterest" target="ww-pinterest">
     <img src="assets/images/pinterest.png" class="position-absolute socialMedia__icons{{showSearchBar ? '' : ' socialMedia__icons--thinHeader'}} socialMedia__icons--pinterest"/>
   </a>
 </header>
@@ -86,7 +89,7 @@
 
 
 <dialog #categorySelection class="position-absolute header__menu">
-  <div class="position-absolute p-1 header__menuClose" (click)="categorySelection.close()">
+  <div class="position-absolute p-1 header__menuClose" role="button" (click)="categorySelection.close()">
     <i class="fa fa-times-circle"></i>
   </div>
   <div class="fw-bold header__menuHeader">
@@ -95,6 +98,7 @@
   <div
     *ngFor="let item of categoryItems"
     [ngClass]="['header__menuItem', activeNavigationItem === item ? 'header__menuItem--active' : '']"
+    role="button"
     (click)="categorySelection.close(); navigateToCategory(item);"
   >
     {{'NAVIGATION_' + item.toId | translate}}

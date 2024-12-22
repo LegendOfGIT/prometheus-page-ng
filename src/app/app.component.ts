@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, PLATFORM_ID, ViewChild} from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
 import {REQUEST} from '@nguniversal/express-engine/tokens';
 import {Request} from 'express';
 import {isPlatformBrowser} from '@angular/common';
@@ -15,7 +16,7 @@ import {Navigation} from './configurations/navigation';
 import {Story} from './model/story';
 import {TranslationService} from './service/translation.service';
 import {ContentService} from './service/content.service';
-import {Module, NavigationService} from "./service/navigation.service";
+import {Module, NavigationService} from './service/navigation.service';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
     private consentService: ConsentService,
     private translationService: TranslationService,
     private navigationService: NavigationService,
+    private router: Router,
     contentService: ContentService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() @Inject(REQUEST) private request: Request
@@ -50,6 +52,18 @@ export class AppComponent implements AfterViewInit, OnInit  {
     if (!isPlatformBrowser(this.platformId)) {
       return;
     }
+
+    this.router.events.subscribe((evt): void => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+
+      window.scrollTo({
+        top: 0,
+        // @ts-ignore
+        behavior: 'instant',
+      })
+    });
 
     setInterval(
       () => this.consentService.deleteInformationStoredWithoutConsent(),

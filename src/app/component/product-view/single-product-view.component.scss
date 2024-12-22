@@ -5,7 +5,6 @@
   &__productDescription {
     display: -webkit-box;
     line-clamp: 8;
-    overflow: hidden;
     padding-top: 1em;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
@@ -30,24 +29,7 @@
 }
 
 .productDetails {
-  display: flex;
-  justify-content: center;
   min-width: 70%;
-
-  &__content {
-    border: 1px solid $logo-letter-color;
-    padding: 0.5em;
-
-    &:nth-child(odd) {
-      background-color: $container-background-color;
-      color: $logo-letter-color;
-    }
-
-    &:nth-child(even) {
-      background-color: $logo-letter-color;
-      color: $container-background-color;
-    }
-  }
 }
 
 .productInformation {
@@ -61,15 +43,11 @@
 
   &__disclaimer {
     font-size: 0.8em;
-    font-style: italic;
   }
 
   &__offer {
     background-color: $container-background-color;
     border-radius: 0.5em;
-    display: block;
-    font-weight: bold;
-    margin-bottom: 0.5em;
     padding: 0.3em 0.5em 0.5em 0.5em;
     color: $content-color;
     width: 20em;

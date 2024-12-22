@@ -28,7 +28,11 @@
       <div class="productInformation">
         <section>
           <h2 class="singleProductView__sectionHeader">{{item?.title}}</h2>
-          <p class="mainStage__productDescription{{showFullDescription ? ' mainStage__productDescription--full' : ''}}" (click)="toggleFullDescription()">
+          <p
+            [class.mainStage__productDescription--full]="showFullDescription"
+            class="overflow-hidden mainStage__productDescription"
+            (click)="toggleFullDescription()"
+          >
             <span *ngIf="!item?.descriptions?.length">
               {{item?.description}}
             </span>
@@ -52,11 +56,11 @@
             <h2 class="singleProductView__sectionHeader">{{( areThereMorePrices() ? 'TOP_OFFER' : 'OFFER') | translate }}</h2>
           </div>
 
-          <div class="productInformation__disclaimer mb-2">{{'PROVISION_DISCLAIMER' | translate}}</div>
+          <div class="fst-italic mb-2 productInformation__disclaimer">{{'PROVISION_DISCLAIMER' | translate}}</div>
 
           <div *ngIf="itemWithLowestPrice" class="productInformation__offers">
             <a href="{{itemWithLowestPrice.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
-              <div class="button productInformation__offer">
+              <div class="d-block fw-bold mb-1 button productInformation__offer">
                 <div>
                   {{getShopNameFromUrl(itemWithLowestPrice.link)}}:<span *ngIf="renderPrice(itemWithLowestPrice)" class="productInformation__offer--price">{{renderPrice(itemWithLowestPrice)}}</span>
                 </div>
@@ -81,7 +85,7 @@
             </div>
             <div class="productInformation__offers">
               <a *ngFor="let offer of moreExpensiveOfferItems()" href="{{offer?.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
-                <div class="button productInformation__offer">
+                <div class="d-block fw-bold mb-1 button productInformation__offer">
                   <div>
                     {{getShopNameFromUrl(offer?.link)}}: <span *ngIf="renderPrice(offer)" class="productInformation__offer--price">{{renderPrice(offer)}}</span>
                   </div>
@@ -98,8 +102,8 @@
                 </div>
               </a>
               <a *ngFor="let offer of offerItemsWithoutPrice()" href="{{offer?.link}}" (click)="pickedOffer()" target="_blank" class="button__wrapper">
-                <div class="button productInformation__offer">
-                      {{getShopNameFromUrl(offer?.link)}}: <span *ngIf="renderPrice(offer)" class="productInformation__offer--price">{{renderPrice(offer)}}</span>
+                <div class="d-block fw-bold mb-1 button productInformation__offer">
+                  {{getShopNameFromUrl(offer?.link)}}: <span *ngIf="renderPrice(offer)" class="productInformation__offer--price">{{renderPrice(offer)}}</span>
                 </div>
               </a>
             </div>
@@ -110,7 +114,7 @@
   </div>
 
   <div *ngIf="item?.size || item?.sizes" class="row">
-    <div class="col-12 justify-content-start productDetails">
+    <div class="col-12 justify-content-start d-flex justify-content-center productDetails">
       <div class="pt-3 productInformation">
         <span *ngIf="item?.size">
           {{ 'PRODUCT_DESCRIPTION_SHOWN_PRODUCT_SIZE' | translate }} {{item?.size}}.<br/>
@@ -126,7 +130,7 @@
   </div>
 
   <div class="row">
-    <div class="col-12 productDetails">
+    <div class="col-12 d-flex justify-content-center productDetails">
       <section class="w-100 pt-2 justify-content-start productInformation {{item?.teaserTexts?.length || safeVideoUris.length ? '' : 'pb-5'}}">
         <div *ngIf="getItemDetails(item)?.length">
           <dl class="dl-horizontal d-flex flex-wrap">
@@ -142,7 +146,7 @@
   </div>
 
   <div *ngIf="item?.teaserTexts?.length" class="row">
-    <div class="col-12 productDetails">
+    <div class="col-12 d-flex justify-content-center productDetails">
       <section class="w-100 pb-4 pt-2 justify-content-start productInformation">
         <div class="pt-2">
           <h2 class="singleProductView__sectionHeader">Highlights</h2>
@@ -157,7 +161,7 @@
   </div>
 
   <div *ngIf="item?.applicationInstructions" class="row">
-    <div class="col-12 productDetails">
+    <div class="col-12 d-flex justify-content-center productDetails">
       <section class="w-100 pb-4 pt-2 justify-content-start productInformation">
         <div class="pt-2">
           <h2 class="singleProductView__sectionHeader">{{ 'APPLICATION_INSTRUCTIONS' | translate }}</h2>
@@ -178,7 +182,7 @@
   </div>
 
   <div class="row mb-4">
-    <div class="col-12 productDetails">
+    <div class="col-12 d-flex justify-content-center productDetails">
       <div class="productInformation">
         <h2 class="singleProductView__sectionHeader">{{'SHARE' | translate}}</h2>
         <a [href]="safePinterestUri" target="pinterest" class="button__wrapper">
