@@ -1,13 +1,35 @@
-<section #teaserSection class="position-relative informationItems__containerWrapper{{headerTitle ? ' pt-3' : ''}}">
-  <a href="{{linkUri}}" (click)="navigateToMore($event)">
-    <div class="col-12 w-100 d-inline-flex p-4 pb-0 pb-md-4 header header__title" *ngIf="headerTitle">
-      {{headerTitle | translate}} <span *ngIf="linkUri" class="ps-3 text-decoration-underline header__more">{{ 'MODERATED_TEASER_MORE' | translate }} &raquo;</span>
+<section #teaserSection class="align-items-center d-flex flex-column flex-wrap p-3 information-items information-items__container" style="">
+  <div>
+    <div class="mb-2 d-flex align-items-center justify-content-center information-items__tile information-items__tile--50-50">
+      <app-item
+        [item]="getItem(0)"
+        [displayMode]="DISPLAY_MODE_TEASER"
+      ></app-item>
     </div>
-  </a>
-  <div class="col-12 pb-3 d-inline-flex flex-wrap justify-content-center informationItems__container">
+    <div class="mt-2 d-flex align-items-center justify-content-center information-items__tile information-items__tile--50-50">
+      <app-item
+        [item]="items[1]"
+        [displayMode]="DISPLAY_MODE_TEASER"
+      ></app-item>
+    </div>
+  </div>
+  <div>
+    <div class="mb-2 d-flex align-items-center justify-content-center information-items__tile information-items__tile--50-50">
+      <app-item
+        [item]="items[2]"
+        [displayMode]="DISPLAY_MODE_TEASER"
+      ></app-item>
+    </div>
+    <div class="mt-2 d-flex align-items-center justify-content-center information-items__tile information-items__tile--50-50">
+      <app-item
+        [item]="items[3]"
+        [displayMode]="DISPLAY_MODE_TEASER"
+      ></app-item>
+    </div>
+  </div>
+  <div class="mb-2 d-flex align-items-center justify-content-center information-items__tile information-items__tile--100">
     <app-item
-      *ngFor="let item of items; let i = index;"
-      [item]="item"
+      [item]="items[4]"
       [displayMode]="DISPLAY_MODE_TEASER"
     ></app-item>
   </div>

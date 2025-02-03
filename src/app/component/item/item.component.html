@@ -3,16 +3,25 @@
     *ngIf="item"
     [class.informationItem--loading]="!item.itemId"
     [class.mt-2]="!item.itemId"
+    [class.me-2]="!IsTeaser"
+    [class.ms-2]="!IsTeaser"
+    [class.informationItem-teaser]="IsTeaser"
     [class.informationItem--big]="showBig"
     [ngClass]="['informationItem', cssModifier ? 'informationItem' + cssModifier : '', additionalCssClasses]"
-    class="me-2 ms-2"
   >
-    <div [ngClass]="['d-flex justify-content-center position-relative p-2 informationItem__imageContainer', cssModifier ? 'informationItem__imageContainer' + cssModifier : '', item.itemId ? '' : 'informationItem__imageContainer--loading']">
+    <div
+      [ngClass]="['d-flex justify-content-center position-relative informationItem__imageContainer', cssModifier ? 'informationItem__imageContainer' + cssModifier : '']"
+      [class.informationItem__imageContainer--loading]="!item.id"
+      [class.informationItem__imageContainer-teaser]="IsTeaser"
+      [class.p-2]="!IsTeaser"
+    >
       <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item, itemUrl, $event)" target="{{linkTarget}}">
         <img
           *ngIf="item.itemId"
           [class.informationItem__image--big]="showBig"
+          [class.p-2]="IsTeaser"
           class="informationItem__image{{cssModifier ? ' informationItem__image' + cssModifier : ''}}"
+          [class.informationItem__image-teaser]="IsTeaser"
           alt="{{'IMAGE_OF' | translate }} {{item.title}}"
           [src]="showAlternateImage ? imageUrl : item.titleImage || ''"
           (mouseenter)="imageUrl = item.titleImage || ''; currentImageIndex = 0"

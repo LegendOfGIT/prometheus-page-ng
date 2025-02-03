@@ -25,12 +25,44 @@
   }
 }
 
-.informationItems {
+.information-items {
   &__container {
     background-color: $container-background-color;
+    height:13.8em;
+    position: relative;
+    width:21em;
+    z-index: 1;
+
+    @media screen and (min-width: 768px) {
+      height:27.5em;
+      width:42em;
+    }
   }
 
-  &__containerWrapper {
-    z-index: 1;
+  &__image {
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    width: 100%;
+  }
+
+  &__tile {
+    &--50-50 {
+      aspect-ratio: 1/1;
+      background-color:#f3f3f3;
+      flex: 0 0 50%;
+      height:5.7em;
+
+      @media screen and (min-width: 768px) {
+        height:12.5em;
+      }
+    }
+
+    &--100 {
+      aspect-ratio: 1/2;
+      background-color:#f3f3f3;
+      flex: 0 0 100%;
+      height:12em;
+    }
   }
 }

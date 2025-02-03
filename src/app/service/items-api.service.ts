@@ -69,7 +69,6 @@ export class ItemsApiService extends ApiBase {
              this.userService.setHashTags(DEFAULT_HASHTAGS);
            }
 
-
            return response;
          }));
     }

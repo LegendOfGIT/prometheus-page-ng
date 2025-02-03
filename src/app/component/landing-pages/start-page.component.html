@@ -26,19 +26,24 @@
     </div>
   </a>
 
-  <div class="container">
-    <moderated-teaser
-      *ngFor="let teaserItem of STARTPAGE_TEASER_ITEMS"
-      [filters]="teaserItem.filters"
-      [hashtags]="teaserItem.hashtags"
-      [headerTitle]="teaserItem.headerTitle"
-      [linkUri]="teaserItem.linkUri"
-      [navigationId]="teaserItem.navigationId"
-      [searchPattern]="teaserItem.searchPattern"
-      [ssrRendering]="teaserItem.ssrRendering"
-      [createdToday]="teaserItem.createdToday"
-    >
-    </moderated-teaser>
+  <div class="container d-flex justify-content-center mt-5 mt-md-0">
+    <div class="row">
+      <div class="col p-0 p-lg-4">
+        <moderated-teaser
+          *ngFor="let teaserItem of STARTPAGE_TEASER_ITEMS; let i = index"
+          [filters]="teaserItem.filters"
+          [hashtags]="teaserItem.hashtags"
+          [headerTitle]="teaserItem.headerTitle"
+          [linkUri]="teaserItem.linkUri"
+          [navigationId]="teaserItem.navigationId"
+          [searchPattern]="teaserItem.searchPattern"
+          [ssrRendering]="teaserItem.ssrRendering"
+          [createdToday]="teaserItem.createdToday"
+          [bigImageLeft]="i % 2 === 0"
+        >
+        </moderated-teaser>
+      </div>
+    </div>
   </div>
 
   <div class="container pt-3 pb-3">

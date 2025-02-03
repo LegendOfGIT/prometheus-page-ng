@@ -3,10 +3,9 @@ import {
   Component,
   ElementRef, Inject,
   inject,
-  Input,
-  OnInit,
+  Input, OnChanges,
   Optional,
-  PLATFORM_ID,
+  PLATFORM_ID, SimpleChanges,
   ViewChild
 } from '@angular/core';
 import {REQUEST} from "@nguniversal/express-engine/tokens";
@@ -33,7 +32,7 @@ import {ItemsApiService} from "../../service/items-api.service";
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit, AfterViewInit {
+export class ItemComponent implements AfterViewInit, OnChanges {
     private hyphenationPipe: HyphenationPipe = inject(HyphenationPipe);
     private navigationService: NavigationService = inject(NavigationService);
     private itemsService: ItemsApiService = inject(ItemsApiService);
@@ -60,8 +59,10 @@ export class ItemComponent implements OnInit, AfterViewInit {
     @Input()
     public displayMode: ItemDisplayMode = ItemDisplayMode.DEFAULT;
 
-    ngOnInit(): void {
-      this.imageUrl = this.item?.titleImage || '';
+    ngOnChanges(changes: SimpleChanges): void {
+      if (changes['item'] && changes['item'].currentValue?.itemId) {
+        this.imageUrl = this.item?.titleImage || '';
+      }
     }
 
     ngAfterViewInit(): void {
@@ -293,6 +294,10 @@ export class ItemComponent implements OnInit, AfterViewInit {
       }
 
       return this.displayMode !== ItemDisplayMode.TEASER;
+    }
+
+    get IsTeaser(): boolean {
+      return this.displayMode === ItemDisplayMode.TEASER;
     }
 }
 

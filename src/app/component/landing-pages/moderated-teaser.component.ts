@@ -32,7 +32,7 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
   public navigationItem: NavigationItem | undefined = undefined;
 
   @Input()
-  public numberOfItems = 14;
+  public numberOfItems = 5;
 
   @Input()
   public navigationId = '';
@@ -57,6 +57,9 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
 
   @Input()
   public createdToday = false;
+
+  @Input()
+  public bigImageLeft = true;
 
   public DISPLAY_MODE_TEASER: ItemDisplayMode = ItemDisplayMode.TEASER;
 
@@ -116,8 +119,7 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
     }
 
     this.items = [
-      new Item(), new Item(), new Item(), new Item(), new Item(), new Item(), new Item(),
-      new Item(), new Item(), new Item(), new Item(), new Item(), new Item(), new Item()
+      new Item(), new Item(), new Item(), new Item(), new Item()
     ];
 
     this.itemsService.getItems(
@@ -135,5 +137,9 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
         this.items = itemsResponse.items;
       }
     });
+  }
+
+  public getItem(i: number): Item | null {
+    return this.items[i];
   }
 }
