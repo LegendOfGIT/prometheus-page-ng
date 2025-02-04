@@ -16,11 +16,22 @@
 
   &__title {
     color: #000;
-    font-size: 1em;
+    font-size: 0.95em;
     text-align: start;
 
     @media screen and (min-width: 576px) {
-      font-size: 1.5em;
+      font-size: 1.3em;
+    }
+
+    &-container {
+      background-color: $container-background-color;
+      position: relative;
+      width:21em;
+      z-index: 1;
+
+      @media screen and (min-width: 768px) {
+        width:42em;
+      }
     }
   }
 }
@@ -28,13 +39,13 @@
 .information-items {
   &__container {
     background-color: $container-background-color;
-    height:13.8em;
+    height:13.2em;
     position: relative;
     width:21em;
     z-index: 1;
 
     @media screen and (min-width: 768px) {
-      height:27.5em;
+      height:26.8em;
       width:42em;
     }
   }

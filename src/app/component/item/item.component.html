@@ -1,8 +1,8 @@
-<div #itemSection>
+<div #itemSection [class.h-100]="IsTeaser">
   <div
     *ngIf="item"
     [class.informationItem--loading]="!item.itemId"
-    [class.mt-2]="!item.itemId"
+    [class.mt-2]="!IsTeaser && !item.itemId"
     [class.me-2]="!IsTeaser"
     [class.ms-2]="!IsTeaser"
     [class.informationItem-teaser]="IsTeaser"

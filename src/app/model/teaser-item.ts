@@ -1,3 +1,5 @@
+import {ModeratedTeaserMode} from '../component/landing-pages/moderated-teaser-mode';
+
 export class TeaserItem {
   createdToday: boolean = false;
   filters: Array<string> | undefined;
@@ -7,6 +9,7 @@ export class TeaserItem {
   navigationId: string = '';
   searchPattern: string = '';
   ssrRendering: boolean = false;
+  moderatedTeaserMode: ModeratedTeaserMode = ModeratedTeaserMode.ALL_SMALL;
 
   constructor(linkUri: string, navigationId: string, searchPattern: string, headerTitle: string) {
     this.headerTitle = headerTitle;
@@ -27,6 +30,11 @@ export class TeaserItem {
 
   public setSsrRendering(ssrRendering: boolean): TeaserItem {
     this.ssrRendering = ssrRendering;
+    return this;
+  }
+
+  public setModeratedTeaserMode(moderatedTeaserMode: ModeratedTeaserMode): TeaserItem {
+    this.moderatedTeaserMode = moderatedTeaserMode;
     return this;
   }
 

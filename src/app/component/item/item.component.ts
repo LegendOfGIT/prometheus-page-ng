@@ -1,10 +1,10 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef, Inject,
+  ElementRef, EventEmitter, Inject,
   inject,
   Input, OnChanges,
-  Optional,
+  Optional, Output,
   PLATFORM_ID, SimpleChanges,
   ViewChild
 } from '@angular/core';
@@ -25,7 +25,7 @@ import {DiscountItem} from 'src/app/model/discount-item';
 import {Discounts} from 'src/app/configurations/discounts';
 import {UserService} from 'src/app/service/user.service';
 import {CorrespondingItem} from 'src/app/model/corresponding-item';
-import {ItemsApiService} from "../../service/items-api.service";
+import {ItemsApiService} from 'src/app/service/items-api.service';
 
 @Component({
   selector: 'app-item',
@@ -58,6 +58,9 @@ export class ItemComponent implements AfterViewInit, OnChanges {
 
     @Input()
     public displayMode: ItemDisplayMode = ItemDisplayMode.DEFAULT;
+
+    @Output()
+    public imageError: EventEmitter<Item | null> = new EventEmitter<Item | null>();
 
     ngOnChanges(changes: SimpleChanges): void {
       if (changes['item'] && changes['item'].currentValue?.itemId) {
@@ -201,6 +204,8 @@ export class ItemComponent implements AfterViewInit, OnChanges {
         .map((provider: CorrespondingItem | null) => provider?.mean || '');
 
       meansToDelete.forEach((meanToDelete: string): void => this.itemsService.removeProviderByMean(meanToDelete));
+
+      this.imageError.emit(this.item);
     }
 
     get itemUrl(): string {

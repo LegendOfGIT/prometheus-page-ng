@@ -1,9 +1,11 @@
 import {TeaserItem} from '../model/teaser-item';
+import {ModeratedTeaserMode} from '../component/landing-pages/moderated-teaser-mode';
 
 export class Startpage {
   public static TEASER_ITEMS: TeaserItem[] = [
     new TeaserItem('/kids?search=geschenk', 'KIDS', 'geschenk', 'TEASER_TITLE_CHRISTMAS_KIDS_GIFT_IDEAS')
-      .setSsrRendering(true),
+      .setSsrRendering(true)
+      .setModeratedTeaserMode(ModeratedTeaserMode.START_WITH_BIG_END_WITH_SMALL),
     /*new TeaserItem('/electronics-and-computers/computers', 'ELECTRONICS_AND_COMPUTERS_COMPUTERS', '', 'TEASER_TECHNOLOGY_NOVEMBER')
       .setSsrRendering(true),
     /*new TeaserItem('/fashion?search=kostüm', 'FASHION', 'kostüm', 'TEASER_HALLOWEEN_COSTUMES')
@@ -12,7 +14,9 @@ export class Startpage {
       .setHashtags(['Schnäppchen'])
       .setSsrRendering(true),*/
     /*new TeaserItem('/home/garden', 'HOME_GARDEN', 'grill', 'TEASER_TITLE_INTO_THE_GARDEN'),*/
-    new TeaserItem('/hashtags/Highlights?search=winter', '', 'winter', 'TEASER_WINTER_IS_COMING'),
+    new TeaserItem('/hashtags/Highlights?search=winter', '', 'winter', 'TEASER_WINTER_IS_COMING')
+      .setSsrRendering(true)
+      .setModeratedTeaserMode(ModeratedTeaserMode.ALL_SMALL),
     /*new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', '')
       .setHashtags(['Schnäppchen']),*/
     /*new TeaserItem('/hashtags/Highlights?search=vegan', '', 'vegan', 'VEGANuary')
@@ -26,19 +30,23 @@ export class Startpage {
       .setHashtags(['Highlights']),
     new TeaserItem('', 'GROCERIES_FOOD', 'Bio', ''),*/
 
-    new TeaserItem('/kids?search=tonies', 'KIDS', 'tonies', 'TEASER_TITLE_TONIES'),
+    new TeaserItem('/kids?search=tonies', 'KIDS', 'tonies', 'TEASER_TITLE_TONIES')
+      .setModeratedTeaserMode(ModeratedTeaserMode.THREE_TIMES_BIG),
 
     new TeaserItem('/kids?hashtags=LetsPlay', 'KIDS', '', 'TEASER_TITLE_HASHTAG_LETSPLAY')
-      .setHashtags(['LetsPlay']),
+      .setHashtags(['LetsPlay'])
+      .setModeratedTeaserMode(ModeratedTeaserMode.START_WITH_SMALL_END_WITH_BIG),
 
     new TeaserItem('/beauty-and-care', 'BEAUTY_CARE', '', 'TEASER_TITLE_BEAUTY_CARE')
       .setSsrRendering(true),
-    new TeaserItem('/beauty-and-care/fragrances', 'BEAUTY_CARE_FRAGRANCES_WOMEN', '', 'TEASER_TITLE_FRAGRANCES'),
-    new TeaserItem('', 'BEAUTY_CARE_FRAGRANCES_MEN', '', ''),
+    new TeaserItem('/beauty-and-care/fragrances', 'BEAUTY_CARE_FRAGRANCES_WOMEN', '', 'TEASER_TITLE_FRAGRANCES')
+      .setModeratedTeaserMode(ModeratedTeaserMode.START_WITH_SMALL_END_WITH_BIG),
+    new TeaserItem('', 'BEAUTY_CARE_FRAGRANCES_MEN', '', '')
+      .setModeratedTeaserMode(ModeratedTeaserMode.START_WITH_BIG_END_WITH_SMALL),
     new TeaserItem('/beauty-and-care?search=vegan', 'BEAUTY_CARE', 'vegan', 'TEASER_TITLE_VEGAN_COSMETICS'),
 
-    new TeaserItem('/beauty-and-care?filters=1000022', 'BEAUTY_CARE', '', 'Black is beautiful Shop')
-      .setFilters(['1000022']),
+    /*new TeaserItem('/beauty-and-care?filters=1000022', 'BEAUTY_CARE', '', 'Black is beautiful Shop')
+      .setFilters(['1000022']),*/
     new TeaserItem('/beauty-and-care?filters=1000040', 'BEAUTY_CARE', '', 'Sandawha Shop')
       .setFilters(['1000040']),
 
@@ -54,12 +62,13 @@ export class Startpage {
 
     new TeaserItem('/electronics-and-computers', 'ELECTRONICS_AND_COMPUTERS', '', 'TEASER_TITLE_HASHTAG_KEEPCOOL')
       .setHashtags(['KeepCool']),
-    new TeaserItem('/electronics-and-computers/home/fully-automatic-coffee-machines', 'ELECTRONICS_AND_COMPUTERS_HOME_FULLYAUTOMATICCOFFEEMACHINES', '', 'TEASER_TITLE_COFFEE_MACHINES'),
+    new TeaserItem('/electronics-and-computers/home/fully-automatic-coffee-machines', 'ELECTRONICS_AND_COMPUTERS_HOME_FULLYAUTOMATICCOFFEEMACHINES', '', 'TEASER_TITLE_COFFEE_MACHINES')
+      .setModeratedTeaserMode(ModeratedTeaserMode.THREE_TIMES_BIG),
 
-    new TeaserItem('/kids?filters=1000049', 'FASHION', '', 'Waschbär Shop')
+    /*new TeaserItem('/kids?filters=1000049', 'FASHION', '', 'Waschbär Shop')
       .setFilters(['1000049']),
 
-    /*new TeaserItem('/fashion?hashtags=Sommer2023', 'FASHION', '', 'TEASER_TITLE_FASHION_SUMMER2023')
+    new TeaserItem('/fashion?hashtags=Sommer2023', 'FASHION', '', 'TEASER_TITLE_FASHION_SUMMER2023')
       .setHashtags(['Sommer2023'])
       .setSsrRendering(true),*/
     new TeaserItem('/fashion?filters=1000096-1000099-1000102-1000103-1000105', 'FASHION_WOMEN', '', 'TEASER_TITLE_FASHION_BRANDS')

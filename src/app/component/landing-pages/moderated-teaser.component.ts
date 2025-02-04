@@ -1,7 +1,7 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
+  ElementRef, inject,
   Inject,
   Input,
   OnInit,
@@ -13,14 +13,19 @@ import {Router} from '@angular/router';
 import {isPlatformServer} from '@angular/common';
 import {REQUEST} from '@nguniversal/express-engine/tokens';
 import {Request} from 'express';
+import {Observable} from 'rxjs';
 
 import {Item} from '../../model/item';
 import {ItemsApiService} from '../../service/items-api.service';
 import {NavigationItem} from '../../model/navigation-item';
 import {UserService} from '../../service/user.service';
-import {ItemComponent, ItemDisplayMode} from '../item/item.component';
+import {ItemDisplayMode} from '../item/item.component';
 import {ItemsResponse} from '../../model/items-response';
 import {ModeratedTeaserMode} from './moderated-teaser-mode';
+import {HyphenationPipe} from '../../pipes/web.pipe';
+import {TrackingActivityItem} from '../../model/tracking-activity-item';
+import {TrackingInterestLevel} from '../../model/tracking-interest-level';
+import {TrackingService} from '../../service/tracking.service';
 
 @Component({
   selector: 'moderated-teaser',
@@ -28,7 +33,8 @@ import {ModeratedTeaserMode} from './moderated-teaser-mode';
   styleUrls: ['./moderated-teaser.component.scss']
 })
 export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
-  private currentItemIndex: number = -1;
+  private hyphenationPipe: HyphenationPipe = inject(HyphenationPipe);
+  private trackingService: TrackingService = inject(TrackingService);
 
   @ViewChild('teaserSection') teaserSection: ElementRef | undefined;
 
@@ -128,6 +134,73 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
     return;
   }
 
+  public imageLoadingError(item: Item | null): void {
+    for (let itemContainer of this.itemContainers) {
+      for (let itemFromContainerIndex = 0; itemFromContainerIndex <= itemContainer.items.length; itemFromContainerIndex++) {
+        const itemFromContainer: Item | null = itemContainer.items[itemFromContainerIndex];
+        if (itemFromContainer !== item) {
+          continue;
+        }
+
+        const emptyItem: Item = new Item();
+        emptyItem.id = item?.id || '';
+        itemContainer.items[itemFromContainerIndex] = emptyItem;
+      }
+    }
+
+    this.getItems(1, true).subscribe((itemsResponse: ItemsResponse): void => {
+      const itemFromResponse: Item | null | undefined = itemsResponse?.items?.length ? itemsResponse.items[0] : undefined;
+      if (!itemFromResponse) {
+        return;
+      }
+
+      for (let itemContainer of this.itemContainers) {
+        for (let itemFromContainerIndex = 0; itemFromContainerIndex <= itemContainer.items.length; itemFromContainerIndex++) {
+          const itemFromContainer: Item | null = itemContainer.items[itemFromContainerIndex];
+          if (itemFromContainer?.id !== item?.id) {
+            continue;
+          }
+
+          itemContainer.items[itemFromContainerIndex] = itemFromResponse;
+        }
+      }
+    });
+  }
+
+  public getItemUrl(item: Item | null): string {
+    if (!item) {
+      return '';
+    }
+
+    return `p/${item.id}/${this.hyphenationPipe.transform(item.title)}`;
+  }
+
+  public pickedInformation(item: Item): void {
+    this.trackingService.addActivity(
+      TrackingActivityItem.create()
+        .setInformationItemId(item.itemId)
+        .setInformationItemLabel(this.hyphenationPipe.transform(item?.title))
+        .setInterestLevel(TrackingInterestLevel.HIGH)
+        .setSearchPattern(this.searchPattern)
+        .setFilters((this.filters || []).join('-'))
+        .setTrackingId('item.clicked'));
+  }
+
+  private getItems(numberOfItems: number, randomItems: boolean): Observable<ItemsResponse> {
+    return this.itemsService.getItems(
+      this.navigationId,
+      this.searchPattern,
+      (this.filters || []).join('-'),
+      numberOfItems,
+      randomItems,
+      undefined,
+      undefined,
+      undefined,
+      this.hashtags,
+      this.createdToday
+    )
+  }
+
   private initialiseItems(): void {
     if (isPlatformServer(this.platformId) && !this.ssrRendering) {
       return;
@@ -136,18 +209,9 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
     this.items = [
       new Item(), new Item(), new Item(), new Item(), new Item(), new Item()
     ];
+    this.distributeItemsInContainers();
 
-    this.itemsService.getItems(
-      this.navigationId,
-      this.searchPattern,
-      (this.filters || []).join('-'),
-      this.numberOfItems,
-      false,
-      undefined,
-      undefined,
-      undefined,
-      this.hashtags,
-      this.createdToday).subscribe((itemsResponse: ItemsResponse): void => {
+    this.getItems(this.numberOfItems, false).subscribe((itemsResponse: ItemsResponse): void => {
       if (itemsResponse?.items?.length) {
         this.items = itemsResponse.items;
         this.distributeItemsInContainers();
@@ -169,15 +233,6 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
     }
 
     this.itemContainers = itemContainers;
-  }
-
-  public getNextItem(): Item | null {
-    this.currentItemIndex++;
-    return this.items.length > this.currentItemIndex ? this.items[this.currentItemIndex] || null : null;
-  }
-
-  public getItemsPattern(): number[] {
-    return this.cssClassMapping[this.moderatedTeaserMode];
   }
 }
 
