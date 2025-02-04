@@ -6,9 +6,7 @@
         (click)="navigateToCategory(navigationId, $event)"
         href="{{getUriOfNavigationId(navigationId)}}"
         class="breadcrumbs__item{{breadcrumbItemModifier}}"
-      >
-        {{ 'NAVIGATION_' + navigationId | translate }}
-      </a>
+      >{{ 'NAVIGATION_' + navigationId | translate }}</a>
     </div>
   </div>
 </nav>
