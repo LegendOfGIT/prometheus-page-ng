@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { RESPONSE } from '@nguniversal/express-engine/tokens';
 import { Title } from '@angular/platform-browser';
 import { TranslationService } from '../../service/translation.service';
 
@@ -10,7 +9,7 @@ import { TranslationService } from '../../service/translation.service';
 })
 export class NotFoundComponent implements OnInit {
   constructor(
-    @Optional() @Inject(RESPONSE) private readonly response: any,
+    @Optional() @Inject('RESPONSE') private readonly response: any, // TODO: inject response
     translationService: TranslationService,
     titleService: Title
 ) {

@@ -8,7 +8,6 @@ import {
   PLATFORM_ID, SimpleChanges,
   ViewChild
 } from '@angular/core';
-import {REQUEST} from "@nguniversal/express-engine/tokens";
 import {Request} from "express";
 import {isPlatformBrowser} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -44,7 +43,7 @@ export class ItemComponent implements AfterViewInit, OnChanges {
     public imageUrl = '';
 
     constructor(
-      @Optional() @Inject(REQUEST) private request: Request
+      @Optional() @Inject('REQUEST') private request: Request // TODO: inject request
     ) {
     }
 

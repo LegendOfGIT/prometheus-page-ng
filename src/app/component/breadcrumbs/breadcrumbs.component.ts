@@ -1,10 +1,10 @@
 import {Component, Inject, inject, Input, Optional} from '@angular/core';
+import {Router} from '@angular/router';
+import {Request} from 'express';
+
 import {Navigation} from '../../configurations/navigation';
-import {TranslationService} from "../../service/translation.service";
-import {REQUEST} from "@nguniversal/express-engine/tokens";
-import {Request} from "express";
-import {UserService} from "../../service/user.service";
-import {Router} from "@angular/router";
+import {TranslationService} from '../../service/translation.service';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -18,7 +18,7 @@ export class BreadcrumbsComponent {
   private translationService: TranslationService = inject(TranslationService);
 
   constructor(
-    @Optional() @Inject(REQUEST) private request: Request,
+    @Optional() @Inject('REQUEST') private request: Request, // TODO: inject request
     private router: Router
   ) {
   }

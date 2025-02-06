@@ -1,18 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { endpoints } from '../../environments/endpoints';
-import { Item } from '../model/item';
-import { ItemsResponseDto } from '../model/dto/items-response-dto';
 import { ApiBase } from './api-base';
-import { UserService } from './user.service';
 import { Observable } from 'rxjs';
 import { ApplicationConfiguration } from '../configurations/app';
-import { isPlatformServer } from '@angular/common';
-import { ItemsResponse } from '../model/items-response';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import { Request } from 'express';
-import { DEFAULT_HASHTAGS } from '../model/user';
 import {AvailableFilterItem} from "../model/available-filter-item";
 import {AvailableFiltersResponse} from "../model/available-filters-response";
 
@@ -22,10 +14,7 @@ import {AvailableFiltersResponse} from "../model/available-filters-response";
 export class FiltersApiService extends ApiBase {
 
     constructor(
-      private http: HttpClient,
-      private userService: UserService,
-      @Inject(PLATFORM_ID) private platformId: Object,
-      @Optional() @Inject(REQUEST) private request: Request
+      private http: HttpClient
     ) {
         super(ApplicationConfiguration.API_BASE);
     }

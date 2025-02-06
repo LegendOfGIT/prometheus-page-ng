@@ -2,8 +2,7 @@ import {Component, Inject, Optional, PLATFORM_ID} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
 import {debounceTime} from 'rxjs/operators';
-import {REQUEST} from "@nguniversal/express-engine/tokens";
-import {Request} from "express";
+import {Request} from 'express';
 import {isPlatformBrowser} from '@angular/common';
 
 import {UserService} from 'src/app/service/user.service';
@@ -35,7 +34,7 @@ export class HeaderComponent {
     private hashtagsService: HashTagsApiService,
     private suggestionsApiService : SuggestionsApiService,
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Optional() @Inject(REQUEST) private request: Request
+    @Optional() @Inject('REQUEST') private request: Request // TODO: inject request
   ) {
     this.subscribeSearchPatternChanges();
     const searchPattern: string | null = this.getParameterFromUrl('search');

@@ -11,7 +11,6 @@ import {
 } from '@angular/core';
 import {Router} from '@angular/router';
 import {isPlatformServer} from '@angular/common';
-import {REQUEST} from '@nguniversal/express-engine/tokens';
 import {Request} from 'express';
 import {Observable} from 'rxjs';
 
@@ -90,7 +89,7 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
     private itemsService: ItemsApiService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Optional() @Inject(REQUEST) private request: Request
+    @Optional() @Inject('REQUEST') private request: Request // TODO: inject request
   ) {
   }
 

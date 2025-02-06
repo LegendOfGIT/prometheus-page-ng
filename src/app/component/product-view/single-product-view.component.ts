@@ -1,7 +1,8 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, PLATFORM_ID, TransferState, makeStateKey } from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {DomSanitizer, makeStateKey, Meta, SafeHtml, Title, TransferState} from '@angular/platform-browser';
+import {DomSanitizer, Meta, SafeHtml, Title} from '@angular/platform-browser';
 import {DOCUMENT, isPlatformServer} from '@angular/common';
+import {catchError, of} from 'rxjs';
 import {
   Chart,
   CategoryScale,
@@ -26,7 +27,7 @@ import {TrackingActivityItem} from '../../model/tracking-activity-item';
 import {TrackingInterestLevel} from '../../model/tracking-interest-level';
 import {HyphenationPipe} from "../../pipes/web.pipe";
 import {PriceHistoryItem} from "../../model/price-history-item";
-import {catchError, of} from "rxjs";
+
 import {Filters} from "../../configurations/filters";
 import {FilterItem} from "../../model/filter-item";
 

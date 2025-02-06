@@ -1,21 +1,21 @@
 import {Component, Inject, OnInit, Optional, PLATFORM_ID} from '@angular/core';
+import {Meta, Title} from '@angular/platform-browser';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ActivatedRoute, ParamMap, Router, UrlTree} from '@angular/router';
 import {DOCUMENT, isPlatformServer} from '@angular/common';
+import {Request} from 'express';
 
 import {Item} from 'src/app/model/item';
 import {ItemsApiService} from 'src/app/service/items-api.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {TranslationService} from '../../service/translation.service';
-import {Meta, Title} from '@angular/platform-browser';
 import {NavigationItem} from '../../model/navigation-item';
 import {Navigation} from '../../configurations/navigation';
 import {ItemDisplayMode} from '../item/item.component';
 import {UserService} from '../../service/user.service';
 import {ItemsResponse} from '../../model/items-response';
-import {REQUEST} from "@nguniversal/express-engine/tokens";
-import {Request} from "express";
+
 
 @Component({
   selector: 'app-items',
@@ -51,7 +51,7 @@ export class ItemsComponent implements OnInit {
       titleService: Title,
       @Inject(DOCUMENT) private doc: Document,
       @Inject(PLATFORM_ID) private platformId: Object,
-      @Optional() @Inject(REQUEST) private request: Request
+      @Optional() @Inject('REQUEST') private request: Request // TODO: inject request
     ) {
       route.paramMap.subscribe((params: ParamMap): void => {
         const navigationIdLevelA: string = params.get('navigationIdLevelA') || '';

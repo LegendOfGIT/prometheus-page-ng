@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, PLATFORM_ID, ViewChild} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
-import {REQUEST} from '@nguniversal/express-engine/tokens';
 import {Request} from 'express';
 import {isPlatformBrowser} from '@angular/common';
 
@@ -38,7 +37,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
     private router: Router,
     contentService: ContentService,
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Optional() @Inject(REQUEST) private request: Request
+    @Optional() @Inject('REQUEST') private request: Request // TODO: inject request
   ) {
     contentService.getStories().subscribe((stories: Story[]):  void => {
       this.stories = stories;

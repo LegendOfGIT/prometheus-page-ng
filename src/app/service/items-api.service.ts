@@ -3,7 +3,6 @@ import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { isPlatformServer } from '@angular/common';
-import { REQUEST } from '@nguniversal/express-engine/tokens';
 import { Request } from 'express';
 
 import { endpoints } from '../../environments/endpoints';
@@ -24,7 +23,7 @@ export class ItemsApiService extends ApiBase {
       private http: HttpClient,
       private userService: UserService,
       @Inject(PLATFORM_ID) private platformId: Object,
-      @Optional() @Inject(REQUEST) private request: Request
+      @Optional() @Inject('REQUEST') private request: Request // TODO: inject request
     ) {
       super(ApplicationConfiguration.API_BASE);
     }

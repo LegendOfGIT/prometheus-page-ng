@@ -1,15 +1,13 @@
-import {Component, Inject, Input, OnInit, Optional, PLATFORM_ID} from '@angular/core';
+import {Component, Inject, Input, OnInit, Optional, PLATFORM_ID, makeStateKey,  TransferState} from '@angular/core';
 import { Item } from '../../model/item';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ItemsApiService } from '../../service/items-api.service';
 import { Subject } from 'rxjs';
 import { NavigationItem } from '../../model/navigation-item';
 import { isPlatformServer } from '@angular/common';
-import { makeStateKey,  TransferState } from '@angular/platform-browser';
 import { takeUntil } from 'rxjs/operators';
 import { UserService } from '../../service/user.service';
 import {ItemsResponse} from "../../model/items-response";
-import {REQUEST} from "@nguniversal/express-engine/tokens";
 import {Request} from "express";
 
 @Component({
@@ -49,7 +47,7 @@ export class CategoryTeaserComponent implements OnInit {
     private transferState: TransferState,
     private userService: UserService,
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Optional() @Inject(REQUEST) private request: Request
+    @Optional() @Inject('REQUEST') private request: Request // TODO: inject request
   ) {
   }
 
