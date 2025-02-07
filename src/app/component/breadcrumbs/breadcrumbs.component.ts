@@ -5,11 +5,15 @@ import {Request} from 'express';
 import {Navigation} from '../../configurations/navigation';
 import {TranslationService} from '../../service/translation.service';
 import {UserService} from '../../service/user.service';
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
-  styleUrls: ['./breadcrumbs.component.scss']
+  standalone: true,
+  styleUrls: ['./breadcrumbs.component.scss'],
+  imports: [TranslationPipe, NgIf, NgForOf]
 })
 export class BreadcrumbsComponent {
   @Input()
@@ -19,7 +23,8 @@ export class BreadcrumbsComponent {
 
   constructor(
     @Optional() @Inject('REQUEST') private request: Request, // TODO: inject request
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {
   }
 
@@ -28,7 +33,7 @@ export class BreadcrumbsComponent {
   }
 
   public navigateToCategory(navigationId: string, event: Event): void {
-    if (!UserService.isBotRequest(this.request)) {
+    if (!this.userService.isBotRequest(this.request)) {
       event.preventDefault();
 
       this.router.navigateByUrl('/', { skipLocationChange: true }).then((): void => {

@@ -5,10 +5,16 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Story } from 'src/app/model/story';
 import { ContentService } from 'src/app/service/content.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'stories',
   templateUrl: './stories.component.html',
+  standalone: true,
+  imports: [
+    NgIf,
+    NgForOf
+  ],
   styleUrls: ['./stories.component.scss']
 })
 export class StoriesComponent implements OnDestroy {

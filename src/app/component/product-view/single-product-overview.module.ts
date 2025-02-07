@@ -8,14 +8,9 @@ import { SingleProductOverviewRoutingModule } from './single-product-overview-ro
 import { SingleProductViewComponent } from './single-product-view.component';
 
 @NgModule({
-  declarations: [
-    SingleProductViewComponent
-  ],
-  exports: [
-    SingleProductViewComponent
-  ],
   imports: [
     SingleProductOverviewRoutingModule,
+    SingleProductViewComponent,
 
     CommonModule,
     NgxSliderModule,

@@ -1,13 +1,13 @@
 import {Injectable, Pipe} from '@angular/core';
 
-@Pipe({ name: 'urlEncode' })
+@Pipe({ name: 'urlEncode', standalone: false })
 export class UrlEncodePipe {
   public transform(key: string): string {
     return encodeURIComponent(key);
   }
 }
 
-@Pipe({ name: 'hyphenate' })
+@Pipe({ name: 'hyphenate', standalone: false })
 @Injectable({
   providedIn: 'root'
 })

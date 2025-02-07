@@ -1,6 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 import {Wishlist} from '../../model/wishlist';
 import {WishlistItemsApiService} from '../../service/wishlist-items-api.service';
@@ -8,11 +8,18 @@ import {MessagesService} from "../../service/messages.service";
 import {TranslationService} from "../../service/translation.service";
 import {MessageType} from "../../model/message";
 import {Module} from "../../service/navigation.service";
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {RouterLink} from "@angular/router";
+import {SharedComponentsModule} from "../shared-components.module";
+import {LoadingComponent} from "../loading/loading.component";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-wishlists',
   templateUrl: './wishlists.component.html',
-  styleUrls: ['./wishlists.component.scss']
+  styleUrls: ['./wishlists.component.scss'],
+  standalone: true,
+  imports: [TranslationPipe, RouterLink, ReactiveFormsModule, SharedComponentsModule, LoadingComponent, NgIf, NgForOf]
 })
 export class WishlistsComponent implements OnDestroy {
   public wishlists: Wishlist[] = [];

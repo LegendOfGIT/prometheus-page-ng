@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, PLATFORM_ID, TransferState, makeStateKey } from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {DomSanitizer, Meta, SafeHtml, Title} from '@angular/platform-browser';
-import {DOCUMENT, isPlatformServer} from '@angular/common';
+import {DatePipe, DOCUMENT, isPlatformServer, NgForOf, NgIf} from '@angular/common';
 import {catchError, of} from 'rxjs';
 import {
   Chart,
@@ -30,11 +30,25 @@ import {PriceHistoryItem} from "../../model/price-history-item";
 
 import {Filters} from "../../configurations/filters";
 import {FilterItem} from "../../model/filter-item";
+import {CategoryTeaserComponent} from "../landing-pages/category-teaser.component";
+import {ModeratedTeaserComponent} from "../landing-pages/moderated-teaser.component";
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {BreadcrumbsComponent} from "../breadcrumbs/breadcrumbs.component";
 
 @Component({
   selector: 'single-product-view',
   changeDetection: ChangeDetectionStrategy.Default,
   templateUrl: './single-product-view.component.html',
+  standalone: true,
+  imports: [
+    CategoryTeaserComponent,
+    NgForOf,
+    NgIf,
+    ModeratedTeaserComponent,
+    TranslationPipe,
+    DatePipe,
+    BreadcrumbsComponent
+  ],
   styleUrls: ['./single-product-view.component.scss']
 })
 export class SingleProductViewComponent implements OnInit {

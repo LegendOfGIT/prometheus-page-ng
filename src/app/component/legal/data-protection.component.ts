@@ -4,6 +4,7 @@ import {Module, NavigationService} from '../../service/navigation.service';
 @Component({
   selector: 'data-protection',
   templateUrl: './data-protection.component.html',
+  standalone: true,
   styleUrls: ['./data-protection.component.scss']
 })
 export class DataProtectionComponent {

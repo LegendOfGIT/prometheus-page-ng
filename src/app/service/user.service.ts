@@ -1,10 +1,8 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import { Subject } from 'rxjs';
 import { Request } from 'express';
 
 import { v4 as uuidV4 } from 'uuid';
-import { WishlistItemsApiService } from 'src/app/service/wishlist-items-api.service';
 
 import { DEFAULT_HASHTAGS, User } from 'src/app/model/user';
 import { StorageService } from './storage.service';
@@ -126,15 +124,15 @@ export class UserService {
       return this.getHashtags().length ? this.getHashtags()[0] : '';
     }
 
-    public static getUserAgent(request: Request): string {
+    public getUserAgent(request: Request): string {
       if (request) {
         return request.headers['user-agent'] || '';
       }
 
-      return window.navigator.userAgent || '';
+      return isPlatformServer(this.platformId) ? '' : window.navigator.userAgent || '';
     }
 
-    public static isBotRequest(request: Request): boolean {
+    public isBotRequest(request: Request): boolean {
       const agent: string = this.getUserAgent(request).toLowerCase();
 
       return ['amazonbot', 'bingbot', 'googlebot', 'semrushbot', 'spider']

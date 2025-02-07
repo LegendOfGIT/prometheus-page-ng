@@ -8,16 +8,10 @@ import { StoryComponent } from './story.component';
 import {StoriesComponent} from "./stories.component";
 
 @NgModule({
-  declarations: [
-    StoriesComponent,
-    StoryComponent
-  ],
-  exports: [
-    StoriesComponent,
-    StoryComponent
-  ],
   imports: [
     StoriesRoutingModule,
+    StoriesComponent,
+    StoryComponent,
 
     CommonModule,
 

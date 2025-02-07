@@ -1,11 +1,18 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {WishlistItem} from '../../model/wishlist-item';
 import {WishlistItemsApiService} from '../../service/wishlist-items-api.service';
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-wishlist-item',
   templateUrl: './wishlist-item.component.html',
-  styleUrls: ['./wishlist-item.component.scss']
+  styleUrls: ['./wishlist-item.component.scss'],
+  imports: [
+    TranslationPipe,
+    NgIf
+  ],
+  standalone: true
 })
 export class WishlistItemComponent implements OnInit, OnDestroy {
     private deleteTimers: DeleteItemTimer[] = [];

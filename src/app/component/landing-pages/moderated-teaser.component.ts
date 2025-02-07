@@ -9,8 +9,8 @@ import {
   PLATFORM_ID,
   ViewChild
 } from '@angular/core';
-import {Router} from '@angular/router';
-import {isPlatformServer} from '@angular/common';
+import {Router, RouterLink} from '@angular/router';
+import {isPlatformServer, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {Request} from 'express';
 import {Observable} from 'rxjs';
 
@@ -18,17 +18,27 @@ import {Item} from '../../model/item';
 import {ItemsApiService} from '../../service/items-api.service';
 import {NavigationItem} from '../../model/navigation-item';
 import {UserService} from '../../service/user.service';
-import {ItemDisplayMode} from '../item/item.component';
+import {ItemComponent, ItemDisplayMode} from '../item/item.component';
 import {ItemsResponse} from '../../model/items-response';
 import {ModeratedTeaserMode} from './moderated-teaser-mode';
 import {HyphenationPipe} from '../../pipes/web.pipe';
 import {TrackingActivityItem} from '../../model/tracking-activity-item';
 import {TrackingInterestLevel} from '../../model/tracking-interest-level';
 import {TrackingService} from '../../service/tracking.service';
+import {TranslationPipe} from "../../pipes/translation.pipe";
 
 @Component({
   selector: 'moderated-teaser',
   templateUrl: './moderated-teaser.component.html',
+  standalone: true,
+  imports: [
+    ItemComponent,
+    RouterLink,
+    NgTemplateOutlet,
+    TranslationPipe,
+    NgIf,
+    NgForOf
+  ],
   styleUrls: ['./moderated-teaser.component.scss']
 })
 export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
@@ -88,6 +98,7 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
   constructor(
     private itemsService: ItemsApiService,
     private router: Router,
+    private userService: UserService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() @Inject('REQUEST') private request: Request // TODO: inject request
   ) {
@@ -124,7 +135,7 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
   }
 
   public navigateToMore(event: Event): void {
-    if (UserService.isBotRequest(this.request)) {
+    if (this.userService.isBotRequest(this.request)) {
       return;
     }
 

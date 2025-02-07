@@ -9,10 +9,22 @@ import {Navigation} from 'src/app/configurations/navigation';
 import {NavigationItem} from 'src/app/model/navigation-item';
 import {ContentService} from 'src/app/service/content.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {SharedComponentsModule} from "../shared-components.module";
+import {CategoryTeaserComponent} from "../landing-pages/category-teaser.component";
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'story',
   templateUrl: './story.component.html',
+  standalone: true,
+  imports: [
+    TranslationPipe,
+    SharedComponentsModule,
+    CategoryTeaserComponent,
+    NgIf,
+    NgForOf
+  ],
   styleUrls: ['./story.component.scss']
 })
 export class StoryComponent implements OnDestroy {

@@ -10,10 +10,23 @@ import { ThingOfInterest } from 'src/app/model/thing-of-interest';
 import { Link, LinkType } from 'src/app/model/link';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {Address} from "../../model/address";
+import {SharedComponentsModule} from "../shared-components.module";
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {CategoryTeaserComponent} from "../landing-pages/category-teaser.component";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'thing-of-interest',
   templateUrl: './thing-of-interest.component.html',
+  standalone: true,
+  imports: [
+    SharedComponentsModule,
+    TranslationPipe,
+    CategoryTeaserComponent,
+    NgClass,
+    NgIf,
+    NgForOf
+  ],
   styleUrls: ['./thing-of-interest.component.scss']
 })
 export class ThingOfInterestComponent implements OnDestroy {

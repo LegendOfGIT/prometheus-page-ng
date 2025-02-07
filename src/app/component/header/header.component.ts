@@ -1,9 +1,9 @@
 import {Component, Inject, Optional, PLATFORM_ID} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Router} from '@angular/router';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {Router, RouterLink} from '@angular/router';
 import {debounceTime} from 'rxjs/operators';
 import {Request} from 'express';
-import {isPlatformBrowser} from '@angular/common';
+import {isPlatformBrowser, NgClass, NgForOf, NgIf} from '@angular/common';
 
 import {UserService} from 'src/app/service/user.service';
 import {WishlistItemsApiService} from 'src/app/service/wishlist-items-api.service';
@@ -13,11 +13,15 @@ import {Navigation} from '../../configurations/navigation';
 import {SuggestionItem, SuggestionItemMode} from '../../model/suggestion-item';
 import {HashTagsApiService} from '../../service/hashtags-api.service';
 import {SuggestionsApiService} from '../../service/suggestions-api.service';
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {LoadingComponent} from "../loading/loading.component";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  standalone: true,
+  imports: [TranslationPipe, LoadingComponent, NgClass, NgForOf, ReactiveFormsModule, RouterLink, NgIf]
 })
 export class HeaderComponent {
   public isLanguageSelectionOpen = false;
@@ -146,7 +150,7 @@ export class HeaderComponent {
   }
 
   public visitStartPage(event: Event): void {
-    if (UserService.isBotRequest(this.request)) {
+    if (this.userService.isBotRequest(this.request)) {
       return;
     }
 

@@ -8,10 +8,17 @@ import {Address} from 'src/app/model/address';
 import {Link, LinkType} from 'src/app/model/link';
 import {HyphenationPipe} from 'src/app/pipes/web.pipe';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'things-of-interest',
   templateUrl: './things-of-interest.component.html',
+  standalone: true,
+  imports: [
+    NgClass,
+    NgIf,
+    NgForOf
+  ],
   styleUrls: ['./things-of-interest.component.scss']
 })
 export class ThingsOfInterestComponent implements OnDestroy {

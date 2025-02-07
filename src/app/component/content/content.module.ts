@@ -9,22 +9,13 @@ import { ManageThingsOfInterestComponent } from './things-of-interest/manage-thi
 import { ManageThingOfInterestComponent } from './things-of-interest/manage-thing-of-interest.component';
 
 @NgModule({
-  declarations: [
-    ManageStoriesComponent,
-    ManageStoryComponent,
-    ManageThingsOfInterestComponent,
-    ManageThingOfInterestComponent,
-    ManageTranslationsComponent
-  ],
-  exports: [
-    ManageStoriesComponent,
-    ManageStoryComponent,
-    ManageThingsOfInterestComponent,
-    ManageThingOfInterestComponent,
-    ManageTranslationsComponent
-  ],
   imports: [
     ContentRoutingModule,
+    ManageStoriesComponent,
+    ManageStoryComponent,
+    ManageThingsOfInterestComponent,
+    ManageThingOfInterestComponent,
+    ManageTranslationsComponent,
 
     CommonModule
   ]

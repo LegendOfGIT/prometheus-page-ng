@@ -4,6 +4,7 @@ import {Module, NavigationService} from '../../service/navigation.service';
 @Component({
   selector: 'imprint',
   templateUrl: './imprint.component.html',
+  standalone: true,
   styleUrls: ['./imprint.component.scss']
 })
 export class ImprintComponent {

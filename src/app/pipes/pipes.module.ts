@@ -6,7 +6,6 @@ import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     HyphenationPipe,
-    TranslationPipe,
     UrlEncodePipe
   ],
   exports: [
@@ -16,7 +15,8 @@ import { DatePipe } from '@angular/common';
     UrlEncodePipe
   ],
   imports: [
-    DatePipe
+    DatePipe,
+    TranslationPipe
   ]
 })
 export class PipesModule { }

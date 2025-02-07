@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, PLATFORM_ID, ViewChild} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {Request} from 'express';
-import {isPlatformBrowser} from '@angular/common';
+import {isPlatformBrowser, NgForOf, NgIf} from '@angular/common';
 
 import {UserService} from './service/user.service';
 import {WishlistItemsApiService} from './service/wishlist-items-api.service';
@@ -16,11 +16,27 @@ import {Story} from './model/story';
 import {TranslationService} from './service/translation.service';
 import {ContentService} from './service/content.service';
 import {Module, NavigationService} from './service/navigation.service';
+import {MessagesComponent} from "./component/messages/messages.component";
+import {FooterComponent} from "./component/footer/footer.component";
+import {TranslationPipe} from "./pipes/translation.pipe";
+import {GeneralDataProtectionRegulationComponent} from "./component/legal/general-data-protection-regulation.component";
+import {HeaderComponent} from "./component/header/header.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  imports: [
+    MessagesComponent,
+    FooterComponent,
+    NgForOf,
+    TranslationPipe,
+    RouterOutlet,
+    GeneralDataProtectionRegulationComponent,
+    HeaderComponent,
+    NgIf
+  ],
+  standalone: true
 })
 export class AppComponent implements AfterViewInit, OnInit  {
   @ViewChild('gdpr') gdpr: ElementRef | undefined;
@@ -35,6 +51,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
     private translationService: TranslationService,
     private navigationService: NavigationService,
     private router: Router,
+    private userService: UserService,
     contentService: ContentService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() @Inject('REQUEST') private request: Request // TODO: inject request
@@ -74,7 +91,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
       return;
     }
 
-    if (UserService.isBotRequest(this.request)) {
+    if (this.userService.isBotRequest(this.request)) {
       return;
     }
 
@@ -84,7 +101,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
   }
 
   private initialiseWishlist(): void {
-    if (UserService.isBotRequest(this.request)) {
+    if (this.userService.isBotRequest(this.request)) {
       return;
     }
 
@@ -92,7 +109,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
   }
 
   get deepestLevelNavigationItems(): Array<NavigationItem> {
-    return UserService.isBotRequest(this.request) ? Navigation.getDeepestLevelItems() : [];
+    return this.userService.isBotRequest(this.request) ? Navigation.getDeepestLevelItems() : [];
   }
 
   get StoryItems(): Story[] {

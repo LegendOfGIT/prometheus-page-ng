@@ -9,14 +9,10 @@ import { CommonModule } from '@angular/common';
 import {ProductOverviewRoutingModule} from "./product-overview-routing.module";
 
 @NgModule({
-  declarations: [
-    FilterSelectionComponent,
-    ItemsComponent
-  ],
-  exports: [
-    ItemsComponent
-  ],
   imports: [
+    FilterSelectionComponent,
+    ItemsComponent,
+
     ProductOverviewRoutingModule,
 
     CommonModule,

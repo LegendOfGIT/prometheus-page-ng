@@ -3,10 +3,15 @@ import {TranslationService} from "../../../service/translation.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Secrets} from "../../../configurations/secrets";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'manage-translations',
   templateUrl: './manage-translations.component.html',
+  standalone: true,
+  imports: [
+    NgForOf
+  ],
   styleUrls: ['./manage-translations.component.scss']
 })
 export class ManageTranslationsComponent implements OnDestroy {

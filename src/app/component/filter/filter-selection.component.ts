@@ -1,17 +1,21 @@
 import {AfterViewChecked, Component, inject, Input, OnInit, PLATFORM_ID} from '@angular/core';
 import {ActivatedRoute, Router, UrlTree} from '@angular/router';
 import {FilterItem} from '../../model/filter-item';
-import {isPlatformBrowser} from '@angular/common';
-import {LabelType} from '@angular-slider/ngx-slider';
+import {isPlatformBrowser, NgForOf, NgIf} from '@angular/common';
+import {LabelType, NgxSliderModule} from '@angular-slider/ngx-slider';
 import {FiltersApiService} from '../../service/filters-api.service';
 import {NavigationService} from '../../service/navigation.service';
 import {AvailableFilterItem} from '../../model/available-filter-item';
 import {Filters} from "../../configurations/filters";
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {LoadingComponent} from "../loading/loading.component";
 
 @Component({
   selector: 'app-filter-selection',
   templateUrl: './filter-selection.component.html',
-  styleUrls: ['./filter-selection.component.scss']
+  standalone: true,
+  styleUrls: ['./filter-selection.component.scss'],
+  imports: [TranslationPipe, NgxSliderModule, NgIf, NgForOf, LoadingComponent]
 })
 export class FilterSelectionComponent implements OnInit, AfterViewChecked {
   @Input()

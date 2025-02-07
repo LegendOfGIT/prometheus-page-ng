@@ -1,17 +1,21 @@
 import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DOCUMENT, isPlatformServer } from '@angular/common';
+import {DOCUMENT, isPlatformServer, NgForOf, NgIf} from '@angular/common';
 
 import { Module, NavigationService } from '../../service/navigation.service';
 import { Title } from '@angular/platform-browser';
 import { TranslationService } from '../../service/translation.service';
 import { Startpage } from "../../configurations/startpage";
 import { TeaserItem } from "../../model/teaser-item";
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {ModeratedTeaserComponent} from "./moderated-teaser.component";
 
 @Component({
   selector: 'start-page',
   templateUrl: './start-page.component.html',
-  styleUrls: ['./start-page.component.scss']
+  styleUrls: ['./start-page.component.scss'],
+  standalone: true,
+  imports: [TranslationPipe, ModeratedTeaserComponent, NgIf, NgForOf]
 })
 export class StartPageComponent implements OnInit {
   public STARTPAGE_TEASER_ITEMS: Array<TeaserItem> = Startpage.TEASER_ITEMS;

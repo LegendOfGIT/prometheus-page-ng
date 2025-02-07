@@ -1,5 +1,5 @@
 import {Component, Inject, Input, PLATFORM_ID} from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import {isPlatformBrowser, NgIf} from '@angular/common';
 
 import { Item } from '../../model/item';
 import { UserService } from '../../service/user.service';
@@ -12,6 +12,10 @@ import { HyphenationPipe } from '../../pipes/web.pipe';
 @Component({
   selector: 'app-add-to-wishlist',
   templateUrl: './add-to-wishlist.component.html',
+  standalone: true,
+  imports: [
+    NgIf
+  ],
   styleUrls: ['./add-to-wishlist.component.scss']
 })
 export class AddToWishlistComponent {

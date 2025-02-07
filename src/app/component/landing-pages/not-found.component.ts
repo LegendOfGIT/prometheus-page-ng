@@ -1,11 +1,15 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+
 import { TranslationService } from '../../service/translation.service';
+import {TranslationPipe} from "../../pipes/translation.pipe";
 
 @Component({
   selector: 'not-found',
   templateUrl: './not-found.component.html',
-  styleUrls: ['./not-found.component.scss']
+  styleUrls: ['./not-found.component.scss'],
+  standalone: true,
+  imports: [ TranslationPipe ]
 })
 export class NotFoundComponent implements OnInit {
   constructor(

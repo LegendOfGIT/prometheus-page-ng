@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import {APP_ID, importProvidersFrom, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule, provideHttpClient} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,32 +18,36 @@ import { PipesModule } from './pipes/pipes.module';
 import { NotFoundComponent } from './component/landing-pages/not-found.component';
 import { WishlistsComponent } from './component/wishlist/wishlists.component';
 import { WishlistItemComponent } from './component/wishlist/wishlist-item.component';
+import {NgForOf, NgIf} from "@angular/common";
+import {ModeratedTeaserComponent} from "./component/landing-pages/moderated-teaser.component";
+import {LoadingComponent} from "./component/loading/loading.component";
+import {MessagesComponent} from "./component/messages/messages.component";
 
 @NgModule({
-    declarations: [
-        AppComponent,
+  imports: [
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    WishlistsComponent,
+    GeneralDataProtectionRegulationComponent,
+    HeaderComponent, FooterComponent,
+    NotFoundComponent,
+    StartPageComponent,
+    WishlistItemsComponent,
+    WishlistItemComponent,
+    ImprintComponent,
+    DataProtectionComponent,
 
-        GeneralDataProtectionRegulationComponent,
-        HeaderComponent, FooterComponent,
-        DataProtectionComponent,
-        ImprintComponent,
-        NotFoundComponent,
-        StartPageComponent,
-        WishlistItemsComponent,
-        WishlistItemComponent,
-        WishlistsComponent
-    ],
-    imports: [
-        BrowserModule.withServerTransition({appId: 'serverApp'}),
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-
-        SharedComponentsModule,
-        PipesModule
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+    SharedComponentsModule,
+    PipesModule,
+    NgForOf,
+    NgIf,
+    ModeratedTeaserComponent,
+    LoadingComponent, MessagesComponent
+  ],
+    providers: [
+      { provide: APP_ID,  useValue: 'serverApp' },
+      provideHttpClient()
+    ]
 })
 export class AppModule { }

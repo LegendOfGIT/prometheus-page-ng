@@ -8,7 +8,7 @@ import { DataProtectionComponent } from './component/legal/data-protection.compo
 import { NotFoundComponent } from './component/landing-pages/not-found.component';
 import { WishlistsComponent } from './component/wishlist/wishlists.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '404', component: NotFoundComponent },
   { path: 'data-protection', component: DataProtectionComponent },
   { path: 'imprint', component: ImprintComponent },

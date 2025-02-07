@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule} from "@angular/forms";
 
 import {WishlistItemsApiService} from 'src/app/service/wishlist-items-api.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
@@ -10,11 +10,17 @@ import {MessagesService} from 'src/app/service/messages.service';
 import {TranslationService} from 'src/app/service/translation.service';
 import {MessageType} from 'src/app/model/message';
 import {Wishlist} from 'src/app/model/wishlist';
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {WishlistItemComponent} from "./wishlist-item.component";
+import {NgForOf, NgIf} from "@angular/common";
+import {LoadingComponent} from "../loading/loading.component";
 
 @Component({
   selector: 'app-wishlist-items',
   templateUrl: './wishlist-items.component.html',
-  styleUrls: ['./wishlist-items.component.scss']
+  styleUrls: ['./wishlist-items.component.scss'],
+  standalone: true,
+  imports: [TranslationPipe, WishlistItemComponent, NgForOf, NgIf, ReactiveFormsModule, LoadingComponent]
 })
 export class WishlistItemsComponent implements OnInit, OnDestroy {
     private deleteWishlistTimerHandle: any;
@@ -163,7 +169,7 @@ export class WishlistItemsComponent implements OnInit, OnDestroy {
     }
 
     get items(): Array<WishlistItem | null> {
-      return this.itemsService.items.filter((item: WishlistItem | null): boolean => !item?.itemWasBought ?? false);
+      return this.itemsService.items.filter((item: WishlistItem | null): boolean => !(item?.itemWasBought ?? false));
     }
 
     get boughtItems(): Array<WishlistItem | null> {

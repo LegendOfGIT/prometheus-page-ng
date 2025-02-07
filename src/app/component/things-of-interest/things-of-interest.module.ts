@@ -8,16 +8,10 @@ import { ThingsOfInterestComponent } from './things-of-interest.component';
 import { ThingOfInterestComponent } from './thing-of-interest.component';
 
 @NgModule({
-  declarations: [
-    ThingsOfInterestComponent,
-    ThingOfInterestComponent
-  ],
-  exports: [
-    ThingsOfInterestComponent,
-    ThingOfInterestComponent
-  ],
   imports: [
     ThingsOfInterestRoutingModule,
+    ThingsOfInterestComponent,
+    ThingOfInterestComponent,
 
     CommonModule,
 

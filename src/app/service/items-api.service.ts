@@ -48,7 +48,7 @@ export class ItemsApiService extends ApiBase {
           filterIds,
           navigationId,
           numberOfResults: numberOfResults ? `${numberOfResults}` : '',
-          isBot: UserService.isBotRequest(this.request) ? 'true': 'false',
+          isBot: this.userService.isBotRequest(this.request) ? 'true': 'false',
           randomItems : randomItems ? 'true': 'false',
           page,
           priceFrom,
@@ -104,7 +104,7 @@ export class ItemsApiService extends ApiBase {
           filterIds,
           hashtags: this.getActiveHashtags().join(','),
           numberOfResults: numberOfResults ? `${numberOfResults}` : '',
-          isBot: UserService.isBotRequest(this.request) ? 'true': 'false',
+          isBot: this.userService.isBotRequest(this.request) ? 'true': 'false',
           page,
           priceFrom,
           priceTo,
@@ -127,12 +127,12 @@ export class ItemsApiService extends ApiBase {
         endpoints.itemsSingleItem,
         {
           id,
-          isBot: UserService.isBotRequest(this.request) ? 'true': 'false',
+          isBot: this.userService.isBotRequest(this.request) ? 'true': 'false',
           hashtags: isPlatformServer(this.platformId) ? '' : this.getActiveHashtags().join(',')
         });
 
       let headers: HttpHeaders = new HttpHeaders();
-      const userAgent: string = UserService.getUserAgent(this.request);
+      const userAgent: string = this.userService.getUserAgent(this.request);
       if (userAgent) {
         headers = headers.set('user-agent', userAgent);
       }

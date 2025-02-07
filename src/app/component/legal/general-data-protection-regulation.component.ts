@@ -1,11 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { GdprService } from '../../service/gdpr.service';
 import { GdprDecision, GdprSettings } from '../../model/gdpr-settings';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'general-data-protection-regulation',
   templateUrl: './general-data-protection-regulation.component.html',
-  styleUrls: ['./general-data-protection-regulation.component.scss']
+  styleUrls: ['./general-data-protection-regulation.component.scss'],
+  standalone: true,
+  imports: [ RouterLink ]
 })
 export class GeneralDataProtectionRegulationComponent {
   @Input()

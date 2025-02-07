@@ -1,10 +1,14 @@
 import {Component, ViewChild} from '@angular/core';
 import { Module, NavigationService } from '../../service/navigation.service';
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
+  standalone: true,
+  imports: [TranslationPipe, RouterLink]
 })
 export class FooterComponent {
   @ViewChild('gdprDialog')

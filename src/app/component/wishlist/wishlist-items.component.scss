@@ -1,6 +1,6 @@
-@import '../../../styles';
-@import '../../variables';
-@import 'src/styles/controls';
+@import '../../../styles.scss';
+@import '../../variables.scss';
+@import 'src/styles/controls.scss';
 
 .informationItems {
   &__container {

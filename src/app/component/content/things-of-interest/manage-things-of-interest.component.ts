@@ -1,14 +1,20 @@
 import {Component, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Params, Router, RouterLink} from '@angular/router';
 
 import {Secrets} from 'src/app/configurations/secrets';
 import {ContentService} from 'src/app/service/content.service';
 import {ThingOfInterest} from 'src/app/model/thing-of-interest';
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'manage-things-of-interest',
   templateUrl: './manage-things-of-interest.component.html',
+  standalone: true,
+  imports: [
+    RouterLink,
+    NgForOf
+  ],
   styleUrls: ['./manage-things-of-interest.component.scss']
 })
 export class ManageThingsOfInterestComponent implements OnDestroy {

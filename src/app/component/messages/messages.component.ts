@@ -5,6 +5,7 @@ import {Message, MessageType} from '../../model/message';
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
+  standalone: true,
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent {

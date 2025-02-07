@@ -3,7 +3,7 @@ import {Meta, Title} from '@angular/platform-browser';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ActivatedRoute, ParamMap, Router, UrlTree} from '@angular/router';
-import {DOCUMENT, isPlatformServer} from '@angular/common';
+import {DOCUMENT, isPlatformServer, NgForOf, NgIf} from '@angular/common';
 import {Request} from 'express';
 
 import {Item} from 'src/app/model/item';
@@ -12,14 +12,26 @@ import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {TranslationService} from '../../service/translation.service';
 import {NavigationItem} from '../../model/navigation-item';
 import {Navigation} from '../../configurations/navigation';
-import {ItemDisplayMode} from '../item/item.component';
+import {ItemComponent, ItemDisplayMode} from '../item/item.component';
 import {UserService} from '../../service/user.service';
 import {ItemsResponse} from '../../model/items-response';
+import {FilterSelectionComponent} from "../filter/filter-selection.component";
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {BreadcrumbsComponent} from "../breadcrumbs/breadcrumbs.component";
 
 
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',
+  standalone: true,
+  imports: [
+    FilterSelectionComponent,
+    NgIf,
+    NgForOf,
+    TranslationPipe,
+    ItemComponent,
+    BreadcrumbsComponent
+  ],
   styleUrls: ['./items.component.scss']
 })
 export class ItemsComponent implements OnInit {
@@ -213,7 +225,7 @@ export class ItemsComponent implements OnInit {
     }
 
     public visitPage(pageNumber: number, event: Event): void {
-      if (UserService.isBotRequest(this.request)) {
+      if (this.userService.isBotRequest(this.request)) {
         return;
       }
 

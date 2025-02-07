@@ -4,15 +4,24 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { ItemsApiService } from '../../service/items-api.service';
 import { Subject } from 'rxjs';
 import { NavigationItem } from '../../model/navigation-item';
-import { isPlatformServer } from '@angular/common';
+import {isPlatformServer, NgForOf, NgIf} from '@angular/common';
 import { takeUntil } from 'rxjs/operators';
 import { UserService } from '../../service/user.service';
 import {ItemsResponse} from "../../model/items-response";
 import {Request} from "express";
+import {ItemComponent} from "../item/item.component";
+import {TranslationPipe} from "../../pipes/translation.pipe";
 
 @Component({
   selector: 'category-teaser',
   templateUrl: './category-teaser.component.html',
+  standalone: true,
+  imports: [
+    ItemComponent,
+    NgForOf,
+    TranslationPipe,
+    NgIf
+  ],
   styleUrls: ['./category-teaser.component.scss']
 })
 export class CategoryTeaserComponent implements OnInit {
@@ -186,7 +195,7 @@ export class CategoryTeaserComponent implements OnInit {
   }
 
   public navigateToMore(event: Event): void {
-    if (UserService.isBotRequest(this.request)) {
+    if (this.userService.isBotRequest(this.request)) {
       return;
     }
 

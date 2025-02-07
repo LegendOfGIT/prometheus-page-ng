@@ -1,14 +1,20 @@
 import {Component, OnDestroy} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Params, Router, RouterLink} from '@angular/router';
 
 import {Secrets} from 'src/app/configurations/secrets';
 import {ContentService} from 'src/app/service/content.service';
 import {Story} from 'src/app/model/story';
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'manage-stories',
   templateUrl: './manage-stories.component.html',
+  standalone: true,
+  imports: [
+    RouterLink,
+    NgForOf
+  ],
   styleUrls: ['./manage-stories.component.scss']
 })
 export class ManageStoriesComponent implements OnDestroy {

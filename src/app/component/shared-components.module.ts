@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
 
 import { ItemComponent } from './item/item.component';
@@ -10,31 +10,24 @@ import { CategoryTeaserComponent } from './landing-pages/category-teaser.compone
 import { LoadingComponent } from './loading/loading.component';
 import { ModeratedTeaserComponent } from './landing-pages/moderated-teaser.component';
 import { MessagesComponent } from './messages/messages.component';
+import {provideHttpClient} from "@angular/common/http";
 
 @NgModule({
-  declarations: [
-    AddToWishlistComponent,
-    BreadcrumbsComponent,
-    CategoryTeaserComponent,
-    ModeratedTeaserComponent,
-    ItemComponent,
-    LoadingComponent,
-    MessagesComponent
-  ],
-  exports: [
-    AddToWishlistComponent,
-    BreadcrumbsComponent,
-    CategoryTeaserComponent,
-    ModeratedTeaserComponent,
-    ItemComponent,
-    LoadingComponent,
-    MessagesComponent
-  ],
     imports: [
         CommonModule,
+        AddToWishlistComponent,
+        BreadcrumbsComponent,
+        CategoryTeaserComponent,
+        ModeratedTeaserComponent,
+        ItemComponent,
+        LoadingComponent,
+        MessagesComponent,
 
         PipesModule,
         RouterLink
+    ],
+    providers: [
+      provideHttpClient()
     ]
 })
 export class SharedComponentsModule { }

@@ -9,7 +9,7 @@ import {
   ViewChild
 } from '@angular/core';
 import {Request} from "express";
-import {isPlatformBrowser} from '@angular/common';
+import {DatePipe, isPlatformBrowser, NgClass, NgForOf, NgIf} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 
 import {Item} from 'src/app/model/item';
@@ -25,10 +25,21 @@ import {Discounts} from 'src/app/configurations/discounts';
 import {UserService} from 'src/app/service/user.service';
 import {CorrespondingItem} from 'src/app/model/corresponding-item';
 import {ItemsApiService} from 'src/app/service/items-api.service';
+import {TranslationPipe} from "../../pipes/translation.pipe";
+import {AddToWishlistComponent} from "../wishlist/add-to-wishlist.component";
 
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
+  standalone: true,
+  imports: [
+    TranslationPipe,
+    NgIf,
+    DatePipe,
+    NgForOf,
+    AddToWishlistComponent,
+    NgClass
+  ],
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements AfterViewInit, OnChanges {
@@ -43,6 +54,7 @@ export class ItemComponent implements AfterViewInit, OnChanges {
     public imageUrl = '';
 
     constructor(
+      private userService: UserService,
       @Optional() @Inject('REQUEST') private request: Request // TODO: inject request
     ) {
     }
@@ -129,7 +141,7 @@ export class ItemComponent implements AfterViewInit, OnChanges {
           .setFilters(this.getParameterFromUrl('filters') || '')
           .setTrackingId('item.clicked'));
 
-      if (!UserService.isBotRequest(this.request) && !this.isCategoryItem() && !linkUrl.startsWith('https:')) {
+      if (!this.userService.isBotRequest(this.request) && !this.isCategoryItem() && !linkUrl.startsWith('https:')) {
         event.preventDefault();
         this.router.navigateByUrl('/', { skipLocationChange: true }).then((): void => {
           this.router.navigateByUrl(linkUrl);
@@ -140,7 +152,7 @@ export class ItemComponent implements AfterViewInit, OnChanges {
     }
 
     public exploreHashtag(hashtag: string, event: Event) {
-      if (UserService.isBotRequest(this.request)) {
+      if (this.userService.isBotRequest(this.request)) {
         return;
       }
 

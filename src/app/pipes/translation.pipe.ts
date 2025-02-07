@@ -1,7 +1,7 @@
 import { Pipe } from '@angular/core';
 import { TranslationService } from 'src/app/service/translation.service';
 
-@Pipe({ name: 'translate' })
+@Pipe({standalone: true, name: 'translate'})
 export class TranslationPipe {
   constructor(private translationService: TranslationService) {
   }
