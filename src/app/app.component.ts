@@ -75,7 +75,7 @@ export class AppComponent implements AfterViewInit, OnInit  {
       return;
     }
 
-    if (UserService.isBotRequest(this.request)) {
+    if (!isPlatformBrowser(this.platformId) || UserService.isBotRequest(this.request)) {
       return;
     }
 
