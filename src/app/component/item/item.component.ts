@@ -3,7 +3,7 @@ import {
   Component,
   ElementRef, EventEmitter, Inject,
   inject,
-  Input, OnChanges,
+  Input, OnChanges, OnInit,
   Optional, Output,
   PLATFORM_ID, SimpleChanges,
   ViewChild
@@ -42,7 +42,7 @@ import {AddToWishlistComponent} from "../wishlist/add-to-wishlist.component";
   ],
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements AfterViewInit, OnChanges {
+export class ItemComponent implements OnInit, AfterViewInit, OnChanges {
     private hyphenationPipe: HyphenationPipe = inject(HyphenationPipe);
     private navigationService: NavigationService = inject(NavigationService);
     private itemsService: ItemsApiService = inject(ItemsApiService);
@@ -57,6 +57,10 @@ export class ItemComponent implements AfterViewInit, OnChanges {
       private userService: UserService,
       @Optional() @Inject('REQUEST') private request: Request // TODO: inject request
     ) {
+    }
+
+    ngOnInit(): void {
+
     }
 
     @ViewChild('itemSection') itemSection: ElementRef | undefined;

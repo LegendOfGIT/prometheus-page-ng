@@ -28,6 +28,7 @@ import {MessagesComponent} from "./component/messages/messages.component";
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserModule,
     WishlistsComponent,
     GeneralDataProtectionRegulationComponent,
     HeaderComponent, FooterComponent,
@@ -50,4 +51,9 @@ import {MessagesComponent} from "./component/messages/messages.component";
       provideHttpClient()
     ]
 })
-export class AppModule { }
+export class AppModule {
+  ngDoBootstrap() {
+
+  }
+
+}
