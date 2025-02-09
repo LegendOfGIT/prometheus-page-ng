@@ -36,7 +36,7 @@
 
   <div *ngIf="items?.length" class="container informationItems__content">
     <div class="col-12 pt-4 d-inline-flex justify-content-center informationItems__container">
-      <app-item *ngFor="let item of items" [item]="item">
+      <app-item *ngFor="let item of items" [item]="item" (imageError)="imageLoadingError($event)">
       </app-item>
     </div>
   </div>

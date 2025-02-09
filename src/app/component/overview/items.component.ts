@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit, Optional, PLATFORM_ID} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ActivatedRoute, ParamMap, Router, UrlTree} from '@angular/router';
 import {DOCUMENT, isPlatformServer} from '@angular/common';
@@ -189,27 +189,83 @@ export class ItemsComponent implements OnInit {
 
         this.initItems(page);
 
-        if (isPlatformServer(this.platformId)) {
-          const link: HTMLLinkElement = this.doc.createElement('link');
-          this.doc.head.appendChild(link);
-          link.setAttribute('rel', 'canonical');
-          const pageUri: string = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
-          link.setAttribute('href', pageUri);
+        if (!isPlatformServer(this.platformId)) {
+          return;
+        }
 
-          const hashtags: Array<string> = this.userService.getHashtags().map(ht => '#' + ht);
-          const teaserId: string = this.isCategoryHashtags
-            ? hashtags.length > 1 ? 'NAVIGATION_TEASER_HASHTAGS' : 'NAVIGATION_TEASER_HASHTAG'
-            : Navigation.getTeaserIdForNavigationItem(this.navigationService.activeNavigationItem);
+        const link: HTMLLinkElement = this.doc.createElement('link');
+        this.doc.head.appendChild(link);
+        link.setAttribute('rel', 'canonical');
+        const pageUri: string = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
+        link.setAttribute('href', pageUri);
 
-          if (teaserId || this.SEODescription) {
-            this.metaService.updateTag({
-              name: 'description',
-              content: this.SEODescription || this.translationService.getTranslations()[teaserId].replace('{hashtags}', hashtags.join(' '))
-            });
+        const hashtags: Array<string> = this.userService.getHashtags().map(ht => '#' + ht);
+        const teaserId: string = this.isCategoryHashtags
+          ? hashtags.length > 1 ? 'NAVIGATION_TEASER_HASHTAGS' : 'NAVIGATION_TEASER_HASHTAG'
+          : Navigation.getTeaserIdForNavigationItem(this.navigationService.activeNavigationItem);
+
+        if (teaserId || this.SEODescription) {
+          this.metaService.updateTag({
+            name: 'description',
+            content: this.SEODescription || this.translationService.getTranslations()[teaserId].replace('{hashtags}', hashtags.join(' '))
+          });
+        }
+    }
+
+    private getItems(): Observable<ItemsResponse> {
+      const activeNavigationId: string =
+        this.navigationService.activeNavigationItem && this.navigationService.activeNavigationItem.fromId
+          ? this.navigationService.activeNavigationItem.toId
+          : '';
+      const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
+      let filterIds: string = (this.navigationService.activeNavigationItem?.getFilters() || []).join('-');
+      filterIds = filterIds || this.route.snapshot?.queryParamMap?.get('filters') as string;
+
+      return this.itemsService.getItems(
+        activeNavigationId,
+        searchPattern,
+        filterIds,
+        undefined,
+        true,
+        undefined,
+        undefined,
+        undefined
+      );
+    }
+
+
+    public imageLoadingError(item: Item | null): void {
+      const activeNavigationId: string =
+        this.navigationService.activeNavigationItem && this.navigationService.activeNavigationItem.fromId
+          ? this.navigationService.activeNavigationItem.toId
+          : '';
+      const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
+      let filterIds: string = (this.navigationService.activeNavigationItem?.getFilters() || []).join('-');
+      filterIds = filterIds || this.route.snapshot?.queryParamMap?.get('filters') as string;
+
+      this.itemsService.getItems(
+        activeNavigationId,
+        searchPattern,
+        filterIds,
+        undefined,
+        true,
+        undefined,
+        undefined,
+        undefined
+      ).subscribe((itemsResponse: ItemsResponse): void => {
+        const itemFromResponse: Item | null | undefined = itemsResponse?.items?.length ? itemsResponse.items[0] : undefined;
+        if (!itemFromResponse) {
+          return;
+        }
+
+        for (let itemFromItemListIndex = 0; itemFromItemListIndex <= this.items.length; itemFromItemListIndex++) {
+          if (this.items[itemFromItemListIndex]?.id !== item?.id) {
+            continue;
           }
 
-          // this.metaService.updateTag({ name: 'keywords', content: this.translationService.getTranslations()['SEO_PAGE_KEYWORDS'] });
+          this.items[itemFromItemListIndex] = itemFromResponse;
         }
+      });
     }
 
     public visitPage(pageNumber: number, event: Event): void {
