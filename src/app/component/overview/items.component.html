@@ -3,7 +3,9 @@
     <app-item
       *ngFor="let subNavigationItem of subNavigationItems"
       [item]="itemOfCategory(subNavigationItem?.toId || '')"
-      [displayMode]="ITEM_MODE_CATEGORY">
+      [displayMode]="ITEM_MODE_CATEGORY"
+      (imageError)="imageLoadingError($event)"
+    >
     </app-item>
   </div>
 </div>

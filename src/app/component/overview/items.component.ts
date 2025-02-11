@@ -1,31 +1,28 @@
-import {Component, Inject, OnInit, Optional, PLATFORM_ID} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Component, Inject, OnDestroy, OnInit, Optional, PLATFORM_ID} from '@angular/core';
+import {Meta, Title} from '@angular/platform-browser';
+import {Subscription} from 'rxjs';
 import {ActivatedRoute, ParamMap, Router, UrlTree} from '@angular/router';
 import {DOCUMENT, isPlatformServer} from '@angular/common';
+import {REQUEST} from '@nguniversal/express-engine/tokens';
+import {Request} from 'express';
 
 import {Item} from 'src/app/model/item';
 import {ItemsApiService} from 'src/app/service/items-api.service';
 import {Module, NavigationService} from 'src/app/service/navigation.service';
-import {TranslationService} from '../../service/translation.service';
-import {Meta, Title} from '@angular/platform-browser';
-import {NavigationItem} from '../../model/navigation-item';
-import {Navigation} from '../../configurations/navigation';
-import {ItemDisplayMode} from '../item/item.component';
-import {UserService} from '../../service/user.service';
-import {ItemsResponse} from '../../model/items-response';
-import {REQUEST} from "@nguniversal/express-engine/tokens";
-import {Request} from "express";
+import {TranslationService} from 'src/app/service/translation.service';
+import {NavigationItem} from 'src/app/model/navigation-item';
+import {Navigation} from 'src/app/configurations/navigation';
+import {ItemDisplayMode} from 'src/app/component/item/item.component';
+import {UserService} from 'src/app/service/user.service';
+import {ItemsResponse} from 'src/app/model/items-response';
 
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.scss']
 })
-export class ItemsComponent implements OnInit {
-
-    private destroyedService$ = new Subject();
-    private sampleItemsOfCategories: Array<Item | null> | undefined;
+export class ItemsComponent implements OnInit, OnDestroy {
+    private sampleItemsOfCategories: (Item | null)[] | undefined;
     public items: Array<Item | null> = [
       new Item(), new Item(), new Item(),
       new Item(), new Item(), new Item(),
@@ -38,6 +35,7 @@ export class ItemsComponent implements OnInit {
 
     private isCategoryHashtags = false;
     private hashtagsFromPath: string = '';
+    private subscriptions: Subscription[] = [];
     public noResults = false;
 
     constructor(
@@ -53,7 +51,7 @@ export class ItemsComponent implements OnInit {
       @Inject(PLATFORM_ID) private platformId: Object,
       @Optional() @Inject(REQUEST) private request: Request
     ) {
-      route.paramMap.subscribe((params: ParamMap): void => {
+      this.subscriptions.push(route.paramMap.subscribe((params: ParamMap): void => {
         const navigationIdLevelA: string = params.get('navigationIdLevelA') || '';
         const navigationIdLevelB: string = params.get('navigationIdLevelB') || '';
         this.navigationService.setActiveNavigationLevelIds([
@@ -69,7 +67,7 @@ export class ItemsComponent implements OnInit {
         }
 
         this.navigationService.activeModule = this.isCategoryHashtags ? Module.HASHTAGS : Module.ITEMS;
-      });
+      }));
 
       const translations = translationService.getTranslations();
       const categoryName = this.isCategoryHashtags
@@ -81,6 +79,10 @@ export class ItemsComponent implements OnInit {
         SEOPageTitle || (categoryName ? translations.SEO_CATEGORY_PAGE_TITLE : translations.SEO_UNKNOWN_CATEGORY_PAGE_TITLE).replace(
           '{category}',
           categoryName));
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe());
     }
 
     private getActiveHashtags(): Array<string> {
@@ -106,8 +108,7 @@ export class ItemsComponent implements OnInit {
       const minimumPrice: string = this.route.snapshot?.queryParamMap?.get('p_min') as string;
       const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
 
-      this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map((navigationItem: NavigationItem) => navigationItem.toId))
-        .pipe(takeUntil(this.destroyedService$))
+      this.subscriptions.push(this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map((navigationItem: NavigationItem) => navigationItem.toId))
         .subscribe(
           (itemsResponse: ItemsResponse): void => {
             this.sampleItemsOfCategories = itemsResponse?.items;
@@ -117,11 +118,10 @@ export class ItemsComponent implements OnInit {
               script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").not(".slick-initialized").slick({ arrows: false, dots: false, infinite: true, autoplay: true, autoplaySpeed: 7000, slidesToScroll: 3, slidesToShow: 3, responsive: [{ breakpoint: 576, settings: { slidesToScroll: 2, slidesToShow: 2 } }, { breakpoint: 1280, settings: { slidesToScroll: 4, slidesToShow: 4 } }] }); }, 200);';
               this.doc.body.appendChild(script);
             }
-          });
+          }));
 
       if (this.isCategoryHashtags) {
-        this.itemsService.getHashtagsItems(searchPattern, filterIds, undefined, page, minimumPrice, maximumPrice)
-          .pipe(takeUntil(this.destroyedService$))
+        this.subscriptions.push(this.itemsService.getHashtagsItems(searchPattern, filterIds, undefined, page, minimumPrice, maximumPrice)
           .subscribe(
             (itemsResponse: ItemsResponse): void => {
               this.availablePages = itemsResponse?.availablePages;
@@ -136,7 +136,7 @@ export class ItemsComponent implements OnInit {
                   this.metaService.addTag({ name: 'og:image:height', content: '450' });
                   this.metaService.addTag({ name: 'og:image:width', content: '450' });
                 });
-            });
+            }));
 
         return;
       }
@@ -153,7 +153,7 @@ export class ItemsComponent implements OnInit {
         return;
       }
 
-      this.itemsService.getItems(
+      this.subscriptions.push(this.itemsService.getItems(
         activeNavigationId,
         searchPattern,
         filterIds,
@@ -163,7 +163,6 @@ export class ItemsComponent implements OnInit {
         minimumPrice,
         maximumPrice
       )
-        .pipe(takeUntil(this.destroyedService$))
         .subscribe(
           (itemsResponse: ItemsResponse): void => {
             this.availablePages = itemsResponse?.availablePages;
@@ -178,7 +177,7 @@ export class ItemsComponent implements OnInit {
                 this.metaService.addTag({ name: 'og:image:height', content: '450' });
                 this.metaService.addTag({ name: 'og:image:width', content: '450' });
               });
-          });
+          }));
     }
 
     ngOnInit(): void {
@@ -212,7 +211,14 @@ export class ItemsComponent implements OnInit {
         }
     }
 
-    private getItems(): Observable<ItemsResponse> {
+    private applyFallbackForOverviewItem(item: Item | null): void {
+      const applyFallback: boolean = (this.items || [])
+        .find((itemFromOverview: Item | null): boolean => item?.id === itemFromOverview?.id) !== undefined;
+
+      if (!applyFallback) {
+        return;
+      }
+
       const activeNavigationId: string =
         this.navigationService.activeNavigationItem && this.navigationService.activeNavigationItem.fromId
           ? this.navigationService.activeNavigationItem.toId
@@ -221,29 +227,7 @@ export class ItemsComponent implements OnInit {
       let filterIds: string = (this.navigationService.activeNavigationItem?.getFilters() || []).join('-');
       filterIds = filterIds || this.route.snapshot?.queryParamMap?.get('filters') as string;
 
-      return this.itemsService.getItems(
-        activeNavigationId,
-        searchPattern,
-        filterIds,
-        undefined,
-        true,
-        undefined,
-        undefined,
-        undefined
-      );
-    }
-
-
-    public imageLoadingError(item: Item | null): void {
-      const activeNavigationId: string =
-        this.navigationService.activeNavigationItem && this.navigationService.activeNavigationItem.fromId
-          ? this.navigationService.activeNavigationItem.toId
-          : '';
-      const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
-      let filterIds: string = (this.navigationService.activeNavigationItem?.getFilters() || []).join('-');
-      filterIds = filterIds || this.route.snapshot?.queryParamMap?.get('filters') as string;
-
-      this.itemsService.getItems(
+      this.subscriptions.push(this.itemsService.getItems(
         activeNavigationId,
         searchPattern,
         filterIds,
@@ -265,7 +249,33 @@ export class ItemsComponent implements OnInit {
 
           this.items[itemFromItemListIndex] = itemFromResponse;
         }
-      });
+      }));
+    }
+    private applyFallbackForCategoryItem(item: Item | null): void {
+      const itemForFallback: Item | null | undefined = (this.sampleItemsOfCategories || [])
+        .find((itemOfCategory: Item | null): boolean => item?.id === itemOfCategory?.id);
+
+      if (!itemForFallback) {
+        return;
+      }
+
+      this.subscriptions.push(this.itemsService.getRandomItemOfCategories([itemForFallback.navigationPath[itemForFallback.navigationPath.length - 1]])
+        .subscribe(
+          (itemsResponse: ItemsResponse): void => {
+            const itemFromResponse: Item | null | undefined = itemsResponse?.items?.length ? itemsResponse.items[0] : undefined;
+            for (let itemFromItemListIndex = 0; itemFromItemListIndex <= (this.sampleItemsOfCategories || []).length; itemFromItemListIndex++) {
+              if (!this.sampleItemsOfCategories || this.sampleItemsOfCategories[itemFromItemListIndex]?.id !== item?.id) {
+                continue;
+              }
+
+              this.sampleItemsOfCategories[itemFromItemListIndex] = itemFromResponse || null;
+            }
+          }));
+    }
+
+    public imageLoadingError(item: Item | null): void {
+      this.applyFallbackForOverviewItem(item);
+      this.applyFallbackForCategoryItem(item);
     }
 
     public visitPage(pageNumber: number, event: Event): void {
@@ -274,7 +284,7 @@ export class ItemsComponent implements OnInit {
       }
 
       event.preventDefault();
-      const pageUrl = this.linkToPage(pageNumber);
+      const pageUrl: string = this.linkToPage(pageNumber);
       this.router.navigateByUrl('/', { skipLocationChange: true }).then((): void => {
         this.router.navigateByUrl(pageUrl);
       })
