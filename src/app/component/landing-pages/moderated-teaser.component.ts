@@ -26,6 +26,7 @@ import {HyphenationPipe} from '../../pipes/web.pipe';
 import {TrackingActivityItem} from '../../model/tracking-activity-item';
 import {TrackingInterestLevel} from '../../model/tracking-interest-level';
 import {TrackingService} from '../../service/tracking.service';
+import {NavigationService} from "../../service/navigation.service";
 
 @Component({
   selector: 'moderated-teaser',
@@ -89,13 +90,14 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
   constructor(
     private itemsService: ItemsApiService,
     private router: Router,
+    private navigationService: NavigationService,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Optional() @Inject(REQUEST) private request: Request
   ) {
   }
 
   ngAfterViewInit(): void {
-    if(isPlatformServer(this.platformId)) {
+    if (isPlatformServer(this.platformId)) {
       return;
     }
 
@@ -197,7 +199,8 @@ export class ModeratedTeaserComponent implements OnInit, AfterViewInit {
       undefined,
       undefined,
       this.hashtags,
-      this.createdToday
+      this.createdToday,
+      this.navigationService.activeModule
     )
   }
 

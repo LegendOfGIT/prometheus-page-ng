@@ -14,6 +14,7 @@ import { UserService } from './user.service';
 import { ApplicationConfiguration } from '../configurations/app';
 import { ItemsResponse } from '../model/items-response';
 import { DEFAULT_HASHTAGS } from '../model/user';
+import {Module} from "./navigation.service";
 
 @Injectable({
     providedIn: 'root'
@@ -33,7 +34,7 @@ export class ItemsApiService extends ApiBase {
       return this.userService.getHashtags();
     }
 
-    getItems(navigationId: string,
+    public getItems(navigationId: string,
              searchPattern: string,
              filterIds: string = '',
              numberOfResults: number | undefined = undefined,
@@ -42,7 +43,13 @@ export class ItemsApiService extends ApiBase {
              priceFrom: string = '',
              priceTo: string = '',
              hashtags: Array<string> | undefined = [],
-             createdToday: boolean = false): Observable<ItemsResponse> {
+             createdToday: boolean = false,
+             siteModule: Module | undefined = undefined): Observable<ItemsResponse> {
+      const requestingSourceMap: any = {
+        [Module.HOME]: 'STARTPAGE',
+        [Module.STORIES]: 'STORIES'
+      };
+
       const url: string = this.get(
         endpoints.items,
         {
@@ -56,7 +63,8 @@ export class ItemsApiService extends ApiBase {
           priceTo,
           searchPattern,
           hashtags: hashtags && hashtags.length ? hashtags.join(',') : isPlatformServer(this.platformId) ? '' : this.getActiveHashtags().join(','),
-          createdToday: createdToday ? 'true' : 'false'
+          createdToday: createdToday ? 'true' : 'false',
+          requestingSource: siteModule !== undefined ? requestingSourceMap[siteModule.toString()] ? requestingSourceMap[siteModule.toString()] : '' : ''
         });
 
       return this.http

@@ -202,11 +202,13 @@
     </div>
   </div>
 
-  <div *ngIf="moreOfBrandFilter" class="col-12 mb-4">
-    <h2 class="singleProductView__sectionHeader">{{ 'MORE_OF_THIS_BRAND' | translate }}</h2>
-    <moderated-teaser
-      [filters]="[moreOfBrandFilter]"
-    ></moderated-teaser>
+  <div *ngIf="moreOfBrandFilter" class="col-12 mb-4 d-flex justify-content-center">
+    <div>
+      <h2 class="singleProductView__sectionHeader">{{ 'MORE_OF_THIS_BRAND' | translate }}</h2>
+      <moderated-teaser
+        [filters]="[moreOfBrandFilter]"
+      ></moderated-teaser>
+    </div>
   </div>
 
   <section *ngIf="activeNavigationItem" class="row">

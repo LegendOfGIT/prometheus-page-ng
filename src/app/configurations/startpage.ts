@@ -47,8 +47,6 @@ export class Startpage {
 
     /*new TeaserItem('/beauty-and-care?filters=1000022', 'BEAUTY_CARE', '', 'Black is beautiful Shop')
       .setFilters(['1000022']),*/
-    new TeaserItem('/beauty-and-care?filters=1000040', 'BEAUTY_CARE', '', 'Sandawha Shop')
-      .setFilters(['1000040']),
 
     new TeaserItem('/hashtags/Schnäppchen', '', '', 'TEASER_TITLE_HASHTAG_DEALS')
       .setHashtags(['Schnäppchen'])

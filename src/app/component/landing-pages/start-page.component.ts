@@ -1,12 +1,12 @@
 import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DOCUMENT, isPlatformServer } from '@angular/common';
-
-import { Module, NavigationService } from '../../service/navigation.service';
 import { Title } from '@angular/platform-browser';
-import { TranslationService } from '../../service/translation.service';
-import { Startpage } from "../../configurations/startpage";
-import { TeaserItem } from "../../model/teaser-item";
+
+import { Module, NavigationService } from 'src/app/service/navigation.service';
+import { TranslationService } from 'src/app/service/translation.service';
+import { Startpage } from 'src/app/configurations/startpage';
+import { TeaserItem } from 'src/app/model/teaser-item';
 
 @Component({
   selector: 'start-page',

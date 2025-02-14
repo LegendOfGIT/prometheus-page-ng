@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, PLATFORM
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {DomSanitizer, makeStateKey, Meta, SafeHtml, Title, TransferState} from '@angular/platform-browser';
 import {DOCUMENT, isPlatformServer} from '@angular/common';
+import {catchError, of} from 'rxjs';
 import {
   Chart,
   CategoryScale,
@@ -13,22 +14,21 @@ import {
   ScriptableContext
 } from 'chart.js';
 
-import {Module, NavigationService} from '../../service/navigation.service';
-import {ItemsApiService} from '../../service/items-api.service';
-import {Item} from '../../model/item';
-import {CorrespondingItem} from '../../model/corresponding-item';
-import {NavigationItem} from '../../model/navigation-item';
-import {Navigation} from '../../configurations/navigation';
-import {TranslationService} from '../../service/translation.service';
-import {ItemDetails} from "../../model/item-details";
-import {TrackingService} from '../../service/tracking.service';
-import {TrackingActivityItem} from '../../model/tracking-activity-item';
-import {TrackingInterestLevel} from '../../model/tracking-interest-level';
-import {HyphenationPipe} from "../../pipes/web.pipe";
-import {PriceHistoryItem} from "../../model/price-history-item";
-import {catchError, of} from "rxjs";
-import {Filters} from "../../configurations/filters";
-import {FilterItem} from "../../model/filter-item";
+import {Module, NavigationService} from 'src/app/service/navigation.service';
+import {ItemsApiService} from 'src/app/service/items-api.service';
+import {Item} from 'src/app/model/item';
+import {CorrespondingItem} from 'src/app/model/corresponding-item';
+import {NavigationItem} from 'src/app/model/navigation-item';
+import {Navigation} from 'src/app/configurations/navigation';
+import {TranslationService} from 'src/app/service/translation.service';
+import {ItemDetails} from 'src/app/model/item-details';
+import {TrackingService} from 'src/app/service/tracking.service';
+import {TrackingActivityItem} from 'src/app/model/tracking-activity-item';
+import {TrackingInterestLevel} from 'src/app/model/tracking-interest-level';
+import {HyphenationPipe} from 'src/app/pipes/web.pipe';
+import {PriceHistoryItem} from 'src/app/model/price-history-item';
+import {Filters} from 'src/app/configurations/filters';
+import {FilterItem} from 'src/app/model/filter-item';
 
 @Component({
   selector: 'single-product-view',
@@ -201,7 +201,10 @@ export class SingleProductViewComponent implements OnInit {
   private renderItem(): void {
     this.itemWithLowestPrice = Item.getProviderItemWithLowestPrice(this.item);
     this.activeNavigationItem = Navigation.getNavigationItemByToId(this.item?.navigationPath[2] || '');
-    this.safeVideoUris = (this.item?.videoLinks || []).map((link: string) => this.getSanitizedResourceUri(link));
+    this.safeVideoUris = (this.item?.videoLinks || [])
+      .filter((link: string) => link.indexOf('.m3u8') === -1)
+      .map((link: string) => this.getSanitizedResourceUri(link));
+
     const brandFilterForItem = Filters.FILTERS.brands.find((filterItem: FilterItem): boolean =>  -1 !== (this.item?.brand || this.item?.make || '').toLowerCase().indexOf(filterItem.filterLabelId.toLowerCase()));
     this.moreOfBrandFilter = brandFilterForItem?.id || '';
 

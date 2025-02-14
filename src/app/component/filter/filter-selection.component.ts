@@ -252,7 +252,7 @@ export class FilterSelectionComponent implements OnInit, AfterViewChecked {
     // new FilterItem('1000037', 'PlantLife'),
     new FilterItem('1000038', 'Quelle'),
     new FilterItem('1000039', 'Reifen.de'),
-    new FilterItem('1000040', 'Sandawha Skincare'),
+    // new FilterItem('1000040', 'Sandawha Skincare'),
     new FilterItem('1000120', 'Saunaloft'),
     // new FilterItem('1000188', 'Señor López'),
     new FilterItem('1000041', 'Shop24 direct'),
