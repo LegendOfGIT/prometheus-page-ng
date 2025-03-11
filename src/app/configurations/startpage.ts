@@ -10,13 +10,13 @@ export class Startpage {
       .setSsrRendering(true),
     /*new TeaserItem('/fashion?search=kostüm', 'FASHION', 'kostüm', 'TEASER_HALLOWEEN_COSTUMES')
       .setSsrRendering(true),*/
-    /*new TeaserItem('/hashtags/Schnäppchen?search=Ostern', '', 'Ostern', 'TEASER_TITLE_EASTERN')
+    new TeaserItem('/hashtags/Schnäppchen?search=Ostern', '', 'Ostern', 'TEASER_TITLE_EASTERN')
       .setHashtags(['Schnäppchen'])
-      .setSsrRendering(true),*/
+      .setSsrRendering(true),
     /*new TeaserItem('/home/garden', 'HOME_GARDEN', 'grill', 'TEASER_TITLE_INTO_THE_GARDEN'),*/
-    new TeaserItem('/hashtags/Highlights?search=winter', '', 'winter', 'TEASER_WINTER_IS_COMING')
+    /*new TeaserItem('/hashtags/Highlights?search=winter', '', 'winter', 'TEASER_WINTER_IS_COMING')
       .setSsrRendering(true)
-      .setModeratedTeaserMode(ModeratedTeaserMode.ALL_SMALL),
+      .setModeratedTeaserMode(ModeratedTeaserMode.ALL_SMALL),*/
     /*new TeaserItem('', 'HOME_GARDEN_GARDENHOUSES', 'gartenhaus', '')
       .setHashtags(['Schnäppchen']),*/
     /*new TeaserItem('/hashtags/Highlights?search=vegan', '', 'vegan', 'VEGANuary')
