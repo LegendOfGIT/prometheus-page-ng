@@ -43,9 +43,7 @@ export class ItemComponent implements AfterViewInit, OnChanges {
     public currentImageIndex = 0;
     public imageUrl = '';
 
-    constructor(
-      @Optional() @Inject(REQUEST) private request: Request
-    ) {
+    constructor(@Optional() @Inject(REQUEST) private request: Request) {
     }
 
     @ViewChild('itemSection') itemSection: ElementRef | undefined;
@@ -209,7 +207,7 @@ export class ItemComponent implements AfterViewInit, OnChanges {
     }
 
     get itemUrl(): string {
-        if (!this.ShowDescriptionAndPrice) {
+        if (UserService.isBotRequest(this.request) || !this.ShowDescriptionAndPrice) {
           return this.singleProductViewUrl;
         }
 
@@ -230,7 +228,7 @@ export class ItemComponent implements AfterViewInit, OnChanges {
 
     get linkTarget(): string {
       const itemId: string = this.item?.id || '';
-      if (!this.ShowDescriptionAndPrice) {
+      if (UserService.isBotRequest(this.request) || !this.ShowDescriptionAndPrice) {
         return itemId;
       }
 
