@@ -200,10 +200,6 @@ export class HeaderComponent {
   }
 
   public getMenuItemLink(item: NavigationItem): string | undefined {
-    if (!UserService.isBotRequest(this.request)) {
-      return;
-    }
-
     if (!item?.pathParts?.length) {
       return;
     }
