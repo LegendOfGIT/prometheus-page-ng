@@ -35,15 +35,18 @@ export class Startpage {
 
     new TeaserItem('/kids?hashtags=LetsPlay', 'KIDS', '', 'TEASER_TITLE_HASHTAG_LETSPLAY')
       .setHashtags(['LetsPlay'])
-      .setModeratedTeaserMode(ModeratedTeaserMode.START_WITH_SMALL_END_WITH_BIG),
+      .setModeratedTeaserMode(ModeratedTeaserMode.START_WITH_SMALL_END_WITH_BIG)
+      .setSsrRendering(true),
 
     new TeaserItem('/beauty-and-care', 'BEAUTY_CARE', '', 'TEASER_TITLE_BEAUTY_CARE')
       .setSsrRendering(true),
     new TeaserItem('/beauty-and-care/fragrances', 'BEAUTY_CARE_FRAGRANCES_WOMEN', '', 'TEASER_TITLE_FRAGRANCES')
       .setModeratedTeaserMode(ModeratedTeaserMode.START_WITH_SMALL_END_WITH_BIG),
     new TeaserItem('', 'BEAUTY_CARE_FRAGRANCES_MEN', '', '')
+      .setSsrRendering(true)
       .setModeratedTeaserMode(ModeratedTeaserMode.START_WITH_BIG_END_WITH_SMALL),
-    new TeaserItem('/beauty-and-care?search=vegan', 'BEAUTY_CARE', 'vegan', 'TEASER_TITLE_VEGAN_COSMETICS'),
+    new TeaserItem('/beauty-and-care?search=vegan', 'BEAUTY_CARE', 'vegan', 'TEASER_TITLE_VEGAN_COSMETICS')
+      .setSsrRendering(true),
 
     /*new TeaserItem('/beauty-and-care?filters=1000022', 'BEAUTY_CARE', '', 'Black is beautiful Shop')
       .setFilters(['1000022']),*/

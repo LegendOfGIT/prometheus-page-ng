@@ -95,7 +95,7 @@
   <div class="fw-bold header__menuHeader">
     <h4>{{'CATEGORIES' | translate }}</h4>
   </div>
-  <a *ngFor="let item of categoryItems" href="{{getMenuItemLink(item)}}" target="_self">
+  <a *ngFor="let item of categoryItems" [href]="getMenuItemLink(item)" target="_self">
     <div
       [ngClass]="['header__menuItem', activeNavigationItem === item ? 'header__menuItem--active' : '']"
       role="button"
