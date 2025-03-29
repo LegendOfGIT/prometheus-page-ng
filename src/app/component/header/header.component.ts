@@ -199,6 +199,18 @@ export class HeaderComponent {
     })
   }
 
+  public getMenuItemLink(item: NavigationItem): string | undefined {
+    if (!UserService.isBotRequest(this.request)) {
+      return;
+    }
+
+    if (!item?.pathParts?.length) {
+      return;
+    }
+
+    return item.pathParts[0];
+  }
+
   get categoryItems(): NavigationItem[] {
     return this.navigationItems.filter((item: NavigationItem) => !item.fromId || item.fromId === 'ALL');
   }
@@ -213,10 +225,6 @@ export class HeaderComponent {
 
   get isHashtagsModule(): boolean {
     return Module.HASHTAGS === this.navigationService.activeModule;
-  }
-
-  get activeHashtags(): Array<string> {
-    return this.userService.activeUser?.activeHashtags.map((hashtag: string): string => `#${hashtag}`) || [];
   }
 
   get WishlistLink(): string[] {
