@@ -10,7 +10,7 @@ export class Startpage {
       .setSsrRendering(true),
     /*new TeaserItem('/fashion?search=kostüm', 'FASHION', 'kostüm', 'TEASER_HALLOWEEN_COSTUMES')
       .setSsrRendering(true),*/
-    new TeaserItem('/hashtags/Schnäppchen?search=Ostern', '', 'Ostern', 'TEASER_TITLE_EASTERN')
+    new TeaserItem('/hashtags/Schnäppchen?search=Vater', '', 'Vater', 'TEASER_TITLE_FATHERS_DAY')
       .setHashtags(['Schnäppchen'])
       .setSsrRendering(true),
     /*new TeaserItem('/home/garden', 'HOME_GARDEN', 'grill', 'TEASER_TITLE_INTO_THE_GARDEN'),*/
