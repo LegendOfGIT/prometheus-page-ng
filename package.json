@@ -11,7 +11,7 @@
     "coverage": "jest --coverage",
     "test": "jest --watch",
     "dev:ssr": "ng run prometheus-page:serve-ssr",
-    "serve:ssr": "node --max-old-space-size=8048 dist/prometheus-page/server/main.js",
+    "serve:ssr": "node --max-old-space-size=16384 dist/prometheus-page/server/main.js",
     "build:ssr": "ng build && ng run prometheus-page:server",
     "prerender": "ng run prometheus-page:prerender"
   },
