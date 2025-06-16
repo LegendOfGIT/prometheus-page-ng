@@ -55,7 +55,7 @@ services:
       - "27017:27017"
     restart: always
     volumes:
-      - "prometheus-page-ng_warehouse-database:/data/db"
+      - "warehouse-database:/data/db"
     environment:
       - TZ=Europe/Berlin
 
@@ -112,4 +112,4 @@ services:
       - TZ=Europe/Berlin
 
 volumes:
-  prometheus-page-ng_warehouse-database:
+  warehouse-database:
