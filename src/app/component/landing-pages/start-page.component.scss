@@ -1,116 +1,154 @@
 @import '../../../styles/controls';
 @import '../../../styles';
 
-.parallax {
-  height: 100vh;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+$orange-light: #ffe0b2;
+
+* {
+  box-sizing: border-box;
 }
 
-.content {
-  cursor: pointer;
-  position: relative;
-  top: 15%;
-  transform: translateY(-50%);
-  text-align: center;
+a {
+  color: $content-color;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #fafafa;
+  color: var(--text);
+}
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+.site-header {
+  background: var(--orange);
   color: white;
-
-  @media screen and (min-width: 390px) {
-    top: 12%;
-  }
-
-  @media screen and (min-width: 576px) and (orientation: landscape) {
-    top: 25%;
-  }
-
-  @media screen and (min-width: 786px) and (orientation: portrait) {
-    top: 8%;
-  }
-
-  @media screen and (min-width: 1024px) and (orientation: portrait) {
-    top: 13%;
-  }
-
-  @media screen and (min-width: 1024px) and (orientation: landscape) {
-    top: 20%;
-  }
-
-  h1 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-
-    @media screen and (min-width: 786px) {
-      font-size: 2.2rem;
-    }
-
-    @media screen and (min-width: 1024px) {
-      font-size: 4rem;
-    }
-  }
-
-  p {
-    font-size: 0.8rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-
-    @media screen and (min-width: 786px) {
-      font-size: 1.2rem;
-    }
-
-    @media screen and (min-width: 1024px) {
-      font-size: 1.5rem;
-    }
-  }
+}
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.site-header h1 {
+  margin: 0;
+}
+.site-header nav a {
+  color: white;
+  margin-left: 1rem;
+  text-decoration: none;
 }
 
-.startPage {
-  &__content {
-    padding-top: 9.5em;
-    text-align: center;
+.hero {
+  background: $orange-light;
+  padding: 3rem 1rem;
+  text-align: center;
+}
 
-    @media screen and (min-width: 576px) {
-      padding-top: 12.5em;
-    }
+.product-row, .grid-tiles, .trend-grid, .topic-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.product-card, .grid-tiles > a, .trend-grid > a {
+  flex: 1 1 calc(33% - 1rem);
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.product-card img, .grid-tiles img, .trend-grid img {
+  width: 100%;
+  height: auto;
+}
+.product-card h4 {
+  margin: 0.5rem 0;
+}
+.product-card p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-align: start;
+}
 
-    @media screen and (min-width: 786px) {
-      padding-top: 9em;
-    }
+.tech-section .tech-content {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.tech-section img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 8px;
+}
 
-    @media screen and (min-width: 1024px) {
-      padding-top: 20em;
-    }
+.story-section .story-flex {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.story-section img {
+  max-width: 360px;
+  width: 100%;
+  border-radius: 8px;
+}
+.story-section .btn {
+  display: inline-block;
+  background: var(--orange);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  text-decoration: none;
+}
+
+.topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.topic-grid a {
+  display: block;
+  background: #fff;
+  padding: 1rem;
+  border-left: 5px solid var(--orange);
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.2s;
+}
+.topic-grid a:hover {
+  background: #fef2e3;
+}
+
+.site-footer {
+  background: var(--orange);
+  color: white;
+  padding: 2rem 1rem;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-content nav {
+  margin-top: 1rem;
+}
+.footer-content nav a {
+  color: white;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+/* RWD Fix */
+@media (max-width: 768px) {
+  .tech-content, .story-flex {
+    flex-direction: column;
   }
-
-  &__disclaimer {
-    font-size: 0.8em;
-  }
-
-  &__hero {
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 20em;
-    top: 0;
-
-    @media screen and (min-width: 576px) {
-      height: 80em;
-    }
-
-    &Title {
-      color: #FFF;
-      font-size: 1.5em;
-      font-weight: bolder;
-      text-shadow: #FC0 1px 0 10px;
-
-      @media screen and (min-width: 576px) {
-        font-size: 2.3em;
-        margin-top: 2em;
-      }
-    }
-  }
-
-  &__seo {
-    font-size: 0.8em;
+  .product-row, .grid-tiles, .trend-grid {
+    flex-direction: column;
   }
 }

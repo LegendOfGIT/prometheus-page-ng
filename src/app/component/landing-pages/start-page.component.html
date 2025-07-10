@@ -1,17 +1,9 @@
 <div class="startPage__content">
-  <div
-    class="w-100 position-absolute startPage__hero"
-    [style.background]="'linear-gradient(180deg, rgba(222,89,53,1) 8%, rgba(255,136,0,0.5075280112044818) 88%, rgba(243,244,242,1) 100%)'"
-  >
-    <div class="parallax">
-      <a href="story/ueber-we-wanna-shop" class="text-decoration-none">
-        <div class="content">
-          <h1 class="animate__animated animate__fadeInDown">{{ 'HERO_WEWANNA_SHOP_TITLE' | translate }}</h1>
-          <p class="animate__animated animate__fadeInUp animate__delay-1s">{{ 'HERO_WEWANNA_SHOP_SUBTITLE' | translate }}</p>
-        </div>
-      </a>
-    </div>
-  </div>
+  <section class="hero">
+    <h1>Finde Produkte, die du wirklich willst.</h1>
+    <p>Keine Cookies. Kein Tracking. Unser Versprechen an dich!</p>
+  </section>
+
   <a *ngIf="false" href="{{currentHero?.heroUrl}}">
     <div
       class="w-100 position-absolute startPage__hero"
@@ -28,26 +20,102 @@
     </div>
   </a>
 
-  <div class="container d-flex justify-content-center mt-5 mt-md-0">
-    <div class="row">
-      <div class="col p-0 p-lg-4">
-        <moderated-teaser
-          *ngFor="let teaserItem of STARTPAGE_TEASER_ITEMS; let i = index"
-          [filters]="teaserItem.filters"
-          [hashtags]="teaserItem.hashtags"
-          [headerTitle]="teaserItem.headerTitle"
-          [linkUri]="teaserItem.linkUri"
-          [navigationId]="teaserItem.navigationId"
-          [searchPattern]="teaserItem.searchPattern"
-          [ssrRendering]="teaserItem.ssrRendering"
-          [createdToday]="teaserItem.createdToday"
-          [bigImageLeft]="i % 2 === 0"
-          [moderatedTeaserMode]="teaserItem.moderatedTeaserMode"
-        >
-        </moderated-teaser>
+  <section class="products-highlight container">
+    <h3>Neues entdecken</h3>
+    <div class="product-row">
+      <a class="product-card" [attr.href]="'/fashion/boys?search=bio'" routerLink="/fashion/boys" [queryParams]="{ search: 'bio' }">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/bio-baumwollpullover-1.webp" alt="Kinderpullover aus Biowolle" />
+        <h4>Bio Kinderkleidung</h4>
+        <p class="d-flex justify-content-center">Gut angezogen von Anfang an</p>
+        <p>Weiche Stoffe, schadstofffrei und fair produziert – Bio Kinderkleidung gibt dir ein gutes Gefühl bei allem, was dein Kind trägt. Für Euch, die ihr Wert auf Qualität und Nachhaltigkeit legt.</p>
+      </a>
+      <a class="product-card" [attr.href]="'/kids/toys?search=holz'" routerLink="/kids/toys" [queryParams]="{ search: 'holz' }">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/holzspielzeug.webp" alt="Buntes Holzspielzeug" />
+        <h4>Holz-Spielzeug</h4>
+        <p class="d-flex justify-content-center">Natürlich spielen, spielerisch entdecken</p>
+        <p>Wir haben für euch Holzspielzeug ausgewählt das Kreativität, Motorik und Fantasie fördert – ganz ohne Plastik, aber mit ganz viel Herz. Zeitlos, robust und genau richtig für kleine Entdeckerhände.</p>
+      </a>
+      <a class="product-card" [attr.href]="'/kids/school'" routerLink="/kids/school">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/trinkflasche-und-brotdose.webp" alt="Trinkflasche und Brotdose für Kinder" />
+        <h4>Alltagshelfer</h4>
+        <p class="d-flex justify-content-center">Kleine Dinge mit großer Wirkung.</p>
+        <p>Diese Alltagshelfer unterstützen dich dabei, den Alltag mit Kindern einfacher und entspannter zu gestalten. Kleine Helfer mit großer Wirkung, die Dich und deine Familie in eurem Alltag begleiten.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="category-grid container">
+    <h3>Kleidung & Accessoires</h3>
+    <p>Stilvoll unterwegs – ob für Kita, Büro oder Wochenendtrip.</p>
+    <div class="grid-tiles">
+      <a [attr.href]="'/fashion/girls'" routerLink="/fashion/girls">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/maedchen-sommermode.webp" alt="Ein lächelndes Mädchen mit gelbem Sommerkleid und Strohhut">
+        <h4 class="mt-1">Für Mädchen</h4>
+      </a>
+      <a [attr.href]="'/fashion/women'" routerLink="/fashion/women">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/summer-family-4.webp" alt="Ein Familienbild in sommerlichen Farben">
+        <h4 class="mt-1">Für Eltern</h4>
+      </a>
+      <a [attr.href]="'/fashion/boys'" routerLink="/fashion/boys">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/jungen-sommermode.webp" alt="Ein lachender Junge mit orangenem T-Shirt und Strohhut">
+        <h4 class="mt-1">Für Jungen</h4>
+      </a>
+      <a [attr.href]="'/fashion/women?search=sport'" routerLink="/fashion/women" [queryParams]="{ search: 'sport' }">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/damen-sport.webp" alt="Eine Frau im schwarzen Sportanzug kurz vor dem Training">
+        <h4 class="mt-1">Sportkleidung für Frauen</h4>
+      </a>
+    </div>
+  </section>
+
+  <section class="story-section container">
+    <h3>Perfekt ausgestattet für eure Familienreise</h3>
+    <div class="story-flex">
+      <a class="w-100" [attr.href]="'/hashtags/Highlights?search=Reise'" routerLink="/hashtags/Highlights" [queryParams]="{ search: 'Reise' }">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/familienreise.webp" alt="Eine Familie mit Koffer am Flughafen" />
+      </a>
+      <div>
+        <p>Ob Strandurlaub, Städtetrip oder Abenteuer in der Natur – bei uns findest du die passenden Produkte für entspannte und unvergessliche Reisen mit der ganzen Familie. Vom praktischen Kinderreisebett über kinderfreundliches Reisezubehör bis hin zu cleveren Packsystemen. Entdecke durchdachte Lösungen, die unterwegs für Komfort, Sicherheit und gute Laune sorgen!</p>
+        <a class="button button--highlighted w-25 d-flex justify-content-center" [attr.href]="'/hashtags/Highlights?search=Reise'" routerLink="/hashtags/Highlights" [queryParams]="{ search: 'Reise' }">Jetzt entdecken</a>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="summer-trend container">
+    <h3>🌞 Sommer 2025: Unser Familientrend</h3>
+    <p>Leichte Kleidung, sicheres Reisen und clevere Gadgets für die Ferienzeit. Entdecke Produkte, die den Sommer für dich und deine Familie noch schöner machen.</p>
+    <div class="trend-grid">
+      <a [attr.href]="'/fashion/boys?search=uv'" routerLink="/fashion/boys" [queryParams]="{ search: 'uv' }">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/jungen-uv-kleidung.webp" alt="Ein lachender Junge in blauer UV-Schutzkleidung in der Sommersonne">
+        <p class="mt-2">UV-Kleidung für Kinder</p>
+      </a>
+      <a [attr.href]="'/hashtags/Schnäppchen?search=kühlbox'" routerLink="/hashtags/Schnäppchen" [queryParams]="{ search: 'kühlbox' }">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/kuehlbox.webp" alt="Eine Kühlbox mit Getränkedosen in Eiswürfeln auf einer grünen Wiese">
+        <p class="mt-2">Kühlboxen</p>
+      </a>
+      <a [attr.href]="'/kids?search=wasserspielzeug'" routerLink="/kids" [queryParams]="{ search: 'wasserspielzeug' }">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/kinder-wasserspielzeuge.webp" alt="Vier lachende Kinder in einem Pool mit Wasserspielzeug">
+        <p class="mt-2">Wasserspielzeug & Strandideen</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="tech-section container">
+    <div class="tech-content">
+      <div>
+        <h3>Technik, die mitdenkt</h3>
+        <p>Ob Homeschooling, Homeoffice oder Hörspaß: Diese Technik passt sich eurem Alltag an – sicher, geprüft und langlebig.</p>
+        <ul>
+          <li>Refurbished Tablets & Notebooks</li>
+          <li>Kinderfreundliche Kopfhörer</li>
+          <li>Smartwatches für Familienorganisation</li>
+        </ul>
+      </div>
+      <a class="product-card" [attr.href]="'/electronics-and-computers?filters=1000020'" routerLink="/electronics-and-computers" [queryParams]="{ filters: '1000020' }">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/refurbished.webp" alt="Ein refurbished Smartphone vor einem grauen Hintergrund" />
+        <p class="mt-2 text-center">Jetzt entdecken!</p>
+      </a>
+    </div>
+  </section>
 
   <div class="container pt-3 pb-3">
     <div class="col-12 fst-italic startPage__disclaimer">
