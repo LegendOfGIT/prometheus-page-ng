@@ -1,7 +1,7 @@
 <header>
   <div class="header-top">
     <div class="logo cursor-pointer" role="button" routerLink="/">WeWanna</div>
-    <div class="search-bar">
+    <div class="d-flex align-items-center search-bar">
       <input
         #searchPattern
         autocomplete="off"
@@ -10,6 +10,7 @@
         [formControl]="searchPatternControl"
         (search)="searchNow()"
       >
+      <i class="fa fa-search ms-2 search-icon" (click)="searchNow()"></i>
     </div>
   </div>
   <nav>
