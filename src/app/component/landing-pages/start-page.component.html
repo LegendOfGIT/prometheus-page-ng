@@ -46,6 +46,25 @@
     </div>
   </section>
 
+  <section class="summer-trend container">
+    <h3>🌞 Sommer 2025: Unser Familientrend</h3>
+    <p>Leichte Kleidung, sicheres Reisen und clevere Gadgets für die Ferienzeit. Entdecke Produkte, die den Sommer für dich und deine Familie noch schöner machen.</p>
+    <div class="trend-grid">
+      <a [attr.href]="'/fashion/boys?search=uv'" routerLink="/fashion/boys" [queryParams]="{ search: 'uv' }">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/jungen-uv-kleidung.webp" alt="Ein lachender Junge in blauer UV-Schutzkleidung in der Sommersonne">
+        <p class="mt-2">UV-Kleidung für Kinder</p>
+      </a>
+      <a [attr.href]="'/hashtags/Schnäppchen?search=kühlbox'" routerLink="/hashtags/Schnäppchen" [queryParams]="{ search: 'kühlbox' }">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/kuehlbox.webp" alt="Eine Kühlbox mit Getränkedosen in Eiswürfeln auf einer grünen Wiese">
+        <p class="mt-2">Kühlboxen</p>
+      </a>
+      <a [attr.href]="'/kids?search=wasserspielzeug'" routerLink="/kids" [queryParams]="{ search: 'wasserspielzeug' }">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/kinder-wasserspielzeuge.webp" alt="Vier lachende Kinder in einem Pool mit Wasserspielzeug">
+        <p class="mt-2">Wasserspielzeug & Strandideen</p>
+      </a>
+    </div>
+  </section>
+
   <section class="category-grid container">
     <h3>Kleidung & Accessoires</h3>
     <p>Stilvoll unterwegs – ob für Kita, Büro oder Wochenendtrip.</p>
@@ -82,21 +101,30 @@
     </div>
   </section>
 
-  <section class="summer-trend container">
-    <h3>🌞 Sommer 2025: Unser Familientrend</h3>
-    <p>Leichte Kleidung, sicheres Reisen und clevere Gadgets für die Ferienzeit. Entdecke Produkte, die den Sommer für dich und deine Familie noch schöner machen.</p>
-    <div class="trend-grid">
-      <a [attr.href]="'/fashion/boys?search=uv'" routerLink="/fashion/boys" [queryParams]="{ search: 'uv' }">
-        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/jungen-uv-kleidung.webp" alt="Ein lachender Junge in blauer UV-Schutzkleidung in der Sommersonne">
-        <p class="mt-2">UV-Kleidung für Kinder</p>
+  <section class="household-upgrades container">
+    <h3>Upgrades für deinen Haushalt</h3>
+    <p>Clevere Helfer, die dir den Alltag erleichtern, Zeit sparen und für ein sauberes, gesundes Zuhause sorgen. Diese Produkte sind nicht nur praktisch, sondern machen auch Spaß – entdecke jetzt, was dein Zuhause smarter macht.</p>
+
+    <div class="product-grid-4">
+      <a [attr.href]="'/electronics-and-computers/home/fully-automatic-coffee-machines'" routerLink="/electronics-and-computers/home/fully-automatic-coffee-machines" class="product-card">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/kaffeevollautomat.jpg" alt="Philips 5600 Kaffeevollautomat" />
+        <h4>Kaffee Vollautomaten</h4>
+        <p>Frisch gemahlen, perfekt gebrüht: Entdecke Kaffeevollautomaten für echten Genuss zu Hause. Zuhause wird’s jetzt richtig gemütlich.</p>
       </a>
-      <a [attr.href]="'/hashtags/Schnäppchen?search=kühlbox'" routerLink="/hashtags/Schnäppchen" [queryParams]="{ search: 'kühlbox' }">
-        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/kuehlbox.webp" alt="Eine Kühlbox mit Getränkedosen in Eiswürfeln auf einer grünen Wiese">
-        <p class="mt-2">Kühlboxen</p>
+      <a [attr.href]="'/electronics-and-computers?search=Saugroboter'" routerLink="/electronics-and-computers" [queryParams]="{ search: 'Saugroboter' }" class="product-card">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/saugroboter.jpg" alt="Saug-Wisch-Roboter L10s von Dreame" />
+        <h4>Saug-Wisch-Roboter</h4>
+        <p>Putzt dein Zuhause automatisch – per App steuerbar, auch von unterwegs.</p>
       </a>
-      <a [attr.href]="'/kids?search=wasserspielzeug'" routerLink="/kids" [queryParams]="{ search: 'wasserspielzeug' }">
-        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/kinder-wasserspielzeuge.webp" alt="Vier lachende Kinder in einem Pool mit Wasserspielzeug">
-        <p class="mt-2">Wasserspielzeug & Strandideen</p>
+      <a [attr.href]="'/electronics-and-computers/home/air-purifiers?search=Philips'" routerLink="/electronics-and-computers/home/air-purifiers"  [queryParams]="{ search: 'Philips' }" class="product-card">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/luftreiniger.jpg" alt="Philips Series 2000 Luftreiniger" />
+        <h4>Luftreiniger</h4>
+        <p>Reinigt die Raumluft leise und effektiv – für Allergiker & Familien ideal.</p>
+      </a>
+      <a [attr.href]="'/electronics-and-computers/home/home-cinema'" routerLink="/electronics-and-computers/home/home-cinema" class="product-card">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/heimkino.jpg" alt="Heimkinosystem für dein Kino zu Hause" />
+        <h4>Heimkino-System</h4>
+        <p>Mit kraftvollem Sound und gestochen scharfem Bild holst du dir echtes Kinofeeling nach Hause – perfekt für Filmabende mit der ganzen Familie.</p>
       </a>
     </div>
   </section>

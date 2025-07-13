@@ -152,3 +152,31 @@ body {
     flex-direction: column;
   }
 }
+
+.product-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+.product-grid-4 .product-card {
+  background: #fff;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 1rem;
+}
+.product-grid-4 .product-card img {
+  max-height: 14em;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  width: inherit;
+}
+.product-grid-4 .product-card h4 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #222;
+}
+.product-grid-4 .product-card p {
+  font-size: 0.9rem;
+  color: #666;
+}
