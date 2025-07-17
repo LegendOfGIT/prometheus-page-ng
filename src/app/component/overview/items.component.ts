@@ -106,7 +106,9 @@ export class ItemsComponent implements OnInit, OnDestroy {
       filterIds = filterIds || this.route.snapshot?.queryParamMap?.get('filters') as string;
       const maximumPrice: string = this.route.snapshot?.queryParamMap?.get('p_max') as string;
       const minimumPrice: string = this.route.snapshot?.queryParamMap?.get('p_min') as string;
-      const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
+
+      let searchPattern: string | undefined = this.navigationService.activeNavigationItem?.getSearchPattern() || undefined;
+      searchPattern = searchPattern || this.route.snapshot?.queryParamMap?.get('search') as string;
 
       this.subscriptions.push(this.itemsService.getRandomItemOfCategories(this.subNavigationItems.map((navigationItem: NavigationItem) => navigationItem.toId))
         .subscribe(

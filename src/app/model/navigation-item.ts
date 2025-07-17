@@ -6,6 +6,7 @@ export class NavigationItem {
     pathPartsForNavigation: Array<string> = [];
     hasSlogan = false;
     hasTeaser = false;
+    searchPattern: string = '';
     sortOrder: number;
     filters: Array<string> = [];
     SEOId: string = '';
@@ -33,6 +34,15 @@ export class NavigationItem {
 
     public setFilters(filters: Array<string>): NavigationItem {
       this.filters = filters;
+      return this;
+    }
+
+    public getSearchPattern(): string {
+      return this.searchPattern;
+    }
+
+    public setSearchPattern(searchPattern: string): NavigationItem {
+      this.searchPattern = searchPattern;
       return this;
     }
 

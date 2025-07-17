@@ -1,7 +1,7 @@
 import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DOCUMENT, isPlatformServer } from '@angular/common';
-import { Title } from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 import { Module, NavigationService } from 'src/app/service/navigation.service';
 import { TranslationService } from 'src/app/service/translation.service';
@@ -19,6 +19,7 @@ export class StartPageComponent implements OnInit {
   constructor(
     route: ActivatedRoute,
     private navigationService: NavigationService,
+    private metaService: Meta,
     translationService: TranslationService,
     titleService: Title,
     @Inject(DOCUMENT) private doc: Document,
@@ -58,6 +59,24 @@ export class StartPageComponent implements OnInit {
     link.setAttribute('rel', 'canonical');
     const pageUri: string = 'https://www.wewanna.shop/' + this.doc.URL.replace(new RegExp('(http:\/\/|\/\/).*?\/'), '');
     link.setAttribute('href', pageUri);
+
+    const contentModel: HTMLScriptElement = this.doc.createElement('script');
+    contentModel.setAttribute('type', 'application/ld+json');
+
+    const seoDescription: string = 'Entdecke und kaufe deine Lieblingsprodukte in einer Umgebung, die deine Privatsphäre respektiert. Genieße anonymes Online-Shopping ohne Analyse oder Datenverfolgung. Erlebe sorgenfreies Internet-Shopping genau für dich entwickelt!';
+    contentModel.innerHTML = JSON.stringify({
+      '@context': 'https://schema.org/',
+      '@type': 'WebSite',
+      description: seoDescription,
+      logo: 'https://www.wewanna.shop/favicon.ico',
+      name: 'WeWanna.shop',
+      url: 'https://www.wewanna.shop'
+    });
+    this.doc.head.appendChild(contentModel);
+
+    this.metaService.updateTag({ name: 'description', content: seoDescription });
+    this.metaService.updateTag({ name: 'og:title', content: 'Deine Lieblingsprodukte auf WeWanna.shop' });
+    this.metaService.updateTag({ name: 'og:type', content: 'website' });
   }
 
   private showNextHero(): void {

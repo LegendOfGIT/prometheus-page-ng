@@ -9,6 +9,15 @@ export class Navigation {
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('FASHION', 'FASHION_BOYS', ['fashion', 'boys', '']),
+    new NavigationItem('FASHION', 'FASHION_BOYS', ['bio-kinderkleidung', '', ''])
+      .setPathPartsForNavigation(['fashion', 'boys', ''])
+      .setSearchPattern('bio'),
+    new NavigationItem('FASHION', 'FASHION_BOYS', ['uv-kleidung-für-kinder', '', ''])
+      .setPathPartsForNavigation(['fashion', 'boys', ''])
+      .setSearchPattern('uv'),
+    new NavigationItem('FASHION', 'FASHION_BOYS', ['sommerkleidung-für-jungen', '', ''])
+      .setPathPartsForNavigation(['fashion', 'boys', ''])
+      .setSearchPattern('sommer'),
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_DISGUISES', ['fashion', 'boys', 'disguises']),
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_HATS', ['fashion', 'boys', 'hats']),
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_RAINWEAR', ['fashion', 'boys', 'rainwear']),
@@ -16,6 +25,9 @@ export class Navigation {
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SWEATERS_AND_KNITWEAR', ['fashion', 'boys', 'sweaters-and-knitwear']),
     new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SWIMWEAR', ['fashion', 'boys', 'swimwear']),
     new NavigationItem('FASHION', 'FASHION_GIRLS', ['fashion', 'girls', '']),
+    new NavigationItem('FASHION', 'FASHION_GIRLS', ['sommerkleidung-für-mädchen', '', ''])
+      .setPathPartsForNavigation(['fashion', 'girls', ''])
+      .setSearchPattern('sommer'),
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_DISGUISES', ['fashion', 'girls', 'disguises']),
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_RAINWEAR', ['fashion', 'girls', 'rainwear']),
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SHOES', ['fashion', 'girls', 'shoes']),
@@ -23,6 +35,12 @@ export class Navigation {
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SWIMWEAR', ['fashion', 'girls', 'swimwear']),
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['fashion', 'women', ''])
       .setHasSlogan(true),
+    new NavigationItem('FASHION', 'FASHION_WOMEN', ['sommerkleidung-für-frauen', '', ''])
+      .setPathPartsForNavigation(['fashion', 'women', ''])
+      .setSearchPattern('sommer'),
+    new NavigationItem('FASHION', 'FASHION_WOMEN', ['sportkleidung-für-frauen', '', ''])
+      .setPathPartsForNavigation(['fashion', 'women', ''])
+      .setSearchPattern('sport'),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_BAGS', ['fashion', 'women', 'bags']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES', ['fashion', 'women', 'disguises']),
     new NavigationItem(
@@ -88,6 +106,9 @@ export class Navigation {
     new NavigationItem('ALL', 'KIDS', ['kids', '', ''], 5)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('ALL', 'KIDS', ['wasserspielzeug-für-kinder', '', ''])
+      .setPathPartsForNavigation(['kids', '', ''])
+      .setSearchPattern('wasserspielzeug'),
     new NavigationItem('KIDS', 'KIDS_BABIES', ['kids', 'babies', '']),
     new NavigationItem('KIDS_BABIES', 'KIDS_BABIES_DIAPERS', ['kids', 'babies', 'baby-diapers']),
     new NavigationItem('KIDS_BABIES', 'KIDS_BABIES_FOOD', ['kids', 'babies', 'baby-food']),
@@ -98,12 +119,20 @@ export class Navigation {
     new NavigationItem('KIDS', 'KIDS_PARTY', ['kids', 'party', '']).setHasSlogan(true),
     new NavigationItem('KIDS_PARTY', 'KIDS_PARTY_TABLEWARE', ['kids', 'party', 'tableware']),
     new NavigationItem('KIDS', 'KIDS_SCHOOL', ['kids', 'school', '']).setHasSlogan(true),
+    new NavigationItem('KIDS', 'KIDS_SCHOOL', ['alltagshelfer-für-kinder', '', ''])
+      .setPathPartsForNavigation(['kids', 'school', '']),
     new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_DRINKINGBOTTLES', ['kids', 'school', 'drinking-bottles']),
     new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_LUNCHBOXES', ['kids', 'school', 'lunchboxes']),
     new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SATCHEL', ['kids', 'school', 'satchel']),
     new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SCHOOLCONES', ['kids', 'school', 'school-cones']),
     new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SUPPLIES', ['kids', 'school', 'supplies']),
     new NavigationItem('KIDS', 'KIDS_TOYS', ['kids', 'toys', '']).setHasSlogan(true),
+    new NavigationItem('KIDS', 'KIDS_TOYS', ['holzspielzeug-für-kinder', '', ''])
+      .setPathPartsForNavigation(['kids', 'toys', ''])
+      .setSearchPattern('holz'),
+    new NavigationItem('KIDS', 'KIDS_TOYS', ['kooperationsspiele-für-kinder', '', ''])
+      .setPathPartsForNavigation(['kids', 'toys', ''])
+      .setSearchPattern('koop'),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_BABIES', ['kids', 'toys', 'babies']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_BEACHANDWATER', ['kids', 'toys', 'beach-and-water']),
     new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_CONSTRUCTIONTOYS', ['kids', 'toys', 'construction-toys']),
@@ -158,6 +187,12 @@ export class Navigation {
     new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['electronics-and-computers', '', ''], 3)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['saugroboter', '', ''])
+      .setPathPartsForNavigation(['electronics-and-computers', '', ''])
+      .setSearchPattern('saugroboter'),
+    new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['refurbished-technik', '', ''])
+      .setPathPartsForNavigation(['electronics-and-computers', '', ''])
+      .setFilters(['1000020']),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_CABLES',
@@ -261,6 +296,13 @@ export class Navigation {
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_AIRPURIFIERS',
+      ['philips-luftreiniger', '', '']
+    )
+      .setPathPartsForNavigation(['electronics-and-computers', 'home', 'air-purifiers'])
+      .setSearchPattern('Philips'),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_AIRVENTS',
       ['electronics-and-computers', 'home', 'air-vents']
     ),
@@ -284,6 +326,12 @@ export class Navigation {
       'ELECTRONICS_AND_COMPUTERS_HOME_HOMECINEMA',
       ['electronics-and-computers', 'home', 'home-cinema']
     ),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_HOME',
+      'ELECTRONICS_AND_COMPUTERS_HOME_HOMECINEMA',
+      ['dein-kino-für-zuhause', '', '']
+    )
+      .setPathPartsForNavigation(['electronics-and-computers', 'home', 'home-cinema']),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_INKJETPRINTER',
@@ -334,6 +382,13 @@ export class Navigation {
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_FRIDGES_AND_FREEZERS',
       ['electronics-and-computers', 'large-appliances', 'fridges-and-freezers']
     ).setHasSlogan(true),
+    new NavigationItem(
+      'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
+      'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_FRIDGES_AND_FREEZERS',
+      ['kühlboxen', '', '']
+    )
+      .setPathPartsForNavigation(['electronics-and-computers', 'large-appliances', 'fridges-and-freezers'])
+      .setSearchPattern('kühlbox'),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_OVENS',
