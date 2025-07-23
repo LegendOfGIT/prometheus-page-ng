@@ -12,7 +12,6 @@ import {Module, NavigationService} from 'src/app/service/navigation.service';
 import {TranslationService} from 'src/app/service/translation.service';
 import {NavigationItem} from 'src/app/model/navigation-item';
 import {Navigation} from 'src/app/configurations/navigation';
-import {ItemDisplayMode} from 'src/app/component/item/item.component';
 import {UserService} from 'src/app/service/user.service';
 import {ItemsResponse} from 'src/app/model/items-response';
 
@@ -31,7 +30,6 @@ export class ItemsComponent implements OnInit, OnDestroy {
     ];
     public availablePages: Array<number> = [1];
     public currentPage: number = 1;
-    public ITEM_MODE_CATEGORY: ItemDisplayMode = ItemDisplayMode.CATEGORY;
 
     private isCategoryHashtags = false;
     private hashtagsFromPath: string = '';
@@ -115,9 +113,46 @@ export class ItemsComponent implements OnInit, OnDestroy {
           (itemsResponse: ItemsResponse): void => {
             this.sampleItemsOfCategories = itemsResponse?.items;
 
-            if (!isPlatformServer(this.platformId)) {
+            if (!isPlatformServer(this.platformId) && !this.doc.getElementById('init-carousel')) {
               const script: HTMLScriptElement = this.doc.createElement('script');
-              script.innerHTML = 'setTimeout(function() { $(".carousel__viewport").not(".slick-initialized").slick({ arrows: false, dots: false, infinite: true, autoplay: true, autoplaySpeed: 7000, slidesToScroll: 3, slidesToShow: 3, responsive: [{ breakpoint: 576, settings: { slidesToScroll: 2, slidesToShow: 2 } }, { breakpoint: 1280, settings: { slidesToScroll: 4, slidesToShow: 4 } }] }); }, 200);';
+              script.id = 'init-carousel';
+              script.innerHTML = 'const carousel = document.getElementById(\'heroCarousel\');\n' +
+                '  const carouselInstance = bootstrap.Carousel.getInstance(carousel) || new bootstrap.Carousel(carousel);\n' +
+                '\n' +
+                '  let startX = 0;\n' +
+                '\n' +
+                '  // Für Maus (Desktop Swipe)\n' +
+                '  carousel.addEventListener(\'mousedown\', e => {\n' +
+                '    startX = e.clientX;\n' +
+                '  });\n' +
+                '\n' +
+                '  carousel.addEventListener(\'mouseup\', e => {\n' +
+                '    const diffX = e.clientX - startX;\n' +
+                '    if (Math.abs(diffX) > 50) {\n' +
+                '      if (diffX > 0) {\n' +
+                '        carouselInstance.prev();\n' +
+                '      } else {\n' +
+                '        carouselInstance.next();\n' +
+                '      }\n' +
+                '    }\n' +
+                '  });\n' +
+                '\n' +
+                '  // Für Touch (Mobile/Touchpads)\n' +
+                '  let touchStartX = 0;\n' +
+                '  carousel.addEventListener(\'touchstart\', e => {\n' +
+                '    touchStartX = e.changedTouches[0].screenX;\n' +
+                '  });\n' +
+                '\n' +
+                '  carousel.addEventListener(\'touchend\', e => {\n' +
+                '    const diffX = e.changedTouches[0].screenX - touchStartX;\n' +
+                '    if (Math.abs(diffX) > 50) {\n' +
+                '      if (diffX > 0) {\n' +
+                '        carouselInstance.prev();\n' +
+                '      } else {\n' +
+                '        carouselInstance.next();\n' +
+                '      }\n' +
+                '    }\n' +
+                '  });';
               this.doc.body.appendChild(script);
             }
           }));
@@ -327,7 +362,11 @@ export class ItemsComponent implements OnInit, OnDestroy {
       let items: Array<NavigationItem> = Navigation.getNextLevelNavigationItemsFrom(this.navigationService.activeNavigationItem);
       items = 0 === items.length && this.isCategoryHashtags ? Navigation.getAllRootItems() : items;
 
-      return items;
+      if (!this.sampleItemsOfCategories?.length) {
+        return items;
+      }
+
+      return items.filter((item: NavigationItem): boolean => !!this.itemOfCategory(item.toId));
     }
 
     get showCategoryNavigation(): boolean {

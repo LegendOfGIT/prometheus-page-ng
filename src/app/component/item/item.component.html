@@ -7,10 +7,10 @@
     [class.ms-2]="!IsTeaser"
     [class.informationItem-teaser]="IsTeaser"
     [class.informationItem--big]="showBig"
-    [ngClass]="['informationItem', cssModifier ? 'informationItem' + cssModifier : '', additionalCssClasses]"
+    [ngClass]="['informationItem', additionalCssClasses]"
   >
     <div
-      [ngClass]="['d-flex justify-content-center position-relative informationItem__imageContainer', cssModifier ? 'informationItem__imageContainer' + cssModifier : '']"
+      [ngClass]="['d-flex justify-content-center position-relative informationItem__imageContainer']"
       [class.informationItem__imageContainer--loading]="!item.id"
       [class.informationItem__imageContainer-teaser]="IsTeaser"
       [class.p-2]="!IsTeaser"
@@ -20,10 +20,10 @@
           *ngIf="item.itemId"
           [class.informationItem__image--big]="showBig"
           [class.p-2]="IsTeaser"
-          class="informationItem__image{{cssModifier ? ' informationItem__image' + cssModifier : ''}}"
+          class="informationItem__image"
           [class.informationItem__image-teaser]="IsTeaser"
           alt="{{'IMAGE_OF' | translate }} {{item.title}}"
-          [src]="showAlternateImage ? imageUrl : item.titleImage || ''"
+          [src]="imageUrl"
           (mouseenter)="imageUrl = item.titleImage || ''; currentImageIndex = 0"
           (error)="imageErrorOccurred()"
           loading="lazy"
@@ -41,7 +41,7 @@
 
     <ng-container *ngIf="ShowDescriptionAndPrice">
       <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item, itemUrl, $event)" target="{{linkTarget}}" >
-        <div class="mt-1 informationItem__contentContainer{{cssModifier ? ' informationItem__contentContainer' + cssModifier : ''}}">
+        <div class="mt-1 informationItem__contentContainer">
           <div *ngIf="showPrice">
             <div *ngIf="renderLowestPrice(item); else noPrice" [ngClass]="['button', 'fw-bold', 'justify-content-center', 'mb-3', 'informationItem__priceWrapper']">
               <span *ngIf="!hasOnlyOneOffer">{{ 'PRICE_FROM' | translate }}</span>
@@ -70,7 +70,7 @@
         <div>{{ 'OFFER_DETAILS' | translate }}</div>
       </a>
       <a href="{{itemUrl}}" class="informationItem--link" (click)="pickedInformation(item, itemUrl, $event)" target="{{linkTarget}}">
-          <div class="informationItem__title{{cssModifier ? ' informationItem__title' + cssModifier : ''}}">{{ itemTitle | translate }}</div>
+          <div class="informationItem__title">{{ itemTitle | translate }}</div>
       </a>
 
       <a *ngFor="let hashtag of item.hashtags" href="/hashtags/{{hashtag}}" (click)="exploreHashtag(hashtag, $event)">

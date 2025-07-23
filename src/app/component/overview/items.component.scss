@@ -8,6 +8,13 @@
   max-width: 90%;
 }
 
+h2 {
+  @media screen and (max-width: 576px) {
+    font-size: 1.125em !important;
+    font-weight: 630 !important;
+  }
+}
+
 .filters {
   &__button {
     position: relative;
@@ -20,20 +27,12 @@
   &__container {
     background-color: #fff;
     flex-wrap: wrap;
-
-    &--categories {
-      padding-top: unset;
-    }
   }
 
   &__content {
     display: flex;
     font-family: $font-family;
     padding-top: 1em;
-
-    &--categories {
-      padding-top: 4.5em;
-    }
   }
 
   &__disclaimer {
@@ -105,4 +104,135 @@
 .slick-slide {
   display: flex;
   justify-content: center;
+}
+
+a, a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+nav a {
+  color: white;
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+.hero-wrapper {
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-wrapper,
+.hero-wrapper * {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.hero-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-wrapper img {
+  mix-blend-mode: multiply !important;
+}
+
+.carousel-inner {
+  width: 100%;
+  max-height: 500px;
+}
+
+.carousel-item {
+  height: 330px;
+  background-color: white !important;
+  isolation: isolate;
+
+  @media screen and (min-width: 576px) {
+    height: 500px;
+  }
+}
+
+.carousel-item > .row {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Begrenzte Breite + zentriert */
+.carousel-item > .container-hero {
+  width: 100%;
+  max-width: 75%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Für Text+Bild innerhalb des Slides */
+.carousel-item .row {
+  width: 100%;
+  align-items: center;
+}
+
+.carousel-img img {
+  width: 100%;
+  max-height: 220px;
+  max-width: 300px;
+
+  object-fit: contain;
+  border-radius: 8px;
+  mix-blend-mode: multiply;
+  user-drag: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+
+  @media screen and (min-width: 576px) {
+    max-height: 400px;
+    max-width: 500px;
+  }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(255, 165, 0, 0.85);
+  border-radius: 50%;
+  padding: 20px;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: rgba(255, 165, 0);
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  background-size: 70% 70% !important;
+}
+
+.product-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.05);
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+@media (max-width: 767px) {
+  .carousel-item .row {
+    flex-direction: column;
+  }
 }

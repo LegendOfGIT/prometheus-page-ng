@@ -41,7 +41,6 @@ export class ManageThingOfInterestComponent implements OnDestroy {
   }
 
   private loadItem(): void {
-    console.log(this.itemId);
     this.subscriptions.push(this.contentService.getThingOfInterest(this.itemId).subscribe((item: ThingOfInterest | undefined): void => {
       this.item = item;
     }));

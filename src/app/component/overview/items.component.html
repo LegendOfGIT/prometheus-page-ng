@@ -1,14 +1,55 @@
-<div class="container informationItems__content informationItems__content--categories">
-  <div *ngIf="showCategoryNavigation" class="col-12 pb-2 pt-2 d-inline-flex justify-content-center informationItems__container informationItems__container--categories carousel__viewport">
-    <app-item
-      *ngFor="let subNavigationItem of subNavigationItems"
-      [item]="itemOfCategory(subNavigationItem?.toId || '')"
-      [displayMode]="ITEM_MODE_CATEGORY"
-      (imageError)="imageLoadingError($event)"
+<section id="heroCarousel" class="carousel slide hero-wrapper" data-bs-ride="carousel" data-bs-interval="8000" data-bs-touch="true">
+  <div class="carousel-inner">
+    <a
+      *ngFor="let subNavigationItem of subNavigationItems; let i = index"
+      [href]="'/' + subNavigationItem.pathParts.join('/')"
+      [routerLink]="'/' + subNavigationItem.pathParts.join('/')"
     >
-    </app-item>
+      <div
+        class="carousel-item"
+        [class.active]="i == 0"
+      >
+        <div class="container-hero">
+          <div class="row">
+            <div class="col-12 col-lg-4 mb-2 mb-md-0 text-center">
+              <h2>{{ 'NAVIGATION_' + subNavigationItem.toId | translate }}</h2>
+            </div>
+            <div class="col-12 col-lg-7 carousel-img">
+              <img
+                [src]="itemOfCategory(subNavigationItem.toId)?.titleImage"
+                alt="Produktbild für Kategorie {{ 'NAVIGATION_' + subNavigationItem.toId | translate }}"
+                draggable="false"
+                (error)="imageLoadingError(itemOfCategory(subNavigationItem.toId))"
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
   </div>
-</div>
+
+  <!-- Controls -->
+  <div class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Vorheriger</span>
+  </div>
+  <div class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Nächster</span>
+  </div>
+
+  <div class="carousel-indicators">
+    <div
+      *ngFor="let subNavigationItem of subNavigationItems; let i = index"
+      type="button"
+      data-bs-target="#heroCarousel"
+      attr.data-bs-slide-to="{{i}}"
+      aria-current="true"
+      aria-label="Slide 1"
+      [class.active]="i === 0"
+    ></div>
+  </div>
+</section>
 
 <div *ngIf="items">
   <div class="container">

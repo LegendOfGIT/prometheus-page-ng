@@ -128,7 +128,7 @@ export class ItemComponent implements AfterViewInit, OnChanges {
           .setFilters(this.getParameterFromUrl('filters') || '')
           .setTrackingId('item.clicked'));
 
-      if (!UserService.isBotRequest(this.request) && !this.isCategoryItem() && !linkUrl.startsWith('https:')) {
+      if (!UserService.isBotRequest(this.request) && !linkUrl.startsWith('https:')) {
         event.preventDefault();
         this.router.navigateByUrl('/', { skipLocationChange: true }).then((): void => {
           this.router.navigateByUrl(linkUrl);
@@ -183,18 +183,6 @@ export class ItemComponent implements AfterViewInit, OnChanges {
             -1 !== (this.item?.navigationPath || []).indexOf(nextNavigationItem.toId || ''));
     }
 
-    private isCategoryItem(): boolean {
-      return ItemDisplayMode.CATEGORY === this.displayMode;
-    }
-
-    private getCategoryUrl(): string {
-      const searchPattern: string = this.route.snapshot?.queryParamMap?.get('search') as string;
-      const navigationItem: NavigationItem | undefined = this.getNextNavigationItem();
-      return '/' +
-        (navigationItem?.pathParts || []).filter((pathPart: string) => pathPart).join('/') +
-        (searchPattern ? `?search=${searchPattern}` : '');
-    }
-
     public imageErrorOccurred(): void {
       this.imageUrl = 'assets/images/broken-image.png';
       const meansToDelete: string[] = (this.item?.providers || [])
@@ -209,10 +197,6 @@ export class ItemComponent implements AfterViewInit, OnChanges {
     get itemUrl(): string {
         if (UserService.isBotRequest(this.request) || !this.ShowDescriptionAndPrice) {
           return this.singleProductViewUrl;
-        }
-
-        if (this.isCategoryItem()) {
-          return this.getCategoryUrl();
         }
 
         if (this.hasOnlyOneOffer) {
@@ -232,7 +216,7 @@ export class ItemComponent implements AfterViewInit, OnChanges {
         return itemId;
       }
 
-      return this.hasOnlyOneOffer && ItemDisplayMode.CATEGORY !== this.displayMode ? itemId : '_self';
+      return this.hasOnlyOneOffer ? itemId : '_self';
     }
 
     get showHashtags(): boolean {
@@ -252,15 +236,7 @@ export class ItemComponent implements AfterViewInit, OnChanges {
     }
 
     get itemTitle(): string {
-      if (this.isCategoryItem()) {
-        return `NAVIGATION_${this.getNextNavigationItem()?.toId || ''}`;
-      }
-
       return this.item?.title || '';
-    }
-
-    get cssModifier(): string {
-      return this.isCategoryItem() ? '--category' : '';
     }
 
     get showBig(): boolean {
@@ -268,7 +244,7 @@ export class ItemComponent implements AfterViewInit, OnChanges {
     }
 
     get renderedReduction(): string {
-      if (ItemDisplayMode.CATEGORY === this.displayMode || ItemDisplayMode.TEASER === this.displayMode) {
+      if (ItemDisplayMode.TEASER === this.displayMode) {
         return '';
       }
 
@@ -276,18 +252,10 @@ export class ItemComponent implements AfterViewInit, OnChanges {
     }
 
     get showOfferDetailsLink(): boolean {
-      return this.hasOnlyOneOffer && !this.isCategoryItem();
-    }
-
-    get showAlternateImage(): boolean {
-      return ItemDisplayMode.CATEGORY !== this.displayMode;
+      return this.hasOnlyOneOffer;
     }
 
     get discountItem(): DiscountItem | undefined {
-      if (this.isCategoryItem()) {
-        return undefined;
-      }
-
       return Discounts.getDiscountForItem(this.item);
     }
 
@@ -306,6 +274,5 @@ export class ItemComponent implements AfterViewInit, OnChanges {
 
 export enum ItemDisplayMode {
   DEFAULT,
-  CATEGORY,
   TEASER
 }
