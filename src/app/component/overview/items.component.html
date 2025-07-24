@@ -1,14 +1,16 @@
 <section id="heroCarousel" class="carousel slide hero-wrapper" data-bs-ride="carousel" data-bs-interval="8000" data-bs-touch="true">
   <div class="carousel-inner">
+    <a
+      *ngFor="let subNavigationItem of subNavigationItems; let i = index"
+      [href]="'/' + subNavigationItem.pathParts.join('/')"
+      [routerLink]="'/' + subNavigationItem.pathParts.join('/')"
+    >
       <div
-        *ngFor="let subNavigationItem of subNavigationItems; let i = index"
         class="carousel-item"
         [class.active]="i == 0"
+        [class.carousel-item-start]="i == 0"
+        [class.carousel-item-end]="i == subNavigationItems?.length - 1"
       >
-        <a
-          [href]="'/' + subNavigationItem.pathParts.join('/')"
-          [routerLink]="'/' + subNavigationItem.pathParts.join('/')"
-        >
         <div class="container-hero">
           <div class="row">
             <div class="col-12 col-lg-4 mb-2 mb-md-0 text-center">
@@ -24,8 +26,8 @@
             </div>
           </div>
         </div>
-        </a>
       </div>
+    </a>
   </div>
 
   <!-- Controls -->
