@@ -9,7 +9,7 @@
         class="carousel-item"
         [class.active]="i == 0"
         [class.carousel-item-start]="i == 0"
-        [class.carousel-item-end]="i == (subNavigationItems?.length - 1)"
+        [class.carousel-item-end]="i == ((subNavigationItems?.length ?? 1) - 1)"
       >
         <div class="container-hero">
           <div class="row">
