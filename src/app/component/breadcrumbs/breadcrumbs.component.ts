@@ -48,6 +48,14 @@ export class BreadcrumbsComponent {
     return numberOfTotalCharacters;
   }
 
+  public isSecondLastItem(navigationId: string): boolean {
+    return (this.navigationIds || []).indexOf(navigationId) === (this.navigationIds || []).length - 2;
+  }
+
+  public isLastItem(navigationId: string): boolean {
+    return (this.navigationIds || []).indexOf(navigationId) === (this.navigationIds || []).length - 1;
+  }
+
   get breadcrumbItemModifier(): string {
     return this.numberOfTotalBreadcrumbsCharacters() >= 40 ? '' : '  breadcrumbs__item--big';
   }

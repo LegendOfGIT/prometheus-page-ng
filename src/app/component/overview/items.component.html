@@ -1,5 +1,18 @@
 <section id="heroCarousel" class="carousel slide hero-wrapper" data-bs-ride="carousel" data-bs-interval="8000" data-bs-touch="true">
   <div class="carousel-inner">
+    <div
+      *ngIf="!subNavigationItems?.length && SEODescription"
+      class="carousel-item active"
+    >
+      <div class="container-hero">
+        <div class="row">
+          <div class="col-12 mb-2 mb-md-0 text-center">
+            <h2>{{ SEODescription }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <a
       *ngFor="let subNavigationItem of subNavigationItems; let i = index"
       [href]="'/' + subNavigationItem.pathParts.join('/')"
@@ -29,11 +42,11 @@
   </div>
 
   <!-- Controls -->
-  <div class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+  <div *ngIf="subNavigationItems?.length" class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Vorheriger</span>
   </div>
-  <div class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+  <div *ngIf="subNavigationItems?.length" class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Nächster</span>
   </div>
@@ -136,12 +149,6 @@
 </div>
 
 <section>
-  <article *ngIf="SEODescription" class="container informationItems__content">
-    <div class="col-12">
-      <p [innerHTML]="SEODescription"></p>
-    </div>
-  </article>
-
   <div *ngFor="let seoNavigationId of seoNavigationIds">
     <div *ngFor="let seoKey of ['A', 'B', 'C', 'D', 'E']">
       <article *ngIf="seoHeader(seoNavigationId, seoKey)" class="container informationItems__content">

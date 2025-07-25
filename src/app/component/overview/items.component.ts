@@ -369,14 +369,6 @@ export class ItemsComponent implements OnInit, OnDestroy {
       return items.filter((item: NavigationItem): boolean => !!this.itemOfCategory(item.toId));
     }
 
-    get showCategoryNavigation(): boolean {
-        if (this.navigationService.activeNavigationItem?.isFirstNavigationLevel()) {
-          return true;
-        }
-
-        return this.subNavigationItems.length > 1;
-    }
-
     get seoNavigationIds(): Array<string> {
       if (this.isCategoryHashtags) {
         return [];
@@ -392,6 +384,8 @@ export class ItemsComponent implements OnInit, OnDestroy {
     }
 
     get SEODescription(): string {
-      return this.translationService.getTranslations()[`SEO_DESCRIPTION_${this.navigationService.activeNavigationItem?.SEOId || ''}`] || '';
+      let seoDescription = this.translationService.getTranslations()[`SEO_DESCRIPTION_${this.navigationService.activeNavigationItem?.SEOId || ''}`] || '';
+      seoDescription = seoDescription ? seoDescription : this.translationService.getTranslations()[`SEO_DESCRIPTION_${this.navigationService.activeNavigationItem?.toId || ''}`] || '';
+      return seoDescription;
     }
 }
