@@ -22,7 +22,7 @@ export class TranslationService extends ApiBase {
   public getTranslations(locale: string = ''): any {
     const localeForDisplay: string = locale ? locale : this.userService.activeUser?.localeForDisplay || 'de_DE';
     if (this.requestedLocale !== localeForDisplay) {
-      this.getTranslationsFromApi(localeForDisplay, '**##BerliN1983##**').subscribe((translations) => this.translations = translations);
+      this.getTranslationsFromApi(localeForDisplay).subscribe((translations) => this.translations = translations);
       this.requestedLocale = localeForDisplay;
     }
 
