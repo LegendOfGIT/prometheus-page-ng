@@ -33,6 +33,10 @@ const routes: Routes = [
     loadChildren: () => import('./component/things-of-interest/things-of-interest.module').then(m => m.ThingsOfInterestModule)
   },
   {
+    path: 'sales-und-rabatte',
+    loadChildren: () => import('./component/promotions/promotions.module').then(m => m.PromotionsModule)
+  },
+  {
     path: ':navigationIdLevelA',
     loadChildren: () => import('./component/overview/product-overview.module').then(m => m.ProductOverviewModule)
   },

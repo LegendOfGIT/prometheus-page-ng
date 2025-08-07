@@ -4,14 +4,17 @@ export class DiscountItem {
   conditionsToCheck: Array<DiscountCondition> = [];
   minimumDate: Date | undefined;
   maximumDate: Date | undefined;
+  shopLink: string = '';
   teaser: string = '';
+  teaserImage: string = '';
 
-  constructor(teaser: string, conditions: string, code: string = '', minimumDate: Date | undefined = undefined, maximumDate: Date | undefined = undefined) {
+  constructor(teaser: string, teaserImage: string = '', conditions: string, code: string = '', minimumDate: Date | undefined = undefined, maximumDate: Date | undefined = undefined) {
     this.code = code;
     this.conditions = conditions;
     this.maximumDate = maximumDate;
     this.minimumDate = minimumDate;
     this.teaser = teaser;
+    this.teaserImage = teaserImage;
   }
 
   public setConditionsToCheck(conditionsToCheck: Array<DiscountCondition>): DiscountItem {
@@ -19,8 +22,13 @@ export class DiscountItem {
     return this;
   }
 
+  public setShopLink(shopLink: string): DiscountItem {
+    this.shopLink = shopLink;
+    return this;
+  }
+
   public isCurrentlyActive(): boolean {
-    const now = new Date();
+    const now: Date = new Date();
     if (this.maximumDate && now > this.maximumDate) {
       return false;
     }

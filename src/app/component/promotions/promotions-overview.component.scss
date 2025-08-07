@@ -1,0 +1,92 @@
+$orange: #f78b1e;
+$orange-dark: #d06f0d;
+$orange-light: #ffe0b2;
+$bg-light: #fff7f2;
+$text-dark: #333;
+$text-light: #666;
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: $bg-light;
+  color: $text-dark;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  background: $orange-light;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.disclaimer {
+  color: $text-dark;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.promo-section {
+  padding: 2rem 1rem;
+}
+
+.promo-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.promo-card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.promo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+}
+
+.promo-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.promo-body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.promo-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.promo-desc {
+  color: $text-light;
+  font-size: 0.95rem;
+}
+
+.promo-btn {
+  background-color: $orange;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 4px;
+  margin-top: 1rem;
+  align-self: flex-start;
+  text-decoration: none;
+}

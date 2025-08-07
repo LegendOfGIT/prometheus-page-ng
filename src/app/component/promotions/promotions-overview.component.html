@@ -1,0 +1,29 @@
+<header>
+  <h1>Aktuelle Sales und Rabatte</h1>
+  <p>Spare bei Top-Marken und entdecke exklusive Deals aus unseren Partnershops</p>
+</header>
+
+<div class="promo-section container">
+  <h2>Unsere Highlight-Deals</h2>
+  <div class="row g-4 mt-2 justify-content-center">
+    <a *ngFor="let activePromotion of ActivePromotions" href="{{activePromotion.shopLink}}" target="{{activePromotion.shopLink}}" class="col-md-6 col-lg-4">
+      <div>
+        <div class="promo-card">
+          <img *ngIf="activePromotion.teaserImage" src="{{activePromotion.teaserImage}}" class="promo-img" alt="20% Rabatt auf Spielzeug bei Shop A">
+          <div class="promo-body">
+            <div>
+              <div class="promo-title">{{activePromotion.teaser}}</div>
+              <div class="promo-desc">{{activePromotion.conditions}}</div>
+            </div>
+            <div class="mt-2">bis zum: {{ activePromotion.maximumDate | date: 'dd.MM.yyyy' }}</div>
+            <a href="#" class="promo-btn">Jetzt sparen *</a>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="col-12 d-flex justify-content-center text-center mt-2 disclaimer">
+  * {{ 'PROVISION_DISCLAIMER' | translate }}
+</div>

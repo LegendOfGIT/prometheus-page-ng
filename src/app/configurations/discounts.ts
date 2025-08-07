@@ -9,33 +9,27 @@ import {Item} from '../model/item';
 export class Discounts {
   public static DISCOUNTS: DiscountItem[] = [
     new DiscountItem(
-      'DISCOUNT_TEASER_NATURESWAY_NEWYEAR_NEWME',
-      'DISCOUNT_CONDITIONS_NATURESWAY_NEWYEAR_NEWME',
+      'Vertbaudet.de: 15 EUR Gutschrift je 100 EUR Einkaufswert',
+      'https://media.vertbaudet.de/medias/45/4/30974/777798193/enm.jpg',
+      'Gilt für Aktions-Möbel und Dekoration auf www.vertbaudet.de',
       '',
       undefined,
-      new Date(2024, 0, 31, 23, 59, 59)
+      new Date(2025, 7, 12, 23, 59, 59)
     ).setConditionsToCheck([
-      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'naturesway' }
-    ]),
-    new DiscountItem(
-      'DISCOUNT_TEASER_KARLKARLO_HEALTHY15',
-      '',
-      'HEALTHY15',
-      undefined,
-      new Date(2024, 0, 31, 23, 59, 59)
-    ).setConditionsToCheck([
-      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'karlkarlo' }
-    ]),
-    new DiscountItem(
-      'DISCOUNT_TEASER_MESSMER_COLDTEA',
-      'DISCOUNT_CONDITIONS_MESSMER_COLDTEA',
-      '',
-      undefined,
-      new Date(2024, 2, 31, 23, 59, 59)
-    ).setConditionsToCheck([
-      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'messmer' },
-      { conditionId: DISCOUNT_CONDITION_ID_DESCRIPTION, value: 'Zeit für Cold Tea' }
+      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'vertbaudet' }
     ])
+    .setShopLink('https://www.vertbaudet.de/shop/aktion-home.htm'),
+    new DiscountItem(
+      'brunobanani.com: Rabatte, die Wellen schlagen!',
+      'https://brunobanani.com/media/85/30/eb/1754374736/720x400%20%20Kategorieseite.jpg',
+      'Blickfang-Bademode zum Sparpreis. Spare mindestens 30% auf Swimwear!',
+      '',
+      undefined,
+      new Date(2025, 7, 19, 23, 59, 59)
+    ).setConditionsToCheck([
+      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'brunobanani' }
+    ])
+      .setShopLink('https://brunobanani.com/sale/damen/bademode/')
   ];
 
   public static getDiscountForItem(item: Item | null): DiscountItem | undefined {
