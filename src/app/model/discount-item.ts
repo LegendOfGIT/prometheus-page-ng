@@ -1,4 +1,5 @@
 export class DiscountItem {
+  callToAction: string = '';
   code: string = '';
   conditions: string = '';
   conditionsToCheck: Array<DiscountCondition> = [];
@@ -8,7 +9,8 @@ export class DiscountItem {
   teaser: string = '';
   teaserImage: string = '';
 
-  constructor(teaser: string, teaserImage: string = '', conditions: string, code: string = '', minimumDate: Date | undefined = undefined, maximumDate: Date | undefined = undefined) {
+  constructor(callToAction: string, teaser: string, teaserImage: string = '', conditions: string, code: string = '', minimumDate: Date | undefined = undefined, maximumDate: Date | undefined = undefined) {
+    this.callToAction = callToAction;
     this.code = code;
     this.conditions = conditions;
     this.maximumDate = maximumDate;

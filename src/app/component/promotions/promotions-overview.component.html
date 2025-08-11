@@ -16,7 +16,7 @@
               <div class="promo-desc">{{activePromotion.conditions}}</div>
             </div>
             <div class="mt-2">bis zum: {{ activePromotion.maximumDate | date: 'dd.MM.yyyy' }}</div>
-            <a href="#" class="promo-btn">Jetzt sparen *</a>
+            <a href="#" class="promo-btn">{{ activePromotion.callToAction }} *</a>
           </div>
         </div>
       </div>

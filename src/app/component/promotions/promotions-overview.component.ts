@@ -9,6 +9,8 @@ import {Discounts} from '../../configurations/discounts';
 })
 export class PromotionsOverviewComponent {
   get ActivePromotions(): DiscountItem[] {
-    return Discounts.DISCOUNTS.filter((discount: DiscountItem) => discount.isCurrentlyActive());
+    return Discounts.DISCOUNTS
+      .filter((discount: DiscountItem) => discount.isCurrentlyActive())
+      .sort((a, b) => (a.maximumDate ?? new Date()) < (b.maximumDate ?? new Date()) ? -1 : 1);
   }
 }
