@@ -6,30 +6,14 @@
     </section>
   </a>
 
-  <a *ngIf="false" href="{{currentHero?.heroUrl}}">
-    <div
-      class="w-100 position-absolute startPage__hero"
-      [style.background-image]="currentHero?.backgroundImage"
-      [style.background-position-x]="currentHero?.backgroundPositionX"
-      [style.background-position-y]="currentHero?.backgroundPositionY"
-      [style.background-size]="currentHero?.backgroundSize || 'contain'"
-    >
-      <div
-        *ngIf="currentHero?.heroText"
-        class="startPage__heroTitle"
-        [style.margin-top]="currentHero?.heroTextMarginTop || '10%'"
-      >{{currentHero?.heroText || '' | translate}}</div>
-    </div>
-  </a>
-
   <section class="products-highlight container">
-    <h3>Neues entdecken</h3>
+    <h3>Highlights für dich</h3>
     <div class="product-row">
-      <a class="product-card" [attr.href]="'/bio-kinderkleidung'" routerLink="/bio-kinderkleidung">
-        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/bio-baumwollpullover-1.webp" alt="Kinderpullover aus Biowolle" />
-        <h4>Bio Kinderkleidung</h4>
-        <p class="d-flex justify-content-center">Gut angezogen von Anfang an</p>
-        <p>Weiche Stoffe, schadstofffrei und fair produziert – Bio Kinderkleidung gibt dir ein gutes Gefühl bei allem, was dein Kind trägt. Für Euch, die ihr Wert auf Qualität und Nachhaltigkeit legt.</p>
+      <a class="product-card" [attr.href]="'/sonnencreme'" routerLink="/sonnencreme">
+        <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/08/kinder-sonnencreme.webp" alt="Sonnencreme für Kinder" />
+        <h4>Sonnencreme</h4>
+        <p class="d-flex justify-content-center">Sanfter Schutz für kleine Entdecker</p>
+        <p>Empfindliche Kinderhaut braucht besonderen Schutz – unsere Auswahl an Sonnencremes für Kinder verbindet zuverlässigen UV-Schutz mit hautfreundlichen Inhaltsstoffen. So können die Kleinen unbeschwert spielen, planschen und die Sonne genießen.</p>
       </a>
       <a class="product-card" [attr.href]="'/holzspielzeug-für-kinder'" routerLink="/holzspielzeug-für-kinder">
         <img src="https://wewannashop.wordpress.com/wp-content/uploads/2025/07/holzspielzeug.webp" alt="Buntes Holzspielzeug" />
@@ -175,9 +159,5 @@
     <div class="col-12 fst-italic startPage__disclaimer">
       {{ 'PROVISION_DISCLAIMER' | translate }}
     </div>
-
-    <article class="col-12 startPage__seo mt-5 mb-5">
-      {{ 'SEO_STARTPAGE_TEASER' | translate }}
-    </article>
   </div>
 </div>

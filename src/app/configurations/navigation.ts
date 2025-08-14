@@ -458,6 +458,9 @@ export class Navigation {
     new NavigationItem('ALL', 'BEAUTY_CARE', ['beauty-and-care', '', ''], 8)
       .setHasSlogan(true)
       .setHasTeaser(true),
+    new NavigationItem('ALL', 'BEAUTY_CARE', ['sonnencreme', '', ''])
+      .setPathPartsForNavigation(['beauty-and-care', '', ''])
+      .setSearchPattern('Sonne'),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_BODYCARE', ['beauty-and-care', 'body-care', '']),
     new NavigationItem('BEAUTY_CARE_BODYCARE', 'BEAUTY_CARE_BODYCARE_SOAP', ['beauty-and-care', 'body-care', 'soap']),
     new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_EROTIC', ['beauty-and-care', 'erotic', '']),

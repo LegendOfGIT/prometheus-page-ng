@@ -1,6 +1,7 @@
 @import '../../../styles/controls';
 @import '../../../styles';
 
+$orange: #f78b1e;
 $orange-light: #ffe0b2;
 
 * {
@@ -27,6 +28,15 @@ body {
   background: $orange-light;
   padding: 3rem 1rem;
   text-align: center;
+
+  &__thin {
+    padding: 1rem;
+  }
+
+  &--highlighted {
+    background: $orange;
+    color: #fff;
+  }
 }
 
 .product-row, .grid-tiles, .trend-grid, .topic-grid {

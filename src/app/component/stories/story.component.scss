@@ -5,12 +5,19 @@
     margin-bottom: 1em;
   }
 
+  &__container {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+
+    color: #333;
+  }
+
   &__image {
     border-radius: 5%;
     max-width: 10em;
   }
 
   &__title {
+    color: #f78b1e;
     margin-bottom: 1em;
   }
 }

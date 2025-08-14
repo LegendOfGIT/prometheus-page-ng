@@ -1,19 +1,21 @@
-<div *ngIf="story" class="mt-5">
+<div *ngIf="story" class="mt-5 story-element__container">
   <div class="row w-100">
     <div class="col-1"></div>
     <div class="col">
       <div
         *ngFor="let storyElement of story.elements"
         class="fs-5"
-        [class.fw-bold]="storyElement.type === StoryElementType.Title"
+        [class.fw-700]="storyElement.type === StoryElementType.Title"
         [class.story-element__block]="storyElement.type === StoryElementType.Block"
-        [class.story-element__title]="storyElement.type === StoryElementType.Title"
       >
+        <h2 *ngIf="storyElement.type === StoryElementType.Title" class="story-element__title">
+          {{storyElement.content}}
+        </h2>
         <div *ngIf="storyElement.type === StoryElementType.Image">
           <img class="story-element__image mb-2" [src]="storyElement.content" />
         </div>
         <div
-          *ngIf="storyElement.type !== StoryElementType.Image"
+          *ngIf="storyElement.type === StoryElementType.Block"
           [innerHTML]="getSanitizedElementContent(storyElement)"
         ></div>
       </div>
@@ -24,7 +26,7 @@
   <div class="row w-100">
     <div class="col-1"></div>
     <div class="col">
-      <div class="fs-5 fw-bold story-element__title">{{ 'YOU_MAY_ALSO_LIKE' | translate }}</div>
+      <h3 class="story-element__title">{{ 'YOU_MAY_ALSO_LIKE' | translate }}</h3>
 
       <category-teaser
         [navigationItem]="getNavigationItemOfStory()"
@@ -39,7 +41,7 @@
   <div *ngIf="furtherStories().length" class="row w-100">
     <div class="col-1"></div>
     <div class="col">
-      <div class="fs-5 fw-bold story-element__title">{{ 'STORIES_MORE_STORIES' | translate }}</div>
+      <h3 class="story-element__title">{{ 'STORIES_MORE_STORIES' | translate }}</h3>
 
       <a href="/story/{{story.canonical}}" *ngFor="let story of furtherStories()" class="d-block mb-2">
         <div *ngIf="findFirstStoryImage(story)" class="mb-2 story-element__image">
