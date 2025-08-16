@@ -75,7 +75,7 @@ export class StartPageComponent implements OnInit {
     this.doc.head.appendChild(contentModel);
 
     this.metaService.updateTag({ name: 'description', content: seoDescription });
-    this.metaService.updateTag({ name: 'og:title', content: 'Deine Lieblingsprodukte auf WeWanna.shop' });
+    this.metaService.updateTag({ name: 'og:title', content: 'Deine Lieblingsprodukte auf WeWanna.shop | Du shoppst. Wir spenden!' });
     this.metaService.updateTag({ name: 'og:type', content: 'website' });
   }
 
@@ -84,6 +84,10 @@ export class StartPageComponent implements OnInit {
     currentHeroIndex = this.heroes.length -1 === currentHeroIndex ? 0 : currentHeroIndex + 1;
 
     this.currentHero = this.heroes[currentHeroIndex];
+  }
+
+  get Today(): Date {
+    return new Date();
   }
 }
 
