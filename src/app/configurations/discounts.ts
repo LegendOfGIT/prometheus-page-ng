@@ -9,41 +9,41 @@ import {Item} from '../model/item';
 export class Discounts {
   public static DISCOUNTS: DiscountItem[] = [
     new DiscountItem(
-      'Jetzt neu einrichten!',
-      'Vertbaudet.de: 15 EUR Gutschrift je 100 EUR Einkaufswert',
-      'https://media.vertbaudet.de/medias/45/4/30974/777798193/enm.jpg',
-      'Gilt für Aktions-Möbel und Dekoration auf www.vertbaudet.de',
+      'Jetzt überraschen lassen!',
+      'topparfuemerie.de: Gratis Summer Surprise Bag!',
+      'https://www.topparfuemerie.de/media/magestore/bannerslider/images/b/a/banner_white_label_shop_desktop_1224_x_410_px_51_.png',
+      'Gratis Surprise Bag zu jedem Einkauf ab 49,95€ - mit Goodies gefüllte Kosmetiktasche',
       '',
       undefined,
-      new Date(2025, 7, 12, 23, 59, 59)
+      new Date(2025, 7, 31, 23, 59, 59)
     ).setConditionsToCheck([
-      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'vertbaudet' }
+      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'topparfuemerie' }
     ])
-    .setShopLink('https://www.vertbaudet.de/shop/aktion-home.htm'),
+    .setShopLink('https://www.topparfuemerie.de/'),
     new DiscountItem(
       'Jetzt sparen!',
-      'brunobanani.com: Rabatte, die Wellen schlagen!',
-      'https://brunobanani.com/media/85/30/eb/1754374736/720x400%20%20Kategorieseite.jpg',
-      'Blickfang-Bademode zum Sparpreis. Spare mindestens 30% auf Swimwear!',
+      'toom.de: Schattige Plätzchen genießen und sparen!',
+      'https://toom.de/fileadmin/_processed_/3/8/csm_ST-TH_Hollywoodschaukeln-Aktion-Prio1_25-35_1164x397_654a3225cc.jpg?quality=75&format=jpg&bg-color=ffffff&width=680',
+      'Spare bis zu 40% bei ausgewählten Hollywoodschaukeln und Klemmmarkisen',
       '',
       undefined,
-      new Date(2025, 7, 19, 23, 59, 59)
+      new Date(2025, 7, 29, 23, 59, 59)
     ).setConditionsToCheck([
-      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'brunobanani' }
+      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'toom' }
     ])
-      .setShopLink('https://brunobanani.com/sale/damen/bademode/'),
+      .setShopLink('https://toom.de/s/Rabattaktion-Hollywoodschaukeln-Markisen/produkte'),
     new DiscountItem(
       'Nur für kurze Zeit!',
-      'quelle.de: Großer Sommer-Sale bis zu -70%',
-      'https://www.quelle.de/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fdrupal-images-quellede%2Fproduction%2F2025-08%2F25KW33_b1_30pro_Strand-_Bademode_1140x350px.jpg&w=1200&q=75',
-      '-30% auf Strand- und Bademode. Gilt auch auf bereits reduzierte Artikel',
-      '',
+      'medimops.de: Summersale',
+      'https://cms.medimops.eu/cms2/cache/containers/banners/mm_de_app_home_summersale-min.jpg/aa7badc86b6fc93f915023d8d16b3646.avif',
+      '18 % auf Second Hand Produkte: Jetzt nur kurze Zeit bei medimops!',
+      'Sommer18',
       undefined,
-      new Date(2025, 7, 15, 23, 59, 59)
+      new Date(2025, 7, 27, 23, 59, 59)
     ).setConditionsToCheck([
-      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'quelle' }
+      { conditionId: DISCOUNT_CONDITION_ID_LINK, value: 'medimops' }
     ])
-      .setShopLink('https://www.quelle.de/mode/damen/waesche-bademode/strandmode/strandkleider/'),
+      .setShopLink('https://www.medimops.de/sommer/'),
     new DiscountItem(
       'Jetzt zuschlagen!',
       'silkes-weinkeller.de: Kaufe 3 Flaschen, erhalte 6 Flaschen!',
