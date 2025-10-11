@@ -107,11 +107,11 @@ export class Navigation {
     new NavigationItem('LUXURIES_WRITINGSUPPLIES', 'LUXURIES_WRITINGSUPPLIES_BIROS', ['luxuries', 'writing-supplies', 'biros']),
     new NavigationItem('LUXURIES_WRITINGSUPPLIES', 'LUXURIES_WRITINGSUPPLIES_FOUNTAINPENS', ['luxuries', 'writing-supplies', 'fountain-pens']),
 
-    new NavigationItem('ALL', 'KIDS', ['kids', '', ''], 5)
+    new NavigationItem('ALL', 'KIDS', ['familie', '', ''], 5)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('ALL', 'KIDS', ['wasserspielzeug-für-kinder', '', ''])
-      .setPathPartsForNavigation(['kids', '', ''])
+      .setPathPartsForNavigation(['familie', '', ''])
       .setSearchPattern('wasserspielzeug'),
     new NavigationItem('KIDS', 'KIDS_BABIES', ['familie', 'babys', '']),
     new NavigationItem('KIDS_BABIES', 'KIDS_BABIES_DIAPERS', ['familie', 'babys', 'windeln']),
