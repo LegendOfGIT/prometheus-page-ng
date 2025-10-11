@@ -5,9 +5,10 @@ export class Navigation {
   public static ITEMS: NavigationItem[] = [
     new NavigationItem('', 'ALL', ['', '', '']),
 
-    new NavigationItem('ALL', 'FASHION', ['fashion', '', ''], 1)
+    new NavigationItem('ALL', 'FASHION', ['mode', '', ''], 1)
       .setHasSlogan(true)
       .setHasTeaser(true),
+
     new NavigationItem('FASHION', 'FASHION_BOYS', ['fashion', 'boys', '']),
     new NavigationItem('FASHION', 'FASHION_BOYS', ['bio-kinderkleidung', '', ''])
       .setPathPartsForNavigation(['fashion', 'boys', ''])
@@ -33,24 +34,26 @@ export class Navigation {
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SHOES', ['fashion', 'girls', 'shoes']),
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SWEATERS_AND_KNITWEAR', ['fashion', 'girls', 'sweaters-and-knitwear']),
     new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SWIMWEAR', ['fashion', 'girls', 'swimwear']),
-    new NavigationItem('FASHION', 'FASHION_WOMEN', ['fashion', 'women', ''])
+
+    new NavigationItem('FASHION', 'FASHION_WOMEN', ['mode', 'damenmode', ''])
       .setHasSlogan(true),
+
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['sommerkleidung-für-frauen', '', ''])
       .setPathPartsForNavigation(['fashion', 'women', ''])
       .setSearchPattern('sommer'),
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['sportkleidung-für-frauen', '', ''])
       .setPathPartsForNavigation(['fashion', 'women', ''])
       .setSearchPattern('sport'),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_BAGS', ['fashion', 'women', 'bags']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES', ['fashion', 'women', 'disguises']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_BAGS', ['mode', 'damenmode', 'taschen']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES', ['mode', 'damenmode', 'verkleidungen']),
     new NavigationItem(
       'FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES',
       ['aussergewöhnliche-kostüme-damen', '', '']
     )
       .setPathPartsForNavigation(['fashion', 'women', 'disguises'])
       .setSEOId('EXTRAORDINARYWOMENDISGUISES'),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JACKETS', ['fashion', 'women', 'jackets']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['fashion', 'women', 'jeans']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JACKETS', ['mode', 'damenmode', 'jacken']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['mode', 'damenmode', 'jeans']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['schwarze-damen-jeans', '', ''])
       .setPathPartsForNavigation(['fashion', 'women', 'jeans'])
       .setFilters(['1000014'])
@@ -59,17 +62,18 @@ export class Navigation {
       .setPathPartsForNavigation(['fashion', 'women', 'jeans'])
       .setFilters(['1000016'])
       .setSEOId('WHITEWOMENJEANS'),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELRY', ['fashion', 'women', 'jewelry']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_MATERNITYWEAR', ['fashion', 'women', 'maternity-wear']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_NIGHTWEAR', ['fashion', 'women', 'nightwear']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_PANTS', ['fashion', 'women', 'pants']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_RAINWEAR', ['fashion', 'women', 'rainwear']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SHOES', ['fashion', 'women', 'shoes']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SKIRTS', ['fashion', 'women', 'skirts']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SWEATERS_AND_KNITWEAR', ['fashion', 'women', 'sweaters-and-knitwear']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SWIMWEAR', ['fashion', 'women', 'swimwear']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_UNDERWEAR', ['fashion', 'women', 'underwear']),
-    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_WATCHES', ['fashion', 'women', 'watches']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELRY', ['mode', 'damenmode', 'schmuck']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_MATERNITYWEAR', ['mode', 'damenmode', 'umstandsmode']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_NIGHTWEAR', ['mode', 'damenmode', 'nachtwäsche']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_PANTS', ['mode', 'damenmode', 'hosen']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_RAINWEAR', ['mode', 'damenmode', 'regenkleidung']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SHOES', ['mode', 'damenmode', 'schuhe']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SKIRTS', ['mode', 'damenmode', 'röcke']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SWEATERS_AND_KNITWEAR', ['mode', 'damenmode', 'pullover-strickwaren']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_SWIMWEAR', ['mode', 'damenmode', 'schwimmkleidung']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_UNDERWEAR', ['mode', 'damenmode', 'unterwäsche']),
+    new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_WATCHES', ['mode', 'damenmode', 'uhren']),
+
     new NavigationItem('FASHION', 'FASHION_MEN', ['fashion', 'men', '']).setHasSlogan(true),
     new NavigationItem('FASHION_MEN', 'FASHION_MEN_DISGUISES', ['fashion', 'men', 'disguises']),
     new NavigationItem(
@@ -109,44 +113,44 @@ export class Navigation {
     new NavigationItem('ALL', 'KIDS', ['wasserspielzeug-für-kinder', '', ''])
       .setPathPartsForNavigation(['kids', '', ''])
       .setSearchPattern('wasserspielzeug'),
-    new NavigationItem('KIDS', 'KIDS_BABIES', ['kids', 'babies', '']),
-    new NavigationItem('KIDS_BABIES', 'KIDS_BABIES_DIAPERS', ['kids', 'babies', 'baby-diapers']),
-    new NavigationItem('KIDS_BABIES', 'KIDS_BABIES_FOOD', ['kids', 'babies', 'baby-food']),
-    new NavigationItem('KIDS', 'KIDS_BOOKS', ['kids', 'books', '']),
-    new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_AUDIOBOOKS', ['kids', 'books', 'audio-books']),
-    new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_LEARNINGBOOKS', ['kids', 'books', 'learning-books']),
-    new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_READINGBOOKS', ['kids', 'books', 'reading-books']),
-    new NavigationItem('KIDS', 'KIDS_PARTY', ['kids', 'party', '']).setHasSlogan(true),
-    new NavigationItem('KIDS_PARTY', 'KIDS_PARTY_TABLEWARE', ['kids', 'party', 'tableware']),
-    new NavigationItem('KIDS', 'KIDS_SCHOOL', ['kids', 'school', '']).setHasSlogan(true),
+    new NavigationItem('KIDS', 'KIDS_BABIES', ['familie', 'babys', '']),
+    new NavigationItem('KIDS_BABIES', 'KIDS_BABIES_DIAPERS', ['familie', 'babys', 'windeln']),
+    new NavigationItem('KIDS_BABIES', 'KIDS_BABIES_FOOD', ['familie', 'babys', 'babynahrung']),
+    new NavigationItem('KIDS', 'KIDS_BOOKS', ['familie', 'bücher', '']),
+    new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_AUDIOBOOKS', ['familie', 'bücher', 'hörspiele']),
+    new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_LEARNINGBOOKS', ['familie', 'bücher', 'lernbücher']),
+    new NavigationItem('KIDS_BOOKS', 'KIDS_BOOKS_READINGBOOKS', ['familie', 'bücher', 'lesebücher']),
+    new NavigationItem('KIDS', 'KIDS_PARTY', ['familie', 'party', '']).setHasSlogan(true),
+    new NavigationItem('KIDS_PARTY', 'KIDS_PARTY_TABLEWARE', ['familie', 'party', 'tischdeko-geschirr']),
+    new NavigationItem('KIDS', 'KIDS_SCHOOL', ['familie', 'schule', '']).setHasSlogan(true),
     new NavigationItem('KIDS', 'KIDS_SCHOOL', ['alltagshelfer-für-kinder', '', ''])
-      .setPathPartsForNavigation(['kids', 'school', '']),
-    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_DRINKINGBOTTLES', ['kids', 'school', 'drinking-bottles']),
-    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_LUNCHBOXES', ['kids', 'school', 'lunchboxes']),
-    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SATCHEL', ['kids', 'school', 'satchel']),
-    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SCHOOLCONES', ['kids', 'school', 'school-cones']),
-    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SUPPLIES', ['kids', 'school', 'supplies']),
-    new NavigationItem('KIDS', 'KIDS_TOYS', ['kids', 'toys', '']).setHasSlogan(true),
+      .setPathPartsForNavigation(['familie', 'schule', '']),
+    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_DRINKINGBOTTLES', ['familie', 'schule', 'trinkflaschen']),
+    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_LUNCHBOXES', ['familie', 'schule', 'brotdosen']),
+    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SATCHEL', ['familie', 'schule', 'schulranzen']),
+    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SCHOOLCONES', ['familie', 'schule', 'schultüten']),
+    new NavigationItem('KIDS_SCHOOL', 'KIDS_SCHOOL_SUPPLIES', ['familie', 'schule', 'schulausstattung']),
+    new NavigationItem('KIDS', 'KIDS_TOYS', ['familie', 'spielzeug', '']).setHasSlogan(true),
     new NavigationItem('KIDS', 'KIDS_TOYS', ['holzspielzeug-für-kinder', '', ''])
-      .setPathPartsForNavigation(['kids', 'toys', ''])
+      .setPathPartsForNavigation(['familie', 'spielzeug', ''])
       .setSearchPattern('holz'),
     new NavigationItem('KIDS', 'KIDS_TOYS', ['kooperationsspiele-für-kinder', '', ''])
-      .setPathPartsForNavigation(['kids', 'toys', ''])
+      .setPathPartsForNavigation(['familie', 'spielzeug', ''])
       .setSearchPattern('koop'),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_BABIES', ['kids', 'toys', 'babies']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_BEACHANDWATER', ['kids', 'toys', 'beach-and-water']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_CONSTRUCTIONTOYS', ['kids', 'toys', 'construction-toys']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_CUDDLYTOYS', ['kids', 'toys', 'cuddly-toys']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_DOLLS', ['kids', 'toys', 'dolls']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_EDUCATIONALTOYS', ['kids', 'toys', 'educational-toys']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_GAMES', ['kids', 'toys', 'games']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_GYMNASTICSTOYS', ['kids', 'toys', 'gymnastics-toys']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_ELECTRICVEHICLES', ['kids', 'toys', 'electric-vehicles']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_EXPERIMENTANDRESEARCH', ['kids', 'toys', 'experiment-and-research']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_FIGURES', ['kids', 'toys', 'toy-figures']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_SCOOTERS', ['kids', 'toys', 'scooters']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_TOYVEHICLES', ['kids', 'toys', 'toy-vehicles']),
-    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_TRADINGCARDS', ['kids', 'toys', 'trading-cards']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_BABIES', ['familie', 'spielzeug', 'für-babys']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_BEACHANDWATER', ['familie', 'spielzeug', 'strand-wasser']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_CONSTRUCTIONTOYS', ['familie', 'spielzeug', 'bausteine']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_CUDDLYTOYS', ['familie', 'spielzeug', 'kuscheltiere']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_DOLLS', ['familie', 'spielzeug', 'puppen']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_EDUCATIONALTOYS', ['familie', 'spielzeug', 'lernspielzeug']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_GAMES', ['familie', 'spielzeug', 'spiele']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_GYMNASTICSTOYS', ['familie', 'spielzeug', 'beweglichkeitsspiele']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_ELECTRICVEHICLES', ['familie', 'spielzeug', 'elektrische-fahrzeuge']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_EXPERIMENTANDRESEARCH', ['familie', 'spielzeug', 'experimentieren-forschen']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_FIGURES', ['familie', 'spielzeug', 'figuren']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_SCOOTERS', ['familie', 'spielzeug', 'scooter']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_TOYVEHICLES', ['familie', 'spielzeug', 'spielzeug-fahrzeuge']),
+    new NavigationItem('KIDS_TOYS', 'KIDS_TOYS_TRADINGCARDS', ['familie', 'spielzeug', 'sammelkarten']),
 
     new NavigationItem('ALL', 'MULTIMEDIA', ['multimedia', '', ''], 4)
       .setHasSlogan(true)
@@ -184,96 +188,96 @@ export class Navigation {
     new NavigationItem('MULTIMEDIA_MOVIES', 'MULTIMEDIA_MOVIES_ANIME', ['multimedia', 'movies', 'anime']),
     new NavigationItem('MULTIMEDIA_MOVIES', 'MULTIMEDIA_MOVIES_FANTASY', ['multimedia', 'movies', 'fantasy']),
 
-    new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['electronics-and-computers', '', ''], 3)
+    new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['technik', '', ''], 3)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['saugroboter', '', ''])
-      .setPathPartsForNavigation(['electronics-and-computers', '', ''])
+      .setPathPartsForNavigation(['technik', '', ''])
       .setSearchPattern('saugroboter'),
     new NavigationItem('ALL', 'ELECTRONICS_AND_COMPUTERS', ['refurbished-technik', '', ''])
-      .setPathPartsForNavigation(['electronics-and-computers', '', ''])
+      .setPathPartsForNavigation(['technik', '', ''])
       .setFilters(['1000020']),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_CABLES',
-      ['electronics-and-computers', 'cables', '']
+      ['technik', 'kabel', '']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_CABLES',
       'ELECTRONICS_AND_COMPUTERS_CABLES_AUDIOCABLES',
-      ['electronics-and-computers', 'cables', 'audio-cables']
+      ['technik', 'kabel', 'audio-kabel']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_CABLES',
       'ELECTRONICS_AND_COMPUTERS_CABLES_ELECTRICCABLES',
-      ['electronics-and-computers', 'cables', 'electrical-cables']
+      ['technik', 'kabel', 'elektrische-kabel']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_CABLES',
       'ELECTRONICS_AND_COMPUTERS_CABLES_DISPLAYCABLES',
-      ['electronics-and-computers', 'cables', 'display-cables']
+      ['technik', 'kabel', 'video-kabel']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_CABLES',
       'ELECTRONICS_AND_COMPUTERS_CABLES_NETWORKCABLES',
-      ['electronics-and-computers', 'cables', 'network-cables']
+      ['technik', 'kabel', 'netzwerk-kabel']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_CAMERAS',
-      ['electronics-and-computers', 'cameras', '']
+      ['technik', 'kameras', '']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_CAMERAS',
       'ELECTRONICS_AND_COMPUTERS_CAMERAS_CAMERAOBJECTIVES',
-      ['electronics-and-computers', 'cameras', 'camera-objectives']
+      ['technik', 'kameras', 'kamera-objektive']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_CAMERAS',
       'ELECTRONICS_AND_COMPUTERS_CAMERAS_CAMERASUPPLEMENTS',
-      ['electronics-and-computers', 'cameras', 'camera-supplements']
+      ['technik', 'kameras', 'kamera-zubehör']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_CAMERAS',
       'ELECTRONICS_AND_COMPUTERS_CAMERAS_SLRCAMERAS',
-      ['electronics-and-computers', 'cameras', 'slr-cameras']
+      ['technik', 'kameras', 'spiegelreflex-kameras']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_CAMERAS',
       'ELECTRONICS_AND_COMPUTERS_CAMERAS_SYSTEMCAMERAS',
-      ['electronics-and-computers', 'cameras', 'system-cameras']
+      ['technik', 'kameras', 'system-kameras']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_COMPUTERS',
-      ['electronics-and-computers', 'computers', '']
+      ['technik', 'computer', '']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_COMPUTERS_LAPTOPS',
-      ['electronics-and-computers', 'computers', 'laptops']
+      ['technik', 'computer', 'laptops']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_COMPUTERS_TABLETS',
-      ['electronics-and-computers', 'computers', 'tablets']
+      ['technik', 'computer', 'tablets']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_EROTIC',
-      ['electronics-and-computers', 'erotic', '']
+      ['technik', 'erotik', '']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_EROTIC',
       'ELECTRONICS_AND_COMPUTERS_EROTIC_VIBRATORS',
-      ['electronics-and-computers', 'erotic', 'vibrators']
+      ['technik', 'erotik', 'vibratoren']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_EROTIC',
       'ELECTRONICS_AND_COMPUTERS_EROTIC_VIBRATORS',
       ['toys-für-frauen', '', '']
     )
-      .setPathPartsForNavigation(['electronics-and-computers', 'erotic', 'vibrators'])
+      .setPathPartsForNavigation(['technik', 'erotik', 'vibratoren'])
       .setFilters(['1000255'])
       .setSEOId('TOYSFORHER'),
     new NavigationItem(
@@ -281,157 +285,157 @@ export class Navigation {
       'ELECTRONICS_AND_COMPUTERS_EROTIC_VIBRATORS',
       ['toys-für-paare', '', '']
     )
-      .setPathPartsForNavigation(['electronics-and-computers', 'erotic', 'vibrators'])
+      .setPathPartsForNavigation(['technik', 'erotik', 'vibratoren'])
       .setFilters(['1000255'])
       .setSEOId('TOYSFORCOUPLES'),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_HOME',
-      ['electronics-and-computers', 'home', '']
+      ['technik', 'wohnen', '']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_AIRPURIFIERS',
-      ['electronics-and-computers', 'home', 'air-purifiers']
+      ['technik', 'wohnen', 'luftreiniger']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_AIRPURIFIERS',
       ['philips-luftreiniger', '', '']
     )
-      .setPathPartsForNavigation(['electronics-and-computers', 'home', 'air-purifiers'])
+      .setPathPartsForNavigation(['technik', 'wohnen', 'luftreiniger'])
       .setSearchPattern('Philips'),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_AIRVENTS',
-      ['electronics-and-computers', 'home', 'air-vents']
+      ['technik', 'wohnen', 'ventilatoren']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_ESPRESSOMACHINES',
-      ['electronics-and-computers', 'home', 'espresso-machines']
+      ['technik', 'wohnen', 'espresso-maschinen']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_FULLYAUTOMATICCOFFEEMACHINES',
-      ['electronics-and-computers', 'home', 'fully-automatic-coffee-machines']
+      ['technik', 'wohnen', 'kaffeevollautomaten']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_HEADPHONES',
-      ['electronics-and-computers', 'home', 'headphones']
+      ['technik', 'wohnen', 'kopfhörer']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_HOMECINEMA',
-      ['electronics-and-computers', 'home', 'home-cinema']
+      ['technik', 'wohnen', 'heimkino']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_HOMECINEMA',
       ['dein-kino-für-zuhause', '', '']
     )
-      .setPathPartsForNavigation(['electronics-and-computers', 'home', 'home-cinema']),
+      .setPathPartsForNavigation(['technik', 'wohnen', 'heimkino']),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_INKJETPRINTER',
-      ['electronics-and-computers', 'home', 'inkjet-printers']
+      ['technik', 'wohnen', 'tintenstrahldrucker']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_LASERPRINTER',
-      ['electronics-and-computers', 'home', 'laser-printers']
+      ['technik', 'wohnen', 'laserdrucker']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_SOLARSYSTEMS',
-      ['electronics-and-computers', 'home', 'solar-systems']
+      ['technik', 'wohnen', 'solaranlagen']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_SPEAKERS',
-      ['electronics-and-computers', 'home', 'speakers']
+      ['technik', 'wohnen', 'lautsprecher']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_TVS',
-      ['electronics-and-computers', 'home', 'tvs']
+      ['technik', 'wohnen', 'fernseher']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_HOME',
       'ELECTRONICS_AND_COMPUTERS_HOME_VACUUMCLEANERS',
-      ['electronics-and-computers', 'home', 'vacuum-cleaners']
+      ['technik', 'wohnen', 'staubsauger']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
-      ['electronics-and-computers', 'large-appliances', '']
+      ['technik', 'grossgeräte', '']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_DISHWASHERS',
-      ['electronics-and-computers', 'large-appliances', 'dishwashers']
+      ['technik', 'grossgeräte', 'geschirrspüler']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_DRYERS',
-      ['electronics-and-computers', 'large-appliances', 'dryers']
+      ['technik', 'grossgeräte', 'trockner']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_FRIDGES_AND_FREEZERS',
-      ['electronics-and-computers', 'large-appliances', 'fridges-and-freezers']
+      ['technik', 'grossgeräte', 'kühlschränke-gefriertruhen']
     ).setHasSlogan(true),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_FRIDGES_AND_FREEZERS',
       ['kühlboxen', '', '']
     )
-      .setPathPartsForNavigation(['electronics-and-computers', 'large-appliances', 'fridges-and-freezers'])
+      .setPathPartsForNavigation(['technik', 'grossgeräte', 'kühlschränke-gefriertruhen'])
       .setSearchPattern('kühlbox'),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_OVENS',
-      ['electronics-and-computers', 'large-appliances', 'ovens']
+      ['technik', 'grossgeräte', 'öfen']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES',
       'ELECTRONICS_AND_COMPUTERS_LARGE_APPLIANCES_WASHING_MACHINES',
-      ['electronics-and-computers', 'large-appliances', 'washing-machines']
+      ['technik', 'grossgeräte', 'waschmaschinen']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_PHONES',
-      ['electronics-and-computers', 'phones', '']
+      ['technik', 'telefone', '']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_PHONES',
       'ELECTRONICS_AND_COMPUTERS_PHONES_SMARTPHONEACCESSORIES',
-      ['electronics-and-computers', 'phones', 'smartphone-accessories']
+      ['technik', 'telefone', 'smartphone-zubehör']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_PHONES',
       'ELECTRONICS_AND_COMPUTERS_PHONES_SMARTPHONESCELLPHONES',
-      ['electronics-and-computers', 'phones', 'smartphones-and-cellphones']
+      ['technik', 'telefone', 'smartphones']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_PHONES',
       'ELECTRONICS_AND_COMPUTERS_PHONES_SMARTPHONESCELLPHONES',
       ['apple-iphones', '', '']
     )
-      .setPathPartsForNavigation(['electronics-and-computers', 'phones', 'smartphones-and-cellphones'])
+      .setPathPartsForNavigation(['technik', 'telefone', 'smartphones'])
       .setFilters(['1000087'])
       .setSEOId('APPLEIPHONES'),
 
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS',
       'ELECTRONICS_AND_COMPUTERS_WEARABLES',
-      ['electronics-and-computers', 'wearables', '']
+      ['technik', 'wearables', '']
     ),
     new NavigationItem(
       'ELECTRONICS_AND_COMPUTERS_WEARABLES',
       'ELECTRONICS_AND_COMPUTERS_WEARABLES_SMARTWATCHES',
-      ['electronics-and-computers', 'wearables', 'smartwatches']
+      ['technik', 'wearables', 'smartwatches']
     ),
 
     new NavigationItem('ALL', 'LIGHTING', ['lighting', '', ''], 6)
@@ -455,77 +459,80 @@ export class Navigation {
     new NavigationItem('MUSIC_INSTRUMENTS', 'MUSIC_INSTRUMENTS_MIXINGPANELS', ['music', 'instruments', 'mixing-panels']),
     new NavigationItem('MUSIC_INSTRUMENTS', 'MUSIC_INSTRUMENTS_PIANOS', ['music', 'instruments', 'pianos']),
 
-    new NavigationItem('ALL', 'BEAUTY_CARE', ['beauty-and-care', '', ''], 8)
+    new NavigationItem('ALL', 'BEAUTY_CARE', ['schönheit-und-pflege', '', ''], 8)
       .setHasSlogan(true)
       .setHasTeaser(true),
     new NavigationItem('ALL', 'BEAUTY_CARE', ['sonnencreme', '', ''])
-      .setPathPartsForNavigation(['beauty-and-care', '', ''])
+      .setPathPartsForNavigation(['schönheit-und-pflege', '', ''])
       .setSearchPattern('Sonne'),
-    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_BODYCARE', ['beauty-and-care', 'body-care', '']),
-    new NavigationItem('BEAUTY_CARE_BODYCARE', 'BEAUTY_CARE_BODYCARE_SOAP', ['beauty-and-care', 'body-care', 'soap']),
-    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_EROTIC', ['beauty-and-care', 'erotic', '']),
-    new NavigationItem('BEAUTY_CARE_EROTIC', 'BEAUTY_CARE_EROTIC_MASSAGES', ['beauty-and-care', 'erotic', 'massages']),
-    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_FRAGRANCES', ['beauty-and-care', 'fragrances', '']),
-    new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_MEN', ['beauty-and-care', 'fragrances', 'men']),
-    new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_UNISEX', ['beauty-and-care', 'fragrances', 'unisex']),
-    new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_WOMEN', ['beauty-and-care', 'fragrances', 'women']),
-    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_HAIR', ['beauty-and-care', 'hair', '']),
-    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_CARE', ['beauty-and-care', 'hair', 'care']),
-    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_HAIRREMOVERS', ['beauty-and-care', 'hair', 'hair-removers']),
-    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_SHAVERS', ['beauty-and-care', 'hair', 'shavers']),
-    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_STYLING', ['beauty-and-care', 'hair', 'styling']),
-    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_HEALTH', ['beauty-and-care', 'health', '']),
-    new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_NUTRITIALSUPPLEMENTS', ['beauty-and-care', 'health', 'nutritional-supplements']),
-    new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_ORALHYGIENE', ['beauty-and-care', 'health', 'oral-hygiene']),
-    new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_PAINKILLERS', ['beauty-and-care', 'health', 'painkillers']),
-    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_MAKEUP', ['beauty-and-care', 'makeup', '']),
-    new NavigationItem('BEAUTY_CARE_MAKEUP', 'BEAUTY_CARE_MAKEUP_EYES', ['beauty-and-care', 'makeup', 'eyes']),
-    new NavigationItem('BEAUTY_CARE_MAKEUP', 'BEAUTY_CARE_MAKEUP_LIPS', ['beauty-and-care', 'makeup', 'lips']),
-    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SLEEP', ['beauty-and-care', 'sleep', '']),
-    new NavigationItem('BEAUTY_CARE_SLEEP', 'BEAUTY_CARE_SLEEP_SLEEPAIDS', ['beauty-and-care', 'sleep', 'sleeping-aids']),
-    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SKIN_CARE', ['beauty-and-care', 'skin-care', '']),
-    new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_FACE_CARE', ['beauty-and-care', 'skin-care', 'face-care']),
-    new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_HANDCARE', ['beauty-and-care', 'skin-care', 'hand-care']),
-    new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_KIDS', ['beauty-and-care', 'skin-care', 'kids']),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_BODYCARE', ['schönheit-und-pflege', 'körperpflege', '']),
+    new NavigationItem('BEAUTY_CARE_BODYCARE', 'BEAUTY_CARE_BODYCARE_SOAP', ['schönheit-und-pflege', 'körperpflege', 'seife']),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_EROTIC', ['schönheit-und-pflege', 'erotik', '']),
+    new NavigationItem('BEAUTY_CARE_EROTIC', 'BEAUTY_CARE_EROTIC_MASSAGES', ['schönheit-und-pflege', 'erotik', 'massage']),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_FRAGRANCES', ['schönheit-und-pflege', 'düfte', '']),
+    new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_MEN', ['schönheit-und-pflege', 'düfte', 'für-männer']),
+    new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_UNISEX', ['schönheit-und-pflege', 'düfte', 'unisex']),
+    new NavigationItem('BEAUTY_CARE_FRAGRANCES', 'BEAUTY_CARE_FRAGRANCES_WOMEN', ['schönheit-und-pflege', 'düfte', 'für-frauen']),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_HAIR', ['schönheit-und-pflege', 'haarpflege', '']),
+    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_CARE', ['schönheit-und-pflege', 'haare', 'haarpflege']),
+    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_HAIRREMOVERS', ['schönheit-und-pflege', 'haare', 'haarentfernung']),
+    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_SHAVERS', ['schönheit-und-pflege', 'haare', 'rasierer']),
+    new NavigationItem('BEAUTY_CARE_HAIR', 'BEAUTY_CARE_HAIR_STYLING', ['schönheit-und-pflege', 'haare', 'styling']),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_HEALTH', ['schönheit-und-pflege', 'gesundheit', '']),
+    new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_NUTRITIALSUPPLEMENTS', ['schönheit-und-pflege', 'gesundheit', 'nahrungsergänzung']),
+    new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_ORALHYGIENE', ['schönheit-und-pflege', 'gesundheit', 'mundhygiene']),
+    new NavigationItem('BEAUTY_CARE_HEALTH', 'BEAUTY_CARE_HEALTH_PAINKILLERS', ['schönheit-und-pflege', 'gesundheit', 'schmerzmittel']),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_MAKEUP', ['schönheit-und-pflege', 'makeup', '']),
+    new NavigationItem('BEAUTY_CARE_MAKEUP', 'BEAUTY_CARE_MAKEUP_EYES', ['schönheit-und-pflege', 'makeup', 'augen']),
+    new NavigationItem('BEAUTY_CARE_MAKEUP', 'BEAUTY_CARE_MAKEUP_LIPS', ['schönheit-und-pflege', 'makeup', 'lippen']),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SLEEP', ['schönheit-und-pflege', 'schlaf', '']),
+    new NavigationItem('BEAUTY_CARE_SLEEP', 'BEAUTY_CARE_SLEEP_SLEEPAIDS', ['schönheit-und-pflege', 'schlaf', 'schlafhilfen']),
+    new NavigationItem('BEAUTY_CARE', 'BEAUTY_CARE_SKIN_CARE', ['schönheit-und-pflege', 'haut', '']),
+    new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_FACE_CARE', ['schönheit-und-pflege', 'hautpflege', 'gesichtspflege']),
+    new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_HANDCARE', ['schönheit-und-pflege', 'hautpflege', 'handpflege']),
+    new NavigationItem('BEAUTY_CARE_SKIN_CARE', 'BEAUTY_CARE_SKIN_CARE_KIDS', ['schönheit-und-pflege', 'hautpflege', 'für-kinder']),
 
-    new NavigationItem('ALL', 'HOME', ['home', '', ''], 10)
+    new NavigationItem('ALL', 'HOME', ['wohnen', '', ''], 10)
       .setHasSlogan(true)
       .setHasTeaser(true),
-    new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['home', 'accessoires', '']),
-    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_BEDCOVERS', ['home', 'accessoires', 'bed-covers']),
-    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['home', 'accessoires', 'carpets']),
-    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CUPS', ['home', 'accessoires', 'cups']),
-    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_DECORATIONS', ['home', 'accessoires', 'decorations']),
-    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_MATTRESSES', ['home', 'accessoires', 'mattresses']),
-    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_PILLOWS', ['home', 'accessoires', 'pillows']),
-    new NavigationItem('HOME', 'HOME_CLEANING', ['home', 'cleaning', '']),
-    new NavigationItem('HOME_CLEANING', 'HOME_CLEANING_LAUNDRYDETERGENT', ['home', 'cleaning', 'laundry-detergent']),
-    new NavigationItem('HOME', 'HOME_COOKINGANDBAKING', ['home', 'cooking-and-baking', '']),
-    new NavigationItem('HOME_COOKINGANDBAKING', 'HOME_COOKINGANDBAKING_BAKINGSUPPLIES', ['home', 'cooking-and-baking', 'baking-supplies']),
-    new NavigationItem('HOME_COOKINGANDBAKING', 'HOME_COOKINGANDBAKING_KITCHENACCESSORIES', ['home', 'cooking-and-baking', 'kitchen-accessories']),
-    new NavigationItem('HOME', 'HOME_FURNITURE', ['home', 'furniture', '']),
-    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_BEDS', ['home', 'furniture', 'beds']),
-    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_DININGTABLES', ['home', 'furniture', 'dining-tables']),
-    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_GAMINGCHAIRS', ['home', 'furniture', 'gaming-chairs']),
-    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_KIDSBEDS', ['home', 'furniture', 'kids-beds']),
-    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_KIDSSOFAS', ['home', 'furniture', 'kids-sofas']),
-    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_OFFICECHAIRS', ['home', 'furniture', 'office-chairs']),
-    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_SOFAS', ['home', 'furniture', 'sofas']),
-    new NavigationItem('HOME', 'HOME_GARDEN', ['home', 'garden', '']),
-    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_DECORATIONS', ['home', 'garden', 'decorations']),
-    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GARDENHOUSES', ['home', 'garden', 'garden-houses']),
-    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GRILLS', ['home', 'garden', 'grills']),
-    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_PLANTS', ['home', 'garden', 'plants']),
-    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_LAWNMOWERS', ['home', 'garden', 'lawnmowers']),
-    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_LEAFBLOWERS', ['home', 'garden', 'leafblowers']),
-    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_LOUNGEFURNITURE', ['home', 'garden', 'lounge-furniture']),
-    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_SPORTS', ['home', 'garden', 'sports']),
-    new NavigationItem('HOME', 'HOME_PETS', ['home', 'pets', '']),
-    new NavigationItem('HOME_PETS', 'HOME_PETS_CATS', ['home', 'pets', 'cats']),
-    new NavigationItem('HOME_PETS', 'HOME_PETS_DOGS', ['home', 'pets', 'dogs']),
-    new NavigationItem('HOME', 'HOME_WELLNESS', ['home', 'wellness', '']),
-    new NavigationItem('HOME_WELLNESS', 'HOME_WELLNESS_SAUNAS', ['home', 'wellness', 'saunas']),
-    new NavigationItem('HOME_WELLNESS', 'HOME_WELLNESS_WHIRLPOOLS', ['home', 'wellness', 'whirlpools']),
+    new NavigationItem('HOME', 'HOME_ACCESSOIRES', ['wohnen', 'accessoires', '']),
+    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_BEDCOVERS', ['wohnen', 'accessoires', 'bettbezüge']),
+    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CARPETS', ['wohnen', 'accessoires', 'teppiche']),
+    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_CUPS', ['wohnen', 'accessoires', 'tassen']),
+    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_DECORATIONS', ['wohnen', 'accessoires', 'dekoration']),
+    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_DECORATIONS', ['herbstdeko', '', ''])
+      .setPathPartsForNavigation(['wohnen', 'accessoires', 'dekoration'])
+      .setSearchPattern('Herbst'),
+    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_MATTRESSES', ['wohnen', 'accessoires', 'matratzen']),
+    new NavigationItem('HOME_ACCESSOIRES', 'HOME_ACCESSOIRES_PILLOWS', ['wohnen', 'accessoires', 'kissen']),
+    new NavigationItem('HOME', 'HOME_CLEANING', ['wohnen', 'reinigen', '']),
+    new NavigationItem('HOME_CLEANING', 'HOME_CLEANING_LAUNDRYDETERGENT', ['wohnen', 'reinigen', 'waschmittel']),
+    new NavigationItem('HOME', 'HOME_COOKINGANDBAKING', ['wohnen', 'kochen-backen', '']),
+    new NavigationItem('HOME_COOKINGANDBAKING', 'HOME_COOKINGANDBAKING_BAKINGSUPPLIES', ['wohnen', 'kochen-backen', 'backzubehör']),
+    new NavigationItem('HOME_COOKINGANDBAKING', 'HOME_COOKINGANDBAKING_KITCHENACCESSORIES', ['wohnen', 'kochen-backen', 'küchenausstattung']),
+    new NavigationItem('HOME', 'HOME_FURNITURE', ['wohnen', 'möbel', '']),
+    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_BEDS', ['wohnen', 'möbel', 'betten']),
+    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_DININGTABLES', ['wohnen', 'möbel', 'esstische']),
+    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_GAMINGCHAIRS', ['wohnen', 'möbel', 'gaming-stühle']),
+    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_KIDSBEDS', ['wohnen', 'möbel', 'kinderbetten']),
+    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_KIDSSOFAS', ['wohnen', 'möbel', 'kindersofas']),
+    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_OFFICECHAIRS', ['wohnen', 'möbel', 'bürostühle']),
+    new NavigationItem('HOME_FURNITURE', 'HOME_FURNITURE_SOFAS', ['wohnen', 'möbel', 'sofas']),
+    new NavigationItem('HOME', 'HOME_GARDEN', ['wohnen', 'garten', '']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_DECORATIONS', ['wohnen', 'garten', 'dekoration']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GARDENHOUSES', ['wohnen', 'garten', 'gartenhäuser']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_GRILLS', ['wohnen', 'garten', 'grills']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_PLANTS', ['wohnen', 'garten', 'pflanzen']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_LAWNMOWERS', ['wohnen', 'garten', 'rasenmäher']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_LEAFBLOWERS', ['wohnen', 'garten', 'laubbläser']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_LOUNGEFURNITURE', ['wohnen', 'garten', 'lounge-möbel']),
+    new NavigationItem('HOME_GARDEN', 'HOME_GARDEN_SPORTS', ['wohnen', 'garten', 'sport']),
+    new NavigationItem('HOME', 'HOME_PETS', ['wohnen', 'haustiere', '']),
+    new NavigationItem('HOME_PETS', 'HOME_PETS_CATS', ['wohnen', 'haustiere', 'katzen']),
+    new NavigationItem('HOME_PETS', 'HOME_PETS_DOGS', ['wohnen', 'haustiere', 'hunde']),
+    new NavigationItem('HOME', 'HOME_WELLNESS', ['wohnen', 'wellness', '']),
+    new NavigationItem('HOME_WELLNESS', 'HOME_WELLNESS_SAUNAS', ['wohnen', 'wellness', 'saunas']),
+    new NavigationItem('HOME_WELLNESS', 'HOME_WELLNESS_WHIRLPOOLS', ['wohnen', 'wellness', 'whirlpools']),
 
     new NavigationItem('ALL', 'VEHICLES', ['vehicles', '', ''], 11)
       .setHasSlogan(true)
