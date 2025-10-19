@@ -9,40 +9,40 @@ export class Navigation {
       .setHasSlogan(true)
       .setHasTeaser(true),
 
-    new NavigationItem('FASHION', 'FASHION_BOYS', ['fashion', 'boys', '']),
+    new NavigationItem('FASHION', 'FASHION_BOYS', ['mode', 'jungen', '']),
     new NavigationItem('FASHION', 'FASHION_BOYS', ['bio-kinderkleidung', '', ''])
-      .setPathPartsForNavigation(['fashion', 'boys', ''])
+      .setPathPartsForNavigation(['mode', 'jungen', ''])
       .setSearchPattern('bio'),
     new NavigationItem('FASHION', 'FASHION_BOYS', ['uv-kleidung-für-kinder', '', ''])
-      .setPathPartsForNavigation(['fashion', 'boys', ''])
+      .setPathPartsForNavigation(['mode', 'jungen', ''])
       .setSearchPattern('uv'),
     new NavigationItem('FASHION', 'FASHION_BOYS', ['sommerkleidung-für-jungen', '', ''])
-      .setPathPartsForNavigation(['fashion', 'boys', ''])
+      .setPathPartsForNavigation(['mode', 'jungen', ''])
       .setSearchPattern('sommer'),
-    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_DISGUISES', ['fashion', 'boys', 'disguises']),
-    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_HATS', ['fashion', 'boys', 'hats']),
-    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_RAINWEAR', ['fashion', 'boys', 'rainwear']),
-    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SHOES', ['fashion', 'boys', 'shoes']),
-    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SWEATERS_AND_KNITWEAR', ['fashion', 'boys', 'sweaters-and-knitwear']),
-    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SWIMWEAR', ['fashion', 'boys', 'swimwear']),
-    new NavigationItem('FASHION', 'FASHION_GIRLS', ['fashion', 'girls', '']),
+    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_DISGUISES', ['mode', 'jungen', 'verkleidungen']),
+    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_HATS', ['mode', 'jungen', 'hüte']),
+    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_RAINWEAR', ['mode', 'jungen', 'regenkleidung']),
+    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SHOES', ['mode', 'jungen', 'schuhe']),
+    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SWEATERS_AND_KNITWEAR', ['mode', 'jungen', 'pullover-und-strickwaren ']),
+    new NavigationItem('FASHION_BOYS', 'FASHION_BOYS_SWIMWEAR', ['mode', 'jungen', 'schwimmkleidung']),
+    new NavigationItem('FASHION', 'FASHION_GIRLS', ['mode', 'mädchen', '']),
     new NavigationItem('FASHION', 'FASHION_GIRLS', ['sommerkleidung-für-mädchen', '', ''])
-      .setPathPartsForNavigation(['fashion', 'girls', ''])
+      .setPathPartsForNavigation(['mode', 'mädchen', ''])
       .setSearchPattern('sommer'),
-    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_DISGUISES', ['fashion', 'girls', 'disguises']),
-    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_RAINWEAR', ['fashion', 'girls', 'rainwear']),
-    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SHOES', ['fashion', 'girls', 'shoes']),
-    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SWEATERS_AND_KNITWEAR', ['fashion', 'girls', 'sweaters-and-knitwear']),
-    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SWIMWEAR', ['fashion', 'girls', 'swimwear']),
+    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_DISGUISES', ['mode', 'mädchen', 'verkleidungen']),
+    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_RAINWEAR', ['mode', 'mädchen', 'regenkleidung']),
+    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SHOES', ['mode', 'mädchen', 'schuhe']),
+    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SWEATERS_AND_KNITWEAR', ['mode', 'mädchen', 'pullover-und-strickwaren']),
+    new NavigationItem('FASHION_GIRLS', 'FASHION_GIRLS_SWIMWEAR', ['mode', 'mädchen', 'schwimmkleidung']),
 
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['mode', 'damenmode', ''])
       .setHasSlogan(true),
 
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['sommerkleidung-für-frauen', '', ''])
-      .setPathPartsForNavigation(['fashion', 'women', ''])
+      .setPathPartsForNavigation(['mode', 'women', ''])
       .setSearchPattern('sommer'),
     new NavigationItem('FASHION', 'FASHION_WOMEN', ['sportkleidung-für-frauen', '', ''])
-      .setPathPartsForNavigation(['fashion', 'women', ''])
+      .setPathPartsForNavigation(['mode', 'women', ''])
       .setSearchPattern('sport'),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_BAGS', ['mode', 'damenmode', 'taschen']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES', ['mode', 'damenmode', 'verkleidungen']),
@@ -50,16 +50,16 @@ export class Navigation {
       'FASHION_WOMEN', 'FASHION_WOMEN_DISGUISES',
       ['aussergewöhnliche-kostüme-damen', '', '']
     )
-      .setPathPartsForNavigation(['fashion', 'women', 'disguises'])
+      .setPathPartsForNavigation(['mode', 'women', 'disguises'])
       .setSEOId('EXTRAORDINARYWOMENDISGUISES'),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JACKETS', ['mode', 'damenmode', 'jacken']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['mode', 'damenmode', 'jeans']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['schwarze-damen-jeans', '', ''])
-      .setPathPartsForNavigation(['fashion', 'women', 'jeans'])
+      .setPathPartsForNavigation(['mode', 'women', 'jeans'])
       .setFilters(['1000014'])
       .setSEOId('BLACKWOMENJEANS'),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEANS', ['weisse-damen-jeans', '', ''])
-      .setPathPartsForNavigation(['fashion', 'women', 'jeans'])
+      .setPathPartsForNavigation(['mode', 'women', 'jeans'])
       .setFilters(['1000016'])
       .setSEOId('WHITEWOMENJEANS'),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_JEWELRY', ['mode', 'damenmode', 'schmuck']),
@@ -74,29 +74,29 @@ export class Navigation {
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_UNDERWEAR', ['mode', 'damenmode', 'unterwäsche']),
     new NavigationItem('FASHION_WOMEN', 'FASHION_WOMEN_WATCHES', ['mode', 'damenmode', 'uhren']),
 
-    new NavigationItem('FASHION', 'FASHION_MEN', ['fashion', 'men', '']).setHasSlogan(true),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_DISGUISES', ['fashion', 'men', 'disguises']),
+    new NavigationItem('FASHION', 'FASHION_MEN', ['mode', 'herrenmode', '']).setHasSlogan(true),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_DISGUISES', ['mode', 'herrenmode', 'verkleidungen']),
     new NavigationItem(
       'FASHION_MEN', 'FASHION_MEN_DISGUISES',
       ['aussergewöhnliche-kostüme-herren', '', '']
     )
-      .setPathPartsForNavigation(['fashion', 'men', 'disguises'])
+      .setPathPartsForNavigation(['mode', 'herrenmode', 'verkleidungen'])
       .setSEOId('EXTRAORDINARYMENDISGUISES'),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_EROTICUNDERWEAR', ['fashion', 'men', 'erotic-underwear']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_HATS', ['fashion', 'men', 'hats']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_JACKETS', ['fashion', 'men', 'jackets']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEANS', ['fashion', 'men', 'jeans']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEWELRY', ['fashion', 'men', 'jewelry']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_NIGHTWEAR', ['fashion', 'men', 'nightwear']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_PANTS', ['fashion', 'men', 'pants']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_RAINWEAR', ['fashion', 'men', 'rainwear']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_SHIRTS', ['fashion', 'men', 'shirts']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_SHOES', ['fashion', 'men', 'shoes']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_SHORTS', ['fashion', 'men', 'shorts']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_UNDERWEAR', ['fashion', 'men', 'underwear']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_SWEATERS_AND_KNITWEAR', ['fashion', 'men', 'sweaters-and-knitwear']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_SWIMWEAR', ['fashion', 'men', 'swimwear']),
-    new NavigationItem('FASHION_MEN', 'FASHION_MEN_WATCHES', ['fashion', 'men', 'watches']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_EROTICUNDERWEAR', ['mode', 'herrenmode', 'erotische-unterwäsche']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_HATS', ['mode', 'herrenmode', 'hüte']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_JACKETS', ['mode', 'herrenmode', 'jacken']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEANS', ['mode', 'herrenmode', 'jeans']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_JEWELRY', ['mode', 'herrenmode', 'schmuck']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_NIGHTWEAR', ['mode', 'herrenmode', 'nachtwäsche']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_PANTS', ['mode', 'herrenmode', 'hosen']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_RAINWEAR', ['mode', 'herrenmode', 'regenkleidung']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_SHIRTS', ['mode', 'herrenmode', 'shirts']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_SHOES', ['mode', 'herrenmode', 'schuhe']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_SHORTS', ['mode', 'herrenmode', 'shorts']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_UNDERWEAR', ['mode', 'herrenmode', 'unterwäsche']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_SWEATERS_AND_KNITWEAR', ['mode', 'herrenmode', 'pullover-und-strickwaren']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_SWIMWEAR', ['mode', 'herrenmode', 'schwimmkleidung']),
+    new NavigationItem('FASHION_MEN', 'FASHION_MEN_WATCHES', ['mode', 'herrenmode', 'uhren']),
 
     new NavigationItem('ALL', 'LUXURIES', ['luxuries', '', ''], 2)
       .setHasSlogan(true)
